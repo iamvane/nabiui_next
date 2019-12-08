@@ -1,0 +1,1314 @@
+@font-face {
+	font-family: 'JennaSue';
+	src: url('../fonts/JennaSue.ttf');
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800');
+}
+
+body {
+	background: #f0f3f6;
+	margin: 0px;
+	font-family: 'Montserrat', sans-serif;
+	color: #717a8a !important;
+	background-image: url('../images/musical-background.jpg') !important;
+  background-size: contain;
+  background-repeat: repeat;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #06c3e1;
+}
+
+input {
+  background: transparent;
+}
+
+mark {
+	color: #717a8a !important;
+	background: none;
+}
+
+.become-an-instructor-icon {
+	width: 90px;
+}
+
+/*BACKGROUND COLOR*/
+.nabi-background-color {
+	background-color: #f0f3f6;
+}
+
+.nabi-background-white {
+	background-color: #fff;
+}
+
+.nabi-background-nabi {
+	background-color: #06c3e1 !important;
+}
+
+.nabi-background-orange {
+	background-color: #FB7F6B !important;
+}
+
+.nabi-background-yellow {
+	background-color: #FFAE33 !important;
+}
+
+.nabi-background-disabled {
+	background-color: #b6bac3  !important;
+}
+
+/*BORDER*/
+.nabi-border-nabi {
+    border: 2px solid #06c3e1!important;
+}
+
+.nabi-border-radius {
+	border-radius: 17px;
+}
+
+/*COLOR*/
+.nabi-color-white,
+p.nabi-color-white {
+	color: #fff !important;
+}
+
+.nabi-color-nabi {
+	color: #06c3e1 !important;
+}
+
+.nabi-color-yellow,
+p.nabi-color-yellow {
+	color: #FFAE33 !important;
+}
+
+.nabi-color-orange,
+p.nabi-color-orange {
+	color: #FB7F6B !important;
+}
+
+.nabi-color-default {
+	color: #717a8a !important;
+}
+
+.nabi-color-disabled {
+	color: #b6bac3 !important;
+}
+/*FONT SIZE*/
+.nabi-font-medium {
+	font-size: 15px !important;
+}
+
+.nabi-font-small {
+   font-size: 13px !important;
+}
+
+.nabi-font-large {
+	font-size: 20px !important;
+}
+
+/*CURSOR*/
+.nabi-cursor-pointer {
+	cursor: pointer !important;
+}
+
+/*DISPLAY*/
+.nabi-display-block {
+  display: block !important;
+}
+
+.nabi-display-inline {
+	display: inline !important;
+}
+
+.nabi-display-inline-block {
+	display: inline-block !important;
+}
+
+.nabi-display-none {
+  display: none !important;
+}
+
+/*FLOAT*/
+.nabi-float-right {
+	float: right !important;
+}
+
+/*FONT FAMILY*/
+.nabi-font-jennasue {
+	font-family: 'JennaSue';
+}
+
+.nabi-font-montserrat {
+	font-family: 'Montserrat', sans-serif;
+}
+
+/*FONT WEIGHT*/
+.nabi-text-mediumbold {
+	font-weight: 500 !important;
+}
+
+.nabi-text-semibold {
+	font-weight: 600 !important;
+}
+
+.nabi-text-extrabold {
+	font-weight: 800 !important;
+}
+
+/*LIST*/
+li.nabi-list {
+	color: #06c3e1;
+	list-style: disc;
+}
+
+li.nabi-list-style-position-inside {
+	list-style-position: inside;
+}
+
+/*TEXT ALIGN*/
+.nabi-text-center,
+.nabi-text-center * {
+	text-align: center !important;
+}
+
+.nabi-text-left {
+	text-align: left !important;
+}
+
+.nabi-text-right {
+	text-align: right !important;
+}
+
+/*ALIGN*/
+.nabi-align-vertical-items {
+	display: flex;
+	align-items: center;
+}
+
+.nabi-vertical-align-center {
+	display: flex;
+	align-items: center !important;
+}
+
+.nabi-vertical-top {
+	vertical-align: top;
+}
+
+.nabi-vertical-bottom {
+	vertical-align: bottom;
+}
+
+/*TEXT DECORATION*/
+.nabi-text-decoration-underline,
+.nabi-text-decoration-underline-hover:hover,
+.nabi-text-decoration-underline-hover a:hover {
+	text-decoration: underline !important;
+}
+
+/*TEXT TRANSFORM*/
+.nabi-text-uppercase {
+  text-transform: uppercase !important;
+}
+
+/*MARGIN*/
+.nabi-margin-remove {
+	margin: 0px !important;
+}
+
+.nabi-margin-center {
+	margin: 0 auto !important;
+}
+
+.nabi-margin-xsmall {
+	margin: 5px !important;
+}
+
+.nabi-margin-small {
+	margin: 20px !important
+}
+
+.nabi-margin-medium {
+	margin: 30px
+}
+
+.nabi-margin-large {
+	margin: 40px
+}
+
+.nabi-margin-top-zero {
+  margin-top: 0px !important;
+}
+
+.nabi-margin-top-xsmall {
+	margin-top: 5px !important;
+}
+
+.nabi-margin-top-small {
+	margin-top: 20px !important;
+}
+
+.nabi-margin-top-medium {
+	margin-top: 30px !important;
+}
+
+.nabi-margin-top-large {
+	margin-top: 40px !important;
+}
+
+.nabi-margin-top-xlarge {
+	margin-top: 60px !important;
+}
+
+.nabi-margin-right-xsmall {
+	margin-right: 5px !important;
+}
+
+.nabi-margin-right-small {
+	margin-right: 20px !important;
+}
+
+.nabi-margin-right-medium {
+	margin-right: 30px !important;
+}
+
+.nabi-margin-right-large {
+	margin-right: 40px !important;
+}
+
+.nabi-margin-bottom-xsmall {
+	margin-bottom: 5px !important;
+}
+
+.nabi-margin-bottom-small {
+	margin-bottom: 20px !important;
+}
+
+.nabi-margin-bottom-medium {
+	margin-bottom: 30px !important;
+}
+
+.nabi-margin-bottom-large {
+	margin-bottom: 40px !important;
+}
+
+.nabi-margin-bottom-xlarge {
+	margin-bottom: 60px !important;
+}
+
+.nabi-margin-bottom-zero {
+	margin-bottom: 0px !important;
+}
+
+.nabi-margin-left-xsmall {
+	margin-left: 5px !important;
+}
+
+.nabi-margin-left-small {
+	margin-left: 20px !important;
+}
+
+.nabi-margin-left-medium {
+	margin-left: 30px !important;
+}
+
+.nabi-margin-left-large {
+	margin-left: 40px !important;
+}
+
+.nabi-margin-left-zero {
+	margin-left: 0px !important;
+}
+
+/*PADDING*/
+.nabi-padding-remove {
+	padding: 0px !important;
+}
+.nabi-padding-small {
+	padding: 20px
+}
+
+.nabi-padding-small {
+	padding: 20px
+}
+
+.nabi-padding-medium {
+	padding: 30px
+}
+
+.nabi-padding-large {
+	padding: 40px
+}
+
+.nabi-padding-xlarge {
+	padding: 60px
+}
+
+.nabi-padding-top-zero {
+  padding-top: 0px !important;
+}
+
+.nabi-padding-top-xsmall {
+	padding-top: 10px !important;
+}
+
+.nabi-padding-top-small {
+	padding-top: 20px !important;
+}
+
+.nabi-padding-top-medium {
+	padding-top: 30px !important;
+}
+
+.nabi-padding-top-large {
+	padding-top: 40px !important;
+}
+
+.nabi-padding-top-xlarge {
+	padding-top: 60px !important;
+}
+
+.nabi-padding-right-xsmall {
+	padding-right: 10px !important;
+}
+
+.nabi-padding-right-small {
+	padding-right: 20px !important;
+}
+
+.nabi-padding-right-medium {
+	padding-right: 30px !important;
+}
+
+.nabi-padding-right-large {
+	padding-right: 40px !important;
+}
+
+.nabi-padding-right-xlarge {
+	padding-right: 60px !important;
+}
+
+.nabi-padding-bottom-zero {
+	padding-bottom: 0px !important;
+}
+
+.nabi-padding-bottom-xsmall {
+	padding-bottom: 10px !important;
+}
+
+.nabi-padding-bottom-small {
+	padding-bottom: 20px !important;
+}
+
+.nabi-padding-bottom-medium {
+	padding-bottom: 30px !important;
+}
+
+.nabi-padding-bottom-large {
+	padding-bottom: 40px !important;
+}
+
+.nabi-padding-bottom-large {
+	padding-bottom: 60px !important;
+}
+
+.nabi-padding-left-zero {
+	padding-left: 0px !important;
+}
+
+.nabi-padding-left-xsmall {
+	padding-left: 10px !important;
+}
+
+.nabi-padding-left-small {
+	padding-left: 20px !important;
+}
+
+.nabi-padding-left-medium {
+	padding-left: 30px !important;
+}
+
+.nabi-padding-left-large {
+	padding-left: 40px !important;
+}
+
+.nabi-padding-left-xlarge {
+	padding-left: 60px !important;
+}
+
+/*POSITION*/
+.nabi-position-relative {
+	position: relative;
+}
+
+.nabi-position-absolute {
+	position: absolute;
+}
+
+/* WIDTH */
+.nabi-full-width {
+	width: 100% !important;
+}
+
+/****CUSTOM ELEMENTS****/
+/*Container*/
+.nabi-container {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+/*Section*/
+.nabi-section,
+.nabi-section-wide,
+.nabi-section-widest {
+	border-radius: 17px;
+	padding: 25px 20px;
+}
+
+/*Responsive Hide*/
+.hide-on-mobile {
+	display: none !important;
+}
+
+.hide-on-desktop {
+	display: block !important;
+}
+
+/*Button icons*/
+.nabi-custom-button-icon {
+	width: 20px;
+}
+
+/*Logo anchor*/
+.nabi-logo-anchor {
+	display: inherit;
+	text-decoration: none;
+  text-align: center !important;
+}
+
+.nabi-logo-anchor-welcome-message {
+  background-image: url(https://nabimusic.s3.us-east-2.amazonaws.com/header-long-image.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.nabi-welcome-message-gift-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px 0 30px;
+}
+
+.nabi-welcome-message-gift {
+  display: flex;
+  position: relative;
+  width: 55%;
+  top: 30px;
+}
+
+.nabi-margin-0 {
+  margin: 0;
+}
+
+.nabi-margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.nabi-text-color-red {
+  color: #fb7e6a;
+}
+
+.nabi-text-size-medium {
+  font-size: 25px;
+}
+
+.nabi-welcome-message-gift-img {
+  width: 35%;
+}
+
+.nabi-logo-anchor img {
+	width: 55px;
+	margin: 0 auto !important;
+	text-align: center !important;
+	margin-top: 10px !important
+}
+
+/* Profile Loader Container */
+.nabi-profile-loader-container {
+  display: flex;
+  justify-content: center;
+}
+
+/*Logo text*/
+#nabi-logo-text {
+	color: #000;
+	font-size: 16px;
+	margin-bottom: 0px;
+	margin-top: 4px;
+	text-transform: uppercase;
+}
+
+/*Header*/
+.special-offer {
+	padding: 5px;
+	background: #FFAE33;
+	text-align: center;
+	color: #ffffff;
+}
+
+.nabi-header-container,
+.nabi-header-container-home {
+	width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nabi-header-button {
+	position: absolute !important;
+	top: 9% !important;
+	right: 20px !important;
+}
+
+.nabi-responsive-image {
+	width: 100%
+}
+
+.nabi-responsive-button {
+	padding: 3px 14px !important;
+	font-size: 11px !important;
+}
+
+.nabi-header-button .login-button {
+	background-color: white !important;
+	color: #5a5b5e !important;
+}
+
+.header-divider {
+	margin: 0px -27px !important;
+}
+
+.background-check-and-favorites {
+	width: 75px;
+}
+
+/*Homepage*/
+/* Banner */
+#banner {
+	height: 520px !important;
+	width: 100%;
+	background-image: url('../images/nabiBannerImage.jpg') !important;
+	background-size: cover !important;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#banner .container {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 55px;
+	position: absolute;
+}
+
+#banner .cta-container {
+	background-color: rgba(255, 255, 255, 0.7);
+	padding: 20px;
+	border-radius: 3px;
+}
+
+#banner .cta-container h1 {
+	color: #FB7F6B !important;
+	font-weight: 800 !important;
+}
+
+#banner button {
+	padding: 15px 11px !important;
+	font-size: 11px !important;
+	width: 100%;
+}
+
+/* Popular instruments card */
+.nabi-popular-instruments {
+	position: relative;
+}
+
+.nabi-popular-instruments a {
+	color: #ffffff !important;
+}
+
+.popular-instrument-card-group,
+.popular-instrument-card-group-mobile {
+	width: 100%;
+	position: absolute;
+	opacity: 0;
+  z-index: 1;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+	transition: opacity 1s;
+}
+
+.popular-instrument-card {
+	background: #fff;
+  width: 100% !important;
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+	transition: opacity 1s;
+	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)
+}
+
+.popular-instrument-media {
+	height: 0;
+	padding-top: 56.25%;
+}
+
+.nabi-showing {
+	opacity: 1;
+	z-index: 2;
+}
+
+/*Page title*/
+#nabi-page-title {
+	font-size: 18px !important;
+	margin: 30px !important;
+}
+
+/*JennaSue title*/
+.nabi-jennasue-title {
+	font-family: 'JennaSue';
+	font-size: 42px !important;
+}
+
+/*Welcome Message Text container*/
+.nabi-welcome-message-text-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-image: url(https://nabimusic.s3.us-east-2.amazonaws.com/welcome-image.jpg);
+  width: 100%;
+  height: 80px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/*Welcome Message Container */
+.nabi-welcome-message-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*Welcome Message Text*/
+.nabi-welcome-message-text {
+  margin: 0;
+}
+
+/*Highlighted text*/
+.nabi-highlighted-text {
+	background: rgba(6, 195, 225, 0.3);
+	border-radius: 3px;
+	padding: 4px 6px;
+}
+
+/*Date Picker*/
+.react-datepicker__input-container {
+	border-radius:  5px;
+	border: 2px solid #ebeef1 !important;
+	margin: 0px;
+	padding: 14px 18px;
+	background: #f3f6f9;
+}
+
+.react-datepicker__input-container input {
+	border: none;
+	color: #717a8a;
+  padding: 0;
+	font-size: 14px;
+}
+
+.react-datepicker-popper {
+	z-index: 11;
+}
+
+/*Instruments fields*/
+.nabi-instruments-select {
+	width: 100%;
+}
+
+.nabi-instruments-add {
+	margin-top: 15px !important;
+}
+
+/*List*/
+.list-text {
+	width: 150px;
+}
+
+/*Rates*/
+.nabi-rates-field input {
+	width: 70px;
+}
+
+/*Availability*/
+.nabi-grid-background-nabi div div {
+	background: #06c3e1 !important;
+}
+
+.nabi-remove-shadow {
+	overflow-x:  auto;
+	box-shadow: none !important;
+}
+
+/*Education*/
+.graduation-year {
+  width: 190px !important;
+}
+
+/*Qualifications*/
+.qualifications label {
+	display: flex;
+}
+
+/*Login form*/
+.login-forgot-email,
+.login-forgot-password {
+  text-align: center;
+}
+
+/* Recommendations */
+.recommendations-img {
+	width: 80px;
+}
+
+.recommendations-message {
+	width: 90%;
+}
+
+/*Recommendations modal avatar*/
+.recommendation-avatar {
+	width: 80px !important;
+	height: 80px !important;
+}
+
+/*Reviews*/
+#reviews-wrapper {
+	height: 350px;
+	overflow-y: scroll;
+}
+
+#reviews {
+	height: auto;
+}
+
+.reviews-stars-wrapper {
+	top: 4px
+}
+
+.nabi-action-buttons {
+	display: none;
+}
+
+.nabi-editable-item:hover mark {
+	background: rgba(6, 195, 225, 0.4);
+}
+
+.nabi-editable-item:hover .nabi-action-buttons {
+	display: inline;
+}
+
+.nabi-editable-item:hover .music-item {
+	border: 2px solid #06c3e1;
+}
+
+.music-item {
+	border: 2px solid #f0f3f6;
+	height: 150px;
+}
+
+.nabi-disabled-link {
+  pointer-events: none;
+}
+
+/* Navigation */
+.main-navigation p {
+	margin-top: 0px !important;
+}
+
+.main-navigation li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.secondary-navigation {
+	position: relative;
+  top: -5px;
+}
+
+.secondary-navigation-avatar {
+	top: 11px;
+	position: relative;
+}
+
+.secondary-navigation-avatar-menu {
+	margin-left: 100px;
+	z-index: 1;
+}
+
+.badge-menu-item span {
+	margin-top: 8px;
+}
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+}
+
+/* Slider */
+.rc-slider-track {
+	background-color: #06c3e1 !important;
+}
+
+.nabi-book-lessons-card {
+	padding: 15px 10px 15px 10px;
+}
+
+/* Buy More Lessons */
+.buy-more-lessons-you-get-text {
+	position: absolute;
+	margin-top: 45px !important;
+}
+
+.completed-button {
+	background-image: linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
+	background-image: -o-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
+	background-image: -moz-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
+	background-image: -webkit-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
+	background-image: -ms-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
+}
+
+.completed-button-0 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(1, #0695B3),
+		color-stop(1, #0695B3)
+	);
+}
+
+.completed-button-9 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.09, #06C3E1),
+		color-stop(0.09, #0695B3)
+	);
+}
+
+.completed-button-18 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.18, #06C3E1),
+		color-stop(0.18, #0695B3)
+	);
+}
+
+.completed-button-27 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.27, #06C3E1),
+		color-stop(0.27, #0695B3)
+	);
+}
+
+.completed-button-36 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.36, #06C3E1),
+		color-stop(0.36, #0695B3)
+	);
+}
+
+.completed-button-45 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.45, #06C3E1),
+		color-stop(0.45, #0695B3)
+	);
+}
+
+.completed-button-56 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.56, #06C3E1),
+		color-stop(0.56, #0695B3)
+	);
+}
+
+.completed-button-64 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.64, #06C3E1),
+		color-stop(0.64, #0695B3)
+	);
+}
+
+.completed-button-73 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.73, #06C3E1),
+		color-stop(0.73, #0695B3)
+	);
+}
+
+.completed-button-82 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.82, #06C3E1),
+		color-stop(0.82, #0695B3)
+	);
+}
+
+.completed-button-91 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0.91, #06C3E1),
+		color-stop(0.91, #0695B3)
+	);
+}
+
+.completed-button-100 {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(100, #06C3E1),
+		color-stop(100, #0695B3)
+	);
+}
+
+/* iPhones(landscape) ----------- */
+@media only screen and (min-width: 375px) {
+	/*Rates*/
+	.nabi-rates-field {
+		display: inline !important;
+	}
+	/*Homepage*/
+	#banner .container {
+		padding-top: 25px;
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	#banner button {
+		margin-top: 10px !important;
+		margin-right: 10px !important;
+		padding: 15px 10px !important;
+		font-size: 13px !important;
+	}
+	.nabi-logo-anchor img {
+		width: 55px;
+	}
+
+	#nabi-logo-text {
+		font-size: 16px;
+	}
+
+	/*HEADER*/
+	.nabi-responsive-button {
+		padding: 5px 15px !important;
+		font-size: 11px !important;
+	}
+	.nabi-popular-instruments {
+		width: 328px;
+		margin: 0 auto;
+	}
+	.music-item {
+		height: 200px;
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width: 768px) {
+	/****CUSTOM ELEMENTS****/
+	/*Container*/
+	.nabi-container {
+		margin: 0 auto;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 700px;
+	}
+	.nabi-login-container {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		width:470px;
+	}
+	.nabi-header-container,
+	.nabi-header-container-home {
+		margin: 0 auto;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		padding-left: 15px;
+		padding-right: 15px;
+		width: 750px;
+	}
+
+	.nabi-logo-anchor img {
+		width: 60px;
+	}
+
+	#nabi-logo-text {
+		font-size: 19px;
+	}
+	/*Font size*/
+	.nabi-font-small,
+	.nabi-font-small div {
+		font-size: 13px !important;
+	}
+	.nabi-font-medium {
+		font-size: 17px !important;
+	}
+	.nabi-font-large {
+		font-size: 25px !important;
+	}
+	/*Display*/
+	.nabi-display-inline-sm {
+		display: inline !important;
+	}
+	/*Section*/
+	.nabi-section {
+		padding: 50px 80px;
+	}
+	.nabi-section-wide {
+		padding: 50px;
+	}
+	/*JennaSue title*/
+	.nabi-jennasue-title {
+		font-size: 50px !important;
+	}
+	/*Homepage*/
+	#banner {
+		height: 500px !important;
+	}
+
+	#banner .cta-container {
+		padding: 40px;
+	}
+
+	#banner button {
+		padding: 15px 38px !important;
+		font-size: 14px !important
+	}
+
+	/*header*/
+	#header-social-menu {
+		top: 37% !important;
+		position: absolute;
+	}
+	.nabi-header-button {
+		top: 35% !important;
+	}
+	.nabi-header-line {
+		border: 0px;
+	}
+	.header-divider {
+		display: none;
+	}
+	.nabi-responsive-button {
+		padding: 12px 25px !important;
+		font-size: 14px !important;
+	}
+	/*Rates*/
+	.rates {
+		width: 490px;
+	}
+	/*Login*/
+	.login-forgot-email,
+	.login-forgot-password {
+		display: inline !important;
+	}
+	.login-forgot-email {
+		text-align: left !important;
+	}
+	.login-forgot-password {
+		float: right !important;
+	}
+	/* Recommendations */
+	.recommendations-message {
+		width: 100%;
+	}
+	.music-item {
+		height: 250px;
+	}
+	/* Buy More Lessons */
+	.buy-more-lessons-you-get-text {
+		position: relative;
+		margin-top: 0px !important;
+	}
+}
+
+/* Tablets small laptops ----------- */
+@media (min-width: 960px) {
+	/****BACKGROUND****/
+	.nabi-background-white-md {
+		background-color: #fff;
+	}
+
+	/****DISPLAY****/
+	.nabi-display-inline-block-md {
+		display: inline-block !important;
+	}
+	/****MARGIN****/
+	.nabi-margin-right-xsmall-md {
+		margin-right: 10px !important;
+	}
+
+	.nabi-margin-top-small-md {
+		margin-top: 20px !important;
+	}
+
+	.nabi-margin-top-large-md {
+		margin-top: 40px !important;
+	}
+
+	.nabi-margin-top-zero-md {
+		margin-top: 0px !important;
+	}
+
+	/****PADDING****/
+	.nabi-padding-left-small-md {
+		padding-left: 20px !important;
+	}
+
+	.nabi-padding-left-large-md {
+		padding-left: 40px !important;
+	}
+
+	/****TEXT ALIGN****/
+	.nabi-text-left-md,
+	.nabi-text-left-md * {
+		text-align: left !important;
+	}
+
+	.nabi-position-absolute-md {
+		position: absolute !important;
+	}
+
+	/****CUSTOM ELEMENTS****/
+	.nabi-container {
+		width: 800px;
+	}
+  /*Responsive Hide*/
+	.hide-on-mobile {
+		display: block !important;
+	}
+	.hide-on-desktop {
+		display: none !important;
+	}
+	/*Page Title*/
+	#nabi-page-title {
+		font-size: 25px !important;
+	}
+  /*Header*/
+	.nabi-logo-anchor img {
+		width: 75px !important;
+	}
+	#nabi-logo-text {
+		font-size: 22px;
+	}
+	.nabi-header-container,
+	.nabi-header-container-home  {
+		width: 900px;
+	}
+	.nabi-responsive-button {
+		padding: 10px 25px !important;
+		font-size: 13px !important;
+	}
+	/*Instruments text*/
+	.nabi-instruments-select {
+		width: 38%;
+		margin-right: 1% !important;
+	}
+	/*Instruments add button*/
+	.nabi-instruments-add {
+		width: 22%;
+		margin-top: 0px !important;
+    }
+    /*Selected Instruments*/
+	.selected-instruments {
+		width: 40%
+	}
+	/*Availability*/
+	.nabi-availability-legend-wrapper {
+		width: 50%;
+	}
+	/*Popular instruments*/
+	.nabi-popular-instruments {
+		width: 100%;
+		margin: 0 auto;
+	}
+	.music-item {
+		height: 190px;
+	}
+}
+
+/* Laptops ----------- */
+@media only screen and (min-width: 1200px) {
+	/***** HOME *****/
+	.nabi-container {
+		width: 990px;
+	}
+	/*Header*/
+	.nabi-header-container,
+	.nabi-header-container-home {
+		width: 1150px;
+	}
+
+  .form-card {
+    width: 493px;
+		margin: 0 auto;
+  }
+}
