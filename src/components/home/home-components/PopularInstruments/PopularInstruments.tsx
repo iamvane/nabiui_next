@@ -5,13 +5,13 @@ import {
     GridList,
     GridListTile
 } from '@material-ui/core';
-import { popularInstruments } from '../../../../assets/data/popularInstruments';
-import { Routes } from '../../../constants/Routes';
+import { popularInstruments } from '../../../../../assets/data/popularInstruments';
+import { Routes } from '../../../../constants/Routes';
 
 /**
  * Hoempage popular instruments section
  */
-class PopularInstruments extends React.Component<{}, {}> {
+export class PopularInstruments extends React.Component<{}, {}> {
     componentDidMount() {
         const slides = document.querySelectorAll(`.popular-instrument-card-group`);
         let currentSlide = 0;

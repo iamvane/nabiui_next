@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore } from 'redux-persist';
 
 import rootReducer from './reducers';
-import { UserState } from '../models/UserModel';
+import { UserState } from '../../types/user';
 import { defaultState } from '../models/defaultState';
 
 const dev = process.env.NODE_ENV !== 'production';

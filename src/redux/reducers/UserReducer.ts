@@ -1,11 +1,10 @@
 import { AnyAction } from 'redux';
 
 import {
-    defaultUsersState,
-    UserState,
-    UserType,
+    defaultUsersState
 } from '../models/UserModel';
-import { UserActions } from '../actions/UserActions';
+import { UserState, UserType } from '../../types/user'
+import { UserActions } from '../actions/UserActionTypes';
 import { APIActions } from '../models/models';
 import { setProfile } from './utils';
 

@@ -205,9 +205,9 @@ export const theme = createMuiTheme({
         MuiInputBase: {
             root: {
                 fontFamily: '\'Montserrat\', sans-serif !important',
-            },
-            error: {
-                borderColor: '#f44336 !important'
+                '&$error': {
+                    borderColor: '#f44336 !important'
+                }
             }
         },
         MuiInputLabel: {

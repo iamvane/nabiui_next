@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core/styles';
 
 import { Footer } from '../src/components/footer';
+import Header from '../src/components/header/Header';
 import '../assets/css/index.css';
 import { getStore } from '../src/redux/reducers/store';
 import { theme } from './theme';
@@ -34,6 +35,7 @@ class NabiApp extends App<any, any> {
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
                         <MuiThemeProvider theme={theme}>
+                            <Header {...pageProps} />
                             <Component {...pageProps} />
                             <Footer />
                         </MuiThemeProvider>

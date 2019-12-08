@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Role } from '../../../constants/Roles';
+import { Role } from '../../../../constants/Roles';
 
 import {
   Button,
@@ -14,12 +14,12 @@ import {
 } from '@material-ui/core';
 
 import Link from 'next/link';
-import { Routes } from '../../../constants/Routes';
+import { Routes } from '../../../../constants/Routes';
 import {
   BannerComponent
-} from './banner.constants';
-import { instruments } from '../../../../assets/data/instruments';
-import SectionTitle from '../../common-components/SectionTitle';
+} from './constants';
+import { instruments } from '../../../../../assets/data/instruments';
+import SectionTitle from '../../../common-components/SectionTitle';
 
 /**
  * Homepage banner component
