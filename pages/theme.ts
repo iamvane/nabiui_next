@@ -58,7 +58,7 @@ export const theme = createMuiTheme({
                 '&$checked': {
                     color: '#06c3e1 !important'
                 }
-            },
+            }
         },
         MuiCircularProgress: {
             colorPrimary: {
@@ -146,7 +146,7 @@ export const theme = createMuiTheme({
             },
             colorPrimary: {
                 color: '#fff !important',
-                borderRadius: '50%',
+                borderRadius: '5px',
                 height: '30px',
                 width: '30px',
                 background: '#06c3e1',
@@ -155,13 +155,13 @@ export const theme = createMuiTheme({
                 },
             },
             colorSecondary: {
-                color: '#fff !important',
-                borderRadius: '50%',
-                height: '30px',
-                width: '30px',
-                background: '#b6bac3',
+                color: '#b6bac3 !important',
+                borderRadius: '5px',
+                height: '10px',
+                width: '10px',
+                background: '#fff',
                 '&:hover': {
-                    background: 'rgba(113,122,138, 0.75) !important'
+                    background: 'rgba(6,195,225, 0.75) !important'
                 },
             }
         },
