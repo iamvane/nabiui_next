@@ -1,0 +1,2703 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhoneValidation When isPhoneVerified is true Renders the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PhoneValidationForm
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    isPhoneSet={true}
+    isRequesting={false}
+    phoneNumber=""
+    resendCode={[MockFunction]}
+    sendVerificationToken={[MockFunction]}
+    token=""
+    user={
+      Object {
+        "email": "email@company.com",
+        "firstName": "",
+        "gender": "",
+        "id": "fooId",
+        "lastName": "",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "password": "secretPass123",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+        "role": "Instructor",
+      }
+    }
+    verificationChannel="sms"
+    verifyToken={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <SectionTitle
+          text="Verify Phone Number"
+        />,
+        <div>
+          <WithStyles(Grid)
+            container={true}
+            spacing={0}
+          >
+            <WithStyles(Grid)
+              className="nabi-margin-right-xsmall-md"
+              item={true}
+              md={4}
+              xs={7}
+            >
+              <TextField
+                InputProps={
+                  Object {
+                    "inputComponent": [Function],
+                  }
+                }
+                className="nabi-margin-top-xsmall"
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                margin="normal"
+                name="token"
+                onChange={[MockFunction]}
+                placeholder="Verification Token"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={4}
+              xs={12}
+            >
+              <WithStyles(Button)
+                className="nabi-text-uppercase nabi-margin-top-xsmall"
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Verify Phone
+              </WithStyles(Button)>
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            className="nabi-padding-top-xsmall"
+            item={true}
+            md={6}
+            xs={12}
+          >
+            <WithStyles(Typography)>
+              <span
+                className="nabi-color-nabi nabi-cursor-pointer"
+                onClick={[MockFunction]}
+              >
+                Resend code or change phone number
+              </span>
+            </WithStyles(Typography)>
+          </WithStyles(Grid)>
+        </div>,
+        false,
+      ],
+      "item": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "Verify Phone Number",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Grid)
+              container={true}
+              spacing={0}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-right-xsmall-md"
+                item={true}
+                md={4}
+                xs={7}
+              >
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-margin-top-xsmall"
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  margin="normal"
+                  name="token"
+                  onChange={[MockFunction]}
+                  placeholder="Verification Token"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                item={true}
+                md={4}
+                xs={12}
+              >
+                <WithStyles(Button)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Verify Phone
+                </WithStyles(Button)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              className="nabi-padding-top-xsmall"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(Typography)>
+                <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>
+              </WithStyles(Typography)>
+            </WithStyles(Grid)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Grid)
+                  className="nabi-margin-right-xsmall-md"
+                  item={true}
+                  md={4}
+                  xs={7}
+                >
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="token"
+                    onChange={[MockFunction]}
+                    placeholder="Verification Token"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />
+                </WithStyles(Grid)>,
+                <WithStyles(Grid)
+                  item={true}
+                  md={4}
+                  xs={12}
+                >
+                  <WithStyles(Button)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Verify Phone
+                  </WithStyles(Button)>
+                </WithStyles(Grid)>,
+              ],
+              "container": true,
+              "spacing": 0,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="token"
+                    onChange={[MockFunction]}
+                    placeholder="Verification Token"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />,
+                  "className": "nabi-margin-right-xsmall-md",
+                  "item": true,
+                  "md": 4,
+                  "xs": 7,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "InputProps": Object {
+                      "inputComponent": [Function],
+                    },
+                    "className": "nabi-margin-top-xsmall",
+                    "error": false,
+                    "fullWidth": true,
+                    "helperText": undefined,
+                    "margin": "normal",
+                    "name": "token",
+                    "onChange": [MockFunction],
+                    "placeholder": "Verification Token",
+                    "required": true,
+                    "select": false,
+                    "value": "",
+                    "variant": "standard",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(Button)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Verify Phone
+                  </WithStyles(Button)>,
+                  "item": true,
+                  "md": 4,
+                  "xs": 12,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Verify Phone",
+                    "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                    "color": "primary",
+                    "onClick": [MockFunction],
+                    "variant": "contained",
+                  },
+                  "ref": null,
+                  "rendered": "Verify Phone",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Typography)>
+                <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>
+              </WithStyles(Typography)>,
+              "className": "nabi-padding-top-xsmall",
+              "item": true,
+              "md": 6,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Resend code or change phone number",
+                  "className": "nabi-color-nabi nabi-cursor-pointer",
+                  "onClick": [MockFunction],
+                },
+                "ref": null,
+                "rendered": "Resend code or change phone number",
+                "type": "span",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      false,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <SectionTitle
+            text="Verify Phone Number"
+          />,
+          <div>
+            <WithStyles(Grid)
+              container={true}
+              spacing={0}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-right-xsmall-md"
+                item={true}
+                md={4}
+                xs={7}
+              >
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-margin-top-xsmall"
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  margin="normal"
+                  name="token"
+                  onChange={[MockFunction]}
+                  placeholder="Verification Token"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                item={true}
+                md={4}
+                xs={12}
+              >
+                <WithStyles(Button)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Verify Phone
+                </WithStyles(Button)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              className="nabi-padding-top-xsmall"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(Typography)>
+                <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>
+              </WithStyles(Typography)>
+            </WithStyles(Grid)>
+          </div>,
+          false,
+        ],
+        "item": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "Verify Phone Number",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Grid)
+                container={true}
+                spacing={0}
+              >
+                <WithStyles(Grid)
+                  className="nabi-margin-right-xsmall-md"
+                  item={true}
+                  md={4}
+                  xs={7}
+                >
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="token"
+                    onChange={[MockFunction]}
+                    placeholder="Verification Token"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />
+                </WithStyles(Grid)>
+                <WithStyles(Grid)
+                  item={true}
+                  md={4}
+                  xs={12}
+                >
+                  <WithStyles(Button)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Verify Phone
+                  </WithStyles(Button)>
+                </WithStyles(Grid)>
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                className="nabi-padding-top-xsmall"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(Typography)>
+                  <span
+                    className="nabi-color-nabi nabi-cursor-pointer"
+                    onClick={[MockFunction]}
+                  >
+                    Resend code or change phone number
+                  </span>
+                </WithStyles(Typography)>
+              </WithStyles(Grid)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Grid)
+                    className="nabi-margin-right-xsmall-md"
+                    item={true}
+                    md={4}
+                    xs={7}
+                  >
+                    <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-margin-top-xsmall"
+                      error={false}
+                      fullWidth={true}
+                      helperText={undefined}
+                      margin="normal"
+                      name="token"
+                      onChange={[MockFunction]}
+                      placeholder="Verification Token"
+                      required={true}
+                      select={false}
+                      value=""
+                      variant="standard"
+                    />
+                  </WithStyles(Grid)>,
+                  <WithStyles(Grid)
+                    item={true}
+                    md={4}
+                    xs={12}
+                  >
+                    <WithStyles(Button)
+                      className="nabi-text-uppercase nabi-margin-top-xsmall"
+                      color="primary"
+                      onClick={[MockFunction]}
+                      variant="contained"
+                    >
+                      Verify Phone
+                    </WithStyles(Button)>
+                  </WithStyles(Grid)>,
+                ],
+                "container": true,
+                "spacing": 0,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-margin-top-xsmall"
+                      error={false}
+                      fullWidth={true}
+                      helperText={undefined}
+                      margin="normal"
+                      name="token"
+                      onChange={[MockFunction]}
+                      placeholder="Verification Token"
+                      required={true}
+                      select={false}
+                      value=""
+                      variant="standard"
+                    />,
+                    "className": "nabi-margin-right-xsmall-md",
+                    "item": true,
+                    "md": 4,
+                    "xs": 7,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "InputProps": Object {
+                        "inputComponent": [Function],
+                      },
+                      "className": "nabi-margin-top-xsmall",
+                      "error": false,
+                      "fullWidth": true,
+                      "helperText": undefined,
+                      "margin": "normal",
+                      "name": "token",
+                      "onChange": [MockFunction],
+                      "placeholder": "Verification Token",
+                      "required": true,
+                      "select": false,
+                      "value": "",
+                      "variant": "standard",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(Button)
+                      className="nabi-text-uppercase nabi-margin-top-xsmall"
+                      color="primary"
+                      onClick={[MockFunction]}
+                      variant="contained"
+                    >
+                      Verify Phone
+                    </WithStyles(Button)>,
+                    "item": true,
+                    "md": 4,
+                    "xs": 12,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Verify Phone",
+                      "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                      "color": "primary",
+                      "onClick": [MockFunction],
+                      "variant": "contained",
+                    },
+                    "ref": null,
+                    "rendered": "Verify Phone",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(Typography)>
+                  <span
+                    className="nabi-color-nabi nabi-cursor-pointer"
+                    onClick={[MockFunction]}
+                  >
+                    Resend code or change phone number
+                  </span>
+                </WithStyles(Typography)>,
+                "className": "nabi-padding-top-xsmall",
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <span
+                    className="nabi-color-nabi nabi-cursor-pointer"
+                    onClick={[MockFunction]}
+                  >
+                    Resend code or change phone number
+                  </span>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Resend code or change phone number",
+                    "className": "nabi-color-nabi nabi-cursor-pointer",
+                    "onClick": [MockFunction],
+                  },
+                  "ref": null,
+                  "rendered": "Resend code or change phone number",
+                  "type": "span",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        false,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;
+
+exports[`PhoneValidation When the phone is not set Renders the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PhoneValidationForm
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    isPhoneSet={false}
+    isRequesting={false}
+    phoneNumber=""
+    resendCode={[MockFunction]}
+    sendVerificationToken={[MockFunction]}
+    token=""
+    user={
+      Object {
+        "email": "email@company.com",
+        "firstName": "",
+        "gender": "",
+        "id": "fooId",
+        "lastName": "",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "password": "secretPass123",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+        "role": "Instructor",
+      }
+    }
+    verificationChannel="sms"
+    verifyToken={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <SectionTitle
+          text="Verify Phone Number"
+        />,
+        <div>
+          <WithStyles(Grid)
+            container={true}
+          >
+            <WithStyles(Grid)
+              className="nabi-margin-right-xsmall-md"
+              item={true}
+              md={4}
+              xs={12}
+            >
+              <TextField
+                InputProps={
+                  Object {
+                    "inputComponent": [Function],
+                  }
+                }
+                className="nabi-margin-top-xsmall"
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                margin="normal"
+                name="phoneNumber"
+                onChange={[MockFunction]}
+                placeholder="Phone Number"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={2}
+              xs={6}
+            >
+              <WithStyles(FormControl)
+                className="nabi-text-uppercase nabi-margin-top-xsmall"
+                fullWidth={true}
+              >
+                <WithStyles(WithFormControlContext(Select))
+                  input={
+                    <WithStyles(Input)
+                      name="verificationChannel"
+                    />
+                  }
+                  native={true}
+                  onChange={[MockFunction]}
+                  value="sms"
+                >
+                  <option
+                    value="sms"
+                  >
+                    Text
+                  </option>
+                  <option
+                    value="call"
+                  >
+                    Call
+                  </option>
+                </WithStyles(WithFormControlContext(Select))>
+              </WithStyles(FormControl)>
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            className="nabi-margin-top-small"
+            container={true}
+            spacing={8}
+          >
+            <WithStyles(Grid)
+              item={true}
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Request Verification
+              </WithStyles(Button)>
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>
+        </div>,
+        false,
+      ],
+      "item": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "Verify Phone Number",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Grid)
+              container={true}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-right-xsmall-md"
+                item={true}
+                md={4}
+                xs={12}
+              >
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-margin-top-xsmall"
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  margin="normal"
+                  name="phoneNumber"
+                  onChange={[MockFunction]}
+                  placeholder="Phone Number"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                item={true}
+                md={2}
+                xs={6}
+              >
+                <WithStyles(FormControl)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  fullWidth={true}
+                >
+                  <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        name="verificationChannel"
+                      />
+                    }
+                    native={true}
+                    onChange={[MockFunction]}
+                    value="sms"
+                  >
+                    <option
+                      value="sms"
+                    >
+                      Text
+                    </option>
+                    <option
+                      value="call"
+                    >
+                      Call
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>
+                </WithStyles(FormControl)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              className="nabi-margin-top-small"
+              container={true}
+              spacing={8}
+            >
+              <WithStyles(Grid)
+                item={true}
+              >
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Request Verification
+                </WithStyles(Button)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Grid)
+                  className="nabi-margin-right-xsmall-md"
+                  item={true}
+                  md={4}
+                  xs={12}
+                >
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="phoneNumber"
+                    onChange={[MockFunction]}
+                    placeholder="Phone Number"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />
+                </WithStyles(Grid)>,
+                <WithStyles(Grid)
+                  item={true}
+                  md={2}
+                  xs={6}
+                >
+                  <WithStyles(FormControl)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    fullWidth={true}
+                  >
+                    <WithStyles(WithFormControlContext(Select))
+                      input={
+                        <WithStyles(Input)
+                          name="verificationChannel"
+                        />
+                      }
+                      native={true}
+                      onChange={[MockFunction]}
+                      value="sms"
+                    >
+                      <option
+                        value="sms"
+                      >
+                        Text
+                      </option>
+                      <option
+                        value="call"
+                      >
+                        Call
+                      </option>
+                    </WithStyles(WithFormControlContext(Select))>
+                  </WithStyles(FormControl)>
+                </WithStyles(Grid)>,
+              ],
+              "container": true,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="phoneNumber"
+                    onChange={[MockFunction]}
+                    placeholder="Phone Number"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />,
+                  "className": "nabi-margin-right-xsmall-md",
+                  "item": true,
+                  "md": 4,
+                  "xs": 12,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "InputProps": Object {
+                      "inputComponent": [Function],
+                    },
+                    "className": "nabi-margin-top-xsmall",
+                    "error": false,
+                    "fullWidth": true,
+                    "helperText": undefined,
+                    "margin": "normal",
+                    "name": "phoneNumber",
+                    "onChange": [MockFunction],
+                    "placeholder": "Phone Number",
+                    "required": true,
+                    "select": false,
+                    "value": "",
+                    "variant": "standard",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(FormControl)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    fullWidth={true}
+                  >
+                    <WithStyles(WithFormControlContext(Select))
+                      input={
+                        <WithStyles(Input)
+                          name="verificationChannel"
+                        />
+                      }
+                      native={true}
+                      onChange={[MockFunction]}
+                      value="sms"
+                    >
+                      <option
+                        value="sms"
+                      >
+                        Text
+                      </option>
+                      <option
+                        value="call"
+                      >
+                        Call
+                      </option>
+                    </WithStyles(WithFormControlContext(Select))>
+                  </WithStyles(FormControl)>,
+                  "item": true,
+                  "md": 2,
+                  "xs": 6,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(WithFormControlContext(Select))
+                      input={
+                        <WithStyles(Input)
+                          name="verificationChannel"
+                        />
+                      }
+                      native={true}
+                      onChange={[MockFunction]}
+                      value="sms"
+                    >
+                      <option
+                        value="sms"
+                      >
+                        Text
+                      </option>
+                      <option
+                        value="call"
+                      >
+                        Call
+                      </option>
+                    </WithStyles(WithFormControlContext(Select))>,
+                    "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                    "fullWidth": true,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <option
+                          value="sms"
+                        >
+                          Text
+                        </option>,
+                        <option
+                          value="call"
+                        >
+                          Call
+                        </option>,
+                      ],
+                      "input": <WithStyles(Input)
+                        name="verificationChannel"
+                      />,
+                      "native": true,
+                      "onChange": [MockFunction],
+                      "value": "sms",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Text",
+                          "value": "sms",
+                        },
+                        "ref": null,
+                        "rendered": "Text",
+                        "type": "option",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Call",
+                          "value": "call",
+                        },
+                        "ref": null,
+                        "rendered": "Call",
+                        "type": "option",
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Grid)
+                  item={true}
+                >
+                  <WithStyles(Button)
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Request Verification
+                  </WithStyles(Button)>
+                </WithStyles(Grid)>,
+                undefined,
+              ],
+              "className": "nabi-margin-top-small",
+              "container": true,
+              "spacing": 8,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(Button)
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Request Verification
+                  </WithStyles(Button)>,
+                  "item": true,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Request Verification",
+                    "color": "primary",
+                    "onClick": [MockFunction],
+                    "variant": "contained",
+                  },
+                  "ref": null,
+                  "rendered": "Request Verification",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              undefined,
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      false,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <SectionTitle
+            text="Verify Phone Number"
+          />,
+          <div>
+            <WithStyles(Grid)
+              container={true}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-right-xsmall-md"
+                item={true}
+                md={4}
+                xs={12}
+              >
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-margin-top-xsmall"
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  margin="normal"
+                  name="phoneNumber"
+                  onChange={[MockFunction]}
+                  placeholder="Phone Number"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                item={true}
+                md={2}
+                xs={6}
+              >
+                <WithStyles(FormControl)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  fullWidth={true}
+                >
+                  <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        name="verificationChannel"
+                      />
+                    }
+                    native={true}
+                    onChange={[MockFunction]}
+                    value="sms"
+                  >
+                    <option
+                      value="sms"
+                    >
+                      Text
+                    </option>
+                    <option
+                      value="call"
+                    >
+                      Call
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>
+                </WithStyles(FormControl)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              className="nabi-margin-top-small"
+              container={true}
+              spacing={8}
+            >
+              <WithStyles(Grid)
+                item={true}
+              >
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Request Verification
+                </WithStyles(Button)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>
+          </div>,
+          false,
+        ],
+        "item": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "Verify Phone Number",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Grid)
+                container={true}
+              >
+                <WithStyles(Grid)
+                  className="nabi-margin-right-xsmall-md"
+                  item={true}
+                  md={4}
+                  xs={12}
+                >
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="phoneNumber"
+                    onChange={[MockFunction]}
+                    placeholder="Phone Number"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />
+                </WithStyles(Grid)>
+                <WithStyles(Grid)
+                  item={true}
+                  md={2}
+                  xs={6}
+                >
+                  <WithStyles(FormControl)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    fullWidth={true}
+                  >
+                    <WithStyles(WithFormControlContext(Select))
+                      input={
+                        <WithStyles(Input)
+                          name="verificationChannel"
+                        />
+                      }
+                      native={true}
+                      onChange={[MockFunction]}
+                      value="sms"
+                    >
+                      <option
+                        value="sms"
+                      >
+                        Text
+                      </option>
+                      <option
+                        value="call"
+                      >
+                        Call
+                      </option>
+                    </WithStyles(WithFormControlContext(Select))>
+                  </WithStyles(FormControl)>
+                </WithStyles(Grid)>
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                className="nabi-margin-top-small"
+                container={true}
+                spacing={8}
+              >
+                <WithStyles(Grid)
+                  item={true}
+                >
+                  <WithStyles(Button)
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Request Verification
+                  </WithStyles(Button)>
+                </WithStyles(Grid)>
+              </WithStyles(Grid)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Grid)
+                    className="nabi-margin-right-xsmall-md"
+                    item={true}
+                    md={4}
+                    xs={12}
+                  >
+                    <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-margin-top-xsmall"
+                      error={false}
+                      fullWidth={true}
+                      helperText={undefined}
+                      margin="normal"
+                      name="phoneNumber"
+                      onChange={[MockFunction]}
+                      placeholder="Phone Number"
+                      required={true}
+                      select={false}
+                      value=""
+                      variant="standard"
+                    />
+                  </WithStyles(Grid)>,
+                  <WithStyles(Grid)
+                    item={true}
+                    md={2}
+                    xs={6}
+                  >
+                    <WithStyles(FormControl)
+                      className="nabi-text-uppercase nabi-margin-top-xsmall"
+                      fullWidth={true}
+                    >
+                      <WithStyles(WithFormControlContext(Select))
+                        input={
+                          <WithStyles(Input)
+                            name="verificationChannel"
+                          />
+                        }
+                        native={true}
+                        onChange={[MockFunction]}
+                        value="sms"
+                      >
+                        <option
+                          value="sms"
+                        >
+                          Text
+                        </option>
+                        <option
+                          value="call"
+                        >
+                          Call
+                        </option>
+                      </WithStyles(WithFormControlContext(Select))>
+                    </WithStyles(FormControl)>
+                  </WithStyles(Grid)>,
+                ],
+                "container": true,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-margin-top-xsmall"
+                      error={false}
+                      fullWidth={true}
+                      helperText={undefined}
+                      margin="normal"
+                      name="phoneNumber"
+                      onChange={[MockFunction]}
+                      placeholder="Phone Number"
+                      required={true}
+                      select={false}
+                      value=""
+                      variant="standard"
+                    />,
+                    "className": "nabi-margin-right-xsmall-md",
+                    "item": true,
+                    "md": 4,
+                    "xs": 12,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "InputProps": Object {
+                        "inputComponent": [Function],
+                      },
+                      "className": "nabi-margin-top-xsmall",
+                      "error": false,
+                      "fullWidth": true,
+                      "helperText": undefined,
+                      "margin": "normal",
+                      "name": "phoneNumber",
+                      "onChange": [MockFunction],
+                      "placeholder": "Phone Number",
+                      "required": true,
+                      "select": false,
+                      "value": "",
+                      "variant": "standard",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(FormControl)
+                      className="nabi-text-uppercase nabi-margin-top-xsmall"
+                      fullWidth={true}
+                    >
+                      <WithStyles(WithFormControlContext(Select))
+                        input={
+                          <WithStyles(Input)
+                            name="verificationChannel"
+                          />
+                        }
+                        native={true}
+                        onChange={[MockFunction]}
+                        value="sms"
+                      >
+                        <option
+                          value="sms"
+                        >
+                          Text
+                        </option>
+                        <option
+                          value="call"
+                        >
+                          Call
+                        </option>
+                      </WithStyles(WithFormControlContext(Select))>
+                    </WithStyles(FormControl)>,
+                    "item": true,
+                    "md": 2,
+                    "xs": 6,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <WithStyles(WithFormControlContext(Select))
+                        input={
+                          <WithStyles(Input)
+                            name="verificationChannel"
+                          />
+                        }
+                        native={true}
+                        onChange={[MockFunction]}
+                        value="sms"
+                      >
+                        <option
+                          value="sms"
+                        >
+                          Text
+                        </option>
+                        <option
+                          value="call"
+                        >
+                          Call
+                        </option>
+                      </WithStyles(WithFormControlContext(Select))>,
+                      "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                      "fullWidth": true,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <option
+                            value="sms"
+                          >
+                            Text
+                          </option>,
+                          <option
+                            value="call"
+                          >
+                            Call
+                          </option>,
+                        ],
+                        "input": <WithStyles(Input)
+                          name="verificationChannel"
+                        />,
+                        "native": true,
+                        "onChange": [MockFunction],
+                        "value": "sms",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Text",
+                            "value": "sms",
+                          },
+                          "ref": null,
+                          "rendered": "Text",
+                          "type": "option",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Call",
+                            "value": "call",
+                          },
+                          "ref": null,
+                          "rendered": "Call",
+                          "type": "option",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Grid)
+                    item={true}
+                  >
+                    <WithStyles(Button)
+                      color="primary"
+                      onClick={[MockFunction]}
+                      variant="contained"
+                    >
+                      Request Verification
+                    </WithStyles(Button)>
+                  </WithStyles(Grid)>,
+                  undefined,
+                ],
+                "className": "nabi-margin-top-small",
+                "container": true,
+                "spacing": 8,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(Button)
+                      color="primary"
+                      onClick={[MockFunction]}
+                      variant="contained"
+                    >
+                      Request Verification
+                    </WithStyles(Button)>,
+                    "item": true,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Request Verification",
+                      "color": "primary",
+                      "onClick": [MockFunction],
+                      "variant": "contained",
+                    },
+                    "ref": null,
+                    "rendered": "Request Verification",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                undefined,
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        false,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;
+
+exports[`PhoneValidation When the phone is set Renders the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PhoneValidationForm
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    isPhoneSet={true}
+    isRequesting={false}
+    phoneNumber=""
+    resendCode={[MockFunction]}
+    sendVerificationToken={[MockFunction]}
+    token=""
+    user={
+      Object {
+        "email": "email@company.com",
+        "firstName": "",
+        "gender": "",
+        "id": "fooId",
+        "lastName": "",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "password": "secretPass123",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+        "role": "Instructor",
+      }
+    }
+    verificationChannel="sms"
+    verifyToken={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <SectionTitle
+          text="Verify Phone Number"
+        />,
+        <div>
+          <WithStyles(Grid)
+            container={true}
+            spacing={0}
+          >
+            <WithStyles(Grid)
+              className="nabi-margin-right-xsmall-md"
+              item={true}
+              md={4}
+              xs={7}
+            >
+              <TextField
+                InputProps={
+                  Object {
+                    "inputComponent": [Function],
+                  }
+                }
+                className="nabi-margin-top-xsmall"
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                margin="normal"
+                name="token"
+                onChange={[MockFunction]}
+                placeholder="Verification Token"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={4}
+              xs={12}
+            >
+              <WithStyles(Button)
+                className="nabi-text-uppercase nabi-margin-top-xsmall"
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Verify Phone
+              </WithStyles(Button)>
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            className="nabi-padding-top-xsmall"
+            item={true}
+            md={6}
+            xs={12}
+          >
+            <WithStyles(Typography)>
+              <span
+                className="nabi-color-nabi nabi-cursor-pointer"
+                onClick={[MockFunction]}
+              >
+                Resend code or change phone number
+              </span>
+            </WithStyles(Typography)>
+          </WithStyles(Grid)>
+        </div>,
+        false,
+      ],
+      "item": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "Verify Phone Number",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Grid)
+              container={true}
+              spacing={0}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-right-xsmall-md"
+                item={true}
+                md={4}
+                xs={7}
+              >
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-margin-top-xsmall"
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  margin="normal"
+                  name="token"
+                  onChange={[MockFunction]}
+                  placeholder="Verification Token"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                item={true}
+                md={4}
+                xs={12}
+              >
+                <WithStyles(Button)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Verify Phone
+                </WithStyles(Button)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              className="nabi-padding-top-xsmall"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(Typography)>
+                <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>
+              </WithStyles(Typography)>
+            </WithStyles(Grid)>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Grid)
+                  className="nabi-margin-right-xsmall-md"
+                  item={true}
+                  md={4}
+                  xs={7}
+                >
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="token"
+                    onChange={[MockFunction]}
+                    placeholder="Verification Token"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />
+                </WithStyles(Grid)>,
+                <WithStyles(Grid)
+                  item={true}
+                  md={4}
+                  xs={12}
+                >
+                  <WithStyles(Button)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Verify Phone
+                  </WithStyles(Button)>
+                </WithStyles(Grid)>,
+              ],
+              "container": true,
+              "spacing": 0,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="token"
+                    onChange={[MockFunction]}
+                    placeholder="Verification Token"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />,
+                  "className": "nabi-margin-right-xsmall-md",
+                  "item": true,
+                  "md": 4,
+                  "xs": 7,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "InputProps": Object {
+                      "inputComponent": [Function],
+                    },
+                    "className": "nabi-margin-top-xsmall",
+                    "error": false,
+                    "fullWidth": true,
+                    "helperText": undefined,
+                    "margin": "normal",
+                    "name": "token",
+                    "onChange": [MockFunction],
+                    "placeholder": "Verification Token",
+                    "required": true,
+                    "select": false,
+                    "value": "",
+                    "variant": "standard",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(Button)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Verify Phone
+                  </WithStyles(Button)>,
+                  "item": true,
+                  "md": 4,
+                  "xs": 12,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Verify Phone",
+                    "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                    "color": "primary",
+                    "onClick": [MockFunction],
+                    "variant": "contained",
+                  },
+                  "ref": null,
+                  "rendered": "Verify Phone",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Typography)>
+                <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>
+              </WithStyles(Typography)>,
+              "className": "nabi-padding-top-xsmall",
+              "item": true,
+              "md": 6,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Resend code or change phone number",
+                  "className": "nabi-color-nabi nabi-cursor-pointer",
+                  "onClick": [MockFunction],
+                },
+                "ref": null,
+                "rendered": "Resend code or change phone number",
+                "type": "span",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      false,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <SectionTitle
+            text="Verify Phone Number"
+          />,
+          <div>
+            <WithStyles(Grid)
+              container={true}
+              spacing={0}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-right-xsmall-md"
+                item={true}
+                md={4}
+                xs={7}
+              >
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-margin-top-xsmall"
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  margin="normal"
+                  name="token"
+                  onChange={[MockFunction]}
+                  placeholder="Verification Token"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                item={true}
+                md={4}
+                xs={12}
+              >
+                <WithStyles(Button)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Verify Phone
+                </WithStyles(Button)>
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              className="nabi-padding-top-xsmall"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(Typography)>
+                <span
+                  className="nabi-color-nabi nabi-cursor-pointer"
+                  onClick={[MockFunction]}
+                >
+                  Resend code or change phone number
+                </span>
+              </WithStyles(Typography)>
+            </WithStyles(Grid)>
+          </div>,
+          false,
+        ],
+        "item": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "Verify Phone Number",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Grid)
+                container={true}
+                spacing={0}
+              >
+                <WithStyles(Grid)
+                  className="nabi-margin-right-xsmall-md"
+                  item={true}
+                  md={4}
+                  xs={7}
+                >
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-margin-top-xsmall"
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    margin="normal"
+                    name="token"
+                    onChange={[MockFunction]}
+                    placeholder="Verification Token"
+                    required={true}
+                    select={false}
+                    value=""
+                    variant="standard"
+                  />
+                </WithStyles(Grid)>
+                <WithStyles(Grid)
+                  item={true}
+                  md={4}
+                  xs={12}
+                >
+                  <WithStyles(Button)
+                    className="nabi-text-uppercase nabi-margin-top-xsmall"
+                    color="primary"
+                    onClick={[MockFunction]}
+                    variant="contained"
+                  >
+                    Verify Phone
+                  </WithStyles(Button)>
+                </WithStyles(Grid)>
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                className="nabi-padding-top-xsmall"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(Typography)>
+                  <span
+                    className="nabi-color-nabi nabi-cursor-pointer"
+                    onClick={[MockFunction]}
+                  >
+                    Resend code or change phone number
+                  </span>
+                </WithStyles(Typography)>
+              </WithStyles(Grid)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Grid)
+                    className="nabi-margin-right-xsmall-md"
+                    item={true}
+                    md={4}
+                    xs={7}
+                  >
+                    <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-margin-top-xsmall"
+                      error={false}
+                      fullWidth={true}
+                      helperText={undefined}
+                      margin="normal"
+                      name="token"
+                      onChange={[MockFunction]}
+                      placeholder="Verification Token"
+                      required={true}
+                      select={false}
+                      value=""
+                      variant="standard"
+                    />
+                  </WithStyles(Grid)>,
+                  <WithStyles(Grid)
+                    item={true}
+                    md={4}
+                    xs={12}
+                  >
+                    <WithStyles(Button)
+                      className="nabi-text-uppercase nabi-margin-top-xsmall"
+                      color="primary"
+                      onClick={[MockFunction]}
+                      variant="contained"
+                    >
+                      Verify Phone
+                    </WithStyles(Button)>
+                  </WithStyles(Grid)>,
+                ],
+                "container": true,
+                "spacing": 0,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-margin-top-xsmall"
+                      error={false}
+                      fullWidth={true}
+                      helperText={undefined}
+                      margin="normal"
+                      name="token"
+                      onChange={[MockFunction]}
+                      placeholder="Verification Token"
+                      required={true}
+                      select={false}
+                      value=""
+                      variant="standard"
+                    />,
+                    "className": "nabi-margin-right-xsmall-md",
+                    "item": true,
+                    "md": 4,
+                    "xs": 7,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "InputProps": Object {
+                        "inputComponent": [Function],
+                      },
+                      "className": "nabi-margin-top-xsmall",
+                      "error": false,
+                      "fullWidth": true,
+                      "helperText": undefined,
+                      "margin": "normal",
+                      "name": "token",
+                      "onChange": [MockFunction],
+                      "placeholder": "Verification Token",
+                      "required": true,
+                      "select": false,
+                      "value": "",
+                      "variant": "standard",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(Button)
+                      className="nabi-text-uppercase nabi-margin-top-xsmall"
+                      color="primary"
+                      onClick={[MockFunction]}
+                      variant="contained"
+                    >
+                      Verify Phone
+                    </WithStyles(Button)>,
+                    "item": true,
+                    "md": 4,
+                    "xs": 12,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Verify Phone",
+                      "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                      "color": "primary",
+                      "onClick": [MockFunction],
+                      "variant": "contained",
+                    },
+                    "ref": null,
+                    "rendered": "Verify Phone",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(Typography)>
+                  <span
+                    className="nabi-color-nabi nabi-cursor-pointer"
+                    onClick={[MockFunction]}
+                  >
+                    Resend code or change phone number
+                  </span>
+                </WithStyles(Typography)>,
+                "className": "nabi-padding-top-xsmall",
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <span
+                    className="nabi-color-nabi nabi-cursor-pointer"
+                    onClick={[MockFunction]}
+                  >
+                    Resend code or change phone number
+                  </span>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Resend code or change phone number",
+                    "className": "nabi-color-nabi nabi-cursor-pointer",
+                    "onClick": [MockFunction],
+                  },
+                  "ref": null,
+                  "rendered": "Resend code or change phone number",
+                  "type": "span",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        false,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

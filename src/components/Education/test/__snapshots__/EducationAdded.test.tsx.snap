@@ -1,0 +1,551 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EducationAdded Shallow Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EducationAdded
+    degreeType="Bachelor's Degree"
+    deleteEducation={[MockFunction]}
+    editEducation={[MockFunction]}
+    fieldOfStudy=""
+    graduationYear=""
+    school=""
+    schoolLocation=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-action-buttons"
+        >
+          <WithStyles(IconButton)
+            aria-label="Delete"
+            className="nabi-float-right nabi-margin-left-xsmall"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              delete
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+          <WithStyles(IconButton)
+            aria-label="Edit"
+            className="nabi-float-right"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              edit
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+        </div>,
+        <WithStyles(Typography)
+          className="nabi-text-uppercase"
+          variant="body2"
+        >
+          <mark>
+            
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)
+          className="nabi-margin-top-xsmall"
+        >
+          <mark>
+            undefined, 
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            
+          </mark>
+        </WithStyles(Typography)>,
+      ],
+      "className": "nabi-editable-item nabi-margin-top-small",
+      "item": true,
+      "md": undefined,
+      "xs": 12,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+          ],
+          "className": "nabi-action-buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Delete",
+              "children": <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right nabi-margin-left-xsmall",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "delete",
+              },
+              "ref": null,
+              "rendered": "delete",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Edit",
+              "children": <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "edit",
+              },
+              "ref": null,
+              "rendered": "edit",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            
+          </mark>,
+          "className": "nabi-text-uppercase",
+          "variant": "body2",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            undefined, 
+          </mark>,
+          "className": "nabi-margin-top-xsmall",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "undefined, ",
+          },
+          "ref": null,
+          "rendered": "undefined, ",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-action-buttons"
+          >
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+          </div>,
+          <WithStyles(Typography)
+            className="nabi-text-uppercase"
+            variant="body2"
+          >
+            <mark>
+              
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            <mark>
+              undefined, 
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              
+            </mark>
+          </WithStyles(Typography)>,
+        ],
+        "className": "nabi-editable-item nabi-margin-top-small",
+        "item": true,
+        "md": undefined,
+        "xs": 12,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(IconButton)
+                aria-label="Delete"
+                className="nabi-float-right nabi-margin-left-xsmall"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+              <WithStyles(IconButton)
+                aria-label="Edit"
+                className="nabi-float-right"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+            ],
+            "className": "nabi-action-buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Delete",
+                "children": <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right nabi-margin-left-xsmall",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "delete",
+                },
+                "ref": null,
+                "rendered": "delete",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Edit",
+                "children": <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "edit",
+                },
+                "ref": null,
+                "rendered": "edit",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              
+            </mark>,
+            "className": "nabi-text-uppercase",
+            "variant": "body2",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              undefined, 
+            </mark>,
+            "className": "nabi-margin-top-xsmall",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "undefined, ",
+            },
+            "ref": null,
+            "rendered": "undefined, ",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

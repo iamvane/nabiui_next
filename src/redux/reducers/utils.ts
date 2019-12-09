@@ -1,4 +1,4 @@
-import { UserType } from '../../types/user';
+import { UserType } from '../../redux/models/UserModel';
 import { Role } from '../../constants/Roles';
 
 export const setProfile = (user: UserType) => {

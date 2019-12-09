@@ -8,8 +8,8 @@ import {
 } from '../src/redux/actions/UserActions';
 
 import { StoreState } from '../src/redux/reducers/store';
-import { RegistrationType } from '../src/types/registration';
-import Registration from '../src/components/role-register/Registration';
+import { RegistrationType } from '../src/components/Auth/Registration/models';
+import Registration from '../src/components/Auth/Registration/Registration';
 import { Role } from '../src/constants/Roles';
 
 interface StateProps {

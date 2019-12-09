@@ -1,0 +1,1037 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Education When the education form is displayed Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Education
+    addEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    addEducationError=""
+    deleteEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    deleteEducationError=""
+    editEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    editEducationError=""
+    education={
+      Array [
+        Object {
+          "degreeType": "bachelors",
+          "fieldOfStudy": "Music Education",
+          "graduationYear": "2012",
+          "id": 0,
+          "school": "UMass",
+          "schoolLocation": "Boston MA",
+        },
+      ]
+    }
+    fetchEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    fetchEducationError=""
+    isAddEducationRequesting={false}
+    isDeleteEducationRequesting={false}
+    isEditEducationRequesting={false}
+    isFetchEducationRequesting={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall nabi-text-uppercase"
+            variant="body2"
+          >
+            Add Education
+          </WithStyles(Typography)>
+          <EducationForm
+            allFieldsFilled={false}
+            degreeType=""
+            fieldOfStudy=""
+            graduationYear=""
+            handleCancel={[Function]}
+            handleChange={[Function]}
+            handleOnBlur={[Function]}
+            handleSave={[Function]}
+            isEditing={false}
+            school=""
+            schoolLocation=""
+          />
+        </div>,
+        <Unknown
+          backPath="job-preferences"
+          buttonText="Continue"
+          divider={true}
+          errors=""
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+          nextPath="employment"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall nabi-text-uppercase"
+              variant="body2"
+            >
+              Add Education
+            </WithStyles(Typography)>,
+            <EducationForm
+              allFieldsFilled={false}
+              degreeType=""
+              fieldOfStudy=""
+              graduationYear=""
+              handleCancel={[Function]}
+              handleChange={[Function]}
+              handleOnBlur={[Function]}
+              handleSave={[Function]}
+              isEditing={false}
+              school=""
+              schoolLocation=""
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Add Education",
+              "className": "nabi-margin-top-xsmall nabi-text-uppercase",
+              "variant": "body2",
+            },
+            "ref": null,
+            "rendered": "Add Education",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "allFieldsFilled": false,
+              "degreeType": "",
+              "fieldOfStudy": "",
+              "graduationYear": "",
+              "handleCancel": [Function],
+              "handleChange": [Function],
+              "handleOnBlur": [Function],
+              "handleSave": [Function],
+              "isEditing": false,
+              "school": "",
+              "schoolLocation": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "backPath": "job-preferences",
+          "buttonText": "Continue",
+          "divider": true,
+          "errors": "",
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+          "nextPath": "employment",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall nabi-text-uppercase"
+              variant="body2"
+            >
+              Add Education
+            </WithStyles(Typography)>
+            <EducationForm
+              allFieldsFilled={false}
+              degreeType=""
+              fieldOfStudy=""
+              graduationYear=""
+              handleCancel={[Function]}
+              handleChange={[Function]}
+              handleOnBlur={[Function]}
+              handleSave={[Function]}
+              isEditing={false}
+              school=""
+              schoolLocation=""
+            />
+          </div>,
+          <Unknown
+            backPath="job-preferences"
+            buttonText="Continue"
+            divider={true}
+            errors=""
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+            nextPath="employment"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Typography)
+                className="nabi-margin-top-xsmall nabi-text-uppercase"
+                variant="body2"
+              >
+                Add Education
+              </WithStyles(Typography)>,
+              <EducationForm
+                allFieldsFilled={false}
+                degreeType=""
+                fieldOfStudy=""
+                graduationYear=""
+                handleCancel={[Function]}
+                handleChange={[Function]}
+                handleOnBlur={[Function]}
+                handleSave={[Function]}
+                isEditing={false}
+                school=""
+                schoolLocation=""
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Add Education",
+                "className": "nabi-margin-top-xsmall nabi-text-uppercase",
+                "variant": "body2",
+              },
+              "ref": null,
+              "rendered": "Add Education",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "allFieldsFilled": false,
+                "degreeType": "",
+                "fieldOfStudy": "",
+                "graduationYear": "",
+                "handleCancel": [Function],
+                "handleChange": [Function],
+                "handleOnBlur": [Function],
+                "handleSave": [Function],
+                "isEditing": false,
+                "school": "",
+                "schoolLocation": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "backPath": "job-preferences",
+            "buttonText": "Continue",
+            "divider": true,
+            "errors": "",
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+            "nextPath": "employment",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`Education When the education form is hidden Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Education
+    addEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    addEducationError=""
+    deleteEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    deleteEducationError=""
+    editEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    editEducationError=""
+    education={
+      Array [
+        Object {
+          "degreeType": "bachelors",
+          "fieldOfStudy": "Music Education",
+          "graduationYear": "2012",
+          "id": 0,
+          "school": "UMass",
+          "schoolLocation": "Boston MA",
+        },
+      ]
+    }
+    fetchEducation={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    fetchEducationError=""
+    isAddEducationRequesting={false}
+    isDeleteEducationRequesting={false}
+    isEditEducationRequesting={false}
+    isFetchEducationRequesting={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <SectionTitle
+            text="Your Education"
+          />
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            Tell students about your educational background
+          </WithStyles(Typography)>
+          <ul>
+            <li
+              className="nabi-list"
+            >
+              <EducationAdded
+                degreeType="bachelors"
+                deleteEducation={[Function]}
+                editEducation={[Function]}
+                fieldOfStudy="Music Education"
+                graduationYear="2012"
+                gridWidth={6}
+                id={0}
+                school="UMass"
+                schoolLocation="Boston MA"
+              />
+            </li>
+          </ul>
+          <div
+            className="nabi-margin-top-medium"
+          >
+            <WithStyles(Button)
+              color="primary"
+              onClick={[Function]}
+              variant="contained"
+            >
+              <WithStyles(Icon)
+                className="nabi-margin-right-xsmall"
+              >
+                add
+              </WithStyles(Icon)>
+              Add Education
+            </WithStyles(Button)>
+          </div>
+        </div>,
+        <Unknown
+          backPath="job-preferences"
+          buttonText="Continue"
+          divider={true}
+          errors=""
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+          nextPath="employment"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              text="Your Education"
+            />,
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              Tell students about your educational background
+            </WithStyles(Typography)>,
+            <ul>
+              <li
+                className="nabi-list"
+              >
+                <EducationAdded
+                  degreeType="bachelors"
+                  deleteEducation={[Function]}
+                  editEducation={[Function]}
+                  fieldOfStudy="Music Education"
+                  graduationYear="2012"
+                  gridWidth={6}
+                  id={0}
+                  school="UMass"
+                  schoolLocation="Boston MA"
+                />
+              </li>
+            </ul>,
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Education
+              </WithStyles(Button)>
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": "Your Education",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Tell students about your educational background",
+              "className": "nabi-margin-top-xsmall",
+            },
+            "ref": null,
+            "rendered": "Tell students about your educational background",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <li
+                  className="nabi-list"
+                >
+                  <EducationAdded
+                    degreeType="bachelors"
+                    deleteEducation={[Function]}
+                    editEducation={[Function]}
+                    fieldOfStudy="Music Education"
+                    graduationYear="2012"
+                    gridWidth={6}
+                    id={0}
+                    school="UMass"
+                    schoolLocation="Boston MA"
+                  />
+                </li>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "0",
+                "nodeType": "host",
+                "props": Object {
+                  "children": <EducationAdded
+                    degreeType="bachelors"
+                    deleteEducation={[Function]}
+                    editEducation={[Function]}
+                    fieldOfStudy="Music Education"
+                    graduationYear="2012"
+                    gridWidth={6}
+                    id={0}
+                    school="UMass"
+                    schoolLocation="Boston MA"
+                  />,
+                  "className": "nabi-list",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "degreeType": "bachelors",
+                    "deleteEducation": [Function],
+                    "editEducation": [Function],
+                    "fieldOfStudy": "Music Education",
+                    "graduationYear": "2012",
+                    "gridWidth": 6,
+                    "id": 0,
+                    "school": "UMass",
+                    "schoolLocation": "Boston MA",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": "li",
+              },
+            ],
+            "type": "ul",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Education
+              </WithStyles(Button)>,
+              "className": "nabi-margin-top-medium",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>,
+                  "Add Education",
+                ],
+                "color": "primary",
+                "onClick": [Function],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "add",
+                    "className": "nabi-margin-right-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": "add",
+                  "type": [Function],
+                },
+                "Add Education",
+              ],
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "backPath": "job-preferences",
+          "buttonText": "Continue",
+          "divider": true,
+          "errors": "",
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+          "nextPath": "employment",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <SectionTitle
+              text="Your Education"
+            />
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              Tell students about your educational background
+            </WithStyles(Typography)>
+            <ul>
+              <li
+                className="nabi-list"
+              >
+                <EducationAdded
+                  degreeType="bachelors"
+                  deleteEducation={[Function]}
+                  editEducation={[Function]}
+                  fieldOfStudy="Music Education"
+                  graduationYear="2012"
+                  gridWidth={6}
+                  id={0}
+                  school="UMass"
+                  schoolLocation="Boston MA"
+                />
+              </li>
+            </ul>
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Education
+              </WithStyles(Button)>
+            </div>
+          </div>,
+          <Unknown
+            backPath="job-preferences"
+            buttonText="Continue"
+            divider={true}
+            errors=""
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+            nextPath="employment"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                text="Your Education"
+              />,
+              <WithStyles(Typography)
+                className="nabi-margin-top-xsmall"
+              >
+                Tell students about your educational background
+              </WithStyles(Typography)>,
+              <ul>
+                <li
+                  className="nabi-list"
+                >
+                  <EducationAdded
+                    degreeType="bachelors"
+                    deleteEducation={[Function]}
+                    editEducation={[Function]}
+                    fieldOfStudy="Music Education"
+                    graduationYear="2012"
+                    gridWidth={6}
+                    id={0}
+                    school="UMass"
+                    schoolLocation="Boston MA"
+                  />
+                </li>
+              </ul>,
+              <div
+                className="nabi-margin-top-medium"
+              >
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Education
+                </WithStyles(Button)>
+              </div>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": "Your Education",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Tell students about your educational background",
+                "className": "nabi-margin-top-xsmall",
+              },
+              "ref": null,
+              "rendered": "Tell students about your educational background",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <li
+                    className="nabi-list"
+                  >
+                    <EducationAdded
+                      degreeType="bachelors"
+                      deleteEducation={[Function]}
+                      editEducation={[Function]}
+                      fieldOfStudy="Music Education"
+                      graduationYear="2012"
+                      gridWidth={6}
+                      id={0}
+                      school="UMass"
+                      schoolLocation="Boston MA"
+                    />
+                  </li>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "0",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <EducationAdded
+                      degreeType="bachelors"
+                      deleteEducation={[Function]}
+                      editEducation={[Function]}
+                      fieldOfStudy="Music Education"
+                      graduationYear="2012"
+                      gridWidth={6}
+                      id={0}
+                      school="UMass"
+                      schoolLocation="Boston MA"
+                    />,
+                    "className": "nabi-list",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "degreeType": "bachelors",
+                      "deleteEducation": [Function],
+                      "editEducation": [Function],
+                      "fieldOfStudy": "Music Education",
+                      "graduationYear": "2012",
+                      "gridWidth": 6,
+                      "id": 0,
+                      "school": "UMass",
+                      "schoolLocation": "Boston MA",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": "li",
+                },
+              ],
+              "type": "ul",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Education
+                </WithStyles(Button)>,
+                "className": "nabi-margin-top-medium",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      add
+                    </WithStyles(Icon)>,
+                    "Add Education",
+                  ],
+                  "color": "primary",
+                  "onClick": [Function],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "add",
+                      "className": "nabi-margin-right-xsmall",
+                    },
+                    "ref": null,
+                    "rendered": "add",
+                    "type": [Function],
+                  },
+                  "Add Education",
+                ],
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "backPath": "job-preferences",
+            "buttonText": "Continue",
+            "divider": true,
+            "errors": "",
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+            "nextPath": "employment",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

@@ -1,0 +1,1759 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiddleNameModal Renders the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AccountInfoForm
+    accountInfo={
+      Object {
+        "firstName": "",
+        "gender": "",
+        "lastName": "",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+      }
+    }
+    applyMiddleName={[MockFunction]}
+    closeMiddleNameModal={[MockFunction]}
+    confirmNoMiddleName={[MockFunction]}
+    errors={Object {}}
+    handleChange={[MockFunction]}
+    handleLocationChange={[MockFunction]}
+    handleLocationSelect={[MockFunction]}
+    location="foo location"
+    redirectUrl="fooUrl"
+    showMiddleNameModal={false}
+    user={
+      Object {
+        "email": "email@company.com",
+        "firstName": "",
+        "gender": "",
+        "id": "fooId",
+        "lastName": "",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "password": "secretPass123",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+        "role": "Instructor",
+      }
+    }
+    verificationChannel="sms"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        undefined,
+        <SectionTitle
+          text="Tell Us About Yourself"
+        />,
+        <WithStyles(Grid)
+          container={true}
+          spacing={16}
+        >
+          <WithStyles(Grid)
+            item={true}
+            md={6}
+            xs={12}
+          >
+            <TextField
+              error={false}
+              fullWidth={true}
+              helperText={undefined}
+              name="firstName"
+              onChange={[MockFunction]}
+              placeholder="First Name"
+              required={true}
+              select={false}
+              value=""
+              variant="standard"
+            />
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            item={true}
+            md={6}
+            xs={12}
+          >
+            <TextField
+              error={false}
+              fullWidth={true}
+              helperText={undefined}
+              name="middleName"
+              onChange={[MockFunction]}
+              placeholder="Middle Name"
+              required={true}
+              select={false}
+              value=""
+              variant="standard"
+            />
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            item={true}
+            md={6}
+            xs={12}
+          >
+            <TextField
+              error={false}
+              fullWidth={true}
+              helperText={undefined}
+              name="lastName"
+              onChange={[MockFunction]}
+              placeholder="Last Name"
+              required={true}
+              select={false}
+              value=""
+              variant="standard"
+            />
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            className="nabi-padding-left-small"
+            item={true}
+            md={6}
+            xs={12}
+          >
+            <WithStyles(FormControl)
+              error={false}
+              required={true}
+            >
+              <WithStyles(WithFormControlContext(FormLabel))
+                className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+              >
+                Gender
+              </WithStyles(WithFormControlContext(FormLabel))>
+              <RadioGroup
+                name="gender"
+                onChange={[MockFunction]}
+                row={true}
+                value=""
+              >
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={<WithStyles(Radio) />}
+                  label="Female"
+                  value="female"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={<WithStyles(Radio) />}
+                  label="Male"
+                  value="male"
+                />
+              </RadioGroup>
+              <WithStyles(WithFormControlContext(FormHelperText)) />
+            </WithStyles(FormControl)>
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            item={true}
+            md={6}
+            xs={12}
+          >
+            <WithStyles(Typography)
+              variant="body2"
+            >
+              Birthday
+            </WithStyles(Typography)>
+            <WithStyles(FormControl)>
+              <DatePicker
+                allowSameDay={false}
+                dateFormat="L"
+                dateFormatCalendar="MMMM YYYY"
+                disabled={true}
+                disabledKeyboardNavigation={false}
+                dropdownMode="select"
+                monthsShown={1}
+                nextMonthButtonLabel="Next month"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClickOutside={[Function]}
+                onFocus={[Function]}
+                onInputClick={[Function]}
+                onInputError={[Function]}
+                onKeyDown={[Function]}
+                onMonthChange={[Function]}
+                onSelect={[Function]}
+                onYearChange={[Function]}
+                peekNextMonth={true}
+                preventOpenOnFocus={false}
+                previousMonthButtonLabel="Previous Month"
+                readOnly={false}
+                renderDayContents={[Function]}
+                selected={null}
+                shouldCloseOnSelect={true}
+                showMonthDropdown={true}
+                showTimeSelect={false}
+                showYearDropdown={true}
+                timeCaption="Time"
+                timeIntervals={30}
+                withPortal={false}
+              />
+            </WithStyles(FormControl)>
+          </WithStyles(Grid)>
+        </WithStyles(Grid)>,
+        <div
+          className="nabi-margin-top-large"
+        >
+          <Connect(PhoneValidation)
+            error={undefined}
+          />
+        </div>,
+        <Location
+          handleLocationChange={[MockFunction]}
+          handleLocationSelect={[MockFunction]}
+          location="foo location"
+        />,
+        <MiddleNameModal
+          applyMiddleName={[MockFunction]}
+          closeHandler={[MockFunction]}
+          confirmNoMiddleName={[MockFunction]}
+          error={undefined}
+          handleChange={[MockFunction]}
+          isFormDialogOpen={false}
+          middleName=""
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      undefined,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "Tell Us About Yourself",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="firstName"
+                onChange={[MockFunction]}
+                placeholder="First Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="middleName"
+                onChange={[MockFunction]}
+                placeholder="Middle Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="lastName"
+                onChange={[MockFunction]}
+                placeholder="Last Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              className="nabi-padding-left-small"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(FormControl)
+                error={false}
+                required={true}
+              >
+                <WithStyles(WithFormControlContext(FormLabel))
+                  className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+                >
+                  Gender
+                </WithStyles(WithFormControlContext(FormLabel))>
+                <RadioGroup
+                  name="gender"
+                  onChange={[MockFunction]}
+                  row={true}
+                  value=""
+                >
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={<WithStyles(Radio) />}
+                    label="Female"
+                    value="female"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={<WithStyles(Radio) />}
+                    label="Male"
+                    value="male"
+                  />
+                </RadioGroup>
+                <WithStyles(WithFormControlContext(FormHelperText)) />
+              </WithStyles(FormControl)>
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(Typography)
+                variant="body2"
+              >
+                Birthday
+              </WithStyles(Typography)>
+              <WithStyles(FormControl)>
+                <DatePicker
+                  allowSameDay={false}
+                  dateFormat="L"
+                  dateFormatCalendar="MMMM YYYY"
+                  disabled={true}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="select"
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onInputClick={[Function]}
+                  onInputError={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  peekNextMonth={true}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  renderDayContents={[Function]}
+                  selected={null}
+                  shouldCloseOnSelect={true}
+                  showMonthDropdown={true}
+                  showTimeSelect={false}
+                  showYearDropdown={true}
+                  timeCaption="Time"
+                  timeIntervals={30}
+                  withPortal={false}
+                />
+              </WithStyles(FormControl)>
+            </WithStyles(Grid)>,
+          ],
+          "container": true,
+          "spacing": 16,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="firstName"
+                onChange={[MockFunction]}
+                placeholder="First Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />,
+              "item": true,
+              "md": 6,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "error": false,
+                "fullWidth": true,
+                "helperText": undefined,
+                "name": "firstName",
+                "onChange": [MockFunction],
+                "placeholder": "First Name",
+                "required": true,
+                "select": false,
+                "value": "",
+                "variant": "standard",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="middleName"
+                onChange={[MockFunction]}
+                placeholder="Middle Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />,
+              "item": true,
+              "md": 6,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "error": false,
+                "fullWidth": true,
+                "helperText": undefined,
+                "name": "middleName",
+                "onChange": [MockFunction],
+                "placeholder": "Middle Name",
+                "required": true,
+                "select": false,
+                "value": "",
+                "variant": "standard",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="lastName"
+                onChange={[MockFunction]}
+                placeholder="Last Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />,
+              "item": true,
+              "md": 6,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "error": false,
+                "fullWidth": true,
+                "helperText": undefined,
+                "name": "lastName",
+                "onChange": [MockFunction],
+                "placeholder": "Last Name",
+                "required": true,
+                "select": false,
+                "value": "",
+                "variant": "standard",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(FormControl)
+                error={false}
+                required={true}
+              >
+                <WithStyles(WithFormControlContext(FormLabel))
+                  className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+                >
+                  Gender
+                </WithStyles(WithFormControlContext(FormLabel))>
+                <RadioGroup
+                  name="gender"
+                  onChange={[MockFunction]}
+                  row={true}
+                  value=""
+                >
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={<WithStyles(Radio) />}
+                    label="Female"
+                    value="female"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={<WithStyles(Radio) />}
+                    label="Male"
+                    value="male"
+                  />
+                </RadioGroup>
+                <WithStyles(WithFormControlContext(FormHelperText)) />
+              </WithStyles(FormControl)>,
+              "className": "nabi-padding-left-small",
+              "item": true,
+              "md": 6,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(WithFormControlContext(FormLabel))
+                    className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+                  >
+                    Gender
+                  </WithStyles(WithFormControlContext(FormLabel))>,
+                  <RadioGroup
+                    name="gender"
+                    onChange={[MockFunction]}
+                    row={true}
+                    value=""
+                  >
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={<WithStyles(Radio) />}
+                      label="Female"
+                      value="female"
+                    />
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={<WithStyles(Radio) />}
+                      label="Male"
+                      value="male"
+                    />
+                  </RadioGroup>,
+                  <WithStyles(WithFormControlContext(FormHelperText)) />,
+                ],
+                "error": false,
+                "required": true,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Gender",
+                    "className": "nabi-margin-bottom-xsmall nabi-text-uppercase",
+                  },
+                  "ref": null,
+                  "rendered": "Gender",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(WithFormControlContext(FormControlLabel))
+                        control={<WithStyles(Radio) />}
+                        label="Female"
+                        value="female"
+                      />,
+                      <WithStyles(WithFormControlContext(FormControlLabel))
+                        control={<WithStyles(Radio) />}
+                        label="Male"
+                        value="male"
+                      />,
+                    ],
+                    "name": "gender",
+                    "onChange": [MockFunction],
+                    "row": true,
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "control": <WithStyles(Radio) />,
+                        "label": "Female",
+                        "value": "female",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "control": <WithStyles(Radio) />,
+                        "label": "Male",
+                        "value": "male",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Typography)
+                  variant="body2"
+                >
+                  Birthday
+                </WithStyles(Typography)>,
+                <WithStyles(FormControl)>
+                  <DatePicker
+                    allowSameDay={false}
+                    dateFormat="L"
+                    dateFormatCalendar="MMMM YYYY"
+                    disabled={true}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="select"
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next month"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    peekNextMonth={true}
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    readOnly={false}
+                    renderDayContents={[Function]}
+                    selected={null}
+                    shouldCloseOnSelect={true}
+                    showMonthDropdown={true}
+                    showTimeSelect={false}
+                    showYearDropdown={true}
+                    timeCaption="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  />
+                </WithStyles(FormControl)>,
+              ],
+              "item": true,
+              "md": 6,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Birthday",
+                  "variant": "body2",
+                },
+                "ref": null,
+                "rendered": "Birthday",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <DatePicker
+                    allowSameDay={false}
+                    dateFormat="L"
+                    dateFormatCalendar="MMMM YYYY"
+                    disabled={true}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="select"
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next month"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    peekNextMonth={true}
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    readOnly={false}
+                    renderDayContents={[Function]}
+                    selected={null}
+                    shouldCloseOnSelect={true}
+                    showMonthDropdown={true}
+                    showTimeSelect={false}
+                    showYearDropdown={true}
+                    timeCaption="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "allowSameDay": false,
+                    "dateFormat": "L",
+                    "dateFormatCalendar": "MMMM YYYY",
+                    "disabled": true,
+                    "disabledKeyboardNavigation": false,
+                    "dropdownMode": "select",
+                    "monthsShown": 1,
+                    "nextMonthButtonLabel": "Next month",
+                    "onBlur": [Function],
+                    "onChange": [Function],
+                    "onClickOutside": [Function],
+                    "onFocus": [Function],
+                    "onInputClick": [Function],
+                    "onInputError": [Function],
+                    "onKeyDown": [Function],
+                    "onMonthChange": [Function],
+                    "onSelect": [Function],
+                    "onYearChange": [Function],
+                    "peekNextMonth": true,
+                    "preventOpenOnFocus": false,
+                    "previousMonthButtonLabel": "Previous Month",
+                    "readOnly": false,
+                    "renderDayContents": [Function],
+                    "selected": null,
+                    "shouldCloseOnSelect": true,
+                    "showMonthDropdown": true,
+                    "showTimeSelect": false,
+                    "showYearDropdown": true,
+                    "timeCaption": "Time",
+                    "timeIntervals": 30,
+                    "withPortal": false,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Connect(PhoneValidation)
+            error={undefined}
+          />,
+          "className": "nabi-margin-top-large",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "error": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "handleLocationChange": [MockFunction],
+          "handleLocationSelect": [MockFunction],
+          "location": "foo location",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "applyMiddleName": [MockFunction],
+          "closeHandler": [MockFunction],
+          "confirmNoMiddleName": [MockFunction],
+          "error": undefined,
+          "handleChange": [MockFunction],
+          "isFormDialogOpen": false,
+          "middleName": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          undefined,
+          <SectionTitle
+            text="Tell Us About Yourself"
+          />,
+          <WithStyles(Grid)
+            container={true}
+            spacing={16}
+          >
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="firstName"
+                onChange={[MockFunction]}
+                placeholder="First Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="middleName"
+                onChange={[MockFunction]}
+                placeholder="Middle Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="lastName"
+                onChange={[MockFunction]}
+                placeholder="Last Name"
+                required={true}
+                select={false}
+                value=""
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              className="nabi-padding-left-small"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(FormControl)
+                error={false}
+                required={true}
+              >
+                <WithStyles(WithFormControlContext(FormLabel))
+                  className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+                >
+                  Gender
+                </WithStyles(WithFormControlContext(FormLabel))>
+                <RadioGroup
+                  name="gender"
+                  onChange={[MockFunction]}
+                  row={true}
+                  value=""
+                >
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={<WithStyles(Radio) />}
+                    label="Female"
+                    value="female"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={<WithStyles(Radio) />}
+                    label="Male"
+                    value="male"
+                  />
+                </RadioGroup>
+                <WithStyles(WithFormControlContext(FormHelperText)) />
+              </WithStyles(FormControl)>
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(Typography)
+                variant="body2"
+              >
+                Birthday
+              </WithStyles(Typography)>
+              <WithStyles(FormControl)>
+                <DatePicker
+                  allowSameDay={false}
+                  dateFormat="L"
+                  dateFormatCalendar="MMMM YYYY"
+                  disabled={true}
+                  disabledKeyboardNavigation={false}
+                  dropdownMode="select"
+                  monthsShown={1}
+                  nextMonthButtonLabel="Next month"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClickOutside={[Function]}
+                  onFocus={[Function]}
+                  onInputClick={[Function]}
+                  onInputError={[Function]}
+                  onKeyDown={[Function]}
+                  onMonthChange={[Function]}
+                  onSelect={[Function]}
+                  onYearChange={[Function]}
+                  peekNextMonth={true}
+                  preventOpenOnFocus={false}
+                  previousMonthButtonLabel="Previous Month"
+                  readOnly={false}
+                  renderDayContents={[Function]}
+                  selected={null}
+                  shouldCloseOnSelect={true}
+                  showMonthDropdown={true}
+                  showTimeSelect={false}
+                  showYearDropdown={true}
+                  timeCaption="Time"
+                  timeIntervals={30}
+                  withPortal={false}
+                />
+              </WithStyles(FormControl)>
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>,
+          <div
+            className="nabi-margin-top-large"
+          >
+            <Connect(PhoneValidation)
+              error={undefined}
+            />
+          </div>,
+          <Location
+            handleLocationChange={[MockFunction]}
+            handleLocationSelect={[MockFunction]}
+            location="foo location"
+          />,
+          <MiddleNameModal
+            applyMiddleName={[MockFunction]}
+            closeHandler={[MockFunction]}
+            confirmNoMiddleName={[MockFunction]}
+            error={undefined}
+            handleChange={[MockFunction]}
+            isFormDialogOpen={false}
+            middleName=""
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "Tell Us About Yourself",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Grid)
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="firstName"
+                  onChange={[MockFunction]}
+                  placeholder="First Name"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="middleName"
+                  onChange={[MockFunction]}
+                  placeholder="Middle Name"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="lastName"
+                  onChange={[MockFunction]}
+                  placeholder="Last Name"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                className="nabi-padding-left-small"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(FormControl)
+                  error={false}
+                  required={true}
+                >
+                  <WithStyles(WithFormControlContext(FormLabel))
+                    className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+                  >
+                    Gender
+                  </WithStyles(WithFormControlContext(FormLabel))>
+                  <RadioGroup
+                    name="gender"
+                    onChange={[MockFunction]}
+                    row={true}
+                    value=""
+                  >
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={<WithStyles(Radio) />}
+                      label="Female"
+                      value="female"
+                    />
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={<WithStyles(Radio) />}
+                      label="Male"
+                      value="male"
+                    />
+                  </RadioGroup>
+                  <WithStyles(WithFormControlContext(FormHelperText)) />
+                </WithStyles(FormControl)>
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(Typography)
+                  variant="body2"
+                >
+                  Birthday
+                </WithStyles(Typography)>
+                <WithStyles(FormControl)>
+                  <DatePicker
+                    allowSameDay={false}
+                    dateFormat="L"
+                    dateFormatCalendar="MMMM YYYY"
+                    disabled={true}
+                    disabledKeyboardNavigation={false}
+                    dropdownMode="select"
+                    monthsShown={1}
+                    nextMonthButtonLabel="Next month"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClickOutside={[Function]}
+                    onFocus={[Function]}
+                    onInputClick={[Function]}
+                    onInputError={[Function]}
+                    onKeyDown={[Function]}
+                    onMonthChange={[Function]}
+                    onSelect={[Function]}
+                    onYearChange={[Function]}
+                    peekNextMonth={true}
+                    preventOpenOnFocus={false}
+                    previousMonthButtonLabel="Previous Month"
+                    readOnly={false}
+                    renderDayContents={[Function]}
+                    selected={null}
+                    shouldCloseOnSelect={true}
+                    showMonthDropdown={true}
+                    showTimeSelect={false}
+                    showYearDropdown={true}
+                    timeCaption="Time"
+                    timeIntervals={30}
+                    withPortal={false}
+                  />
+                </WithStyles(FormControl)>
+              </WithStyles(Grid)>,
+            ],
+            "container": true,
+            "spacing": 16,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="firstName"
+                  onChange={[MockFunction]}
+                  placeholder="First Name"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />,
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "error": false,
+                  "fullWidth": true,
+                  "helperText": undefined,
+                  "name": "firstName",
+                  "onChange": [MockFunction],
+                  "placeholder": "First Name",
+                  "required": true,
+                  "select": false,
+                  "value": "",
+                  "variant": "standard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="middleName"
+                  onChange={[MockFunction]}
+                  placeholder="Middle Name"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />,
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "error": false,
+                  "fullWidth": true,
+                  "helperText": undefined,
+                  "name": "middleName",
+                  "onChange": [MockFunction],
+                  "placeholder": "Middle Name",
+                  "required": true,
+                  "select": false,
+                  "value": "",
+                  "variant": "standard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="lastName"
+                  onChange={[MockFunction]}
+                  placeholder="Last Name"
+                  required={true}
+                  select={false}
+                  value=""
+                  variant="standard"
+                />,
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "error": false,
+                  "fullWidth": true,
+                  "helperText": undefined,
+                  "name": "lastName",
+                  "onChange": [MockFunction],
+                  "placeholder": "Last Name",
+                  "required": true,
+                  "select": false,
+                  "value": "",
+                  "variant": "standard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(FormControl)
+                  error={false}
+                  required={true}
+                >
+                  <WithStyles(WithFormControlContext(FormLabel))
+                    className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+                  >
+                    Gender
+                  </WithStyles(WithFormControlContext(FormLabel))>
+                  <RadioGroup
+                    name="gender"
+                    onChange={[MockFunction]}
+                    row={true}
+                    value=""
+                  >
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={<WithStyles(Radio) />}
+                      label="Female"
+                      value="female"
+                    />
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={<WithStyles(Radio) />}
+                      label="Male"
+                      value="male"
+                    />
+                  </RadioGroup>
+                  <WithStyles(WithFormControlContext(FormHelperText)) />
+                </WithStyles(FormControl)>,
+                "className": "nabi-padding-left-small",
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(WithFormControlContext(FormLabel))
+                      className="nabi-margin-bottom-xsmall nabi-text-uppercase"
+                    >
+                      Gender
+                    </WithStyles(WithFormControlContext(FormLabel))>,
+                    <RadioGroup
+                      name="gender"
+                      onChange={[MockFunction]}
+                      row={true}
+                      value=""
+                    >
+                      <WithStyles(WithFormControlContext(FormControlLabel))
+                        control={<WithStyles(Radio) />}
+                        label="Female"
+                        value="female"
+                      />
+                      <WithStyles(WithFormControlContext(FormControlLabel))
+                        control={<WithStyles(Radio) />}
+                        label="Male"
+                        value="male"
+                      />
+                    </RadioGroup>,
+                    <WithStyles(WithFormControlContext(FormHelperText)) />,
+                  ],
+                  "error": false,
+                  "required": true,
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Gender",
+                      "className": "nabi-margin-bottom-xsmall nabi-text-uppercase",
+                    },
+                    "ref": null,
+                    "rendered": "Gender",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <WithStyles(WithFormControlContext(FormControlLabel))
+                          control={<WithStyles(Radio) />}
+                          label="Female"
+                          value="female"
+                        />,
+                        <WithStyles(WithFormControlContext(FormControlLabel))
+                          control={<WithStyles(Radio) />}
+                          label="Male"
+                          value="male"
+                        />,
+                      ],
+                      "name": "gender",
+                      "onChange": [MockFunction],
+                      "row": true,
+                      "value": "",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "control": <WithStyles(Radio) />,
+                          "label": "Female",
+                          "value": "female",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "control": <WithStyles(Radio) />,
+                          "label": "Male",
+                          "value": "male",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": undefined,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Typography)
+                    variant="body2"
+                  >
+                    Birthday
+                  </WithStyles(Typography)>,
+                  <WithStyles(FormControl)>
+                    <DatePicker
+                      allowSameDay={false}
+                      dateFormat="L"
+                      dateFormatCalendar="MMMM YYYY"
+                      disabled={true}
+                      disabledKeyboardNavigation={false}
+                      dropdownMode="select"
+                      monthsShown={1}
+                      nextMonthButtonLabel="Next month"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClickOutside={[Function]}
+                      onFocus={[Function]}
+                      onInputClick={[Function]}
+                      onInputError={[Function]}
+                      onKeyDown={[Function]}
+                      onMonthChange={[Function]}
+                      onSelect={[Function]}
+                      onYearChange={[Function]}
+                      peekNextMonth={true}
+                      preventOpenOnFocus={false}
+                      previousMonthButtonLabel="Previous Month"
+                      readOnly={false}
+                      renderDayContents={[Function]}
+                      selected={null}
+                      shouldCloseOnSelect={true}
+                      showMonthDropdown={true}
+                      showTimeSelect={false}
+                      showYearDropdown={true}
+                      timeCaption="Time"
+                      timeIntervals={30}
+                      withPortal={false}
+                    />
+                  </WithStyles(FormControl)>,
+                ],
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Birthday",
+                    "variant": "body2",
+                  },
+                  "ref": null,
+                  "rendered": "Birthday",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <DatePicker
+                      allowSameDay={false}
+                      dateFormat="L"
+                      dateFormatCalendar="MMMM YYYY"
+                      disabled={true}
+                      disabledKeyboardNavigation={false}
+                      dropdownMode="select"
+                      monthsShown={1}
+                      nextMonthButtonLabel="Next month"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClickOutside={[Function]}
+                      onFocus={[Function]}
+                      onInputClick={[Function]}
+                      onInputError={[Function]}
+                      onKeyDown={[Function]}
+                      onMonthChange={[Function]}
+                      onSelect={[Function]}
+                      onYearChange={[Function]}
+                      peekNextMonth={true}
+                      preventOpenOnFocus={false}
+                      previousMonthButtonLabel="Previous Month"
+                      readOnly={false}
+                      renderDayContents={[Function]}
+                      selected={null}
+                      shouldCloseOnSelect={true}
+                      showMonthDropdown={true}
+                      showTimeSelect={false}
+                      showYearDropdown={true}
+                      timeCaption="Time"
+                      timeIntervals={30}
+                      withPortal={false}
+                    />,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "allowSameDay": false,
+                      "dateFormat": "L",
+                      "dateFormatCalendar": "MMMM YYYY",
+                      "disabled": true,
+                      "disabledKeyboardNavigation": false,
+                      "dropdownMode": "select",
+                      "monthsShown": 1,
+                      "nextMonthButtonLabel": "Next month",
+                      "onBlur": [Function],
+                      "onChange": [Function],
+                      "onClickOutside": [Function],
+                      "onFocus": [Function],
+                      "onInputClick": [Function],
+                      "onInputError": [Function],
+                      "onKeyDown": [Function],
+                      "onMonthChange": [Function],
+                      "onSelect": [Function],
+                      "onYearChange": [Function],
+                      "peekNextMonth": true,
+                      "preventOpenOnFocus": false,
+                      "previousMonthButtonLabel": "Previous Month",
+                      "readOnly": false,
+                      "renderDayContents": [Function],
+                      "selected": null,
+                      "shouldCloseOnSelect": true,
+                      "showMonthDropdown": true,
+                      "showTimeSelect": false,
+                      "showYearDropdown": true,
+                      "timeCaption": "Time",
+                      "timeIntervals": 30,
+                      "withPortal": false,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Connect(PhoneValidation)
+              error={undefined}
+            />,
+            "className": "nabi-margin-top-large",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "error": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "handleLocationChange": [MockFunction],
+            "handleLocationSelect": [MockFunction],
+            "location": "foo location",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "applyMiddleName": [MockFunction],
+            "closeHandler": [MockFunction],
+            "confirmNoMiddleName": [MockFunction],
+            "error": undefined,
+            "handleChange": [MockFunction],
+            "isFormDialogOpen": false,
+            "middleName": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

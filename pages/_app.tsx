@@ -8,13 +8,13 @@ import {
     MuiThemeProvider
 } from '@material-ui/core/styles';
 
-import { Footer } from '../src/components/footer';
-import Header from '../src/components/header/Header';
+import { Footer } from '../src/components/common/Footer';
+import Header from '../src/components/common/Header';
 import '../assets/css/index.css';
 import { getStore } from '../src/redux/reducers/store';
 import { theme } from '../theme/theme';
 
-require('../utils/axiosClient');
+require('../src/utils/axiosClient');
 
 
 const { makeStore, persistor } = getStore();

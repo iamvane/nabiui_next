@@ -1,0 +1,1081 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Employment When the employment form is displayed Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Employment
+    addEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    addEmploymentError=""
+    deleteEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    deleteEmploymentError=""
+    editEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    editEmploymentError=""
+    employment={
+      Array [
+        Object {
+          "employer": "Oracle",
+          "fromMonth": "september",
+          "fromYear": "2017",
+          "id": 0,
+          "jobLocation": "Cambridge",
+          "jobTitle": "Software Engineer",
+          "toMonth": "march",
+          "toYear": "2019",
+        },
+      ]
+    }
+    fetchEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    fetchEmploymentError=""
+    isAddEmploymentRequesting={false}
+    isDeleteEmploymentRequesting={false}
+    isEditEmploymentRequesting={false}
+    isFetchEmploymentRequesting={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall nabi-text-uppercase"
+            variant="body2"
+          >
+            Add Employment
+          </WithStyles(Typography)>
+          <EmploymentForm
+            allFieldsFilled={false}
+            employer=""
+            fromMonth=""
+            fromYear=""
+            handleCancel={[Function]}
+            handleChange={[Function]}
+            handleOnBlur={[Function]}
+            handleSave={[Function]}
+            isEditing={false}
+            jobLocation=""
+            jobTitle=""
+            stillWorkHere={undefined}
+            toMonth=""
+            toYear=""
+          />
+        </div>,
+        <Unknown
+          backPath="education"
+          buttonText="Continue"
+          divider={true}
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+          nextPath="screening"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall nabi-text-uppercase"
+              variant="body2"
+            >
+              Add Employment
+            </WithStyles(Typography)>,
+            <EmploymentForm
+              allFieldsFilled={false}
+              employer=""
+              fromMonth=""
+              fromYear=""
+              handleCancel={[Function]}
+              handleChange={[Function]}
+              handleOnBlur={[Function]}
+              handleSave={[Function]}
+              isEditing={false}
+              jobLocation=""
+              jobTitle=""
+              stillWorkHere={undefined}
+              toMonth=""
+              toYear=""
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Add Employment",
+              "className": "nabi-margin-top-xsmall nabi-text-uppercase",
+              "variant": "body2",
+            },
+            "ref": null,
+            "rendered": "Add Employment",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "allFieldsFilled": false,
+              "employer": "",
+              "fromMonth": "",
+              "fromYear": "",
+              "handleCancel": [Function],
+              "handleChange": [Function],
+              "handleOnBlur": [Function],
+              "handleSave": [Function],
+              "isEditing": false,
+              "jobLocation": "",
+              "jobTitle": "",
+              "stillWorkHere": undefined,
+              "toMonth": "",
+              "toYear": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "backPath": "education",
+          "buttonText": "Continue",
+          "divider": true,
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+          "nextPath": "screening",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall nabi-text-uppercase"
+              variant="body2"
+            >
+              Add Employment
+            </WithStyles(Typography)>
+            <EmploymentForm
+              allFieldsFilled={false}
+              employer=""
+              fromMonth=""
+              fromYear=""
+              handleCancel={[Function]}
+              handleChange={[Function]}
+              handleOnBlur={[Function]}
+              handleSave={[Function]}
+              isEditing={false}
+              jobLocation=""
+              jobTitle=""
+              stillWorkHere={undefined}
+              toMonth=""
+              toYear=""
+            />
+          </div>,
+          <Unknown
+            backPath="education"
+            buttonText="Continue"
+            divider={true}
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+            nextPath="screening"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Typography)
+                className="nabi-margin-top-xsmall nabi-text-uppercase"
+                variant="body2"
+              >
+                Add Employment
+              </WithStyles(Typography)>,
+              <EmploymentForm
+                allFieldsFilled={false}
+                employer=""
+                fromMonth=""
+                fromYear=""
+                handleCancel={[Function]}
+                handleChange={[Function]}
+                handleOnBlur={[Function]}
+                handleSave={[Function]}
+                isEditing={false}
+                jobLocation=""
+                jobTitle=""
+                stillWorkHere={undefined}
+                toMonth=""
+                toYear=""
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Add Employment",
+                "className": "nabi-margin-top-xsmall nabi-text-uppercase",
+                "variant": "body2",
+              },
+              "ref": null,
+              "rendered": "Add Employment",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "allFieldsFilled": false,
+                "employer": "",
+                "fromMonth": "",
+                "fromYear": "",
+                "handleCancel": [Function],
+                "handleChange": [Function],
+                "handleOnBlur": [Function],
+                "handleSave": [Function],
+                "isEditing": false,
+                "jobLocation": "",
+                "jobTitle": "",
+                "stillWorkHere": undefined,
+                "toMonth": "",
+                "toYear": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "backPath": "education",
+            "buttonText": "Continue",
+            "divider": true,
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+            "nextPath": "screening",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`Employment When the employment form is hidden Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Employment
+    addEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    addEmploymentError=""
+    deleteEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    deleteEmploymentError=""
+    editEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    editEmploymentError=""
+    employment={
+      Array [
+        Object {
+          "employer": "Oracle",
+          "fromMonth": "september",
+          "fromYear": "2017",
+          "id": 0,
+          "jobLocation": "Cambridge",
+          "jobTitle": "Software Engineer",
+          "toMonth": "march",
+          "toYear": "2019",
+        },
+      ]
+    }
+    fetchEmployment={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    fetchEmploymentError=""
+    isAddEmploymentRequesting={false}
+    isDeleteEmploymentRequesting={false}
+    isEditEmploymentRequesting={false}
+    isFetchEmploymentRequesting={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <SectionTitle
+            text="Your Employment"
+          />
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            List your past experience, make sure it is relevant
+          </WithStyles(Typography)>
+          <ul>
+            <li
+              className="nabi-list"
+            >
+              <EmploymentAdded
+                deleteEmployment={[Function]}
+                editEmployment={[Function]}
+                employer="Oracle"
+                fromMonth="september"
+                fromYear="2017"
+                gridWidth={6}
+                id={0}
+                jobLocation="Cambridge"
+                jobTitle="Software Engineer"
+                stillWorkHere={undefined}
+                toMonth="march"
+                toYear="2019"
+              />
+            </li>
+          </ul>
+          <div
+            className="nabi-margin-top-medium"
+          >
+            <WithStyles(Button)
+              color="primary"
+              onClick={[Function]}
+              variant="contained"
+            >
+              <WithStyles(Icon)
+                className="nabi-margin-right-xsmall"
+              >
+                add
+              </WithStyles(Icon)>
+              Add Employment
+            </WithStyles(Button)>
+          </div>
+        </div>,
+        <Unknown
+          backPath="education"
+          buttonText="Continue"
+          divider={true}
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+          nextPath="screening"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              text="Your Employment"
+            />,
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              List your past experience, make sure it is relevant
+            </WithStyles(Typography)>,
+            <ul>
+              <li
+                className="nabi-list"
+              >
+                <EmploymentAdded
+                  deleteEmployment={[Function]}
+                  editEmployment={[Function]}
+                  employer="Oracle"
+                  fromMonth="september"
+                  fromYear="2017"
+                  gridWidth={6}
+                  id={0}
+                  jobLocation="Cambridge"
+                  jobTitle="Software Engineer"
+                  stillWorkHere={undefined}
+                  toMonth="march"
+                  toYear="2019"
+                />
+              </li>
+            </ul>,
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Employment
+              </WithStyles(Button)>
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": "Your Employment",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "List your past experience, make sure it is relevant",
+              "className": "nabi-margin-top-xsmall",
+            },
+            "ref": null,
+            "rendered": "List your past experience, make sure it is relevant",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <li
+                  className="nabi-list"
+                >
+                  <EmploymentAdded
+                    deleteEmployment={[Function]}
+                    editEmployment={[Function]}
+                    employer="Oracle"
+                    fromMonth="september"
+                    fromYear="2017"
+                    gridWidth={6}
+                    id={0}
+                    jobLocation="Cambridge"
+                    jobTitle="Software Engineer"
+                    stillWorkHere={undefined}
+                    toMonth="march"
+                    toYear="2019"
+                  />
+                </li>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "0",
+                "nodeType": "host",
+                "props": Object {
+                  "children": <EmploymentAdded
+                    deleteEmployment={[Function]}
+                    editEmployment={[Function]}
+                    employer="Oracle"
+                    fromMonth="september"
+                    fromYear="2017"
+                    gridWidth={6}
+                    id={0}
+                    jobLocation="Cambridge"
+                    jobTitle="Software Engineer"
+                    stillWorkHere={undefined}
+                    toMonth="march"
+                    toYear="2019"
+                  />,
+                  "className": "nabi-list",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "deleteEmployment": [Function],
+                    "editEmployment": [Function],
+                    "employer": "Oracle",
+                    "fromMonth": "september",
+                    "fromYear": "2017",
+                    "gridWidth": 6,
+                    "id": 0,
+                    "jobLocation": "Cambridge",
+                    "jobTitle": "Software Engineer",
+                    "stillWorkHere": undefined,
+                    "toMonth": "march",
+                    "toYear": "2019",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": "li",
+              },
+            ],
+            "type": "ul",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Employment
+              </WithStyles(Button)>,
+              "className": "nabi-margin-top-medium",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>,
+                  "Add Employment",
+                ],
+                "color": "primary",
+                "onClick": [Function],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "add",
+                    "className": "nabi-margin-right-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": "add",
+                  "type": [Function],
+                },
+                "Add Employment",
+              ],
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "backPath": "education",
+          "buttonText": "Continue",
+          "divider": true,
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+          "nextPath": "screening",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <SectionTitle
+              text="Your Employment"
+            />
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              List your past experience, make sure it is relevant
+            </WithStyles(Typography)>
+            <ul>
+              <li
+                className="nabi-list"
+              >
+                <EmploymentAdded
+                  deleteEmployment={[Function]}
+                  editEmployment={[Function]}
+                  employer="Oracle"
+                  fromMonth="september"
+                  fromYear="2017"
+                  gridWidth={6}
+                  id={0}
+                  jobLocation="Cambridge"
+                  jobTitle="Software Engineer"
+                  stillWorkHere={undefined}
+                  toMonth="march"
+                  toYear="2019"
+                />
+              </li>
+            </ul>
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Employment
+              </WithStyles(Button)>
+            </div>
+          </div>,
+          <Unknown
+            backPath="education"
+            buttonText="Continue"
+            divider={true}
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+            nextPath="screening"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                text="Your Employment"
+              />,
+              <WithStyles(Typography)
+                className="nabi-margin-top-xsmall"
+              >
+                List your past experience, make sure it is relevant
+              </WithStyles(Typography)>,
+              <ul>
+                <li
+                  className="nabi-list"
+                >
+                  <EmploymentAdded
+                    deleteEmployment={[Function]}
+                    editEmployment={[Function]}
+                    employer="Oracle"
+                    fromMonth="september"
+                    fromYear="2017"
+                    gridWidth={6}
+                    id={0}
+                    jobLocation="Cambridge"
+                    jobTitle="Software Engineer"
+                    stillWorkHere={undefined}
+                    toMonth="march"
+                    toYear="2019"
+                  />
+                </li>
+              </ul>,
+              <div
+                className="nabi-margin-top-medium"
+              >
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Employment
+                </WithStyles(Button)>
+              </div>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": "Your Employment",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "List your past experience, make sure it is relevant",
+                "className": "nabi-margin-top-xsmall",
+              },
+              "ref": null,
+              "rendered": "List your past experience, make sure it is relevant",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <li
+                    className="nabi-list"
+                  >
+                    <EmploymentAdded
+                      deleteEmployment={[Function]}
+                      editEmployment={[Function]}
+                      employer="Oracle"
+                      fromMonth="september"
+                      fromYear="2017"
+                      gridWidth={6}
+                      id={0}
+                      jobLocation="Cambridge"
+                      jobTitle="Software Engineer"
+                      stillWorkHere={undefined}
+                      toMonth="march"
+                      toYear="2019"
+                    />
+                  </li>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "0",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <EmploymentAdded
+                      deleteEmployment={[Function]}
+                      editEmployment={[Function]}
+                      employer="Oracle"
+                      fromMonth="september"
+                      fromYear="2017"
+                      gridWidth={6}
+                      id={0}
+                      jobLocation="Cambridge"
+                      jobTitle="Software Engineer"
+                      stillWorkHere={undefined}
+                      toMonth="march"
+                      toYear="2019"
+                    />,
+                    "className": "nabi-list",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "deleteEmployment": [Function],
+                      "editEmployment": [Function],
+                      "employer": "Oracle",
+                      "fromMonth": "september",
+                      "fromYear": "2017",
+                      "gridWidth": 6,
+                      "id": 0,
+                      "jobLocation": "Cambridge",
+                      "jobTitle": "Software Engineer",
+                      "stillWorkHere": undefined,
+                      "toMonth": "march",
+                      "toYear": "2019",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": "li",
+                },
+              ],
+              "type": "ul",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Employment
+                </WithStyles(Button)>,
+                "className": "nabi-margin-top-medium",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      add
+                    </WithStyles(Icon)>,
+                    "Add Employment",
+                  ],
+                  "color": "primary",
+                  "onClick": [Function],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "add",
+                      "className": "nabi-margin-right-xsmall",
+                    },
+                    "ref": null,
+                    "rendered": "add",
+                    "type": [Function],
+                  },
+                  "Add Employment",
+                ],
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "backPath": "education",
+            "buttonText": "Continue",
+            "divider": true,
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+            "nextPath": "screening",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

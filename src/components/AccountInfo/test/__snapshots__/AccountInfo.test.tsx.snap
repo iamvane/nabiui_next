@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountInfo Renders the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AccountInfo
+    errorUpdate=""
+    fetchUser={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    isRequestingFetch={false}
+    isRequestingUpdate={false}
+    nextPath="fooPath"
+    redirectUrl="foo"
+    updateUser={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    user={
+      Object {
+        "email": "email@company.com",
+        "firstName": "",
+        "gender": "",
+        "id": "fooId",
+        "lastName": "",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "password": "secretPass123",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+        "role": "Instructor",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <AccountInfoForm
+          accountInfo={
+            Object {
+              "firstName": "",
+              "gender": "",
+              "lastName": "",
+              "lat": "",
+              "lng": "",
+              "location": "",
+              "middleName": "",
+            }
+          }
+          applyMiddleName={[Function]}
+          closeMiddleNameModal={[Function]}
+          confirmNoMiddleName={[Function]}
+          errors={Object {}}
+          handleChange={[Function]}
+          handleLocationChange={[Function]}
+          handleLocationSelect={[Function]}
+          hasImageUploader={undefined}
+          location=""
+          phoneError={undefined}
+          redirectUrl="foo"
+          showMiddleNameModal={false}
+          user={
+            Object {
+              "email": "email@company.com",
+              "firstName": "",
+              "gender": "",
+              "id": "fooId",
+              "lastName": "",
+              "lat": "",
+              "lng": "",
+              "location": "",
+              "middleName": "",
+              "password": "secretPass123",
+              "phone": Object {
+                "isVerified": false,
+                "phoneNumber": "",
+              },
+              "phoneNumber": "",
+              "referralToken": "",
+              "role": "Instructor",
+            }
+          }
+          verificationChannel="sms"
+        />,
+        false,
+        false,
+        "",
+        <Unknown
+          buttonText="Continue"
+          divider={true}
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "accountInfo": Object {
+            "firstName": "",
+            "gender": "",
+            "lastName": "",
+            "lat": "",
+            "lng": "",
+            "location": "",
+            "middleName": "",
+          },
+          "applyMiddleName": [Function],
+          "closeMiddleNameModal": [Function],
+          "confirmNoMiddleName": [Function],
+          "errors": Object {},
+          "handleChange": [Function],
+          "handleLocationChange": [Function],
+          "handleLocationSelect": [Function],
+          "hasImageUploader": undefined,
+          "location": "",
+          "phoneError": undefined,
+          "redirectUrl": "foo",
+          "showMiddleNameModal": false,
+          "user": Object {
+            "email": "email@company.com",
+            "firstName": "",
+            "gender": "",
+            "id": "fooId",
+            "lastName": "",
+            "lat": "",
+            "lng": "",
+            "location": "",
+            "middleName": "",
+            "password": "secretPass123",
+            "phone": Object {
+              "isVerified": false,
+              "phoneNumber": "",
+            },
+            "phoneNumber": "",
+            "referralToken": "",
+            "role": "Instructor",
+          },
+          "verificationChannel": "sms",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      false,
+      false,
+      "",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "buttonText": "Continue",
+          "divider": true,
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <AccountInfoForm
+            accountInfo={
+              Object {
+                "firstName": "",
+                "gender": "",
+                "lastName": "",
+                "lat": "",
+                "lng": "",
+                "location": "",
+                "middleName": "",
+              }
+            }
+            applyMiddleName={[Function]}
+            closeMiddleNameModal={[Function]}
+            confirmNoMiddleName={[Function]}
+            errors={Object {}}
+            handleChange={[Function]}
+            handleLocationChange={[Function]}
+            handleLocationSelect={[Function]}
+            hasImageUploader={undefined}
+            location=""
+            phoneError={undefined}
+            redirectUrl="foo"
+            showMiddleNameModal={false}
+            user={
+              Object {
+                "email": "email@company.com",
+                "firstName": "",
+                "gender": "",
+                "id": "fooId",
+                "lastName": "",
+                "lat": "",
+                "lng": "",
+                "location": "",
+                "middleName": "",
+                "password": "secretPass123",
+                "phone": Object {
+                  "isVerified": false,
+                  "phoneNumber": "",
+                },
+                "phoneNumber": "",
+                "referralToken": "",
+                "role": "Instructor",
+              }
+            }
+            verificationChannel="sms"
+          />,
+          false,
+          false,
+          "",
+          <Unknown
+            buttonText="Continue"
+            divider={true}
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "accountInfo": Object {
+              "firstName": "",
+              "gender": "",
+              "lastName": "",
+              "lat": "",
+              "lng": "",
+              "location": "",
+              "middleName": "",
+            },
+            "applyMiddleName": [Function],
+            "closeMiddleNameModal": [Function],
+            "confirmNoMiddleName": [Function],
+            "errors": Object {},
+            "handleChange": [Function],
+            "handleLocationChange": [Function],
+            "handleLocationSelect": [Function],
+            "hasImageUploader": undefined,
+            "location": "",
+            "phoneError": undefined,
+            "redirectUrl": "foo",
+            "showMiddleNameModal": false,
+            "user": Object {
+              "email": "email@company.com",
+              "firstName": "",
+              "gender": "",
+              "id": "fooId",
+              "lastName": "",
+              "lat": "",
+              "lng": "",
+              "location": "",
+              "middleName": "",
+              "password": "secretPass123",
+              "phone": Object {
+                "isVerified": false,
+                "phoneNumber": "",
+              },
+              "phoneNumber": "",
+              "referralToken": "",
+              "role": "Instructor",
+            },
+            "verificationChannel": "sms",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        false,
+        false,
+        "",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "buttonText": "Continue",
+            "divider": true,
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
