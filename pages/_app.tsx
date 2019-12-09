@@ -12,7 +12,7 @@ import { Footer } from '../src/components/footer';
 import Header from '../src/components/header/Header';
 import '../assets/css/index.css';
 import { getStore } from '../src/redux/reducers/store';
-import { theme } from './theme';
+import { theme } from '../theme/theme';
 
 require('../utils/axiosClient');
 
