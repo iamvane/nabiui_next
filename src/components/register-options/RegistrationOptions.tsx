@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import {
     Button,
@@ -7,14 +7,14 @@ import {
     Typography
 } from '@material-ui/core';
 
-import { Routes } from '../../../../constants/Routes';
+import { Routes } from '../../constants/Routes';
 import { RegistrationOptionsComponent } from './constants';
 interface Props { }
 
 /**
  * Contains the registration form fields
  */
-const RegistrationOptions: React.StatelessComponent<Props> = props => {
+const RegistrationOptions: React.StatelessComponent<Props> = () => {
     return (
         <div className="nabi-container">
             <div className="nabi-background-white nabi-section nabi-text-center">
@@ -24,7 +24,7 @@ const RegistrationOptions: React.StatelessComponent<Props> = props => {
                 <Typography className="nabi-margin-small">
                     {RegistrationOptionsComponent.preLaunchStudentCTADescription}
                 </Typography>
-                <Link to={Routes.RegistrationStudent}>
+                <Link href={Routes.RegistrationStudent}>
                     <Button
                         color="primary"
                         variant="contained"
@@ -38,7 +38,7 @@ const RegistrationOptions: React.StatelessComponent<Props> = props => {
                     {RegistrationOptionsComponent.preLaunchInstructorCTATitle}
                 </p>
                 <Typography className="nabi-margin-small">{RegistrationOptionsComponent.instructorCTADescription}</Typography>
-                <Link to={Routes.RegistrationInstructor}>
+                <Link href={Routes.RegistrationInstructor}>
                     <Button
                         color="primary"
                         variant="contained"

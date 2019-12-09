@@ -146,7 +146,7 @@ export const theme = createMuiTheme({
             },
             colorPrimary: {
                 color: '#fff !important',
-                borderRadius: '5px',
+                borderRadius: '50%',
                 height: '30px',
                 width: '30px',
                 background: '#06c3e1',
@@ -156,7 +156,7 @@ export const theme = createMuiTheme({
             },
             colorSecondary: {
                 color: '#b6bac3 !important',
-                borderRadius: '5px',
+                borderRadius: '3px',
                 height: '10px',
                 width: '10px',
                 background: '#fff',

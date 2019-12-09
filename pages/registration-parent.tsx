@@ -9,7 +9,7 @@ import {
 
 import { StoreState } from '../src/redux/reducers/store';
 import { RegistrationType } from '../src/types/registration';
-import Registration from '../src/components/student-registration/Registration';
+import Registration from '../src/components/role-register/Registration';
 import { Role } from '../src/constants/Roles';
 
 interface StateProps {
@@ -26,6 +26,7 @@ interface Props extends
     NextRouter,
     DispatchProps,
     StateProps { }
+    
 const RegistrationPage = (props: Props) => {
     return (
         <Registration role={Role.parent} { ...props} />
