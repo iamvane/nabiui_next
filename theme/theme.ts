@@ -159,7 +159,6 @@ export const theme = createMuiTheme({
                 borderRadius: '3px',
                 height: '10px',
                 width: '10px',
-                background: '#fff',
                 '&:hover': {
                     background: 'rgba(6,195,225, 0.75) !important'
                 },
