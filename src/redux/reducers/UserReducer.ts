@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import {
     defaultUsersState
 } from '../models/UserModel';
-import { UserState, UserType } from '../../types/user'
+import { UserState, UserType } from '../models/UserModel'
 import { UserActions } from '../actions/UserActionTypes';
 import { APIActions } from '../models/models';
 import { setProfile } from './utils';

@@ -1,2 +1,2 @@
-import RegistrationOptions from '../src/components/register-options/RegistrationOptions';
+import RegistrationOptions from '../src/components/Auth/Registration/RegistrationOptions';
 export default RegistrationOptions;

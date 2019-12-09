@@ -1,0 +1,1095 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmploymentAdded When stillWorkHere is false Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EmploymentAdded
+    deleteEmployment={[MockFunction]}
+    editEmployment={[MockFunction]}
+    employer="Oracle"
+    fromMonth="sep"
+    fromYear=""
+    jobLocation="Cambridge, MA, USA"
+    jobTitle="Software Engineer"
+    stillWorkHere={false}
+    toMonth=""
+    toYear="2018"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-action-buttons"
+        >
+          <WithStyles(IconButton)
+            aria-label="Delete"
+            className="nabi-float-right nabi-margin-left-xsmall"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              delete
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+          <WithStyles(IconButton)
+            aria-label="Edit"
+            className="nabi-float-right"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              edit
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+        </div>,
+        <WithStyles(Typography)
+          className="nabi-margin-top-small nabi-text-uppercase"
+          variant="body2"
+        >
+          <mark>
+            Software Engineer
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Oracle
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Sep,  - , 2018
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Cambridge, MA, USA
+          </mark>
+        </WithStyles(Typography)>,
+      ],
+      "className": "nabi-editable-item nabi-margin-top-small",
+      "item": true,
+      "md": undefined,
+      "xs": 12,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+          ],
+          "className": "nabi-action-buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Delete",
+              "children": <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right nabi-margin-left-xsmall",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "delete",
+              },
+              "ref": null,
+              "rendered": "delete",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Edit",
+              "children": <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "edit",
+              },
+              "ref": null,
+              "rendered": "edit",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Software Engineer
+          </mark>,
+          "className": "nabi-margin-top-small nabi-text-uppercase",
+          "variant": "body2",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Software Engineer",
+          },
+          "ref": null,
+          "rendered": "Software Engineer",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Oracle
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Oracle",
+          },
+          "ref": null,
+          "rendered": "Oracle",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Sep,  - , 2018
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Sep,  - , 2018",
+          },
+          "ref": null,
+          "rendered": "Sep,  - , 2018",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Cambridge, MA, USA
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Cambridge, MA, USA",
+          },
+          "ref": null,
+          "rendered": "Cambridge, MA, USA",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-action-buttons"
+          >
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+          </div>,
+          <WithStyles(Typography)
+            className="nabi-margin-top-small nabi-text-uppercase"
+            variant="body2"
+          >
+            <mark>
+              Software Engineer
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Oracle
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Sep,  - , 2018
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Cambridge, MA, USA
+            </mark>
+          </WithStyles(Typography)>,
+        ],
+        "className": "nabi-editable-item nabi-margin-top-small",
+        "item": true,
+        "md": undefined,
+        "xs": 12,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(IconButton)
+                aria-label="Delete"
+                className="nabi-float-right nabi-margin-left-xsmall"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+              <WithStyles(IconButton)
+                aria-label="Edit"
+                className="nabi-float-right"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+            ],
+            "className": "nabi-action-buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Delete",
+                "children": <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right nabi-margin-left-xsmall",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "delete",
+                },
+                "ref": null,
+                "rendered": "delete",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Edit",
+                "children": <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "edit",
+                },
+                "ref": null,
+                "rendered": "edit",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Software Engineer
+            </mark>,
+            "className": "nabi-margin-top-small nabi-text-uppercase",
+            "variant": "body2",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Software Engineer",
+            },
+            "ref": null,
+            "rendered": "Software Engineer",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Oracle
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Oracle",
+            },
+            "ref": null,
+            "rendered": "Oracle",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Sep,  - , 2018
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Sep,  - , 2018",
+            },
+            "ref": null,
+            "rendered": "Sep,  - , 2018",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Cambridge, MA, USA
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Cambridge, MA, USA",
+            },
+            "ref": null,
+            "rendered": "Cambridge, MA, USA",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;
+
+exports[`EmploymentAdded When stillWorkHere is true Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EmploymentAdded
+    deleteEmployment={[MockFunction]}
+    editEmployment={[MockFunction]}
+    employer="Oracle"
+    fromMonth="sep"
+    fromYear="2017"
+    jobLocation="Cambridge, MA, USA"
+    jobTitle="Software Engineer"
+    stillWorkHere={true}
+    toMonth="sep"
+    toYear="2018"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-action-buttons"
+        >
+          <WithStyles(IconButton)
+            aria-label="Delete"
+            className="nabi-float-right nabi-margin-left-xsmall"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              delete
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+          <WithStyles(IconButton)
+            aria-label="Edit"
+            className="nabi-float-right"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              edit
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+        </div>,
+        <WithStyles(Typography)
+          className="nabi-margin-top-small nabi-text-uppercase"
+          variant="body2"
+        >
+          <mark>
+            Software Engineer
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Oracle
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Sep, 2017 - Present
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Cambridge, MA, USA
+          </mark>
+        </WithStyles(Typography)>,
+      ],
+      "className": "nabi-editable-item nabi-margin-top-small",
+      "item": true,
+      "md": undefined,
+      "xs": 12,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+          ],
+          "className": "nabi-action-buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Delete",
+              "children": <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right nabi-margin-left-xsmall",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "delete",
+              },
+              "ref": null,
+              "rendered": "delete",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Edit",
+              "children": <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "edit",
+              },
+              "ref": null,
+              "rendered": "edit",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Software Engineer
+          </mark>,
+          "className": "nabi-margin-top-small nabi-text-uppercase",
+          "variant": "body2",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Software Engineer",
+          },
+          "ref": null,
+          "rendered": "Software Engineer",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Oracle
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Oracle",
+          },
+          "ref": null,
+          "rendered": "Oracle",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Sep, 2017 - Present
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Sep, 2017 - Present",
+          },
+          "ref": null,
+          "rendered": "Sep, 2017 - Present",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Cambridge, MA, USA
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Cambridge, MA, USA",
+          },
+          "ref": null,
+          "rendered": "Cambridge, MA, USA",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-action-buttons"
+          >
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+          </div>,
+          <WithStyles(Typography)
+            className="nabi-margin-top-small nabi-text-uppercase"
+            variant="body2"
+          >
+            <mark>
+              Software Engineer
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Oracle
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Sep, 2017 - Present
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Cambridge, MA, USA
+            </mark>
+          </WithStyles(Typography)>,
+        ],
+        "className": "nabi-editable-item nabi-margin-top-small",
+        "item": true,
+        "md": undefined,
+        "xs": 12,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(IconButton)
+                aria-label="Delete"
+                className="nabi-float-right nabi-margin-left-xsmall"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+              <WithStyles(IconButton)
+                aria-label="Edit"
+                className="nabi-float-right"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+            ],
+            "className": "nabi-action-buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Delete",
+                "children": <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right nabi-margin-left-xsmall",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "delete",
+                },
+                "ref": null,
+                "rendered": "delete",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Edit",
+                "children": <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "edit",
+                },
+                "ref": null,
+                "rendered": "edit",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Software Engineer
+            </mark>,
+            "className": "nabi-margin-top-small nabi-text-uppercase",
+            "variant": "body2",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Software Engineer",
+            },
+            "ref": null,
+            "rendered": "Software Engineer",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Oracle
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Oracle",
+            },
+            "ref": null,
+            "rendered": "Oracle",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Sep, 2017 - Present
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Sep, 2017 - Present",
+            },
+            "ref": null,
+            "rendered": "Sep, 2017 - Present",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Cambridge, MA, USA
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Cambridge, MA, USA",
+            },
+            "ref": null,
+            "rendered": "Cambridge, MA, USA",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

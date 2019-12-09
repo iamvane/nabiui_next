@@ -1,0 +1,432 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Dashboard
+    fetchUser={[Function]}
+    firstName=""
+    history={[MockFunction]}
+    isRequesting={false}
+    location={
+      Object {
+        "hash": "",
+        "pathname": "/build-request/fooId",
+        "search": "",
+        "state": null,
+      }
+    }
+    match={
+      Object {
+        "isExact": true,
+        "params": Object {
+          "step": "fooId",
+        },
+        "path": "/build-request/:id",
+        "url": "/build-request/fooId",
+      }
+    }
+    user={
+      Object {
+        "displayName": "",
+        "email": "oreo",
+        "firstName": "foo",
+        "gender": "",
+        "id": "fooId",
+        "lastName": "bar",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "password": "",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+        "role": "instructor",
+        "zipCode": "",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <UNDEFINED>
+        <Unknown
+          mainContent={<Connect(PreLaunchInstructorDashboard) />}
+          pageTitle="Dashboard"
+          sidebarContent={
+            <UNDEFINED>
+              <SectionTitle
+                text="Things to do"
+              />
+              <img
+                className="dashboard-view-profile-image"
+                src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
+              />
+              <WithStyles(Typography)>
+                <Link
+                  to="/build-profile"
+                >
+                  Edit your profile
+                </Link>
+              </WithStyles(Typography)>
+              <WithStyles(Typography)>
+                <Link
+                  to="profile/undefined"
+                >
+                  View your profile
+                </Link>
+              </WithStyles(Typography)>
+              <WithStyles(Typography)>
+                <a
+                  href="https://www.facebook.com/pg/nabimusicinfo/jobs"
+                  target="_blank"
+                >
+                  View available jobs
+                </a>
+              </WithStyles(Typography)>
+            </UNDEFINED>
+          }
+        />
+        <SnackBar
+          handleClose={[Function]}
+          hideIcon={true}
+          isOpen={false}
+          message="Invite friends and family. For every person you invite you will get a FREE lesson!"
+          variant="success"
+        />
+      </UNDEFINED>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <Unknown
+            mainContent={<Connect(PreLaunchInstructorDashboard) />}
+            pageTitle="Dashboard"
+            sidebarContent={
+              <UNDEFINED>
+                <SectionTitle
+                  text="Things to do"
+                />
+                <img
+                  className="dashboard-view-profile-image"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
+                />
+                <WithStyles(Typography)>
+                  <Link
+                    to="/build-profile"
+                  >
+                    Edit your profile
+                  </Link>
+                </WithStyles(Typography)>
+                <WithStyles(Typography)>
+                  <Link
+                    to="profile/undefined"
+                  >
+                    View your profile
+                  </Link>
+                </WithStyles(Typography)>
+                <WithStyles(Typography)>
+                  <a
+                    href="https://www.facebook.com/pg/nabimusicinfo/jobs"
+                    target="_blank"
+                  >
+                    View available jobs
+                  </a>
+                </WithStyles(Typography)>
+              </UNDEFINED>
+            }
+          />,
+          <SnackBar
+            handleClose={[Function]}
+            hideIcon={true}
+            isOpen={false}
+            message="Invite friends and family. For every person you invite you will get a FREE lesson!"
+            variant="success"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "mainContent": <Connect(PreLaunchInstructorDashboard) />,
+            "pageTitle": "Dashboard",
+            "sidebarContent": <UNDEFINED>
+              <SectionTitle
+                text="Things to do"
+              />
+              <img
+                className="dashboard-view-profile-image"
+                src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
+              />
+              <WithStyles(Typography)>
+                <Link
+                  to="/build-profile"
+                >
+                  Edit your profile
+                </Link>
+              </WithStyles(Typography)>
+              <WithStyles(Typography)>
+                <Link
+                  to="profile/undefined"
+                >
+                  View your profile
+                </Link>
+              </WithStyles(Typography)>
+              <WithStyles(Typography)>
+                <a
+                  href="https://www.facebook.com/pg/nabimusicinfo/jobs"
+                  target="_blank"
+                >
+                  View available jobs
+                </a>
+              </WithStyles(Typography)>
+            </UNDEFINED>,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "handleClose": [Function],
+            "hideIcon": true,
+            "isOpen": false,
+            "message": "Invite friends and family. For every person you invite you will get a FREE lesson!",
+            "variant": "success",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <UNDEFINED>
+          <Unknown
+            mainContent={<Connect(PreLaunchInstructorDashboard) />}
+            pageTitle="Dashboard"
+            sidebarContent={
+              <UNDEFINED>
+                <SectionTitle
+                  text="Things to do"
+                />
+                <img
+                  className="dashboard-view-profile-image"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
+                />
+                <WithStyles(Typography)>
+                  <Link
+                    to="/build-profile"
+                  >
+                    Edit your profile
+                  </Link>
+                </WithStyles(Typography)>
+                <WithStyles(Typography)>
+                  <Link
+                    to="profile/undefined"
+                  >
+                    View your profile
+                  </Link>
+                </WithStyles(Typography)>
+                <WithStyles(Typography)>
+                  <a
+                    href="https://www.facebook.com/pg/nabimusicinfo/jobs"
+                    target="_blank"
+                  >
+                    View available jobs
+                  </a>
+                </WithStyles(Typography)>
+              </UNDEFINED>
+            }
+          />
+          <SnackBar
+            handleClose={[Function]}
+            hideIcon={true}
+            isOpen={false}
+            message="Invite friends and family. For every person you invite you will get a FREE lesson!"
+            variant="success"
+          />
+        </UNDEFINED>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <Unknown
+              mainContent={<Connect(PreLaunchInstructorDashboard) />}
+              pageTitle="Dashboard"
+              sidebarContent={
+                <UNDEFINED>
+                  <SectionTitle
+                    text="Things to do"
+                  />
+                  <img
+                    className="dashboard-view-profile-image"
+                    src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
+                  />
+                  <WithStyles(Typography)>
+                    <Link
+                      to="/build-profile"
+                    >
+                      Edit your profile
+                    </Link>
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)>
+                    <Link
+                      to="profile/undefined"
+                    >
+                      View your profile
+                    </Link>
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)>
+                    <a
+                      href="https://www.facebook.com/pg/nabimusicinfo/jobs"
+                      target="_blank"
+                    >
+                      View available jobs
+                    </a>
+                  </WithStyles(Typography)>
+                </UNDEFINED>
+              }
+            />,
+            <SnackBar
+              handleClose={[Function]}
+              hideIcon={true}
+              isOpen={false}
+              message="Invite friends and family. For every person you invite you will get a FREE lesson!"
+              variant="success"
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "mainContent": <Connect(PreLaunchInstructorDashboard) />,
+              "pageTitle": "Dashboard",
+              "sidebarContent": <UNDEFINED>
+                <SectionTitle
+                  text="Things to do"
+                />
+                <img
+                  className="dashboard-view-profile-image"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
+                />
+                <WithStyles(Typography)>
+                  <Link
+                    to="/build-profile"
+                  >
+                    Edit your profile
+                  </Link>
+                </WithStyles(Typography)>
+                <WithStyles(Typography)>
+                  <Link
+                    to="profile/undefined"
+                  >
+                    View your profile
+                  </Link>
+                </WithStyles(Typography)>
+                <WithStyles(Typography)>
+                  <a
+                    href="https://www.facebook.com/pg/nabimusicinfo/jobs"
+                    target="_blank"
+                  >
+                    View available jobs
+                  </a>
+                </WithStyles(Typography)>
+              </UNDEFINED>,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "handleClose": [Function],
+              "hideIcon": true,
+              "isOpen": false,
+              "message": "Invite friends and family. For every person you invite you will get a FREE lesson!",
+              "variant": "success",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

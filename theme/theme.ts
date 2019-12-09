@@ -196,9 +196,6 @@ export const theme = createMuiTheme({
                     display: 'none'
                 },
                 backgroundColor: '#f3f6f9 !important'
-            },
-            error: {
-                borderColor: '#f44336 !important'
             }
         },
         MuiInputBase: {
@@ -322,6 +319,7 @@ export const theme = createMuiTheme({
             root: {
                 fontFamily: '\'Montserrat\', sans-serif !important',
                 color: '#717a8a !important',
+                fontSize: '0.875rem !important',
                 '&$colorPrimary': {
                     color: '#06c3e1 !important'
                 },

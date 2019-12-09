@@ -1,0 +1,530 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiddleNameModal Renders the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <MiddleNameModal
+    applyMiddleName={[MockFunction]}
+    closeHandler={[MockFunction]}
+    confirmNoMiddleName={[MockFunction]}
+    handleChange={[MockFunction]}
+    isFormDialogOpen={false}
+    middleName="middleName"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <WithStyles(Dialog)
+        aria-labelledby="form-dialog-title"
+        onClose={[MockFunction]}
+        open={false}
+        scroll="body"
+      >
+        <WithStyles(DialogTitle)
+          id="form-dialog-title nabi-text-uppercase"
+        >
+          Missing Middle Name
+        </WithStyles(DialogTitle)>
+        <WithStyles(DialogContent)>
+          <WithStyles(DialogContentText)>
+            Looks like you didn’t provide a middle name. Please enter it below, if applicable.
+            <TextField
+              error={false}
+              fullWidth={true}
+              helperText={undefined}
+              name="middleName"
+              onChange={[MockFunction]}
+              placeholder="Middle Name"
+              required={true}
+              select={false}
+              value="middleName"
+              variant="standard"
+            />
+          </WithStyles(DialogContentText)>
+        </WithStyles(DialogContent)>
+        <WithStyles(DialogActions)>
+          <WithStyles(Button)
+            onClick={[MockFunction]}
+          >
+            I don't have one
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            color="primary"
+            onClick={[MockFunction]}
+            variant="contained"
+          >
+            Apply
+          </WithStyles(Button)>
+        </WithStyles(DialogActions)>
+      </WithStyles(Dialog)>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "aria-labelledby": "form-dialog-title",
+        "children": Array [
+          <WithStyles(DialogTitle)
+            id="form-dialog-title nabi-text-uppercase"
+          >
+            Missing Middle Name
+          </WithStyles(DialogTitle)>,
+          <WithStyles(DialogContent)>
+            <WithStyles(DialogContentText)>
+              Looks like you didn’t provide a middle name. Please enter it below, if applicable.
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="middleName"
+                onChange={[MockFunction]}
+                placeholder="Middle Name"
+                required={true}
+                select={false}
+                value="middleName"
+                variant="standard"
+              />
+            </WithStyles(DialogContentText)>
+          </WithStyles(DialogContent)>,
+          <WithStyles(DialogActions)>
+            <WithStyles(Button)
+              onClick={[MockFunction]}
+            >
+              I don't have one
+            </WithStyles(Button)>
+            <WithStyles(Button)
+              color="primary"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Apply
+            </WithStyles(Button)>
+          </WithStyles(DialogActions)>,
+        ],
+        "onClose": [MockFunction],
+        "open": false,
+        "scroll": "body",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Missing Middle Name",
+            "id": "form-dialog-title nabi-text-uppercase",
+          },
+          "ref": null,
+          "rendered": "Missing Middle Name",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <WithStyles(DialogContentText)>
+              Looks like you didn’t provide a middle name. Please enter it below, if applicable.
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="middleName"
+                onChange={[MockFunction]}
+                placeholder="Middle Name"
+                required={true}
+                select={false}
+                value="middleName"
+                variant="standard"
+              />
+            </WithStyles(DialogContentText)>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "Looks like you didn’t provide a middle name. Please enter it below, if applicable.",
+                <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="middleName"
+                  onChange={[MockFunction]}
+                  placeholder="Middle Name"
+                  required={true}
+                  select={false}
+                  value="middleName"
+                  variant="standard"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Looks like you didn’t provide a middle name. Please enter it below, if applicable.",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "error": false,
+                  "fullWidth": true,
+                  "helperText": undefined,
+                  "name": "middleName",
+                  "onChange": [MockFunction],
+                  "placeholder": "Middle Name",
+                  "required": true,
+                  "select": false,
+                  "value": "middleName",
+                  "variant": "standard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Button)
+                onClick={[MockFunction]}
+              >
+                I don't have one
+              </WithStyles(Button)>,
+              <WithStyles(Button)
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Apply
+              </WithStyles(Button)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "I don't have one",
+                "onClick": [MockFunction],
+              },
+              "ref": null,
+              "rendered": "I don't have one",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Apply",
+                "color": "primary",
+                "onClick": [MockFunction],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": "Apply",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <WithStyles(Dialog)
+          aria-labelledby="form-dialog-title"
+          onClose={[MockFunction]}
+          open={false}
+          scroll="body"
+        >
+          <WithStyles(DialogTitle)
+            id="form-dialog-title nabi-text-uppercase"
+          >
+            Missing Middle Name
+          </WithStyles(DialogTitle)>
+          <WithStyles(DialogContent)>
+            <WithStyles(DialogContentText)>
+              Looks like you didn’t provide a middle name. Please enter it below, if applicable.
+              <TextField
+                error={false}
+                fullWidth={true}
+                helperText={undefined}
+                name="middleName"
+                onChange={[MockFunction]}
+                placeholder="Middle Name"
+                required={true}
+                select={false}
+                value="middleName"
+                variant="standard"
+              />
+            </WithStyles(DialogContentText)>
+          </WithStyles(DialogContent)>
+          <WithStyles(DialogActions)>
+            <WithStyles(Button)
+              onClick={[MockFunction]}
+            >
+              I don't have one
+            </WithStyles(Button)>
+            <WithStyles(Button)
+              color="primary"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Apply
+            </WithStyles(Button)>
+          </WithStyles(DialogActions)>
+        </WithStyles(Dialog)>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "aria-labelledby": "form-dialog-title",
+          "children": Array [
+            <WithStyles(DialogTitle)
+              id="form-dialog-title nabi-text-uppercase"
+            >
+              Missing Middle Name
+            </WithStyles(DialogTitle)>,
+            <WithStyles(DialogContent)>
+              <WithStyles(DialogContentText)>
+                Looks like you didn’t provide a middle name. Please enter it below, if applicable.
+                <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="middleName"
+                  onChange={[MockFunction]}
+                  placeholder="Middle Name"
+                  required={true}
+                  select={false}
+                  value="middleName"
+                  variant="standard"
+                />
+              </WithStyles(DialogContentText)>
+            </WithStyles(DialogContent)>,
+            <WithStyles(DialogActions)>
+              <WithStyles(Button)
+                onClick={[MockFunction]}
+              >
+                I don't have one
+              </WithStyles(Button)>
+              <WithStyles(Button)
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Apply
+              </WithStyles(Button)>
+            </WithStyles(DialogActions)>,
+          ],
+          "onClose": [MockFunction],
+          "open": false,
+          "scroll": "body",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Missing Middle Name",
+              "id": "form-dialog-title nabi-text-uppercase",
+            },
+            "ref": null,
+            "rendered": "Missing Middle Name",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(DialogContentText)>
+                Looks like you didn’t provide a middle name. Please enter it below, if applicable.
+                <TextField
+                  error={false}
+                  fullWidth={true}
+                  helperText={undefined}
+                  name="middleName"
+                  onChange={[MockFunction]}
+                  placeholder="Middle Name"
+                  required={true}
+                  select={false}
+                  value="middleName"
+                  variant="standard"
+                />
+              </WithStyles(DialogContentText)>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "Looks like you didn’t provide a middle name. Please enter it below, if applicable.",
+                  <TextField
+                    error={false}
+                    fullWidth={true}
+                    helperText={undefined}
+                    name="middleName"
+                    onChange={[MockFunction]}
+                    placeholder="Middle Name"
+                    required={true}
+                    select={false}
+                    value="middleName"
+                    variant="standard"
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Looks like you didn’t provide a middle name. Please enter it below, if applicable.",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "error": false,
+                    "fullWidth": true,
+                    "helperText": undefined,
+                    "name": "middleName",
+                    "onChange": [MockFunction],
+                    "placeholder": "Middle Name",
+                    "required": true,
+                    "select": false,
+                    "value": "middleName",
+                    "variant": "standard",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Button)
+                  onClick={[MockFunction]}
+                >
+                  I don't have one
+                </WithStyles(Button)>,
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Apply
+                </WithStyles(Button)>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "I don't have one",
+                  "onClick": [MockFunction],
+                },
+                "ref": null,
+                "rendered": "I don't have one",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Apply",
+                  "color": "primary",
+                  "onClick": [MockFunction],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": "Apply",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

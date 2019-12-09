@@ -1,0 +1,1786 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuyMoreLessons Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <BuyMoreLessonsModal
+    closeHandler={[MockFunction]}
+    error=""
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    isOpen={true}
+    lessonDuration="45 mins"
+    lessonRate="10.00"
+    student={
+      Object {
+        "lessonsRemaining": 4,
+        "students": Array [
+          Object {
+            "age": 22,
+            "instrument": "piano",
+            "lessonDuration": "45 mins",
+            "name": "Roxana",
+            "placeForLessons": "home",
+            "skillLevel": "beginner",
+          },
+        ],
+        "user": Object {
+          "birthday": "1996-07-12T04:00:00.000Z",
+          "email": "rox@gmail.com",
+          "firstName": "Roxana",
+          "id": "0",
+          "lastName": "Gallardo",
+          "role": "student",
+        },
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <WithStyles(Dialog)
+        aria-labelledby="form-dialog-title"
+        onClose={[MockFunction]}
+        open={true}
+        scroll="body"
+      >
+        <WithStyles(DialogTitle)
+          id="form-dialog-title nabi-text-uppercase"
+        >
+          Send Reminder
+        </WithStyles(DialogTitle)>
+        <WithStyles(DialogContent)>
+          <WithStyles(DialogContentText)>
+            <WithStyles(Typography)>
+              Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+            </WithStyles(Typography)>
+            <WithStyles(ListItem)
+              className="nabi-padding-remove"
+            >
+              <WithStyles(Typography)
+                className="list-text"
+              >
+                Lesson duration
+              </WithStyles(Typography)>
+              <WithStyles(FormControl)
+                className="nabi-rates-field"
+              >
+                <WithStyles(WithFormControlContext(Select))
+                  input={
+                    <WithStyles(Input)
+                      id="lessonDuration"
+                      name="lessonDuration"
+                    />
+                  }
+                  native={true}
+                  onChange={[MockFunction]}
+                  value="45 mins"
+                >
+                  <option
+                    disabled={true}
+                    value="Select lesson duration"
+                  >
+                    Select lesson duration
+                  </option>
+                  <option
+                    value="30 mins"
+                  >
+                    30 mins
+                  </option>
+                  <option
+                    value="45 mins"
+                  >
+                    45 mins
+                  </option>
+                  <option
+                    value="60 mins"
+                  >
+                    60 mins
+                  </option>
+                  <option
+                    value="90 mins"
+                  >
+                    90 mins
+                  </option>
+                </WithStyles(WithFormControlContext(Select))>
+              </WithStyles(FormControl)>
+            </WithStyles(ListItem)>
+            <WithStyles(ListItem)
+              className="nabi-padding-remove"
+            >
+              <WithStyles(Typography)
+                className="list-text"
+              >
+                Lesson rate
+              </WithStyles(Typography)>
+              <TextField
+                InputProps={
+                  Object {
+                    "inputComponent": [Function],
+                  }
+                }
+                className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                error={false}
+                helperText=""
+                id="lessonRate"
+                name="lessonRate"
+                onChange={[MockFunction]}
+                placeholder="0.00"
+                required={true}
+                select={false}
+                value="10.00"
+                variant="standard"
+              />
+              <WithStyles(Typography)
+                className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                color="primary"
+              >
+                You get $8.00
+              </WithStyles(Typography)>
+            </WithStyles(ListItem)>
+          </WithStyles(DialogContentText)>
+        </WithStyles(DialogContent)>
+        <WithStyles(DialogActions)>
+          <WithStyles(Button)
+            color="default"
+            onClick={[MockFunction]}
+            variant="contained"
+          >
+            Cancel
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            color="primary"
+            onClick={[MockFunction]}
+            variant="contained"
+          >
+            Send
+          </WithStyles(Button)>
+        </WithStyles(DialogActions)>
+      </WithStyles(Dialog)>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "aria-labelledby": "form-dialog-title",
+        "children": Array [
+          <WithStyles(DialogTitle)
+            id="form-dialog-title nabi-text-uppercase"
+          >
+            Send Reminder
+          </WithStyles(DialogTitle)>,
+          <WithStyles(DialogContent)>
+            <WithStyles(DialogContentText)>
+              <WithStyles(Typography)>
+                Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+              </WithStyles(Typography)>
+              <WithStyles(ListItem)
+                className="nabi-padding-remove"
+              >
+                <WithStyles(Typography)
+                  className="list-text"
+                >
+                  Lesson duration
+                </WithStyles(Typography)>
+                <WithStyles(FormControl)
+                  className="nabi-rates-field"
+                >
+                  <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        id="lessonDuration"
+                        name="lessonDuration"
+                      />
+                    }
+                    native={true}
+                    onChange={[MockFunction]}
+                    value="45 mins"
+                  >
+                    <option
+                      disabled={true}
+                      value="Select lesson duration"
+                    >
+                      Select lesson duration
+                    </option>
+                    <option
+                      value="30 mins"
+                    >
+                      30 mins
+                    </option>
+                    <option
+                      value="45 mins"
+                    >
+                      45 mins
+                    </option>
+                    <option
+                      value="60 mins"
+                    >
+                      60 mins
+                    </option>
+                    <option
+                      value="90 mins"
+                    >
+                      90 mins
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>
+                </WithStyles(FormControl)>
+              </WithStyles(ListItem)>
+              <WithStyles(ListItem)
+                className="nabi-padding-remove"
+              >
+                <WithStyles(Typography)
+                  className="list-text"
+                >
+                  Lesson rate
+                </WithStyles(Typography)>
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                  error={false}
+                  helperText=""
+                  id="lessonRate"
+                  name="lessonRate"
+                  onChange={[MockFunction]}
+                  placeholder="0.00"
+                  required={true}
+                  select={false}
+                  value="10.00"
+                  variant="standard"
+                />
+                <WithStyles(Typography)
+                  className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                  color="primary"
+                >
+                  You get $8.00
+                </WithStyles(Typography)>
+              </WithStyles(ListItem)>
+            </WithStyles(DialogContentText)>
+          </WithStyles(DialogContent)>,
+          <WithStyles(DialogActions)>
+            <WithStyles(Button)
+              color="default"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Cancel
+            </WithStyles(Button)>
+            <WithStyles(Button)
+              color="primary"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Send
+            </WithStyles(Button)>
+          </WithStyles(DialogActions)>,
+        ],
+        "onClose": [MockFunction],
+        "open": true,
+        "scroll": "body",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Send Reminder",
+            "id": "form-dialog-title nabi-text-uppercase",
+          },
+          "ref": null,
+          "rendered": "Send Reminder",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <WithStyles(DialogContentText)>
+              <WithStyles(Typography)>
+                Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+              </WithStyles(Typography)>
+              <WithStyles(ListItem)
+                className="nabi-padding-remove"
+              >
+                <WithStyles(Typography)
+                  className="list-text"
+                >
+                  Lesson duration
+                </WithStyles(Typography)>
+                <WithStyles(FormControl)
+                  className="nabi-rates-field"
+                >
+                  <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        id="lessonDuration"
+                        name="lessonDuration"
+                      />
+                    }
+                    native={true}
+                    onChange={[MockFunction]}
+                    value="45 mins"
+                  >
+                    <option
+                      disabled={true}
+                      value="Select lesson duration"
+                    >
+                      Select lesson duration
+                    </option>
+                    <option
+                      value="30 mins"
+                    >
+                      30 mins
+                    </option>
+                    <option
+                      value="45 mins"
+                    >
+                      45 mins
+                    </option>
+                    <option
+                      value="60 mins"
+                    >
+                      60 mins
+                    </option>
+                    <option
+                      value="90 mins"
+                    >
+                      90 mins
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>
+                </WithStyles(FormControl)>
+              </WithStyles(ListItem)>
+              <WithStyles(ListItem)
+                className="nabi-padding-remove"
+              >
+                <WithStyles(Typography)
+                  className="list-text"
+                >
+                  Lesson rate
+                </WithStyles(Typography)>
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                  error={false}
+                  helperText=""
+                  id="lessonRate"
+                  name="lessonRate"
+                  onChange={[MockFunction]}
+                  placeholder="0.00"
+                  required={true}
+                  select={false}
+                  value="10.00"
+                  variant="standard"
+                />
+                <WithStyles(Typography)
+                  className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                  color="primary"
+                >
+                  You get $8.00
+                </WithStyles(Typography)>
+              </WithStyles(ListItem)>
+            </WithStyles(DialogContentText)>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Typography)>
+                  Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+                </WithStyles(Typography)>,
+                <WithStyles(ListItem)
+                  className="nabi-padding-remove"
+                >
+                  <WithStyles(Typography)
+                    className="list-text"
+                  >
+                    Lesson duration
+                  </WithStyles(Typography)>
+                  <WithStyles(FormControl)
+                    className="nabi-rates-field"
+                  >
+                    <WithStyles(WithFormControlContext(Select))
+                      input={
+                        <WithStyles(Input)
+                          id="lessonDuration"
+                          name="lessonDuration"
+                        />
+                      }
+                      native={true}
+                      onChange={[MockFunction]}
+                      value="45 mins"
+                    >
+                      <option
+                        disabled={true}
+                        value="Select lesson duration"
+                      >
+                        Select lesson duration
+                      </option>
+                      <option
+                        value="30 mins"
+                      >
+                        30 mins
+                      </option>
+                      <option
+                        value="45 mins"
+                      >
+                        45 mins
+                      </option>
+                      <option
+                        value="60 mins"
+                      >
+                        60 mins
+                      </option>
+                      <option
+                        value="90 mins"
+                      >
+                        90 mins
+                      </option>
+                    </WithStyles(WithFormControlContext(Select))>
+                  </WithStyles(FormControl)>
+                </WithStyles(ListItem)>,
+                <WithStyles(ListItem)
+                  className="nabi-padding-remove"
+                >
+                  <WithStyles(Typography)
+                    className="list-text"
+                  >
+                    Lesson rate
+                  </WithStyles(Typography)>
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                    error={false}
+                    helperText=""
+                    id="lessonRate"
+                    name="lessonRate"
+                    onChange={[MockFunction]}
+                    placeholder="0.00"
+                    required={true}
+                    select={false}
+                    value="10.00"
+                    variant="standard"
+                  />
+                  <WithStyles(Typography)
+                    className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                    color="primary"
+                  >
+                    You get $8.00
+                  </WithStyles(Typography)>
+                </WithStyles(ListItem)>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Send Roxana G. a reminder to buy more piano lessons at this rate per lesson",
+                },
+                "ref": null,
+                "rendered": "Send Roxana G. a reminder to buy more piano lessons at this rate per lesson",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Typography)
+                      className="list-text"
+                    >
+                      Lesson duration
+                    </WithStyles(Typography)>,
+                    <WithStyles(FormControl)
+                      className="nabi-rates-field"
+                    >
+                      <WithStyles(WithFormControlContext(Select))
+                        input={
+                          <WithStyles(Input)
+                            id="lessonDuration"
+                            name="lessonDuration"
+                          />
+                        }
+                        native={true}
+                        onChange={[MockFunction]}
+                        value="45 mins"
+                      >
+                        <option
+                          disabled={true}
+                          value="Select lesson duration"
+                        >
+                          Select lesson duration
+                        </option>
+                        <option
+                          value="30 mins"
+                        >
+                          30 mins
+                        </option>
+                        <option
+                          value="45 mins"
+                        >
+                          45 mins
+                        </option>
+                        <option
+                          value="60 mins"
+                        >
+                          60 mins
+                        </option>
+                        <option
+                          value="90 mins"
+                        >
+                          90 mins
+                        </option>
+                      </WithStyles(WithFormControlContext(Select))>
+                    </WithStyles(FormControl)>,
+                  ],
+                  "className": "nabi-padding-remove",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Lesson duration",
+                      "className": "list-text",
+                    },
+                    "ref": null,
+                    "rendered": "Lesson duration",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <WithStyles(WithFormControlContext(Select))
+                        input={
+                          <WithStyles(Input)
+                            id="lessonDuration"
+                            name="lessonDuration"
+                          />
+                        }
+                        native={true}
+                        onChange={[MockFunction]}
+                        value="45 mins"
+                      >
+                        <option
+                          disabled={true}
+                          value="Select lesson duration"
+                        >
+                          Select lesson duration
+                        </option>
+                        <option
+                          value="30 mins"
+                        >
+                          30 mins
+                        </option>
+                        <option
+                          value="45 mins"
+                        >
+                          45 mins
+                        </option>
+                        <option
+                          value="60 mins"
+                        >
+                          60 mins
+                        </option>
+                        <option
+                          value="90 mins"
+                        >
+                          90 mins
+                        </option>
+                      </WithStyles(WithFormControlContext(Select))>,
+                      "className": "nabi-rates-field",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          <option
+                            disabled={true}
+                            value="Select lesson duration"
+                          >
+                            Select lesson duration
+                          </option>,
+                          Array [
+                            <option
+                              value="30 mins"
+                            >
+                              30 mins
+                            </option>,
+                            <option
+                              value="45 mins"
+                            >
+                              45 mins
+                            </option>,
+                            <option
+                              value="60 mins"
+                            >
+                              60 mins
+                            </option>,
+                            <option
+                              value="90 mins"
+                            >
+                              90 mins
+                            </option>,
+                          ],
+                        ],
+                        "input": <WithStyles(Input)
+                          id="lessonDuration"
+                          name="lessonDuration"
+                        />,
+                        "native": true,
+                        "onChange": [MockFunction],
+                        "value": "45 mins",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "Select lesson duration",
+                            "disabled": true,
+                            "value": "Select lesson duration",
+                          },
+                          "ref": null,
+                          "rendered": "Select lesson duration",
+                          "type": "option",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": "thirtyMins",
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "30 mins",
+                            "value": "30 mins",
+                          },
+                          "ref": null,
+                          "rendered": "30 mins",
+                          "type": "option",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": "fortyFiveMins",
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "45 mins",
+                            "value": "45 mins",
+                          },
+                          "ref": null,
+                          "rendered": "45 mins",
+                          "type": "option",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": "sixtyMins",
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "60 mins",
+                            "value": "60 mins",
+                          },
+                          "ref": null,
+                          "rendered": "60 mins",
+                          "type": "option",
+                        },
+                        Object {
+                          "instance": null,
+                          "key": "ninetyMins",
+                          "nodeType": "host",
+                          "props": Object {
+                            "children": "90 mins",
+                            "value": "90 mins",
+                          },
+                          "ref": null,
+                          "rendered": "90 mins",
+                          "type": "option",
+                        },
+                      ],
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Typography)
+                      className="list-text"
+                    >
+                      Lesson rate
+                    </WithStyles(Typography)>,
+                    <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                      error={false}
+                      helperText=""
+                      id="lessonRate"
+                      name="lessonRate"
+                      onChange={[MockFunction]}
+                      placeholder="0.00"
+                      required={true}
+                      select={false}
+                      value="10.00"
+                      variant="standard"
+                    />,
+                    <WithStyles(Typography)
+                      className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                      color="primary"
+                    >
+                      You get $8.00
+                    </WithStyles(Typography)>,
+                  ],
+                  "className": "nabi-padding-remove",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Lesson rate",
+                      "className": "list-text",
+                    },
+                    "ref": null,
+                    "rendered": "Lesson rate",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "InputProps": Object {
+                        "inputComponent": [Function],
+                      },
+                      "className": "nabi-rates-field nabi-display-inline nabi-margin-right-small",
+                      "error": false,
+                      "helperText": "",
+                      "id": "lessonRate",
+                      "name": "lessonRate",
+                      "onChange": [MockFunction],
+                      "placeholder": "0.00",
+                      "required": true,
+                      "select": false,
+                      "value": "10.00",
+                      "variant": "standard",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "You get $8.00",
+                      "className": "buy-more-lessons-you-get-text nabi-display-inline-sm",
+                      "color": "primary",
+                    },
+                    "ref": null,
+                    "rendered": "You get $8.00",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Button)
+                color="default"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Cancel
+              </WithStyles(Button)>,
+              <WithStyles(Button)
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Send
+              </WithStyles(Button)>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Cancel",
+                "color": "default",
+                "onClick": [MockFunction],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": "Cancel",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Send",
+                "color": "primary",
+                "onClick": [MockFunction],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": "Send",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <WithStyles(Dialog)
+          aria-labelledby="form-dialog-title"
+          onClose={[MockFunction]}
+          open={true}
+          scroll="body"
+        >
+          <WithStyles(DialogTitle)
+            id="form-dialog-title nabi-text-uppercase"
+          >
+            Send Reminder
+          </WithStyles(DialogTitle)>
+          <WithStyles(DialogContent)>
+            <WithStyles(DialogContentText)>
+              <WithStyles(Typography)>
+                Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+              </WithStyles(Typography)>
+              <WithStyles(ListItem)
+                className="nabi-padding-remove"
+              >
+                <WithStyles(Typography)
+                  className="list-text"
+                >
+                  Lesson duration
+                </WithStyles(Typography)>
+                <WithStyles(FormControl)
+                  className="nabi-rates-field"
+                >
+                  <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        id="lessonDuration"
+                        name="lessonDuration"
+                      />
+                    }
+                    native={true}
+                    onChange={[MockFunction]}
+                    value="45 mins"
+                  >
+                    <option
+                      disabled={true}
+                      value="Select lesson duration"
+                    >
+                      Select lesson duration
+                    </option>
+                    <option
+                      value="30 mins"
+                    >
+                      30 mins
+                    </option>
+                    <option
+                      value="45 mins"
+                    >
+                      45 mins
+                    </option>
+                    <option
+                      value="60 mins"
+                    >
+                      60 mins
+                    </option>
+                    <option
+                      value="90 mins"
+                    >
+                      90 mins
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>
+                </WithStyles(FormControl)>
+              </WithStyles(ListItem)>
+              <WithStyles(ListItem)
+                className="nabi-padding-remove"
+              >
+                <WithStyles(Typography)
+                  className="list-text"
+                >
+                  Lesson rate
+                </WithStyles(Typography)>
+                <TextField
+                  InputProps={
+                    Object {
+                      "inputComponent": [Function],
+                    }
+                  }
+                  className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                  error={false}
+                  helperText=""
+                  id="lessonRate"
+                  name="lessonRate"
+                  onChange={[MockFunction]}
+                  placeholder="0.00"
+                  required={true}
+                  select={false}
+                  value="10.00"
+                  variant="standard"
+                />
+                <WithStyles(Typography)
+                  className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                  color="primary"
+                >
+                  You get $8.00
+                </WithStyles(Typography)>
+              </WithStyles(ListItem)>
+            </WithStyles(DialogContentText)>
+          </WithStyles(DialogContent)>
+          <WithStyles(DialogActions)>
+            <WithStyles(Button)
+              color="default"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Cancel
+            </WithStyles(Button)>
+            <WithStyles(Button)
+              color="primary"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Send
+            </WithStyles(Button)>
+          </WithStyles(DialogActions)>
+        </WithStyles(Dialog)>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "aria-labelledby": "form-dialog-title",
+          "children": Array [
+            <WithStyles(DialogTitle)
+              id="form-dialog-title nabi-text-uppercase"
+            >
+              Send Reminder
+            </WithStyles(DialogTitle)>,
+            <WithStyles(DialogContent)>
+              <WithStyles(DialogContentText)>
+                <WithStyles(Typography)>
+                  Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+                </WithStyles(Typography)>
+                <WithStyles(ListItem)
+                  className="nabi-padding-remove"
+                >
+                  <WithStyles(Typography)
+                    className="list-text"
+                  >
+                    Lesson duration
+                  </WithStyles(Typography)>
+                  <WithStyles(FormControl)
+                    className="nabi-rates-field"
+                  >
+                    <WithStyles(WithFormControlContext(Select))
+                      input={
+                        <WithStyles(Input)
+                          id="lessonDuration"
+                          name="lessonDuration"
+                        />
+                      }
+                      native={true}
+                      onChange={[MockFunction]}
+                      value="45 mins"
+                    >
+                      <option
+                        disabled={true}
+                        value="Select lesson duration"
+                      >
+                        Select lesson duration
+                      </option>
+                      <option
+                        value="30 mins"
+                      >
+                        30 mins
+                      </option>
+                      <option
+                        value="45 mins"
+                      >
+                        45 mins
+                      </option>
+                      <option
+                        value="60 mins"
+                      >
+                        60 mins
+                      </option>
+                      <option
+                        value="90 mins"
+                      >
+                        90 mins
+                      </option>
+                    </WithStyles(WithFormControlContext(Select))>
+                  </WithStyles(FormControl)>
+                </WithStyles(ListItem)>
+                <WithStyles(ListItem)
+                  className="nabi-padding-remove"
+                >
+                  <WithStyles(Typography)
+                    className="list-text"
+                  >
+                    Lesson rate
+                  </WithStyles(Typography)>
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                    error={false}
+                    helperText=""
+                    id="lessonRate"
+                    name="lessonRate"
+                    onChange={[MockFunction]}
+                    placeholder="0.00"
+                    required={true}
+                    select={false}
+                    value="10.00"
+                    variant="standard"
+                  />
+                  <WithStyles(Typography)
+                    className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                    color="primary"
+                  >
+                    You get $8.00
+                  </WithStyles(Typography)>
+                </WithStyles(ListItem)>
+              </WithStyles(DialogContentText)>
+            </WithStyles(DialogContent)>,
+            <WithStyles(DialogActions)>
+              <WithStyles(Button)
+                color="default"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Cancel
+              </WithStyles(Button)>
+              <WithStyles(Button)
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                Send
+              </WithStyles(Button)>
+            </WithStyles(DialogActions)>,
+          ],
+          "onClose": [MockFunction],
+          "open": true,
+          "scroll": "body",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Send Reminder",
+              "id": "form-dialog-title nabi-text-uppercase",
+            },
+            "ref": null,
+            "rendered": "Send Reminder",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(DialogContentText)>
+                <WithStyles(Typography)>
+                  Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+                </WithStyles(Typography)>
+                <WithStyles(ListItem)
+                  className="nabi-padding-remove"
+                >
+                  <WithStyles(Typography)
+                    className="list-text"
+                  >
+                    Lesson duration
+                  </WithStyles(Typography)>
+                  <WithStyles(FormControl)
+                    className="nabi-rates-field"
+                  >
+                    <WithStyles(WithFormControlContext(Select))
+                      input={
+                        <WithStyles(Input)
+                          id="lessonDuration"
+                          name="lessonDuration"
+                        />
+                      }
+                      native={true}
+                      onChange={[MockFunction]}
+                      value="45 mins"
+                    >
+                      <option
+                        disabled={true}
+                        value="Select lesson duration"
+                      >
+                        Select lesson duration
+                      </option>
+                      <option
+                        value="30 mins"
+                      >
+                        30 mins
+                      </option>
+                      <option
+                        value="45 mins"
+                      >
+                        45 mins
+                      </option>
+                      <option
+                        value="60 mins"
+                      >
+                        60 mins
+                      </option>
+                      <option
+                        value="90 mins"
+                      >
+                        90 mins
+                      </option>
+                    </WithStyles(WithFormControlContext(Select))>
+                  </WithStyles(FormControl)>
+                </WithStyles(ListItem)>
+                <WithStyles(ListItem)
+                  className="nabi-padding-remove"
+                >
+                  <WithStyles(Typography)
+                    className="list-text"
+                  >
+                    Lesson rate
+                  </WithStyles(Typography)>
+                  <TextField
+                    InputProps={
+                      Object {
+                        "inputComponent": [Function],
+                      }
+                    }
+                    className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                    error={false}
+                    helperText=""
+                    id="lessonRate"
+                    name="lessonRate"
+                    onChange={[MockFunction]}
+                    placeholder="0.00"
+                    required={true}
+                    select={false}
+                    value="10.00"
+                    variant="standard"
+                  />
+                  <WithStyles(Typography)
+                    className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                    color="primary"
+                  >
+                    You get $8.00
+                  </WithStyles(Typography)>
+                </WithStyles(ListItem)>
+              </WithStyles(DialogContentText)>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Typography)>
+                    Send Roxana G. a reminder to buy more piano lessons at this rate per lesson
+                  </WithStyles(Typography)>,
+                  <WithStyles(ListItem)
+                    className="nabi-padding-remove"
+                  >
+                    <WithStyles(Typography)
+                      className="list-text"
+                    >
+                      Lesson duration
+                    </WithStyles(Typography)>
+                    <WithStyles(FormControl)
+                      className="nabi-rates-field"
+                    >
+                      <WithStyles(WithFormControlContext(Select))
+                        input={
+                          <WithStyles(Input)
+                            id="lessonDuration"
+                            name="lessonDuration"
+                          />
+                        }
+                        native={true}
+                        onChange={[MockFunction]}
+                        value="45 mins"
+                      >
+                        <option
+                          disabled={true}
+                          value="Select lesson duration"
+                        >
+                          Select lesson duration
+                        </option>
+                        <option
+                          value="30 mins"
+                        >
+                          30 mins
+                        </option>
+                        <option
+                          value="45 mins"
+                        >
+                          45 mins
+                        </option>
+                        <option
+                          value="60 mins"
+                        >
+                          60 mins
+                        </option>
+                        <option
+                          value="90 mins"
+                        >
+                          90 mins
+                        </option>
+                      </WithStyles(WithFormControlContext(Select))>
+                    </WithStyles(FormControl)>
+                  </WithStyles(ListItem)>,
+                  <WithStyles(ListItem)
+                    className="nabi-padding-remove"
+                  >
+                    <WithStyles(Typography)
+                      className="list-text"
+                    >
+                      Lesson rate
+                    </WithStyles(Typography)>
+                    <TextField
+                      InputProps={
+                        Object {
+                          "inputComponent": [Function],
+                        }
+                      }
+                      className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                      error={false}
+                      helperText=""
+                      id="lessonRate"
+                      name="lessonRate"
+                      onChange={[MockFunction]}
+                      placeholder="0.00"
+                      required={true}
+                      select={false}
+                      value="10.00"
+                      variant="standard"
+                    />
+                    <WithStyles(Typography)
+                      className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                      color="primary"
+                    >
+                      You get $8.00
+                    </WithStyles(Typography)>
+                  </WithStyles(ListItem)>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Send Roxana G. a reminder to buy more piano lessons at this rate per lesson",
+                  },
+                  "ref": null,
+                  "rendered": "Send Roxana G. a reminder to buy more piano lessons at this rate per lesson",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(Typography)
+                        className="list-text"
+                      >
+                        Lesson duration
+                      </WithStyles(Typography)>,
+                      <WithStyles(FormControl)
+                        className="nabi-rates-field"
+                      >
+                        <WithStyles(WithFormControlContext(Select))
+                          input={
+                            <WithStyles(Input)
+                              id="lessonDuration"
+                              name="lessonDuration"
+                            />
+                          }
+                          native={true}
+                          onChange={[MockFunction]}
+                          value="45 mins"
+                        >
+                          <option
+                            disabled={true}
+                            value="Select lesson duration"
+                          >
+                            Select lesson duration
+                          </option>
+                          <option
+                            value="30 mins"
+                          >
+                            30 mins
+                          </option>
+                          <option
+                            value="45 mins"
+                          >
+                            45 mins
+                          </option>
+                          <option
+                            value="60 mins"
+                          >
+                            60 mins
+                          </option>
+                          <option
+                            value="90 mins"
+                          >
+                            90 mins
+                          </option>
+                        </WithStyles(WithFormControlContext(Select))>
+                      </WithStyles(FormControl)>,
+                    ],
+                    "className": "nabi-padding-remove",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Lesson duration",
+                        "className": "list-text",
+                      },
+                      "ref": null,
+                      "rendered": "Lesson duration",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <WithStyles(WithFormControlContext(Select))
+                          input={
+                            <WithStyles(Input)
+                              id="lessonDuration"
+                              name="lessonDuration"
+                            />
+                          }
+                          native={true}
+                          onChange={[MockFunction]}
+                          value="45 mins"
+                        >
+                          <option
+                            disabled={true}
+                            value="Select lesson duration"
+                          >
+                            Select lesson duration
+                          </option>
+                          <option
+                            value="30 mins"
+                          >
+                            30 mins
+                          </option>
+                          <option
+                            value="45 mins"
+                          >
+                            45 mins
+                          </option>
+                          <option
+                            value="60 mins"
+                          >
+                            60 mins
+                          </option>
+                          <option
+                            value="90 mins"
+                          >
+                            90 mins
+                          </option>
+                        </WithStyles(WithFormControlContext(Select))>,
+                        "className": "nabi-rates-field",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": Array [
+                            <option
+                              disabled={true}
+                              value="Select lesson duration"
+                            >
+                              Select lesson duration
+                            </option>,
+                            Array [
+                              <option
+                                value="30 mins"
+                              >
+                                30 mins
+                              </option>,
+                              <option
+                                value="45 mins"
+                              >
+                                45 mins
+                              </option>,
+                              <option
+                                value="60 mins"
+                              >
+                                60 mins
+                              </option>,
+                              <option
+                                value="90 mins"
+                              >
+                                90 mins
+                              </option>,
+                            ],
+                          ],
+                          "input": <WithStyles(Input)
+                            id="lessonDuration"
+                            name="lessonDuration"
+                          />,
+                          "native": true,
+                          "onChange": [MockFunction],
+                          "value": "45 mins",
+                        },
+                        "ref": null,
+                        "rendered": Array [
+                          Object {
+                            "instance": null,
+                            "key": undefined,
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "Select lesson duration",
+                              "disabled": true,
+                              "value": "Select lesson duration",
+                            },
+                            "ref": null,
+                            "rendered": "Select lesson duration",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "thirtyMins",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "30 mins",
+                              "value": "30 mins",
+                            },
+                            "ref": null,
+                            "rendered": "30 mins",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "fortyFiveMins",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "45 mins",
+                              "value": "45 mins",
+                            },
+                            "ref": null,
+                            "rendered": "45 mins",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "sixtyMins",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "60 mins",
+                              "value": "60 mins",
+                            },
+                            "ref": null,
+                            "rendered": "60 mins",
+                            "type": "option",
+                          },
+                          Object {
+                            "instance": null,
+                            "key": "ninetyMins",
+                            "nodeType": "host",
+                            "props": Object {
+                              "children": "90 mins",
+                              "value": "90 mins",
+                            },
+                            "ref": null,
+                            "rendered": "90 mins",
+                            "type": "option",
+                          },
+                        ],
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(Typography)
+                        className="list-text"
+                      >
+                        Lesson rate
+                      </WithStyles(Typography)>,
+                      <TextField
+                        InputProps={
+                          Object {
+                            "inputComponent": [Function],
+                          }
+                        }
+                        className="nabi-rates-field nabi-display-inline nabi-margin-right-small"
+                        error={false}
+                        helperText=""
+                        id="lessonRate"
+                        name="lessonRate"
+                        onChange={[MockFunction]}
+                        placeholder="0.00"
+                        required={true}
+                        select={false}
+                        value="10.00"
+                        variant="standard"
+                      />,
+                      <WithStyles(Typography)
+                        className="buy-more-lessons-you-get-text nabi-display-inline-sm"
+                        color="primary"
+                      >
+                        You get $8.00
+                      </WithStyles(Typography)>,
+                    ],
+                    "className": "nabi-padding-remove",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Lesson rate",
+                        "className": "list-text",
+                      },
+                      "ref": null,
+                      "rendered": "Lesson rate",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "InputProps": Object {
+                          "inputComponent": [Function],
+                        },
+                        "className": "nabi-rates-field nabi-display-inline nabi-margin-right-small",
+                        "error": false,
+                        "helperText": "",
+                        "id": "lessonRate",
+                        "name": "lessonRate",
+                        "onChange": [MockFunction],
+                        "placeholder": "0.00",
+                        "required": true,
+                        "select": false,
+                        "value": "10.00",
+                        "variant": "standard",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "You get $8.00",
+                        "className": "buy-more-lessons-you-get-text nabi-display-inline-sm",
+                        "color": "primary",
+                      },
+                      "ref": null,
+                      "rendered": "You get $8.00",
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Button)
+                  color="default"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Cancel
+                </WithStyles(Button)>,
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  Send
+                </WithStyles(Button)>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Cancel",
+                  "color": "default",
+                  "onClick": [MockFunction],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": "Cancel",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Send",
+                  "color": "primary",
+                  "onClick": [MockFunction],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": "Send",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore } from 'redux-persist';
 
 import rootReducer from './reducers';
-import { UserState } from '../../types/user';
+import { UserState } from '../models/UserModel';
 import { defaultState } from '../models/defaultState';
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -41,7 +41,7 @@ export const getStore = () => {
             );
             return store
         }
-        store = createStore<StoreState, any, any, any>(
+        store = createStore<StoreState>(
             rootReducer,
             initialState,
             applyMiddleware(...middleware)

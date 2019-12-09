@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhoneValidation Renders the component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PhoneValidation
+    errorRequestToken=""
+    errorVerifyToken=""
+    fetchUser={[MockFunction]}
+    isRequestingToken={false}
+    isVerifyingToken={false}
+    requestToken={[MockFunction]}
+    requestTokenMessage=""
+    resetRequestTokenMessage={[MockFunction]}
+    user={
+      Object {
+        "email": "email@company.com",
+        "firstName": "",
+        "gender": "",
+        "id": "fooId",
+        "lastName": "",
+        "lat": "",
+        "lng": "",
+        "location": "",
+        "middleName": "",
+        "password": "secretPass123",
+        "phone": Object {
+          "isVerified": false,
+          "phoneNumber": "",
+        },
+        "phoneNumber": "",
+        "referralToken": "",
+        "role": "Instructor",
+      }
+    }
+    verifyToken={[MockFunction]}
+    verifyTokenMessage=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <PhoneValidationForm
+          errors={Object {}}
+          handleChange={[Function]}
+          isEditing={undefined}
+          isPhoneSet={false}
+          isPhoneVerified={true}
+          isRequesting={false}
+          phoneError={undefined}
+          phoneNumber=""
+          resendCode={[Function]}
+          sendVerificationToken={[Function]}
+          toggleChangePhoneNumber={undefined}
+          token=""
+          user={
+            Object {
+              "email": "email@company.com",
+              "firstName": "",
+              "gender": "",
+              "id": "fooId",
+              "lastName": "",
+              "lat": "",
+              "lng": "",
+              "location": "",
+              "middleName": "",
+              "password": "secretPass123",
+              "phone": Object {
+                "isVerified": false,
+                "phoneNumber": "",
+              },
+              "phoneNumber": "",
+              "referralToken": "",
+              "role": "Instructor",
+            }
+          }
+          verificationChannel="sms"
+          verifyToken={[Function]}
+        />,
+        <SnackBar
+          handleClose={[Function]}
+          isOpen={false}
+          message=""
+          variant="success"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "errors": Object {},
+          "handleChange": [Function],
+          "isEditing": undefined,
+          "isPhoneSet": false,
+          "isPhoneVerified": true,
+          "isRequesting": false,
+          "phoneError": undefined,
+          "phoneNumber": "",
+          "resendCode": [Function],
+          "sendVerificationToken": [Function],
+          "toggleChangePhoneNumber": undefined,
+          "token": "",
+          "user": Object {
+            "email": "email@company.com",
+            "firstName": "",
+            "gender": "",
+            "id": "fooId",
+            "lastName": "",
+            "lat": "",
+            "lng": "",
+            "location": "",
+            "middleName": "",
+            "password": "secretPass123",
+            "phone": Object {
+              "isVerified": false,
+              "phoneNumber": "",
+            },
+            "phoneNumber": "",
+            "referralToken": "",
+            "role": "Instructor",
+          },
+          "verificationChannel": "sms",
+          "verifyToken": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "handleClose": [Function],
+          "isOpen": false,
+          "message": "",
+          "variant": "success",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <PhoneValidationForm
+            errors={Object {}}
+            handleChange={[Function]}
+            isEditing={undefined}
+            isPhoneSet={false}
+            isPhoneVerified={true}
+            isRequesting={false}
+            phoneError={undefined}
+            phoneNumber=""
+            resendCode={[Function]}
+            sendVerificationToken={[Function]}
+            toggleChangePhoneNumber={undefined}
+            token=""
+            user={
+              Object {
+                "email": "email@company.com",
+                "firstName": "",
+                "gender": "",
+                "id": "fooId",
+                "lastName": "",
+                "lat": "",
+                "lng": "",
+                "location": "",
+                "middleName": "",
+                "password": "secretPass123",
+                "phone": Object {
+                  "isVerified": false,
+                  "phoneNumber": "",
+                },
+                "phoneNumber": "",
+                "referralToken": "",
+                "role": "Instructor",
+              }
+            }
+            verificationChannel="sms"
+            verifyToken={[Function]}
+          />,
+          <SnackBar
+            handleClose={[Function]}
+            isOpen={false}
+            message=""
+            variant="success"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "errors": Object {},
+            "handleChange": [Function],
+            "isEditing": undefined,
+            "isPhoneSet": false,
+            "isPhoneVerified": true,
+            "isRequesting": false,
+            "phoneError": undefined,
+            "phoneNumber": "",
+            "resendCode": [Function],
+            "sendVerificationToken": [Function],
+            "toggleChangePhoneNumber": undefined,
+            "token": "",
+            "user": Object {
+              "email": "email@company.com",
+              "firstName": "",
+              "gender": "",
+              "id": "fooId",
+              "lastName": "",
+              "lat": "",
+              "lng": "",
+              "location": "",
+              "middleName": "",
+              "password": "secretPass123",
+              "phone": Object {
+                "isVerified": false,
+                "phoneNumber": "",
+              },
+              "phoneNumber": "",
+              "referralToken": "",
+              "role": "Instructor",
+            },
+            "verificationChannel": "sms",
+            "verifyToken": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "handleClose": [Function],
+            "isOpen": false,
+            "message": "",
+            "variant": "success",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

@@ -1,0 +1,3531 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InstructorDashboard When there are no requests Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <InstructorDashboard
+    requests={Array []}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-section-widest nabi-background-white nabi-margin-bottom-small"
+        >
+          <SectionTitle
+            text="My Students"
+          />
+          <UNDEFINED>
+            <StudentCard
+              student={
+                Object {
+                  "lessonsRemaining": 4,
+                  "students": Array [
+                    Object {
+                      "age": 22,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Roxana",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "user": Object {
+                    "birthday": "1996-07-12T04:00:00.000Z",
+                    "email": "rox@gmail.com",
+                    "firstName": "Roxana",
+                    "id": "0",
+                    "lastName": "Gallardo",
+                    "role": "student",
+                  },
+                }
+              }
+              toggleBuyLessonsForm={[Function]}
+            />
+            <WithStyles(Divider)
+              className="nabi-margin-bottom-xsmall"
+            />
+          </UNDEFINED>
+          <UNDEFINED>
+            <StudentCard
+              student={
+                Object {
+                  "lessonsRemaining": 0,
+                  "students": Array [
+                    Object {
+                      "age": 22,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Kevin",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "user": Object {
+                    "birthday": "1992-05-26T04:00:00.000Z",
+                    "email": "kev@gmail.com",
+                    "firstName": "Kevin",
+                    "id": "0",
+                    "lastName": "Charles",
+                    "role": "student",
+                  },
+                }
+              }
+              toggleBuyLessonsForm={[Function]}
+            />
+            <WithStyles(Divider)
+              className="nabi-margin-bottom-xsmall"
+            />
+          </UNDEFINED>
+          <UNDEFINED>
+            <StudentCard
+              student={
+                Object {
+                  "lessonsRemaining": 5,
+                  "students": Array [
+                    Object {
+                      "age": 6,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Zoe",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                    Object {
+                      "age": 9,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Esme",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "user": Object {
+                    "birthday": "1960-05-26T04:00:00.000Z",
+                    "email": "sam@gmail.com",
+                    "firstName": "Sam",
+                    "id": "0",
+                    "lastName": "Flood",
+                    "role": "parent",
+                  },
+                }
+              }
+              toggleBuyLessonsForm={[Function]}
+            />
+          </UNDEFINED>
+        </div>,
+        false,
+        <BuyMoreLessonsModal
+          closeHandler={[Function]}
+          error={undefined}
+          handleChange={[Function]}
+          handleSubmit={[Function]}
+          isOpen={false}
+          lessonDuration="45 mins"
+          lessonRate="0.00"
+          student={Object {}}
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              text="My Students"
+            />,
+            Array [
+              <UNDEFINED>
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 4,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Roxana",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />
+              </UNDEFINED>,
+              <UNDEFINED>
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 0,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Kevin",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1992-05-26T04:00:00.000Z",
+                        "email": "kev@gmail.com",
+                        "firstName": "Kevin",
+                        "id": "0",
+                        "lastName": "Charles",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />
+              </UNDEFINED>,
+              <UNDEFINED>
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 5,
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Zoe",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Esme",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1960-05-26T04:00:00.000Z",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "0",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />
+              </UNDEFINED>,
+            ],
+          ],
+          "className": "nabi-section-widest nabi-background-white nabi-margin-bottom-small",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": "My Students",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 4,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Roxana",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />,
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "student": Object {
+                    "lessonsRemaining": 4,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Roxana",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1996-07-12T04:00:00.000Z",
+                      "email": "rox@gmail.com",
+                      "firstName": "Roxana",
+                      "id": "0",
+                      "lastName": "Gallardo",
+                      "role": "student",
+                    },
+                  },
+                  "toggleBuyLessonsForm": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "className": "nabi-margin-bottom-xsmall",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 0,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Kevin",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1992-05-26T04:00:00.000Z",
+                        "email": "kev@gmail.com",
+                        "firstName": "Kevin",
+                        "id": "0",
+                        "lastName": "Charles",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />,
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "student": Object {
+                    "lessonsRemaining": 0,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Kevin",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1992-05-26T04:00:00.000Z",
+                      "email": "kev@gmail.com",
+                      "firstName": "Kevin",
+                      "id": "0",
+                      "lastName": "Charles",
+                      "role": "student",
+                    },
+                  },
+                  "toggleBuyLessonsForm": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "className": "nabi-margin-bottom-xsmall",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 5,
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Zoe",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Esme",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1960-05-26T04:00:00.000Z",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "0",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />,
+                false,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "student": Object {
+                    "lessonsRemaining": 5,
+                    "students": Array [
+                      Object {
+                        "age": 6,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Zoe",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                      Object {
+                        "age": 9,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Esme",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1960-05-26T04:00:00.000Z",
+                      "email": "sam@gmail.com",
+                      "firstName": "Sam",
+                      "id": "0",
+                      "lastName": "Flood",
+                      "role": "parent",
+                    },
+                  },
+                  "toggleBuyLessonsForm": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              false,
+            ],
+            "type": Symbol(react.fragment),
+          },
+        ],
+        "type": "div",
+      },
+      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "closeHandler": [Function],
+          "error": undefined,
+          "handleChange": [Function],
+          "handleSubmit": [Function],
+          "isOpen": false,
+          "lessonDuration": "45 mins",
+          "lessonRate": "0.00",
+          "student": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-section-widest nabi-background-white nabi-margin-bottom-small"
+          >
+            <SectionTitle
+              text="My Students"
+            />
+            <UNDEFINED>
+              <StudentCard
+                student={
+                  Object {
+                    "lessonsRemaining": 4,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Roxana",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1996-07-12T04:00:00.000Z",
+                      "email": "rox@gmail.com",
+                      "firstName": "Roxana",
+                      "id": "0",
+                      "lastName": "Gallardo",
+                      "role": "student",
+                    },
+                  }
+                }
+                toggleBuyLessonsForm={[Function]}
+              />
+              <WithStyles(Divider)
+                className="nabi-margin-bottom-xsmall"
+              />
+            </UNDEFINED>
+            <UNDEFINED>
+              <StudentCard
+                student={
+                  Object {
+                    "lessonsRemaining": 0,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Kevin",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1992-05-26T04:00:00.000Z",
+                      "email": "kev@gmail.com",
+                      "firstName": "Kevin",
+                      "id": "0",
+                      "lastName": "Charles",
+                      "role": "student",
+                    },
+                  }
+                }
+                toggleBuyLessonsForm={[Function]}
+              />
+              <WithStyles(Divider)
+                className="nabi-margin-bottom-xsmall"
+              />
+            </UNDEFINED>
+            <UNDEFINED>
+              <StudentCard
+                student={
+                  Object {
+                    "lessonsRemaining": 5,
+                    "students": Array [
+                      Object {
+                        "age": 6,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Zoe",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                      Object {
+                        "age": 9,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Esme",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1960-05-26T04:00:00.000Z",
+                      "email": "sam@gmail.com",
+                      "firstName": "Sam",
+                      "id": "0",
+                      "lastName": "Flood",
+                      "role": "parent",
+                    },
+                  }
+                }
+                toggleBuyLessonsForm={[Function]}
+              />
+            </UNDEFINED>
+          </div>,
+          false,
+          <BuyMoreLessonsModal
+            closeHandler={[Function]}
+            error={undefined}
+            handleChange={[Function]}
+            handleSubmit={[Function]}
+            isOpen={false}
+            lessonDuration="45 mins"
+            lessonRate="0.00"
+            student={Object {}}
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                text="My Students"
+              />,
+              Array [
+                <UNDEFINED>
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 4,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Roxana",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1996-07-12T04:00:00.000Z",
+                          "email": "rox@gmail.com",
+                          "firstName": "Roxana",
+                          "id": "0",
+                          "lastName": "Gallardo",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />
+                </UNDEFINED>,
+                <UNDEFINED>
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 0,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Kevin",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1992-05-26T04:00:00.000Z",
+                          "email": "kev@gmail.com",
+                          "firstName": "Kevin",
+                          "id": "0",
+                          "lastName": "Charles",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />
+                </UNDEFINED>,
+                <UNDEFINED>
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 5,
+                        "students": Array [
+                          Object {
+                            "age": 6,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Zoe",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                          Object {
+                            "age": 9,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Esme",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1960-05-26T04:00:00.000Z",
+                          "email": "sam@gmail.com",
+                          "firstName": "Sam",
+                          "id": "0",
+                          "lastName": "Flood",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />
+                </UNDEFINED>,
+              ],
+            ],
+            "className": "nabi-section-widest nabi-background-white nabi-margin-bottom-small",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": "My Students",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 4,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Roxana",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1996-07-12T04:00:00.000Z",
+                          "email": "rox@gmail.com",
+                          "firstName": "Roxana",
+                          "id": "0",
+                          "lastName": "Gallardo",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />,
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "student": Object {
+                      "lessonsRemaining": 4,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Roxana",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    },
+                    "toggleBuyLessonsForm": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "className": "nabi-margin-bottom-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 0,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Kevin",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1992-05-26T04:00:00.000Z",
+                          "email": "kev@gmail.com",
+                          "firstName": "Kevin",
+                          "id": "0",
+                          "lastName": "Charles",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />,
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "student": Object {
+                      "lessonsRemaining": 0,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Kevin",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1992-05-26T04:00:00.000Z",
+                        "email": "kev@gmail.com",
+                        "firstName": "Kevin",
+                        "id": "0",
+                        "lastName": "Charles",
+                        "role": "student",
+                      },
+                    },
+                    "toggleBuyLessonsForm": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "className": "nabi-margin-bottom-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 5,
+                        "students": Array [
+                          Object {
+                            "age": 6,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Zoe",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                          Object {
+                            "age": 9,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Esme",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1960-05-26T04:00:00.000Z",
+                          "email": "sam@gmail.com",
+                          "firstName": "Sam",
+                          "id": "0",
+                          "lastName": "Flood",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />,
+                  false,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "student": Object {
+                      "lessonsRemaining": 5,
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Zoe",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Esme",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1960-05-26T04:00:00.000Z",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "0",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    },
+                    "toggleBuyLessonsForm": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                false,
+              ],
+              "type": Symbol(react.fragment),
+            },
+          ],
+          "type": "div",
+        },
+        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "closeHandler": [Function],
+            "error": undefined,
+            "handleChange": [Function],
+            "handleSubmit": [Function],
+            "isOpen": false,
+            "lessonDuration": "45 mins",
+            "lessonRate": "0.00",
+            "student": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`InstructorDashboard When there are requests Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <InstructorDashboard
+    requests={
+      Array [
+        Object {
+          "applications": 17,
+          "applied": false,
+          "createdAt": "2019-08-05T23:01:25.000Z",
+          "id": 0,
+          "instrument": "piano",
+          "lessonDuration": "45",
+          "location": "Boston, Ma",
+          "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+          "placeForLessons": "studio",
+          "students": Array [
+            Object {
+              "age": 18,
+              "name": "Roxana",
+              "skillLevel": "beginner",
+            },
+          ],
+          "title": "Fun and experience piano instructor",
+          "user": Object {
+            "birthday": "1996-07-12T04:00:00.000Z",
+            "displayName": "Roxana G.",
+            "distance": "0.5 mi away",
+            "email": "rox@gmail.com",
+            "firstName": "Roxana",
+            "id": "0",
+            "lastName": "Gallardo",
+            "role": "student",
+          },
+        },
+        Object {
+          "application": Object {
+            "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+            "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+            "rate": 50,
+          },
+          "applications": 17,
+          "applied": true,
+          "createdAt": "2019-08-05T20:19:25.000Z",
+          "id": 1,
+          "instrument": "piano",
+          "lessonDuration": "45",
+          "location": "Boston, Ma",
+          "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+          "placeForLessons": "home",
+          "students": Array [
+            Object {
+              "age": 6,
+              "name": "Zoe",
+              "skillLevel": "beginner",
+            },
+            Object {
+              "age": 9,
+              "name": "Esme",
+              "skillLevel": "beginner",
+            },
+          ],
+          "title": "Piano teacher needed for my family",
+          "user": Object {
+            "displayName": "Sam F.",
+            "distance": "0.5 mi away",
+            "email": "sam@gmail.com",
+            "firstName": "Sam",
+            "id": "1",
+            "lastName": "Flood",
+            "role": "parent",
+          },
+        },
+        Object {
+          "applications": 17,
+          "applied": false,
+          "createdAt": "2019-08-05T15:19:25.000Z",
+          "id": 2,
+          "instrument": "piano",
+          "lessonDuration": "45",
+          "location": "Boston, Ma",
+          "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+          "placeForLessons": "home",
+          "students": Array [
+            Object {
+              "age": 11,
+              "name": "Ethan",
+              "skillLevel": "beginner",
+            },
+          ],
+          "title": "Instructor for one child in Boston",
+          "user": Object {
+            "displayName": "Victor C.",
+            "distance": "1 mi away",
+            "email": "victor@gmail.com",
+            "firstName": "Victor",
+            "id": "2",
+            "lastName": "Charles",
+            "role": "parent",
+          },
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-section-widest nabi-background-white nabi-margin-bottom-small"
+        >
+          <SectionTitle
+            text="My Students"
+          />
+          <UNDEFINED>
+            <StudentCard
+              student={
+                Object {
+                  "lessonsRemaining": 4,
+                  "students": Array [
+                    Object {
+                      "age": 22,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Roxana",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "user": Object {
+                    "birthday": "1996-07-12T04:00:00.000Z",
+                    "email": "rox@gmail.com",
+                    "firstName": "Roxana",
+                    "id": "0",
+                    "lastName": "Gallardo",
+                    "role": "student",
+                  },
+                }
+              }
+              toggleBuyLessonsForm={[Function]}
+            />
+            <WithStyles(Divider)
+              className="nabi-margin-bottom-xsmall"
+            />
+          </UNDEFINED>
+          <UNDEFINED>
+            <StudentCard
+              student={
+                Object {
+                  "lessonsRemaining": 0,
+                  "students": Array [
+                    Object {
+                      "age": 22,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Kevin",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "user": Object {
+                    "birthday": "1992-05-26T04:00:00.000Z",
+                    "email": "kev@gmail.com",
+                    "firstName": "Kevin",
+                    "id": "0",
+                    "lastName": "Charles",
+                    "role": "student",
+                  },
+                }
+              }
+              toggleBuyLessonsForm={[Function]}
+            />
+            <WithStyles(Divider)
+              className="nabi-margin-bottom-xsmall"
+            />
+          </UNDEFINED>
+          <UNDEFINED>
+            <StudentCard
+              student={
+                Object {
+                  "lessonsRemaining": 5,
+                  "students": Array [
+                    Object {
+                      "age": 6,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Zoe",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                    Object {
+                      "age": 9,
+                      "instrument": "piano",
+                      "lessonDuration": "45 mins",
+                      "name": "Esme",
+                      "placeForLessons": "home",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "user": Object {
+                    "birthday": "1960-05-26T04:00:00.000Z",
+                    "email": "sam@gmail.com",
+                    "firstName": "Sam",
+                    "id": "0",
+                    "lastName": "Flood",
+                    "role": "parent",
+                  },
+                }
+              }
+              toggleBuyLessonsForm={[Function]}
+            />
+          </UNDEFINED>
+        </div>,
+        <div
+          className="nabi-section-widest nabi-background-white"
+        >
+          <SectionTitle
+            cta={
+              <Link
+                to="/requests"
+              >
+                <WithStyles(Typography)>
+                  View all
+                </WithStyles(Typography)>
+              </Link>
+            }
+            text="Apply to Jobs Near You"
+          />
+          <UNDEFINED>
+            <RequestCard
+              request={
+                Object {
+                  "applications": 17,
+                  "applied": false,
+                  "createdAt": "2019-08-05T23:01:25.000Z",
+                  "id": 0,
+                  "instrument": "piano",
+                  "lessonDuration": "45",
+                  "location": "Boston, Ma",
+                  "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                  "placeForLessons": "studio",
+                  "students": Array [
+                    Object {
+                      "age": 18,
+                      "name": "Roxana",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "title": "Fun and experience piano instructor",
+                  "user": Object {
+                    "birthday": "1996-07-12T04:00:00.000Z",
+                    "displayName": "Roxana G.",
+                    "distance": "0.5 mi away",
+                    "email": "rox@gmail.com",
+                    "firstName": "Roxana",
+                    "id": "0",
+                    "lastName": "Gallardo",
+                    "role": "student",
+                  },
+                }
+              }
+            />
+            <WithStyles(Divider)
+              className="nabi-margin-bottom-xsmall"
+            />
+          </UNDEFINED>
+          <UNDEFINED>
+            <RequestCard
+              request={
+                Object {
+                  "application": Object {
+                    "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                    "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                    "rate": 50,
+                  },
+                  "applications": 17,
+                  "applied": true,
+                  "createdAt": "2019-08-05T20:19:25.000Z",
+                  "id": 1,
+                  "instrument": "piano",
+                  "lessonDuration": "45",
+                  "location": "Boston, Ma",
+                  "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                  "placeForLessons": "home",
+                  "students": Array [
+                    Object {
+                      "age": 6,
+                      "name": "Zoe",
+                      "skillLevel": "beginner",
+                    },
+                    Object {
+                      "age": 9,
+                      "name": "Esme",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "title": "Piano teacher needed for my family",
+                  "user": Object {
+                    "displayName": "Sam F.",
+                    "distance": "0.5 mi away",
+                    "email": "sam@gmail.com",
+                    "firstName": "Sam",
+                    "id": "1",
+                    "lastName": "Flood",
+                    "role": "parent",
+                  },
+                }
+              }
+            />
+            <WithStyles(Divider)
+              className="nabi-margin-bottom-xsmall"
+            />
+          </UNDEFINED>
+          <UNDEFINED>
+            <RequestCard
+              request={
+                Object {
+                  "applications": 17,
+                  "applied": false,
+                  "createdAt": "2019-08-05T15:19:25.000Z",
+                  "id": 2,
+                  "instrument": "piano",
+                  "lessonDuration": "45",
+                  "location": "Boston, Ma",
+                  "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                  "placeForLessons": "home",
+                  "students": Array [
+                    Object {
+                      "age": 11,
+                      "name": "Ethan",
+                      "skillLevel": "beginner",
+                    },
+                  ],
+                  "title": "Instructor for one child in Boston",
+                  "user": Object {
+                    "displayName": "Victor C.",
+                    "distance": "1 mi away",
+                    "email": "victor@gmail.com",
+                    "firstName": "Victor",
+                    "id": "2",
+                    "lastName": "Charles",
+                    "role": "parent",
+                  },
+                }
+              }
+            />
+          </UNDEFINED>
+        </div>,
+        <BuyMoreLessonsModal
+          closeHandler={[Function]}
+          error={undefined}
+          handleChange={[Function]}
+          handleSubmit={[Function]}
+          isOpen={false}
+          lessonDuration="45 mins"
+          lessonRate="0.00"
+          student={Object {}}
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              text="My Students"
+            />,
+            Array [
+              <UNDEFINED>
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 4,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Roxana",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />
+              </UNDEFINED>,
+              <UNDEFINED>
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 0,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Kevin",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1992-05-26T04:00:00.000Z",
+                        "email": "kev@gmail.com",
+                        "firstName": "Kevin",
+                        "id": "0",
+                        "lastName": "Charles",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />
+              </UNDEFINED>,
+              <UNDEFINED>
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 5,
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Zoe",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Esme",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1960-05-26T04:00:00.000Z",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "0",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />
+              </UNDEFINED>,
+            ],
+          ],
+          "className": "nabi-section-widest nabi-background-white nabi-margin-bottom-small",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": "My Students",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 4,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Roxana",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />,
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "student": Object {
+                    "lessonsRemaining": 4,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Roxana",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1996-07-12T04:00:00.000Z",
+                      "email": "rox@gmail.com",
+                      "firstName": "Roxana",
+                      "id": "0",
+                      "lastName": "Gallardo",
+                      "role": "student",
+                    },
+                  },
+                  "toggleBuyLessonsForm": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "className": "nabi-margin-bottom-xsmall",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 0,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Kevin",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1992-05-26T04:00:00.000Z",
+                        "email": "kev@gmail.com",
+                        "firstName": "Kevin",
+                        "id": "0",
+                        "lastName": "Charles",
+                        "role": "student",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />,
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "student": Object {
+                    "lessonsRemaining": 0,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Kevin",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1992-05-26T04:00:00.000Z",
+                      "email": "kev@gmail.com",
+                      "firstName": "Kevin",
+                      "id": "0",
+                      "lastName": "Charles",
+                      "role": "student",
+                    },
+                  },
+                  "toggleBuyLessonsForm": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "className": "nabi-margin-bottom-xsmall",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <StudentCard
+                  student={
+                    Object {
+                      "lessonsRemaining": 5,
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Zoe",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Esme",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1960-05-26T04:00:00.000Z",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "0",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                  toggleBuyLessonsForm={[Function]}
+                />,
+                false,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "student": Object {
+                    "lessonsRemaining": 5,
+                    "students": Array [
+                      Object {
+                        "age": 6,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Zoe",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                      Object {
+                        "age": 9,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Esme",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1960-05-26T04:00:00.000Z",
+                      "email": "sam@gmail.com",
+                      "firstName": "Sam",
+                      "id": "0",
+                      "lastName": "Flood",
+                      "role": "parent",
+                    },
+                  },
+                  "toggleBuyLessonsForm": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              false,
+            ],
+            "type": Symbol(react.fragment),
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              cta={
+                <Link
+                  to="/requests"
+                >
+                  <WithStyles(Typography)>
+                    View all
+                  </WithStyles(Typography)>
+                </Link>
+              }
+              text="Apply to Jobs Near You"
+            />,
+            Array [
+              <UNDEFINED>
+                <RequestCard
+                  request={
+                    Object {
+                      "applications": 17,
+                      "applied": false,
+                      "createdAt": "2019-08-05T23:01:25.000Z",
+                      "id": 0,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "studio",
+                      "students": Array [
+                        Object {
+                          "age": 18,
+                          "name": "Roxana",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Fun and experience piano instructor",
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "displayName": "Roxana G.",
+                        "distance": "0.5 mi away",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    }
+                  }
+                />
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />
+              </UNDEFINED>,
+              <UNDEFINED>
+                <RequestCard
+                  request={
+                    Object {
+                      "application": Object {
+                        "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                        "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                        "rate": 50,
+                      },
+                      "applications": 17,
+                      "applied": true,
+                      "createdAt": "2019-08-05T20:19:25.000Z",
+                      "id": 1,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "home",
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "name": "Zoe",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "name": "Esme",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Piano teacher needed for my family",
+                      "user": Object {
+                        "displayName": "Sam F.",
+                        "distance": "0.5 mi away",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "1",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                />
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />
+              </UNDEFINED>,
+              <UNDEFINED>
+                <RequestCard
+                  request={
+                    Object {
+                      "applications": 17,
+                      "applied": false,
+                      "createdAt": "2019-08-05T15:19:25.000Z",
+                      "id": 2,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "home",
+                      "students": Array [
+                        Object {
+                          "age": 11,
+                          "name": "Ethan",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Instructor for one child in Boston",
+                      "user": Object {
+                        "displayName": "Victor C.",
+                        "distance": "1 mi away",
+                        "email": "victor@gmail.com",
+                        "firstName": "Victor",
+                        "id": "2",
+                        "lastName": "Charles",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                />
+              </UNDEFINED>,
+            ],
+          ],
+          "className": "nabi-section-widest nabi-background-white",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "cta": <Link
+                to="/requests"
+              >
+                <WithStyles(Typography)>
+                  View all
+                </WithStyles(Typography)>
+              </Link>,
+              "text": "Apply to Jobs Near You",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <RequestCard
+                  request={
+                    Object {
+                      "applications": 17,
+                      "applied": false,
+                      "createdAt": "2019-08-05T23:01:25.000Z",
+                      "id": 0,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "studio",
+                      "students": Array [
+                        Object {
+                          "age": 18,
+                          "name": "Roxana",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Fun and experience piano instructor",
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "displayName": "Roxana G.",
+                        "distance": "0.5 mi away",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    }
+                  }
+                />,
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "request": Object {
+                    "applications": 17,
+                    "applied": false,
+                    "createdAt": "2019-08-05T23:01:25.000Z",
+                    "id": 0,
+                    "instrument": "piano",
+                    "lessonDuration": "45",
+                    "location": "Boston, Ma",
+                    "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    "placeForLessons": "studio",
+                    "students": Array [
+                      Object {
+                        "age": 18,
+                        "name": "Roxana",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "title": "Fun and experience piano instructor",
+                    "user": Object {
+                      "birthday": "1996-07-12T04:00:00.000Z",
+                      "displayName": "Roxana G.",
+                      "distance": "0.5 mi away",
+                      "email": "rox@gmail.com",
+                      "firstName": "Roxana",
+                      "id": "0",
+                      "lastName": "Gallardo",
+                      "role": "student",
+                    },
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "className": "nabi-margin-bottom-xsmall",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <RequestCard
+                  request={
+                    Object {
+                      "application": Object {
+                        "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                        "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                        "rate": 50,
+                      },
+                      "applications": 17,
+                      "applied": true,
+                      "createdAt": "2019-08-05T20:19:25.000Z",
+                      "id": 1,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "home",
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "name": "Zoe",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "name": "Esme",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Piano teacher needed for my family",
+                      "user": Object {
+                        "displayName": "Sam F.",
+                        "distance": "0.5 mi away",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "1",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                />,
+                <WithStyles(Divider)
+                  className="nabi-margin-bottom-xsmall"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "request": Object {
+                    "application": Object {
+                      "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                      "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                      "rate": 50,
+                    },
+                    "applications": 17,
+                    "applied": true,
+                    "createdAt": "2019-08-05T20:19:25.000Z",
+                    "id": 1,
+                    "instrument": "piano",
+                    "lessonDuration": "45",
+                    "location": "Boston, Ma",
+                    "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    "placeForLessons": "home",
+                    "students": Array [
+                      Object {
+                        "age": 6,
+                        "name": "Zoe",
+                        "skillLevel": "beginner",
+                      },
+                      Object {
+                        "age": 9,
+                        "name": "Esme",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "title": "Piano teacher needed for my family",
+                    "user": Object {
+                      "displayName": "Sam F.",
+                      "distance": "0.5 mi away",
+                      "email": "sam@gmail.com",
+                      "firstName": "Sam",
+                      "id": "1",
+                      "lastName": "Flood",
+                      "role": "parent",
+                    },
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "className": "nabi-margin-bottom-xsmall",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <RequestCard
+                  request={
+                    Object {
+                      "applications": 17,
+                      "applied": false,
+                      "createdAt": "2019-08-05T15:19:25.000Z",
+                      "id": 2,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "home",
+                      "students": Array [
+                        Object {
+                          "age": 11,
+                          "name": "Ethan",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Instructor for one child in Boston",
+                      "user": Object {
+                        "displayName": "Victor C.",
+                        "distance": "1 mi away",
+                        "email": "victor@gmail.com",
+                        "firstName": "Victor",
+                        "id": "2",
+                        "lastName": "Charles",
+                        "role": "parent",
+                      },
+                    }
+                  }
+                />,
+                false,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "request": Object {
+                    "applications": 17,
+                    "applied": false,
+                    "createdAt": "2019-08-05T15:19:25.000Z",
+                    "id": 2,
+                    "instrument": "piano",
+                    "lessonDuration": "45",
+                    "location": "Boston, Ma",
+                    "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    "placeForLessons": "home",
+                    "students": Array [
+                      Object {
+                        "age": 11,
+                        "name": "Ethan",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "title": "Instructor for one child in Boston",
+                    "user": Object {
+                      "displayName": "Victor C.",
+                      "distance": "1 mi away",
+                      "email": "victor@gmail.com",
+                      "firstName": "Victor",
+                      "id": "2",
+                      "lastName": "Charles",
+                      "role": "parent",
+                    },
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              false,
+            ],
+            "type": Symbol(react.fragment),
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "closeHandler": [Function],
+          "error": undefined,
+          "handleChange": [Function],
+          "handleSubmit": [Function],
+          "isOpen": false,
+          "lessonDuration": "45 mins",
+          "lessonRate": "0.00",
+          "student": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-section-widest nabi-background-white nabi-margin-bottom-small"
+          >
+            <SectionTitle
+              text="My Students"
+            />
+            <UNDEFINED>
+              <StudentCard
+                student={
+                  Object {
+                    "lessonsRemaining": 4,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Roxana",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1996-07-12T04:00:00.000Z",
+                      "email": "rox@gmail.com",
+                      "firstName": "Roxana",
+                      "id": "0",
+                      "lastName": "Gallardo",
+                      "role": "student",
+                    },
+                  }
+                }
+                toggleBuyLessonsForm={[Function]}
+              />
+              <WithStyles(Divider)
+                className="nabi-margin-bottom-xsmall"
+              />
+            </UNDEFINED>
+            <UNDEFINED>
+              <StudentCard
+                student={
+                  Object {
+                    "lessonsRemaining": 0,
+                    "students": Array [
+                      Object {
+                        "age": 22,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Kevin",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1992-05-26T04:00:00.000Z",
+                      "email": "kev@gmail.com",
+                      "firstName": "Kevin",
+                      "id": "0",
+                      "lastName": "Charles",
+                      "role": "student",
+                    },
+                  }
+                }
+                toggleBuyLessonsForm={[Function]}
+              />
+              <WithStyles(Divider)
+                className="nabi-margin-bottom-xsmall"
+              />
+            </UNDEFINED>
+            <UNDEFINED>
+              <StudentCard
+                student={
+                  Object {
+                    "lessonsRemaining": 5,
+                    "students": Array [
+                      Object {
+                        "age": 6,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Zoe",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                      Object {
+                        "age": 9,
+                        "instrument": "piano",
+                        "lessonDuration": "45 mins",
+                        "name": "Esme",
+                        "placeForLessons": "home",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "user": Object {
+                      "birthday": "1960-05-26T04:00:00.000Z",
+                      "email": "sam@gmail.com",
+                      "firstName": "Sam",
+                      "id": "0",
+                      "lastName": "Flood",
+                      "role": "parent",
+                    },
+                  }
+                }
+                toggleBuyLessonsForm={[Function]}
+              />
+            </UNDEFINED>
+          </div>,
+          <div
+            className="nabi-section-widest nabi-background-white"
+          >
+            <SectionTitle
+              cta={
+                <Link
+                  to="/requests"
+                >
+                  <WithStyles(Typography)>
+                    View all
+                  </WithStyles(Typography)>
+                </Link>
+              }
+              text="Apply to Jobs Near You"
+            />
+            <UNDEFINED>
+              <RequestCard
+                request={
+                  Object {
+                    "applications": 17,
+                    "applied": false,
+                    "createdAt": "2019-08-05T23:01:25.000Z",
+                    "id": 0,
+                    "instrument": "piano",
+                    "lessonDuration": "45",
+                    "location": "Boston, Ma",
+                    "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    "placeForLessons": "studio",
+                    "students": Array [
+                      Object {
+                        "age": 18,
+                        "name": "Roxana",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "title": "Fun and experience piano instructor",
+                    "user": Object {
+                      "birthday": "1996-07-12T04:00:00.000Z",
+                      "displayName": "Roxana G.",
+                      "distance": "0.5 mi away",
+                      "email": "rox@gmail.com",
+                      "firstName": "Roxana",
+                      "id": "0",
+                      "lastName": "Gallardo",
+                      "role": "student",
+                    },
+                  }
+                }
+              />
+              <WithStyles(Divider)
+                className="nabi-margin-bottom-xsmall"
+              />
+            </UNDEFINED>
+            <UNDEFINED>
+              <RequestCard
+                request={
+                  Object {
+                    "application": Object {
+                      "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                      "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                      "rate": 50,
+                    },
+                    "applications": 17,
+                    "applied": true,
+                    "createdAt": "2019-08-05T20:19:25.000Z",
+                    "id": 1,
+                    "instrument": "piano",
+                    "lessonDuration": "45",
+                    "location": "Boston, Ma",
+                    "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    "placeForLessons": "home",
+                    "students": Array [
+                      Object {
+                        "age": 6,
+                        "name": "Zoe",
+                        "skillLevel": "beginner",
+                      },
+                      Object {
+                        "age": 9,
+                        "name": "Esme",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "title": "Piano teacher needed for my family",
+                    "user": Object {
+                      "displayName": "Sam F.",
+                      "distance": "0.5 mi away",
+                      "email": "sam@gmail.com",
+                      "firstName": "Sam",
+                      "id": "1",
+                      "lastName": "Flood",
+                      "role": "parent",
+                    },
+                  }
+                }
+              />
+              <WithStyles(Divider)
+                className="nabi-margin-bottom-xsmall"
+              />
+            </UNDEFINED>
+            <UNDEFINED>
+              <RequestCard
+                request={
+                  Object {
+                    "applications": 17,
+                    "applied": false,
+                    "createdAt": "2019-08-05T15:19:25.000Z",
+                    "id": 2,
+                    "instrument": "piano",
+                    "lessonDuration": "45",
+                    "location": "Boston, Ma",
+                    "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    "placeForLessons": "home",
+                    "students": Array [
+                      Object {
+                        "age": 11,
+                        "name": "Ethan",
+                        "skillLevel": "beginner",
+                      },
+                    ],
+                    "title": "Instructor for one child in Boston",
+                    "user": Object {
+                      "displayName": "Victor C.",
+                      "distance": "1 mi away",
+                      "email": "victor@gmail.com",
+                      "firstName": "Victor",
+                      "id": "2",
+                      "lastName": "Charles",
+                      "role": "parent",
+                    },
+                  }
+                }
+              />
+            </UNDEFINED>
+          </div>,
+          <BuyMoreLessonsModal
+            closeHandler={[Function]}
+            error={undefined}
+            handleChange={[Function]}
+            handleSubmit={[Function]}
+            isOpen={false}
+            lessonDuration="45 mins"
+            lessonRate="0.00"
+            student={Object {}}
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                text="My Students"
+              />,
+              Array [
+                <UNDEFINED>
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 4,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Roxana",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1996-07-12T04:00:00.000Z",
+                          "email": "rox@gmail.com",
+                          "firstName": "Roxana",
+                          "id": "0",
+                          "lastName": "Gallardo",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />
+                </UNDEFINED>,
+                <UNDEFINED>
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 0,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Kevin",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1992-05-26T04:00:00.000Z",
+                          "email": "kev@gmail.com",
+                          "firstName": "Kevin",
+                          "id": "0",
+                          "lastName": "Charles",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />
+                </UNDEFINED>,
+                <UNDEFINED>
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 5,
+                        "students": Array [
+                          Object {
+                            "age": 6,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Zoe",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                          Object {
+                            "age": 9,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Esme",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1960-05-26T04:00:00.000Z",
+                          "email": "sam@gmail.com",
+                          "firstName": "Sam",
+                          "id": "0",
+                          "lastName": "Flood",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />
+                </UNDEFINED>,
+              ],
+            ],
+            "className": "nabi-section-widest nabi-background-white nabi-margin-bottom-small",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": "My Students",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 4,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Roxana",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1996-07-12T04:00:00.000Z",
+                          "email": "rox@gmail.com",
+                          "firstName": "Roxana",
+                          "id": "0",
+                          "lastName": "Gallardo",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />,
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "student": Object {
+                      "lessonsRemaining": 4,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Roxana",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    },
+                    "toggleBuyLessonsForm": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "className": "nabi-margin-bottom-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 0,
+                        "students": Array [
+                          Object {
+                            "age": 22,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Kevin",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1992-05-26T04:00:00.000Z",
+                          "email": "kev@gmail.com",
+                          "firstName": "Kevin",
+                          "id": "0",
+                          "lastName": "Charles",
+                          "role": "student",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />,
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "student": Object {
+                      "lessonsRemaining": 0,
+                      "students": Array [
+                        Object {
+                          "age": 22,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Kevin",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1992-05-26T04:00:00.000Z",
+                        "email": "kev@gmail.com",
+                        "firstName": "Kevin",
+                        "id": "0",
+                        "lastName": "Charles",
+                        "role": "student",
+                      },
+                    },
+                    "toggleBuyLessonsForm": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "className": "nabi-margin-bottom-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <StudentCard
+                    student={
+                      Object {
+                        "lessonsRemaining": 5,
+                        "students": Array [
+                          Object {
+                            "age": 6,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Zoe",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                          Object {
+                            "age": 9,
+                            "instrument": "piano",
+                            "lessonDuration": "45 mins",
+                            "name": "Esme",
+                            "placeForLessons": "home",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "user": Object {
+                          "birthday": "1960-05-26T04:00:00.000Z",
+                          "email": "sam@gmail.com",
+                          "firstName": "Sam",
+                          "id": "0",
+                          "lastName": "Flood",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                    toggleBuyLessonsForm={[Function]}
+                  />,
+                  false,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "student": Object {
+                      "lessonsRemaining": 5,
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Zoe",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "instrument": "piano",
+                          "lessonDuration": "45 mins",
+                          "name": "Esme",
+                          "placeForLessons": "home",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "user": Object {
+                        "birthday": "1960-05-26T04:00:00.000Z",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "0",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    },
+                    "toggleBuyLessonsForm": [Function],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                false,
+              ],
+              "type": Symbol(react.fragment),
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                cta={
+                  <Link
+                    to="/requests"
+                  >
+                    <WithStyles(Typography)>
+                      View all
+                    </WithStyles(Typography)>
+                  </Link>
+                }
+                text="Apply to Jobs Near You"
+              />,
+              Array [
+                <UNDEFINED>
+                  <RequestCard
+                    request={
+                      Object {
+                        "applications": 17,
+                        "applied": false,
+                        "createdAt": "2019-08-05T23:01:25.000Z",
+                        "id": 0,
+                        "instrument": "piano",
+                        "lessonDuration": "45",
+                        "location": "Boston, Ma",
+                        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                        "placeForLessons": "studio",
+                        "students": Array [
+                          Object {
+                            "age": 18,
+                            "name": "Roxana",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "title": "Fun and experience piano instructor",
+                        "user": Object {
+                          "birthday": "1996-07-12T04:00:00.000Z",
+                          "displayName": "Roxana G.",
+                          "distance": "0.5 mi away",
+                          "email": "rox@gmail.com",
+                          "firstName": "Roxana",
+                          "id": "0",
+                          "lastName": "Gallardo",
+                          "role": "student",
+                        },
+                      }
+                    }
+                  />
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />
+                </UNDEFINED>,
+                <UNDEFINED>
+                  <RequestCard
+                    request={
+                      Object {
+                        "application": Object {
+                          "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                          "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                          "rate": 50,
+                        },
+                        "applications": 17,
+                        "applied": true,
+                        "createdAt": "2019-08-05T20:19:25.000Z",
+                        "id": 1,
+                        "instrument": "piano",
+                        "lessonDuration": "45",
+                        "location": "Boston, Ma",
+                        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                        "placeForLessons": "home",
+                        "students": Array [
+                          Object {
+                            "age": 6,
+                            "name": "Zoe",
+                            "skillLevel": "beginner",
+                          },
+                          Object {
+                            "age": 9,
+                            "name": "Esme",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "title": "Piano teacher needed for my family",
+                        "user": Object {
+                          "displayName": "Sam F.",
+                          "distance": "0.5 mi away",
+                          "email": "sam@gmail.com",
+                          "firstName": "Sam",
+                          "id": "1",
+                          "lastName": "Flood",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                  />
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />
+                </UNDEFINED>,
+                <UNDEFINED>
+                  <RequestCard
+                    request={
+                      Object {
+                        "applications": 17,
+                        "applied": false,
+                        "createdAt": "2019-08-05T15:19:25.000Z",
+                        "id": 2,
+                        "instrument": "piano",
+                        "lessonDuration": "45",
+                        "location": "Boston, Ma",
+                        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                        "placeForLessons": "home",
+                        "students": Array [
+                          Object {
+                            "age": 11,
+                            "name": "Ethan",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "title": "Instructor for one child in Boston",
+                        "user": Object {
+                          "displayName": "Victor C.",
+                          "distance": "1 mi away",
+                          "email": "victor@gmail.com",
+                          "firstName": "Victor",
+                          "id": "2",
+                          "lastName": "Charles",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                  />
+                </UNDEFINED>,
+              ],
+            ],
+            "className": "nabi-section-widest nabi-background-white",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "cta": <Link
+                  to="/requests"
+                >
+                  <WithStyles(Typography)>
+                    View all
+                  </WithStyles(Typography)>
+                </Link>,
+                "text": "Apply to Jobs Near You",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <RequestCard
+                    request={
+                      Object {
+                        "applications": 17,
+                        "applied": false,
+                        "createdAt": "2019-08-05T23:01:25.000Z",
+                        "id": 0,
+                        "instrument": "piano",
+                        "lessonDuration": "45",
+                        "location": "Boston, Ma",
+                        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                        "placeForLessons": "studio",
+                        "students": Array [
+                          Object {
+                            "age": 18,
+                            "name": "Roxana",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "title": "Fun and experience piano instructor",
+                        "user": Object {
+                          "birthday": "1996-07-12T04:00:00.000Z",
+                          "displayName": "Roxana G.",
+                          "distance": "0.5 mi away",
+                          "email": "rox@gmail.com",
+                          "firstName": "Roxana",
+                          "id": "0",
+                          "lastName": "Gallardo",
+                          "role": "student",
+                        },
+                      }
+                    }
+                  />,
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "request": Object {
+                      "applications": 17,
+                      "applied": false,
+                      "createdAt": "2019-08-05T23:01:25.000Z",
+                      "id": 0,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "studio",
+                      "students": Array [
+                        Object {
+                          "age": 18,
+                          "name": "Roxana",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Fun and experience piano instructor",
+                      "user": Object {
+                        "birthday": "1996-07-12T04:00:00.000Z",
+                        "displayName": "Roxana G.",
+                        "distance": "0.5 mi away",
+                        "email": "rox@gmail.com",
+                        "firstName": "Roxana",
+                        "id": "0",
+                        "lastName": "Gallardo",
+                        "role": "student",
+                      },
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "className": "nabi-margin-bottom-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <RequestCard
+                    request={
+                      Object {
+                        "application": Object {
+                          "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                          "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                          "rate": 50,
+                        },
+                        "applications": 17,
+                        "applied": true,
+                        "createdAt": "2019-08-05T20:19:25.000Z",
+                        "id": 1,
+                        "instrument": "piano",
+                        "lessonDuration": "45",
+                        "location": "Boston, Ma",
+                        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                        "placeForLessons": "home",
+                        "students": Array [
+                          Object {
+                            "age": 6,
+                            "name": "Zoe",
+                            "skillLevel": "beginner",
+                          },
+                          Object {
+                            "age": 9,
+                            "name": "Esme",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "title": "Piano teacher needed for my family",
+                        "user": Object {
+                          "displayName": "Sam F.",
+                          "distance": "0.5 mi away",
+                          "email": "sam@gmail.com",
+                          "firstName": "Sam",
+                          "id": "1",
+                          "lastName": "Flood",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                  />,
+                  <WithStyles(Divider)
+                    className="nabi-margin-bottom-xsmall"
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "request": Object {
+                      "application": Object {
+                        "createdAt": "Mon Aug 22, 2019 at 2:00pm EDT",
+                        "message": "Hello Sam, I would love to work with your family and typesetting industria  Ipsum is simply dummy.",
+                        "rate": 50,
+                      },
+                      "applications": 17,
+                      "applied": true,
+                      "createdAt": "2019-08-05T20:19:25.000Z",
+                      "id": 1,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "home",
+                      "students": Array [
+                        Object {
+                          "age": 6,
+                          "name": "Zoe",
+                          "skillLevel": "beginner",
+                        },
+                        Object {
+                          "age": 9,
+                          "name": "Esme",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Piano teacher needed for my family",
+                      "user": Object {
+                        "displayName": "Sam F.",
+                        "distance": "0.5 mi away",
+                        "email": "sam@gmail.com",
+                        "firstName": "Sam",
+                        "id": "1",
+                        "lastName": "Flood",
+                        "role": "parent",
+                      },
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "className": "nabi-margin-bottom-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <RequestCard
+                    request={
+                      Object {
+                        "applications": 17,
+                        "applied": false,
+                        "createdAt": "2019-08-05T15:19:25.000Z",
+                        "id": 2,
+                        "instrument": "piano",
+                        "lessonDuration": "45",
+                        "location": "Boston, Ma",
+                        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                        "placeForLessons": "home",
+                        "students": Array [
+                          Object {
+                            "age": 11,
+                            "name": "Ethan",
+                            "skillLevel": "beginner",
+                          },
+                        ],
+                        "title": "Instructor for one child in Boston",
+                        "user": Object {
+                          "displayName": "Victor C.",
+                          "distance": "1 mi away",
+                          "email": "victor@gmail.com",
+                          "firstName": "Victor",
+                          "id": "2",
+                          "lastName": "Charles",
+                          "role": "parent",
+                        },
+                      }
+                    }
+                  />,
+                  false,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "request": Object {
+                      "applications": 17,
+                      "applied": false,
+                      "createdAt": "2019-08-05T15:19:25.000Z",
+                      "id": 2,
+                      "instrument": "piano",
+                      "lessonDuration": "45",
+                      "location": "Boston, Ma",
+                      "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      "placeForLessons": "home",
+                      "students": Array [
+                        Object {
+                          "age": 11,
+                          "name": "Ethan",
+                          "skillLevel": "beginner",
+                        },
+                      ],
+                      "title": "Instructor for one child in Boston",
+                      "user": Object {
+                        "displayName": "Victor C.",
+                        "distance": "1 mi away",
+                        "email": "victor@gmail.com",
+                        "firstName": "Victor",
+                        "id": "2",
+                        "lastName": "Charles",
+                        "role": "parent",
+                      },
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                false,
+              ],
+              "type": Symbol(react.fragment),
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "closeHandler": [Function],
+            "error": undefined,
+            "handleChange": [Function],
+            "handleSubmit": [Function],
+            "isOpen": false,
+            "lessonDuration": "45 mins",
+            "lessonRate": "0.00",
+            "student": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
