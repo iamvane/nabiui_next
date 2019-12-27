@@ -2,18 +2,18 @@ import {
   ActionStatus,
   ActionStatusWithMessage,
   ListResource
-} from 'redux/models/models';
-import { PlaceForLessonsType } from 'components/PlaceForLessons/model';
-import { RatesType } from 'components/Rates/model';
-import { EducationType } from 'components/Education/model';
-import { EmploymentType } from 'components/Employment/model';
-import { AvailabilityType } from 'components/Availability/model';
-import { InstrumentsType } from 'components/Instruments/model';
+} from './models';
+import { PlaceForLessonsType } from '../../components/PlaceForLessons/model';
+import { RatesType } from '../../components/Rates/model';
+import { EducationType } from '../../components/Education/model';
+import { EmploymentType } from '../../components/Employment/model';
+import { AvailabilityType } from '../../components/Availability/model';
+import { InstrumentsType } from '../../components/Instruments/model';
 import {
   LessonSizeType,
   AgeGroupType
-} from 'components/JobPreferences/model';
-import { QualificationsType } from 'components/Qualifications/model';
+} from '../../components/JobPreferences/model';
+import { QualificationsType } from '../../components/Qualifications/model';
 
 export interface InstructorType {
   userId?: number;
@@ -41,6 +41,7 @@ export interface InstructorType {
   yearsOfExperience?: number;
   age?: number;
   instructorId?: number;
+  references?: string[];
 }
 
 export interface Rates {
@@ -84,6 +85,8 @@ export interface InstructorState {
     deleteEmployment: ActionStatusWithMessage;
     fetchInstructors: ActionStatus;
     fetchInstructor: ActionStatus;
+    requestReference: ActionStatusWithMessage;
+    fetchReferences: ActionStatus;
   };
 }
 
@@ -155,6 +158,15 @@ export const defaultInstructorState: InstructorState = {
     fetchInstructor: {
       isRequesting: false,
       error: ''
+     },
+    requestReference: {
+      isRequesting: false,
+      error: '',
+      message: ''
+    },
+    fetchReferences: {
+      isRequesting: false,
+      error: ''
     }
-  },
+  }
 };

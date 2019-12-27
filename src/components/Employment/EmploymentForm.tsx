@@ -14,9 +14,9 @@ import {
 } from '@material-ui/core';
 
 import { months } from '../../../assets/data/months';
-import { EmploymentFormComponent } from 'components/Employment/constants';
-import { EmploymentType } from 'components/Employment/model';
-import { YearsList } from 'utils/YearsList';
+import { EmploymentFormComponent } from './constants';
+import { EmploymentType } from './model';
+import { YearsList } from '../../utils/YearsList';
 
 interface Props extends EmploymentType {
   handleChange: (event: React.FormEvent<{}>) => void;
@@ -70,7 +70,7 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
   );
 
   const renderToFields = (): JSX.Element => (
-    <Grid container={true} spacing={16}>
+    <Grid container={true} spacing={8}>
       <Grid item={true} md={4} xs={12} sm={6}>
         <FormControl fullWidth={true}>
           <Select
@@ -166,7 +166,7 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container={true} spacing={16}>
+      <Grid container={true} spacing={8}>
         <Grid item={true} md={4} xs={12} sm={6}>
           <FormControl fullWidth={true}>
             <Select

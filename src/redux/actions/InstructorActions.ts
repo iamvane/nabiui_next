@@ -2,20 +2,20 @@ import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios  from 'axios';
 
-import { StoreState } from 'redux/store';
-import { InstructorType } from 'redux/models/InstructorModel';
-import { InstructorActions } from 'redux/actions/InstructorActionTypes';
-import { ProfileType } from 'components/ProfileBuilder/ProfileStep/models';
-import { defaultApiError } from 'constants/apiConstants';
-import { getError } from 'utils/handleApiErros';
+import { ProfileType } from '../../components/ProfileBuilder/ProfileStep/models';
+import { defaultApiError } from '../../constants/apiConstants';
+import { getError } from '../../utils/handleApiErros';
+import { ApiEndpoints } from '../../constants/apiEndpoints';
+import { EducationType } from '../../components/Education/model';
+import { EmploymentType } from '../../components/Employment/model';
+import { StoreState } from '../reducers/store';
+import { InstructorType } from '../models/InstructorModel';
+import { InstructorActions } from '../actions/InstructorActionTypes';
 import {
   requestAction,
   withDataAction,
   withErrorAction,
-} from 'redux/actions/actions';
-import { ApiEndpoints } from 'redux/constants/apiEndpoints';
-import { EducationType } from 'components/Education/model';
-import { EmploymentType } from 'components/Employment/model';
+} from './actions';
 
 // Default error message
 let errorMessage = defaultApiError;
@@ -392,5 +392,52 @@ export const fetchInstructor = (instructorId: number): ThunkAction<Promise<void>
       errorMessage = getError(e);
     }
     dispatch(withErrorAction(InstructorActions.FETCH_INSTRUCTOR_FAILURE, errorMessage));
+  }
+};
+
+export const requestReference = (
+  references: string
+): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(InstructorActions.REQUEST_REFERENCE));
+  try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
+    const response = await axios.post(
+      ApiEndpoints.requestReferences,
+      {emails: [references]},
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+    dispatch(withDataAction(InstructorActions.REQUEST_REFERENCE_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(InstructorActions.REQUEST_REFERENCE_FAILURE, errorMessage));
+  }
+};
+
+export const fetchReferences = (): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(InstructorActions.FETCH_REFERENCES));
+  try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
+    const response = await axios.get(
+      ApiEndpoints.fetchReferences,
+      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
+    dispatch(withDataAction(InstructorActions.FETCH_REFERENCES_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(InstructorActions.FETCH_REFERENCES_FAILURE, errorMessage));
   }
 };

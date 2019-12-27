@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+
 const reactStringReplace = require('react-string-replace');
+import { useRouter } from 'next/router';
 
 import CommonStepper from '../CommonStepper/CommonStepper';
 import { Routes } from '../common/constants/Routes';
@@ -16,74 +17,66 @@ import AccountInfo from '../AccountInfo/AccountInfo';
 import ProfileStep from './ProfileStep/ProfileStep';
 import JobPreferencesStep from './JobPreferencesStep';
 import Screening from './Screening';
+import References from '../Recommendations/Recommendations';
 
 interface State {
   showSnackbar: boolean;
 }
 
-interface Props extends RouteComponentProps<{}> {}
+interface Props {}
 
-export class ProfileBuilder extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      showSnackbar: false
-    };
-  }
+export const ProfileBuilder = (props: Props) => {
+  const [isSnackbarOpen, toggleSnackbar] = React.useState(false);
 
-  componentDidMount() {
-    if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.Registration) {
-      this.setState({
-        showSnackbar: true
-      });
-    }
-  }
+  const onClickSnackbar = () => {
+    toggleSnackbar(prevOpen => !prevOpen);
+  };
 
-  public closeSnackbar = () => this.setState({ showSnackbar: false});
+  const router = useRouter();
+  console.log(router);
+  const snackBarMessage = reactStringReplace(
+    AnnouncementConstants.preLaunchWelcomeInstructor,
+    AnnouncementConstants.welcomePlaceholder,
+    (i: number) => (
+      <span key={i} className="nabi-text-mediumbold">{AnnouncementConstants.welcomeText}</span>
+    )
+  );
 
-  public render () {
-    const snackBarMessage = reactStringReplace(
-      AnnouncementConstants.preLaunchWelcomeInstructor,
-      AnnouncementConstants.welcomePlaceholder,
-      (i: number) => (
-        <span key={i} className="nabi-text-mediumbold">{AnnouncementConstants.welcomeText}</span>
-      )
-    );
+  const components = [
+    (
+      <AccountInfo
+        nextPath={ProfileBuilderStepper.StepsPaths.Profile}
+        redirectUrl={ProfileBuilderStepper.StepsPaths.Profile}
+        key={0}
+      />
+    ),
+    <ProfileStep key={1} />,
+    <JobPreferencesStep key={2} />,
+    <Education key={3} />,
+    <Employment key={4} />,
+    <References key={5} />,
+    <Screening key={6} />
+  ];
 
-    const components = [
-      (
-        <AccountInfo
-          nextPath={ProfileBuilderStepper.StepsPaths.Profile}
-          redirectUrl={ProfileBuilderStepper.StepsPaths.Profile}
-          key={0}
-        />
-      ),
-      <ProfileStep key={1} />,
-      <JobPreferencesStep key={2} />,
-      <Education key={3} />,
-      <Employment key={4} />,
-      <Screening key={5} />
-    ];
-
-    return(
-      <React.Fragment>
-        <CommonStepper
-          steps={ProfileBuilderStepper.steps}
-          pageTitle={ProfileBuilderComponent.pageTitle}
-          stepsPaths={ProfileBuilderStepper.StepsPaths}
-          content={components}
-          baseRoute={Routes.BuildProfile}
-        />
-        <SnackBar
-          isOpen={this.state.showSnackbar}
-          message={snackBarMessage}
-          handleClose={this.closeSnackbar}
-          variant="success"
-          hideIcon={true}
-        />
-      </React.Fragment>
-    );
-  }
+  return(
+    <React.Fragment>
+      <CommonStepper
+        steps={ProfileBuilderStepper.steps}
+        pageTitle={ProfileBuilderComponent.pageTitle}
+        stepsPaths={ProfileBuilderStepper.StepsPaths}
+        content={components}
+        baseRoute={Routes.BuildProfile}
+        stepQueries={ProfileBuilderStepper.stepsQueries}
+      />
+      <SnackBar
+        isOpen={isSnackbarOpen}
+        message={snackBarMessage}
+        handleClose={onClickSnackbar}
+        variant="success"
+        hideIcon={true}
+      />
+    </React.Fragment>
+  );
 }
 
 export default ProfileBuilder;

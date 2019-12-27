@@ -7,16 +7,16 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { EducationType }  from 'components/Education/model';
+import { EducationType }  from './model';
 import {
   degreeTypeLabels,
   EducationAddedComponent
-} from 'components/Education/constants';
+} from './constants';
 
 interface Props extends EducationType {
   deleteEducation: (educationId: number | undefined) => void;
   editEducation: (educationId: number | undefined) => void;
-  gridWidth?: boolean | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined;
+  gridWidth?: boolean | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   notEditable?: boolean;
 }
 
@@ -24,7 +24,7 @@ const EducationAdded: React.StatelessComponent<Props> = props => {
   return (
     <Grid
       item={true}
-      md={props.gridWidth && props.gridWidth}
+      md={props.gridWidth ? props.gridWidth : false}
       xs={12}
       className={`${props.notEditable ? '' : 'nabi-editable-item'} nabi-margin-top-small`}
     >

@@ -10,9 +10,9 @@ import {
   TextField
 } from '@material-ui/core';
 
-import { YearsList } from 'utils/YearsList';
-import { EducationType } from 'components/Education/model';
-import { EducationFormComponent, degreeOptions } from 'components/Education/constants';
+import { YearsList } from '../../utils/YearsList';
+import { EducationType } from './model';
+import { EducationFormComponent, degreeOptions } from './constants';
 
 interface Props extends EducationType {
   handleChange: (event: React.FormEvent<{}>) => void;

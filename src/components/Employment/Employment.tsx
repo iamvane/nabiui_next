@@ -12,20 +12,20 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { StoreState } from 'redux/store';
+import { StoreState } from '../../redux/reducers/store';
 import {
   fetchEmployment,
   addEmployment,
   editEmployment,
   deleteEmployment
-} from 'redux/actions/InstructorActions';
-import { StepperButtons } from 'components/CommonStepper/StepperButtons';
-import { ProfileBuilderStepper } from 'components/ProfileBuilder/constants';
-import { EmploymentComponent } from 'components/Employment/constants';
-import { EmploymentType } from 'components/Employment/model';
-import EmploymentForm from 'components/Employment/EmploymentForm';
-import EmploymentAdded from 'components/Employment/EmploymentAdded';
-import SectionTitle from 'components/common/SectionTitle';
+} from '../../redux/actions/InstructorActions';
+import { StepperButtons } from '../CommonStepper/StepperButtons';
+import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
+import SectionTitle from '../common/SectionTitle';
+import { EmploymentComponent } from './constants';
+import { EmploymentType } from './model';
+import EmploymentForm from './EmploymentForm';
+import EmploymentAdded from './EmploymentAdded';
 
 interface DispatchProps {
   fetchEmployment: () => void;

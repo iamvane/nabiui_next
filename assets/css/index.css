@@ -13,7 +13,7 @@ body {
 	margin: 0px;
 	font-family: 'Montserrat', sans-serif;
 	color: #717a8a !important;
-	background-image: url('../images/musical-background.jpg') !important;
+	background-image: url('https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/musical-background.jpg') !important;
   background-size: contain;
   background-repeat: repeat;
 }
@@ -134,6 +134,10 @@ p.nabi-color-orange {
 
 .nabi-display-none {
   display: none !important;
+}
+
+.nabi-display-flex {
+  display: flex !important;
 }
 
 /*FLOAT*/
@@ -606,7 +610,7 @@ li.nabi-list-style-position-inside {
 #banner {
 	height: 520px !important;
 	width: 100%;
-	background-image: url('../images/nabiBannerImage.jpg') !important;
+	background-image: url('https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabiBannerImage.jpg') !important;
 	background-size: cover !important;
 	background-repeat: no-repeat;
 	background-position: center;

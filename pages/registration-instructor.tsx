@@ -13,41 +13,42 @@ import Registration from '../src/components/Auth/Registration/Registration';
 import { Role } from '../src/constants/Roles';
 
 interface StateProps {
-    invitationToken: string;
-    isRequesting: boolean;
-    apiError: string;
+  invitationToken: string;
+  isRequesting: boolean;
+  apiError: string;
 }
 
 interface DispatchProps {
-    createUser: (user: RegistrationType) => void;
+  createUser: (user: RegistrationType) => void;
 }
 interface Props extends
-    WithRouterProps,
-    NextRouter,
-    DispatchProps,
-    StateProps { }
+  WithRouterProps,
+  NextRouter,
+  DispatchProps,
+  StateProps { }
+
 const RegistrationPage = (props: Props) => {
-    return (
-        <Registration role={Role.instructor} { ...props} />
-    )
+  return (
+    <Registration role={Role.instructor} { ...props} />
+  )
 }
 
 function mapStateToProps(state: StoreState): StateProps {
-    const {
-        invitationToken,
-        actions: {
-            createUser: {
-                isRequesting,
-                error
-            }
-        },
-    } = state.user;
-
-    return {
-        invitationToken,
+  const {
+    invitationToken,
+    actions: {
+      createUser: {
         isRequesting,
-        apiError: error
-    };
+        error
+      }
+    },
+  } = state.user;
+
+  return {
+    invitationToken,
+    isRequesting,
+    apiError: error
+  };
 }
 
 const mapDispatchToProps = (

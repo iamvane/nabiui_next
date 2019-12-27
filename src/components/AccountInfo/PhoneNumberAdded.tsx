@@ -7,7 +7,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { PhoneValidationFormComponent } from 'components/AccountInfo/constants';
+import { PhoneValidationFormComponent } from './constants';
 
 interface Props {
   phoneNumber: string | undefined;
@@ -20,12 +20,12 @@ const PhoneNumberAdded: React.StatelessComponent<Props> = props => {
 
   return (
     <Grid item={true} xs={12} container={true}>
-      <Grid xs={12} md={props.isEditing && 5} item={true}>
+      <Grid xs={12} md={props.isEditing ? 5 : null} item={true}>
         <Typography>
           {formattedText}
         </Typography>
       </Grid>
-      <Grid xs={12} md={props.isEditing && 6} item={true}>
+      <Grid xs={12} md={props.isEditing ? 6 : null} item={true}>
         <Typography
           color="primary"
           className="nabi-margin-right-xsmall nabi-color-nabi nabi-display-inline"

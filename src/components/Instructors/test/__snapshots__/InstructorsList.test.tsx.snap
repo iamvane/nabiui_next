@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InstructorsList Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    fetchInstructor={[MockFunction]}
+    fetchInstructors={[MockFunction]}
+    instructor={
+      Object {
+        "userId": 0,
+      }
+    }
+    instructors={
+      Object {
+        "count": 0,
+        "next": "",
+        "previous": "",
+        "results": Array [
+          Object {
+            "id": 0,
+          },
+        ],
+      }
+    }
+    isRequesting={false}
+    isRequestingInstructor={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "address": "",
+      "filterSection": <UNDEFINED>
+        <InstructorFilter
+          age=""
+          availability={Array []}
+          distance={10}
+          gender=""
+          handleChange={[Function]}
+          handlePriceChange={[Function]}
+          handlePriceCommitted={[Function]}
+          placeForLessons={Array []}
+          priceRange={
+            Array [
+              0,
+              200,
+            ]
+          }
+          qualifications={Array []}
+          sortBy=""
+        />
+        <InstructorFilterMobile
+          age=""
+          availability=""
+          distance={50}
+          gender=""
+          handleChange={[Function]}
+          handleMobileSortBy={[Function]}
+          handlePriceChange={[Function]}
+          placeForLessons={Object {}}
+          priceRange={
+            Array [
+              0,
+              200,
+            ]
+          }
+          qualifications={Object {}}
+          setQueryParams={[Function]}
+          sortBy=""
+        />
+      </UNDEFINED>,
+      "getLatLng": [Function],
+      "getLocation": [Function],
+      "handleChange": [Function],
+      "instrument": "",
+      "isRequesting": false,
+      "mainContent": <Instructors
+        fetchInstructor={[MockFunction]}
+        instructor={
+          Object {
+            "userId": 0,
+          }
+        }
+        instructors={
+          Array [
+            Object {
+              "id": 0,
+            },
+          ]
+        }
+        isRequestingInstructor={false}
+      />,
+      "pageTitle": "Instructors",
+      "results": 0,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "address": "",
+        "filterSection": <UNDEFINED>
+          <InstructorFilter
+            age=""
+            availability={Array []}
+            distance={10}
+            gender=""
+            handleChange={[Function]}
+            handlePriceChange={[Function]}
+            handlePriceCommitted={[Function]}
+            placeForLessons={Array []}
+            priceRange={
+              Array [
+                0,
+                200,
+              ]
+            }
+            qualifications={Array []}
+            sortBy=""
+          />
+          <InstructorFilterMobile
+            age=""
+            availability=""
+            distance={50}
+            gender=""
+            handleChange={[Function]}
+            handleMobileSortBy={[Function]}
+            handlePriceChange={[Function]}
+            placeForLessons={Object {}}
+            priceRange={
+              Array [
+                0,
+                200,
+              ]
+            }
+            qualifications={Object {}}
+            setQueryParams={[Function]}
+            sortBy=""
+          />
+        </UNDEFINED>,
+        "getLatLng": [Function],
+        "getLocation": [Function],
+        "handleChange": [Function],
+        "instrument": "",
+        "isRequesting": false,
+        "mainContent": <Instructors
+          fetchInstructor={[MockFunction]}
+          instructor={
+            Object {
+              "userId": 0,
+            }
+          }
+          instructors={
+            Array [
+              Object {
+                "id": 0,
+              },
+            ]
+          }
+          isRequestingInstructor={false}
+        />,
+        "pageTitle": "Instructors",
+        "results": 0,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

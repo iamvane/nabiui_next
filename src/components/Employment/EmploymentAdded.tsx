@@ -7,13 +7,13 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { EmploymentType }  from 'components/Employment/model';
-import { EmploymentAddedComponent } from 'components/Employment/constants';
+import { EmploymentType }  from './model';
+import { EmploymentAddedComponent } from './constants';
 
 interface Props extends EmploymentType {
   deleteEmployment: (employmentId: any) => void;
   editEmployment: (employmentId: any) => void;
-  gridWidth?: boolean | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined;
+  gridWidth?: boolean | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
   notEditable?: boolean;
 }
 
@@ -29,7 +29,7 @@ const EmploymentAdded: React.StatelessComponent<Props> = props => {
   return (
     <Grid
       item={true}
-      md={props.gridWidth && props.gridWidth}
+      md={props.gridWidth ? props.gridWidth : false}
       xs={12}
       className={`${props.notEditable ? '' : 'nabi-editable-item'} nabi-margin-top-small`}
     >

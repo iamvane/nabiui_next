@@ -1,0 +1,1495 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Qualifications Shallow Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Qualification
+    certifiedTeacher={false}
+    conducting={false}
+    earTraining={false}
+    handleChange={[MockFunction]}
+    musicProduction={false}
+    musicTheory={false}
+    musicTherapy={false}
+    performance={false}
+    repertoireSelection={false}
+    virtuosoRecognition={false}
+    youngChildrenExperience={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <SectionTitle
+          text="Additional Qualifications"
+        />,
+        <WithStyles(Typography)
+          className="nabi-margin-bottom-small"
+        >
+          Specify your additional qualifications (select all that apply)
+        </WithStyles(Typography)>,
+        <WithStyles(FormGroup)
+          className="nabi-margin-left-small nabi-margin-top-small"
+        >
+          <WithStyles(Grid)
+            container={true}
+            spacing={24}
+          >
+            <WithStyles(Grid)
+              className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="certifiedTeacher"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Certified teacher"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="musicTherapy"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Music therapy "
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="musicProduction"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Music production"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="earTraining"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Ear training"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="conducting"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Conducting"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              className="qualifications nabi-padding-top-zero"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="virtuosoRecognition"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Virtuoso recognition"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="performance"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Performance"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="musicTheory"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Music theory"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={undefined}
+                    name="experienceTeachingYoungChildren"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Experience teaching young children"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="repertoireSelection"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Repertoire selection "
+              />
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>
+        </WithStyles(FormGroup)>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "Additional Qualifications",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Specify your additional qualifications (select all that apply)",
+          "className": "nabi-margin-bottom-small",
+        },
+        "ref": null,
+        "rendered": "Specify your additional qualifications (select all that apply)",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <WithStyles(Grid)
+            container={true}
+            spacing={24}
+          >
+            <WithStyles(Grid)
+              className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="certifiedTeacher"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Certified teacher"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="musicTherapy"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Music therapy "
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="musicProduction"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Music production"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="earTraining"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Ear training"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="conducting"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Conducting"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              className="qualifications nabi-padding-top-zero"
+              item={true}
+              md={6}
+              xs={12}
+            >
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="virtuosoRecognition"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Virtuoso recognition"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="performance"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Performance"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="musicTheory"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Music theory"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={undefined}
+                    name="experienceTeachingYoungChildren"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Experience teaching young children"
+              />
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="repertoireSelection"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Repertoire selection "
+              />
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>,
+          "className": "nabi-margin-left-small nabi-margin-top-small",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Grid)
+                className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="certifiedTeacher"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Certified teacher"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTherapy"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music therapy "
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicProduction"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music production"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="earTraining"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Ear training"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="conducting"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Conducting"
+                />
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                className="qualifications nabi-padding-top-zero"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="virtuosoRecognition"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Virtuoso recognition"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="performance"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Performance"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTheory"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music theory"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={undefined}
+                      name="experienceTeachingYoungChildren"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Experience teaching young children"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="repertoireSelection"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Repertoire selection "
+                />
+              </WithStyles(Grid)>,
+            ],
+            "container": true,
+            "spacing": 24,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="certifiedTeacher"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Certified teacher"
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicTherapy"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Music therapy "
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicProduction"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Music production"
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="earTraining"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Ear training"
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="conducting"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Conducting"
+                  />,
+                ],
+                "className": "qualifications nabi-padding-top-zero nabi-padding-bottom-zero",
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "CertifiedTeacher",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="certifiedTeacher"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Certified teacher",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "MusicTherapy",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTherapy"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Music therapy ",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "MusicProduction",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicProduction"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Music production",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "EarTraining",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="earTraining"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Ear training",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "Conducting",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="conducting"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Conducting",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="virtuosoRecognition"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Virtuoso recognition"
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="performance"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Performance"
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicTheory"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Music theory"
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={undefined}
+                        name="experienceTeachingYoungChildren"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Experience teaching young children"
+                  />,
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="repertoireSelection"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Repertoire selection "
+                  />,
+                ],
+                "className": "qualifications nabi-padding-top-zero",
+                "item": true,
+                "md": 6,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "VirtuosoRecognition",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="virtuosoRecognition"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Virtuoso recognition",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "Performance",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="performance"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Performance",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "MusicTheory",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTheory"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Music theory",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "ExperienceTeachingYoungChildren",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={undefined}
+                      name="experienceTeachingYoungChildren"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Experience teaching young children",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": "RepertoireSelection",
+                  "nodeType": "class",
+                  "props": Object {
+                    "control": <WithStyles(Checkbox)
+                      checked={false}
+                      name="repertoireSelection"
+                      onChange={[MockFunction]}
+                    />,
+                    "label": "Repertoire selection ",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <SectionTitle
+            text="Additional Qualifications"
+          />,
+          <WithStyles(Typography)
+            className="nabi-margin-bottom-small"
+          >
+            Specify your additional qualifications (select all that apply)
+          </WithStyles(Typography)>,
+          <WithStyles(FormGroup)
+            className="nabi-margin-left-small nabi-margin-top-small"
+          >
+            <WithStyles(Grid)
+              container={true}
+              spacing={24}
+            >
+              <WithStyles(Grid)
+                className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="certifiedTeacher"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Certified teacher"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTherapy"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music therapy "
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicProduction"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music production"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="earTraining"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Ear training"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="conducting"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Conducting"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                className="qualifications nabi-padding-top-zero"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="virtuosoRecognition"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Virtuoso recognition"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="performance"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Performance"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTheory"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music theory"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={undefined}
+                      name="experienceTeachingYoungChildren"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Experience teaching young children"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="repertoireSelection"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Repertoire selection "
+                />
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>
+          </WithStyles(FormGroup)>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "Additional Qualifications",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Specify your additional qualifications (select all that apply)",
+            "className": "nabi-margin-bottom-small",
+          },
+          "ref": null,
+          "rendered": "Specify your additional qualifications (select all that apply)",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <WithStyles(Grid)
+              container={true}
+              spacing={24}
+            >
+              <WithStyles(Grid)
+                className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="certifiedTeacher"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Certified teacher"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTherapy"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music therapy "
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicProduction"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music production"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="earTraining"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Ear training"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="conducting"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Conducting"
+                />
+              </WithStyles(Grid)>
+              <WithStyles(Grid)
+                className="qualifications nabi-padding-top-zero"
+                item={true}
+                md={6}
+                xs={12}
+              >
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="virtuosoRecognition"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Virtuoso recognition"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="performance"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Performance"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="musicTheory"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Music theory"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={undefined}
+                      name="experienceTeachingYoungChildren"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Experience teaching young children"
+                />
+                <WithStyles(WithFormControlContext(FormControlLabel))
+                  control={
+                    <WithStyles(Checkbox)
+                      checked={false}
+                      name="repertoireSelection"
+                      onChange={[MockFunction]}
+                    />
+                  }
+                  label="Repertoire selection "
+                />
+              </WithStyles(Grid)>
+            </WithStyles(Grid)>,
+            "className": "nabi-margin-left-small nabi-margin-top-small",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Grid)
+                  className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero"
+                  item={true}
+                  md={6}
+                  xs={12}
+                >
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="certifiedTeacher"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Certified teacher"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicTherapy"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Music therapy "
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicProduction"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Music production"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="earTraining"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Ear training"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="conducting"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Conducting"
+                  />
+                </WithStyles(Grid)>,
+                <WithStyles(Grid)
+                  className="qualifications nabi-padding-top-zero"
+                  item={true}
+                  md={6}
+                  xs={12}
+                >
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="virtuosoRecognition"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Virtuoso recognition"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="performance"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Performance"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicTheory"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Music theory"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={undefined}
+                        name="experienceTeachingYoungChildren"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Experience teaching young children"
+                  />
+                  <WithStyles(WithFormControlContext(FormControlLabel))
+                    control={
+                      <WithStyles(Checkbox)
+                        checked={false}
+                        name="repertoireSelection"
+                        onChange={[MockFunction]}
+                      />
+                    }
+                    label="Repertoire selection "
+                  />
+                </WithStyles(Grid)>,
+              ],
+              "container": true,
+              "spacing": 24,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="certifiedTeacher"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Certified teacher"
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="musicTherapy"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Music therapy "
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="musicProduction"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Music production"
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="earTraining"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Ear training"
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="conducting"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Conducting"
+                    />,
+                  ],
+                  "className": "qualifications nabi-padding-top-zero nabi-padding-bottom-zero",
+                  "item": true,
+                  "md": 6,
+                  "xs": 12,
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": "CertifiedTeacher",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="certifiedTeacher"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Certified teacher",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "MusicTherapy",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicTherapy"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Music therapy ",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "MusicProduction",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicProduction"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Music production",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "EarTraining",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="earTraining"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Ear training",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "Conducting",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="conducting"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Conducting",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="virtuosoRecognition"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Virtuoso recognition"
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="performance"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Performance"
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="musicTheory"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Music theory"
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={undefined}
+                          name="experienceTeachingYoungChildren"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Experience teaching young children"
+                    />,
+                    <WithStyles(WithFormControlContext(FormControlLabel))
+                      control={
+                        <WithStyles(Checkbox)
+                          checked={false}
+                          name="repertoireSelection"
+                          onChange={[MockFunction]}
+                        />
+                      }
+                      label="Repertoire selection "
+                    />,
+                  ],
+                  "className": "qualifications nabi-padding-top-zero",
+                  "item": true,
+                  "md": 6,
+                  "xs": 12,
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": "VirtuosoRecognition",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="virtuosoRecognition"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Virtuoso recognition",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "Performance",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="performance"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Performance",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "MusicTheory",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="musicTheory"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Music theory",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "ExperienceTeachingYoungChildren",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={undefined}
+                        name="experienceTeachingYoungChildren"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Experience teaching young children",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "RepertoireSelection",
+                    "nodeType": "class",
+                    "props": Object {
+                      "control": <WithStyles(Checkbox)
+                        checked={false}
+                        name="repertoireSelection"
+                        onChange={[MockFunction]}
+                      />,
+                      "label": "Repertoire selection ",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

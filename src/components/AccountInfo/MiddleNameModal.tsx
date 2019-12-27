@@ -13,7 +13,7 @@ import {
 import {
   AccountInfoComponent,
   MiddleNameModalComponent
-} from 'components/AccountInfo/constants';
+} from './constants';
 
 interface Props {
   isFormDialogOpen: boolean;

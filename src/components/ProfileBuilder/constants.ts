@@ -9,21 +9,29 @@ export namespace ProfileBuilderStepper {
     JobPreferences = 'Job Preferences',
     Education = 'Education',
     Employment = 'Employment',
-    /*Next version
-    Recommendations = 'Recommendations', */
+    References = 'References',
     Screening = 'Screening'
   }
 
   export enum StepsPaths {
-    AccountInfo = 'account-info',
-    Profile = 'profile',
-    JobPreferences = 'job-preferences',
-    Education = 'education',
-    Employment = 'employment',
-    /* Next version
-    Recommendations = 'recommendations', */
-    Screening = 'screening',
+    AccountInfo = '/account-info',
+    Profile = '/profile',
+    JobPreferences = '/job-preferences',
+    Education = '/education',
+    Employment = '/employment',
+    References = '/references',
+    Screening = '/screening',
   }
+
+  export const stepsQueries = [
+    'account-info',
+    'profile',
+    'job-preferences',
+    'education',
+    'employment',
+    'references',
+    'screening'
+  ];
 
   export const steps = {
     accountInfo: {
@@ -46,11 +54,10 @@ export namespace ProfileBuilderStepper {
       label: StepsLabels.Employment,
       url: StepsPaths.Employment,
     },
-    /* Next version
-    recommendations: {
-      label: StepsLabels.Recommendations,
-      url: StepsPaths.Recommendations,
-    }, */
+    references: {
+      label: StepsLabels.References,
+      url: StepsPaths.References,
+    },
     screening: {
       label: StepsLabels.Screening,
       url: StepsPaths.Screening,

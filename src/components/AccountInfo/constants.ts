@@ -1,4 +1,4 @@
-import { VerificationChannel } from 'components/AccountInfo/models';
+import { VerificationChannel } from './models';
 
 export namespace AccountInfoComponent {
   export enum SectionTitles {

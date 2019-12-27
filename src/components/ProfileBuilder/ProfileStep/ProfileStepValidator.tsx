@@ -1,7 +1,5 @@
-import { ValidatorFactory } from 'utils/Validator';
-import hasBadWords from 'utils/BadWords';
-
-export {ValidatorState as ProfileStepValidatorState } from 'utils/Validator';
+import { ValidatorFactory } from '../../../utils/Validator';
+import hasBadWords from '../../../utils/BadWords';
 
 let ProfileStepValidator = new ValidatorFactory();
 

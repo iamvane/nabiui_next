@@ -1,18 +1,19 @@
 export namespace ListTemplateComponent {
-  export enum Text {
-    PostRequest = 'Post Request',
-    SortBy = 'Sort By'
-  }
+  export const ctaButton = 'Request Instructor';
 
   export enum DisabledPlaceHolder {
     Any = 'Any'
   }
 
   export enum FieldNames {
-    SortBy = 'sortBy'
+    Address = 'location',
+    Instruments = 'instruments'
   }
 
   export enum Ids {
-    SortBy = 'sortBy'
+    Address = 'location',
+    Instruments = 'instruments'
   }
+
+  export const locationPlaceholder = 'Enter home address';
 }

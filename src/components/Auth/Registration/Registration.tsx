@@ -2,6 +2,7 @@ import * as React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 
+import Router from "next/router";
 import { withRouter, NextRouter } from 'next/router';
 import { WithRouterProps } from 'next/dist/client/with-router';
 
@@ -9,7 +10,6 @@ import {
   Action,
   Dispatch
 } from 'redux';
-import { Redirect } from 'react-router';
 
 import { StoreState } from '../../../redux/reducers/store';
 import { RedirectState } from '../../../redux/models/models';
@@ -248,18 +248,8 @@ export class Registration extends React.Component<Props, State> {
 
         {this.state.performRedirect && !this.props.apiError && !this.props.isRequesting && (
           this.state.role === Role.instructor ?
-            <Redirect
-              to={{
-                pathname: Routes.BuildProfile + Routes.AccountInfo,
-                state: { redirectedFrom: Routes.Registration }
-              }}
-            /> :
-            <Redirect
-              to={{
-                pathname: Routes.BuildRequest + Routes.AccountInfo,
-                state: { redirectedFrom: Routes.Registration }
-              }}
-            />
+            Router.push(Routes.BuildProfile + Routes.AccountInfo) :
+            Router.push(Routes.BuildRequest + Routes.AccountInfo)
         )}
       </div>
     );

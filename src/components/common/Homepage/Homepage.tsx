@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import Router from "next/router";
 
 import { StoreState } from '../../../redux/reducers/store';
 import Banner from './Banner';
@@ -59,7 +59,7 @@ export class Homepage extends React.Component<Props, State> {
         <Banner />
         <PopularInstruments />
         <BecomeATeacher />
-        {this.state.performRedirect && <Redirect to={Routes.Dashboard} />}
+        {this.state.performRedirect && Router.push(Routes.Dashboard)}
       </div>
     );
   }

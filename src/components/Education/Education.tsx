@@ -12,20 +12,20 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { StoreState } from 'redux/store';
+import { StoreState } from '../../redux/reducers/store';
 import {
   fetchEducation,
   addEducation,
   editEducation,
   deleteEducation
- } from 'redux/actions/InstructorActions';
-import { ProfileBuilderStepper } from 'components/ProfileBuilder/constants';
-import { StepperButtons } from 'components/CommonStepper/StepperButtons';
-import EducationForm from 'components/Education/EducationForm';
-import EducationAdded from 'components/Education/EducationAdded';
-import { EducationType } from 'components/Education/model';
-import { EducationComponent } from 'components/Education/constants';
-import SectionTitle from 'components/common/SectionTitle';
+ } from '../../redux/actions/InstructorActions';
+import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
+import { StepperButtons } from '../CommonStepper/StepperButtons';
+import SectionTitle from '../common/SectionTitle';
+import EducationForm from './EducationForm';
+import EducationAdded from './EducationAdded';
+import { EducationType } from './model';
+import { EducationComponent } from './constants';
 
 interface DispatchProps {
   fetchEducation: () => void;
