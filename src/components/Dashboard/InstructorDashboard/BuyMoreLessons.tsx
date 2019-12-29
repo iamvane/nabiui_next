@@ -16,8 +16,8 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { lessonDurationOptions } from 'components/Rates/constants';
-import { BuyMoreLessonsModalComponent } from 'components/Dashboard/constants';
+import { lessonDurationOptions } from '../../Rates/constants';
+import { BuyMoreLessonsModalComponent } from '../constants';
 
 interface Props {
   isOpen: boolean;

@@ -57,19 +57,21 @@ export const Header = (props: HeaderProps) => {
             className="nabi-logo-anchor"
         >
           <Link href={props.user.email ? Routes.Dashboard : Routes.HomePage}>
-            <>
-              <img
-                className="nabi-text-center"
-                alt="logo"
-                src={logo}
-              />
-              <p
-                id="nabi-logo-text"
-                className="nabi-text-center nabi-font-montserrat nabi-text-extrabold"
-              >
-                {nabiMusic}
-              </p>
-            </>
+            <a>
+              <>
+                <img
+                  className="nabi-text-center"
+                  alt="logo"
+                  src={logo}
+                />
+                <p
+                  id="nabi-logo-text"
+                  className="nabi-text-center nabi-font-montserrat nabi-text-extrabold"
+                >
+                  {nabiMusic}
+                </p>
+              </>
+            </a>
           </Link>
         </div>
 

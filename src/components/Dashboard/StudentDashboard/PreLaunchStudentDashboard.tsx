@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { connect } from 'react-redux';
 
 import { Typography } from '@material-ui/core';
 
-import { StoreState } from 'redux/store';
-import { Routes } from 'components/common/constants/Routes';
+import { StoreState } from '../../../redux/reducers/store';
+import { UserType } from '../../../redux/models/UserModel';
+import { Routes } from '../../common/constants/Routes';
 
-import SectionTitle from 'components/common/SectionTitle';
-import { PreLaunchStudentDashboardComponent as constants } from 'components/Dashboard/constants';
-import InviteFriends from 'components/InviteFriends/InviteFriends';
-import { Role } from 'components/common/constants/Registration';
-import StudentCard from 'components/Dashboard/StudentDashboard/StudentCard';
-import { UserType } from 'redux/models/UserModel';
+import SectionTitle from '../..//common/SectionTitle';
+import InviteFriends from '../../InviteFriends/InviteFriends';
+import { Role } from '../../Auth/Registration/constants';
+import { PreLaunchStudentDashboardComponent as constants } from '../constants';
+import StudentCard from './StudentCard';
 import {
   StudentDetailsType,
   ParentProfileType
-} from 'components/Dashboard/StudentDashboard/model';
+} from './model';
 
 interface OwnProps {
 }
@@ -68,7 +68,7 @@ export class PreLaunchStudentDashboard extends React.Component<Props, State> {
                 noEdit={true}
               />}
           <Typography className="nabi-margin-top-small">
-            <Link to={`${Routes.BuildRequest}/student-details`}>Edit Student Details</Link>
+            <Link href={`${Routes.BuildRequest}/student-details`}><a>Edit Student Details</a></Link>
           </Typography>
         <InviteFriends />
       </div>

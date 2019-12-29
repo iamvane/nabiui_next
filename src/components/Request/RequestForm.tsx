@@ -9,13 +9,14 @@ import {
   ListItem,
   Select,
   TextField,
-  Typography
+  Typography,
+  CircularProgress
 } from '@material-ui/core';
 
-import { instruments } from '../../../assets/data/instruments';
 import SectionTitle from '../common/SectionTitle';
 import DistanceSelect from '../common/DistanceSelect';
 import { Role } from '../Auth/Registration/constants';
+import { instruments } from '../../../assets/data/instruments';
 import { skillLevelOptions } from '../Instruments/constants';
 import { placeForLessonsOptions } from '../PlaceForLessons/constants';
 import { lessonDurationOptions } from '../Rates/constants';
@@ -30,16 +31,21 @@ interface Props extends
   RequestType,
   StudentType {
   handleChange: (event: React.FormEvent<{}>) => void;
+  handleBlur: (event: React.FormEvent<{}>) => void;
   handleSubmit: (event: React.FormEvent<{}>) => void;
+  handleEditSubmit: (event: React.FormEvent<{}>) => void;
   handleCancel: () => void;
   role: string;
   addStudent: (event: React.FormEvent<{}>) => void;
   deleteStudent: (instrument: string) => void;
   isEditing: boolean;
+  isCreatingRequest: boolean;
+  isEditingRequest: boolean;
+  allFieldsFilled: boolean;
 }
 
-const RequestForm: React.StatelessComponent <Props> = props => {
-  const { handleChange, handleSubmit } = props;
+const RequestForm: React.StatelessComponent<Props> = props => {
+  const { handleChange, handleSubmit, handleEditSubmit } = props;
 
   const skillLevelItems: any = [];
   for (const [key, value] of Object.entries(skillLevelOptions)) {
@@ -70,6 +76,7 @@ const RequestForm: React.StatelessComponent <Props> = props => {
         age={props.age}
         skillLevel={props.skillLevel}
         handleChange={props.handleChange}
+        handleBlur={props.handleBlur}
         addStudent={props.addStudent}
         deleteStudent={props.deleteStudent}
       />
@@ -81,11 +88,15 @@ const RequestForm: React.StatelessComponent <Props> = props => {
       color="primary"
       variant="contained"
       className="nabi-margin-top-small nabi-text-uppercase"
-      onClick={handleSubmit}
+      onClick={handleEditSubmit}
       type="submit"
+      disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">save</Icon>
-      <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.EditSubmit}</span>
+      {props.isEditingRequest ? <CircularProgress color="inherit" size={25} /> :
+        <React.Fragment>
+          <Icon className="nabi-margin-right-xsmall">save</Icon>
+          <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.EditSubmit}</span>
+        </React.Fragment>}
     </Button>
   );
 
@@ -96,9 +107,13 @@ const RequestForm: React.StatelessComponent <Props> = props => {
       className="nabi-margin-top-small nabi-text-uppercase"
       onClick={handleSubmit}
       type="submit"
+      disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">add</Icon>
-      <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.AddSubmit}</span>
+      {props.isCreatingRequest ? <CircularProgress color="inherit" size={25} /> :
+        <React.Fragment>
+          <Icon className="nabi-margin-right-xsmall">add</Icon>
+          <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.AddSubmit}</span>
+        </React.Fragment>}
     </Button>
   );
 
@@ -108,7 +123,7 @@ const RequestForm: React.StatelessComponent <Props> = props => {
       noValidate={true}
       autoComplete="off"
     >
-      <SectionTitle text={RequestFormComponent.title}/>
+      <SectionTitle text={RequestFormComponent.title} />
 
       <Typography>
         {RequestFormComponent.Labels.RequestTitle}
@@ -122,6 +137,7 @@ const RequestForm: React.StatelessComponent <Props> = props => {
           name={RequestFormComponent.FieldNames.RequestTitle}
           required={true}
           onChange={handleChange}
+          onBlur={props.handleBlur}
           value={props.requestTitle}
         />
       </Grid>
@@ -134,9 +150,10 @@ const RequestForm: React.StatelessComponent <Props> = props => {
         <FormControl className="nabi-instruments-select">
           <Select
             native={true}
-            input={<Input id={RequestFormComponent.Ids.Instrument} name={RequestFormComponent.FieldNames.Instrument}/>}
+            input={<Input id={RequestFormComponent.Ids.Instrument} name={RequestFormComponent.FieldNames.Instrument} />}
             value={props.instrument}
             onChange={handleChange}
+            onBlur={props.handleBlur}
           >
             <option value="" disabled={true}>{RequestFormComponent.Placeholders.Instrument}</option>
             {instrumentSelectItems}
@@ -161,8 +178,8 @@ const RequestForm: React.StatelessComponent <Props> = props => {
               value={props.skillLevel}
               onChange={handleChange}
             >
-            <option value="" disabled={true}>{RequestFormComponent.Placeholders.SkillLevel}</option>
-            {skillLevelItems}
+              <option value="" disabled={true}>{RequestFormComponent.Placeholders.SkillLevel}</option>
+              {skillLevelItems}
             </Select>
           </FormControl>
         </ListItem>
@@ -177,11 +194,15 @@ const RequestForm: React.StatelessComponent <Props> = props => {
           <Select
             native={true}
             input={
-          <Input id={RequestFormComponent.Ids.PlaceForLessons} name={RequestFormComponent.FieldNames.PlaceForLessons}/>}
+              <Input
+                id={RequestFormComponent.Ids.PlaceForLessons}
+                name={RequestFormComponent.FieldNames.PlaceForLessons}
+              />}
             value={props.placeForLessons}
+            onBlur={props.handleBlur}
             onChange={handleChange}
           >
-          <option value="" disabled={true}>{RequestFormComponent.Placeholders.PlaceForLesson}</option>
+            <option value="" disabled={true}>{RequestFormComponent.Placeholders.PlaceForLesson}</option>
             {placeForLessonItems}
           </Select>
         </FormControl>
@@ -205,14 +226,18 @@ const RequestForm: React.StatelessComponent <Props> = props => {
 
         <FormControl className="nabi-instruments-select">
           <Select
-           native={true}
-           input={
-           <Input id={RequestFormComponent.Ids.LessonDuration} name={RequestFormComponent.FieldNames.LessonDuration}/>}
-           value={props.lessonDuration}
-           onChange={handleChange}
+            native={true}
+            input={
+              <Input
+                id={RequestFormComponent.Ids.LessonDuration}
+                name={RequestFormComponent.FieldNames.LessonDuration}
+              />}
+            value={props.lessonDuration}
+            onChange={handleChange}
+            onBlur={props.handleBlur}
           >
-           <option value="" disabled={true}>{RequestFormComponent.Placeholders.LessonDuration}</option>
-           {lessonDurationItems}
+            <option value="" disabled={true}>{RequestFormComponent.Placeholders.LessonDuration}</option>
+            {lessonDurationItems}
           </Select>
         </FormControl>
       </ListItem>
@@ -236,6 +261,7 @@ const RequestForm: React.StatelessComponent <Props> = props => {
           fullWidth={true}
           rows={6}
           onChange={handleChange}
+          onBlur={props.handleBlur}
           value={props.requestMessage}
         />
       </div>
@@ -251,6 +277,6 @@ const RequestForm: React.StatelessComponent <Props> = props => {
         <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.Cancel}</span>
       </Button>
     </form>
-    );
-  };
+  );
+};
 export default RequestForm;

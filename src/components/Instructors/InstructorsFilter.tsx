@@ -12,8 +12,8 @@ import {
   Slider
 } from '@material-ui/core';
 
-import { optionsText, placeholder } from 'components/common/constants/DistanceSelect';
-import { qualificationTypes } from 'components/Qualifications/constants';
+import { optionsText, placeholder } from '../common/constants/DistanceSelect';
+import { qualificationTypes } from '../Qualifications/constants';
 
 import {
   SelectOption,
@@ -26,7 +26,7 @@ import {
   genderOptions,
   placeForLessonsLabels,
   placeForLessonsOptions
-} from 'components/Instructors/constants';
+} from './constants';
 
 interface Props {
   sortBy: string;

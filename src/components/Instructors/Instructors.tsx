@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import InstructorCard from 'components/Instructors/InstructorCard';
-import { Instructor, Rates, InstructorType } from 'redux/models/InstructorModel';
-import { Route } from 'components/Instructors/constants';
+import InstructorCard from './InstructorCard';
+import { Route } from './constants';
+import { Instructor, Rates, InstructorType } from '../../redux/models/InstructorModel';
 
 interface Props {
   instructors: Instructor[];
@@ -16,9 +16,9 @@ const Instructors: React.StatelessComponent<Props> = props => {
   return (
     <div>
       {
-        props.instructor.id ? <Redirect to={`${Route.Profile}/${props.instructor.id}`} /> :
+        // props.instructor.id ? <Redirect to={`${Route.Profile}/${props.instructor.id}`} /> :
         <React.Fragment>
-          {props.instructors.length > 0 && props.instructors.map((instructor: Instructor, i: number) => (
+          {props.instructors && props.instructors.length > 0 && props.instructors.map((instructor: Instructor, i: number) => (
             <InstructorCard
               key={i}
               id={instructor.id as number}

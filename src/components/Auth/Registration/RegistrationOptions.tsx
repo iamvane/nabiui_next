@@ -7,7 +7,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { Routes } from '../../Routes/Routes';
+import { Routes } from '../../common/constants/Routes';
 import { RegistrationOptionsComponent } from './constants';
 
 interface Props {}

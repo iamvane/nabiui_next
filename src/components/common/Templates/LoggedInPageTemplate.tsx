@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Grid } from '@material-ui/core';
 
-import PageTitle from 'components/common/PageTitle';
+import PageTitle from '../PageTitle';
 // import { NavigationContainer } from 'components/Navigation/NavigationContainer';
 
 interface Props {

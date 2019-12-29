@@ -7,9 +7,9 @@ import {
 } from '@material-ui/core';
 
 import { instruments } from '../../../../assets/data/instruments';
-import { Role } from 'components/common/constants/Registration';
-import { SkillLevel } from 'components/Instruments/constants';
-import { StudentCardComponent } from 'components/Dashboard/constants';
+import { Role } from '../../Auth/Registration/constants';
+import { SkillLevel } from '../../Instruments/constants';
+import { StudentCardComponent } from '../constants';
 
 interface Props {
   // TODO: change to Re1uestType when doing API integration

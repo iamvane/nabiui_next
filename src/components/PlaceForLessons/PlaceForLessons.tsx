@@ -5,15 +5,16 @@ import {
   Typography
 } from '@material-ui/core';
 
-import HomeIcon from '../../../assets/images/student-home-icon.svg';
-import StudioIcon from '../../../assets/images/instructor-studio-icon.svg';
-import OnlineIcon from '../../../assets/images/online-icon.svg';
 import { PlaceForLessonsComponent } from './constants';
 import { PlaceForLessonsType } from './model';
 
 interface Props extends PlaceForLessonsType { }
 
 const PlaceForLessons: React.StatelessComponent<Props> = props => {
+  const HomeIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/student-home-icon.svg';
+  const StudioIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/instructor-studio-icon.svg';
+  const OnlineIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/online-icon.svg';
+
   const { home, studio, online, studioAddress } = props;
   const noPlaceSelected = !home && !studio && !online;
   return (

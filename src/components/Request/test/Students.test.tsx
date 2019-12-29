@@ -12,6 +12,7 @@ describe('Students', () => {
       wrapper = shallow(
         <Students
           handleChange={mockFunction}
+          handleBlur={mockFunction}
           addStudent={mockFunction}
           deleteStudent={mockFunction}
           name="Roxana"

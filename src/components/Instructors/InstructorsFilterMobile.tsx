@@ -11,10 +11,10 @@ import {
   Slider
 } from '@material-ui/core';
 
-import SectionTitle from 'components/common/SectionTitle';
-import PlaceForLessonsForm from 'components/PlaceForLessons/PlaceForLessonsForm';
-import Qualifications from 'components/Qualifications/Qualifications';
-import { optionsText, placeholder } from 'components/common/constants/DistanceSelect';
+import SectionTitle from '../common/SectionTitle';
+import PlaceForLessonsForm from '../PlaceForLessons/PlaceForLessonsForm';
+import Qualifications from '../Qualifications/Qualifications';
+import { optionsText, placeholder } from '../common/constants/DistanceSelect';
 import {
   SelectOption,
   sortByOptions,
@@ -24,7 +24,7 @@ import {
   genderOptions,
   QualificationsFilterType,
   PlaceForLessonsFilterType
-} from 'components/Instructors/constants';
+} from './constants';
 
 interface Props {
   sortBy: string;

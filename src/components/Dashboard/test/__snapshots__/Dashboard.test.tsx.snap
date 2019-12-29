@@ -77,28 +77,28 @@ ShallowWrapper {
                 className="dashboard-view-profile-image"
                 src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
               />
-              <WithStyles(Typography)>
+              <UNDEFINED>
                 <Link
                   to="/build-profile"
                 >
                   Edit your profile
                 </Link>
-              </WithStyles(Typography)>
-              <WithStyles(Typography)>
+              </UNDEFINED>
+              <UNDEFINED>
                 <Link
                   to="profile/undefined"
                 >
                   View your profile
                 </Link>
-              </WithStyles(Typography)>
-              <WithStyles(Typography)>
+              </UNDEFINED>
+              <UNDEFINED>
                 <a
                   href="https://www.facebook.com/pg/nabimusicinfo/jobs"
                   target="_blank"
                 >
                   View available jobs
                 </a>
-              </WithStyles(Typography)>
+              </UNDEFINED>
             </UNDEFINED>
           }
         />
@@ -130,28 +130,28 @@ ShallowWrapper {
                   className="dashboard-view-profile-image"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
                 />
-                <WithStyles(Typography)>
+                <UNDEFINED>
                   <Link
                     to="/build-profile"
                   >
                     Edit your profile
                   </Link>
-                </WithStyles(Typography)>
-                <WithStyles(Typography)>
+                </UNDEFINED>
+                <UNDEFINED>
                   <Link
                     to="profile/undefined"
                   >
                     View your profile
                   </Link>
-                </WithStyles(Typography)>
-                <WithStyles(Typography)>
+                </UNDEFINED>
+                <UNDEFINED>
                   <a
                     href="https://www.facebook.com/pg/nabimusicinfo/jobs"
                     target="_blank"
                   >
                     View available jobs
                   </a>
-                </WithStyles(Typography)>
+                </UNDEFINED>
               </UNDEFINED>
             }
           />,
@@ -181,28 +181,28 @@ ShallowWrapper {
                 className="dashboard-view-profile-image"
                 src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
               />
-              <WithStyles(Typography)>
+              <UNDEFINED>
                 <Link
                   to="/build-profile"
                 >
                   Edit your profile
                 </Link>
-              </WithStyles(Typography)>
-              <WithStyles(Typography)>
+              </UNDEFINED>
+              <UNDEFINED>
                 <Link
                   to="profile/undefined"
                 >
                   View your profile
                 </Link>
-              </WithStyles(Typography)>
-              <WithStyles(Typography)>
+              </UNDEFINED>
+              <UNDEFINED>
                 <a
                   href="https://www.facebook.com/pg/nabimusicinfo/jobs"
                   target="_blank"
                 >
                   View available jobs
                 </a>
-              </WithStyles(Typography)>
+              </UNDEFINED>
             </UNDEFINED>,
           },
           "ref": null,
@@ -248,28 +248,28 @@ ShallowWrapper {
                   className="dashboard-view-profile-image"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
                 />
-                <WithStyles(Typography)>
+                <UNDEFINED>
                   <Link
                     to="/build-profile"
                   >
                     Edit your profile
                   </Link>
-                </WithStyles(Typography)>
-                <WithStyles(Typography)>
+                </UNDEFINED>
+                <UNDEFINED>
                   <Link
                     to="profile/undefined"
                   >
                     View your profile
                   </Link>
-                </WithStyles(Typography)>
-                <WithStyles(Typography)>
+                </UNDEFINED>
+                <UNDEFINED>
                   <a
                     href="https://www.facebook.com/pg/nabimusicinfo/jobs"
                     target="_blank"
                   >
                     View available jobs
                   </a>
-                </WithStyles(Typography)>
+                </UNDEFINED>
               </UNDEFINED>
             }
           />
@@ -301,28 +301,28 @@ ShallowWrapper {
                     className="dashboard-view-profile-image"
                     src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
                   />
-                  <WithStyles(Typography)>
+                  <UNDEFINED>
                     <Link
                       to="/build-profile"
                     >
                       Edit your profile
                     </Link>
-                  </WithStyles(Typography)>
-                  <WithStyles(Typography)>
+                  </UNDEFINED>
+                  <UNDEFINED>
                     <Link
                       to="profile/undefined"
                     >
                       View your profile
                     </Link>
-                  </WithStyles(Typography)>
-                  <WithStyles(Typography)>
+                  </UNDEFINED>
+                  <UNDEFINED>
                     <a
                       href="https://www.facebook.com/pg/nabimusicinfo/jobs"
                       target="_blank"
                     >
                       View available jobs
                     </a>
-                  </WithStyles(Typography)>
+                  </UNDEFINED>
                 </UNDEFINED>
               }
             />,
@@ -352,28 +352,28 @@ ShallowWrapper {
                   className="dashboard-view-profile-image"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
                 />
-                <WithStyles(Typography)>
+                <UNDEFINED>
                   <Link
                     to="/build-profile"
                   >
                     Edit your profile
                   </Link>
-                </WithStyles(Typography)>
-                <WithStyles(Typography)>
+                </UNDEFINED>
+                <UNDEFINED>
                   <Link
                     to="profile/undefined"
                   >
                     View your profile
                   </Link>
-                </WithStyles(Typography)>
-                <WithStyles(Typography)>
+                </UNDEFINED>
+                <UNDEFINED>
                   <a
                     href="https://www.facebook.com/pg/nabimusicinfo/jobs"
                     target="_blank"
                   >
                     View available jobs
                   </a>
-                </WithStyles(Typography)>
+                </UNDEFINED>
               </UNDEFINED>,
             },
             "ref": null,

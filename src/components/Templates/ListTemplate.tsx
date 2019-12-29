@@ -9,11 +9,11 @@ import {
   Typography,
  } from '@material-ui/core';
 
-import { instruments } from '../../../../assets/data/instruments';
-import PageTitle from 'components/common/PageTitle';
-import { InstrumentsComponent } from 'components/Instruments/constants';
-import { ListTemplateComponent } from 'components/common/constants/ListTemplate';
-import { LocationField } from 'components/Instructors/LocationField';
+import { instruments } from '../../../assets/data/instruments';
+import PageTitle from '../common/PageTitle';
+import { InstrumentsComponent } from '../Instruments/constants';
+import { ListTemplateComponent } from '../common/constants/ListTemplate';
+import { LocationField } from '../Instructors/LocationField';
 
 interface Props {
   pageTitle: string;

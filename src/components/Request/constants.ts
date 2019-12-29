@@ -1,4 +1,4 @@
-import { CommonConstants } from 'components/common/constants/common';
+import { CommonConstants } from '../common/constants/common';
 
 export namespace RequestComponent {
   export const title = 'Build Request';
@@ -61,6 +61,12 @@ export interface SkillLevelOptions {
   label: SkillLevel;
   value: string;
 }
+
+export const RequestCreateSuccessMessage = {
+  createdRequest: 'Request Successfully Created',
+  editedRequest: 'Request Successfully Edited',
+  deletedRequest: 'Request Successfully Deleted'
+};
 
 export const skillLevelOptions = {
   Any: <SkillLevelOptions> {

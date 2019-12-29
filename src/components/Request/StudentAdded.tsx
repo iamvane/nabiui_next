@@ -8,8 +8,8 @@ import {
   ListItemText,
 } from '@material-ui/core';
 
-import { StudentType } from 'components/Request/models';
-import { StudentAddedComponent } from 'components/Request/constants';
+import { StudentType } from './models';
+import { StudentAddedComponent } from './constants';
 
 interface Props extends StudentType {
   deleteStudent: (instrumentName: string) => void;

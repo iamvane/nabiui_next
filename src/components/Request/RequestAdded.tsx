@@ -7,13 +7,14 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { RequestType }  from './models';
+import { RequestType }  from '../../redux/models/RequestModel';
 import { RequestAddedComponent } from './constants';
+import { StudentType } from './models';
 
 interface Props extends RequestType {
   notEditable: boolean;
-  deleteRequest?: (requestId: string) => void;
-  editRequest?: (requestId: string) => void;
+  deleteRequest?: (requestId: number) => void;
+  editRequest?: (requestId: number) => void;
   gridWidth?: boolean | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined;
 }
 
@@ -21,7 +22,10 @@ interface Props extends RequestType {
  * RequestAdded
  */
 const RequestAdded: React.StatelessComponent<Props> = props => {
-  const renderStudentDetails = props.students.map((student, i) => {
+  const {
+    students
+  } = props as { students: StudentType[] };
+  const renderStudentDetails = students.map((student, i) => {
     return (
       <Typography key={i}>
         <mark>
@@ -47,7 +51,7 @@ const RequestAdded: React.StatelessComponent<Props> = props => {
           color="primary"
           className="nabi-float-right nabi-margin-left-xsmall"
           aria-label="Delete"
-          onClick={() => props.deleteRequest && props.deleteRequest(props.id as string)}
+          onClick={() => props.deleteRequest && props.deleteRequest(props.id)}
         >
           <Icon>delete</Icon>
         </IconButton>
@@ -56,7 +60,7 @@ const RequestAdded: React.StatelessComponent<Props> = props => {
           color="primary"
           className="nabi-float-right"
           aria-label="Edit"
-          onClick={() => props.editRequest && props.editRequest(props.id as string)}
+          onClick={() => props.editRequest && props.editRequest(props.id)}
         >
           <Icon>edit</Icon>
         </IconButton>

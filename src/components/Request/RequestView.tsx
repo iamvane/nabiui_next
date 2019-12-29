@@ -84,7 +84,7 @@ export const RequestView: React.StatelessComponent<Props> = props => {
 
       <PageTitle pageTitle={pageTitle} />
 
-      <Grid container={true} spacing={10} >
+      <Grid container={true} spacing={16} >
         <Grid xs={12} item={true} md={6} className="nabi-margin-center">
           <div className="nabi-background-white nabi-section-widest">
             <div className="nabi-float-right">

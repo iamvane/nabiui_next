@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@material-ui/core';
 
-import { ListTemplateComponent } from 'components/common/constants/ListTemplate';
+import { ListTemplateComponent } from '../common/constants/ListTemplate';
 
 interface Props {
   getLatLng: (lat: string, lng: string) => void;
@@ -120,4 +120,4 @@ export class LocationField extends React.Component<Props, State> {
   }
 }
 
-export default Location;
+export default LocationField;

@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
   Checkbox,
+  FormControl,
   FormControlLabel,
   FormGroup,
+  FormLabel,
   Grid,
   Typography
 } from '@material-ui/core';
@@ -42,31 +44,35 @@ const Qualification: React.StatelessComponent<Props> = props => {
   const qualificationFieldsSecondHalf = qualificationFields.slice(5);
   return (
     <div>
-      <SectionTitle text={QualificationsComponent.Text.AdditionalQualifications} />
+      {!props.isFilter && <SectionTitle text={QualificationsComponent.Text.AdditionalQualifications} />}
       {!props.isFilter &&
         <Typography className="nabi-margin-bottom-small">
          {QualificationsComponent.Text.SpecifyYourAditional}
-        </Typography>}
-      <FormGroup className="nabi-margin-left-small nabi-margin-top-large">
-        <Grid container={true} spacing={10}>
-          <Grid
-            className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero" 
-            item={true}
-            xs={12}
-            md={!props.isFilter ? 6 : 12}
-          >
-            {qualificationFieldsFirstHalf}
-          </Grid>
-          <Grid
-            className="qualifications nabi-padding-top-zero"
-            item={true}
-            xs={12}
-            md={!props.isFilter ? 6 : 12}
-          >
-          {qualificationFieldsSecondHalf}
-          </Grid>
-        </Grid>
-      </FormGroup>
+        </Typography>
+      }
+      <FormControl component="fieldset">
+        {props.isFilter && <FormLabel component="legend">Qualifications</FormLabel>}
+          <FormGroup className="nabi-margin-left-small nabi-margin-top-large">
+            <Grid container={true} spacing={10}>
+              <Grid
+                className="qualifications nabi-padding-top-zero nabi-padding-bottom-zero"
+                item={true}
+                xs={12}
+                md={!props.isFilter ? 6 : 12}
+              >
+                {qualificationFieldsFirstHalf}
+              </Grid>
+              <Grid
+                className="qualifications nabi-padding-top-zero"
+                item={true}
+                xs={12}
+                md={!props.isFilter ? 6 : 12}
+              >
+              {qualificationFieldsSecondHalf}
+              </Grid>
+            </Grid>
+          </FormGroup>
+      </FormControl>
     </div>
   );
 };

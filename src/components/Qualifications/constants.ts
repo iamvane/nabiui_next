@@ -1,6 +1,6 @@
 export enum Qualifications {
   certifiedTeacher = 'Certified teacher',
-  musicTherapy = 'Music therapy ',
+  musicTherapy = 'Music therapy',
   musicProduction = 'Music production',
   earTraining = 'Ear training',
   conducting = 'Conducting',
@@ -8,8 +8,21 @@ export enum Qualifications {
   performance = 'Performance',
   musicTheory = 'Music theory',
   experienceTeachingYoungChildren = 'Experience teaching young children',
-  repertoireSelection = 'Repertoire selection ',
+  repertoireSelection = 'Repertoire selection',
 }
+
+export const qualificationTypes = {
+  certifiedTeacher: 'Certified teacher',
+  musicTherapy: 'Music therapy',
+  musicProduction: 'Music production',
+  earTraining: 'Ear training',
+  conducting: 'Conducting',
+  virtuosoRecognition: 'Virtuoso recognition',
+  performance: 'Performance',
+  musicTheory: 'Music theory',
+  experienceTeachingYoungChildren: 'Experience teaching young children',
+  repertoireSelection: 'Repertoire selection',
+} as { [x: string]: Qualifications };
 
 export interface QualificationsOptions {
   label: Qualifications;

@@ -8,6 +8,7 @@ import { persistStore } from 'redux-persist';
 import rootReducer from './reducers';
 import { UserState } from '../models/UserModel';
 import { InstructorState } from '../models/InstructorModel';
+import { RequestState } from '../models/RequestModel';
 import { defaultState } from '../models/defaultState';
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -15,6 +16,7 @@ const dev = process.env.NODE_ENV !== 'production';
 export interface StoreState {
   user: UserState;
   instructor: InstructorState;
+  requests: RequestState;
 }
 
 let history: History;

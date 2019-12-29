@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as moment from 'moment';
+import moment from 'moment';
 const reactStringReplace = require('react-string-replace');
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import {
   Avatar,
@@ -12,10 +12,10 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import { Rates } from '../../redux/models/InstructorModel';
 // import { InstrumentsType } from 'components/Instruments/model';
-import { InstructorCardComponent } from 'components/Instructors/constants';
+import { InstructorCardComponent } from './constants';
 // import { Routes } from 'components/common/constants/Routes';
-import { Rates } from 'redux/models/InstructorModel';
 
 interface Props {
   id: number;
@@ -124,18 +124,16 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
                 bioDescription.slice(0, InstructorCardComponent.maxBioDescriptionLength) :
                 null
               }
-                <Link
-                  className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
-                  to={`/profile/${props.id}`}
-                >
-
-                  {
-                    !bioDescription ?
-                    null :
-                    bioDescription.length > InstructorCardComponent.maxBioDescriptionLength
-                    ? InstructorCardComponent.Text.ViewMore
-                  :
-                    InstructorCardComponent.Text.ViewMore.slice(3)}
+                <Link href={`/profile/${props.id}`}>
+                  <a className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall">
+                    {
+                      !bioDescription ?
+                      null :
+                      bioDescription.length > InstructorCardComponent.maxBioDescriptionLength
+                      ? InstructorCardComponent.Text.ViewMore
+                    :
+                      InstructorCardComponent.Text.ViewMore.slice(3)}
+                  </a>
                 </Link>
             </Typography>
             <Typography color="primary" className="nabi-margin-top-xsmall nabi-color-nabi">

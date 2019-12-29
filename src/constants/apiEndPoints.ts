@@ -21,4 +21,5 @@ export namespace ApiEndpoints {
     export const fetchMinimalRate = 'v1/minimal-rate/';
     export const requestReferences = '/v1/request-references/';
     export const fetchReferences = '/v1/references-list/';
+    export const lessonRequest = '/v1/lesson-request/';
 }

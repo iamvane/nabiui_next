@@ -355,7 +355,7 @@ export const deleteEmployment = (
   }
 };
 
-export const fetchInstructors = (): ThunkAction<Promise<void>, {}, {}> => async (
+export const fetchInstructors = (params?: any): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
@@ -363,9 +363,12 @@ export const fetchInstructors = (): ThunkAction<Promise<void>, {}, {}> => async 
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.get(
-      ApiEndpoints.fetchInstructors,
-      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
+    let config = {
+      headers: authToken && { 'Authorization': `Bearer ${authToken}` },
+      params: params && params
+    };
+
+    const response = await axios.get(ApiEndpoints.fetchInstructors, config);
     dispatch(withDataAction(InstructorActions.FETCH_INSTRUCTORS_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === 'string') {

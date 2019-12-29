@@ -11,16 +11,17 @@ import {
   Typography
 } from '@material-ui/core';
 
-import SectionTitle from 'components/common/SectionTitle';
-import { skillLevelOptions } from 'components/Instruments/constants';
-// import { InstrumentsType } from 'components/Instruments/model';
-import { StudentType } from 'components/Request/models';
-import { RequestFormComponent } from 'components/Request/constants';
-import StudentAdded from 'components/Request/StudentAdded';
+import SectionTitle from '../common/SectionTitle';
+import { skillLevelOptions } from '../Instruments/constants';
+// import { InstrumentsType } from '../Instruments/model';
+import { StudentType } from './models';
+import { RequestFormComponent } from './constants';
+import StudentAdded from './StudentAdded';
 
 interface Props extends  StudentType {
   students: StudentType[];
   handleChange: (event: React.FormEvent<{}>) => void;
+  handleBlur: (event: React.FormEvent<{}>) => void;
   addStudent: (event: React.FormEvent<{}>) => void;
   deleteStudent: (student: string) => void;
 }
@@ -62,6 +63,7 @@ const Students: React.StatelessComponent<Props> = props => {
             required={true}
             fullWidth={true}
             onChange={props.handleChange}
+            onBlur={props.handleBlur}
             value={props.name}
           />
         </Grid>
@@ -74,6 +76,7 @@ const Students: React.StatelessComponent<Props> = props => {
             required={true}
             fullWidth={true}
             onChange={props.handleChange}
+            onBlur={props.handleBlur}
             type="number"
             value={!(props.age === 0) ? props.age : ''}
           />
@@ -90,6 +93,7 @@ const Students: React.StatelessComponent<Props> = props => {
                 />}
               value={props.skillLevel}
               onChange={props.handleChange}
+              onBlur={props.handleBlur}
             >
             <option value="" disabled={true}>{RequestFormComponent.Placeholders.SkillLevel}</option>
             {skillLevelItems}

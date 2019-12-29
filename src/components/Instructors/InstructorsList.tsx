@@ -7,16 +7,15 @@ import {
   Dispatch
 } from 'redux';
 
-import { StoreState } from 'redux/store';
-import { ListResource } from 'redux/models/models';
-import ListTemplate from 'components/common/Templates/ListTemplate';
-import InstructorsFilter from 'components/Instructors/InstructorsFilter';
-import InstructorsFilterMobile from 'components/Instructors/InstructorsFilterMobile';
-import Instructors from 'components/Instructors/Instructors';
-
-import { Instructor, InstructorType } from 'redux/models/InstructorModel';
-import { fetchInstructors, fetchInstructor } from 'redux/actions/InstructorActions';
-import { ListTemplateComponent } from 'components/common/constants/ListTemplate';
+import { StoreState } from '../../redux/reducers/store';
+import { ListResource } from '../../redux/models/models';
+import { Instructor, InstructorType } from '../../redux/models/InstructorModel';
+import { fetchInstructors, fetchInstructor } from '../../redux/actions/InstructorActions';
+import ListTemplate from '../common/Templates/ListTemplate';
+import { ListTemplateComponent } from '../common/constants/ListTemplate';
+import InstructorsFilter from './InstructorsFilter';
+import InstructorsFilterMobile from './InstructorsFilterMobile';
+import Instructors from './Instructors';
 
 import {
   InstructorsComponent,
@@ -25,7 +24,7 @@ import {
   defaultQueryParams,
   defaultQualifications,
   defaultPlaceForLessons
-} from 'components/Instructors/constants';
+} from './constants';
 
 interface StateProps {
   instructors: ListResource<Instructor>;

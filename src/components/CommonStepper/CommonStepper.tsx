@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Router, { withRouter } from 'next/router';
+import Router from 'next/router';
 import { useRouter } from 'next/router';
 
 import {
@@ -8,7 +8,6 @@ import {
   StepButton
 } from '@material-ui/core';
 
-import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
 
 interface StepsType {
@@ -46,7 +45,7 @@ export const CommonStepper = (props: Props) => {
     for (const [key, value] of Object.entries(props.steps)) {
       steps.push(
         <Step key={key}>
-          <StepButton onClick={() => Router.push(`${Routes.BuildProfile}${value.url}`)}>
+          <StepButton onClick={() => Router.push(`${props.baseRoute}${value.url}`)}>
             {value.label}
           </StepButton>
         </Step>

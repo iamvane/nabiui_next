@@ -11,13 +11,13 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { Role } from 'components/common/constants/Registration';
 import { instruments } from '../../../../assets/data/instruments';
-import { skillLevelOptions } from 'components/Instruments/constants';
-import { placeForLessonsOptions } from 'components/PlaceForLessons/constants';
-import { lessonDurationOptions } from 'components/Rates/constants';
-import { StudentCardFormComponent } from 'components/Dashboard/constants';
-import { StudentDetailsType } from 'components/Dashboard/StudentDashboard/model';
+import { Role } from '../../Auth/Registration/constants';
+import { skillLevelOptions } from '../../Instruments/constants';
+import { placeForLessonsOptions } from '../../PlaceForLessons/constants';
+import { lessonDurationOptions } from '../../Rates/constants';
+import { StudentCardFormComponent } from '../constants';
+import { StudentDetailsType } from './model';
 
 interface Props extends StudentDetailsType {
   handleChange?: (event: React.FormEvent<{}>) => void;

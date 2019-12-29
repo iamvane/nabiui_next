@@ -119,26 +119,8 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <Unknown
-        address=""
-        filterSection={
-          <RequestFilter
-            distance={undefined}
-            handleChange={[Function]}
-            home={false}
-            instrument=""
-            lessonDuration="Any"
-            online={false}
-            skillLevel="Any"
-            studio={false}
-            zipCode=""
-          />
-        }
-        getLatLng={[Function]}
-        getLocation={[Function]}
         handleChange={[Function]}
         hasCallToAction={true}
-        instrument=""
-        isRequesting={false}
         mainContent={
           <Requests
             requests={
@@ -244,6 +226,32 @@ ShallowWrapper {
         }
         pageTitle="Requests"
         results={0}
+        sidebarContent={
+          <RequestFilter
+            distance={undefined}
+            handleChange={[Function]}
+            home={false}
+            instrument=""
+            lessonDuration="Any"
+            online={false}
+            skillLevel="Any"
+            studio={false}
+            zipCode=""
+          />
+        }
+        sortBy=""
+        sortByOptions={
+          Object {
+            "Distance": Object {
+              "label": "Distance",
+              "value": "Distance",
+            },
+            "SkillLevel": Object {
+              "label": "Skill Level",
+              "value": "Skill Level",
+            },
+          }
+        }
       />,
     },
     "ref": null,
@@ -252,24 +260,8 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "address": "",
-        "filterSection": <RequestFilter
-          distance={undefined}
-          handleChange={[Function]}
-          home={false}
-          instrument=""
-          lessonDuration="Any"
-          online={false}
-          skillLevel="Any"
-          studio={false}
-          zipCode=""
-        />,
-        "getLatLng": [Function],
-        "getLocation": [Function],
         "handleChange": [Function],
         "hasCallToAction": true,
-        "instrument": "",
-        "isRequesting": false,
         "mainContent": <Requests
           requests={
             Array [
@@ -373,6 +365,28 @@ ShallowWrapper {
         />,
         "pageTitle": "Requests",
         "results": 0,
+        "sidebarContent": <RequestFilter
+          distance={undefined}
+          handleChange={[Function]}
+          home={false}
+          instrument=""
+          lessonDuration="Any"
+          online={false}
+          skillLevel="Any"
+          studio={false}
+          zipCode=""
+        />,
+        "sortBy": "",
+        "sortByOptions": Object {
+          "Distance": Object {
+            "label": "Distance",
+            "value": "Distance",
+          },
+          "SkillLevel": Object {
+            "label": "Skill Level",
+            "value": "Skill Level",
+          },
+        },
       },
       "ref": null,
       "rendered": null,
@@ -387,26 +401,8 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <Unknown
-          address=""
-          filterSection={
-            <RequestFilter
-              distance={undefined}
-              handleChange={[Function]}
-              home={false}
-              instrument=""
-              lessonDuration="Any"
-              online={false}
-              skillLevel="Any"
-              studio={false}
-              zipCode=""
-            />
-          }
-          getLatLng={[Function]}
-          getLocation={[Function]}
           handleChange={[Function]}
           hasCallToAction={true}
-          instrument=""
-          isRequesting={false}
           mainContent={
             <Requests
               requests={
@@ -512,6 +508,32 @@ ShallowWrapper {
           }
           pageTitle="Requests"
           results={0}
+          sidebarContent={
+            <RequestFilter
+              distance={undefined}
+              handleChange={[Function]}
+              home={false}
+              instrument=""
+              lessonDuration="Any"
+              online={false}
+              skillLevel="Any"
+              studio={false}
+              zipCode=""
+            />
+          }
+          sortBy=""
+          sortByOptions={
+            Object {
+              "Distance": Object {
+                "label": "Distance",
+                "value": "Distance",
+              },
+              "SkillLevel": Object {
+                "label": "Skill Level",
+                "value": "Skill Level",
+              },
+            }
+          }
         />,
       },
       "ref": null,
@@ -520,24 +542,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "address": "",
-          "filterSection": <RequestFilter
-            distance={undefined}
-            handleChange={[Function]}
-            home={false}
-            instrument=""
-            lessonDuration="Any"
-            online={false}
-            skillLevel="Any"
-            studio={false}
-            zipCode=""
-          />,
-          "getLatLng": [Function],
-          "getLocation": [Function],
           "handleChange": [Function],
           "hasCallToAction": true,
-          "instrument": "",
-          "isRequesting": false,
           "mainContent": <Requests
             requests={
               Array [
@@ -641,6 +647,28 @@ ShallowWrapper {
           />,
           "pageTitle": "Requests",
           "results": 0,
+          "sidebarContent": <RequestFilter
+            distance={undefined}
+            handleChange={[Function]}
+            home={false}
+            instrument=""
+            lessonDuration="Any"
+            online={false}
+            skillLevel="Any"
+            studio={false}
+            zipCode=""
+          />,
+          "sortBy": "",
+          "sortByOptions": Object {
+            "Distance": Object {
+              "label": "Distance",
+              "value": "Distance",
+            },
+            "SkillLevel": Object {
+              "label": "Skill Level",
+              "value": "Skill Level",
+            },
+          },
         },
         "ref": null,
         "rendered": null,

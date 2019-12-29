@@ -13,7 +13,9 @@ describe('RequestForm', () => {
         <RequestForm
           role="parent"
           handleChange={mockFunction}
+          handleBlur={mockFunction}
           handleSubmit={mockFunction}
+          handleEditSubmit={mockFunction}
           handleCancel={mockFunction}
           instrument=""
           skillLevel=""
@@ -27,6 +29,9 @@ describe('RequestForm', () => {
           deleteStudent={mockFunction}
           students={[]}
           isEditing={false}
+          isCreatingRequest={false}
+          isEditingRequest={false}
+          allFieldsFilled={false}
         />
       );
     });
