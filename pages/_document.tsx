@@ -14,6 +14,7 @@ class NabiDocument extends Document {
       }
     })
 
+    /* tslint:disable */
     (function () {
       window.__insp = window.__insp || [];
       __insp.push(['wid', 417049237]);
@@ -22,6 +23,7 @@ class NabiDocument extends Document {
       };
       setTimeout(ldinsp, 0);
     })()
+    /* tslint:enable */
   }
   render() {
     return (
