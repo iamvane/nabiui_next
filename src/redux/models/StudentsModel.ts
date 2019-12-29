@@ -1,8 +1,8 @@
 import {
   ActionStatus,
   ActionStatusWithMessage
-} from 'redux/models/models';
-import { StudentDetailsType } from 'components/Dashboard/StudentDashboard/model';
+} from './models';
+import { StudentDetailsType } from '../../components/Dashboard/StudentDashboard/model';
 
 export interface StudentState {
   userId?: number;
