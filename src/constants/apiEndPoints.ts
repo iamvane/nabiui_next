@@ -19,4 +19,7 @@ export namespace ApiEndpoints {
     export const uploadAvatar = '/v1/upload_avatar/';
     export const fetchInstructors = '/v1/instructors/';
     export const fetchMinimalRate = 'v1/minimal-rate/';
+    export const requestReferences = '/v1/request-references/';
+    export const fetchReferences = '/v1/references-list/';
+    export const lessonRequest = '/v1/lesson-request/';
 }

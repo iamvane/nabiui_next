@@ -11,34 +11,32 @@ import {
   Icon,
 } from '@material-ui/core';
 
-import { StoreState } from 'redux/store';
-import { PlaceForLessonsType } from 'components/PlaceForLessons/model';
-import { RatesType } from 'components/Rates/model';
-import { SkillLevel } from 'components/Instruments/constants';
-import { InstructorType } from 'redux/models/InstructorModel';
-import { UserType } from 'redux/models/UserModel';
-import { InstrumentsType } from 'components/Instruments/model';
+import { StoreState } from '../../redux/reducers/store';
+import { UserType } from '../../redux/models/UserModel';
+import { buildJobPreferences } from '../../redux/actions/InstructorActions';
+import { PlaceForLessonsType } from '../PlaceForLessons/model';
+import { RatesType } from '../Rates/model';
+import { SkillLevel } from '../Instruments/constants';
+import { InstructorType } from '../../redux/models/InstructorModel';
+import { InstrumentsType } from '../Instruments/model';
 import {
   LessonSizeType,
   AgeGroupType
-} from 'components/JobPreferences/model';
-import { QualificationsType } from 'components/Qualifications/model';
-import { buildJobPreferences } from 'redux/actions/InstructorActions';
-import { ProfileBuilderStepper } from 'components/ProfileBuilder/constants';
-import {
-  ProfileStepValidatorState,
-  fields
-} from 'components/ProfileBuilder/ProfileStep/ProfileStepValidator';
-import { StepperButtons } from 'components/CommonStepper/StepperButtons';
-import Instruments from 'components/Instruments/Instruments';
-import Rates from 'components/Rates/Rates';
-import PlaceForLessonsForm from 'components/PlaceForLessons/PlaceForLessonsForm';
-import Availability from 'components/Availability/Availability';
-import { AvailabilityType } from 'components/Availability/model';
-import Qualification from 'components/Qualifications/Qualifications';
-import JobPreferences from 'components/JobPreferences/JobPreferences';
-import Languages from 'components/Languages/Languages';
-import { JobPreferencesType } from 'components/ProfileBuilder/models';
+} from '../JobPreferences/model';
+import { QualificationsType } from '../Qualifications/model';
+import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
+import { fields } from './ProfileStep/ProfileStepValidator';
+import  { ValidatorState as ProfileStepValidatorState } from '../../utils/Validator';
+import { StepperButtons } from '../CommonStepper/StepperButtons';
+import Instruments from '../Instruments/Instruments';
+import Rates from '../Rates/Rates';
+import PlaceForLessonsForm from '../PlaceForLessons/PlaceForLessonsForm';
+import Availability from '../Availability/Availability';
+import { AvailabilityType } from '../Availability/model';
+import Qualification from '../Qualifications/Qualifications';
+import JobPreferences from '../JobPreferences/JobPreferences';
+import Languages from '../Languages/Languages';
+import { JobPreferencesType } from '../ProfileBuilder/models';
 
 interface StateProps {
   user: UserType;

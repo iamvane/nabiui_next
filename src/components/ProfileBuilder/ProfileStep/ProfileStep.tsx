@@ -12,29 +12,29 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { StoreState } from 'redux/store';
-import { UserType } from 'redux/models/UserModel';
-import { changeAvatar } from 'redux/actions/UserActions';
-import { InstructorType } from 'redux/models/InstructorModel';
+import { StoreState } from '../../../redux/reducers/store';
+import { UserType } from '../../../redux/models/UserModel';
+import { changeAvatar } from '../../../redux/actions/UserActions';
+import { InstructorType } from '../../../redux/models/InstructorModel';
 import {
   buildProfile,
   fetchProfile
-} from 'redux/actions/InstructorActions';
-import { ProfileBuilderStepper } from 'components/ProfileBuilder/constants';
-import {
-  ProfileStepValidatorState,
-  fields,
-  validateField
-} from 'components/ProfileBuilder/ProfileStep/ProfileStepValidator';
-import { StepperButtons } from 'components/CommonStepper/StepperButtons';
-import Bio from 'components/Bio/Bio';
-import AvatarUploader from 'components/AvatarUploader/AvatarUploader';
-import Music from 'components/Music/Music';
+} from '../../../redux/actions/InstructorActions';
+import Music from '../../Music/Music';
 import {
   MusicTypes,
   MusicComponent,
-} from 'components/Music/constants';
-import { ProfileType } from 'components/ProfileBuilder/ProfileStep/models';
+} from '../../Music/constants';
+import Bio from '../../Bio/Bio';
+import { StepperButtons } from '../../CommonStepper/StepperButtons';
+import AvatarUploader from '../../AvatarUploader/AvatarUploader';
+import { ProfileBuilderStepper } from '../constants';
+import {
+  fields,
+  validateField
+} from './ProfileStepValidator';
+import  { ValidatorState as ProfileStepValidatorState } from '../../../utils/Validator';
+import { ProfileType } from './models';
 
 interface StateProps {
   user: UserType;

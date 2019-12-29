@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Redirect } from 'react-router-dom';
+import Router from "next/router";
 import { connect } from 'react-redux';
 import {
   Action,
@@ -287,8 +287,8 @@ export class AccountInfo extends React.Component<Props, State> {
             location={this.state.accountInfo.location || ''}
             phoneError={this.state.errors.phoneNumber}
           />
-          {this.state.performRedirect && <Redirect to={this.props.redirectUrl} />}
-          {this.state.redirectToLogin && <Redirect to={Routes.Login} />}
+          {this.state.performRedirect && Router.push(this.props.redirectUrl)}
+          {this.state.redirectToLogin && Router.push(Routes.Login)}
           {this.props.errorUpdate &&
             <Typography className="nabi-text-center" color="error">{this.props.errorUpdate}</Typography>
           }

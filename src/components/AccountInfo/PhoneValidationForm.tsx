@@ -15,13 +15,13 @@ import {
 import NumberFormat from 'react-number-format';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import SectionTitle from 'components/common/SectionTitle';
-import PhoneNumberAdded from 'components/AccountInfo/PhoneNumberAdded';
-import { UserType } from 'redux/models/UserModel';
+import SectionTitle from '../common/SectionTitle';
+import PhoneNumberAdded from '../AccountInfo/PhoneNumberAdded';
+import { UserType } from '../../redux/models/UserModel';
 import {
     PhoneValidationFormComponent,
     AccountInfoComponent
-  } from 'components/AccountInfo/constants';
+  } from '../AccountInfo/constants';
 
 const phoneNumberFormat = (props: any) => {
   const { inputRef, onChange, name,  ...other } = props;
@@ -127,7 +127,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
           </FormControl>
         </Grid>
       </Grid>
-      <Grid container={true} spacing={8} className="nabi-margin-top-small">
+      <Grid container={true} className="nabi-margin-top-small">
         <Grid item={true}>
           <Button
             color="primary"

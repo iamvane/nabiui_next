@@ -1,0 +1,575 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplicationForm Shallow Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ApplicationForm
+    handleChange={[MockFunction]}
+    handleSubmit={[MockFunction]}
+    request={
+      Object {
+        "applications": 17,
+        "applied": false,
+        "createdAt": "2019-08-05T23:01:25.000Z",
+        "id": 0,
+        "instrument": "piano",
+        "lessonDuration": "45",
+        "location": "Boston, Ma",
+        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+        "placeForLessons": "studio",
+        "students": Array [
+          Object {
+            "age": 18,
+            "name": "Roxana",
+            "skillLevel": "beginner",
+          },
+        ],
+        "title": "Fun and experience piano instructor",
+        "user": Object {
+          "birthday": "1996-07-12T04:00:00.000Z",
+          "displayName": "Roxana G.",
+          "distance": "0.5 mi away",
+          "email": "rox@gmail.com",
+          "firstName": "Roxana",
+          "id": "0",
+          "lastName": "Gallardo",
+          "role": "student",
+        },
+      }
+    }
+    values={
+      Object {
+        "lessonRate": 50,
+        "message": "foomessage",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <SectionTitle
+          text="Send Application"
+        />,
+        <WithStyles(Grid)
+          className="nabi-text-center nabi-margin-bottom-small"
+        >
+          <WithStyles(Typography)
+            className="nabi-text-mediumbold nabi-margin-top-small nabi-text-uppercase"
+          >
+            Lesson Rate
+          </WithStyles(Typography)>
+          <WithStyles(Typography)
+            className="nabi-margin-bottom-xsmall"
+          >
+            45 mins lesson
+          </WithStyles(Typography)>
+          <TextField
+            InputProps={
+              Object {
+                "inputComponent": [Function],
+              }
+            }
+            className="nabi-rates-field"
+            id="lessonRate"
+            name="lessonRate"
+            onChange={[MockFunction]}
+            placeholder="$0.00"
+            required={false}
+            select={false}
+            value={undefined}
+            variant="standard"
+          />
+        </WithStyles(Grid)>,
+        <WithStyles(Typography)
+          className="nabi-text-mediumbold nabi-text-center nabi-margin-bottom-xsmall nabi-text-uppercase"
+        >
+          Send message to Roxana
+        </WithStyles(Typography)>,
+        <TextField
+          className="nabi-margin-remove"
+          fullWidth={true}
+          id="message"
+          margin="normal"
+          multiline={true}
+          name="message"
+          onChange={[MockFunction]}
+          required={true}
+          rows={6}
+          select={false}
+          value="foomessage"
+          variant="standard"
+        />,
+        <WithStyles(Grid)
+          className="nabi-text-center"
+          item={true}
+          xs={12}
+        >
+          <WithStyles(Button)
+            className="nabi-margin-top-small"
+            color="primary"
+            onClick={[MockFunction]}
+            variant="contained"
+          >
+            Send Application
+          </WithStyles(Button)>
+        </WithStyles(Grid)>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "Send Application",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Typography)
+              className="nabi-text-mediumbold nabi-margin-top-small nabi-text-uppercase"
+            >
+              Lesson Rate
+            </WithStyles(Typography)>,
+            <WithStyles(Typography)
+              className="nabi-margin-bottom-xsmall"
+            >
+              45 mins lesson
+            </WithStyles(Typography)>,
+            <TextField
+              InputProps={
+                Object {
+                  "inputComponent": [Function],
+                }
+              }
+              className="nabi-rates-field"
+              id="lessonRate"
+              name="lessonRate"
+              onChange={[MockFunction]}
+              placeholder="$0.00"
+              required={false}
+              select={false}
+              value={undefined}
+              variant="standard"
+            />,
+          ],
+          "className": "nabi-text-center nabi-margin-bottom-small",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Lesson Rate",
+              "className": "nabi-text-mediumbold nabi-margin-top-small nabi-text-uppercase",
+            },
+            "ref": null,
+            "rendered": "Lesson Rate",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "45 mins lesson",
+              "className": "nabi-margin-bottom-xsmall",
+            },
+            "ref": null,
+            "rendered": "45 mins lesson",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "InputProps": Object {
+                "inputComponent": [Function],
+              },
+              "className": "nabi-rates-field",
+              "id": "lessonRate",
+              "name": "lessonRate",
+              "onChange": [MockFunction],
+              "placeholder": "$0.00",
+              "required": false,
+              "select": false,
+              "value": undefined,
+              "variant": "standard",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Send message to Roxana",
+          "className": "nabi-text-mediumbold nabi-text-center nabi-margin-bottom-xsmall nabi-text-uppercase",
+        },
+        "ref": null,
+        "rendered": "Send message to Roxana",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "className": "nabi-margin-remove",
+          "fullWidth": true,
+          "id": "message",
+          "margin": "normal",
+          "multiline": true,
+          "name": "message",
+          "onChange": [MockFunction],
+          "required": true,
+          "rows": 6,
+          "select": false,
+          "value": "foomessage",
+          "variant": "standard",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <WithStyles(Button)
+            className="nabi-margin-top-small"
+            color="primary"
+            onClick={[MockFunction]}
+            variant="contained"
+          >
+            Send Application
+          </WithStyles(Button)>,
+          "className": "nabi-text-center",
+          "item": true,
+          "xs": 12,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Send Application",
+            "className": "nabi-margin-top-small",
+            "color": "primary",
+            "onClick": [MockFunction],
+            "variant": "contained",
+          },
+          "ref": null,
+          "rendered": "Send Application",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <SectionTitle
+            text="Send Application"
+          />,
+          <WithStyles(Grid)
+            className="nabi-text-center nabi-margin-bottom-small"
+          >
+            <WithStyles(Typography)
+              className="nabi-text-mediumbold nabi-margin-top-small nabi-text-uppercase"
+            >
+              Lesson Rate
+            </WithStyles(Typography)>
+            <WithStyles(Typography)
+              className="nabi-margin-bottom-xsmall"
+            >
+              45 mins lesson
+            </WithStyles(Typography)>
+            <TextField
+              InputProps={
+                Object {
+                  "inputComponent": [Function],
+                }
+              }
+              className="nabi-rates-field"
+              id="lessonRate"
+              name="lessonRate"
+              onChange={[MockFunction]}
+              placeholder="$0.00"
+              required={false}
+              select={false}
+              value={undefined}
+              variant="standard"
+            />
+          </WithStyles(Grid)>,
+          <WithStyles(Typography)
+            className="nabi-text-mediumbold nabi-text-center nabi-margin-bottom-xsmall nabi-text-uppercase"
+          >
+            Send message to Roxana
+          </WithStyles(Typography)>,
+          <TextField
+            className="nabi-margin-remove"
+            fullWidth={true}
+            id="message"
+            margin="normal"
+            multiline={true}
+            name="message"
+            onChange={[MockFunction]}
+            required={true}
+            rows={6}
+            select={false}
+            value="foomessage"
+            variant="standard"
+          />,
+          <WithStyles(Grid)
+            className="nabi-text-center"
+            item={true}
+            xs={12}
+          >
+            <WithStyles(Button)
+              className="nabi-margin-top-small"
+              color="primary"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Send Application
+            </WithStyles(Button)>
+          </WithStyles(Grid)>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "Send Application",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Typography)
+                className="nabi-text-mediumbold nabi-margin-top-small nabi-text-uppercase"
+              >
+                Lesson Rate
+              </WithStyles(Typography)>,
+              <WithStyles(Typography)
+                className="nabi-margin-bottom-xsmall"
+              >
+                45 mins lesson
+              </WithStyles(Typography)>,
+              <TextField
+                InputProps={
+                  Object {
+                    "inputComponent": [Function],
+                  }
+                }
+                className="nabi-rates-field"
+                id="lessonRate"
+                name="lessonRate"
+                onChange={[MockFunction]}
+                placeholder="$0.00"
+                required={false}
+                select={false}
+                value={undefined}
+                variant="standard"
+              />,
+            ],
+            "className": "nabi-text-center nabi-margin-bottom-small",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Lesson Rate",
+                "className": "nabi-text-mediumbold nabi-margin-top-small nabi-text-uppercase",
+              },
+              "ref": null,
+              "rendered": "Lesson Rate",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "45 mins lesson",
+                "className": "nabi-margin-bottom-xsmall",
+              },
+              "ref": null,
+              "rendered": "45 mins lesson",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "InputProps": Object {
+                  "inputComponent": [Function],
+                },
+                "className": "nabi-rates-field",
+                "id": "lessonRate",
+                "name": "lessonRate",
+                "onChange": [MockFunction],
+                "placeholder": "$0.00",
+                "required": false,
+                "select": false,
+                "value": undefined,
+                "variant": "standard",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Send message to Roxana",
+            "className": "nabi-text-mediumbold nabi-text-center nabi-margin-bottom-xsmall nabi-text-uppercase",
+          },
+          "ref": null,
+          "rendered": "Send message to Roxana",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "className": "nabi-margin-remove",
+            "fullWidth": true,
+            "id": "message",
+            "margin": "normal",
+            "multiline": true,
+            "name": "message",
+            "onChange": [MockFunction],
+            "required": true,
+            "rows": 6,
+            "select": false,
+            "value": "foomessage",
+            "variant": "standard",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <WithStyles(Button)
+              className="nabi-margin-top-small"
+              color="primary"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              Send Application
+            </WithStyles(Button)>,
+            "className": "nabi-text-center",
+            "item": true,
+            "xs": 12,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Send Application",
+              "className": "nabi-margin-top-small",
+              "color": "primary",
+              "onClick": [MockFunction],
+              "variant": "contained",
+            },
+            "ref": null,
+            "rendered": "Send Application",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

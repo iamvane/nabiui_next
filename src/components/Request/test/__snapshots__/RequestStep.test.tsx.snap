@@ -1,0 +1,1598 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Request When it has requests Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Request
+    createRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    deleteRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    deleteRequestMessage=""
+    editRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    editRequestMessage=""
+    fetchRequests={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    isCreatingRequest={false}
+    isDeletingRequest={false}
+    isEditingRequest={false}
+    isFetchingRequest={false}
+    isFetchingRequests={false}
+    request={
+      Object {
+        "id": 0,
+        "instrument": "Mandolin",
+        "lessonDuration": "45 mins",
+        "placeForLessons": "At home",
+        "requestMessage": "foo message",
+        "requestTitle": "foo title",
+        "skillLevel": "",
+        "students": Array [
+          Object {
+            "age": 28,
+            "name": "Vicky",
+            "skillLevel": "Beginner",
+          },
+        ],
+      }
+    }
+    requests={Array []}
+    role="parent"
+    userId="foo"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <SectionTitle
+            text="Build Request"
+          />
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+          </WithStyles(Typography)>
+          <div
+            className="nabi-margin-top-medium"
+          >
+            <WithStyles(Button)
+              color="primary"
+              onClick={[Function]}
+              variant="contained"
+            >
+              <WithStyles(Icon)
+                className="nabi-margin-right-xsmall"
+              >
+                add
+              </WithStyles(Icon)>
+              Add Request
+            </WithStyles(Button)>
+          </div>
+        </div>,
+        <Unknown
+          backPath="account-info"
+          buttonText="Continue"
+          divider={true}
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+        />,
+        <SnackBar
+          handleClose={[Function]}
+          hideIcon={true}
+          isOpen={false}
+          message=""
+          variant="success"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              text="Build Request"
+            />,
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+            </WithStyles(Typography)>,
+            false,
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": "Build Request",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+              "className": "nabi-margin-top-xsmall",
+            },
+            "ref": null,
+            "rendered": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+            "type": [Function],
+          },
+          false,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>,
+              "className": "nabi-margin-top-medium",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>,
+                  "Add Request",
+                ],
+                "color": "primary",
+                "onClick": [Function],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "add",
+                    "className": "nabi-margin-right-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": "add",
+                  "type": [Function],
+                },
+                "Add Request",
+              ],
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "backPath": "account-info",
+          "buttonText": "Continue",
+          "divider": true,
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "handleClose": [Function],
+          "hideIcon": true,
+          "isOpen": false,
+          "message": "",
+          "variant": "success",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <SectionTitle
+              text="Build Request"
+            />
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+            </WithStyles(Typography)>
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>
+            </div>
+          </div>,
+          <Unknown
+            backPath="account-info"
+            buttonText="Continue"
+            divider={true}
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+          />,
+          <SnackBar
+            handleClose={[Function]}
+            hideIcon={true}
+            isOpen={false}
+            message=""
+            variant="success"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                text="Build Request"
+              />,
+              <WithStyles(Typography)
+                className="nabi-margin-top-xsmall"
+              >
+                A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+              </WithStyles(Typography)>,
+              false,
+              <div
+                className="nabi-margin-top-medium"
+              >
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Request
+                </WithStyles(Button)>
+              </div>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": "Build Request",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+                "className": "nabi-margin-top-xsmall",
+              },
+              "ref": null,
+              "rendered": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+              "type": [Function],
+            },
+            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Request
+                </WithStyles(Button)>,
+                "className": "nabi-margin-top-medium",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      add
+                    </WithStyles(Icon)>,
+                    "Add Request",
+                  ],
+                  "color": "primary",
+                  "onClick": [Function],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "add",
+                      "className": "nabi-margin-right-xsmall",
+                    },
+                    "ref": null,
+                    "rendered": "add",
+                    "type": [Function],
+                  },
+                  "Add Request",
+                ],
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "backPath": "account-info",
+            "buttonText": "Continue",
+            "divider": true,
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "handleClose": [Function],
+            "hideIcon": true,
+            "isOpen": false,
+            "message": "",
+            "variant": "success",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "context": Object {},
+    Symbol(enzyme.__providerValues__): Map {},
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`Request When the role is "parent" Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Request
+    createRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    deleteRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    deleteRequestMessage=""
+    editRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    editRequestMessage=""
+    fetchRequests={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    isCreatingRequest={false}
+    isDeletingRequest={false}
+    isEditingRequest={false}
+    isFetchingRequest={false}
+    isFetchingRequests={false}
+    request={
+      Object {
+        "id": 0,
+        "instrument": "Mandolin",
+        "lessonDuration": "45 mins",
+        "placeForLessons": "At home",
+        "requestMessage": "foo message",
+        "requestTitle": "foo title",
+        "skillLevel": "",
+        "students": Array [
+          Object {
+            "age": 28,
+            "name": "Vicky",
+            "skillLevel": "Beginner",
+          },
+        ],
+      }
+    }
+    requests={Array []}
+    role="parent"
+    userId="foo"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <SectionTitle
+            text="Build Request"
+          />
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+          </WithStyles(Typography)>
+          <div
+            className="nabi-margin-top-medium"
+          >
+            <WithStyles(Button)
+              color="primary"
+              onClick={[Function]}
+              variant="contained"
+            >
+              <WithStyles(Icon)
+                className="nabi-margin-right-xsmall"
+              >
+                add
+              </WithStyles(Icon)>
+              Add Request
+            </WithStyles(Button)>
+          </div>
+        </div>,
+        <Unknown
+          backPath="account-info"
+          buttonText="Continue"
+          divider={true}
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+        />,
+        <SnackBar
+          handleClose={[Function]}
+          hideIcon={true}
+          isOpen={false}
+          message=""
+          variant="success"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              text="Build Request"
+            />,
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+            </WithStyles(Typography)>,
+            false,
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": "Build Request",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+              "className": "nabi-margin-top-xsmall",
+            },
+            "ref": null,
+            "rendered": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+            "type": [Function],
+          },
+          false,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>,
+              "className": "nabi-margin-top-medium",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>,
+                  "Add Request",
+                ],
+                "color": "primary",
+                "onClick": [Function],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "add",
+                    "className": "nabi-margin-right-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": "add",
+                  "type": [Function],
+                },
+                "Add Request",
+              ],
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "backPath": "account-info",
+          "buttonText": "Continue",
+          "divider": true,
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "handleClose": [Function],
+          "hideIcon": true,
+          "isOpen": false,
+          "message": "",
+          "variant": "success",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <SectionTitle
+              text="Build Request"
+            />
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+            </WithStyles(Typography)>
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>
+            </div>
+          </div>,
+          <Unknown
+            backPath="account-info"
+            buttonText="Continue"
+            divider={true}
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+          />,
+          <SnackBar
+            handleClose={[Function]}
+            hideIcon={true}
+            isOpen={false}
+            message=""
+            variant="success"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                text="Build Request"
+              />,
+              <WithStyles(Typography)
+                className="nabi-margin-top-xsmall"
+              >
+                A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+              </WithStyles(Typography)>,
+              false,
+              <div
+                className="nabi-margin-top-medium"
+              >
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Request
+                </WithStyles(Button)>
+              </div>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": "Build Request",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+                "className": "nabi-margin-top-xsmall",
+              },
+              "ref": null,
+              "rendered": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+              "type": [Function],
+            },
+            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Request
+                </WithStyles(Button)>,
+                "className": "nabi-margin-top-medium",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      add
+                    </WithStyles(Icon)>,
+                    "Add Request",
+                  ],
+                  "color": "primary",
+                  "onClick": [Function],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "add",
+                      "className": "nabi-margin-right-xsmall",
+                    },
+                    "ref": null,
+                    "rendered": "add",
+                    "type": [Function],
+                  },
+                  "Add Request",
+                ],
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "backPath": "account-info",
+            "buttonText": "Continue",
+            "divider": true,
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "handleClose": [Function],
+            "hideIcon": true,
+            "isOpen": false,
+            "message": "",
+            "variant": "success",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "context": Object {},
+    Symbol(enzyme.__providerValues__): Map {},
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`Request When the role is "student" Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Request
+    createRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    deleteRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    deleteRequestMessage=""
+    editRequest={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    editRequestMessage=""
+    fetchRequests={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
+    isCreatingRequest={false}
+    isDeletingRequest={false}
+    isEditingRequest={false}
+    isFetchingRequest={false}
+    isFetchingRequests={false}
+    request={
+      Object {
+        "id": 0,
+        "instrument": "Mandolin",
+        "lessonDuration": "45 mins",
+        "placeForLessons": "At home",
+        "requestMessage": "foo message",
+        "requestTitle": "foo title",
+        "skillLevel": "",
+        "students": Array [
+          Object {
+            "age": 28,
+            "name": "Vicky",
+            "skillLevel": "Beginner",
+          },
+        ],
+      }
+    }
+    requests={Array []}
+    role="parent"
+    userId="foo"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <SectionTitle
+            text="Build Request"
+          />
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+          </WithStyles(Typography)>
+          <div
+            className="nabi-margin-top-medium"
+          >
+            <WithStyles(Button)
+              color="primary"
+              onClick={[Function]}
+              variant="contained"
+            >
+              <WithStyles(Icon)
+                className="nabi-margin-right-xsmall"
+              >
+                add
+              </WithStyles(Icon)>
+              Add Request
+            </WithStyles(Button)>
+          </div>
+        </div>,
+        <Unknown
+          backPath="account-info"
+          buttonText="Continue"
+          divider={true}
+          handleNext={[Function]}
+          icon={
+            <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>
+          }
+        />,
+        <SnackBar
+          handleClose={[Function]}
+          hideIcon={true}
+          isOpen={false}
+          message=""
+          variant="success"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <SectionTitle
+              text="Build Request"
+            />,
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+            </WithStyles(Typography)>,
+            false,
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "text": "Build Request",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+              "className": "nabi-margin-top-xsmall",
+            },
+            "ref": null,
+            "rendered": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+            "type": [Function],
+          },
+          false,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>,
+              "className": "nabi-margin-top-medium",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>,
+                  "Add Request",
+                ],
+                "color": "primary",
+                "onClick": [Function],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "add",
+                    "className": "nabi-margin-right-xsmall",
+                  },
+                  "ref": null,
+                  "rendered": "add",
+                  "type": [Function],
+                },
+                "Add Request",
+              ],
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "backPath": "account-info",
+          "buttonText": "Continue",
+          "divider": true,
+          "handleNext": [Function],
+          "icon": <WithStyles(Icon)>
+            arrow_forward
+          </WithStyles(Icon)>,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "handleClose": [Function],
+          "hideIcon": true,
+          "isOpen": false,
+          "message": "",
+          "variant": "success",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <SectionTitle
+              text="Build Request"
+            />
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+            </WithStyles(Typography)>
+            <div
+              className="nabi-margin-top-medium"
+            >
+              <WithStyles(Button)
+                color="primary"
+                onClick={[Function]}
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  add
+                </WithStyles(Icon)>
+                Add Request
+              </WithStyles(Button)>
+            </div>
+          </div>,
+          <Unknown
+            backPath="account-info"
+            buttonText="Continue"
+            divider={true}
+            handleNext={[Function]}
+            icon={
+              <WithStyles(Icon)>
+                arrow_forward
+              </WithStyles(Icon)>
+            }
+          />,
+          <SnackBar
+            handleClose={[Function]}
+            hideIcon={true}
+            isOpen={false}
+            message=""
+            variant="success"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <SectionTitle
+                text="Build Request"
+              />,
+              <WithStyles(Typography)
+                className="nabi-margin-top-xsmall"
+              >
+                A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.
+              </WithStyles(Typography)>,
+              false,
+              <div
+                className="nabi-margin-top-medium"
+              >
+                <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Request
+                </WithStyles(Button)>
+              </div>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "text": "Build Request",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+                "className": "nabi-margin-top-xsmall",
+              },
+              "ref": null,
+              "rendered": "A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.",
+              "type": [Function],
+            },
+            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  color="primary"
+                  onClick={[Function]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    add
+                  </WithStyles(Icon)>
+                  Add Request
+                </WithStyles(Button)>,
+                "className": "nabi-margin-top-medium",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      add
+                    </WithStyles(Icon)>,
+                    "Add Request",
+                  ],
+                  "color": "primary",
+                  "onClick": [Function],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "add",
+                      "className": "nabi-margin-right-xsmall",
+                    },
+                    "ref": null,
+                    "rendered": "add",
+                    "type": [Function],
+                  },
+                  "Add Request",
+                ],
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "backPath": "account-info",
+            "buttonText": "Continue",
+            "divider": true,
+            "handleNext": [Function],
+            "icon": <WithStyles(Icon)>
+              arrow_forward
+            </WithStyles(Icon)>,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "handleClose": [Function],
+            "hideIcon": true,
+            "isOpen": false,
+            "message": "",
+            "variant": "success",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "context": Object {},
+    Symbol(enzyme.__providerValues__): Map {},
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+  Symbol(enzyme.__childContext__): null,
+}
+`;

@@ -9,13 +9,13 @@ import {
   Typography
 } from '@material-ui/core';
 
+import SectionTitle from '../common/SectionTitle';
+import { StepperButtons } from '../CommonStepper/StepperButtons';
+import { Routes } from '../common/constants/Routes';
 import {
   ProfileBuilderStepper,
   ScreeningComponent
-} from 'components/ProfileBuilder/constants';
-import SectionTitle from 'components/common/SectionTitle';
-import { StepperButtons } from 'components/CommonStepper/StepperButtons';
-import { Routes } from 'components/common/constants/Routes';
+} from './constants';
 
 interface State {
   isCompliant: boolean;

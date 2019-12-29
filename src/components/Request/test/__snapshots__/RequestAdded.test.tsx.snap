@@ -1,0 +1,2089 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestAdded When editing is disabled Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RequestAdded
+    deleteRequest={[MockFunction]}
+    editRequest={[MockFunction]}
+    id={0}
+    instrument="piano"
+    lessonDuration="45 mins"
+    notEditable={true}
+    placeForLessons="At Home"
+    requestMessage="Here I am!"
+    requestTitle="Piano teacher needed"
+    skillLevel=""
+    students={
+      Array [
+        Object {
+          "age": 22,
+          "name": "Roxana",
+          "skillLevel": "beginner",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-action-buttons"
+        >
+          <WithStyles(IconButton)
+            aria-label="Delete"
+            className="nabi-float-right nabi-margin-left-xsmall"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              delete
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+          <WithStyles(IconButton)
+            aria-label="Edit"
+            className="nabi-float-right"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              edit
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+        </div>,
+        <WithStyles(Typography)
+          className="nabi-margin-top-small nabi-text-uppercase"
+          variant="body2"
+        >
+          <mark>
+            Piano teacher needed
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Instrument:
+               
+            </span>
+            piano
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Place for lessons:
+               
+            </span>
+            At Home
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Lesson duration:
+               
+            </span>
+            45 mins
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <span
+            className="nabi-color-nabi"
+          >
+            Student details:
+          </span>
+        </WithStyles(Typography)>,
+        Array [
+          <WithStyles(Typography)>
+            <mark>
+              - Roxana, 22 yrs old (beginner)
+            </mark>
+          </WithStyles(Typography)>,
+        ],
+        <WithStyles(Typography)>
+          <span
+            className="nabi-color-nabi"
+          >
+            Message:
+          </span>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Here I am!
+          </mark>
+        </WithStyles(Typography)>,
+      ],
+      "className": "nabi-margin-top-small ",
+      "item": true,
+      "md": undefined,
+      "xs": 12,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+          ],
+          "className": "nabi-action-buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Delete",
+              "children": <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right nabi-margin-left-xsmall",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "delete",
+              },
+              "ref": null,
+              "rendered": "delete",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Edit",
+              "children": <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "edit",
+              },
+              "ref": null,
+              "rendered": "edit",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Piano teacher needed
+          </mark>,
+          "className": "nabi-margin-top-small nabi-text-uppercase",
+          "variant": "body2",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Piano teacher needed",
+          },
+          "ref": null,
+          "rendered": "Piano teacher needed",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Instrument:
+               
+            </span>
+            piano
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="nabi-color-nabi"
+              >
+                Instrument:
+                 
+              </span>,
+              "piano",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Instrument:",
+                  " ",
+                ],
+                "className": "nabi-color-nabi",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Instrument:",
+                " ",
+              ],
+              "type": "span",
+            },
+            "piano",
+          ],
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Place for lessons:
+               
+            </span>
+            At Home
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="nabi-color-nabi"
+              >
+                Place for lessons:
+                 
+              </span>,
+              "At Home",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Place for lessons:",
+                  " ",
+                ],
+                "className": "nabi-color-nabi",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Place for lessons:",
+                " ",
+              ],
+              "type": "span",
+            },
+            "At Home",
+          ],
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Lesson duration:
+               
+            </span>
+            45 mins
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="nabi-color-nabi"
+              >
+                Lesson duration:
+                 
+              </span>,
+              "45 mins",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Lesson duration:",
+                  " ",
+                ],
+                "className": "nabi-color-nabi",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Lesson duration:",
+                " ",
+              ],
+              "type": "span",
+            },
+            "45 mins",
+          ],
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <span
+            className="nabi-color-nabi"
+          >
+            Student details:
+          </span>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Student details:",
+            "className": "nabi-color-nabi",
+          },
+          "ref": null,
+          "rendered": "Student details:",
+          "type": "span",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "0",
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            - Roxana, 22 yrs old (beginner)
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "- Roxana, 22 yrs old (beginner)",
+          },
+          "ref": null,
+          "rendered": "- Roxana, 22 yrs old (beginner)",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <span
+            className="nabi-color-nabi"
+          >
+            Message:
+          </span>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Message:",
+            "className": "nabi-color-nabi",
+          },
+          "ref": null,
+          "rendered": "Message:",
+          "type": "span",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Here I am!
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Here I am!",
+          },
+          "ref": null,
+          "rendered": "Here I am!",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-action-buttons"
+          >
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+          </div>,
+          <WithStyles(Typography)
+            className="nabi-margin-top-small nabi-text-uppercase"
+            variant="body2"
+          >
+            <mark>
+              Piano teacher needed
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Instrument:
+                 
+              </span>
+              piano
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Place for lessons:
+                 
+              </span>
+              At Home
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Lesson duration:
+                 
+              </span>
+              45 mins
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <span
+              className="nabi-color-nabi"
+            >
+              Student details:
+            </span>
+          </WithStyles(Typography)>,
+          Array [
+            <WithStyles(Typography)>
+              <mark>
+                - Roxana, 22 yrs old (beginner)
+              </mark>
+            </WithStyles(Typography)>,
+          ],
+          <WithStyles(Typography)>
+            <span
+              className="nabi-color-nabi"
+            >
+              Message:
+            </span>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Here I am!
+            </mark>
+          </WithStyles(Typography)>,
+        ],
+        "className": "nabi-margin-top-small ",
+        "item": true,
+        "md": undefined,
+        "xs": 12,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(IconButton)
+                aria-label="Delete"
+                className="nabi-float-right nabi-margin-left-xsmall"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+              <WithStyles(IconButton)
+                aria-label="Edit"
+                className="nabi-float-right"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+            ],
+            "className": "nabi-action-buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Delete",
+                "children": <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right nabi-margin-left-xsmall",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "delete",
+                },
+                "ref": null,
+                "rendered": "delete",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Edit",
+                "children": <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "edit",
+                },
+                "ref": null,
+                "rendered": "edit",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Piano teacher needed
+            </mark>,
+            "className": "nabi-margin-top-small nabi-text-uppercase",
+            "variant": "body2",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Piano teacher needed",
+            },
+            "ref": null,
+            "rendered": "Piano teacher needed",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Instrument:
+                 
+              </span>
+              piano
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span
+                  className="nabi-color-nabi"
+                >
+                  Instrument:
+                   
+                </span>,
+                "piano",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Instrument:",
+                    " ",
+                  ],
+                  "className": "nabi-color-nabi",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Instrument:",
+                  " ",
+                ],
+                "type": "span",
+              },
+              "piano",
+            ],
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Place for lessons:
+                 
+              </span>
+              At Home
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span
+                  className="nabi-color-nabi"
+                >
+                  Place for lessons:
+                   
+                </span>,
+                "At Home",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Place for lessons:",
+                    " ",
+                  ],
+                  "className": "nabi-color-nabi",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Place for lessons:",
+                  " ",
+                ],
+                "type": "span",
+              },
+              "At Home",
+            ],
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Lesson duration:
+                 
+              </span>
+              45 mins
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span
+                  className="nabi-color-nabi"
+                >
+                  Lesson duration:
+                   
+                </span>,
+                "45 mins",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Lesson duration:",
+                    " ",
+                  ],
+                  "className": "nabi-color-nabi",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Lesson duration:",
+                  " ",
+                ],
+                "type": "span",
+              },
+              "45 mins",
+            ],
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <span
+              className="nabi-color-nabi"
+            >
+              Student details:
+            </span>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Student details:",
+              "className": "nabi-color-nabi",
+            },
+            "ref": null,
+            "rendered": "Student details:",
+            "type": "span",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              - Roxana, 22 yrs old (beginner)
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "- Roxana, 22 yrs old (beginner)",
+            },
+            "ref": null,
+            "rendered": "- Roxana, 22 yrs old (beginner)",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <span
+              className="nabi-color-nabi"
+            >
+              Message:
+            </span>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Message:",
+              "className": "nabi-color-nabi",
+            },
+            "ref": null,
+            "rendered": "Message:",
+            "type": "span",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Here I am!
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Here I am!",
+            },
+            "ref": null,
+            "rendered": "Here I am!",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;
+
+exports[`RequestAdded When editing is enabled Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RequestAdded
+    deleteRequest={[MockFunction]}
+    editRequest={[MockFunction]}
+    id={0}
+    instrument="piano"
+    lessonDuration="45 mins"
+    notEditable={false}
+    placeForLessons="At Home"
+    requestMessage="Here I am!"
+    requestTitle="Piano teacher needed"
+    skillLevel=""
+    students={
+      Array [
+        Object {
+          "age": 22,
+          "name": "Roxana",
+          "skillLevel": "beginner",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-action-buttons"
+        >
+          <WithStyles(IconButton)
+            aria-label="Delete"
+            className="nabi-float-right nabi-margin-left-xsmall"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              delete
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+          <WithStyles(IconButton)
+            aria-label="Edit"
+            className="nabi-float-right"
+            color="primary"
+            onClick={[Function]}
+          >
+            <WithStyles(Icon)>
+              edit
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+        </div>,
+        <WithStyles(Typography)
+          className="nabi-margin-top-small nabi-text-uppercase"
+          variant="body2"
+        >
+          <mark>
+            Piano teacher needed
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Instrument:
+               
+            </span>
+            piano
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Place for lessons:
+               
+            </span>
+            At Home
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Lesson duration:
+               
+            </span>
+            45 mins
+          </mark>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <span
+            className="nabi-color-nabi"
+          >
+            Student details:
+          </span>
+        </WithStyles(Typography)>,
+        Array [
+          <WithStyles(Typography)>
+            <mark>
+              - Roxana, 22 yrs old (beginner)
+            </mark>
+          </WithStyles(Typography)>,
+        ],
+        <WithStyles(Typography)>
+          <span
+            className="nabi-color-nabi"
+          >
+            Message:
+          </span>
+        </WithStyles(Typography)>,
+        <WithStyles(Typography)>
+          <mark>
+            Here I am!
+          </mark>
+        </WithStyles(Typography)>,
+      ],
+      "className": "nabi-margin-top-small nabi-editable-item",
+      "item": true,
+      "md": undefined,
+      "xs": 12,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+          ],
+          "className": "nabi-action-buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Delete",
+              "children": <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right nabi-margin-left-xsmall",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "delete",
+              },
+              "ref": null,
+              "rendered": "delete",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Edit",
+              "children": <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>,
+              "className": "nabi-float-right",
+              "color": "primary",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "edit",
+              },
+              "ref": null,
+              "rendered": "edit",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Piano teacher needed
+          </mark>,
+          "className": "nabi-margin-top-small nabi-text-uppercase",
+          "variant": "body2",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Piano teacher needed",
+          },
+          "ref": null,
+          "rendered": "Piano teacher needed",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Instrument:
+               
+            </span>
+            piano
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="nabi-color-nabi"
+              >
+                Instrument:
+                 
+              </span>,
+              "piano",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Instrument:",
+                  " ",
+                ],
+                "className": "nabi-color-nabi",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Instrument:",
+                " ",
+              ],
+              "type": "span",
+            },
+            "piano",
+          ],
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Place for lessons:
+               
+            </span>
+            At Home
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="nabi-color-nabi"
+              >
+                Place for lessons:
+                 
+              </span>,
+              "At Home",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Place for lessons:",
+                  " ",
+                ],
+                "className": "nabi-color-nabi",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Place for lessons:",
+                " ",
+              ],
+              "type": "span",
+            },
+            "At Home",
+          ],
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            <span
+              className="nabi-color-nabi"
+            >
+              Lesson duration:
+               
+            </span>
+            45 mins
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span
+                className="nabi-color-nabi"
+              >
+                Lesson duration:
+                 
+              </span>,
+              "45 mins",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Lesson duration:",
+                  " ",
+                ],
+                "className": "nabi-color-nabi",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Lesson duration:",
+                " ",
+              ],
+              "type": "span",
+            },
+            "45 mins",
+          ],
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <span
+            className="nabi-color-nabi"
+          >
+            Student details:
+          </span>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Student details:",
+            "className": "nabi-color-nabi",
+          },
+          "ref": null,
+          "rendered": "Student details:",
+          "type": "span",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "0",
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            - Roxana, 22 yrs old (beginner)
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "- Roxana, 22 yrs old (beginner)",
+          },
+          "ref": null,
+          "rendered": "- Roxana, 22 yrs old (beginner)",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <span
+            className="nabi-color-nabi"
+          >
+            Message:
+          </span>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Message:",
+            "className": "nabi-color-nabi",
+          },
+          "ref": null,
+          "rendered": "Message:",
+          "type": "span",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <mark>
+            Here I am!
+          </mark>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Here I am!",
+          },
+          "ref": null,
+          "rendered": "Here I am!",
+          "type": "mark",
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-action-buttons"
+          >
+            <WithStyles(IconButton)
+              aria-label="Delete"
+              className="nabi-float-right nabi-margin-left-xsmall"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                delete
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+            <WithStyles(IconButton)
+              aria-label="Edit"
+              className="nabi-float-right"
+              color="primary"
+              onClick={[Function]}
+            >
+              <WithStyles(Icon)>
+                edit
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+          </div>,
+          <WithStyles(Typography)
+            className="nabi-margin-top-small nabi-text-uppercase"
+            variant="body2"
+          >
+            <mark>
+              Piano teacher needed
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Instrument:
+                 
+              </span>
+              piano
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Place for lessons:
+                 
+              </span>
+              At Home
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Lesson duration:
+                 
+              </span>
+              45 mins
+            </mark>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <span
+              className="nabi-color-nabi"
+            >
+              Student details:
+            </span>
+          </WithStyles(Typography)>,
+          Array [
+            <WithStyles(Typography)>
+              <mark>
+                - Roxana, 22 yrs old (beginner)
+              </mark>
+            </WithStyles(Typography)>,
+          ],
+          <WithStyles(Typography)>
+            <span
+              className="nabi-color-nabi"
+            >
+              Message:
+            </span>
+          </WithStyles(Typography)>,
+          <WithStyles(Typography)>
+            <mark>
+              Here I am!
+            </mark>
+          </WithStyles(Typography)>,
+        ],
+        "className": "nabi-margin-top-small nabi-editable-item",
+        "item": true,
+        "md": undefined,
+        "xs": 12,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(IconButton)
+                aria-label="Delete"
+                className="nabi-float-right nabi-margin-left-xsmall"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+              <WithStyles(IconButton)
+                aria-label="Edit"
+                className="nabi-float-right"
+                color="primary"
+                onClick={[Function]}
+              >
+                <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+            ],
+            "className": "nabi-action-buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Delete",
+                "children": <WithStyles(Icon)>
+                  delete
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right nabi-margin-left-xsmall",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "delete",
+                },
+                "ref": null,
+                "rendered": "delete",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Edit",
+                "children": <WithStyles(Icon)>
+                  edit
+                </WithStyles(Icon)>,
+                "className": "nabi-float-right",
+                "color": "primary",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "edit",
+                },
+                "ref": null,
+                "rendered": "edit",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Piano teacher needed
+            </mark>,
+            "className": "nabi-margin-top-small nabi-text-uppercase",
+            "variant": "body2",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Piano teacher needed",
+            },
+            "ref": null,
+            "rendered": "Piano teacher needed",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Instrument:
+                 
+              </span>
+              piano
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span
+                  className="nabi-color-nabi"
+                >
+                  Instrument:
+                   
+                </span>,
+                "piano",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Instrument:",
+                    " ",
+                  ],
+                  "className": "nabi-color-nabi",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Instrument:",
+                  " ",
+                ],
+                "type": "span",
+              },
+              "piano",
+            ],
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Place for lessons:
+                 
+              </span>
+              At Home
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span
+                  className="nabi-color-nabi"
+                >
+                  Place for lessons:
+                   
+                </span>,
+                "At Home",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Place for lessons:",
+                    " ",
+                  ],
+                  "className": "nabi-color-nabi",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Place for lessons:",
+                  " ",
+                ],
+                "type": "span",
+              },
+              "At Home",
+            ],
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              <span
+                className="nabi-color-nabi"
+              >
+                Lesson duration:
+                 
+              </span>
+              45 mins
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <span
+                  className="nabi-color-nabi"
+                >
+                  Lesson duration:
+                   
+                </span>,
+                "45 mins",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "Lesson duration:",
+                    " ",
+                  ],
+                  "className": "nabi-color-nabi",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Lesson duration:",
+                  " ",
+                ],
+                "type": "span",
+              },
+              "45 mins",
+            ],
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <span
+              className="nabi-color-nabi"
+            >
+              Student details:
+            </span>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Student details:",
+              "className": "nabi-color-nabi",
+            },
+            "ref": null,
+            "rendered": "Student details:",
+            "type": "span",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              - Roxana, 22 yrs old (beginner)
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "- Roxana, 22 yrs old (beginner)",
+            },
+            "ref": null,
+            "rendered": "- Roxana, 22 yrs old (beginner)",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <span
+              className="nabi-color-nabi"
+            >
+              Message:
+            </span>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Message:",
+              "className": "nabi-color-nabi",
+            },
+            "ref": null,
+            "rendered": "Message:",
+            "type": "span",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <mark>
+              Here I am!
+            </mark>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Here I am!",
+            },
+            "ref": null,
+            "rendered": "Here I am!",
+            "type": "mark",
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

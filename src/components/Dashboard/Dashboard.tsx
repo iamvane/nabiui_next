@@ -11,23 +11,23 @@ import {
   CircularProgress,
   Typography } from '@material-ui/core';
 
-import { StoreState } from 'redux/store';
-import { UserType } from 'redux/models/UserModel';
-import SnackBar from 'components/common/SnackBar';
-import { AnnouncementConstants } from 'components/common/constants/Announcement';
-import { LoggedInPageTemplate } from 'components/common/Templates/LoggedInPageTemplate';
-import { Routes } from 'components/common/constants/Routes';
-import { fetchUser } from 'redux/actions/UserActions';
-import PreLaunchInstructorDashboard from 'components/Dashboard/InstructorDashboard/PreLaunchInstructorDashboard';
-import PreLaunchStudentDashboard from 'components/Dashboard/StudentDashboard/PreLaunchStudentDashboard';
+import { StoreState } from '../../redux/reducers/store';
+import { UserType } from '../../redux/models/UserModel';
+import { fetchUser } from '../../redux/actions/UserActions';
+import { InstructorType } from '../../redux/models/InstructorModel';
+import { page } from '../../utils/analytics';
+import SnackBar from '../common/SnackBar';
+import SectionTitle from '../common/SectionTitle';
+import { AnnouncementConstants } from '../common/constants/Announcement';
+import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
+import { Routes } from '../common/constants/Routes';
+import { Role } from '../Auth/Registration/constants';
+import PreLaunchInstructorDashboard from './InstructorDashboard/PreLaunchInstructorDashboard';
+import PreLaunchStudentDashboard from './StudentDashboard/PreLaunchStudentDashboard';
 import {
   DashboardComponent,
   PreLaunchInstructorDashboardComponent as constants
-} from 'components/Dashboard/constants';
-import { Role } from 'components/common/constants/Registration';
-import SectionTitle from 'components/common/SectionTitle';
-import { page } from 'utils/analytics';
-import { InstructorType } from 'redux/models/InstructorModel';
+} from './constants';
 
 interface State {
   showSnackbar: boolean;
@@ -62,11 +62,11 @@ export class Dashboard extends React.Component<Props, State> {
 
   componentDidMount() {
     this.props.fetchUser();
-    if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
-      this.setState({
-        showSnackbar: true
-      });
-    }
+    // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
+    //   this.setState({
+    //     showSnackbar: true
+    //   });
+    // }
 
     const userId = this.props.user ? this.props.user.email : 'anonymous';
 
@@ -82,7 +82,7 @@ export class Dashboard extends React.Component<Props, State> {
   public closeSnackbar = () => this.setState({ showSnackbar: false });
 
   render() {
-
+    const LinkedInPic = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/linkedin-pic.jpg';
     return (
       <React.Fragment>
         {this.props.isRequesting ?
@@ -111,7 +111,7 @@ export class Dashboard extends React.Component<Props, State> {
                 <img
                   className="nabi-responsive-image"
                   alt="logo"
-                  src={require('../../../assets/images/linkedin-pic.jpg')}
+                  src={LinkedInPic}
                 />
             </React.Fragment>
             }

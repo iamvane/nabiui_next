@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
-import PageTitle from 'components/common/PageTitle';
-import * as constants from 'components/common/constants/ContactUs';
+import PageTitle from './PageTitle';
+import * as constants from './constants/ContactUs';
 
 interface Props {}
 

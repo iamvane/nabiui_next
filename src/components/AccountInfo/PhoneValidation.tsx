@@ -5,19 +5,19 @@ import {
   Dispatch
 } from 'redux';
 
-import { StoreState } from 'redux/store';
+import { StoreState } from '../../redux/reducers/store';
 import {
   fetchUser,
   requestToken,
   verifyToken
-} from 'redux/actions/UserActions';
-import { UserActions } from 'redux/actions/UserActionTypes';
-import { requestAction } from 'redux/actions/actions';
-import { UserType } from 'redux/models/UserModel';
-import SnackBar from 'components/common/SnackBar';
-import PhoneValidationForm from 'components/AccountInfo/PhoneValidationForm';
-import { AccountInfoComponent, PhoneValidationComponent } from 'components/AccountInfo/constants';
-import { VerificationChannel } from 'components/AccountInfo/models';
+} from '../../redux/actions/UserActions';
+import { UserActions } from '../../redux/actions/UserActionTypes';
+import { requestAction } from '../../redux/actions/actions';
+import { UserType } from '../../redux/models/UserModel';
+import SnackBar from '../common/SnackBar';
+import PhoneValidationForm from './PhoneValidationForm';
+import { AccountInfoComponent, PhoneValidationComponent } from './constants';
+import { VerificationChannel } from './models';
 
 interface DispatchProps {
   fetchUser: () => void;

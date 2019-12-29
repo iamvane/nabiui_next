@@ -2,21 +2,20 @@ import { Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
 
-import { StoreState } from 'redux/store';
-import { getError } from 'utils/handleApiErros';
-import { ParentActions } from 'redux/actions/ParentActionTypes';
-
+import { getError } from '../../utils/handleApiErros';
 import {
   defaultApiError,
   unauthorizedError
-} from 'constants/apiConstants';
+} from '../../constants/apiConstants';
+import { ApiEndpoints } from '../../constants/apiEndpoints';
+import { StudentDetailsType } from '../../components/Dashboard/StudentDashboard/model';
+import { StoreState } from '../reducers/store';
+import { ParentActions } from '../actions/ParentActionTypes';
 import {
   requestAction,
   withDataAction,
   withErrorAction,
-} from 'redux/actions/actions';
-import { ApiEndpoints } from 'redux/constants/apiEndpoints';
-import { StudentDetailsType } from 'components/Dashboard/StudentDashboard/model';
+} from '../actions/actions';
 
 // Default error message
 let errorMessage = defaultApiError;

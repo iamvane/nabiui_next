@@ -1,13 +1,15 @@
 import * as React from 'react';
 
 import IconButton from '@material-ui/core/IconButton';
-import FacebookIcon from '../../../assets/images/facebook.svg';
-import TwitterIcon from '../../../assets/images/twitter.svg';
-import InstagramIcon from '../../../assets/images/instagram.svg';
-import PinterestIcon from '../../../assets/images/pinterest.png';
 
 import { SocialLinks } from './constants/Routes';
+
 const SocialMenu = () => {
+  const FacebookIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/facebook.svg';
+  const TwitterIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/twitter.svg';
+  const InstagramIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/instagram.svg';
+  const PinterestIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/pinterest.png';
+
   return (
     <div>
       <IconButton

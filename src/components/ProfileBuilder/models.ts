@@ -1,12 +1,12 @@
-import { PlaceForLessonsType } from 'components/PlaceForLessons/model';
-import { RatesType } from 'components/Rates/model';
-import { QualificationsType } from 'components/Qualifications/model';
-import { AvailabilityType } from 'components/Availability/model';
+import { PlaceForLessonsType } from '../PlaceForLessons/model';
+import { RatesType } from '../Rates/model';
+import { QualificationsType } from '../Qualifications/model';
+import { AvailabilityType } from '../Availability/model';
 import {
   LessonSizeType,
   AgeGroupType,
-} from 'components/JobPreferences/model';
-import { InstrumentsType } from 'components/Instruments/model';
+} from '../JobPreferences/model';
+import { InstrumentsType } from '../Instruments/model';
 
 export interface JobPreferencesType extends
   LessonSizeType,

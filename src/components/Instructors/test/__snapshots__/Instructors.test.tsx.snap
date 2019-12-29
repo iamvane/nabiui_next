@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Instructors Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Instructors
+    fetchInstructor={[MockFunction]}
+    instructor={
+      Object {
+        "userId": 0,
+      }
+    }
+    instructors={
+      Array [
+        Object {},
+      ]
+    }
+    isRequestingInstructor={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <UNDEFINED>
+        <InstructorCard
+          address=""
+          age={0}
+          avatarImage={undefined}
+          backgroundCheck={false}
+          bioDescription={undefined}
+          bioTitle={undefined}
+          displayName=""
+          favorite={false}
+          fetchInstructor={[MockFunction]}
+          id={undefined}
+          instruments={Array []}
+          lastLogin=""
+          lessonsTaught={0}
+          memberSince=""
+          rateStartAt={undefined}
+          reviewsNumber={0}
+        />
+      </UNDEFINED>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <InstructorCard
+            address=""
+            age={0}
+            avatarImage={undefined}
+            backgroundCheck={false}
+            bioDescription={undefined}
+            bioTitle={undefined}
+            displayName=""
+            favorite={false}
+            fetchInstructor={[MockFunction]}
+            id={undefined}
+            instruments={Array []}
+            lastLogin=""
+            lessonsTaught={0}
+            memberSince=""
+            rateStartAt={undefined}
+            reviewsNumber={0}
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "function",
+          "props": Object {
+            "address": "",
+            "age": 0,
+            "avatarImage": undefined,
+            "backgroundCheck": false,
+            "bioDescription": undefined,
+            "bioTitle": undefined,
+            "displayName": "",
+            "favorite": false,
+            "fetchInstructor": [MockFunction],
+            "id": undefined,
+            "instruments": Array [],
+            "lastLogin": "",
+            "lessonsTaught": 0,
+            "memberSince": "",
+            "rateStartAt": undefined,
+            "reviewsNumber": 0,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <UNDEFINED>
+          <InstructorCard
+            address=""
+            age={0}
+            avatarImage={undefined}
+            backgroundCheck={false}
+            bioDescription={undefined}
+            bioTitle={undefined}
+            displayName=""
+            favorite={false}
+            fetchInstructor={[MockFunction]}
+            id={undefined}
+            instruments={Array []}
+            lastLogin=""
+            lessonsTaught={0}
+            memberSince=""
+            rateStartAt={undefined}
+            reviewsNumber={0}
+          />
+        </UNDEFINED>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <InstructorCard
+              address=""
+              age={0}
+              avatarImage={undefined}
+              backgroundCheck={false}
+              bioDescription={undefined}
+              bioTitle={undefined}
+              displayName=""
+              favorite={false}
+              fetchInstructor={[MockFunction]}
+              id={undefined}
+              instruments={Array []}
+              lastLogin=""
+              lessonsTaught={0}
+              memberSince=""
+              rateStartAt={undefined}
+              reviewsNumber={0}
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "function",
+            "props": Object {
+              "address": "",
+              "age": 0,
+              "avatarImage": undefined,
+              "backgroundCheck": false,
+              "bioDescription": undefined,
+              "bioTitle": undefined,
+              "displayName": "",
+              "favorite": false,
+              "fetchInstructor": [MockFunction],
+              "id": undefined,
+              "instruments": Array [],
+              "lastLogin": "",
+              "lessonsTaught": 0,
+              "memberSince": "",
+              "rateStartAt": undefined,
+              "reviewsNumber": 0,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

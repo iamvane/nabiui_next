@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as moment from 'moment';
+import moment from 'moment';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -16,18 +16,18 @@ import {
   Typography
 } from '@material-ui/core';
 
-import SectionTitle from 'components/common/SectionTitle';
-import { UserType } from 'redux/models/UserModel';
-import AvatarUploader from 'components/AvatarUploader/AvatarUploader';
-import PhoneValidation from 'components/AccountInfo/PhoneValidation';
-import Location from 'components/AccountInfo/Location';
-import MiddleNameModal from 'components/AccountInfo/MiddleNameModal';
-import { AccountInfoComponent } from 'components/AccountInfo/constants';
+import SectionTitle from '../common/SectionTitle';
+import { UserType } from '../../redux/models/UserModel';
+import AvatarUploader from '../AvatarUploader/AvatarUploader';
+import PhoneValidation from './PhoneValidation';
+import Location from './Location';
+import MiddleNameModal from './MiddleNameModal';
+import { AccountInfoComponent } from './constants';
 import {
   AccountInfoType,
   Gender,
   VerificationChannel
-} from 'components/AccountInfo/models';
+} from './models';
 
 interface Props {
   user: UserType;
@@ -72,7 +72,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
 
         <SectionTitle text={AccountInfoComponent.SectionTitles.TellUs} />
 
-        <Grid container={true} spacing={16}>
+        <Grid container={true} spacing={1}>
           <Grid item={true} md={6} xs={12}>
             <TextField
               fullWidth={true}

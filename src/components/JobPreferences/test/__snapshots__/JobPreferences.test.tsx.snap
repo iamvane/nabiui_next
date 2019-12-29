@@ -1,0 +1,751 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobPreferences Shallow Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <JobPreferences
+    adults={false}
+    handleChange={[MockFunction]}
+    largeGroups={false}
+    oneStudent={false}
+    seniors={false}
+    smallGroups={false}
+    teens={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <SectionTitle
+          text="Job preferences"
+        />,
+        <WithStyles(Typography)
+          className="nabi-margin-top-xsmall nabi-margin-bottom-xsmall"
+        >
+          Specify how many students you are comfortable teaching at the same time (select all that apply)
+        </WithStyles(Typography)>,
+        <WithStyles(FormGroup)
+          className="nabi-margin-left-small"
+        >
+          <WithStyles(WithFormControlContext(FormControlLabel))
+            control={
+              <WithStyles(Checkbox)
+                checked={false}
+                name="oneStudent"
+                onChange={[MockFunction]}
+              />
+            }
+            label="One student"
+          />
+          <WithStyles(WithFormControlContext(FormControlLabel))
+            control={
+              <WithStyles(Checkbox)
+                checked={false}
+                name="smallGroups"
+                onChange={[MockFunction]}
+              />
+            }
+            label="Small groups (2-4)"
+          />
+          <WithStyles(WithFormControlContext(FormControlLabel))
+            control={
+              <WithStyles(Checkbox)
+                checked={false}
+                name="largeGroups"
+                onChange={[MockFunction]}
+              />
+            }
+            label="Large groups (+5)"
+          />
+        </WithStyles(FormGroup)>,
+        <WithStyles(Typography)
+          className="nabi-margin-top-small nabi-margin-bottom-xsmall"
+        >
+          Specify what age group are you comfortable working with (select all that apply)
+        </WithStyles(Typography)>,
+        <WithStyles(FormGroup)
+          className="nabi-margin-left-small"
+        >
+          <WithStyles(WithFormControlContext(FormControlLabel))
+            control={
+              <WithStyles(Checkbox)
+                checked={false}
+                name="children"
+                onChange={[MockFunction]}
+              />
+            }
+            label="Children (4 to 12 years old)"
+          />
+          <WithStyles(WithFormControlContext(FormControlLabel))
+            control={
+              <WithStyles(Checkbox)
+                checked={false}
+                name="teens"
+                onChange={[MockFunction]}
+              />
+            }
+            label="Teens (13 to 19 years old)"
+          />
+          <WithStyles(WithFormControlContext(FormControlLabel))
+            control={
+              <WithStyles(Checkbox)
+                checked={false}
+                name="adults"
+                onChange={[MockFunction]}
+              />
+            }
+            label="Adults (20 to 49 years old)"
+          />
+          <WithStyles(WithFormControlContext(FormControlLabel))
+            control={
+              <WithStyles(Checkbox)
+                checked={false}
+                name="seniors"
+                onChange={[MockFunction]}
+              />
+            }
+            label="Seniors (50+)"
+          />
+        </WithStyles(FormGroup)>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "Job preferences",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Specify how many students you are comfortable teaching at the same time (select all that apply)",
+          "className": "nabi-margin-top-xsmall nabi-margin-bottom-xsmall",
+        },
+        "ref": null,
+        "rendered": "Specify how many students you are comfortable teaching at the same time (select all that apply)",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="oneStudent"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="One student"
+            />,
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="smallGroups"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Small groups (2-4)"
+            />,
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="largeGroups"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Large groups (+5)"
+            />,
+          ],
+          "className": "nabi-margin-left-small",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "OneStudent",
+            "nodeType": "class",
+            "props": Object {
+              "control": <WithStyles(Checkbox)
+                checked={false}
+                name="oneStudent"
+                onChange={[MockFunction]}
+              />,
+              "label": "One student",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "SmallGroups",
+            "nodeType": "class",
+            "props": Object {
+              "control": <WithStyles(Checkbox)
+                checked={false}
+                name="smallGroups"
+                onChange={[MockFunction]}
+              />,
+              "label": "Small groups (2-4)",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "LargeGroups",
+            "nodeType": "class",
+            "props": Object {
+              "control": <WithStyles(Checkbox)
+                checked={false}
+                name="largeGroups"
+                onChange={[MockFunction]}
+              />,
+              "label": "Large groups (+5)",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Specify what age group are you comfortable working with (select all that apply)",
+          "className": "nabi-margin-top-small nabi-margin-bottom-xsmall",
+        },
+        "ref": null,
+        "rendered": "Specify what age group are you comfortable working with (select all that apply)",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="children"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Children (4 to 12 years old)"
+            />,
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="teens"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Teens (13 to 19 years old)"
+            />,
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="adults"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Adults (20 to 49 years old)"
+            />,
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="seniors"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Seniors (50+)"
+            />,
+          ],
+          "className": "nabi-margin-left-small",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "Children",
+            "nodeType": "class",
+            "props": Object {
+              "control": <WithStyles(Checkbox)
+                checked={false}
+                name="children"
+                onChange={[MockFunction]}
+              />,
+              "label": "Children (4 to 12 years old)",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "Teens",
+            "nodeType": "class",
+            "props": Object {
+              "control": <WithStyles(Checkbox)
+                checked={false}
+                name="teens"
+                onChange={[MockFunction]}
+              />,
+              "label": "Teens (13 to 19 years old)",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "Adults",
+            "nodeType": "class",
+            "props": Object {
+              "control": <WithStyles(Checkbox)
+                checked={false}
+                name="adults"
+                onChange={[MockFunction]}
+              />,
+              "label": "Adults (20 to 49 years old)",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "Seniors",
+            "nodeType": "class",
+            "props": Object {
+              "control": <WithStyles(Checkbox)
+                checked={false}
+                name="seniors"
+                onChange={[MockFunction]}
+              />,
+              "label": "Seniors (50+)",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <SectionTitle
+            text="Job preferences"
+          />,
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall nabi-margin-bottom-xsmall"
+          >
+            Specify how many students you are comfortable teaching at the same time (select all that apply)
+          </WithStyles(Typography)>,
+          <WithStyles(FormGroup)
+            className="nabi-margin-left-small"
+          >
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="oneStudent"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="One student"
+            />
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="smallGroups"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Small groups (2-4)"
+            />
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="largeGroups"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Large groups (+5)"
+            />
+          </WithStyles(FormGroup)>,
+          <WithStyles(Typography)
+            className="nabi-margin-top-small nabi-margin-bottom-xsmall"
+          >
+            Specify what age group are you comfortable working with (select all that apply)
+          </WithStyles(Typography)>,
+          <WithStyles(FormGroup)
+            className="nabi-margin-left-small"
+          >
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="children"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Children (4 to 12 years old)"
+            />
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="teens"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Teens (13 to 19 years old)"
+            />
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="adults"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Adults (20 to 49 years old)"
+            />
+            <WithStyles(WithFormControlContext(FormControlLabel))
+              control={
+                <WithStyles(Checkbox)
+                  checked={false}
+                  name="seniors"
+                  onChange={[MockFunction]}
+                />
+              }
+              label="Seniors (50+)"
+            />
+          </WithStyles(FormGroup)>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "Job preferences",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Specify how many students you are comfortable teaching at the same time (select all that apply)",
+            "className": "nabi-margin-top-xsmall nabi-margin-bottom-xsmall",
+          },
+          "ref": null,
+          "rendered": "Specify how many students you are comfortable teaching at the same time (select all that apply)",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="oneStudent"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="One student"
+              />,
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="smallGroups"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Small groups (2-4)"
+              />,
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="largeGroups"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Large groups (+5)"
+              />,
+            ],
+            "className": "nabi-margin-left-small",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "OneStudent",
+              "nodeType": "class",
+              "props": Object {
+                "control": <WithStyles(Checkbox)
+                  checked={false}
+                  name="oneStudent"
+                  onChange={[MockFunction]}
+                />,
+                "label": "One student",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "SmallGroups",
+              "nodeType": "class",
+              "props": Object {
+                "control": <WithStyles(Checkbox)
+                  checked={false}
+                  name="smallGroups"
+                  onChange={[MockFunction]}
+                />,
+                "label": "Small groups (2-4)",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "LargeGroups",
+              "nodeType": "class",
+              "props": Object {
+                "control": <WithStyles(Checkbox)
+                  checked={false}
+                  name="largeGroups"
+                  onChange={[MockFunction]}
+                />,
+                "label": "Large groups (+5)",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Specify what age group are you comfortable working with (select all that apply)",
+            "className": "nabi-margin-top-small nabi-margin-bottom-xsmall",
+          },
+          "ref": null,
+          "rendered": "Specify what age group are you comfortable working with (select all that apply)",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="children"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Children (4 to 12 years old)"
+              />,
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="teens"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Teens (13 to 19 years old)"
+              />,
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="adults"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Adults (20 to 49 years old)"
+              />,
+              <WithStyles(WithFormControlContext(FormControlLabel))
+                control={
+                  <WithStyles(Checkbox)
+                    checked={false}
+                    name="seniors"
+                    onChange={[MockFunction]}
+                  />
+                }
+                label="Seniors (50+)"
+              />,
+            ],
+            "className": "nabi-margin-left-small",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "Children",
+              "nodeType": "class",
+              "props": Object {
+                "control": <WithStyles(Checkbox)
+                  checked={false}
+                  name="children"
+                  onChange={[MockFunction]}
+                />,
+                "label": "Children (4 to 12 years old)",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "Teens",
+              "nodeType": "class",
+              "props": Object {
+                "control": <WithStyles(Checkbox)
+                  checked={false}
+                  name="teens"
+                  onChange={[MockFunction]}
+                />,
+                "label": "Teens (13 to 19 years old)",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "Adults",
+              "nodeType": "class",
+              "props": Object {
+                "control": <WithStyles(Checkbox)
+                  checked={false}
+                  name="adults"
+                  onChange={[MockFunction]}
+                />,
+                "label": "Adults (20 to 49 years old)",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "Seniors",
+              "nodeType": "class",
+              "props": Object {
+                "control": <WithStyles(Checkbox)
+                  checked={false}
+                  name="seniors"
+                  onChange={[MockFunction]}
+                />,
+                "label": "Seniors (50+)",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

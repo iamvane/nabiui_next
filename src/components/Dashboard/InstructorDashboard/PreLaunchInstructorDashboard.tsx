@@ -7,13 +7,13 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { StoreState } from 'redux/store';
-import { Routes } from 'components/common/constants/Routes';
-import SectionTitle from 'components/common/SectionTitle';
-import { PreLaunchInstructorDashboardComponent as constants }  from 'components/Dashboard/constants';
-import InviteFriends from 'components/InviteFriends/InviteFriends';
-import { UserType } from 'redux/models/UserModel';
-import { InstructorType } from 'redux/models/InstructorModel';
+import { StoreState } from '../../../redux/reducers/store';
+import { UserType } from '../../../redux/models/UserModel';
+import { InstructorType } from '../../../redux/models/InstructorModel';
+import { Routes } from '../../common/constants/Routes';
+import SectionTitle from '../../common/SectionTitle';
+import InviteFriends from '../../InviteFriends/InviteFriends';
+import { PreLaunchInstructorDashboardComponent as constants }  from '../constants';
 
 interface OwnProps {
 }

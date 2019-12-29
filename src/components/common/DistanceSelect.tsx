@@ -7,7 +7,7 @@ import {
   Select,
 } from '@material-ui/core';
 
-import * as constants from 'components/common/constants/DistanceSelect';
+import * as constants from './constants/DistanceSelect';
 
 interface Props {
   label?: string;

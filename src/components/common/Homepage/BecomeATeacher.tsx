@@ -1,13 +1,16 @@
+
 import * as React from 'react';
 import Link from 'next/link';
 
-import { Button, Grid, Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
-import MoneyIllustration from '../../../../assets/images/dollar-homepage.png';
 import { Routes } from '../constants/Routes';
 import { BecomeATeacher as constants } from '../constants/BecomeATeacher';
 
 const BecomeATeacher = () => {
+  const MoneyIllustration = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/dollar-homepage.png';
   return (
     <div className="nabi-background-nabi nabi-color-white">
       <Grid

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-import {
-  GridList,
-  GridListTile
-} from '@material-ui/core';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+
 import { popularInstruments } from '../../../../assets/data/popularInstruments';
 import { Routes } from '../constants/Routes';
 
@@ -16,18 +15,18 @@ class PopularInstruments extends React.Component<{}, {}> {
     const slides = document.querySelectorAll(`.popular-instrument-card-group`);
     let currentSlide = 0;
     const nextSlide = () =>  {
-        slides[currentSlide].className = 'popular-instrument-card-group';
-        currentSlide = (currentSlide + 1) % 3;
-        slides[currentSlide].className = 'popular-instrument-card-group nabi-showing';
+      slides[currentSlide].className = 'popular-instrument-card-group';
+      currentSlide = (currentSlide + 1) % 3;
+      slides[currentSlide].className = 'popular-instrument-card-group nabi-showing';
     };
     setInterval(nextSlide, 4000);
 
     const slidesMobile = document.querySelectorAll(`.popular-instrument-card-group-mobile`);
     let currentSlideMobile = 0;
     const nextSlideMobile = () =>  {
-        slidesMobile[currentSlideMobile].className = 'popular-instrument-card-group-mobile';
-        currentSlideMobile = (currentSlideMobile + 1) % 5;
-        slidesMobile[currentSlideMobile].className = 'popular-instrument-card-group-mobile nabi-showing';
+      slidesMobile[currentSlideMobile].className = 'popular-instrument-card-group-mobile';
+      currentSlideMobile = (currentSlideMobile + 1) % 5;
+      slidesMobile[currentSlideMobile].className = 'popular-instrument-card-group-mobile nabi-showing';
     };
     setInterval(nextSlideMobile, 4000);
   }
@@ -47,9 +46,7 @@ class PopularInstruments extends React.Component<{}, {}> {
         <GridList className="" cols={numberOfColumns}>
         {array.map((instrument, i) => (
           <GridListTile key={i} cols={1}>
-            <Link
-              href={Routes.Registration}
-            >
+            <Link href={Routes.Registration}>
               <a
                 className="nabi-text-mediumbold"
                 key={i}

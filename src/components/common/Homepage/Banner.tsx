@@ -1,20 +1,18 @@
 import * as React from 'react';
 import { Role } from '../../Auth/Registration/constants';
 
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  Grid,
-  Input,
-  Radio,
-  RadioGroup,
-  Select,
-  Typography,
-} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Grid from '@material-ui/core/Grid';
+import Input from '@material-ui/core/Input';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
 
 import Link from 'next/link';
-import { Routes } from '../constants/Routes';
+import { Routes } from '../constants//Routes';
 import { BannerComponent } from '../constants/Banner';
 import { instruments } from '../../../../assets/data/instruments';
 import SectionTitle from '../SectionTitle';

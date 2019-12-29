@@ -1,0 +1,1334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Students Shallow Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Students
+    addStudent={[MockFunction]}
+    age={22}
+    deleteStudent={[MockFunction]}
+    handleBlur={[MockFunction]}
+    handleChange={[MockFunction]}
+    name="Roxana"
+    skillLevel="beginner"
+    students={
+      Array [
+        Object {
+          "age": 22,
+          "name": "Roxana",
+          "skillLevel": "beginner",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <SectionTitle
+          text="STUDENT DETAILS"
+        />,
+        Array [
+          <StudentAdded
+            age={22}
+            deleteStudent={[Function]}
+            name="Roxana"
+            skillLevel="beginner"
+          />,
+        ],
+        <WithStyles(Grid)
+          item={true}
+          md={7}
+        >
+          <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            You can add a single student for individial lessons, or mutiple students for group lessons.
+          </WithStyles(Typography)>
+        </WithStyles(Grid)>,
+        <WithStyles(Grid)
+          container={true}
+          spacing={8}
+        >
+          <WithStyles(Grid)
+            item={true}
+            md={3}
+            xs={12}
+          >
+            <TextField
+              fullWidth={true}
+              id="name"
+              name="name"
+              onBlur={[MockFunction]}
+              onChange={[MockFunction]}
+              placeholder="Student's name"
+              required={true}
+              select={false}
+              value="Roxana"
+              variant="standard"
+            />
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            item={true}
+            md={3}
+            xs={7}
+          >
+            <TextField
+              fullWidth={true}
+              id="age"
+              name="age"
+              onBlur={[MockFunction]}
+              onChange={[MockFunction]}
+              placeholder="Student's age"
+              required={true}
+              select={false}
+              type="number"
+              value={22}
+              variant="standard"
+            />
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            item={true}
+            md={3}
+            xs={7}
+          >
+            <WithStyles(FormControl)
+              fullWidth={true}
+            >
+              <WithStyles(WithFormControlContext(Select))
+                input={
+                  <WithStyles(Input)
+                    id="skillLevel"
+                    name="skillLevel"
+                  />
+                }
+                native={true}
+                onBlur={[MockFunction]}
+                onChange={[MockFunction]}
+                value="beginner"
+              >
+                <option
+                  disabled={true}
+                  value=""
+                >
+                  Select level
+                </option>
+                <option
+                  value="beginner"
+                >
+                  beginner
+                </option>
+                <option
+                  value="intermediate"
+                >
+                  intermediate
+                </option>
+                <option
+                  value="advanced"
+                >
+                  advanced
+                </option>
+              </WithStyles(WithFormControlContext(Select))>
+            </WithStyles(FormControl)>
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            item={true}
+            md={3}
+            xs={10}
+          >
+            <WithStyles(Button)
+              className="nabi-text-uppercase nabi-margin-top-xsmall"
+              color="primary"
+              onClick={[MockFunction]}
+              variant="contained"
+            >
+              <WithStyles(Icon)>
+                add
+              </WithStyles(Icon)>
+              Add Student
+            </WithStyles(Button)>
+          </WithStyles(Grid)>
+        </WithStyles(Grid)>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "text": "STUDENT DETAILS",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "0",
+        "nodeType": "function",
+        "props": Object {
+          "age": 22,
+          "deleteStudent": [Function],
+          "name": "Roxana",
+          "skillLevel": "beginner",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <WithStyles(Typography)
+            className="nabi-margin-top-xsmall"
+          >
+            You can add a single student for individial lessons, or mutiple students for group lessons.
+          </WithStyles(Typography)>,
+          "item": true,
+          "md": 7,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "You can add a single student for individial lessons, or mutiple students for group lessons.",
+            "className": "nabi-margin-top-xsmall",
+          },
+          "ref": null,
+          "rendered": "You can add a single student for individial lessons, or mutiple students for group lessons.",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={12}
+            >
+              <TextField
+                fullWidth={true}
+                id="name"
+                name="name"
+                onBlur={[MockFunction]}
+                onChange={[MockFunction]}
+                placeholder="Student's name"
+                required={true}
+                select={false}
+                value="Roxana"
+                variant="standard"
+              />
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={7}
+            >
+              <TextField
+                fullWidth={true}
+                id="age"
+                name="age"
+                onBlur={[MockFunction]}
+                onChange={[MockFunction]}
+                placeholder="Student's age"
+                required={true}
+                select={false}
+                type="number"
+                value={22}
+                variant="standard"
+              />
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={7}
+            >
+              <WithStyles(FormControl)
+                fullWidth={true}
+              >
+                <WithStyles(WithFormControlContext(Select))
+                  input={
+                    <WithStyles(Input)
+                      id="skillLevel"
+                      name="skillLevel"
+                    />
+                  }
+                  native={true}
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  value="beginner"
+                >
+                  <option
+                    disabled={true}
+                    value=""
+                  >
+                    Select level
+                  </option>
+                  <option
+                    value="beginner"
+                  >
+                    beginner
+                  </option>
+                  <option
+                    value="intermediate"
+                  >
+                    intermediate
+                  </option>
+                  <option
+                    value="advanced"
+                  >
+                    advanced
+                  </option>
+                </WithStyles(WithFormControlContext(Select))>
+              </WithStyles(FormControl)>
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={10}
+            >
+              <WithStyles(Button)
+                className="nabi-text-uppercase nabi-margin-top-xsmall"
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                <WithStyles(Icon)>
+                  add
+                </WithStyles(Icon)>
+                Add Student
+              </WithStyles(Button)>
+            </WithStyles(Grid)>,
+          ],
+          "container": true,
+          "spacing": 8,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TextField
+                fullWidth={true}
+                id="name"
+                name="name"
+                onBlur={[MockFunction]}
+                onChange={[MockFunction]}
+                placeholder="Student's name"
+                required={true}
+                select={false}
+                value="Roxana"
+                variant="standard"
+              />,
+              "item": true,
+              "md": 3,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "fullWidth": true,
+                "id": "name",
+                "name": "name",
+                "onBlur": [MockFunction],
+                "onChange": [MockFunction],
+                "placeholder": "Student's name",
+                "required": true,
+                "select": false,
+                "value": "Roxana",
+                "variant": "standard",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TextField
+                fullWidth={true}
+                id="age"
+                name="age"
+                onBlur={[MockFunction]}
+                onChange={[MockFunction]}
+                placeholder="Student's age"
+                required={true}
+                select={false}
+                type="number"
+                value={22}
+                variant="standard"
+              />,
+              "item": true,
+              "md": 3,
+              "xs": 7,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "fullWidth": true,
+                "id": "age",
+                "name": "age",
+                "onBlur": [MockFunction],
+                "onChange": [MockFunction],
+                "placeholder": "Student's age",
+                "required": true,
+                "select": false,
+                "type": "number",
+                "value": 22,
+                "variant": "standard",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(FormControl)
+                fullWidth={true}
+              >
+                <WithStyles(WithFormControlContext(Select))
+                  input={
+                    <WithStyles(Input)
+                      id="skillLevel"
+                      name="skillLevel"
+                    />
+                  }
+                  native={true}
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  value="beginner"
+                >
+                  <option
+                    disabled={true}
+                    value=""
+                  >
+                    Select level
+                  </option>
+                  <option
+                    value="beginner"
+                  >
+                    beginner
+                  </option>
+                  <option
+                    value="intermediate"
+                  >
+                    intermediate
+                  </option>
+                  <option
+                    value="advanced"
+                  >
+                    advanced
+                  </option>
+                </WithStyles(WithFormControlContext(Select))>
+              </WithStyles(FormControl)>,
+              "item": true,
+              "md": 3,
+              "xs": 7,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(WithFormControlContext(Select))
+                  input={
+                    <WithStyles(Input)
+                      id="skillLevel"
+                      name="skillLevel"
+                    />
+                  }
+                  native={true}
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  value="beginner"
+                >
+                  <option
+                    disabled={true}
+                    value=""
+                  >
+                    Select level
+                  </option>
+                  <option
+                    value="beginner"
+                  >
+                    beginner
+                  </option>
+                  <option
+                    value="intermediate"
+                  >
+                    intermediate
+                  </option>
+                  <option
+                    value="advanced"
+                  >
+                    advanced
+                  </option>
+                </WithStyles(WithFormControlContext(Select))>,
+                "fullWidth": true,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <option
+                      disabled={true}
+                      value=""
+                    >
+                      Select level
+                    </option>,
+                    Array [
+                      <option
+                        value="beginner"
+                      >
+                        beginner
+                      </option>,
+                      <option
+                        value="intermediate"
+                      >
+                        intermediate
+                      </option>,
+                      <option
+                        value="advanced"
+                      >
+                        advanced
+                      </option>,
+                    ],
+                  ],
+                  "input": <WithStyles(Input)
+                    id="skillLevel"
+                    name="skillLevel"
+                  />,
+                  "native": true,
+                  "onBlur": [MockFunction],
+                  "onChange": [MockFunction],
+                  "value": "beginner",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Select level",
+                      "disabled": true,
+                      "value": "",
+                    },
+                    "ref": null,
+                    "rendered": "Select level",
+                    "type": "option",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "Beginner",
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "beginner",
+                      "value": "beginner",
+                    },
+                    "ref": null,
+                    "rendered": "beginner",
+                    "type": "option",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "Intermediate",
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "intermediate",
+                      "value": "intermediate",
+                    },
+                    "ref": null,
+                    "rendered": "intermediate",
+                    "type": "option",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": "Advanced",
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "advanced",
+                      "value": "advanced",
+                    },
+                    "ref": null,
+                    "rendered": "advanced",
+                    "type": "option",
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Button)
+                className="nabi-text-uppercase nabi-margin-top-xsmall"
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                <WithStyles(Icon)>
+                  add
+                </WithStyles(Icon)>
+                Add Student
+              </WithStyles(Button)>,
+              "item": true,
+              "md": 3,
+              "xs": 10,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Icon)>
+                    add
+                  </WithStyles(Icon)>,
+                  "Add Student",
+                ],
+                "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                "color": "primary",
+                "onClick": [MockFunction],
+                "variant": "contained",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "add",
+                  },
+                  "ref": null,
+                  "rendered": "add",
+                  "type": [Function],
+                },
+                "Add Student",
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <SectionTitle
+            text="STUDENT DETAILS"
+          />,
+          Array [
+            <StudentAdded
+              age={22}
+              deleteStudent={[Function]}
+              name="Roxana"
+              skillLevel="beginner"
+            />,
+          ],
+          <WithStyles(Grid)
+            item={true}
+            md={7}
+          >
+            <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              You can add a single student for individial lessons, or mutiple students for group lessons.
+            </WithStyles(Typography)>
+          </WithStyles(Grid)>,
+          <WithStyles(Grid)
+            container={true}
+            spacing={8}
+          >
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={12}
+            >
+              <TextField
+                fullWidth={true}
+                id="name"
+                name="name"
+                onBlur={[MockFunction]}
+                onChange={[MockFunction]}
+                placeholder="Student's name"
+                required={true}
+                select={false}
+                value="Roxana"
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={7}
+            >
+              <TextField
+                fullWidth={true}
+                id="age"
+                name="age"
+                onBlur={[MockFunction]}
+                onChange={[MockFunction]}
+                placeholder="Student's age"
+                required={true}
+                select={false}
+                type="number"
+                value={22}
+                variant="standard"
+              />
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={7}
+            >
+              <WithStyles(FormControl)
+                fullWidth={true}
+              >
+                <WithStyles(WithFormControlContext(Select))
+                  input={
+                    <WithStyles(Input)
+                      id="skillLevel"
+                      name="skillLevel"
+                    />
+                  }
+                  native={true}
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  value="beginner"
+                >
+                  <option
+                    disabled={true}
+                    value=""
+                  >
+                    Select level
+                  </option>
+                  <option
+                    value="beginner"
+                  >
+                    beginner
+                  </option>
+                  <option
+                    value="intermediate"
+                  >
+                    intermediate
+                  </option>
+                  <option
+                    value="advanced"
+                  >
+                    advanced
+                  </option>
+                </WithStyles(WithFormControlContext(Select))>
+              </WithStyles(FormControl)>
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              item={true}
+              md={3}
+              xs={10}
+            >
+              <WithStyles(Button)
+                className="nabi-text-uppercase nabi-margin-top-xsmall"
+                color="primary"
+                onClick={[MockFunction]}
+                variant="contained"
+              >
+                <WithStyles(Icon)>
+                  add
+                </WithStyles(Icon)>
+                Add Student
+              </WithStyles(Button)>
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "text": "STUDENT DETAILS",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "function",
+          "props": Object {
+            "age": 22,
+            "deleteStudent": [Function],
+            "name": "Roxana",
+            "skillLevel": "beginner",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <WithStyles(Typography)
+              className="nabi-margin-top-xsmall"
+            >
+              You can add a single student for individial lessons, or mutiple students for group lessons.
+            </WithStyles(Typography)>,
+            "item": true,
+            "md": 7,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "You can add a single student for individial lessons, or mutiple students for group lessons.",
+              "className": "nabi-margin-top-xsmall",
+            },
+            "ref": null,
+            "rendered": "You can add a single student for individial lessons, or mutiple students for group lessons.",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Grid)
+                item={true}
+                md={3}
+                xs={12}
+              >
+                <TextField
+                  fullWidth={true}
+                  id="name"
+                  name="name"
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  placeholder="Student's name"
+                  required={true}
+                  select={false}
+                  value="Roxana"
+                  variant="standard"
+                />
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                item={true}
+                md={3}
+                xs={7}
+              >
+                <TextField
+                  fullWidth={true}
+                  id="age"
+                  name="age"
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  placeholder="Student's age"
+                  required={true}
+                  select={false}
+                  type="number"
+                  value={22}
+                  variant="standard"
+                />
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                item={true}
+                md={3}
+                xs={7}
+              >
+                <WithStyles(FormControl)
+                  fullWidth={true}
+                >
+                  <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        id="skillLevel"
+                        name="skillLevel"
+                      />
+                    }
+                    native={true}
+                    onBlur={[MockFunction]}
+                    onChange={[MockFunction]}
+                    value="beginner"
+                  >
+                    <option
+                      disabled={true}
+                      value=""
+                    >
+                      Select level
+                    </option>
+                    <option
+                      value="beginner"
+                    >
+                      beginner
+                    </option>
+                    <option
+                      value="intermediate"
+                    >
+                      intermediate
+                    </option>
+                    <option
+                      value="advanced"
+                    >
+                      advanced
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>
+                </WithStyles(FormControl)>
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                item={true}
+                md={3}
+                xs={10}
+              >
+                <WithStyles(Button)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)>
+                    add
+                  </WithStyles(Icon)>
+                  Add Student
+                </WithStyles(Button)>
+              </WithStyles(Grid)>,
+            ],
+            "container": true,
+            "spacing": 8,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TextField
+                  fullWidth={true}
+                  id="name"
+                  name="name"
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  placeholder="Student's name"
+                  required={true}
+                  select={false}
+                  value="Roxana"
+                  variant="standard"
+                />,
+                "item": true,
+                "md": 3,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "fullWidth": true,
+                  "id": "name",
+                  "name": "name",
+                  "onBlur": [MockFunction],
+                  "onChange": [MockFunction],
+                  "placeholder": "Student's name",
+                  "required": true,
+                  "select": false,
+                  "value": "Roxana",
+                  "variant": "standard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TextField
+                  fullWidth={true}
+                  id="age"
+                  name="age"
+                  onBlur={[MockFunction]}
+                  onChange={[MockFunction]}
+                  placeholder="Student's age"
+                  required={true}
+                  select={false}
+                  type="number"
+                  value={22}
+                  variant="standard"
+                />,
+                "item": true,
+                "md": 3,
+                "xs": 7,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "fullWidth": true,
+                  "id": "age",
+                  "name": "age",
+                  "onBlur": [MockFunction],
+                  "onChange": [MockFunction],
+                  "placeholder": "Student's age",
+                  "required": true,
+                  "select": false,
+                  "type": "number",
+                  "value": 22,
+                  "variant": "standard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(FormControl)
+                  fullWidth={true}
+                >
+                  <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        id="skillLevel"
+                        name="skillLevel"
+                      />
+                    }
+                    native={true}
+                    onBlur={[MockFunction]}
+                    onChange={[MockFunction]}
+                    value="beginner"
+                  >
+                    <option
+                      disabled={true}
+                      value=""
+                    >
+                      Select level
+                    </option>
+                    <option
+                      value="beginner"
+                    >
+                      beginner
+                    </option>
+                    <option
+                      value="intermediate"
+                    >
+                      intermediate
+                    </option>
+                    <option
+                      value="advanced"
+                    >
+                      advanced
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>
+                </WithStyles(FormControl)>,
+                "item": true,
+                "md": 3,
+                "xs": 7,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <WithStyles(WithFormControlContext(Select))
+                    input={
+                      <WithStyles(Input)
+                        id="skillLevel"
+                        name="skillLevel"
+                      />
+                    }
+                    native={true}
+                    onBlur={[MockFunction]}
+                    onChange={[MockFunction]}
+                    value="beginner"
+                  >
+                    <option
+                      disabled={true}
+                      value=""
+                    >
+                      Select level
+                    </option>
+                    <option
+                      value="beginner"
+                    >
+                      beginner
+                    </option>
+                    <option
+                      value="intermediate"
+                    >
+                      intermediate
+                    </option>
+                    <option
+                      value="advanced"
+                    >
+                      advanced
+                    </option>
+                  </WithStyles(WithFormControlContext(Select))>,
+                  "fullWidth": true,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <option
+                        disabled={true}
+                        value=""
+                      >
+                        Select level
+                      </option>,
+                      Array [
+                        <option
+                          value="beginner"
+                        >
+                          beginner
+                        </option>,
+                        <option
+                          value="intermediate"
+                        >
+                          intermediate
+                        </option>,
+                        <option
+                          value="advanced"
+                        >
+                          advanced
+                        </option>,
+                      ],
+                    ],
+                    "input": <WithStyles(Input)
+                      id="skillLevel"
+                      name="skillLevel"
+                    />,
+                    "native": true,
+                    "onBlur": [MockFunction],
+                    "onChange": [MockFunction],
+                    "value": "beginner",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Select level",
+                        "disabled": true,
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": "Select level",
+                      "type": "option",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": "Beginner",
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "beginner",
+                        "value": "beginner",
+                      },
+                      "ref": null,
+                      "rendered": "beginner",
+                      "type": "option",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": "Intermediate",
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "intermediate",
+                        "value": "intermediate",
+                      },
+                      "ref": null,
+                      "rendered": "intermediate",
+                      "type": "option",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": "Advanced",
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "advanced",
+                        "value": "advanced",
+                      },
+                      "ref": null,
+                      "rendered": "advanced",
+                      "type": "option",
+                    },
+                  ],
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  className="nabi-text-uppercase nabi-margin-top-xsmall"
+                  color="primary"
+                  onClick={[MockFunction]}
+                  variant="contained"
+                >
+                  <WithStyles(Icon)>
+                    add
+                  </WithStyles(Icon)>
+                  Add Student
+                </WithStyles(Button)>,
+                "item": true,
+                "md": 3,
+                "xs": 10,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Icon)>
+                      add
+                    </WithStyles(Icon)>,
+                    "Add Student",
+                  ],
+                  "className": "nabi-text-uppercase nabi-margin-top-xsmall",
+                  "color": "primary",
+                  "onClick": [MockFunction],
+                  "variant": "contained",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "add",
+                    },
+                    "ref": null,
+                    "rendered": "add",
+                    "type": [Function],
+                  },
+                  "Add Student",
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

@@ -1,0 +1,2171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestCard Matches snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RequestCard
+    request={
+      Object {
+        "applications": 17,
+        "applied": false,
+        "createdAt": "2019-08-05T23:01:25.000Z",
+        "id": 0,
+        "instrument": "piano",
+        "lessonDuration": "45",
+        "location": "Boston, Ma",
+        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+        "placeForLessons": "studio",
+        "students": Array [
+          Object {
+            "age": 18,
+            "name": "Roxana",
+            "skillLevel": "beginner",
+          },
+        ],
+        "title": "Fun and experience piano instructor",
+        "user": Object {
+          "birthday": "1996-07-12T04:00:00.000Z",
+          "displayName": "Roxana G.",
+          "distance": "0.5 mi away",
+          "email": "rox@gmail.com",
+          "firstName": "Roxana",
+          "id": "0",
+          "lastName": "Gallardo",
+          "role": "student",
+        },
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="nabi-float-right nabi-position-absolute nabi-position-absolute-md"
+          style={
+            Object {
+              "right": "20px",
+            }
+          }
+        >
+          <WithStyles(IconButton)
+            color="primary"
+          >
+            <WithStyles(Icon)>
+              favorite
+            </WithStyles(Icon)>
+          </WithStyles(IconButton)>
+        </div>,
+        <WithStyles(Grid)
+          container={true}
+          spacing={8}
+        >
+          <WithStyles(Grid)
+            className="nabi-text-center nabi-text-left-md"
+            item={true}
+            md={8}
+            xs={12}
+          >
+            <WithStyles(Grid)
+              className="nabi-margin-center"
+              item={true}
+              md={12}
+              xs={8}
+            >
+              <Link
+                className="nabi-cursor-pointer"
+                to="/request/0"
+              >
+                <WithStyles(Typography)
+                  className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                  color="primary"
+                >
+                  Roxana G. 
+                </WithStyles(Typography)>
+              </Link>
+              <WithStyles(Typography)>
+                0.5 mi away
+              </WithStyles(Typography)>
+              <WithStyles(Typography)
+                className="nabi-margin-top-small nabi-text-mediumbold"
+              >
+                Fun and experience piano instructor
+              </WithStyles(Typography)>
+            </WithStyles(Grid)>
+            <WithStyles(Typography)>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industria
+              <Link
+                className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                to="/request/0"
+              >
+                ...View more
+              </Link>
+            </WithStyles(Typography)>
+            <div
+              className="nabi-margin-top-small"
+            >
+              <WithStyles(Typography)
+                className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                color="primary"
+              >
+                Instrument:
+              </WithStyles(Typography)>
+              <WithStyles(Typography)
+                className="nabi-display-inline-block"
+              >
+                Piano
+              </WithStyles(Typography)>
+              <br />
+              <WithStyles(Typography)
+                className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                color="primary"
+              >
+                Place for lessons:
+              </WithStyles(Typography)>
+              <WithStyles(Typography)
+                className="nabi-display-inline-block"
+              >
+                Instructor's studio
+              </WithStyles(Typography)>
+              <br />
+              <WithStyles(Typography)
+                className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                color="primary"
+              >
+                Lesson duration:
+              </WithStyles(Typography)>
+              <WithStyles(Typography)
+                className="nabi-display-inline-block"
+              >
+                45
+                 mins
+              </WithStyles(Typography)>
+              <br />
+              <WithStyles(Typography)
+                className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                color="primary"
+              >
+                Student details:
+              </WithStyles(Typography)>
+              <WithStyles(Typography)
+                className="nabi-display-inline-block"
+              >
+                18 yrs old  (beginner)
+              </WithStyles(Typography)>
+            </div>
+          </WithStyles(Grid)>
+          <WithStyles(Grid)
+            className="nabi-text-center nabi-text-left-md"
+            item={true}
+            md={4}
+            xs={12}
+          >
+            <div
+              className="nabi-margin-top-small-md"
+            >
+              <WithStyles(Typography)
+                className="nabi-display-inline-block nabi-margin-top-small-md"
+              >
+                5 months ago
+              </WithStyles(Typography)>
+              <br />
+              <WithStyles(Typography)
+                className="nabi-margin-right-xsmall nabi-display-inline-block"
+              >
+                17
+                 
+                applications
+              </WithStyles(Typography)>
+              <br />
+              <Link
+                className="nabi-cursor-pointer"
+                to="/request/0"
+              >
+                <WithStyles(Button)
+                  className="nabi-responsive-button nabi-margin-top-xsmall"
+                  color="primary"
+                  variant="contained"
+                >
+                  Send Application
+                </WithStyles(Button)>
+              </Link>
+              <br />
+              <WithStyles(Button)
+                className="nabi-responsive-button nabi-margin-top-xsmall"
+                color="default"
+                variant="contained"
+              >
+                <WithStyles(Icon)
+                  className="nabi-margin-right-xsmall"
+                >
+                  close
+                </WithStyles(Icon)>
+                Pass
+              </WithStyles(Button)>
+            </div>
+          </WithStyles(Grid)>
+        </WithStyles(Grid)>,
+      ],
+      "className": "nabi-section-widest nabi-background-white nabi-margin-bottom-small nabi-position-relative",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <WithStyles(IconButton)
+              color="primary"
+            >
+              <WithStyles(Icon)>
+                favorite
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>,
+            false,
+          ],
+          "className": "nabi-float-right nabi-position-absolute nabi-position-absolute-md",
+          "style": Object {
+            "right": "20px",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <WithStyles(Icon)>
+                favorite
+              </WithStyles(Icon)>,
+              "color": "primary",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "favorite",
+              },
+              "ref": null,
+              "rendered": "favorite",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          false,
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(Grid)
+              className="nabi-text-center nabi-text-left-md"
+              item={true}
+              md={8}
+              xs={12}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-center"
+                item={true}
+                md={12}
+                xs={8}
+              >
+                <Link
+                  className="nabi-cursor-pointer"
+                  to="/request/0"
+                >
+                  <WithStyles(Typography)
+                    className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                    color="primary"
+                  >
+                    Roxana G. 
+                  </WithStyles(Typography)>
+                </Link>
+                <WithStyles(Typography)>
+                  0.5 mi away
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-margin-top-small nabi-text-mediumbold"
+                >
+                  Fun and experience piano instructor
+                </WithStyles(Typography)>
+              </WithStyles(Grid)>
+              <WithStyles(Typography)>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industria
+                <Link
+                  className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                  to="/request/0"
+                >
+                  ...View more
+                </Link>
+              </WithStyles(Typography)>
+              <div
+                className="nabi-margin-top-small"
+              >
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Instrument:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  Piano
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Place for lessons:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  Instructor's studio
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Lesson duration:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  45
+                   mins
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Student details:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  18 yrs old  (beginner)
+                </WithStyles(Typography)>
+              </div>
+            </WithStyles(Grid)>,
+            <WithStyles(Grid)
+              className="nabi-text-center nabi-text-left-md"
+              item={true}
+              md={4}
+              xs={12}
+            >
+              <div
+                className="nabi-margin-top-small-md"
+              >
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block nabi-margin-top-small-md"
+                >
+                  5 months ago
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  17
+                   
+                  applications
+                </WithStyles(Typography)>
+                <br />
+                <Link
+                  className="nabi-cursor-pointer"
+                  to="/request/0"
+                >
+                  <WithStyles(Button)
+                    className="nabi-responsive-button nabi-margin-top-xsmall"
+                    color="primary"
+                    variant="contained"
+                  >
+                    Send Application
+                  </WithStyles(Button)>
+                </Link>
+                <br />
+                <WithStyles(Button)
+                  className="nabi-responsive-button nabi-margin-top-xsmall"
+                  color="default"
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    close
+                  </WithStyles(Icon)>
+                  Pass
+                </WithStyles(Button)>
+              </div>
+            </WithStyles(Grid)>,
+          ],
+          "container": true,
+          "spacing": 8,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <WithStyles(Grid)
+                  className="nabi-margin-center"
+                  item={true}
+                  md={12}
+                  xs={8}
+                >
+                  <Link
+                    className="nabi-cursor-pointer"
+                    to="/request/0"
+                  >
+                    <WithStyles(Typography)
+                      className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                      color="primary"
+                    >
+                      Roxana G. 
+                    </WithStyles(Typography)>
+                  </Link>
+                  <WithStyles(Typography)>
+                    0.5 mi away
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-margin-top-small nabi-text-mediumbold"
+                  >
+                    Fun and experience piano instructor
+                  </WithStyles(Typography)>
+                </WithStyles(Grid)>,
+                <WithStyles(Typography)>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industria
+                  <Link
+                    className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                    to="/request/0"
+                  >
+                    ...View more
+                  </Link>
+                </WithStyles(Typography)>,
+                <div
+                  className="nabi-margin-top-small"
+                >
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Instrument:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    Piano
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Place for lessons:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    Instructor's studio
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Lesson duration:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    45
+                     mins
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Student details:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    18 yrs old  (beginner)
+                  </WithStyles(Typography)>
+                </div>,
+              ],
+              "className": "nabi-text-center nabi-text-left-md",
+              "item": true,
+              "md": 8,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Link
+                      className="nabi-cursor-pointer"
+                      to="/request/0"
+                    >
+                      <WithStyles(Typography)
+                        className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                        color="primary"
+                      >
+                        Roxana G. 
+                      </WithStyles(Typography)>
+                    </Link>,
+                    <WithStyles(Typography)>
+                      0.5 mi away
+                    </WithStyles(Typography)>,
+                    <WithStyles(Typography)
+                      className="nabi-margin-top-small nabi-text-mediumbold"
+                    >
+                      Fun and experience piano instructor
+                    </WithStyles(Typography)>,
+                  ],
+                  "className": "nabi-margin-center",
+                  "item": true,
+                  "md": 12,
+                  "xs": 8,
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <WithStyles(Typography)
+                        className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                        color="primary"
+                      >
+                        Roxana G. 
+                      </WithStyles(Typography)>,
+                      "className": "nabi-cursor-pointer",
+                      "to": "/request/0",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Roxana G. ",
+                        "className": "nabi-margin-top-xsmall nabi-text-mediumbold",
+                        "color": "primary",
+                      },
+                      "ref": null,
+                      "rendered": "Roxana G. ",
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "0.5 mi away",
+                    },
+                    "ref": null,
+                    "rendered": "0.5 mi away",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Fun and experience piano instructor",
+                      "className": "nabi-margin-top-small nabi-text-mediumbold",
+                    },
+                    "ref": null,
+                    "rendered": "Fun and experience piano instructor",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    <Link
+                      className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                      to="/request/0"
+                    >
+                      ...View more
+                    </Link>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "...View more",
+                      "className": "nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall",
+                      "to": "/request/0",
+                    },
+                    "ref": null,
+                    "rendered": "...View more",
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Instrument:
+                    </WithStyles(Typography)>,
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      Piano
+                    </WithStyles(Typography)>,
+                    <br />,
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Place for lessons:
+                    </WithStyles(Typography)>,
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      Instructor's studio
+                    </WithStyles(Typography)>,
+                    <br />,
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Lesson duration:
+                    </WithStyles(Typography)>,
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      45
+                       mins
+                    </WithStyles(Typography)>,
+                    <br />,
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Student details:
+                    </WithStyles(Typography)>,
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      18 yrs old  (beginner)
+                    </WithStyles(Typography)>,
+                    false,
+                  ],
+                  "className": "nabi-margin-top-small",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Instrument:",
+                      "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                      "color": "primary",
+                    },
+                    "ref": null,
+                    "rendered": "Instrument:",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Piano",
+                      "className": "nabi-display-inline-block",
+                    },
+                    "ref": null,
+                    "rendered": "Piano",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Place for lessons:",
+                      "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                      "color": "primary",
+                    },
+                    "ref": null,
+                    "rendered": "Place for lessons:",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Instructor's studio",
+                      "className": "nabi-display-inline-block",
+                    },
+                    "ref": null,
+                    "rendered": "Instructor's studio",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Lesson duration:",
+                      "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                      "color": "primary",
+                    },
+                    "ref": null,
+                    "rendered": "Lesson duration:",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        "45",
+                        " mins",
+                      ],
+                      "className": "nabi-display-inline-block",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      "45",
+                      " mins",
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Student details:",
+                      "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                      "color": "primary",
+                    },
+                    "ref": null,
+                    "rendered": "Student details:",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "18 yrs old  (beginner)",
+                      "className": "nabi-display-inline-block",
+                    },
+                    "ref": null,
+                    "rendered": "18 yrs old  (beginner)",
+                    "type": [Function],
+                  },
+                  false,
+                ],
+                "type": "div",
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <div
+                className="nabi-margin-top-small-md"
+              >
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block nabi-margin-top-small-md"
+                >
+                  5 months ago
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  17
+                   
+                  applications
+                </WithStyles(Typography)>
+                <br />
+                <Link
+                  className="nabi-cursor-pointer"
+                  to="/request/0"
+                >
+                  <WithStyles(Button)
+                    className="nabi-responsive-button nabi-margin-top-xsmall"
+                    color="primary"
+                    variant="contained"
+                  >
+                    Send Application
+                  </WithStyles(Button)>
+                </Link>
+                <br />
+                <WithStyles(Button)
+                  className="nabi-responsive-button nabi-margin-top-xsmall"
+                  color="default"
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    close
+                  </WithStyles(Icon)>
+                  Pass
+                </WithStyles(Button)>
+              </div>,
+              "className": "nabi-text-center nabi-text-left-md",
+              "item": true,
+              "md": 4,
+              "xs": 12,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block nabi-margin-top-small-md"
+                  >
+                    5 months ago
+                  </WithStyles(Typography)>,
+                  <br />,
+                  <WithStyles(Typography)
+                    className="nabi-margin-right-xsmall nabi-display-inline-block"
+                  >
+                    17
+                     
+                    applications
+                  </WithStyles(Typography)>,
+                  <br />,
+                  <Link
+                    className="nabi-cursor-pointer"
+                    to="/request/0"
+                  >
+                    <WithStyles(Button)
+                      className="nabi-responsive-button nabi-margin-top-xsmall"
+                      color="primary"
+                      variant="contained"
+                    >
+                      Send Application
+                    </WithStyles(Button)>
+                  </Link>,
+                  <br />,
+                  <WithStyles(Button)
+                    className="nabi-responsive-button nabi-margin-top-xsmall"
+                    color="default"
+                    variant="contained"
+                  >
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      close
+                    </WithStyles(Icon)>
+                    Pass
+                  </WithStyles(Button)>,
+                ],
+                "className": "nabi-margin-top-small-md",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "5 months ago",
+                    "className": "nabi-display-inline-block nabi-margin-top-small-md",
+                  },
+                  "ref": null,
+                  "rendered": "5 months ago",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      17,
+                      " ",
+                      "applications",
+                    ],
+                    "className": "nabi-margin-right-xsmall nabi-display-inline-block",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    17,
+                    " ",
+                    "applications",
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <WithStyles(Button)
+                      className="nabi-responsive-button nabi-margin-top-xsmall"
+                      color="primary"
+                      variant="contained"
+                    >
+                      Send Application
+                    </WithStyles(Button)>,
+                    "className": "nabi-cursor-pointer",
+                    "to": "/request/0",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Send Application",
+                      "className": "nabi-responsive-button nabi-margin-top-xsmall",
+                      "color": "primary",
+                      "variant": "contained",
+                    },
+                    "ref": null,
+                    "rendered": "Send Application",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(Icon)
+                        className="nabi-margin-right-xsmall"
+                      >
+                        close
+                      </WithStyles(Icon)>,
+                      "Pass",
+                    ],
+                    "className": "nabi-responsive-button nabi-margin-top-xsmall",
+                    "color": "default",
+                    "variant": "contained",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "close",
+                        "className": "nabi-margin-right-xsmall",
+                      },
+                      "ref": null,
+                      "rendered": "close",
+                      "type": [Function],
+                    },
+                    "Pass",
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": "div",
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="nabi-float-right nabi-position-absolute nabi-position-absolute-md"
+            style={
+              Object {
+                "right": "20px",
+              }
+            }
+          >
+            <WithStyles(IconButton)
+              color="primary"
+            >
+              <WithStyles(Icon)>
+                favorite
+              </WithStyles(Icon)>
+            </WithStyles(IconButton)>
+          </div>,
+          <WithStyles(Grid)
+            container={true}
+            spacing={8}
+          >
+            <WithStyles(Grid)
+              className="nabi-text-center nabi-text-left-md"
+              item={true}
+              md={8}
+              xs={12}
+            >
+              <WithStyles(Grid)
+                className="nabi-margin-center"
+                item={true}
+                md={12}
+                xs={8}
+              >
+                <Link
+                  className="nabi-cursor-pointer"
+                  to="/request/0"
+                >
+                  <WithStyles(Typography)
+                    className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                    color="primary"
+                  >
+                    Roxana G. 
+                  </WithStyles(Typography)>
+                </Link>
+                <WithStyles(Typography)>
+                  0.5 mi away
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-margin-top-small nabi-text-mediumbold"
+                >
+                  Fun and experience piano instructor
+                </WithStyles(Typography)>
+              </WithStyles(Grid)>
+              <WithStyles(Typography)>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industria
+                <Link
+                  className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                  to="/request/0"
+                >
+                  ...View more
+                </Link>
+              </WithStyles(Typography)>
+              <div
+                className="nabi-margin-top-small"
+              >
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Instrument:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  Piano
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Place for lessons:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  Instructor's studio
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Lesson duration:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  45
+                   mins
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                  color="primary"
+                >
+                  Student details:
+                </WithStyles(Typography)>
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block"
+                >
+                  18 yrs old  (beginner)
+                </WithStyles(Typography)>
+              </div>
+            </WithStyles(Grid)>
+            <WithStyles(Grid)
+              className="nabi-text-center nabi-text-left-md"
+              item={true}
+              md={4}
+              xs={12}
+            >
+              <div
+                className="nabi-margin-top-small-md"
+              >
+                <WithStyles(Typography)
+                  className="nabi-display-inline-block nabi-margin-top-small-md"
+                >
+                  5 months ago
+                </WithStyles(Typography)>
+                <br />
+                <WithStyles(Typography)
+                  className="nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  17
+                   
+                  applications
+                </WithStyles(Typography)>
+                <br />
+                <Link
+                  className="nabi-cursor-pointer"
+                  to="/request/0"
+                >
+                  <WithStyles(Button)
+                    className="nabi-responsive-button nabi-margin-top-xsmall"
+                    color="primary"
+                    variant="contained"
+                  >
+                    Send Application
+                  </WithStyles(Button)>
+                </Link>
+                <br />
+                <WithStyles(Button)
+                  className="nabi-responsive-button nabi-margin-top-xsmall"
+                  color="default"
+                  variant="contained"
+                >
+                  <WithStyles(Icon)
+                    className="nabi-margin-right-xsmall"
+                  >
+                    close
+                  </WithStyles(Icon)>
+                  Pass
+                </WithStyles(Button)>
+              </div>
+            </WithStyles(Grid)>
+          </WithStyles(Grid)>,
+        ],
+        "className": "nabi-section-widest nabi-background-white nabi-margin-bottom-small nabi-position-relative",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <WithStyles(IconButton)
+                color="primary"
+              >
+                <WithStyles(Icon)>
+                  favorite
+                </WithStyles(Icon)>
+              </WithStyles(IconButton)>,
+              false,
+            ],
+            "className": "nabi-float-right nabi-position-absolute nabi-position-absolute-md",
+            "style": Object {
+              "right": "20px",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <WithStyles(Icon)>
+                  favorite
+                </WithStyles(Icon)>,
+                "color": "primary",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "favorite",
+                },
+                "ref": null,
+                "rendered": "favorite",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            false,
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(Grid)
+                className="nabi-text-center nabi-text-left-md"
+                item={true}
+                md={8}
+                xs={12}
+              >
+                <WithStyles(Grid)
+                  className="nabi-margin-center"
+                  item={true}
+                  md={12}
+                  xs={8}
+                >
+                  <Link
+                    className="nabi-cursor-pointer"
+                    to="/request/0"
+                  >
+                    <WithStyles(Typography)
+                      className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                      color="primary"
+                    >
+                      Roxana G. 
+                    </WithStyles(Typography)>
+                  </Link>
+                  <WithStyles(Typography)>
+                    0.5 mi away
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-margin-top-small nabi-text-mediumbold"
+                  >
+                    Fun and experience piano instructor
+                  </WithStyles(Typography)>
+                </WithStyles(Grid)>
+                <WithStyles(Typography)>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industria
+                  <Link
+                    className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                    to="/request/0"
+                  >
+                    ...View more
+                  </Link>
+                </WithStyles(Typography)>
+                <div
+                  className="nabi-margin-top-small"
+                >
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Instrument:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    Piano
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Place for lessons:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    Instructor's studio
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Lesson duration:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    45
+                     mins
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                    color="primary"
+                  >
+                    Student details:
+                  </WithStyles(Typography)>
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block"
+                  >
+                    18 yrs old  (beginner)
+                  </WithStyles(Typography)>
+                </div>
+              </WithStyles(Grid)>,
+              <WithStyles(Grid)
+                className="nabi-text-center nabi-text-left-md"
+                item={true}
+                md={4}
+                xs={12}
+              >
+                <div
+                  className="nabi-margin-top-small-md"
+                >
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block nabi-margin-top-small-md"
+                  >
+                    5 months ago
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-margin-right-xsmall nabi-display-inline-block"
+                  >
+                    17
+                     
+                    applications
+                  </WithStyles(Typography)>
+                  <br />
+                  <Link
+                    className="nabi-cursor-pointer"
+                    to="/request/0"
+                  >
+                    <WithStyles(Button)
+                      className="nabi-responsive-button nabi-margin-top-xsmall"
+                      color="primary"
+                      variant="contained"
+                    >
+                      Send Application
+                    </WithStyles(Button)>
+                  </Link>
+                  <br />
+                  <WithStyles(Button)
+                    className="nabi-responsive-button nabi-margin-top-xsmall"
+                    color="default"
+                    variant="contained"
+                  >
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      close
+                    </WithStyles(Icon)>
+                    Pass
+                  </WithStyles(Button)>
+                </div>
+              </WithStyles(Grid)>,
+            ],
+            "container": true,
+            "spacing": 8,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <WithStyles(Grid)
+                    className="nabi-margin-center"
+                    item={true}
+                    md={12}
+                    xs={8}
+                  >
+                    <Link
+                      className="nabi-cursor-pointer"
+                      to="/request/0"
+                    >
+                      <WithStyles(Typography)
+                        className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                        color="primary"
+                      >
+                        Roxana G. 
+                      </WithStyles(Typography)>
+                    </Link>
+                    <WithStyles(Typography)>
+                      0.5 mi away
+                    </WithStyles(Typography)>
+                    <WithStyles(Typography)
+                      className="nabi-margin-top-small nabi-text-mediumbold"
+                    >
+                      Fun and experience piano instructor
+                    </WithStyles(Typography)>
+                  </WithStyles(Grid)>,
+                  <WithStyles(Typography)>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industria
+                    <Link
+                      className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                      to="/request/0"
+                    >
+                      ...View more
+                    </Link>
+                  </WithStyles(Typography)>,
+                  <div
+                    className="nabi-margin-top-small"
+                  >
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Instrument:
+                    </WithStyles(Typography)>
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      Piano
+                    </WithStyles(Typography)>
+                    <br />
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Place for lessons:
+                    </WithStyles(Typography)>
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      Instructor's studio
+                    </WithStyles(Typography)>
+                    <br />
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Lesson duration:
+                    </WithStyles(Typography)>
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      45
+                       mins
+                    </WithStyles(Typography)>
+                    <br />
+                    <WithStyles(Typography)
+                      className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                      color="primary"
+                    >
+                      Student details:
+                    </WithStyles(Typography)>
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block"
+                    >
+                      18 yrs old  (beginner)
+                    </WithStyles(Typography)>
+                  </div>,
+                ],
+                "className": "nabi-text-center nabi-text-left-md",
+                "item": true,
+                "md": 8,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <Link
+                        className="nabi-cursor-pointer"
+                        to="/request/0"
+                      >
+                        <WithStyles(Typography)
+                          className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                          color="primary"
+                        >
+                          Roxana G. 
+                        </WithStyles(Typography)>
+                      </Link>,
+                      <WithStyles(Typography)>
+                        0.5 mi away
+                      </WithStyles(Typography)>,
+                      <WithStyles(Typography)
+                        className="nabi-margin-top-small nabi-text-mediumbold"
+                      >
+                        Fun and experience piano instructor
+                      </WithStyles(Typography)>,
+                    ],
+                    "className": "nabi-margin-center",
+                    "item": true,
+                    "md": 12,
+                    "xs": 8,
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <WithStyles(Typography)
+                          className="nabi-margin-top-xsmall nabi-text-mediumbold"
+                          color="primary"
+                        >
+                          Roxana G. 
+                        </WithStyles(Typography)>,
+                        "className": "nabi-cursor-pointer",
+                        "to": "/request/0",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": "Roxana G. ",
+                          "className": "nabi-margin-top-xsmall nabi-text-mediumbold",
+                          "color": "primary",
+                        },
+                        "ref": null,
+                        "rendered": "Roxana G. ",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "0.5 mi away",
+                      },
+                      "ref": null,
+                      "rendered": "0.5 mi away",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Fun and experience piano instructor",
+                        "className": "nabi-margin-top-small nabi-text-mediumbold",
+                      },
+                      "ref": null,
+                      "rendered": "Fun and experience piano instructor",
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                      <Link
+                        className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall"
+                        to="/request/0"
+                      >
+                        ...View more
+                      </Link>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting industria",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "...View more",
+                        "className": "nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall",
+                        "to": "/request/0",
+                      },
+                      "ref": null,
+                      "rendered": "...View more",
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <WithStyles(Typography)
+                        className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                        color="primary"
+                      >
+                        Instrument:
+                      </WithStyles(Typography)>,
+                      <WithStyles(Typography)
+                        className="nabi-display-inline-block"
+                      >
+                        Piano
+                      </WithStyles(Typography)>,
+                      <br />,
+                      <WithStyles(Typography)
+                        className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                        color="primary"
+                      >
+                        Place for lessons:
+                      </WithStyles(Typography)>,
+                      <WithStyles(Typography)
+                        className="nabi-display-inline-block"
+                      >
+                        Instructor's studio
+                      </WithStyles(Typography)>,
+                      <br />,
+                      <WithStyles(Typography)
+                        className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                        color="primary"
+                      >
+                        Lesson duration:
+                      </WithStyles(Typography)>,
+                      <WithStyles(Typography)
+                        className="nabi-display-inline-block"
+                      >
+                        45
+                         mins
+                      </WithStyles(Typography)>,
+                      <br />,
+                      <WithStyles(Typography)
+                        className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                        color="primary"
+                      >
+                        Student details:
+                      </WithStyles(Typography)>,
+                      <WithStyles(Typography)
+                        className="nabi-display-inline-block"
+                      >
+                        18 yrs old  (beginner)
+                      </WithStyles(Typography)>,
+                      false,
+                    ],
+                    "className": "nabi-margin-top-small",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Instrument:",
+                        "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                        "color": "primary",
+                      },
+                      "ref": null,
+                      "rendered": "Instrument:",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Piano",
+                        "className": "nabi-display-inline-block",
+                      },
+                      "ref": null,
+                      "rendered": "Piano",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {},
+                      "ref": null,
+                      "rendered": null,
+                      "type": "br",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Place for lessons:",
+                        "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                        "color": "primary",
+                      },
+                      "ref": null,
+                      "rendered": "Place for lessons:",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Instructor's studio",
+                        "className": "nabi-display-inline-block",
+                      },
+                      "ref": null,
+                      "rendered": "Instructor's studio",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {},
+                      "ref": null,
+                      "rendered": null,
+                      "type": "br",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Lesson duration:",
+                        "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                        "color": "primary",
+                      },
+                      "ref": null,
+                      "rendered": "Lesson duration:",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": Array [
+                          "45",
+                          " mins",
+                        ],
+                        "className": "nabi-display-inline-block",
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        "45",
+                        " mins",
+                      ],
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {},
+                      "ref": null,
+                      "rendered": null,
+                      "type": "br",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Student details:",
+                        "className": "nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block",
+                        "color": "primary",
+                      },
+                      "ref": null,
+                      "rendered": "Student details:",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "18 yrs old  (beginner)",
+                        "className": "nabi-display-inline-block",
+                      },
+                      "ref": null,
+                      "rendered": "18 yrs old  (beginner)",
+                      "type": [Function],
+                    },
+                    false,
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <div
+                  className="nabi-margin-top-small-md"
+                >
+                  <WithStyles(Typography)
+                    className="nabi-display-inline-block nabi-margin-top-small-md"
+                  >
+                    5 months ago
+                  </WithStyles(Typography)>
+                  <br />
+                  <WithStyles(Typography)
+                    className="nabi-margin-right-xsmall nabi-display-inline-block"
+                  >
+                    17
+                     
+                    applications
+                  </WithStyles(Typography)>
+                  <br />
+                  <Link
+                    className="nabi-cursor-pointer"
+                    to="/request/0"
+                  >
+                    <WithStyles(Button)
+                      className="nabi-responsive-button nabi-margin-top-xsmall"
+                      color="primary"
+                      variant="contained"
+                    >
+                      Send Application
+                    </WithStyles(Button)>
+                  </Link>
+                  <br />
+                  <WithStyles(Button)
+                    className="nabi-responsive-button nabi-margin-top-xsmall"
+                    color="default"
+                    variant="contained"
+                  >
+                    <WithStyles(Icon)
+                      className="nabi-margin-right-xsmall"
+                    >
+                      close
+                    </WithStyles(Icon)>
+                    Pass
+                  </WithStyles(Button)>
+                </div>,
+                "className": "nabi-text-center nabi-text-left-md",
+                "item": true,
+                "md": 4,
+                "xs": 12,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <WithStyles(Typography)
+                      className="nabi-display-inline-block nabi-margin-top-small-md"
+                    >
+                      5 months ago
+                    </WithStyles(Typography)>,
+                    <br />,
+                    <WithStyles(Typography)
+                      className="nabi-margin-right-xsmall nabi-display-inline-block"
+                    >
+                      17
+                       
+                      applications
+                    </WithStyles(Typography)>,
+                    <br />,
+                    <Link
+                      className="nabi-cursor-pointer"
+                      to="/request/0"
+                    >
+                      <WithStyles(Button)
+                        className="nabi-responsive-button nabi-margin-top-xsmall"
+                        color="primary"
+                        variant="contained"
+                      >
+                        Send Application
+                      </WithStyles(Button)>
+                    </Link>,
+                    <br />,
+                    <WithStyles(Button)
+                      className="nabi-responsive-button nabi-margin-top-xsmall"
+                      color="default"
+                      variant="contained"
+                    >
+                      <WithStyles(Icon)
+                        className="nabi-margin-right-xsmall"
+                      >
+                        close
+                      </WithStyles(Icon)>
+                      Pass
+                    </WithStyles(Button)>,
+                  ],
+                  "className": "nabi-margin-top-small-md",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "5 months ago",
+                      "className": "nabi-display-inline-block nabi-margin-top-small-md",
+                    },
+                    "ref": null,
+                    "rendered": "5 months ago",
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        17,
+                        " ",
+                        "applications",
+                      ],
+                      "className": "nabi-margin-right-xsmall nabi-display-inline-block",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      17,
+                      " ",
+                      "applications",
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <WithStyles(Button)
+                        className="nabi-responsive-button nabi-margin-top-xsmall"
+                        color="primary"
+                        variant="contained"
+                      >
+                        Send Application
+                      </WithStyles(Button)>,
+                      "className": "nabi-cursor-pointer",
+                      "to": "/request/0",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "Send Application",
+                        "className": "nabi-responsive-button nabi-margin-top-xsmall",
+                        "color": "primary",
+                        "variant": "contained",
+                      },
+                      "ref": null,
+                      "rendered": "Send Application",
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "br",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <WithStyles(Icon)
+                          className="nabi-margin-right-xsmall"
+                        >
+                          close
+                        </WithStyles(Icon)>,
+                        "Pass",
+                      ],
+                      "className": "nabi-responsive-button nabi-margin-top-xsmall",
+                      "color": "default",
+                      "variant": "contained",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": "close",
+                          "className": "nabi-margin-right-xsmall",
+                        },
+                        "ref": null,
+                        "rendered": "close",
+                        "type": [Function],
+                      },
+                      "Pass",
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": "div",
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;

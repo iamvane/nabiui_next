@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import {
   Button,
@@ -10,8 +10,8 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { CommonStepperButtons } from 'components/CommonStepper/constants';
-import { Routes } from 'components/common/constants/Routes';
+import { Routes } from '../common/constants/Routes';
+import { CommonStepperButtons } from './constants';
 
 interface Props {
   nextPath?: string;
@@ -30,7 +30,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
   const renderBackMobile = (): JSX.Element => {
     if (props.backPath) {
       return (
-        <Link to={props.backPath}>
+        <Link href={props.backPath}>
           <Button color="primary" size="small">
             <Icon>keyboard_arrow_left</Icon>
             {CommonStepperButtons.Back}
@@ -50,16 +50,18 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
   const renderNextMobile = (): JSX.Element => {
     if (props.nextPath) {
       return (
-        <Link to={props.nextPath} className={props.isNextDisabled ? 'nabi-disabled-link' : ''}>
-          <Button
-            size="small"
-            disabled={props.isNextDisabled}
-            color="primary"
-            onClick={props.handleNext}
-          >
-            {CommonStepperButtons.Next}
-            <Icon>keyboard_arrow_right</Icon>
-          </Button>
+        <Link href={props.nextPath}>
+          <a className={props.isNextDisabled ? 'nabi-disabled-link' : ''}>
+            <Button
+              size="small"
+              disabled={props.isNextDisabled}
+              color="primary"
+              onClick={props.handleNext}
+            >
+              {CommonStepperButtons.Next}
+              <Icon>keyboard_arrow_right</Icon>
+            </Button>
+          </a>
         </Link>
       );
     } else {
@@ -86,22 +88,21 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
       {props.errors && <Typography className="nabi-text-right" color="error">{props.errors}</Typography>}
       <div className="hide-on-mobile nabi-margin-top-large">
         <div className="nabi-text-right">
-          <Link
-            className="nabi-margin-right-xsmall-md"
-            to={Routes.Dashboard}
-          >
-            <Button
-              variant="contained"
-              className={`nabi-text-uppercase ${props.hideDesktopButton ? 'nabi-display-none' : ''} `}
-            >
-              {CommonStepperButtons.Exit}
-            </Button>
+          <Link href={Routes.Dashboard}>
+            <a className="nabi-margin-right-xsmall-md">
+              <Button
+                variant="contained"
+                className={`nabi-text-uppercase ${props.hideDesktopButton ? 'nabi-display-none' : ''} `}
+              >
+                {CommonStepperButtons.Exit}
+              </Button>
+            </a>
           </Link>
           {
             props.nextPath ? (
               props.isRequesting ?
                 <CircularProgress /> :
-                <Link to={props.nextPath}>
+                <Link href={props.nextPath}>
                   <Button
                     variant="contained"
                     color="primary"
@@ -110,7 +111,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
                     disabled={props.isNextDisabled}
                   >
                     {props.buttonText}
-                    <span className="nabi-margin-left-xsmall">{props.icon}</span>
+                    <span className="nabi-margin-left-xsmall nabi-display-flex">{props.icon}</span>
                   </Button>
                 </Link>
             ) : (
@@ -123,7 +124,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
                     disabled={props.isNextDisabled}
                   >
                     {props.buttonText}
-                    <span className="nabi-margin-left-xsmall">{props.icon}</span>
+                    <span className="nabi-margin-left-xsmall nabi-display-flex">{props.icon}</span>
                   </Button>
               )
           }

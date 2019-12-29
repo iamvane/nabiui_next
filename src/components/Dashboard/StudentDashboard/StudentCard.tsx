@@ -7,10 +7,10 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { Role } from 'components/common/constants/Registration';
-import { PreLaunchStudentDashboardComponent as constants }  from 'components/Dashboard/constants';
-import { StudentDetailsType } from 'components/Dashboard/StudentDashboard/model';
-import { UserType } from 'redux/models/UserModel';
+import { UserType } from '../../../redux/models/UserModel';
+import { Role } from '../../Auth/Registration/constants';
+import { PreLaunchStudentDashboardComponent as constants }  from '../constants';
+import { StudentDetailsType } from './model';
 
 interface Props {
   // TODO: change to Re1uestType when doing API integration
@@ -52,26 +52,26 @@ const StudentCard: React.StatelessComponent<Props> = props => {
             </Grid>
             <Grid item={true} xs={6} className="nabi-text-right">
               <Typography><mark>{
-                props.student.instrument
+                props.student && props.student.instrument
               }</mark></Typography>
             </Grid>
             <Grid item={true} xs={6}>
               <Typography className="nabi-text-mediumbold">{constants.Labels.SkillLevel}</Typography>
             </Grid>
             <Grid item={true} xs={6} className="nabi-text-right">
-              <Typography><mark>{props.student.skillLevel}</mark></Typography>
+              <Typography><mark>{props.student && props.student.skillLevel}</mark></Typography>
             </Grid>
             <Grid item={true} xs={6}>
               <Typography className="nabi-text-mediumbold">{constants.Labels.LessonPlace}</Typography>
             </Grid>
             <Grid item={true} xs={6} className="nabi-text-right">
-              <Typography><mark>{props.student.lessonPlace}</mark></Typography>
+              <Typography><mark>{props.student && props.student.lessonPlace}</mark></Typography>
             </Grid>
             <Grid item={true} xs={6}>
               <Typography className="nabi-text-mediumbold">{constants.Labels.LessonDuration}</Typography>
             </Grid>
             <Grid item={true} xs={6} className="nabi-text-right">
-              <Typography><mark>{props.student.lessonDuration}</mark></Typography>
+              <Typography><mark>{props.student && props.student.lessonDuration}</mark></Typography>
             </Grid>
           </Grid>
         </Grid>
