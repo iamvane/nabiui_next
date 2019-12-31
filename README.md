@@ -8,8 +8,8 @@ To run a local NABI UI development server and view the application in your brows
 #### Step 1. Clone repo
 `git clone https://github.com/iamvane/nabiui_next.git`
 
-#### Step 2. Install dependecies
-`yarn add`
+#### Step 2. Install dependencies
+`yarn install`
 
 #### Step 3. Start server
 `yarn run dev`

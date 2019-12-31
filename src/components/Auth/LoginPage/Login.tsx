@@ -4,7 +4,7 @@ import {
   Action,
   Dispatch
 } from 'redux';
-import { Redirect } from 'react-router';
+import Router from 'next/router';
 
 import { Grid } from '@material-ui/core';
 
@@ -16,7 +16,7 @@ import {
 import { UserType } from '../../../redux/models/UserModel';
 import {
   authenticateUser,
-  fetchUserOnLogin
+  fetchUser
 } from '../../../redux/actions/UserActions';
 import { LoginComponent } from './constants';
 import PageTitle from '../../common/PageTitle';
@@ -24,6 +24,7 @@ import { Routes } from '../../common/constants/Routes';
 import SnackBar from '../../common/SnackBar';
 import { LoginType } from './model';
 import LoginForm from './LoginForm';
+import PrivateRoute from '../ProtectRoutes/PrivateRoute';
 
 interface State extends LoginType {
   showSnackbar: boolean;
@@ -44,7 +45,7 @@ interface OwnProps {
 
 interface DispatchProps {
   authenticateUser: (email: string, password: string) => void;
-  fetchUser: (token: string) => void;
+  fetchUser: () => void;
 }
 
 interface Props extends
@@ -74,11 +75,6 @@ export class Login extends React.Component<Props, State> {
     page('Login', analiticsProps);
   }
 
-  public componentDidUpdate(prevProps: Props): void {
-    if (prevProps.token !== this.props.token) {
-      this.props.fetchUser(this.props.token);
-    }
-  }
   public handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -111,6 +107,10 @@ export class Login extends React.Component<Props, State> {
   public closeSnackbar = () => this.setState({ showSnackbar: false });
 
   public render(): JSX.Element {
+    if (this.props.token) {
+      Router.push(Routes.Dashboard);
+      return null;
+    }
     return (
       <div className="nabi-margin-bottom-xlarge">
         <PageTitle pageTitle={LoginComponent.pageTitle} />
@@ -124,7 +124,6 @@ export class Login extends React.Component<Props, State> {
             />
           </div>
         </Grid>
-        {this.props.user.email && <Redirect to={Routes.Dashboard} />}
         {
           this.props.passwordSetMessage &&
           <SnackBar
@@ -172,7 +171,8 @@ const mapDispatchToProps = (
   _ownProps: OwnProps
 ): DispatchProps => ({
   authenticateUser: (email: string, password: string) => dispatch(authenticateUser(email, password)),
-  fetchUser: (token: string) => dispatch(fetchUserOnLogin(token))
+  fetchUser: () => dispatch(fetchUser())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default 
+  connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(Login, 'Public'));

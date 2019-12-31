@@ -6,12 +6,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore } from 'redux-persist';
 
 import rootReducer from './reducers';
-import { UserState } from '../models/UserModel';
+import { UserState, defaultUsersState } from '../models/UserModel';
 import { InstructorState } from '../models/InstructorModel';
 import { RequestState } from '../models/RequestModel';
-import { defaultState } from '../models/defaultState';
 
 const dev = process.env.NODE_ENV !== 'production';
+const isServer = typeof window === 'undefined';
 
 export interface StoreState {
   user: UserState;
@@ -27,14 +27,6 @@ let persistor;
  * Store singleton from redux
  */
 export const getStore = () => {
-  if (store) {
-    persistor = persistStore(store);
-    return {
-      store,
-      persistor
-    };
-  }
-
   function makeStore(initialState: StoreState) {
     const middleware = [reduxThunk, routerMiddleware(history)];
     if (dev) {
@@ -53,7 +45,7 @@ export const getStore = () => {
     return store;
   }
 
-  persistor = persistStore(makeStore(defaultState));
+  persistor = persistStore;
   return {
     makeStore,
     persistor

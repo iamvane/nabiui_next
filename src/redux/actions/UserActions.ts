@@ -1,6 +1,7 @@
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import { StoreState } from '../reducers/store';
 import {
@@ -68,6 +69,7 @@ export const authenticateUser = (email: string, password: string): ThunkAction<P
     };
     const response = await axios.post(url, requestBody);
     dispatch(withDataAction(UserActions.AUTHENTICATE_USER_SUCCESS, response.data));
+    Cookies.set('currentUser', response.data.access);
   } catch (e) {
     if (getError(e) && typeof getError(e) === 'string') {
       errorMessage = getError(e);
@@ -103,7 +105,6 @@ export const fetchUser = (): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
-
   dispatch(requestAction(UserActions.FETCH_USER));
   try {
     const state = getState();

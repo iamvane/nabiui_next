@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import {
   Button,
@@ -13,7 +13,7 @@ import { InstructorType } from '../../../redux/models/InstructorModel';
 import { Routes } from '../../common/constants/Routes';
 import SectionTitle from '../../common/SectionTitle';
 import InviteFriends from '../../InviteFriends/InviteFriends';
-import { PreLaunchInstructorDashboardComponent as constants }  from '../constants';
+import { PreLaunchInstructorDashboardComponent as constants } from '../constants';
 
 interface OwnProps {
 }
@@ -28,7 +28,7 @@ interface StateProps {
   profile: InstructorType;
 }
 
-interface Props extends OwnProps, StateProps {}
+interface Props extends OwnProps, StateProps { }
 
 export class PreLaunchInstructorDashboard extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -43,20 +43,20 @@ export class PreLaunchInstructorDashboard extends React.Component<Props, State> 
     const { user, profile } = this.props;
 
     if (
-        user.firstName && user.lastName && user.birthday && user.displayName &&
-        user.location
+      user.firstName && user.lastName && user.birthday && user.displayName &&
+      user.location
     ) {
       completed += 9.09;
     } else {
       editLinks.push(
-        {route: 'account-info', description: 'Your basic information is not complete.', linkText: 'Edit Basic Info'}
+        { route: 'account-info', description: 'Your basic information is not complete.', linkText: 'Edit Basic Info' }
       );
     }
     if (user.isPhoneVerified) {
       completed += 9.09;
     } else {
       editLinks.push(
-        {route: 'account-info', description: 'Your basic information is not complete.', linkText: 'Edit Basic Info'}
+        { route: 'account-info', description: 'Your basic information is not complete.', linkText: 'Edit Basic Info' }
       );
     }
     if (profile) {
@@ -65,7 +65,7 @@ export class PreLaunchInstructorDashboard extends React.Component<Props, State> 
         completed += 9.09;
       } else {
         editLinks.push(
-          {route: 'profile', description: 'Your profile is not complete.', linkText: 'Edit profile'}
+          { route: 'profile', description: 'Your profile is not complete.', linkText: 'Edit profile' }
         );
       }
       if (profile.instruments && profile.instruments.length > 0) {
@@ -163,7 +163,7 @@ export class PreLaunchInstructorDashboard extends React.Component<Props, State> 
 
     const editLinksDisplay = editLinks.map((item, i) => (
       <Typography key={i}>
-        - {item.description} <Link to={`${Routes.BuildProfile}/${item.route}`}>{item.linkText}</Link>
+        - {item.description} <Link href={`${Routes.BuildProfile}/${item.route}`}>{item.linkText}</Link>
       </Typography>
     ));
 
@@ -183,16 +183,18 @@ export class PreLaunchInstructorDashboard extends React.Component<Props, State> 
           )}
         </Button>
         {completed === 100 ?
-          <Typography><Link to={Routes.BuildProfile}>{constants.editProfileLink}</Link></Typography> : editLinksDisplay
+          <Typography><Link href={Routes.BuildProfile}>{constants.editProfileLink}</Link></Typography> : editLinksDisplay
         }
         <div className="nabi-margin-top-medium">
           <SectionTitle text={constants.profileSectionTitle} />
-          <Link to={`profile/${this.props.profile.instructorId}`}>
-            <img
-              src="https://nabimusic.s3.us-east-2.amazonaws.com/nabimusic-instructor-profiles.png"
-              className="dashboard-view-profile-image"
-            />
-            <Typography color="primary">{constants.viewProfileLink}</Typography>
+          <Link href={`profile/${this.props.profile.instructorId}`}>
+            <>
+              <img
+                src="https://nabimusic.s3.us-east-2.amazonaws.com/nabimusic-instructor-profiles.png"
+                className="dashboard-view-profile-image"
+              />
+              <Typography color="primary">{constants.viewProfileLink}</Typography>
+            </>
           </Link>
         </div>
         <InviteFriends />

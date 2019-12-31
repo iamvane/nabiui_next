@@ -5,11 +5,12 @@ import {
   Dispatch
 } from 'redux';
 import { RouteComponentProps } from 'react-router';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import {
   CircularProgress,
-  Typography } from '@material-ui/core';
+  Typography
+} from '@material-ui/core';
 
 import { StoreState } from '../../redux/reducers/store';
 import { UserType } from '../../redux/models/UserModel';
@@ -24,6 +25,7 @@ import { Routes } from '../common/constants/Routes';
 import { Role } from '../Auth/Registration/constants';
 import PreLaunchInstructorDashboard from './InstructorDashboard/PreLaunchInstructorDashboard';
 import PreLaunchStudentDashboard from './StudentDashboard/PreLaunchStudentDashboard';
+import PrivateRoute from '../Auth/ProtectRoutes/PrivateRoute';
 import {
   DashboardComponent,
   PreLaunchInstructorDashboardComponent as constants
@@ -31,6 +33,7 @@ import {
 
 interface State {
   showSnackbar: boolean;
+  isPrivate: boolean;
 }
 
 interface StateProps {
@@ -50,24 +53,23 @@ interface Props extends
   OwnProps,
   RouteComponentProps<{}>,
   StateProps,
-  DispatchProps {}
+  DispatchProps { }
 
 export class Dashboard extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      showSnackbar: false
+      showSnackbar: false,
+      isPrivate: true
     };
   }
 
   componentDidMount() {
-    this.props.fetchUser();
     // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
     //   this.setState({
     //     showSnackbar: true
     //   });
     // }
-
     const userId = this.props.user ? this.props.user.email : 'anonymous';
 
     const analiticsProps = {
@@ -86,48 +88,48 @@ export class Dashboard extends React.Component<Props, State> {
     return (
       <React.Fragment>
         {this.props.isRequesting ?
-        <div className="nabi-text-center">
-          <CircularProgress />
-        </div> :
-        <React.Fragment>
-          <LoggedInPageTemplate
-            sidebarContent={
-              this.props.user.role === Role.instructor ?
-              <React.Fragment>
-                 <SectionTitle text="Things to do" />
-                  <img
-                    /* tslint:disable-next-line:max-line-length */
-                    src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
-                    className="dashboard-view-profile-image"
-                  />
-                  <Typography><Link to={Routes.BuildProfile}>{constants.editProfileLink}</Link></Typography>
-                  {/* tslint:disable-next-line:max-line-length */}
-                  <Typography><Link to={`profile/${this.props.user.profile && (this.props.user.profile as InstructorType).instructorId}`}>{constants.viewProfileLink}</Link></Typography>
-                  <Typography><a target="_blank" href="https://www.facebook.com/pg/nabimusicinfo/jobs">{constants.viewJobsLink}</a></Typography>
-              </React.Fragment>
-                :
-              <React.Fragment>
-                <SectionTitle text={`Hello ${this.props.firstName ? this.props.firstName : ''}`} />
-                <img
-                  className="nabi-responsive-image"
-                  alt="logo"
-                  src={LinkedInPic}
-                />
-            </React.Fragment>
-            }
-            mainContent={
-              this.props.user.role === Role.instructor ?
-              <PreLaunchInstructorDashboard /> : <PreLaunchStudentDashboard />}
-            pageTitle={DashboardComponent.pageTitle}
-          />
-          <SnackBar
-            isOpen={this.state.showSnackbar}
-            message={AnnouncementConstants.requestSentMessage}
-            handleClose={this.closeSnackbar}
-            variant="success"
-            hideIcon={true}
-          />
-        </React.Fragment>}
+          <div className="nabi-text-center">
+            <CircularProgress />
+          </div> :
+          <React.Fragment>
+            <LoggedInPageTemplate
+              sidebarContent={
+                this.props.user.role === Role.instructor ?
+                  <React.Fragment>
+                    <SectionTitle text="Things to do" />
+                    <img
+                      /* tslint:disable-next-line:max-line-length */
+                      src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
+                      className="dashboard-view-profile-image"
+                    />
+                    <Typography><Link href={Routes.BuildProfile}>{constants.editProfileLink}</Link></Typography>
+                    {/* tslint:disable-next-line:max-line-length */}
+                    <Typography><Link href={`profile/${this.props.user.profile && (this.props.user.profile as InstructorType).instructorId}`}>{constants.viewProfileLink}</Link></Typography>
+                    <Typography><a target="_blank" href="https://www.facebook.com/pg/nabimusicinfo/jobs">{constants.viewJobsLink}</a></Typography>
+                  </React.Fragment>
+                  :
+                  <React.Fragment>
+                    <SectionTitle text={`Hello ${this.props.firstName ? this.props.firstName : ''}`} />
+                    <img
+                      className="nabi-responsive-image"
+                      alt="logo"
+                      src={LinkedInPic}
+                    />
+                  </React.Fragment>
+              }
+              mainContent={
+                this.props.user.role === Role.instructor ?
+                  <PreLaunchInstructorDashboard /> : <PreLaunchStudentDashboard />}
+              pageTitle={DashboardComponent.pageTitle}
+            />
+            <SnackBar
+              isOpen={this.state.showSnackbar}
+              message={AnnouncementConstants.requestSentMessage}
+              handleClose={this.closeSnackbar}
+              variant="success"
+              hideIcon={true}
+            />
+          </React.Fragment>}
       </React.Fragment>
     );
   }
@@ -155,4 +157,8 @@ const mapDispatchToProps = (
   fetchUser: () => dispatch(fetchUser())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PrivateRoute(Dashboard, 'Private', ['Student', 'Parent', 'Instructor']));

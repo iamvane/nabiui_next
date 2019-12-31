@@ -10,7 +10,7 @@ import instructorReducer from './InstructorReducers';
 const userPersistConfig = {
   key: 'user',
   storage: storage,
-  whitelist: ['user', 'urlReferralToken', 'token']
+  whitelist: ['user', 'token', 'invitationToken']
 };
 
 /**
