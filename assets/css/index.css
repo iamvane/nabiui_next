@@ -658,7 +658,7 @@ li.nabi-list-style-position-inside {
 
 /*JennaSue title*/
 .nabi-jennasue-title {
-	font-family: 'JennaSue';
+	font-family: 'JennaSue' !important;
 	font-size: 42px !important;
 }
 
@@ -1100,7 +1100,7 @@ li.nabi-list-style-position-inside {
 	}
 	/*JennaSue title*/
 	.nabi-jennasue-title {
-		font-size: 50px !important;
+		font-size: 55px !important;
 	}
 
 	/*header*/
