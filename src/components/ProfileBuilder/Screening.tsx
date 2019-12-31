@@ -16,6 +16,8 @@ import {
   ProfileBuilderStepper,
   ScreeningComponent
 } from './constants';
+import StripePaymentForm from "./StripePaymentForm";
+import "../../../assets/scss/StripePaymentForm.scss";
 
 interface State {
   isCompliant: boolean;
@@ -53,9 +55,21 @@ export class Screening extends React.Component<{}, State> {
     return(
       <div>
         <SectionTitle text="Screening" />
-          <Grid item={true} xs={12} md={9}>
-            <Typography>{ScreeningComponent.screening}</Typography>
+        <div className="nabi-text-center">
+          <h2 className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-xsmall">Establish trust with your students.</h2>
+          <Typography color="primary" className="nabi-margin-bottom-small">Add a background check to your profile and show you’re serious about safety.</Typography>
+          <Grid item={true} xs={12} md={5} className="nabi-background-nabi nabi-color-white nabi-border-radius nabi-padding-small nabi-margin-center">
+            <p className="nabi-color-white nabi-font-medium nabi-margin-bottom-xsmall">CRIMINAL RECORDS CHECK</p>
+            <p className="nabi-text-extrabold nabi-margin-top-xsmall">Establish trust with your students</p>
+            <Typography className="nabi-color-white">- National criminal history</Typography>
+            <Typography className="nabi-color-white">- County criminal history</Typography>
+            <Typography className="nabi-color-white">- Global terror watchlist</Typography>
+            <p className="nabi-margin-top-medium nabi-font-large nabi-margin-bottom-xsmall">$29.99</p>
           </Grid>
+        </div>
+        <Grid item={true} xs={12} md={5} className="nabi-margin-center nabi-margin-top-small">
+          <StripePaymentForm onToken={() => console.log('foo')} onSubmit={() => console.log('foo')} disabled={false} />
+        </Grid>
         <div className="nabi-margin-top-small nabi-margin-bottom-small">
           <SectionTitle text="Member Disclosure" />
           <Typography>{ScreeningComponent.disclosure}</Typography>
