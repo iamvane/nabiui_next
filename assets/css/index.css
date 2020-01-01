@@ -155,6 +155,10 @@ p.nabi-color-orange {
 }
 
 /*FONT WEIGHT*/
+.nabi-text-normal {
+	font-weight: 400 !important;
+}
+
 .nabi-text-mediumbold {
 	font-weight: 500 !important;
 }
