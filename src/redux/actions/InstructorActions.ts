@@ -453,10 +453,10 @@ export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkActi
   dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
   try {
     const state = getState();
-    const authToken = (state as StoreState).user.token;
+    const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgwNDg3NDA0LCJqdGkiOiJlMWEwOTlkMTZiYTk0ODE5OWJjNDMzN2JiMmUzYzAxMSIsInVzZXJfaWQiOjR9.fF4JpCB1FvYShiAbQ4ug_-LVKWkUrur1XGqMhQx5pcU';
     const response = await axios.post(
       ApiEndpoints.backgroundCheck,
-      {params},
+      {...params},
       { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
     dispatch(withDataAction(InstructorActions.REQUEST_BACKGROUND_CHECK_SUCCESS, response.data));
   } catch (e) {

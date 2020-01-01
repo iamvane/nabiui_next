@@ -6,6 +6,7 @@ import {
 } from 'redux';
 
 import {
+  CircularProgress,
   Grid,
   Typography
 } from '@material-ui/core';
@@ -69,7 +70,10 @@ export const Screening = (props: Props) => {
       </div>
       <SectionTitle text="Payment Info" />
       <Grid item={true} xs={12} md={5} className="nabi-margin-top-small nabi-margin-bottom-medium">
-        <StripePaymentForm  setPaymentSuccess={setPaymentSuccess} />
+        {props.isRequesting ?
+          <CircularProgress /> :
+          <StripePaymentForm submitPayment={submitPayment} />
+        }
       </Grid>
       <SectionTitle text="Order Summary" />
       <Grid container={true}>

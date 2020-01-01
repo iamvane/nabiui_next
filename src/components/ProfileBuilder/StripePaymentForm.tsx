@@ -9,10 +9,12 @@ import {
   injectStripe,
   Elements
 } from "react-stripe-elements";
+
 import "../../../assets/scss/StripePaymentForm.scss";
+import { BackgroundCheckParams } from "./models";
 
 interface Props {
-  setPaymentSuccess: (success: boolean) => void;
+  submitPayment: (params : BackgroundCheckParams) => void;
 }
 
 const PaymentForm = (props: any) =>  {
@@ -27,8 +29,12 @@ const PaymentForm = (props: any) =>  {
         .then((payload: any) => {
           console.log(payload.token);
           // this.props.onToken(payload.token);
-
-          props.setPaymentSuccess(true);
+          const params:BackgroundCheckParams = {
+            instructorId: 3,
+            amount: 30.00,
+            stripeToken: payload.token.id
+          }
+          props.submitPayment(params);
         });
     } else {
       console.log("Stripe.js hasn't loaded yet.");
@@ -109,7 +115,7 @@ export const StripePaymentForm = (props: Props) => {
       return (
         <StripeProvider stripe={stripe}>
           <Elements>
-            <InjectedCheckoutForm setPaymentSuccess={props.setPaymentSuccess} />
+            <InjectedCheckoutForm submitPayment={props.submitPayment} />
           </Elements>
         </StripeProvider>
       )

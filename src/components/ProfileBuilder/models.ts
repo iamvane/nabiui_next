@@ -21,6 +21,6 @@ export interface JobPreferencesType extends
 
 export interface BackgroundCheckParams {
   instructorId?: number,
-  amount: NumberConstructor,
+  amount: number,
   stripeToken: string;
 }

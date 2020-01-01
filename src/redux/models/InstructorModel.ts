@@ -95,7 +95,7 @@ export interface InstructorState {
     fetchInstructor: ActionStatus;
     requestReference: ActionStatusWithMessage;
     fetchReferences: ActionStatus;
-    requestBackgroundCheck: ActionStatus;
+    requestBackgroundCheck: ActionStatusWithMessage;
   };
 }
 
@@ -179,7 +179,8 @@ export const defaultInstructorState: InstructorState = {
     },
     requestBackgroundCheck: {
       isRequesting: false,
-      error: ''
+      error: '',
+      message: ''
     }
   }
 };
