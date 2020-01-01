@@ -8,6 +8,7 @@ import { getError } from '../../utils/handleApiErros';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import { EducationType } from '../../components/Education/model';
 import { EmploymentType } from '../../components/Employment/model';
+import { BackgroundCheckParams } from '../../components/ProfileBuilder/models';
 import { StoreState } from '../reducers/store';
 import { InstructorType } from '../models/InstructorModel';
 import { InstructorActions } from '../actions/InstructorActionTypes';
@@ -442,5 +443,26 @@ export const fetchReferences = (): ThunkAction<Promise<void>, {}, {}> => async (
       errorMessage = getError(e);
     }
     dispatch(withErrorAction(InstructorActions.FETCH_REFERENCES_FAILURE, errorMessage));
+  }
+};
+
+export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
+  try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
+    const response = await axios.post(
+      ApiEndpoints.backgroundCheck,
+      {params},
+      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
+    dispatch(withDataAction(InstructorActions.REQUEST_BACKGROUND_CHECK_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(InstructorActions.REQUEST_BACKGROUND_CHECK_FAILURE, errorMessage));
   }
 };

@@ -18,3 +18,9 @@ export interface JobPreferencesType extends
     instruments: InstrumentsType[];
     languages: string[];
   }
+
+export interface BackgroundCheckParams {
+  instructorId?: number,
+  amount: NumberConstructor,
+  stripeToken: string;
+}
