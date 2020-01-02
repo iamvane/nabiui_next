@@ -5,7 +5,11 @@ import { withRouter, NextRouter } from 'next/router';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import Link from 'next/link';
 
-import Button from '@material-ui/core/Button';
+import {
+  Button,
+  Icon,
+  IconButton
+} from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
@@ -24,6 +28,7 @@ import {
   logOut,
   headerMenuLabels
 } from './constants';
+import { DrawerMenu } from './DrawerMenu';
 import  { InstructorMenu } from './InstructorMenu';
 import  { StudentParentMenu } from './StudentParentMenu';
 
@@ -46,10 +51,15 @@ export interface HeaderProps extends
 }
 
 export const Header = (props: HeaderProps) => {
+  const [isDrawerMenuOpen, setIsDraweMenuOpen] = React.useState(false);
   const [isStudentParentMenuOpen, setStudentParentMenuOpen] = React.useState(false);
   const [anchorElStudentParentMenu, setAnchorElStudentParentMenu] = React.useState<null | HTMLElement>(null);
   const [isInstructorMenuOpen, setInstructorMenuOpen] = React.useState(false);
   const [anchorElInstructorMenu, setAnchorElInstructorMenu] = React.useState<null | HTMLElement>(null);
+
+  const toggleDrawerMenu = () => {
+    setIsDraweMenuOpen(prevOpen => !prevOpen);
+  };
 
   const openInstructorMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElInstructorMenu(anchorElInstructorMenu || event.currentTarget);
@@ -71,23 +81,28 @@ export const Header = (props: HeaderProps) => {
       <div
         className={`${isLocationHomepage ? 'nabi-header-container-home' : 'nabi-header-container'} nabi-position-relative`}
       >
-        <div className="nabi-header-menu">
-          <Link href="">
-            <a className="nabi-text-uppercase nabi-text-semibold" onClick={openStudentParentMenu}>{headerMenuLabels.student}</a>
-          </Link>
+        <div className="nabi-header-menu hide-on-desktop">
+          <IconButton onClick={toggleDrawerMenu}><Icon>menu</Icon></IconButton>
+          <DrawerMenu isOpen={isDrawerMenuOpen} closeMenu={toggleDrawerMenu} />
+        </div>
+        <div className="nabi-header-menu hide-on-mobile">
+          <p
+            className="nabi-text-uppercase nabi-text-semibold nabi-cursor-pointer nabi-display-inline nabi-color-nabi"
+            onClick={openStudentParentMenu}
+          >
+            {headerMenuLabels.student}
+          </p>
           <StudentParentMenu
             isMenuOpen={isStudentParentMenuOpen}
             toggleMenu={() => setStudentParentMenuOpen(false)}
             anchorEl={anchorElStudentParentMenu}
           />
-          <Link href="">
-            <a
-              className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small"
-              onClick={openInstructorMenu}
-            >
-              {headerMenuLabels.instructors}
-            </a>
-          </Link>
+          <p
+            className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small nabi-display-inline nabi-color-nabi nabi-cursor-pointer"
+            onClick={openInstructorMenu}
+          >
+            {headerMenuLabels.instructors}
+          </p>
           <InstructorMenu
             isMenuOpen={Boolean(isInstructorMenuOpen && anchorElInstructorMenu)}
             toggleMenu={() => setInstructorMenuOpen(false)}
