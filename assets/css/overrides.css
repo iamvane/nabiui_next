@@ -28,6 +28,11 @@
   color: #717a8a !important;
 }
 
+.MuiButton-containedSecondary {
+  background-color: #FB7F6B !important;
+  color: #ffffff;
+}
+
 /* containedPrimary: {
   backgroundColor: '#06c3e1 !important',
   color: '#fff',

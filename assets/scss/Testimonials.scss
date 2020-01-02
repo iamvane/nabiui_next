@@ -27,3 +27,26 @@
 .testimonial-item p {
   line-height: 28px;
 }
+
+.recognized-item {
+  background: #ffffff;
+  border-radius: 50%;
+  width: 147px;
+  height: 147px;
+  border: 7px solid #fb7f6b;
+  text-align: center;
+}
+
+.recognized-item img {
+  width: 70%;
+  margin-top: 20px;
+}
+
+.become-an-instructor-icon {
+	width: 200px;
+}
+@media (min-width: 960px) {
+  .become-an-instructor-cta {
+    padding-left: 189px;
+  }
+}

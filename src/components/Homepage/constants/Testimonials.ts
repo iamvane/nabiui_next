@@ -34,3 +34,17 @@ export const testimonials = [
 ];
 
 export const button = 'Start With a Free Lesson';
+
+export const recognition = "Recognized By";
+
+export const recognizedImages = [
+  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/startup-next-nabi-01.png',
+  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/sound-of-boston-nabi-01.jpg',
+  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/missadventures-in-mommyhood-nabi-01.png',
+  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/mommy-poppins-nabi-01.png',
+  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/boston-central-01.jpg',
+  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/umass-boston-nabi-01.png',
+];
+
+export const recognizedButton = 'Sign Up Today For A Trial';
+

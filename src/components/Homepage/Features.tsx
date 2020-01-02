@@ -18,9 +18,9 @@ export const Features = () => {
   return (
     <Grid>
       <div className="nabi-container">
-        <h1 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
+        <h2 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
           {title}
-        </h1>
+        </h2>
         <Typography
           color="primary"
           className="nabi-text-semibold nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center"

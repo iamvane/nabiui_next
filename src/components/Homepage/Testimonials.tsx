@@ -11,16 +11,19 @@ import {
   title,
   testimonials,
   button,
-  description
+  description,
+  recognition,
+  recognizedImages,
+  recognizedButton
 } from './constants/Testimonials';
 
 export const Testimonials = () => {
   return (
     <Grid>
       <div className="nabi-container">
-        <h1 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
+        <h2 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
           {title}
-        </h1>
+        </h2>
         <Typography
           color="primary"
           className="nabi-text-semibold nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center"
@@ -41,6 +44,25 @@ export const Testimonials = () => {
         <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
           <Button fullWidth={true} className="nabi-margin-top-xsmall" color="primary" variant="contained">
             {button}
+          </Button>
+        </Grid>
+        <h2 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
+          {recognition}
+        </h2>
+        <Grid container={true} className="nabi-margin-top-xlarge nabi-margin-bottom-small">
+          {
+            recognizedImages.map((item) => (
+              <Grid md={2} item={true} key={item} className="nabi-margin-center">
+                <div className="recognized-item">
+                  <img src={item} />
+                </div>
+              </Grid>
+            ))
+          }
+        </Grid>
+        <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
+          <Button fullWidth={true} className="nabi-margin-top-medium" color="secondary" variant="contained">
+            {recognizedButton}
           </Button>
         </Grid>
       </div>

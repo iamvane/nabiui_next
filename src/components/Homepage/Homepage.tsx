@@ -61,7 +61,6 @@ export class Homepage extends React.Component<Props, State> {
         <Banner />
         <Features />
         <Testimonials />
-        <PopularInstruments />
         <BecomeATeacher />
         {this.state.performRedirect && Router.push(Routes.Dashboard)}
       </div>
