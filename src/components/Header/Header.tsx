@@ -13,16 +13,19 @@ import {
   Dispatch
 } from 'redux';
 
+import '../../../assets/scss/Header.scss';
 import { StoreState } from '../../redux/reducers/store';
-import { Routes } from './constants/Routes';
+import { UserType } from '../../redux/models/UserModel';
+import { logOutUser } from '../../redux/actions/UserActions';
+import { Routes } from '../common/constants/Routes';
 import {
   nabiMusic,
   logIn,
   logOut,
-  pricing
-} from './constants/Header';
-import { UserType } from '../../redux/models/UserModel';
-import { logOutUser } from '../../redux/actions/UserActions';
+  headerMenuLabels
+} from './constants';
+import  { InstructorMenu } from './InstructorMenu';
+import  { StudentParentMenu } from './StudentParentMenu';
 
 interface DispatchProps {
   logOutUser: () => void;
@@ -43,9 +46,24 @@ export interface HeaderProps extends
 }
 
 export const Header = (props: HeaderProps) => {
+  const [isStudentParentMenuOpen, setStudentParentMenuOpen] = React.useState(false);
+  const [anchorElStudentParentMenu, setAnchorElStudentParentMenu] = React.useState<null | HTMLElement>(null);
+  const [isInstructorMenuOpen, setInstructorMenuOpen] = React.useState(false);
+  const [anchorElInstructorMenu, setAnchorElInstructorMenu] = React.useState<null | HTMLElement>(null);
+
+  const openInstructorMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElInstructorMenu(anchorElInstructorMenu || event.currentTarget);
+    setInstructorMenuOpen(true);
+  };
+
+  const openStudentParentMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElStudentParentMenu(anchorElStudentParentMenu || event.currentTarget);
+    setStudentParentMenuOpen(true);
+  };
+
   const isLocationHomepage: boolean = props.router.route === Routes.HomePage;
   const hanldeUserLogout = () => {
-      props.logOutUser();
+    props.logOutUser();
   };
   const logo = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png';
   return (
@@ -53,9 +71,33 @@ export const Header = (props: HeaderProps) => {
       <div
         className={`${isLocationHomepage ? 'nabi-header-container-home' : 'nabi-header-container'} nabi-position-relative`}
       >
-        <div
-            className="nabi-logo-anchor"
-        >
+        <div className="nabi-header-menu">
+          <Link href="">
+            <a className="nabi-text-uppercase nabi-text-semibold" onClick={openStudentParentMenu}>{headerMenuLabels.student}</a>
+          </Link>
+          <StudentParentMenu
+            isMenuOpen={isStudentParentMenuOpen}
+            toggleMenu={() => setStudentParentMenuOpen(false)}
+            anchorEl={anchorElStudentParentMenu}
+          />
+          <Link href="">
+            <a
+              className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small"
+              onClick={openInstructorMenu}
+            >
+              {headerMenuLabels.instructors}
+            </a>
+          </Link>
+          <InstructorMenu
+            isMenuOpen={Boolean(isInstructorMenuOpen && anchorElInstructorMenu)}
+            toggleMenu={() => setInstructorMenuOpen(false)}
+            anchorEl={anchorElInstructorMenu}
+          />
+          <Link href="https://blog.nabimusic.com">
+            <a className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small" target="_blank">{headerMenuLabels.blog}</a>
+          </Link>
+        </div>
+        <div className="nabi-logo-anchor">
           <Link href={props.user.email ? Routes.Dashboard : Routes.HomePage}>
             <a>
               <>
@@ -77,8 +119,6 @@ export const Header = (props: HeaderProps) => {
 
         {props.router.route === Routes.HomePage &&
           <div className="nabi-header-button">
-            <Link href={Routes.Pricing}>{pricing}</Link>
-
             <Link href={Routes.Login}>
               <Button color="primary" variant="contained" className="nabi-responsive-button nabi-margin-left-small">
                 {logIn}

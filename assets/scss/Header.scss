@@ -1,0 +1,11 @@
+.nabi-header-menu {
+	position: absolute !important;
+	top: 9% !important;
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width: 768px) {
+  .nabi-header-menu {
+    top: 45% !important;
+  }
+}

@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core/styles';
 
 import { Footer } from '../src/components/common/Footer';
-import Header from '../src/components/common/Header';
+import Header from '../src/components/Header/Header';
 import '../assets/css/overrides.css';
 import '../assets/css/index.css';
 import { getStore } from '../src/redux/reducers/store';
