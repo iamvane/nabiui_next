@@ -4,8 +4,8 @@ import Link from 'next/link';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 
-import { popularInstruments } from '../../../../assets/data/popularInstruments';
-import { Routes } from '../constants/Routes';
+import { popularInstruments } from '../../../assets/data/popularInstruments';
+import { Routes } from '../common/constants/Routes';
 
 /**
  * Hoempage popular instruments section

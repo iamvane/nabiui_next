@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import { Routes } from '../constants/Routes';
-import { BecomeATeacher as constants } from '../constants/BecomeATeacher';
+import { Routes } from '../common/constants/Routes';
+import { BecomeATeacher as constants } from './constants/BecomeATeacher';
 
 const BecomeATeacher = () => {
   const MoneyIllustration = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/dollar-homepage.png';

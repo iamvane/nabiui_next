@@ -1,0 +1,29 @@
+.testimonial-item {
+  padding: 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.testimonial-item:after {
+  content: '';
+    display: block;
+    background: #fff;
+    border-left: 0px solid #dbdbdb;
+    /* border-bottom: 1px solid #dbdbdb; */
+    background: #ffffff;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: skew(0deg, -45deg);
+    width: 21px;
+    height: 31px;
+    position: absolute;
+    /* bottom: -27px; */
+    /* left: 39px; */
+    margin: auto;
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-item p {
+  line-height: 28px;
+}
