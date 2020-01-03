@@ -11,7 +11,7 @@ import Features from './Features';
 import Testimonials from './Testimonials';
 import PopularInstruments from './PopularInstruments';
 import BecomeATeacher from './BecomeATeacher';
-
+import FreeLesson from './FreeLesson';
 /**
  * Homepage component
  */
@@ -62,6 +62,7 @@ export class Homepage extends React.Component<Props, State> {
         <Features />
         <Testimonials />
         <BecomeATeacher />
+        <FreeLesson />
         {this.state.performRedirect && Router.push(Routes.Dashboard)}
       </div>
     );

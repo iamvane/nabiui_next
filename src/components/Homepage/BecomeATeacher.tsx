@@ -12,7 +12,7 @@ import { BecomeATeacher as constants } from './constants/BecomeATeacher';
 const BecomeATeacher = () => {
   const MoneyIllustration = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/dollar-homepage.png';
   return (
-    <div className="nabi-background-nabi nabi-color-white">
+    <div className="nabi-background-nabi nabi-color-white nabi-padding-bottom-medium">
       <Grid
         className="nabi-container nabi-padding-top-medium nabi-padding-bottom-medium nabi-text-center"
         container={true}

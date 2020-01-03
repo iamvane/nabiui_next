@@ -1156,6 +1156,10 @@ li.nabi-list-style-position-inside {
 		margin-top: 20px !important;
 	}
 
+	.nabi-margin-top-medium-md {
+		margin-top: 30px !important;
+	}
+
 	.nabi-margin-top-large-md {
 		margin-top: 40px !important;
 	}
@@ -1177,6 +1181,11 @@ li.nabi-list-style-position-inside {
 	.nabi-text-left-md,
 	.nabi-text-left-md * {
 		text-align: left !important;
+	}
+
+	.nabi-text-right-md,
+	.nabi-text-right-md * {
+		text-align: right !important;
 	}
 
 	.nabi-position-absolute-md {

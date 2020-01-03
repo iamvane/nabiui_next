@@ -49,4 +49,16 @@
   .become-an-instructor-cta {
     padding-left: 189px;
   }
+  .recognized-item {
+    width: 116px;
+    height: 116px;
+  }
 }
+
+@media (min-width: 1200px) {
+  .recognized-item {
+    width: 147px;
+    height: 147px;
+  }
+}
+
