@@ -47,4 +47,3 @@ export const recognizedImages = [
 ];
 
 export const recognizedButton = 'Sign Up Today For A Trial';
-

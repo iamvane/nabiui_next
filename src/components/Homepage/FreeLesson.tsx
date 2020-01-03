@@ -18,7 +18,7 @@ const FreeLesson = () => {
   return (
     <div className="nabi-background-orange nabi-color-white">
       <Grid
-        className="nabi-container nabi-padding-top-medium nabi-padding-bottom-medium nabi-text-center "
+        className="nabi-container nabi-padding-top-medium nabi-padding-bottom-medium nabi-text-center"
         container={true}
         spacing={4}
       >
@@ -33,7 +33,7 @@ const FreeLesson = () => {
             {description}
           </p>
           <Link href={Routes.RegistrationInstructor}>
-            <Button className="nabi-margin-top-xsmall " color="primary" variant="contained">
+            <Button className="nabi-margin-top-xsmall" color="primary" variant="contained">
               {button}
             </Button>
           </Link>

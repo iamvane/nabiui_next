@@ -29,7 +29,6 @@ export const DrawerMenu = (props: Props) => {
       <Drawer
         open={props.isOpen}
         onClose={props.closeMenu}
-        // className="filter-drawer"
       >
         <Grid item={true} xs={10} className="nabi-margin-center nabi-padding-top-small nabi-padding-bottom-small">
           <Typography color="secondary" className="nabi-text-semibold">{forParents}</Typography>

@@ -33,4 +33,4 @@ export const features = [
   }
 ];
 
-export const button = 'Start With a Free Lesson'
+export const button = 'Start With a Free Lesson';
