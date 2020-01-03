@@ -2,14 +2,15 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import Router from "next/router";
 
-import { StoreState } from '../../../redux/reducers/store';
+import { StoreState } from '../../redux/reducers/store';
+import { page } from '../../utils/analytics';
+import { UserType } from '../../redux/models/UserModel';
+import { Routes } from '../common/constants/Routes';
 import Banner from './Banner';
-import PopularInstruments from './PopularInstruments';
+import Features from './Features';
+import Testimonials from './Testimonials';
 import BecomeATeacher from './BecomeATeacher';
-import { UserType } from '../../../redux/models/UserModel';
-import { Routes } from '../constants/Routes';
-import { page } from '../../../utils/analytics';
-
+import FreeLesson from './FreeLesson';
 /**
  * Homepage component
  */
@@ -57,8 +58,10 @@ export class Homepage extends React.Component<Props, State> {
     return (
       <div>
         <Banner />
-        <PopularInstruments />
+        <Features />
+        <Testimonials />
         <BecomeATeacher />
+        <FreeLesson />
         {this.state.performRedirect && Router.push(Routes.Dashboard)}
       </div>
     );

@@ -36,10 +36,6 @@ mark {
 	background: none;
 }
 
-.become-an-instructor-icon {
-	width: 90px;
-}
-
 /*BACKGROUND COLOR*/
 .nabi-background-color {
 	background-color: #f0f3f6;
@@ -155,6 +151,10 @@ p.nabi-color-orange {
 }
 
 /*FONT WEIGHT*/
+.nabi-text-normalbold {
+	font-weight: 400 !important;
+}
+
 .nabi-text-mediumbold {
 	font-weight: 500 !important;
 }
@@ -606,40 +606,6 @@ li.nabi-list-style-position-inside {
 }
 
 /*Homepage*/
-/* Banner */
-#banner {
-	height: 520px !important;
-	width: 100%;
-	background-image: url('https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabiBannerImage.jpg') !important;
-	background-size: cover !important;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-#banner .container {
-	padding-left: 25px;
-	padding-right: 25px;
-	padding-top: 55px;
-	position: absolute;
-}
-
-#banner .cta-container {
-	background-color: rgba(255, 255, 255, 0.7);
-	padding: 20px;
-	border-radius: 3px;
-}
-
-#banner .cta-container h1 {
-	color: #FB7F6B !important;
-	font-weight: 800 !important;
-}
-
-#banner button {
-	padding: 15px 11px !important;
-	font-size: 11px !important;
-	width: 100%;
-}
-
 /* Popular instruments card */
 .nabi-popular-instruments {
 	position: relative;
@@ -777,6 +743,12 @@ li.nabi-list-style-position-inside {
 .nabi-remove-shadow {
 	overflow-x:  auto;
 	box-shadow: none !important;
+}
+
+.nabi-box-shadow {
+  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.10);
+  -moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.10);
 }
 
 /*Education*/
@@ -1033,24 +1005,7 @@ li.nabi-list-style-position-inside {
 	.nabi-rates-field {
 		display: inline !important;
 	}
-	/*Homepage*/
-	#banner .container {
-		padding-top: 25px;
-		width: 80%;
-		margin-left: auto;
-		margin-right: auto;
-		position: absolute;
-		top: 45%;
-		left: 50%;
-		transform: translateX(-50%) translateY(-50%);
-	}
 
-	#banner button {
-		margin-top: 10px !important;
-		margin-right: 10px !important;
-		padding: 15px 10px !important;
-		font-size: 13px !important;
-	}
 	.nabi-logo-anchor img {
 		width: 55px;
 	}
@@ -1133,19 +1088,6 @@ li.nabi-list-style-position-inside {
 	.nabi-jennasue-title {
 		font-size: 50px !important;
 	}
-	/*Homepage*/
-	#banner {
-		height: 500px !important;
-	}
-
-	#banner .cta-container {
-		padding: 40px;
-	}
-
-	#banner button {
-		padding: 15px 38px !important;
-		font-size: 14px !important
-	}
 
 	/*header*/
 	#header-social-menu {
@@ -1214,6 +1156,10 @@ li.nabi-list-style-position-inside {
 		margin-top: 20px !important;
 	}
 
+	.nabi-margin-top-medium-md {
+		margin-top: 30px !important;
+	}
+
 	.nabi-margin-top-large-md {
 		margin-top: 40px !important;
 	}
@@ -1235,6 +1181,11 @@ li.nabi-list-style-position-inside {
 	.nabi-text-left-md,
 	.nabi-text-left-md * {
 		text-align: left !important;
+	}
+
+	.nabi-text-right-md,
+	.nabi-text-right-md * {
+		text-align: right !important;
 	}
 
 	.nabi-position-absolute-md {

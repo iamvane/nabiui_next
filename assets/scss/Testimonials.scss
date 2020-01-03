@@ -1,0 +1,61 @@
+.testimonial-item {
+  padding: 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.testimonial-item:after {
+  content: '';
+    display: block;
+    background: #fff;
+    border-left: 0px solid #dbdbdb;
+    background: #ffffff;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: skew(0deg, -45deg);
+    width: 21px;
+    height: 31px;
+    position: absolute;
+    margin: auto;
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-item p {
+  line-height: 28px;
+}
+
+.recognized-item {
+  background: #ffffff;
+  border-radius: 50%;
+  width: 147px;
+  height: 147px;
+  border: 7px solid #fb7f6b;
+  text-align: center;
+}
+
+.recognized-item img {
+  width: 70%;
+  margin-top: 20px;
+}
+
+.become-an-instructor-icon {
+	width: 200px;
+}
+@media (min-width: 960px) {
+  .become-an-instructor-cta {
+    padding-left: 189px;
+  }
+  .recognized-item {
+    width: 116px;
+    height: 116px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .recognized-item {
+    width: 147px;
+    height: 147px;
+  }
+}
+

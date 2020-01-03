@@ -32,7 +32,13 @@ export enum Routes {
   Help = '/help',
   Instructors = '/instructors',
   BookLessons = '/book-lessons',
-  Pricing = '/pricing'
+  Pricing = '/pricing',
+  HowItWorksInstructors = '/how-it-works-instructors',
+  HowItWorksParents = '/how-it-works-parents-students',
+  FAQParents = '/faq-parents-students',
+  FAQInstructors = '/faq-instructors',
+  FeaturesParents = '/features-parents-students',
+  FeaturesInstructors = '/features-instructors',
 }
 
 export enum SocialLinks {

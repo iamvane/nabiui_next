@@ -28,10 +28,6 @@ export const theme = createMuiTheme({
                     background: '#e2e4e7 !important'
                 }
             },
-            containedSecondary: {
-                color: '#06c3e1 !important',
-                backgroundColor: '#fff !important',
-            },
             root: {
                 '&$disabled': {
                     color: '#c6c9d0 !important',

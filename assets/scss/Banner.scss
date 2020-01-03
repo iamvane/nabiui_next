@@ -1,0 +1,72 @@
+#banner {
+	height: 520px !important;
+	width: 100%;
+	background-image: url('https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabiBannerImage.jpg') !important;
+	background-size: cover !important;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#banner .container {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 55px;
+	position: absolute;
+}
+
+#banner input {
+  text-align: center;
+}
+
+#banner button {
+	padding: 15px 11px !important;
+	font-size: 11px !important;
+	width: 100%;
+}
+
+.nabi-jennasue-banner-title {
+  font-family: 'JennaSue';
+  font-size: 52px !important;
+}
+
+.nabi-text-shadow {
+  text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.17);
+}
+
+@media only screen and (min-width: 375px) {
+	/*Banner*/
+	#banner .container {
+		padding-top: 25px;
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	#banner button {
+		margin-top: 10px !important;
+		margin-right: 10px !important;
+		padding: 15px 10px !important;
+		font-size: 13px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #banner {
+    height: 600px !important;
+  }
+  .nabi-jennasue-banner-title {
+    font-size: 70px !important;
+  }
+  #banner input {
+    text-align: left;
+  }
+	#banner button {
+    font-size: 14px !important;
+    padding: 18px 38px !important;
+    margin-top: 6px !important;
+	}
+}
