@@ -126,7 +126,7 @@ const Questions = () => {
                 questionList.map(function (item, key) {
                     return (
                         <>
-                            <ExpansionPanel square expanded={expanded === `panel${key}`} onChange={handleChange(`panel${key}`)}>
+                            <ExpansionPanel key={key} square expanded={expanded === `panel${key}`} onChange={handleChange(`panel${key}`)}>
                                 <ExpansionPanelSummary aria-controls={`panel${key}d-content`} id={`panel${key}d-header`}>
                                     <Typography>{item.question}</Typography>
                                 </ExpansionPanelSummary>
@@ -147,17 +147,14 @@ const Questions = () => {
                 .questions-box{
                     width: 50%;
                     margin:auto;
-                    margin-top: 20px;
+                    margin-top: 40px;
+                    margin-bottom: 40px;
                     height: auto;
                     background: white;
                     border-radius: 5px;
                     box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.2);
                     padding: 10px 60px 10px 60px
-                }
-                ul li{
-                    padding: 10px 0px 10px 0px;
-                    border-bottom: 1px solid #cacaca
-                }
+                }                
             
             `}
         </style>

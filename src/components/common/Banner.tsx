@@ -1,11 +1,11 @@
 import React from "react"
-const Banner = () => {
+const Banner = ({ title1, title2 }) => {
     return (<React.Fragment>
         <style jsx>{`
                 .banner{
                     background: #06c3e1;
                     width: 100%;
-                    height: 300px;
+                    height: 250px;
                     display: flex;
                     flex-direction: column;
                     align-items:center;
@@ -26,8 +26,8 @@ const Banner = () => {
         </style>
 
         <div className="banner">
-            <div className="title1">FAQs</div>
-            <div className="title2">For Parents & Students</div>
+            <div className="title1">{title1}</div>
+            <div className="title2">{title2}</div>
         </div>
 
     </React.Fragment>)

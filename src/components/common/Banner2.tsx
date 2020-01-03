@@ -1,13 +1,13 @@
 import React from "react"
-const Banner2 = () => {
+const Banner2 = ({ title, buttonText }) => {
     return (
         <React.Fragment>
 
             <div className="banner">
-                <div className="title1">Looking for info about how to become an instructor?</div>
+                <div className="title1">{title}</div>
                 <div className="button">
                     <button className="buttonfaq">
-                        CHECKOUT THIS FAQ
+                        {buttonText}
                     </button>
                 </div>
             </div>
@@ -15,18 +15,19 @@ const Banner2 = () => {
                 .banner{
                     background: #fb7f6b;
                     width: 100%;
-                    height: 300px;
+                    height: 200px;
                     display: flex;
                     flex-direction: column;
                     align-items:center;
                     justify-content: center;
                     color: white;
-                    margin-top: 50px
+                    
                 }
 
                 .title1{
                     font-size: 30px;
                     font-weight: 600;
+                    text-align:center
                 }
                 .buttonfaq{
                     border: none;
