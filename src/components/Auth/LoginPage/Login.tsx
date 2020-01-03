@@ -4,7 +4,7 @@ import {
   Action,
   Dispatch
 } from 'redux';
-import { Redirect } from 'react-router';
+import Router from 'next/router';
 
 import { Grid } from '@material-ui/core';
 
@@ -24,6 +24,7 @@ import { Routes } from '../../common/constants/Routes';
 import SnackBar from '../../common/SnackBar';
 import { LoginType } from './model';
 import LoginForm from './LoginForm';
+import { LoginFormComponent } from './constants';
 
 interface State extends LoginType {
   showSnackbar: boolean;
@@ -52,91 +53,107 @@ interface Props extends
   DispatchProps,
   StateProps { }
 
-export class Login extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      showSnackbar: false,
-    };
-  }
+const Login = (props: Props) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [displaySnackBar, setDisplaySnackBar] = React.useState(false);
 
-  public componentDidMount() {
-    this.setState({
-      showSnackbar: this.props.passwordSetMessage ? true : false
-    });
+  React.useEffect(() => {
+    if (props.passwordSetMessage) {
+      setDisplaySnackBar(true)
+    }
     const analiticsProps = {
       properties: {
         referrer: document.referrer
       }
     };
     page('Login', analiticsProps);
-  }
+  }, []);
 
-  public componentDidUpdate(prevProps: Props): void {
-    if (prevProps.token !== this.props.token) {
-      this.props.fetchUser(this.props.token);
-    }
-  }
-  public handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
+// export class Login extends React.Component<Props, State> {
+//   constructor(props: Props) {
+//     super(props);
+//     this.state = {
+//       email: '',
+//       password: '',
+//       showSnackbar: false,
+//     };
+//   }
+
+  // public componentDidMount() {
+  //   this.setState({
+  //     showSnackbar: this.props.passwordSetMessage ? true : false
+  //   });
+  //   const analiticsProps = {
+  //     properties: {
+  //       referrer: document.referrer
+  //     }
+  //   };
+  //   page('Login', analiticsProps);
+  // }
+
+  // public componentDidUpdate(prevProps: Props): void {
+  //   if (prevProps.token !== this.props.token) {
+  //     this.props.fetchUser(this.props.token);
+  //   }
+  // }
+  const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.value;
     const name = target.name;
 
-    this.setState({
-      ...this.state,
-      [name]: value
-    });
+    if (name === LoginFormComponent.FieldNames.Email) {
+      setEmail(value);
+    } else if (name === LoginFormComponent.FieldNames.Password) {
+      setPassword(value);
+    }
   }
 
-  public handleSubmit = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
+  const handleSubmit = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
 
-    await this.props.authenticateUser(this.state.email.toLocaleLowerCase(), this.state.password);
+    await props.authenticateUser(email.toLocaleLowerCase(), password);
 
-    if (!this.props.loginError) {
+    if (!props.loginError) {
+      await props.fetchUser(props.token);
+
       const analiticsProps = {
-        userId: this.state.email,
+        userId: email,
         properties: {
           referrer: document.referrer
         }
       };
       track('Logged in', analiticsProps);
+      props.user.email && Router.push(Routes.Dashboard)
     }
   }
 
-  public closeSnackbar = () => this.setState({ showSnackbar: false });
-
-  public render(): JSX.Element {
-    return (
-      <div className="nabi-margin-bottom-xlarge">
-        <PageTitle pageTitle={LoginComponent.pageTitle} />
-        <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
-          <div className="form-card nabi-background-white nabi-section">
-            <LoginForm
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              apiError={this.props.loginError}
-              isRequesting={this.props.isRequesting || this.props.isRequestingUser}
-            />
-          </div>
-        </Grid>
-        {this.props.user.email && <Redirect to={Routes.Dashboard} />}
-        {
-          this.props.passwordSetMessage &&
-          <SnackBar
-            isOpen={this.state.showSnackbar}
-            message={this.props.passwordSetMessage ? this.props.passwordSetMessage : ''}
-            handleClose={this.closeSnackbar}
-            variant="success"
+  return (
+    <div className="nabi-margin-bottom-xlarge">
+      <PageTitle pageTitle={LoginComponent.pageTitle} />
+      <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
+        <div className="form-card nabi-background-white nabi-section">
+          <LoginForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            apiError={props.loginError}
+            isRequesting={props.isRequesting || props.isRequestingUser}
           />
-        }
-      </div>
-    );
-  }
+        </div>
+      </Grid>
+      {
+        props.passwordSetMessage &&
+        <SnackBar
+          isOpen={displaySnackBar}
+          message={props.passwordSetMessage ? props.passwordSetMessage : ''}
+          handleClose={() => setDisplaySnackBar(false)}
+          variant="success"
+        />
+      }
+    </div>
+  );
 }
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
