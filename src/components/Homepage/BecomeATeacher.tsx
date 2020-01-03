@@ -18,7 +18,7 @@ const BecomeATeacher = () => {
         container={true}
       >
         <Grid item={true} xs={12} md={1} />
-        <Grid item={true} xs={12} md={5} className="become-an-instructor-cta nabi-margin-bottom-xsmall nabi-color-white">
+        <Grid item={true} xs={12} md={6} className="become-an-instructor-cta nabi-margin-bottom-xsmall nabi-color-white">
           <h2 className="nabi-margin-top-zero nabi-text-normalbold nabi-jennasue-banner-title nabi-color-white nabi-margin-bottom-xsmall nabi-text-center">
             {constants.title}
           </h2>
@@ -34,7 +34,7 @@ const BecomeATeacher = () => {
             </Button>
           </Link>
         </Grid>
-        <Grid item={true} xs={12} md={3} className="nabi-margin-bottom-xsmall nabi-margin-center nabi-text-left-md nabi-color-white">
+        <Grid item={true} xs={12} md={3} className="nabi-margin-bottom-xsmall nabi-padding-left-small-md nabi-text-center nabi-text-left-md nabi-color-white">
           <img src={MoneyIllustration} className="become-an-instructor-icon" alt="become-an-instructor" />
         </Grid>
       </Grid>

@@ -9,7 +9,6 @@ import { Routes } from '../common/constants/Routes';
 import Banner from './Banner';
 import Features from './Features';
 import Testimonials from './Testimonials';
-import PopularInstruments from './PopularInstruments';
 import BecomeATeacher from './BecomeATeacher';
 import FreeLesson from './FreeLesson';
 /**
