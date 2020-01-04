@@ -118,8 +118,6 @@ const Questions = () => {
         setExpanded(newExpanded ? panel : false);
     };
 
-
-
     return (<React.Fragment>
         <div className="questions-box">
             {

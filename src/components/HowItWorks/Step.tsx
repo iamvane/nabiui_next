@@ -53,9 +53,7 @@ const Step = ({ title, description, image = "https://dummyimage.com/80x80/000/ff
                     max-width: 80px;
                     max-height: 80px;
                     border-radius: 100px;
-
-                }
-                
+                }               
             
             `}
             </style>
