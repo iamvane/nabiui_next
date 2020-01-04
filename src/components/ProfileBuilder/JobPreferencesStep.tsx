@@ -14,6 +14,7 @@ import {
 import { StoreState } from '../../redux/reducers/store';
 import { UserType } from '../../redux/models/UserModel';
 import { buildJobPreferences } from '../../redux/actions/InstructorActions';
+import { Routes } from '../common/constants/Routes';
 import { PlaceForLessonsType } from '../PlaceForLessons/model';
 import { RatesType } from '../Rates/model';
 import { SkillLevel } from '../Instruments/constants';
@@ -447,8 +448,8 @@ export class JobPreferencesStep extends React.Component<Props, State> {
         />
 
         <StepperButtons
-          nextPath={ProfileBuilderStepper.StepsPaths.Education}
-          backPath={ProfileBuilderStepper.StepsPaths.Profile}
+          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
+          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
           handleNext={this.handleNext}
           icon={<Icon>arrow_forward</Icon>}
           isRequesting={this.props.isRequesting}

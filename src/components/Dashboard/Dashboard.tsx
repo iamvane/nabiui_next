@@ -5,7 +5,7 @@ import {
   Dispatch
 } from 'redux';
 import { RouteComponentProps } from 'react-router';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import {
   CircularProgress,
@@ -100,9 +100,9 @@ export class Dashboard extends React.Component<Props, State> {
                     src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
                     className="dashboard-view-profile-image"
                   />
-                  <Typography><Link to={Routes.BuildProfile}>{constants.editProfileLink}</Link></Typography>
+                  <Typography><Link href={Routes.BuildProfile}><a>{constants.editProfileLink}</a></Link></Typography>
                   {/* tslint:disable-next-line:max-line-length */}
-                  <Typography><Link to={`profile/${this.props.user.profile && (this.props.user.profile as InstructorType).instructorId}`}>{constants.viewProfileLink}</Link></Typography>
+                  <Typography><Link href={`profile/${this.props.user.profile && (this.props.user.profile as InstructorType).instructorId}`}><a>{constants.viewProfileLink}</a></Link></Typography>
                   <Typography><a target="_blank" href="https://www.facebook.com/pg/nabimusicinfo/jobs">{constants.viewJobsLink}</a></Typography>
               </React.Fragment>
                 :

@@ -20,6 +20,8 @@ import {
   AccountInfoType,
   VerificationChannel
 } from '../../components/AccountInfo/models';
+import { getCookie } from '../../utils/cookies';
+
 
 interface ChangeAvatar extends Action {
   id: string;

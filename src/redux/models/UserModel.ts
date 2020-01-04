@@ -11,7 +11,8 @@ import {
     StudentDetailsType,
     ParentProfileType
   } from '../../components/Dashboard/StudentDashboard/model';
-  
+  import {getCookie, setCookie, removeCookie} from '../../utils/cookies';
+
   export interface UserType extends
     AccountInfoType,
     RegistrationType {
@@ -89,7 +90,7 @@ import {
       avatar: '',
       referralToken: ''
     },
-    token: '',
+    token: getCookie("token") || '',
     invitationToken: '',
     actions: {
       createUser: {
