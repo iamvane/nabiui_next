@@ -22,6 +22,7 @@ import {
 } from '../../redux/actions/RequestActions';
 import { Role } from '../Auth/Registration/constants';
 import SectionTitle from '../common/SectionTitle';
+import { Routes } from '../common/constants/Routes';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import { RequestBuilderStepper } from '../RequestBuilder/constants';
 import RequestForm from './RequestForm';
@@ -534,8 +535,8 @@ export class Request extends React.Component<Props, State>  {
           : this.renderRequestForm()}
 
         <StepperButtons
-          // nextPath={RequestBuilderStepper.StepsPaths.SendRequest}
-          backPath={RequestBuilderStepper.StepsPaths.AccountInfo}
+          nextPath={Routes.Dashboard}
+          backPath={Routes.BuildRequest + RequestBuilderStepper.StepsPaths.AccountInfo}
           handleNext={this.handleNext}
           icon={<Icon>arrow_forward</Icon>}
         />
