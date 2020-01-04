@@ -64,11 +64,9 @@ interface State {
   verificationChannel: VerificationChannel;
   isPhoneSet: boolean;
   token: string;
-  showMiddleNameModal: boolean;
   errors: AccountInfoComponent.Errors;
   performRedirect: boolean;
   redirectToLogin: boolean;
-  confirmNoMiddleName: boolean;
 }
 
 export class AccountInfo extends React.Component<Props, State> {
@@ -79,20 +77,17 @@ export class AccountInfo extends React.Component<Props, State> {
       verificationChannel: VerificationChannel.Text,
       isPhoneSet: false,
       token: '',
-      showMiddleNameModal: false,
       performRedirect: false,
       accountInfo: {
         firstName: '',
         lastName: '',
-        middleName: '',
         gender: '',
         location: '',
         lat: '',
         lng: '',
       },
       errors: {},
-      redirectToLogin: false,
-      confirmNoMiddleName: false
+      redirectToLogin: false
     };
   }
 
@@ -110,46 +105,10 @@ export class AccountInfo extends React.Component<Props, State> {
     });
   }
 
-  public applyMiddleName = () => {
-    const {
-      errorMessages,
-      FieldKey,
-      middleNameMaxVal,
-    } = AccountInfoComponent;
-
-    // validates middle name
-    const middleName = this.state.accountInfo.middleName;
-    if ((middleName === undefined) || (middleName && (middleName.length > middleNameMaxVal))) {
-      return this.setState({
-        errors: {
-          ...this.state.errors,
-          [FieldKey.MiddleName]: errorMessages[FieldKey.MiddleName].emptyMiddleName
-        }
-      });
-    }
-    return this.closeMiddleNameModal();
-  }
-
-  public confirmNoMiddleName = () => {
-    this.setState({
-      confirmNoMiddleName: true,
-      errors: {
-        ...this.state.errors,
-        [AccountInfoComponent.FieldKey.MiddleName]: ''
-      }
-    });
-    this.closeMiddleNameModal();
-  }
-
-  public closeMiddleNameModal = () => {
-    this.setState({showMiddleNameModal: false});
-  }
-
   public validate = (userValues: AccountInfoComponent.Errors) => {
     const {
       firstName,
       lastName,
-      middleName,
       gender,
     } = userValues;
 
@@ -158,7 +117,6 @@ export class AccountInfo extends React.Component<Props, State> {
       FieldKey,
       firstNameMinVal,
       firstNameMaxVal,
-      middleNameMaxVal,
       lastNameMinVal,
       lastNameMaxVal
     } = AccountInfoComponent;
@@ -166,7 +124,6 @@ export class AccountInfo extends React.Component<Props, State> {
     const formErrors: AccountInfoComponent.Errors = {
       firstName: '',
       lastName: '',
-      middleName: '',
       gender: '',
     };
 
@@ -175,15 +132,6 @@ export class AccountInfo extends React.Component<Props, State> {
       formErrors[FieldKey.FirstName] = errorMessages[FieldKey.FirstName].emptyFirstName;
     } else if (validateNames(firstName)) {
       formErrors[FieldKey.FirstName] = errorMessages[FieldKey.FirstName].invalidFirstName;
-    }
-
-    // Validate middle name
-    if (!middleName && !this.state.confirmNoMiddleName) {
-      this.setState({showMiddleNameModal : true});
-    } else if (middleName && middleName.trim().length > middleNameMaxVal) {
-      formErrors[FieldKey.MiddleName] = errorMessages[FieldKey.MiddleName].emptyMiddleName;
-    } else if (middleName && validateNames(middleName)) {
-      formErrors[FieldKey.MiddleName] = errorMessages[FieldKey.MiddleName].invalidMiddleName;
     }
 
     // Validate last name
@@ -214,7 +162,6 @@ export class AccountInfo extends React.Component<Props, State> {
     const valuesToValidate: AccountInfoComponent.Errors = {
       firstName: this.state.accountInfo.firstName,
       lastName: this.state.accountInfo.lastName,
-      middleName: this.state.accountInfo.middleName,
       gender: this.state.accountInfo.gender,
       token: this.state.token
     };
@@ -224,7 +171,7 @@ export class AccountInfo extends React.Component<Props, State> {
     this.setState({errors: formErrors}, () => {
       const errorsArray = Object.values(this.state.errors);
       const isError = errorsArray.some(value => value);
-      if (!isError && (this.state.accountInfo.middleName || this.state.confirmNoMiddleName)) {
+      if (!isError) {
         this.props.updateUser({...this.state.accountInfo});
         this.props.fetchUser();
         if (!this.props.errorUpdate) {
@@ -274,10 +221,6 @@ export class AccountInfo extends React.Component<Props, State> {
             user={this.props.user}
             accountInfo={this.state.accountInfo}
             verificationChannel={this.state.verificationChannel}
-            showMiddleNameModal={this.state.showMiddleNameModal}
-            closeMiddleNameModal={this.closeMiddleNameModal}
-            confirmNoMiddleName={this.confirmNoMiddleName}
-            applyMiddleName={this.applyMiddleName}
             errors={this.state.errors}
             hasImageUploader={this.props.hasImageUploader}
             redirectUrl={this.props.redirectUrl}

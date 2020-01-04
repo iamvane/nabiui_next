@@ -21,7 +21,6 @@ import { UserType } from '../../redux/models/UserModel';
 import AvatarUploader from '../AvatarUploader/AvatarUploader';
 import PhoneValidation from './PhoneValidation';
 import Location from './Location';
-import MiddleNameModal from './MiddleNameModal';
 import { AccountInfoComponent } from './constants';
 import {
   AccountInfoType,
@@ -33,10 +32,6 @@ interface Props {
   user: UserType;
   accountInfo: AccountInfoType;
   verificationChannel: VerificationChannel;
-  showMiddleNameModal: boolean;
-  closeMiddleNameModal: () => void;
-  confirmNoMiddleName: () => void;
-  applyMiddleName: () => void;
   errors: AccountInfoComponent.Errors;
   hasImageUploader?: boolean;
   redirectUrl: string;
@@ -56,7 +51,6 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
     const {
       firstName,
       lastName,
-      middleName,
       gender,
     } = props.accountInfo;
 
@@ -89,19 +83,6 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
           <Grid item={true} md={6} xs={12}>
             <TextField
               fullWidth={true}
-              name={FieldNames[FieldKey.MiddleName]}
-              onChange={props.handleChange}
-              placeholder={AccountInfoComponent.Placeholders.MiddleName}
-              required={true}
-              value={middleName || props.user.middleName}
-              error={!!props.errors.middleName}
-              helperText={props.errors.middleName}
-            />
-          </Grid>
-
-          <Grid item={true} md={6} xs={12}>
-            <TextField
-              fullWidth={true}
               name={FieldNames[FieldKey.LastName]}
               placeholder={AccountInfoComponent.Placeholders.LastName}
               onChange={props.handleChange}
@@ -112,7 +93,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
             />
           </Grid>
 
-          <Grid item={true} md={6} xs={12} className="nabi-padding-left-small">
+          <Grid item={true} xs={12} className="nabi-padding-left-small">
             <FormControl required={true} error={!!props.errors.gender}>
               <FormLabel className="nabi-margin-bottom-xsmall nabi-text-uppercase">
                 {AccountInfoComponent.Labels.Gender}
@@ -167,16 +148,6 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
         handleLocationChange={props.handleLocationChange}
         handleLocationSelect={props.handleLocationSelect}
         location={props.location || props.user.location || ''}
-      />
-
-      <MiddleNameModal
-        isFormDialogOpen={props.showMiddleNameModal}
-        closeHandler={props.closeMiddleNameModal}
-        handleChange={props.handleChange}
-        middleName={middleName ? String(middleName) : ''}
-        confirmNoMiddleName={props.confirmNoMiddleName}
-        applyMiddleName={props.applyMiddleName}
-        error={props.errors.middleName}
       />
     </div>
   );

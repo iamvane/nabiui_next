@@ -45,8 +45,8 @@ export const ProfileBuilder = (props: Props) => {
   const components = [
     (
       <AccountInfo
-        nextPath={ProfileBuilderStepper.StepsPaths.Profile}
-        redirectUrl={ProfileBuilderStepper.StepsPaths.Profile}
+        nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
+        redirectUrl={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
         key={0}
       />
     ),

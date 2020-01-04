@@ -33,7 +33,7 @@ class NabiApp extends App<any, any> {
           <title>Nabi Music - Music Lessons for Children and Qualified Music Teachers</title>
         </Head>
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+          <PersistGate loading={null} persistor={persistor(store)}>
             <MuiThemeProvider theme={theme}>
               <Header {...pageProps} />
               <Component {...pageProps} />

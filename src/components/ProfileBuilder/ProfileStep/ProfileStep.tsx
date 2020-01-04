@@ -20,6 +20,7 @@ import {
   buildProfile,
   fetchProfile
 } from '../../../redux/actions/InstructorActions';
+import { Routes } from '../../common/constants/Routes';
 import Music from '../../Music/Music';
 import {
   MusicTypes,
@@ -268,8 +269,8 @@ export class ProfileStep extends React.Component<Props, State> {
         </div>
 
         <StepperButtons
-          nextPath={ProfileBuilderStepper.StepsPaths.JobPreferences}
-          backPath={ProfileBuilderStepper.StepsPaths.AccountInfo}
+          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.JobPreferences}
+          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.AccountInfo}
           handleNext={this.handleNext}
           icon={<Icon>arrow_forward</Icon>}
         />

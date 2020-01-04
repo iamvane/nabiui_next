@@ -19,6 +19,7 @@ import {
   editEmployment,
   deleteEmployment
 } from '../../redux/actions/InstructorActions';
+import { Routes } from '../common/constants/Routes';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
 import SectionTitle from '../common/SectionTitle';
@@ -320,8 +321,8 @@ export class Employment extends React.Component<Props, State> {
             : this.renderEmploymentForm())
         }
         <StepperButtons
-          nextPath={ProfileBuilderStepper.StepsPaths.Screening}
-          backPath={ProfileBuilderStepper.StepsPaths.Education}
+          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.References}
+          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
           icon={<Icon>arrow_forward</Icon>}
         />
       </div>

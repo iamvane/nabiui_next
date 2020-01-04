@@ -53,7 +53,7 @@ export const getStore = () => {
     return store;
   }
 
-  persistor = persistStore(makeStore(defaultState));
+  persistor = persistStore;
   return {
     makeStore,
     persistor

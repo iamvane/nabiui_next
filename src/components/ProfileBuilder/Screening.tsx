@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Redirect } from 'react-router-dom';
+import Router from 'next/router';
 
 import {
   Button,
@@ -94,9 +94,9 @@ export class Screening extends React.Component<{}, State> {
           nextPath={Routes.Dashboard}
           divider={false}
           hideDesktopButton={true}
-          backPath={ProfileBuilderStepper.StepsPaths.Employment}
+          backPath={Routes.BuildProfile+ ProfileBuilderStepper.StepsPaths.References}
         />
-        {this.state.performRedirect && <Redirect to={Routes.Dashboard} />}
+        {this.state.performRedirect && Router.push(Routes.Dashboard)}
       </div>
     );
   }
