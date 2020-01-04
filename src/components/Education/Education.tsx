@@ -19,6 +19,7 @@ import {
   editEducation,
   deleteEducation
  } from '../../redux/actions/InstructorActions';
+ import { Routes } from '../common/constants/Routes';
 import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import SectionTitle from '../common/SectionTitle';
@@ -279,8 +280,8 @@ export class Education extends React.Component<Props, State > {
           : this.renderEducationForm())
         }
         <StepperButtons
-          nextPath={ProfileBuilderStepper.StepsPaths.Employment}
-          backPath={ProfileBuilderStepper.StepsPaths.JobPreferences}
+          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Employment}
+          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.JobPreferences}
           icon={<Icon>arrow_forward</Icon>}
           errors={
             this.props.fetchEducationError ||

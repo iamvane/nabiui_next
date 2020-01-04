@@ -180,8 +180,8 @@ export class Recommendations extends React.Component<Props, State> {
           </Grid>
         </Grid>
         <StepperButtons
-          nextPath={Routes.Dashboard}
-          backPath={ProfileBuilderStepper.StepsPaths.Employment}
+          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Screening}
+          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Employment}
           icon={<Icon>arrow_forward</Icon>}
         />
         <SnackBar

@@ -10,6 +10,7 @@ import {
   Button
 } from '@material-ui/core';
 
+import '../../../assets/scss/ProfileHeader.scss';
 import { UserType } from '../../redux/models/UserModel';
 import { RatesType } from '../Rates/model';
 import EditInstrumentsModal from '../Profile/EditInstrumentsModal';
@@ -338,13 +339,6 @@ class ProfileHeader extends React.Component<Props, State>  {
                         className="nabi-custom-button-icon"
                         alt="background-check"
                       />
-                    </IconButton>
-                  </Grid>
-                  <Grid item={true} xs={6} className="nabi-margin-bottom-xsmall">
-                    <IconButton
-                      color={favorite ? 'primary' : 'secondary'}
-                    >
-                      <Icon>favorite</Icon>
                     </IconButton>
                   </Grid>
                 </Grid>

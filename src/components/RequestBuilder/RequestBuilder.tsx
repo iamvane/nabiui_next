@@ -51,8 +51,8 @@ export class RequestBuilder extends React.Component<Props, State> {
       (
         <AccountInfo
           key={0}
-          redirectUrl={RequestBuilderStepper.StepsPaths.BuildRequest}
-          nextPath={RequestBuilderStepper.StepsPaths.BuildRequest}
+          redirectUrl={Routes.BuildRequest + RequestBuilderStepper.StepsPaths.BuildRequest}
+          nextPath={Routes.BuildRequest + RequestBuilderStepper.StepsPaths.BuildRequest}
           hasImageUploader={true}
         />
       ),

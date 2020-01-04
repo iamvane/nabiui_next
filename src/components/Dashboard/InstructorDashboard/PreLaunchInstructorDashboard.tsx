@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import {
   Button,
@@ -163,7 +163,7 @@ export class PreLaunchInstructorDashboard extends React.Component<Props, State> 
 
     const editLinksDisplay = editLinks.map((item, i) => (
       <Typography key={i}>
-        - {item.description} <Link to={`${Routes.BuildProfile}/${item.route}`}>{item.linkText}</Link>
+        - {item.description} <Link href={`${Routes.BuildProfile}/${item.route}`}><a>{item.linkText}</a></Link>
       </Typography>
     ));
 
@@ -183,16 +183,18 @@ export class PreLaunchInstructorDashboard extends React.Component<Props, State> 
           )}
         </Button>
         {completed === 100 ?
-          <Typography><Link to={Routes.BuildProfile}>{constants.editProfileLink}</Link></Typography> : editLinksDisplay
+          <Typography><Link href={Routes.BuildProfile}><a>{constants.editProfileLink}</a></Link></Typography> : editLinksDisplay
         }
         <div className="nabi-margin-top-medium">
           <SectionTitle text={constants.profileSectionTitle} />
-          <Link to={`profile/${this.props.profile.instructorId}`}>
-            <img
-              src="https://nabimusic.s3.us-east-2.amazonaws.com/nabimusic-instructor-profiles.png"
-              className="dashboard-view-profile-image"
-            />
-            <Typography color="primary">{constants.viewProfileLink}</Typography>
+          <Link href={`profile/${this.props.profile.instructorId}`}>
+            <a>
+              <img
+                src="https://nabimusic.s3.us-east-2.amazonaws.com/nabimusic-instructor-profiles.png"
+                className="dashboard-view-profile-image"
+              />
+              <Typography color="primary">{constants.viewProfileLink}</Typography>
+            </a>
           </Link>
         </div>
         <InviteFriends />
