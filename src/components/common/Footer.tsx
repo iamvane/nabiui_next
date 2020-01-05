@@ -22,32 +22,32 @@ export const Footer = () => {
         <Grid className="nabi-padding-top-xlarge nabi-padding-bottom-medium" container={true}>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">Learn More</p>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>Pricing</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.Pricing}><a>Pricing</a></Link></Typography>
             <Typography className="nabi-cursor-pointer"><Link href=""><a>How We Screen Instructors</a></Link></Typography>
           </Grid>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">Need Help?</p>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>Parents FAQs</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>Instructors FAQs</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>Contact Us</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.FAQParents}><a>Parents FAQs</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.FAQInstructors}><a>Instructors FAQs</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.ContactUs}><a>Contact Us</a></Link></Typography>
           </Grid>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">About Nabi</p>
             <Typography className="nabi-cursor-pointer"><Link href=""><a>How It Works - Parents</a></Link></Typography>
             <Typography className="nabi-cursor-pointer"><Link href=""><a>How It Works - Instructors</a></Link></Typography>
             <Typography className="nabi-cursor-pointer"><Link href=""><a>About Us</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>Blog</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href="https://blog.nabimusic.com"><a target="_blank">Blog</a></Link></Typography>
           </Grid>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">Legal</p>
             <Typography className="nabi-cursor-pointer"><Link href={Routes.TermsOfUse}><a>Terms</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>Privacy Policy</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.PrivacyPolicy}><a>Privacy Policy</a></Link></Typography>
           </Grid>
         </Grid>
-        <Typography className="nabi-margin-top-medium nabi-text-center">
-          <div className="nabi-margin-bottom-xsmall">
+          <div className="nabi-margin-bottom-xsmall nabi-text-center">
             <SocialMenu />
           </div>
+        <Typography className="nabi-margin-top-medium nabi-text-center">
           {reactStringReplace(
             FooterComponent.CopyrightText,
             FooterComponent.NabiMusicPlaceholder,
@@ -55,8 +55,8 @@ export const Footer = () => {
               <span key={i} className="nabi-text-uppercase">{FooterComponent.NabiMusicCenter}</span>
             )
           )}
-        
-      </Typography></div>
+        </Typography>
+      </div>
     </div>
   );
 };

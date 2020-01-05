@@ -31,8 +31,8 @@ export const Testimonials = () => {
         {description}
         </Typography>
         <Grid container={true} spacing={2} className="nabi-margin-top-medium nabi-margin-bottom-medium">
-          {testimonials.map(item => (
-            <Grid item={true} md={4} xs={12}>
+          {testimonials.map((item, i)=> (
+            <Grid key={i} item={true} md={4} xs={12}>
               <div className="testimonial-item nabi-background-white nabi-box-shadow nabi-text-center nabi-border-radius">
                 <Typography>{item.testimonial}</Typography>
               </div>
