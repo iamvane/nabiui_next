@@ -28,8 +28,8 @@ export const Features = () => {
         {description}
         </Typography>
         <Grid container={true} spacing={2} className="nabi-margin-top-medium nabi-margin-bottom-medium">
-          {features.map(item => (
-            <Grid item={true} md={4} xs={12}>
+          {features.map((item, i) => (
+            <Grid key={i} item={true} md={4} xs={12}>
               <div className="feature-item nabi-background-white nabi-box-shadow nabi-text-center nabi-border-radius">
                 <img src={item.image} />
                 <Typography className="nabi-text-semibold">{item.title}</Typography>

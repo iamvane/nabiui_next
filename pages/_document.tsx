@@ -35,7 +35,7 @@ class NabiDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0" />
           <meta name="theme-color" content="#000000" />
           <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-          <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+          <link rel="shortcut icon" href="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/favicon.ico" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800" rel="stylesheet" />
           <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"></script>

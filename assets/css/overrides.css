@@ -33,6 +33,21 @@
   color: #ffffff;
 }
 
+.MuiPaper-root.MuiPaper-elevation1.MuiExpansionPanel-root.MuiExpansionPanel-rounded.MuiPaper-rounded {
+  box-shadow: none;
+}
+
+.MuiExpansionPanel-root:before, .MuiExpansionPanel-root:after {
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  content: "";
+  opacity: 1;
+  position: absolute;
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #e6e7e8 !important;
+}
 /* containedPrimary: {
   backgroundColor: '#06c3e1 !important',
   color: '#fff',

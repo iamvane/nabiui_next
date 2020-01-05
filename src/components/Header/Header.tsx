@@ -108,9 +108,7 @@ export const Header = (props: HeaderProps) => {
             toggleMenu={() => setInstructorMenuOpen(false)}
             anchorEl={anchorElInstructorMenu}
           />
-          <Link href="https://blog.nabimusic.com">
-            <a className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small" target="_blank">{headerMenuLabels.blog}</a>
-          </Link>
+          <a href="https://blog.nabimusic.com" className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small" target="_blank">{headerMenuLabels.blog}</a>
         </div>
         <div className="nabi-logo-anchor">
           <Link href={props.user.email ? Routes.Dashboard : Routes.HomePage}>

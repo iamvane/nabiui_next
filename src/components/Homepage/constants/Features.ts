@@ -23,7 +23,7 @@ export const features = [
   },
   {
     title: 'Convenience',
-    description: 'Take lessons in the comfort of your home, at the instructor’s studio or online. We made it is easy and convinient.',
+    description: 'Take lessons in the comfort of your home, at the instructor’s studio or online. We made it easy and convinient.',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/convinience.jpeg'
   },
   {
