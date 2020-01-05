@@ -13,7 +13,7 @@ export interface Props {
 
 const PageBannerCta = (props: Props) => {
   return (
-    <div className="page-banner-cta nabi-background-orange">
+    <div className="page-banner-cta nabi-background-orange nabi-text-center">
       <div className="page-banner-cta-description nabi-margin-bottom-small">{props.description}</div>
       <Link href={props.url}>
         <a>

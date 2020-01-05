@@ -38,34 +38,44 @@ export const StudentParentMenu = (props: Props) => {
               <MenuList>
                 <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.HowItWorksParents}>
-                    <Typography color="primary">
-                      {studentParentMenuLabels.howItWorks}
-                    </Typography>
+                    <a>
+                      <Typography color="primary">
+                        {studentParentMenuLabels.howItWorks}
+                      </Typography>
+                    </a>
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.FAQParents}>
-                    <Typography color="primary">
-                      {studentParentMenuLabels.faqs}
-                    </Typography>
+                    <a>
+                      <Typography color="primary">
+                        {studentParentMenuLabels.faqs}
+                      </Typography>
+                    </a>
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.Pricing}>
-                    <Typography color="primary">
-                      {studentParentMenuLabels.pricing}
-                    </Typography>
+                    <a>
+                      <Typography color="primary">
+                        {studentParentMenuLabels.pricing}
+                      </Typography>
+                    </a>
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.FeaturesParents}>
-                    <Typography color="primary">
-                      {studentParentMenuLabels.features}
-                    </Typography>
+                    <a>
+                      <Typography color="primary">
+                        {studentParentMenuLabels.features}
+                      </Typography>
+                    </a>
                   </Link>
                 </MenuItem>
                 <Link href={Routes.RegistrationParent}>
-                  <Button color="primary" variant="contained" className="nabi-responsive-button">{studentParentMenuLabels.start}</Button>
+                  <a>
+                    <Button color="primary" variant="contained" className="nabi-responsive-button">{studentParentMenuLabels.start}</Button>
+                  </a>
                 </Link>
               </MenuList>
             </ClickAwayListener>
