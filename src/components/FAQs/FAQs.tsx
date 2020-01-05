@@ -8,7 +8,6 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import '../../../assets/scss/FAQs.scss';
 import {
   parentStudentFaqs,
   instructorFaqs,
