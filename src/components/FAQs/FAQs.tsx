@@ -38,8 +38,8 @@ export const FAQs = (props: Props) => {
   return (
     <React.Fragment>
       <PageBanner title={constants.pageTitle} description={description} />
-      <div className="nabi-container nabi-background-white nabi-margin-top-large nabi-margin-bottom-large nabi-border-radius">
-        <div id="faq-wrapper">
+      <div className="nabi-container">
+        <div className="nabi-background-white nabi-section nabi-margin-top-large nabi-margin-bottom-large nabi-border-radius">
           {
             items.map((item, key) => {
               return (

@@ -9,7 +9,7 @@ export interface Props {
 
 const Banner = (props: Props) => {
   return (
-    <div className="page-banner">
+    <div className="page-banner nabi-text-center">
       <div className="page-banner-title">{props.title}</div>
       <div className="page-banner-description">{props.description}</div>
     </div>

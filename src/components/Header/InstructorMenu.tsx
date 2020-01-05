@@ -38,27 +38,35 @@ export const InstructorMenu = (props: Props) => {
               <MenuList>
                 <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.HowItWorksInstructors}>
-                    <Typography color="primary">
-                      {instructorMenuLabels.howItWorks}
-                    </Typography>
+                    <a>
+                      <Typography color="primary">
+                        {instructorMenuLabels.howItWorks}
+                      </Typography>
+                    </a>
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.FAQInstructors}>
-                    <Typography color="primary">
-                      {instructorMenuLabels.faqs}
-                    </Typography>
+                    <a>
+                      <Typography color="primary">
+                        {instructorMenuLabels.faqs}
+                      </Typography>
+                    </a>
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.FeaturesInstructors}>
-                    <Typography color="primary">
-                      {instructorMenuLabels.features}
-                    </Typography>
+                    <a>
+                      <Typography color="primary">
+                        {instructorMenuLabels.features}
+                      </Typography>
+                    </a>
                   </Link>
                 </MenuItem>
                 <Link href={Routes.RegistrationInstructor}>
-                  <Button color="primary" variant="contained" className="nabi-responsive-button">{instructorMenuLabels.start}</Button>
+                  <a>
+                    <Button color="primary" variant="contained" className="nabi-responsive-button">{instructorMenuLabels.start}</Button>
+                  </a>
                 </Link>
               </MenuList>
             </ClickAwayListener>
