@@ -64,8 +64,16 @@ export interface Instructor {
   location?: string;
   lessonStartAt?: string;
   favorite?: boolean;
-  backgroundCheck?: boolean;
+  backgroundCheckStatus?: string;
   address?: string;
+  distance: number;
+  yearsOfExperience: number;
+  placeForLessons: {
+    studio?: boolean;
+    online?: boolean;
+    home?: boolean;
+  }
+
 }
 
 export interface InstructorState {

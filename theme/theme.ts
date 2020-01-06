@@ -129,37 +129,6 @@ export const theme = createMuiTheme({
                 color: '#06c3e1'
             }
         },
-        MuiIconButton: {
-            root: {
-                '&:hover': {
-                    background: 'rgba(6,195,225, 0.2) !important'
-                },
-                color: '#06c3e1',
-                borderRadius: '3px',
-                height: '30px',
-                width: '30px',
-                padding: '0px'
-            },
-            colorPrimary: {
-                color: '#fff !important',
-                borderRadius: '50%',
-                height: '30px',
-                width: '30px',
-                background: '#06c3e1',
-                '&:hover': {
-                    background: 'rgba(6,195,225, 0.75) !important'
-                },
-            },
-            colorSecondary: {
-                color: '#b6bac3 !important',
-                borderRadius: '3px',
-                height: '10px',
-                width: '10px',
-                '&:hover': {
-                    background: 'rgba(6,195,225, 0.75) !important'
-                },
-            }
-        },
         MuiInput: {
             fullWidth: {
                 width: 'auto'

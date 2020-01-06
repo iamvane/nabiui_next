@@ -48,6 +48,31 @@
   transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   background-color: #e6e7e8 !important;
 }
+
+.MuiIconButton-root {
+  flex: 0 0 auto;
+  color: #06c3e1;
+  width: 30px;
+  height: 30px;
+  padding: 0px !important;
+  overflow: visible;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 3px;
+}
+
+.MuiIconButton-colorPrimary {
+  color: #fff !important;
+  width: 30px;
+  height: 30px;
+  background: #06c3e1;
+  border-radius: 50%;
+}
+
+.MuiIconButton-colorSecondary {
+  background: #FB7F6B !important;
+}
 /* containedPrimary: {
   backgroundColor: '#06c3e1 !important',
   color: '#fff',
