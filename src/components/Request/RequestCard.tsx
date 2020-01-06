@@ -6,7 +6,6 @@ import {
   Button,
   Grid,
   Icon,
-  // IconButton,
   Typography
 } from '@material-ui/core';
 
@@ -21,7 +20,6 @@ import { SkillLevel } from '../Instruments/constants';
 import { RequestCardComponent } from './constants';
 
 interface Props {
-  // TODO: change to Re1uestType when doing API integration
   request: Request;
 }
 
@@ -41,7 +39,6 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     role,
     distance,
     skillLevel,
-    avatar
   } = props.request;
 
   const studentsDetails = studentDetails.map((student: any, i: any) => (
@@ -59,9 +56,6 @@ const RequestCard: React.StatelessComponent<Props> = props => {
         style={{right: '20px'}}
         className={`nabi-float-right ${!applied && 'nabi-position-absolute'} nabi-position-absolute-md`}
       >
-        {/* {!applied && <IconButton color="primary">
-          <Icon>favorite</Icon>
-        </IconButton>} */}
         {applied &&
           <Typography color="primary" className="nabi-display-inline-block nabi-margin-right-xsmall">
             <Icon className="nabi-vertical-bottom">check</Icon> Applied
@@ -88,16 +82,6 @@ const RequestCard: React.StatelessComponent<Props> = props => {
           </Grid>
           <Typography>
             {requestMessage}
-            {/* <Link
-              href={`${Routes.Request}/${id}`}
-            >
-              <a  className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall">
-                {requestMessage.length > RequestCardComponent.maxRequestMessageLength ?
-                  CommonConstants.viewMore :
-                  CommonConstants.viewMore.slice(3)
-                }
-              </a>
-            </Link> */}
           </Typography>
           <div className="nabi-margin-top-small">
             <Typography
@@ -130,10 +114,6 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             >
               {RequestCardComponent.Text.StudentDetails}
             </Typography>
-            {/* {
-              role === Role.student &&
-              <Typography className="nabi-display-inline-block">{studentDetails}</Typography>
-            */
             <ul className="nabi-margin-top-xsmall">
               {studentsDetails}
             </ul>
