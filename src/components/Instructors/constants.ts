@@ -224,17 +224,6 @@ export namespace InstructorFilterComponent {
     },
   ];
 
-  export enum Text {
-    Instruments = 'Instrument',
-    Within = 'Within',
-    Distance = 'Miles',
-    ZipCode = 'Zip Code',
-    Gender = 'Gender',
-    Age = 'Age',
-    LessonRate = 'Lesson Rate',
-    Experience = 'Experience'
-  }
-
   export enum FieldLabels {
     Sort = 'Sort',
     Distance = 'Distance',
@@ -266,11 +255,7 @@ export namespace InstructorFilterComponent {
     Availability = 'availability',
     Age = 'age',
     Gender = 'gender',
-    Instrument = 'instrument',
     ZipCode = 'zipCode',
-    Price = 'lessonRate',
-    Experience = 'experience',
-    Qualifications = 'qualifications'
   }
 
   export enum Placeholders {

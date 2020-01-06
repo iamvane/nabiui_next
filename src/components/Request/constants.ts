@@ -1,5 +1,9 @@
 import { CommonConstants } from '../common/constants/common';
 
+export namespace RequestListComponent {
+  export const pageTitle = 'Requests';
+}
+
 export namespace RequestComponent {
   export const title = 'Build Request';
 
@@ -118,40 +122,47 @@ export namespace RequestsListComponent {
 
 export namespace RequestFilterComponent {
   export const title = 'Refine Your Search';
-  export const rangeDefaulValue = [0, 200];
 
-  export enum Text {
-    Instruments = 'Instrument',
-    Within = 'Within',
-    Distance = 'Miles',
-    ZipCode = 'Zip Code',
-    LessonDuration = 'Lesson Duration',
-    SkillLevel = 'Skill Level'
+  export enum FieldLabels {
+    Sort = 'Sort',
+    Distance = 'Distance',
+    Location = 'Place For Lessons',
   }
 
   export enum FieldNames {
+    Sort = 'sort',
+    Distance = 'distance',
+    Location = 'placeForLessons',
     Instrument = 'instrument',
-    Distance = 'miles',
-    ZipCode = 'zipCode',
-    LessonDuration = 'lessonDuration',
-    SkillLevel = 'skillLevel',
+    Age = 'age',
   }
 
   export enum Ids {
-    Instrument = 'instrument',
-    Distance = 'miles',
-    ZipCode = 'zipCode',
-    LessonDuration = 'lessonDuration',
-    SkillLevel = 'skillLevel',
+    Sort= 'sort',
+    Distance = 'distance',
+    Location = 'placeForLessons',
+    Age = 'age'
   }
 
-  export enum DisabledPlaceholders {
-    SelectLevel = 'Select Level',
-    SelectInstrument = 'Select Instrument',
-    SelectDistance = 'Select Miles',
-    SelectlessonDuration = 'Select Lesson Duration'
+  export enum Placeholders {
+    Sort = 'Sort by',
+    Distance = 'Any',
+    Location = 'Select location',
+    Age = 'Select age',
   }
 }
+
+export interface RequestListQueryParams {
+  sort?: string;
+  instrument?: string;
+  location?: string;
+  distance?: number;
+  placeForLessons?: string;
+  age?: string;
+}
+
+export const defaultQueryParams: RequestListQueryParams = {
+};
 
 export namespace RequestFormComponent {
   export const title = 'Your Request';

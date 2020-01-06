@@ -1,7 +1,8 @@
 import {
   ActionStatus,
-  ActionStatusWithMessage
-} from '../models/models';
+  ActionStatusWithMessage,
+  ListResource
+} from './models';
 import { StudentType } from '../../components/Request/models';
 
 export interface RequestType {
@@ -17,8 +18,28 @@ export interface RequestType {
   [x: string]: any;
 }
 
+export interface Request {
+  id: number;
+  createdAt: string;
+  displayName: string;
+  distance: number;
+  instrument: string;
+  lessonDuration: string;
+  requestTitle: string;
+  requestMessage: string;
+  placeForLessons: string;
+  skillLevel: string;
+  role: string;
+  applicationsReceived: number;
+  applied: boolean;
+  studentDetails: StudentType[];
+  avatar: string;
+  location: string;
+}
+
 export interface RequestState {
   request: RequestType;
+  requestsList: ListResource<Request>;
   requests: RequestType[];
   actions: {
     createRequest: ActionStatus;
@@ -26,6 +47,7 @@ export interface RequestState {
     fetchRequest: ActionStatus;
     editRequest: ActionStatusWithMessage;
     deleteRequest: ActionStatusWithMessage;
+    fetchRequestList: ActionStatus;
   };
 }
 
@@ -43,6 +65,12 @@ export const defaultRequestState: RequestState = {
     ]
   },
   requests: [],
+  requestsList: {
+    count: 0,
+    previous: '',
+    next: '',
+    results: []
+  },
   actions: {
     createRequest: {
       isRequesting: false,
@@ -65,6 +93,10 @@ export const defaultRequestState: RequestState = {
       isRequesting: false,
       error: '',
       message: ''
+    },
+    fetchRequestList: {
+      isRequesting: false,
+      error: '',
     }
   }
 };
