@@ -1,7 +1,7 @@
 import * as React from 'react';
 import moment from 'moment';
 const reactStringReplace = require('react-string-replace');
-import Link from 'next/link';
+import Router from 'next/router';
 
 import {
   Avatar,
@@ -13,14 +13,14 @@ import {
 } from '@material-ui/core';
 
 import { Rates } from '../../redux/models/InstructorModel';
-// import { InstrumentsType } from 'components/Instruments/model';
+import PlaceForlessons from '../PlaceForLessons/PlaceForLessons';
+import { BackgroundCheckStatus } from '../ProfileBuilder/constants';
+import { ProfileHeaderComponent } from '../Profile/constants';
 import { InstructorCardComponent } from './constants';
-// import { Routes } from 'components/common/constants/Routes';
 
 interface Props {
   id: number;
   age: number;
-  address: string;
   displayName: string;
   bioTitle: string;
   bioDescription: string;
@@ -29,10 +29,17 @@ interface Props {
   instruments: string[];
   lessonsTaught: number;
   lastLogin: string;
-  backgroundCheck: boolean;
+  backgroundCheckStatus: string;
+  distance: number;
+  experience: number;
   favorite: boolean;
   memberSince: string;
   avatarImage: string;
+  placeForLessons: {
+    studio?: boolean;
+    online?: boolean;
+    home?: boolean;
+  }
   fetchInstructor: (id: number) => void;
 }
 
@@ -61,87 +68,96 @@ const selectStartingRate = (rates: Rates) => {
 
 const InstructorCard: React.StatelessComponent<Props> = props => {
   const BackgroundCheckIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg';
-  const AvatarStyles = { width: '100px', height: '100px'};
+  const AvatarStyles = { width: '120px', height: '120px'};
   const {
     age,
     lastLogin,
     lessonsTaught,
     bioDescription,
     bioTitle,
-    address,
     avatarImage,
     displayName,
     memberSince,
-    backgroundCheck,
-    // favorite,
+    backgroundCheckStatus,
     instruments,
     rateStartAt,
-    fetchInstructor,
-    id
+    id,
+    experience,
+    distance,
+    placeForLessons
   } = props;
   let instrumentItem: string[] = [];
   instruments.map(instrument => {
     instrumentItem.push((instrument as String).charAt(0).toUpperCase() + instrument.slice(1));
     return instrumentItem;
   });
+  const navigateToProfile = () => {
+    Router.push(`/profile/${id}`)
+  };
   return (
-    <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small nabi-position-relative">
+    <div onClick={navigateToProfile} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative item-card">
       {/* <div style={{right: '20px'}} className="nabi-float-right nabi-position-absolute">
         <IconButton color={favorite ? 'primary' : 'secondary'}>
           <Icon>favorite</Icon>
         </IconButton>
       </div> */}
-      <Grid container={true} spacing={8}>
+      <Grid container={true} spacing={3}>
         <Grid item={true} xs={12} md={3} className="nabi-text-center">
           <Avatar src={avatarImage} style={AvatarStyles} className="nabi-margin-center" />
-          <Typography className="nabi-margin-top-xsmall">
-            {InstructorCardComponent.Text.Age} {age}
-          </Typography>
-        </Grid>
-        <Grid item={true} xs={12} md={5} className="nabi-text-center nabi-text-left-md">
-          <Typography className="nabi-margin-top-xsmall nabi-text-mediumbold">
+          <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
             {displayName}
-          </Typography>
-          <Typography className="nabi-margin-top-xsmall">
-            {bioTitle}
           </Typography>
           <div className="nabi-cursor-pointer nabi-color-nabi">
             {displayRatingStars(props.reviewsNumber)}
           </div>
+          <Typography className="nabi-text-uppercase">
+            {experience} {ProfileHeaderComponent.Text.YearExperiece} | {age} {ProfileHeaderComponent.Text.YearOld}
+          </Typography>
+          <Typography>
+            {distance && String(distance.toFixed(1)) + ' mi away'}
+          </Typography>
+        </Grid>
+        <Grid item={true} xs={12} md={6}>
+          <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-top-zero nabi-text-center nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-left-md">
+            {bioTitle}
+          </p>
           <div>
-            <Typography className="nabi-display-inline-block">
-              {address}
-            </Typography>
-            <IconButton
-              color={backgroundCheck ? 'primary' : 'secondary'}
-              className="nabi-margin-left-xsmall nabi-display-inline-block"
-            >
-              <img src={BackgroundCheckIcon} className="nabi-custom-button-icon" alt="background-check" />
-            </IconButton>
             <Typography className="nabi-margin-top-xsmall">
               {
-                bioDescription ?
-                bioDescription.slice(0, InstructorCardComponent.maxBioDescriptionLength) :
-                null
+                bioDescription &&
+                `${bioDescription.slice(0, InstructorCardComponent.maxBioDescriptionLength)}...`
               }
-                <Link href={`/profile/${props.id}`}>
-                  <a className="nabi-color-nabi nabi-cursor-pointer nabi-margin-left-xsmall">
-                    {
-                      !bioDescription ?
-                      null :
-                      bioDescription.length > InstructorCardComponent.maxBioDescriptionLength
-                      ? InstructorCardComponent.Text.ViewMore
-                    :
-                      InstructorCardComponent.Text.ViewMore.slice(3)}
-                  </a>
-                </Link>
             </Typography>
-            <Typography color="primary" className="nabi-margin-top-xsmall nabi-color-nabi">
-              {instrumentItem.join(' ')}
-            </Typography>
+            <Grid container={true} spacing={1}>
+              {
+                backgroundCheckStatus === BackgroundCheckStatus.verified &&
+                <Grid item={true} xs={12} className="nabi-margin-top-xsmall">
+                  <IconButton
+                    color="secondary"
+                    className="nabi-display-inline-block"
+                  >
+                    <img src={BackgroundCheckIcon} className="nabi-custom-button-icon" alt="background-check" />
+                  </IconButton>
+                  <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">Background Check</Typography>
+                </Grid>
+              }
+              <Grid item={true} md={6}>
+                <Typography>
+                  <span className="nabi-text-semibold nabi-color-nabi"> Teaches: </span>{instrumentItem.join(' ')}
+                </Typography>
+              </Grid>
+              <Grid item={true} md={6}>
+                <Typography color="primary" className="nabi-text-semibold">Teaching locations:</Typography>
+                <PlaceForlessons
+                  online={placeForLessons.online}
+                  studio={placeForLessons.studio}
+                  home={placeForLessons.home}
+                />
+              </Grid>
+            </Grid>
           </div>
         </Grid>
-        <Grid item={true} xs={12} md={4} className="nabi-text-center nabi-margin-top-small">
+        <Grid item={true} xs={12} md={3} className="nabi-text-center">
           <Typography className="nabi-text-mediumbold">
             {InstructorCardComponent.Text.StartAt}
           </Typography>
@@ -156,9 +172,6 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
             color="primary"
             className="nabi-responsive-button nabi-margin-top-xsmall"
             variant="contained"
-            onClick={() => {
-              fetchInstructor(id);
-            }}
           >
             {InstructorCardComponent.Text.ViewProfile}
           </Button>

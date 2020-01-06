@@ -26,17 +26,19 @@ const Instructors: React.StatelessComponent<Props> = props => {
               age={instructor.age ? instructor.age : 0}
               memberSince={instructor.memberSince ? instructor.memberSince : ''}
               lastLogin={instructor.lastLogin ? instructor.lastLogin : ''}
-              address={instructor.address ? instructor.address : ''}
               displayName={instructor.displayName ? instructor.displayName : ''}
               reviewsNumber={instructor.reviews ? instructor.reviews : 0}
               instruments={instructor.instruments ? instructor.instruments as any : []}
-              backgroundCheck={instructor.backgroundCheck ? instructor.backgroundCheck : false}
+              backgroundCheckStatus={instructor.backgroundCheckStatus ? instructor.backgroundCheckStatus : ''}
               favorite={instructor.favorite ? instructor.favorite : false}
               lessonsTaught={instructor.lessonsTaught ? instructor.lessonsTaught : 0}
               avatarImage={instructor.avatar as string}
               rateStartAt={instructor.rates as Rates}
               bioTitle={instructor.bioTitle as string}
               bioDescription={instructor.bioDescription as string}
+              distance={instructor.distance}
+              experience={instructor.yearsOfExperience}
+              placeForLessons={instructor.placeForLessons}
             />
           ))}
         </React.Fragment>}

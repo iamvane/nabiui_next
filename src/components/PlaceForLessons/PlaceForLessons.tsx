@@ -22,7 +22,7 @@ const PlaceForLessons: React.StatelessComponent<Props> = props => {
       {
         home && (
           <Grid container={true} className="nabi-align-vertical-items nabi-margin-top-xsmall">
-            <Grid item={true} xs={2} sm={1} md={3}>
+            <Grid item={true} xs={2} sm={1} md={2}>
               <IconButton
                 color={home ? 'primary' : 'secondary'}
                 className="nabi-margin-right-xsmall"
@@ -35,7 +35,7 @@ const PlaceForLessons: React.StatelessComponent<Props> = props => {
               </IconButton>
             </Grid>
             <Grid item={true} xs={10} sm={11} md={9}>
-              <Typography className={`nabi-text-uppercase ${home ? 'nabi-color-nabi' : 'nabi-color-disabled'}`}>
+              <Typography className="nabi-color-nabi">
                 {PlaceForLessonsComponent.Text.StudentHome}
               </Typography>
             </Grid>
@@ -45,7 +45,7 @@ const PlaceForLessons: React.StatelessComponent<Props> = props => {
       {
         studio && (
           <Grid container={true} className="nabi-align-vertical-items nabi-margin-top-xsmall">
-            <Grid item={true} xs={2} sm={1} md={3}>
+            <Grid item={true} xs={2} sm={1} md={2}>
               <IconButton
                 color={studio ? 'primary' : 'secondary'}
                 className="nabi-margin-right-xsmall"
@@ -58,17 +58,17 @@ const PlaceForLessons: React.StatelessComponent<Props> = props => {
               </IconButton>
             </Grid>
             <Grid item={true} xs={10} sm={11} md={9}>
-              <Typography className={studio ? 'nabi-color-nabi' : 'nabi-color-disabled'}>
-                <span className="nabi-text-uppercase">
-                  {PlaceForLessonsComponent.Text.Studio}
-                </span>
-                {' '}
+              <Typography className="nabi-color-nabi">
+                {PlaceForLessonsComponent.Text.Studio}
+                {studioAddress &&
                 <span className="nabi-text-decoration-underline-hover nabi-cursor-pointer">
+                  {' '}
                   {PlaceForLessonsComponent.studioAddress.replace(
                     PlaceForLessonsComponent.studioAddressPlaceholder,
                     String(studioAddress)
                   )}
                 </span>
+                }
               </Typography>
             </Grid>
           </Grid>
@@ -77,7 +77,7 @@ const PlaceForLessons: React.StatelessComponent<Props> = props => {
       {
         online && (
           <Grid container={true} className="nabi-align-vertical-items nabi-margin-top-xsmall">
-            <Grid item={true} xs={2} sm={1} md={3}>
+            <Grid item={true} xs={2} sm={1} md={2}>
               <IconButton
                 color={online ? 'primary' : 'secondary'}
                 className="nabi-margin-right-xsmall"
@@ -90,7 +90,7 @@ const PlaceForLessons: React.StatelessComponent<Props> = props => {
               </IconButton>
             </Grid>
             <Grid item={true} xs={10} sm={11} md={9}>
-              <Typography className={`nabi-text-uppercase ${online ? 'nabi-color-nabi' : 'nabi-color-disabled'}`}>
+              <Typography className="nabi-color-nabi">
                 {PlaceForLessonsComponent.Text.Online}
               </Typography>
             </Grid>

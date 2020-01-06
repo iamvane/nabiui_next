@@ -77,3 +77,10 @@ export namespace ScreeningComponent {
 
   export const fieldName = 'isCompliant';
 }
+
+export enum BackgroundCheckStatus {
+  verified = 'VERIFIED',
+  pending = 'PENDING',
+  warning = 'WARNING',
+  notVerified = 'NOT_VERIFIED'
+}

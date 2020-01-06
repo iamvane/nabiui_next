@@ -17,28 +17,21 @@ import MusicAdded from '../Music/MusicAdded';
 import { ProfileContentComponent } from './constants';
 
 interface Props {
-  bio: string;
-  employment: EmploymentType[];
-  education: EducationType[];
-  reviews: ReviewsType[];
-  music: string[];
-  qualifications: Qualifications[];
-  displayName: string;
-  deleteEmployment: (employmentId: number) => void;
-  editEmployment: (employmentId: number) => void;
-  deleteEducation: (employmentId: number) => void;
-  editEducation: (employmentId: number) => void;
+  instructor: any;
 }
 
 /**
  * Profile Content
  */
 const ProfileContent: React.StatelessComponent<Props> = props => {
-  const firstName = props.displayName ? props.displayName.split(' ')[0] : '';
-  const qualifications = props.qualifications.map((item: string, i: number) => (
-    <span key={i} className="nabi-margin-right-small">{item}</span>));
+  const qualifications = props.instructor.qualifications && Object.keys(props.instructor.qualifications).map((key: string, i: number) => {
+    if (props.instructor.qualifications[key] === true) {
+      return <span key={i} className="nabi-margin-right-small">{key}</span>
+    }
+    return;
+  });
 
-  const employmentAdded = props.employment.map((employment, i) => (
+  const employmentAdded = props.instructor.employment && props.instructor.employment.map((employment, i) => (
     <li className="nabi-list" key={i}>
       <EmploymentAdded
         id={employment.id}
@@ -49,14 +42,12 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
         fromYear={employment.fromYear}
         toMonth={employment.toMonth}
         toYear={employment.toYear}
-        deleteEmployment={(employmentId: number) => props.deleteEmployment(employmentId)}
-        editEmployment={(employmentId: number) => props.editEmployment(employmentId)}
         notEditable={true}
       />
     </li>
   ));
 
-  const educationAdded = props.education.map((education, i) => (
+  const educationAdded = props.instructor.education && props.instructor.education.map((education, i) => (
     <li className="nabi-list" key={i}>
       <EducationAdded
         id={education.id}
@@ -65,8 +56,6 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
         schoolLocation={education.schoolLocation}
         degreeType={education.degreeType}
         fieldOfStudy={education.fieldOfStudy}
-        deleteEducation={(educationId: number) => props.deleteEducation(educationId)}
-        editEducation={(educationId: number) => props.editEducation(educationId)}
         notEditable={true}
       />
     </li>
@@ -83,8 +72,8 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
   //       date={review.date}
   //     />
   // ));
-
-  const music = props.music.map((item, i) => (
+  const firstName = props.instructor.displayName ? props.instructor.displayName.split(' ')[0] : '';
+  const music = props.instructor.music && props.instructor.music.map((item, i) => (
     <MusicAdded
       key={i}
       deleteMusic={() => null}
@@ -110,27 +99,27 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
         }
       />
       <Typography className="nabi-margin-bottom-medium">
-        {props.bio ? props.bio : ProfileContentComponent.Text.noContent}
+        {props.instructor.bio ? props.instructor.bio : ProfileContentComponent.Text.noContent}
       </Typography>
       <SectionTitle text={ProfileContentComponent.Text.TeachingExperience} />
-      {props.employment.length ?
+      {props.instructor.employment && props.instructor.employment.length ?
         <ul className="nabi-margin-bottom-medium">{employmentAdded}</ul> :
         <Typography className="nabi-margin-bottom-medium">{ProfileContentComponent.Text.noContent}</Typography>
       }
       <SectionTitle text={ProfileContentComponent.Text.Education} />
-      {props.education.length ?
+      {props.instructor.education && props.instructor.education.length ?
         <ul className="nabi-margin-bottom-medium">{educationAdded}</ul> :
         <Typography className="nabi-margin-bottom-medium">{ProfileContentComponent.Text.noContent}</Typography>
       }
       <SectionTitle text={ProfileContentComponent.Text.Music} />
       <Grid container={true} className="nabi-margin-top-small">
-        {props.music.length ?
+        {props.instructor.music && props.instructor.music.length ?
           music :
           <Typography className="nabi-margin-bottom-medium">{ProfileContentComponent.Text.noContent}</Typography>
         }
       </Grid>
       <SectionTitle text={ProfileContentComponent.Text.AdditionalQualifications} />
-      {props.qualifications.length ?
+      {props.instructor.qualifications && props.instructor.qualifications.length ?
         <Typography className="nabi-margin-bottom-medium">{qualifications}</Typography> :
         <Typography className="nabi-margin-bottom-medium">{ProfileContentComponent.Text.noContent}</Typography>
       }

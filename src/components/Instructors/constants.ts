@@ -190,7 +190,7 @@ export namespace InstructorsComponent {
 }
 
 export namespace InstructorCardComponent {
-  export const maxBioDescriptionLength = 70;
+  export const maxBioDescriptionLength = 112;
 
   export enum Text {
     Age =  'Age',

@@ -14,8 +14,8 @@ import {
 } from './constants';
 
 interface Props extends EducationType {
-  deleteEducation: (educationId: number | undefined) => void;
-  editEducation: (educationId: number | undefined) => void;
+  deleteEducation?: (educationId: number | undefined) => void;
+  editEducation?: (educationId: number | undefined) => void;
   gridWidth?: boolean | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   notEditable?: boolean;
 }

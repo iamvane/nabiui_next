@@ -11,8 +11,8 @@ import { EmploymentType }  from './model';
 import { EmploymentAddedComponent } from './constants';
 
 interface Props extends EmploymentType {
-  deleteEmployment: (employmentId: any) => void;
-  editEmployment: (employmentId: any) => void;
+  deleteEmployment?: (employmentId: any) => void;
+  editEmployment?: (employmentId: any) => void;
   gridWidth?: boolean | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
   notEditable?: boolean;
 }
