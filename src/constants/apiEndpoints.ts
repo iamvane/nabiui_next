@@ -22,4 +22,5 @@ export namespace ApiEndpoints {
     export const requestReferences = '/v1/request-references/';
     export const fetchReferences = '/v1/references-list/';
     export const lessonRequest = '/v1/lesson-request/';
+    export const requestList = '/v1/lesson-request-list/';
 }

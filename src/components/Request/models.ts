@@ -3,7 +3,7 @@ import { requestsMockData } from './mockData';
 export interface StudentType {
   name: string;
   age: number;
-  skillLevel: string;
+  skillLevel?: string;
 }
 
 export interface  RequestType {

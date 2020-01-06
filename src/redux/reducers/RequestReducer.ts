@@ -222,6 +222,46 @@ export default function requestsReducer(
           }
         };
 
+    case RequestActions.FETCH_REQUESTS_LIST:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchRequestList: {
+            ...state.actions.fetchRequestList,
+            isRequesting: true,
+          }
+        }
+      };
+
+    case RequestActions.FETCH_REQUESTS_LIST_SUCCESS:
+      const { data: requestsList } = action;
+      return {
+        ...state,
+        requestsList,
+        actions: {
+          ...state.actions,
+          fetchRequestList: {
+            ...state.actions.fetchRequestList,
+            isRequesting: false,
+            error: ''
+          }
+        }
+      };
+
+    case RequestActions.FETCH_REQUESTS_LIST_FAILURE:
+      const { error: fetchRequestListError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchRequestList: {
+            isRequesting: false,
+            error: fetchRequestListError
+          }
+        }
+      };
+
     default:
       return state;
   }
