@@ -303,6 +303,7 @@ export namespace RequestCardComponent {
     LessonBudgetPlaceholder = '{LessonRate}',
     LessonBudget = '{LessonRate}/lesson',
     SendApplication = 'Send Application',
+    ViewApplication = 'View Application',
     Applications = 'applications',
     Pass = 'Pass'
   }

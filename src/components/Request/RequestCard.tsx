@@ -3,6 +3,7 @@ import moment from 'moment';
 import Link from 'next/link';
 
 import {
+  Avatar,
   Button,
   Grid,
   Icon,
@@ -11,9 +12,11 @@ import {
 
 import { Request } from '../../redux/models/RequestModel';
 
-import { CommonConstants } from '../common/constants/common';
 import { Routes } from '../common/constants/Routes';
-import { Role } from '../../constants/Roles';
+import {
+  Role,
+  RoleLabels
+} from '../../constants/Roles';
 import { PlaceForLessons } from '../PlaceForLessons/constants';
 import { instruments } from '../../../assets/data/instruments';
 import { SkillLevel } from '../Instruments/constants';
@@ -24,8 +27,10 @@ interface Props {
 }
 
 const RequestCard: React.StatelessComponent<Props> = props => {
+  const AvatarStyles = { width: '120px', height: '120px'};
   const {
     id,
+    avatar,
     instrument,
     placeForLessons,
     lessonDuration,
@@ -41,6 +46,8 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     skillLevel,
   } = props.request;
 
+  const studentInfo =
+    `${studentDetails[0].age} ${RequestCardComponent.Text.YrsOld} (${SkillLevel[skillLevel]})`;
   const studentsDetails = studentDetails.map((student: any, i: any) => (
     <li key={i} className="nabi-list nabi-margin-top-xsmall">
       <Typography className="nabi-color-default">
@@ -51,7 +58,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
   const instrumentDisplay = instruments.find(t => t.value === instrument);
 
   return (
-    <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small nabi-position-relative">
+    <div className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative">
       <div
         style={{right: '20px'}}
         className={`nabi-float-right ${!applied && 'nabi-position-absolute'} nabi-position-absolute-md`}
@@ -61,29 +68,27 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             <Icon className="nabi-vertical-bottom">check</Icon> Applied
           </Typography>}
       </div>
-      <Grid container={true} spacing={8}>
-        <Grid item={true} xs={12} md={8} className="nabi-text-center nabi-text-left-md">
-          <Grid item={true} xs={8} md={12} className="nabi-margin-center">
-            <Link
-              href={`${Routes.Request}/${id}`}
-            >
-              <a>
-                <Typography color="primary" className="nabi-margin-top-xsmall nabi-text-mediumbold">
-                  {displayName + role}
-                </Typography>
-              </a>
-            </Link>
-            <Typography>
-              {distance && String(distance.toFixed(1))}
-            </Typography>
-            <Typography className="nabi-margin-top-small nabi-text-mediumbold">
+      <Grid container={true} spacing={3}>
+        <Grid item={true} xs={12} md={3} className="nabi-text-center">
+          <Avatar src={avatar} style={AvatarStyles} className="nabi-margin-center" />
+          <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
+            {displayName}
+          </Typography>
+          <Typography color="primary" className="nabi-text-semibold">
+            {RoleLabels[role]}
+          </Typography>
+          <Typography>
+            {distance && String(distance.toFixed(1)) + ' mi away'}
+          </Typography>
+        </Grid>
+        <Grid item={true} xs={12} md={6}>
+            <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-top-zero nabi-text-center nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-left-md">
               {requestTitle}
-            </Typography>
-          </Grid>
+            </p>
           <Typography>
             {requestMessage}
           </Typography>
-          <div className="nabi-margin-top-small">
+          <div className="nabi-margin-top-xsmall">
             <Typography
               color="primary"
               className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
@@ -114,13 +119,20 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             >
               {RequestCardComponent.Text.StudentDetails}
             </Typography>
-            <ul className="nabi-margin-top-xsmall">
-              {studentsDetails}
-            </ul>
+            {
+              role === Role.student &&
+              <Typography className="nabi-display-inline-block">{studentInfo}</Typography>
             }
+            {
+              role === Role.parent &&
+              <ul className="nabi-margin-top-xsmall">
+                {studentsDetails}
+              </ul>
+            }
+
           </div>
         </Grid>
-        <Grid item={true} xs={12} md={4} className="nabi-text-center nabi-text-left-md">
+        <Grid item={true} xs={12} md={3} className="nabi-text-center nabi-text-left-md">
           <div className="nabi-margin-top-small-md">
             <Typography className="nabi-display-inline-block nabi-margin-top-small-md">
               {moment(new Date()).to(new Date(createdAt ? createdAt : String(new Date())))}
@@ -139,11 +151,11 @@ const RequestCard: React.StatelessComponent<Props> = props => {
                   className="nabi-responsive-button nabi-margin-top-xsmall"
                   variant="contained"
                 >
-                  {RequestCardComponent.Text.SendApplication}
+                  {applied ? RequestCardComponent.Text.ViewApplication : RequestCardComponent.Text.SendApplication}
                 </Button>
               </a>
             </Link>
-            <br />
+            {/* <br />
             <Button
               color="default"
               className="nabi-responsive-button nabi-margin-top-xsmall"
@@ -151,7 +163,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             >
               <Icon className="nabi-margin-right-xsmall">close</Icon>
               {RequestCardComponent.Text.Pass}
-            </Button>
+            </Button> */}
           </div>
         </Grid>
       </Grid>
