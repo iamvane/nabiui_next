@@ -1,22 +1,22 @@
-import * as React from 'react';
-import moment from 'moment';
-const reactStringReplace = require('react-string-replace');
-import Router from 'next/router';
+import * as React from "react";
+import moment from "moment";
+const reactStringReplace = require("react-string-replace");
+import Router from "next/router";
 
 import {
   Avatar,
   Button,
   Grid,
   IconButton,
-  Typography,
-} from '@material-ui/core';
-import Star from '@material-ui/icons/Star';
+  Typography
+} from "@material-ui/core";
+import Star from "@material-ui/icons/Star";
 
-import { Rates } from '../../redux/models/InstructorModel';
-import PlaceForlessons from '../PlaceForLessons/PlaceForLessons';
-import { BackgroundCheckStatus } from '../ProfileBuilder/constants';
-import { ProfileHeaderComponent } from '../Profile/constants';
-import { InstructorCardComponent } from './constants';
+import { Rates } from "../../redux/models/InstructorModel";
+import PlaceForlessons from "../PlaceForLessons/PlaceForLessons";
+import { BackgroundCheckStatus } from "../ProfileBuilder/constants";
+import { ProfileHeaderComponent } from "../Profile/constants";
+import { InstructorCardComponent } from "./constants";
 
 interface Props {
   id: number;
@@ -39,13 +39,13 @@ interface Props {
     studio?: boolean;
     online?: boolean;
     home?: boolean;
-  }
+  };
   fetchInstructor: (id: number) => void;
 }
 
 const displayRatingStars = (reviewsNumber: number) => {
   let ratingStars: JSX.Element[] = [];
-  for (let i = 0; i < 5; i++ ) {
+  for (let i = 0; i < 5; i++) {
     if (i < reviewsNumber) {
       ratingStars.push(<Star key={i} />);
     } else {
@@ -56,19 +56,24 @@ const displayRatingStars = (reviewsNumber: number) => {
 };
 
 const selectStartingRate = (rates: Rates) => {
-  const rateClasses = ['mins30', 'mins45', 'min60', 'mins90'];
+  const rateClasses = ["mins30", "mins45", "min60", "mins90"];
   let selectedRate = [] as number[];
-  rateClasses.forEach((rate) => {
+  rateClasses.forEach(rate => {
     if (rates[rate]) {
       selectedRate.push(Number(rates[rate]));
     }
   });
-  return selectedRate.length ? Math.min(...selectedRate).toFixed(2).toString() : '';
+  return selectedRate.length
+    ? Math.min(...selectedRate)
+        .toFixed(2)
+        .toString()
+    : "";
 };
 
 const InstructorCard: React.StatelessComponent<Props> = props => {
-  const BackgroundCheckIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg';
-  const AvatarStyles = { width: '120px', height: '120px'};
+  const BackgroundCheckIcon =
+    "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg";
+  const AvatarStyles = { width: "120px", height: "120px" };
   const {
     age,
     lastLogin,
@@ -88,11 +93,13 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
   } = props;
   let instrumentItem: string[] = [];
   instruments.map(instrument => {
-    instrumentItem.push((instrument as String).charAt(0).toUpperCase() + instrument.slice(1));
+    instrumentItem.push(
+      (instrument as String).charAt(0).toUpperCase() + instrument.slice(1)
+    );
     return instrumentItem;
   });
   const navigateToProfile = () => {
-    Router.push(`/profile/${id}`)
+    Router.push(`/profile/${id}`);
   };
   return (
     <div onClick={navigateToProfile} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative nabi-cursor-pointer item-card">
@@ -103,7 +110,11 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
       </div> */}
       <Grid container={true} spacing={3}>
         <Grid item={true} xs={12} md={3} className="nabi-text-center">
-          <Avatar src={avatarImage} style={AvatarStyles} className="nabi-margin-center" />
+          <Avatar
+            src={avatarImage}
+            style={AvatarStyles}
+            className="nabi-margin-center"
+          />
           <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
             {displayName}
           </Typography>
@@ -111,10 +122,11 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
             {displayRatingStars(props.reviewsNumber)}
           </div>
           <Typography className="nabi-text-uppercase">
-            {experience} {ProfileHeaderComponent.Text.YearExperiece} | {age} {ProfileHeaderComponent.Text.YearOld}
+            {experience} {ProfileHeaderComponent.Text.YearExperiece} | {age}{" "}
+            {ProfileHeaderComponent.Text.YearOld}
           </Typography>
           <Typography>
-            {distance && String(distance.toFixed(1)) + ' mi away'}
+            {distance && String(distance.toFixed(1)) + " mi away"}
           </Typography>
         </Grid>
         <Grid item={true} xs={12} md={6}>
@@ -123,31 +135,43 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
           </p>
           <div>
             <Typography className="nabi-margin-top-xsmall">
-              {
-                bioDescription &&
-                `${bioDescription.slice(0, InstructorCardComponent.maxBioDescriptionLength)}...`
-              }
+              {bioDescription &&
+                `${bioDescription.slice(
+                  0,
+                  InstructorCardComponent.maxBioDescriptionLength
+                )}...`}
             </Typography>
             <Grid container={true} spacing={1}>
-              {
-                backgroundCheckStatus === BackgroundCheckStatus.verified &&
+              {backgroundCheckStatus === BackgroundCheckStatus.verified && (
                 <Grid item={true} xs={12} className="nabi-margin-top-xsmall">
                   <IconButton
                     color="secondary"
                     className="nabi-display-inline-block"
                   >
-                    <img src={BackgroundCheckIcon} className="nabi-custom-button-icon" alt="background-check" />
+                    <img
+                      src={BackgroundCheckIcon}
+                      className="nabi-custom-button-icon"
+                      alt="background-check"
+                    />
                   </IconButton>
-                  <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">Background Check</Typography>
+                  <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">
+                    Background Check
+                  </Typography>
                 </Grid>
-              }
+              )}
               <Grid item={true} md={6}>
                 <Typography>
-                  <span className="nabi-text-semibold nabi-color-nabi"> Teaches: </span>{instrumentItem.join(' ')}
+                  <span className="nabi-text-semibold nabi-color-nabi">
+                    {" "}
+                    Teaches:{" "}
+                  </span>
+                  {instrumentItem.join(" ")}
                 </Typography>
               </Grid>
               <Grid item={true} md={6}>
-                <Typography color="primary" className="nabi-text-semibold">Teaching locations:</Typography>
+                <Typography color="primary" className="nabi-text-semibold">
+                  Teaching locations:
+                </Typography>
                 <PlaceForlessons
                   online={placeForLessons.online}
                   studio={placeForLessons.studio}
@@ -165,7 +189,11 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
             {reactStringReplace(
               InstructorCardComponent.Text.LessonRate,
               InstructorCardComponent.Text.LessonRatePlaceholder,
-              (i: string) => <span key={i} className="nabi-font-large">${selectStartingRate(rateStartAt)}</span>
+              (i: string) => (
+                <span key={i} className="nabi-font-large">
+                  ${selectStartingRate(rateStartAt)}
+                </span>
+              )
             )}
           </Typography>
           <Button

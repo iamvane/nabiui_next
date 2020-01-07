@@ -1,9 +1,13 @@
-import * as React from 'react';
-import { Redirect } from 'react-router-dom';
+import * as React from "react";
+import { Redirect } from "react-router-dom";
 
-import InstructorCard from './InstructorCard';
-import { Route } from './constants';
-import { Instructor, Rates, InstructorType } from '../../redux/models/InstructorModel';
+import InstructorCard from "./InstructorCard";
+import { Route } from "./constants";
+import {
+  Instructor,
+  Rates,
+  InstructorType
+} from "../../redux/models/InstructorModel";
 
 interface Props {
   instructors: Instructor[];

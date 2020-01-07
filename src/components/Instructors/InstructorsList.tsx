@@ -1,21 +1,23 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import * as _ from 'lodash';
+import * as React from "react";
+import { connect } from "react-redux";
+import * as _ from "lodash";
 
+import { Action, Dispatch } from "redux";
+
+import { StoreState } from "../../redux/reducers/store";
+import { ListResource } from "../../redux/models/models";
+import { Instructor, InstructorType } from "../../redux/models/InstructorModel";
 import {
-  Action,
-  Dispatch
-} from 'redux';
-
-import { StoreState } from '../../redux/reducers/store';
-import { ListResource } from '../../redux/models/models';
-import { Instructor, InstructorType } from '../../redux/models/InstructorModel';
-import { fetchInstructors, fetchInstructor } from '../../redux/actions/InstructorActions';
-import ListTemplate from '../common/Templates/ListTemplate';
-import { ListTemplateComponent } from '../common/constants/ListTemplate';
-import InstructorsFilter from './InstructorsFilter';
-import InstructorsFilterMobile from './InstructorsFilterMobile';
-import Instructors from './Instructors';
+  fetchInstructors,
+  fetchInstructor,
+  fetchMoreInstructors
+} from "../../redux/actions/InstructorActions";
+import ListTemplate from "../common/Templates/ListTemplate";
+import { ListTemplateComponent } from "../common/constants/ListTemplate";
+import InstructorsFilter from "./InstructorsFilter";
+import InstructorsFilterMobile from "./InstructorsFilterMobile";
+import Instructors from "./Instructors";
+import debounce from "lodash.debounce";
 
 import {
   InstructorsComponent,
@@ -24,44 +26,47 @@ import {
   defaultQueryParams,
   defaultQualifications,
   defaultPlaceForLessons
-} from './constants';
+} from "./constants";
 
 interface StateProps {
   instructors: ListResource<Instructor>;
   isRequesting: boolean;
   isRequestingInstructor: boolean;
   instructor: InstructorType;
+  isRequestingMoreInstructors: boolean;
 }
 
-interface OwnProps { }
+interface OwnProps {}
 
 interface DispatchProps {
   fetchInstructors: (params?: any) => void;
+  fetchMoreInstructors: (pageNumber: number, params: any) => void;
   fetchInstructor: (id: number) => void;
 }
 
-interface Props extends
-  OwnProps,
-  StateProps,
-  DispatchProps { }
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
 export const InstructorsList = (props: Props) => {
-  const [instrument, setInstrument] = React.useState('');
-  const [address, setAddress] = React.useState('');
-  const [sortBy, setSortBy] = React.useState('');
+  const [instrument, setInstrument] = React.useState("");
+  const [address, setAddress] = React.useState("");
+  const [sortBy, setSortBy] = React.useState("");
   const [distance, setDistance] = React.useState(10);
   const [placeForLessons, setPlaceForLessons] = React.useState([]);
   const [availability, setAvailability] = React.useState([]);
   const [priceRange, setPriceRange] = React.useState<number[]>([0, 200]);
-  const [age, setAge] = React.useState('');
-  const [gender, setGender] = React.useState('');
+  const [age, setAge] = React.useState("");
+  const [gender, setGender] = React.useState("");
   const [qualifications, setQualifications] = React.useState([]);
   const [distanceMobile, setDistanceMobile] = React.useState(50);
-  const [placeForLessonsMobile, setPlaceForLessonsMobile] = React.useState(defaultPlaceForLessons);
-  const [availabilityMobile, setAvailabilityMobile] = React.useState('');
-  const [ageMobile, setAgeMobile] = React.useState('');
-  const [genderMobile, setGenderMobile] = React.useState('');
-  const [qualificationsMobile, setQualificationsMobile] = React.useState(defaultQualifications);
+  const [placeForLessonsMobile, setPlaceForLessonsMobile] = React.useState(
+    defaultPlaceForLessons
+  );
+  const [availabilityMobile, setAvailabilityMobile] = React.useState("");
+  const [ageMobile, setAgeMobile] = React.useState("");
+  const [genderMobile, setGenderMobile] = React.useState("");
+  const [qualificationsMobile, setQualificationsMobile] = React.useState(
+    defaultQualifications
+  );
   const [queryParams, setQueryParams] = React.useState(defaultQueryParams);
 
   React.useEffect(() => {
@@ -82,7 +87,7 @@ export const InstructorsList = (props: Props) => {
     const value = target.value;
     const name = target.name;
 
-    let queryParamsValues: InstructorListQueryParams = {...queryParams};
+    let queryParamsValues: InstructorListQueryParams = { ...queryParams };
 
     switch (name) {
       case ListTemplateComponent.FieldNames.Instruments:
@@ -99,11 +104,11 @@ export const InstructorsList = (props: Props) => {
         break;
       case InstructorFilterComponent.FieldNames.Location:
         setPlaceForLessons(value);
-        queryParamsValues.placeForLessons = value.join(',') || undefined;
+        queryParamsValues.placeForLessons = value.join(",") || undefined;
         break;
       case InstructorFilterComponent.FieldNames.Availability:
         setAvailability(value);
-        queryParamsValues.availability = value.join(',') || undefined;
+        queryParamsValues.availability = value.join(",") || undefined;
         break;
       case InstructorFilterComponent.FieldNames.Age:
         setAge(value);
@@ -115,7 +120,7 @@ export const InstructorsList = (props: Props) => {
         break;
       case InstructorFilterComponent.FieldNames.Qualifications:
         setQualifications(value);
-        queryParamsValues.qualifications = value.join(',') || undefined;
+        queryParamsValues.qualifications = value.join(",") || undefined;
         break;
       default:
         return;
@@ -132,13 +137,19 @@ export const InstructorsList = (props: Props) => {
       case InstructorFilterComponent.FieldNames.Distance:
         setDistanceMobile(value);
         break;
-      case 'studio':
-      case 'home':
-      case 'online':
-        setPlaceForLessonsMobile({ ...placeForLessonsMobile, [name]: event.target.checked });
+      case "studio":
+      case "home":
+      case "online":
+        setPlaceForLessonsMobile({
+          ...placeForLessonsMobile,
+          [name]: event.target.checked
+        });
         break;
       case InstructorFilterComponent.FieldNames.Location:
-        setPlaceForLessonsMobile({ ...placeForLessonsMobile, [name]: event.target.checked });
+        setPlaceForLessonsMobile({
+          ...placeForLessonsMobile,
+          [name]: event.target.checked
+        });
         break;
       case InstructorFilterComponent.FieldNames.Availability:
         setAvailabilityMobile(value);
@@ -149,17 +160,20 @@ export const InstructorsList = (props: Props) => {
       case InstructorFilterComponent.FieldNames.Gender:
         setGenderMobile(value);
         break;
-      case 'certifiedTeacher':
-      case 'musicTherapy':
-      case 'musicProduction':
-      case 'earTraining':
-      case 'conducting':
-      case 'virtuosoRecognition':
-      case 'performance':
-      case 'musicTheory':
-      case 'youngChildrenExperience':
-      case 'repertoireSelection':
-        setQualificationsMobile({ ...qualificationsMobile, [name]: event.target.checked });
+      case "certifiedTeacher":
+      case "musicTherapy":
+      case "musicProduction":
+      case "earTraining":
+      case "conducting":
+      case "virtuosoRecognition":
+      case "performance":
+      case "musicTheory":
+      case "youngChildrenExperience":
+      case "repertoireSelection":
+        setQualificationsMobile({
+          ...qualificationsMobile,
+          [name]: event.target.checked
+        });
         break;
       default:
         return;
@@ -170,7 +184,7 @@ export const InstructorsList = (props: Props) => {
     const target = event.target;
     const value = target.value;
 
-    let queryParamsValues: InstructorListQueryParams = {...queryParams};
+    let queryParamsValues: InstructorListQueryParams = { ...queryParams };
     queryParamsValues.sort = value || undefined;
     setSortBy(value);
     setQueryParams(queryParamsValues);
@@ -181,34 +195,54 @@ export const InstructorsList = (props: Props) => {
   };
 
   const setPriceQueryParams = (event: any, newValue: number | number[]) => {
-    let queryParamsValues: InstructorListQueryParams = {...queryParams};
+    let queryParamsValues: InstructorListQueryParams = { ...queryParams };
     queryParamsValues.min_rate = (newValue as number[])[0];
     queryParamsValues.max_rate = (newValue as number[])[1];
     setQueryParams(queryParamsValues);
   };
 
-  const getLocation = (location: string)  => {
+  const getLocation = (location: string) => {
     setAddress(location);
   };
 
-  const getLatLng = (lat: string, lng: string)  => {
-    let queryParamsValues: InstructorListQueryParams = {...queryParams};
+  const getLatLng = (lat: string, lng: string) => {
+    let queryParamsValues: InstructorListQueryParams = { ...queryParams };
     queryParamsValues.location = `${lat},${lng}`;
     setQueryParams(queryParamsValues);
   };
 
-  const setQueryParamsMobile = ()  => {
-    let queryParamsValues: InstructorListQueryParams = {...queryParams};
+  const setQueryParamsMobile = () => {
+    let queryParamsValues: InstructorListQueryParams = { ...queryParams };
     queryParamsValues.distance = distanceMobile || undefined;
-    queryParamsValues.placeForLessons = _.keys(_.pickBy(placeForLessonsMobile)).join(',') || undefined;
+    queryParamsValues.placeForLessons =
+      _.keys(_.pickBy(placeForLessonsMobile)).join(",") || undefined;
     queryParamsValues.availability = availabilityMobile || undefined;
     queryParamsValues.gender = genderMobile || undefined;
-    queryParamsValues.qualifications = _.keys(_.pickBy(qualificationsMobile)).join(',') || undefined;
+    queryParamsValues.qualifications =
+      _.keys(_.pickBy(qualificationsMobile)).join(",") || undefined;
     queryParamsValues.distance = distanceMobile || undefined;
-    queryParamsValues.min_rate = (priceRange)[0] || undefined;
-    queryParamsValues.max_rate = (priceRange)[1] || undefined;
+    queryParamsValues.min_rate = priceRange[0] || undefined;
+    queryParamsValues.max_rate = priceRange[1] || undefined;
     setQueryParams(queryParamsValues);
   };
+
+  var count = 2;
+
+  function incrementCount() {
+    count++;
+  }
+
+  window.onscroll = debounce(() => {
+    if (props.isRequesting) return;
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      props.fetchMoreInstructors(count, queryParams);
+      alert(String(count));
+      incrementCount();
+    }
+  }, 100);
 
   return (
     <ListTemplate
@@ -219,6 +253,7 @@ export const InstructorsList = (props: Props) => {
       getLocation={getLocation}
       instrument={instrument}
       address={address}
+      isRequestingMoreData={props.isRequestingMoreInstructors}
       isRequesting={props.isRequesting}
       hasCallToAction={true}
       filterSection={
@@ -264,16 +299,18 @@ export const InstructorsList = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
+const mapStateToProps = (
+  state: StoreState,
+  _ownProps: OwnProps
+): StateProps => {
   const {
     instructors,
     instructor,
     actions: {
-      fetchInstructors: {
-        isRequesting,
-      },
-      fetchInstructor: {
-        isRequesting: isRequestingInstructor
+      fetchInstructors: { isRequesting },
+      fetchInstructor: { isRequesting: isRequestingInstructor },
+      fetchMoreInstructors: {
+        isRequesting: isRequestingMoreInstructors
       }
     }
   } = state.instructor;
@@ -281,16 +318,17 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
   return {
     instructors,
     instructor,
+    isRequestingMoreInstructors,
     isRequesting,
     isRequestingInstructor
   };
 };
 
-const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
-): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
   fetchInstructors: (params?) => dispatch(fetchInstructors(params)),
-  fetchInstructor: (id: number) => dispatch(fetchInstructor(id))
+  fetchInstructor: (id: number) => dispatch(fetchInstructor(id)),
+  fetchMoreInstructors: (pageNumber: number, params: any) =>
+    dispatch(fetchMoreInstructors(pageNumber, params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstructorsList);

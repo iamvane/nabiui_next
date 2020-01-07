@@ -1,18 +1,19 @@
-import { AnyAction } from 'redux';
+import { AnyAction } from "redux";
 
-import { EducationType } from '../../components/Education/model';
-import { EmploymentType } from '../../components/Employment/model';
-import { APIActions } from '../models/models';
+import { EducationType } from "../../components/Education/model";
+import { EmploymentType } from "../../components/Employment/model";
+import { APIActions } from "../models/models";
 import {
   InstructorState,
   defaultInstructorState,
   InstructorType
-} from '../models/InstructorModel';
-import { InstructorActions } from '../actions/InstructorActionTypes';
+} from "../models/InstructorModel";
+import { InstructorActions } from "../actions/InstructorActionTypes";
 
 export default function instructorReducer(
   state: InstructorState = defaultInstructorState,
-  action: AnyAction): InstructorState {
+  action: AnyAction
+): InstructorState {
   switch (action.type) {
     case InstructorActions.BUILD_PROFILE:
       return {
@@ -27,7 +28,9 @@ export default function instructorReducer(
       };
 
     case InstructorActions.BUILD_PROFILE_SUCCESS:
-      const {data: updatedInstructor} = <APIActions.WithData<Partial<InstructorType>>> action;
+      const { data: updatedInstructor } = <
+        APIActions.WithData<Partial<InstructorType>>
+      >action;
       return {
         ...state,
         instructor: {
@@ -39,292 +42,304 @@ export default function instructorReducer(
           buildProfile: {
             ...state.actions.buildProfile,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case InstructorActions.BUILD_PROFILE_FAILURE:
-      const { error: buildProfileError } = <APIActions.WithError<string>> action;
+      const { error: buildProfileError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
           ...state.actions,
-        buildProfile: {
+          buildProfile: {
             isRequesting: false,
-            error: buildProfileError,
+            error: buildProfileError
           }
         }
       };
 
-      case InstructorActions.FETCH_PROFILE:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            fetchProfile: {
-              ...state.actions.fetchProfile,
-              isRequesting: true,
-            }
+    case InstructorActions.FETCH_PROFILE:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchProfile: {
+            ...state.actions.fetchProfile,
+            isRequesting: true
           }
-        };
+        }
+      };
 
-      case InstructorActions.FETCH_PROFILE_SUCCESS:
-        const { data: profile } = action;
-        return {
-          ...state,
-          instructor: {
-            ...state.instructor,
-            bioTitle: profile.bioTitle,
-            bioDescription: profile.bioDescription,
-            music: profile.music
-          },
-          actions: {
-            ...state.actions,
-            fetchProfile: {
-              ...state.actions.fetchProfile,
-              isRequesting: false,
-              error: ''
-            }
+    case InstructorActions.FETCH_PROFILE_SUCCESS:
+      const { data: profile } = action;
+      return {
+        ...state,
+        instructor: {
+          ...state.instructor,
+          bioTitle: profile.bioTitle,
+          bioDescription: profile.bioDescription,
+          music: profile.music
+        },
+        actions: {
+          ...state.actions,
+          fetchProfile: {
+            ...state.actions.fetchProfile,
+            isRequesting: false,
+            error: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.FETCH_PROFILE_FAILURE:
-        const { error } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            fetchProfile: {
-              isRequesting: false,
-              error
-            }
+    case InstructorActions.FETCH_PROFILE_FAILURE:
+      const { error } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchProfile: {
+            isRequesting: false,
+            error
           }
-        };
+        }
+      };
 
-      case InstructorActions.BUILD_JOB_PREFERENCES:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            buildJobPreferences: {
-              ...state.actions.buildJobPreferences,
-              isRequesting: true
-            }
+    case InstructorActions.BUILD_JOB_PREFERENCES:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          buildJobPreferences: {
+            ...state.actions.buildJobPreferences,
+            isRequesting: true
           }
-        };
+        }
+      };
 
-      case InstructorActions.BUILD_JOB_PREFERENCES_SUCCESS:
-        const {data: jobPreferences} = action;
-        return {
-          ...state,
-          instructor: {
-            ...state.instructor,
-            instruments: jobPreferences.instruments,
-            lessonSize: jobPreferences.lessonSize,
-            ageGroup: jobPreferences.ageGroup,
-            rates: jobPreferences.lessonRate,
-            placeForLessons: jobPreferences.placeForLessons,
-            availability: jobPreferences.availability,
-            qualifications: jobPreferences.additionalQualifications,
-            languages: jobPreferences.languages,
-            studioAddress: jobPreferences.studioAddress,
-            travelDistance: jobPreferences.travelDistance,
-          },
-          actions: {
-            ...state.actions,
-            buildJobPreferences: {
-              ...state.actions.buildJobPreferences,
-              isRequesting: false,
-              error: ''
-            }
+    case InstructorActions.BUILD_JOB_PREFERENCES_SUCCESS:
+      const { data: jobPreferences } = action;
+      return {
+        ...state,
+        instructor: {
+          ...state.instructor,
+          instruments: jobPreferences.instruments,
+          lessonSize: jobPreferences.lessonSize,
+          ageGroup: jobPreferences.ageGroup,
+          rates: jobPreferences.lessonRate,
+          placeForLessons: jobPreferences.placeForLessons,
+          availability: jobPreferences.availability,
+          qualifications: jobPreferences.additionalQualifications,
+          languages: jobPreferences.languages,
+          studioAddress: jobPreferences.studioAddress,
+          travelDistance: jobPreferences.travelDistance
+        },
+        actions: {
+          ...state.actions,
+          buildJobPreferences: {
+            ...state.actions.buildJobPreferences,
+            isRequesting: false,
+            error: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.BUILD_JOB_PREFERENCES_FAILURE:
-        const { error: buildJobPreferencesError } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            buildJobPreferences: {
-              isRequesting: false,
-              error: buildJobPreferencesError,
-            }
+    case InstructorActions.BUILD_JOB_PREFERENCES_FAILURE:
+      const { error: buildJobPreferencesError } = <
+        APIActions.WithError<string>
+      >action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          buildJobPreferences: {
+            isRequesting: false,
+            error: buildJobPreferencesError
           }
-        };
+        }
+      };
 
-      case InstructorActions.FETCH_EDUCATION:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            fetchEducation: {
-              ...state.actions.fetchEducation,
-              isRequesting: true,
-            }
+    case InstructorActions.FETCH_EDUCATION:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchEducation: {
+            ...state.actions.fetchEducation,
+            isRequesting: true
           }
-        };
+        }
+      };
 
-      case InstructorActions.FETCH_EDUCATION_SUCCESS:
-        const {data: education} = <APIActions.WithData<EducationType[]>> action;
-        return {
-          ...state,
-          instructor: {
-            ...state.instructor,
-            education: education,
-          },
-          actions: {
-            ...state.actions,
-            fetchEducation: {
-              ...state.actions.fetchEducation,
-              isRequesting: false,
-              error: ''
-            }
+    case InstructorActions.FETCH_EDUCATION_SUCCESS:
+      const { data: education } = <APIActions.WithData<EducationType[]>>action;
+      return {
+        ...state,
+        instructor: {
+          ...state.instructor,
+          education: education
+        },
+        actions: {
+          ...state.actions,
+          fetchEducation: {
+            ...state.actions.fetchEducation,
+            isRequesting: false,
+            error: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.FETCH_EDUCATION_FAILURE:
-        const { error: fetchEducationError } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            fetchEducation: {
-              isRequesting: false,
-              error: fetchEducationError
-            }
+    case InstructorActions.FETCH_EDUCATION_FAILURE:
+      const { error: fetchEducationError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchEducation: {
+            isRequesting: false,
+            error: fetchEducationError
           }
-        };
+        }
+      };
 
-      case InstructorActions.ADD_EDUCATION:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            addEducation: {
-              ...state.actions.addEducation,
-              isRequesting: true,
-              message: ''
-            }
+    case InstructorActions.ADD_EDUCATION:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          addEducation: {
+            ...state.actions.addEducation,
+            isRequesting: true,
+            message: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.ADD_EDUCATION_SUCCESS:
-        const {data: message} = <APIActions.WithData<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            addEducation: {
-              ...state.actions.addEducation,
-              isRequesting: false,
-              error: '',
-              message: message
-            }
+    case InstructorActions.ADD_EDUCATION_SUCCESS:
+      const { data: message } = <APIActions.WithData<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          addEducation: {
+            ...state.actions.addEducation,
+            isRequesting: false,
+            error: "",
+            message: message
           }
-        };
+        }
+      };
 
-      case InstructorActions.ADD_EDUCATION_FAILURE:
-        const { error: addEducationError } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            addEducation: {
-              ...state.actions.addEducation,
-              isRequesting: false,
-              error: addEducationError,
-              message: ''
-            }
+    case InstructorActions.ADD_EDUCATION_FAILURE:
+      const { error: addEducationError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          addEducation: {
+            ...state.actions.addEducation,
+            isRequesting: false,
+            error: addEducationError,
+            message: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.EDIT_EDUCATION:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            editEducation: {
-              ...state.actions.editEducation,
-              isRequesting: true,
-              message: ''
-            }
+    case InstructorActions.EDIT_EDUCATION:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          editEducation: {
+            ...state.actions.editEducation,
+            isRequesting: true,
+            message: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.EDIT_EDUCATION_SUCCESS:
-        const {data: editEducationMessage} = <APIActions.WithData<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            editEducation: {
-              ...state.actions.editEducation,
-              isRequesting: false,
-              error: '',
-              message: editEducationMessage
-            }
+    case InstructorActions.EDIT_EDUCATION_SUCCESS:
+      const { data: editEducationMessage } = <APIActions.WithData<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          editEducation: {
+            ...state.actions.editEducation,
+            isRequesting: false,
+            error: "",
+            message: editEducationMessage
           }
-        };
+        }
+      };
 
-      case InstructorActions.EDIT_EDUCATION_FAILURE:
-        const { error: editEducationError } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            editEducation: {
-              ...state.actions.editEducation,
-              isRequesting: false,
-              error: editEducationError,
-              message: ''
-            }
+    case InstructorActions.EDIT_EDUCATION_FAILURE:
+      const { error: editEducationError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          editEducation: {
+            ...state.actions.editEducation,
+            isRequesting: false,
+            error: editEducationError,
+            message: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.DELETE_EDUCATION:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            deleteEducation: {
-              ...state.actions.deleteEducation,
-              isRequesting: true,
-              message: ''
-            }
+    case InstructorActions.DELETE_EDUCATION:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          deleteEducation: {
+            ...state.actions.deleteEducation,
+            isRequesting: true,
+            message: ""
           }
-        };
+        }
+      };
 
-      case InstructorActions.DELETE_EDUCATION_SUCCESS:
-        const {data: deleteEducationMessage} = <APIActions.WithData<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            deleteEducation: {
-              ...state.actions.deleteEducation,
-              isRequesting: false,
-              error: '',
-              message: deleteEducationMessage
-            }
+    case InstructorActions.DELETE_EDUCATION_SUCCESS:
+      const { data: deleteEducationMessage } = <APIActions.WithData<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          deleteEducation: {
+            ...state.actions.deleteEducation,
+            isRequesting: false,
+            error: "",
+            message: deleteEducationMessage
           }
-        };
+        }
+      };
 
-      case InstructorActions.DELETE_EDUCATION_FAILURE:
-        const { error: deleteEducationError } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            deleteEducation: {
-              ...state.actions.deleteEducation,
-              isRequesting: false,
-              error: deleteEducationError,
-              message: ''
-            }
+    case InstructorActions.DELETE_EDUCATION_FAILURE:
+      const { error: deleteEducationError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          deleteEducation: {
+            ...state.actions.deleteEducation,
+            isRequesting: false,
+            error: deleteEducationError,
+            message: ""
           }
-        };
+        }
+      };
 
     case InstructorActions.FETCH_EMPLOYMENT:
       return {
@@ -333,13 +348,15 @@ export default function instructorReducer(
           ...state.actions,
           fetchEmployment: {
             ...state.actions.fetchEmployment,
-            isRequesting: true,
+            isRequesting: true
           }
         }
       };
 
     case InstructorActions.FETCH_EMPLOYMENT_SUCCESS:
-      const {data: employment} = <APIActions.WithData<EmploymentType[]>> action;
+      const { data: employment } = <APIActions.WithData<EmploymentType[]>>(
+        action
+      );
       return {
         ...state,
         instructor: {
@@ -351,13 +368,15 @@ export default function instructorReducer(
           fetchEmployment: {
             ...state.actions.fetchEmployment,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case InstructorActions.FETCH_EMPLOYMENT_FAILURE:
-      const { error: fetchEmploymentError } = <APIActions.WithError<string>> action;
+      const { error: fetchEmploymentError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -377,13 +396,15 @@ export default function instructorReducer(
           addEmployment: {
             ...state.actions.addEmployment,
             isRequesting: true,
-            message: ''
+            message: ""
           }
         }
       };
 
     case InstructorActions.ADD_EMPLOYMENT_SUCCESS:
-      const {data: addEmploymentMessage} = <APIActions.WithData<string>> action;
+      const { data: addEmploymentMessage } = <APIActions.WithData<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -391,14 +412,16 @@ export default function instructorReducer(
           addEmployment: {
             ...state.actions.addEmployment,
             isRequesting: false,
-            error: '',
+            error: "",
             message: addEmploymentMessage
           }
         }
       };
 
     case InstructorActions.ADD_EMPLOYMENT_FAILURE:
-      const { error: addEmploymentError } = <APIActions.WithError<string>> action;
+      const { error: addEmploymentError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -407,7 +430,7 @@ export default function instructorReducer(
             ...state.actions.addEmployment,
             isRequesting: false,
             error: addEmploymentError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -420,13 +443,15 @@ export default function instructorReducer(
           editEmployment: {
             ...state.actions.editEmployment,
             isRequesting: true,
-            message: ''
+            message: ""
           }
         }
       };
 
     case InstructorActions.EDIT_EMPLOYMENT_SUCCESS:
-      const {data: editEmploymentMessage} = <APIActions.WithData<string>> action;
+      const { data: editEmploymentMessage } = <APIActions.WithData<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -434,14 +459,16 @@ export default function instructorReducer(
           editEmployment: {
             ...state.actions.editEmployment,
             isRequesting: false,
-            error: '',
+            error: "",
             message: editEmploymentMessage
           }
         }
       };
 
     case InstructorActions.EDIT_EMPLOYMENT_FAILURE:
-      const { error: editEmploymentError } = <APIActions.WithError<string>> action;
+      const { error: editEmploymentError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -450,7 +477,7 @@ export default function instructorReducer(
             ...state.actions.editEmployment,
             isRequesting: false,
             error: editEmploymentError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -463,13 +490,15 @@ export default function instructorReducer(
           deleteEmployment: {
             ...state.actions.deleteEmployment,
             isRequesting: true,
-            message: ''
+            message: ""
           }
         }
       };
 
     case InstructorActions.DELETE_EMPLOYMENT_SUCCESS:
-      const {data: deleteEmploymentMessage} = <APIActions.WithData<string>> action;
+      const { data: deleteEmploymentMessage } = <APIActions.WithData<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -477,14 +506,16 @@ export default function instructorReducer(
           deleteEmployment: {
             ...state.actions.deleteEmployment,
             isRequesting: false,
-            error: '',
+            error: "",
             message: deleteEmploymentMessage
           }
         }
       };
 
     case InstructorActions.DELETE_EMPLOYMENT_FAILURE:
-      const { error: deleteEmploymentError } = <APIActions.WithError<string>> action;
+      const { error: deleteEmploymentError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -493,7 +524,7 @@ export default function instructorReducer(
             ...state.actions.deleteEmployment,
             isRequesting: false,
             error: deleteEmploymentError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -505,7 +536,7 @@ export default function instructorReducer(
           ...state.actions,
           fetchInstructors: {
             ...state.actions.fetchInstructors,
-            isRequesting: true,
+            isRequesting: true
           }
         }
       };
@@ -520,13 +551,15 @@ export default function instructorReducer(
           fetchInstructors: {
             ...state.actions.fetchInstructors,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case InstructorActions.FETCH_INSTRUCTORS_FAILURE:
-      const { error: fetchInstructorsError } = <APIActions.WithError<string>> action;
+      const { error: fetchInstructorsError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -545,7 +578,7 @@ export default function instructorReducer(
           ...state.actions,
           fetchInstructor: {
             ...state.actions.fetchInstructor,
-            isRequesting: true,
+            isRequesting: true
           }
         }
       };
@@ -560,13 +593,15 @@ export default function instructorReducer(
           fetchInstructor: {
             ...state.actions.fetchInstructor,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case InstructorActions.FETCH_INSTRUCTOR_FAILURE:
-      const { error: fetchInstructorError } = <APIActions.WithError<string>> action;
+      const { error: fetchInstructorError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -578,6 +613,56 @@ export default function instructorReducer(
         }
       };
 
+    case InstructorActions.FETCH_MORE_INSTRUCTORS: {
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchMoreInstructors: {
+            ...state.actions.fetchMoreInstructors,
+            isRequesting: true,
+            error: ""
+          }
+        }
+      };
+    }
+
+    case InstructorActions.FETCH_MORE_INSTRUCTORS_SUCCESS: {
+      const { results } = action.data;
+
+      return {
+        ...state,
+        instructors: {
+          ...state.instructors,
+          results:[ ...state.instructors.results, ...results]
+        },
+        actions: {
+          ...state.actions,
+          fetchMoreInstructors: {
+            ...state.actions.fetchMoreInstructors,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+    }
+
+    case InstructorActions.FETCH_MORE_INSTRUCTORS_FAILURE: {
+      const { error: fetchInstructorError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchMoreInstructors: {
+            isRequesting: false,
+            error: fetchInstructorError
+          }
+        }
+      };
+    }
+
     case InstructorActions.REQUEST_REFERENCE:
       return {
         ...state,
@@ -586,8 +671,8 @@ export default function instructorReducer(
           requestReference: {
             ...state.actions.requestReference,
             isRequesting: true,
-            message: '',
-            error: ''
+            message: "",
+            error: ""
           }
         }
       };
@@ -599,13 +684,15 @@ export default function instructorReducer(
           requestReference: {
             ...state.actions.requestReference,
             isRequesting: false,
-            error: '',
+            error: "",
             message: action.data.message
           }
         }
       };
     case InstructorActions.REQUEST_REFERENCE_FAILURE:
-      const { error: requestReferenceError } = <APIActions.WithError<string>> action;
+      const { error: requestReferenceError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -613,7 +700,7 @@ export default function instructorReducer(
           requestReference: {
             isRequesting: false,
             error: requestReferenceError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -626,7 +713,7 @@ export default function instructorReducer(
           fetchReferences: {
             ...state.actions.fetchReferences,
             isRequesting: true,
-            error: ''
+            error: ""
           }
         }
       };
@@ -635,21 +722,27 @@ export default function instructorReducer(
       return {
         ...state,
         instructor: {
+<<<<<<< HEAD
           ...state.instructor,
           references: action.data.emails,
+=======
+          references: action.data.emails
+>>>>>>> ac499ff... added contants and redux action to fetch more instructors
         },
         actions: {
           ...state.actions,
           fetchReferences: {
             ...state.actions.fetchReferences,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case InstructorActions.FETCH_REFERENCES_FAILURE:
-      const { error: fetchReferencesError } = <APIActions.WithError<string>> action;
+      const { error: fetchReferencesError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
