@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
   Grid,
   Button,
-  Icon,
   Typography
 } from '@material-ui/core';
+import Email from '@material-ui/icons/Email';
 
 import SectionTitle from '../common/SectionTitle';
 import PlaceForlessons from '../PlaceForLessons/PlaceForLessons';
@@ -97,7 +97,7 @@ const ProfileSidebar: React.StatelessComponent<Props> = props => {
                 className="nabi-text-uppercase nabi-padding-top-xsmall nabi-padding-bottom-xsmall"
               >
               {ProfileSidebarComponent.Text.SendMessage}
-              <Icon className="nabi-margin-left-small">email</Icon>
+              <Email className="nabi-margin-left-small" />
               </Button>
             </a>
           </Grid>

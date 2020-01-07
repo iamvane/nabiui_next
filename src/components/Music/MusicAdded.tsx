@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {
   Grid,
-  Icon,
   IconButton
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
+import Add from '@material-ui/icons/Add';
 
 interface Props {
   deleteMusic: (MusicId: string | undefined) => void;
@@ -35,7 +36,7 @@ const MusicAdded: React.StatelessComponent<Props> = props => {
               aria-label="Delete"
               onClick={() => props.deleteMusic(props.id)}
             >
-              <Icon>delete</Icon>
+              <Delete />
             </IconButton>
             <IconButton
               color="primary"
@@ -43,7 +44,7 @@ const MusicAdded: React.StatelessComponent<Props> = props => {
               className="nabi-display-block"
               onClick={props.addMusic}
             >
-              <Icon>add</Icon>
+              <Add />
             </IconButton>
           </div>
         </Grid>

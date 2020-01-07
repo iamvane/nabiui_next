@@ -7,9 +7,9 @@ import Link from 'next/link';
 
 import {
   Button,
-  Icon,
   IconButton
 } from '@material-ui/core';
+import Menu from '@material-ui/icons/Menu';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
@@ -82,7 +82,7 @@ export const Header = (props: HeaderProps) => {
         className={`${isLocationHomepage ? 'nabi-header-container-home' : 'nabi-header-container'} nabi-position-relative`}
       >
         <div className="nabi-header-menu hide-on-desktop">
-          <IconButton onClick={toggleDrawerMenu}><Icon>menu</Icon></IconButton>
+          <IconButton onClick={toggleDrawerMenu}><Menu /></IconButton>
           <DrawerMenu isOpen={isDrawerMenuOpen} closeMenu={toggleDrawerMenu} />
         </div>
         <div className="nabi-header-menu hide-on-mobile">

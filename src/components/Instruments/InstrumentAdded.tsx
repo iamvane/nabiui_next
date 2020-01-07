@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   Grid,
-  Icon,
   IconButton,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
 
 import { InstrumentAddedComponent } from './constants';
 
@@ -36,7 +36,7 @@ const InstrumentAdded: React.StatelessComponent<Props> = props => {
         />
         <ListItemSecondaryAction>
           <IconButton aria-label="Delete" onClick={() => props.deleteInstrument(props.instrument)}>
-            <Icon>delete</Icon>
+            <Delete />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>

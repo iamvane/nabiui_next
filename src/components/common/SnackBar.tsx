@@ -1,10 +1,14 @@
 import * as React from 'react';
 import {
-  Icon,
   IconButton,
   Snackbar,
   SnackbarContent
 } from '@material-ui/core';
+import CheckCircle from '@material-ui/icons/CheckCircle';
+import Warning from '@material-ui/icons/Warning';
+import Error from '@material-ui/icons/Error';
+import Info from '@material-ui/icons/Info';
+import Close from '@material-ui/icons/Close';
 
 interface Props {
   isOpen: boolean;
@@ -15,10 +19,10 @@ interface Props {
 }
 
 const variantIcon = {
-  success: <Icon>check_circle</Icon>,
-  warning: <Icon>warning</Icon>,
-  error: <Icon>error</Icon>,
-  info: <Icon>info</Icon>,
+  success: <CheckCircle />,
+  warning: <Warning />,
+  error: <Error />,
+  info: <Info />,
 };
 
 const backgroundColor = {
@@ -52,7 +56,7 @@ const SnackBar: React.StatelessComponent<Props> = props => {
   const ActionButton = (): JSX.Element => (
     <div>
       <IconButton className="nabi-color-white" color="inherit" onClick={handleClose}>
-        <Icon>close</Icon>
+        <Close />
       </IconButton>
     </div>
   );

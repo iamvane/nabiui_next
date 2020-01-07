@@ -4,11 +4,11 @@ import {
   Button,
   FormControl,
   Grid,
-  Icon,
   Input,
   Select,
   Typography
 } from '@material-ui/core';
+import Add from '@material-ui/icons/Add';
 
 import { instruments } from '../../../assets/data/instruments';
 import {
@@ -105,7 +105,7 @@ const Instruments: React.StatelessComponent<Props> = props => {
             className="nabi-text-uppercase nabi-margin-top-xsmall"
             onClick={props.addInstrument}
           >
-            <Icon className="nabi-margin-right-xsmall">add</Icon>
+            <Add className="nabi-margin-right-xsmall" />
             {InstrumentsComponent.Text.Add}
           </Button>
         </Grid>

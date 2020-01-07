@@ -2,10 +2,11 @@ import * as React from 'react';
 
 import {
   Grid,
-  Icon,
   IconButton,
   Typography
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 
 import { UserType } from '../../../redux/models/UserModel';
 import { Role } from '../../Auth/Registration/constants';
@@ -90,7 +91,7 @@ const StudentCard: React.StatelessComponent<Props> = props => {
                   aria-label="Delete"
                   onClick={() => props.deleteStudent(props.student.id)}
                 >
-                  <Icon>delete</Icon>
+                  <Delete />
                 </IconButton>
               }
               <IconButton
@@ -99,7 +100,7 @@ const StudentCard: React.StatelessComponent<Props> = props => {
                 aria-label="Edit"
                 onClick={() => props.editStudent(props.student.id)}
               >
-                <Icon>edit</Icon>
+                <Edit />
               </IconButton>
             </React.Fragment>
           }

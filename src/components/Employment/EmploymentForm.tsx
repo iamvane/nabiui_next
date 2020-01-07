@@ -6,12 +6,14 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  Icon,
   Input,
   Select,
   TextField,
   Typography
 } from '@material-ui/core';
+import Save from '@material-ui/icons/Save';
+import Add from '@material-ui/icons/Add';
+import Close from '@material-ui/icons/Close';
 
 import { months } from '../../../assets/data/months';
 import { EmploymentFormComponent } from './constants';
@@ -50,7 +52,7 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
       type="submit"
       disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">save</Icon>
+      <Save className="nabi-margin-right-xsmall" />
       <span className="nabi-margin-left-xsmall">{EmploymentFormComponent.Text.SaveChangesButton}</span>
     </Button>
   );
@@ -64,7 +66,7 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
       type="submit"
       disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">add</Icon>
+      <Add className="nabi-margin-right-xsmall" />
       <span className="nabi-margin-left-xsmall">{EmploymentFormComponent.Text.AddButton}</span>
     </Button>
   );
@@ -234,7 +236,7 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
         className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-xsmall"
         onClick={props.handleCancel}
       >
-        <Icon className="nabi-margin-right-xsmall">close</Icon>
+        <Close className="nabi-margin-right-xsmall" />
         <span className="nabi-margin-left-xsmall">{EmploymentFormComponent.Text.CancelButton}</span>
       </Button>
     </form>

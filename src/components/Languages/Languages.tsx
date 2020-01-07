@@ -4,7 +4,6 @@ import {
   Button,
   FormControl,
   Grid,
-  Icon,
   IconButton,
   ListItemSecondaryAction,
   ListItemText,
@@ -12,6 +11,8 @@ import {
   Select,
   Typography
 } from '@material-ui/core';
+import Done from '@material-ui/icons/Done';
+import Add from '@material-ui/icons/Add';
 
 import { languages } from '../../../assets/data/languages';
 import SectionTitle from '../common/SectionTitle';
@@ -56,7 +57,7 @@ export const Languages: React.StatelessComponent<Props> = props => {
               <ListItemText primary={LanguageComponent.Text.English} />
                 <ListItemSecondaryAction>
                   <IconButton color="primary" disabled={true}>
-                    <Icon>done</Icon>
+                    <Done />
                   </IconButton>
                 </ListItemSecondaryAction>
             </ListItem>
@@ -90,7 +91,7 @@ export const Languages: React.StatelessComponent<Props> = props => {
                 color="primary"
                 variant="contained"
               >
-                <Icon className="nabi-margin-right-xsmall">add</Icon>
+                <Add className="nabi-margin-right-xsmall" />
                 {LanguageComponent.Text.Add}
               </Button>
             </Grid>

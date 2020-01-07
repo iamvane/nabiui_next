@@ -7,10 +7,11 @@ import {
 
 import {
   Button,
-  Icon,
   Typography,
   CircularProgress
 } from '@material-ui/core';
+import Add from '@material-ui/icons/Add';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../redux/reducers/store';
 import { RequestType } from '../../redux/models/RequestModel';
@@ -526,7 +527,7 @@ export class Request extends React.Component<Props, State>  {
 
             <div className="nabi-margin-top-medium">
               <Button color="primary" variant="contained" onClick={this.toggleRequestForm}>
-                <Icon className="nabi-margin-right-xsmall">add</Icon>
+                <Add className="nabi-margin-right-xsmall" />
                 {this.state.requests.length > 0 ? RequestComponent.ButtonText.AddAnother :
                   RequestComponent.ButtonText.Add}
               </Button>
@@ -538,7 +539,7 @@ export class Request extends React.Component<Props, State>  {
           nextPath={Routes.Dashboard}
           backPath={Routes.BuildRequest + RequestBuilderStepper.StepsPaths.AccountInfo}
           handleNext={this.handleNext}
-          icon={<Icon>arrow_forward</Icon>}
+          icon={<ArrowForward />}
         />
         <SnackBar
           isOpen={this.state.showSnackbar}

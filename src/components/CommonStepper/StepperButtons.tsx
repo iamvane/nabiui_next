@@ -5,10 +5,11 @@ import {
   Button,
   CircularProgress,
   Divider,
-  Icon,
   MobileStepper,
   Typography
 } from '@material-ui/core';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import { Routes } from '../common/constants/Routes';
 import { CommonStepperButtons } from './constants';
@@ -32,7 +33,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
       return (
         <Link href={props.backPath}>
           <Button color="primary" size="small">
-            <Icon>keyboard_arrow_left</Icon>
+            <KeyboardArrowLeft />
             {CommonStepperButtons.Back}
           </Button>
         </Link>
@@ -40,7 +41,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
     } else {
       return (
         <Button size="small" disabled={true}>
-          <Icon>keyboard_arrow_left</Icon>
+          <KeyboardArrowLeft />
           {CommonStepperButtons.Back}
         </Button>
       );
@@ -59,7 +60,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
               onClick={props.handleNext}
             >
               {CommonStepperButtons.Next}
-              <Icon>keyboard_arrow_right</Icon>
+              <KeyboardArrowRight />
             </Button>
           </a>
         </Link>
@@ -76,7 +77,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
           disabled={props.isNextDisabled}
         >
           {CommonStepperButtons.Next}
-          <Icon>keyboard_arrow_right</Icon>
+          <KeyboardArrowRight />
         </Button>
       );
     }

@@ -1,11 +1,12 @@
 import * as React from 'react';
 
 import {
-  Icon,
   IconButton,
   Grid,
   Typography
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 
 import { EmploymentType }  from './model';
 import { EmploymentAddedComponent } from './constants';
@@ -40,7 +41,7 @@ const EmploymentAdded: React.StatelessComponent<Props> = props => {
           aria-label="Delete"
           onClick={() => props.deleteEmployment(props.id)}
         >
-          <Icon>delete</Icon>
+          <Delete />
         </IconButton>
 
         <IconButton
@@ -49,7 +50,7 @@ const EmploymentAdded: React.StatelessComponent<Props> = props => {
           aria-label="Edit"
           onClick={() => props.editEmployment(props.id)}
         >
-          <Icon>edit</Icon>
+          <Edit />
         </IconButton>
       </div>
       <Typography className="nabi-margin-top-small nabi-text-uppercase" variant="body2">

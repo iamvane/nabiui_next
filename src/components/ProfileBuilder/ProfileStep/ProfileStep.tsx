@@ -7,10 +7,10 @@ import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
 
 import {
-  Icon,
   Grid,
   Typography
 } from '@material-ui/core';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../../redux/reducers/store';
 import { UserType } from '../../../redux/models/UserModel';
@@ -272,7 +272,7 @@ export class ProfileStep extends React.Component<Props, State> {
           nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.JobPreferences}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.AccountInfo}
           handleNext={this.handleNext}
-          icon={<Icon>arrow_forward</Icon>}
+          icon={<ArrowForward />}
         />
       </div>
     );

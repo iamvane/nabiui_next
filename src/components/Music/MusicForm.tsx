@@ -4,12 +4,13 @@ import {
   Button,
   FormControl,
   Grid,
-  Icon,
   Input,
   Select,
   TextField,
   Typography
 } from '@material-ui/core';
+import Add from '@material-ui/icons/Add';
+import Close from '@material-ui/icons/Close';
 
 import AddMusicSteps from './AddMusicSteps';
 import {
@@ -91,7 +92,7 @@ const MusicForm: React.StatelessComponent<Props> = props => {
         onClick={props.addMusic}
         type="submit"
       >
-        <Icon className="nabi-margin-right-xsmall">add</Icon>
+        <Add className="nabi-margin-right-xsmall" />
         <span className="nabi-margin-left-xsmall">{MusicFormComponent.Text.AddButton}</span>
       </Button>
       <Button
@@ -100,7 +101,7 @@ const MusicForm: React.StatelessComponent<Props> = props => {
         className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-xsmall"
         onClick={props.handleCancel}
       >
-        <Icon className="nabi-margin-right-xsmall">close</Icon>
+        <Close className="nabi-margin-right-xsmall" />
         <span className="nabi-margin-left-xsmall">{MusicFormComponent.Text.CancelButton}</span>
       </Button>
     </form>

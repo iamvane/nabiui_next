@@ -4,12 +4,12 @@ import {
   Button,
   FormControl,
   Grid,
-  Icon,
   Input,
   Select,
   TextField,
   Typography
 } from '@material-ui/core';
+import Add from '@material-ui/icons/Add';
 
 import SectionTitle from '../common/SectionTitle';
 import { skillLevelOptions } from '../Instruments/constants';
@@ -108,7 +108,7 @@ const Students: React.StatelessComponent<Props> = props => {
             className="nabi-text-uppercase nabi-margin-top-xsmall"
             onClick={props.addStudent}
           >
-            <Icon>add</Icon>
+            <Add />
             {RequestFormComponent.addStudent}
           </Button>
         </Grid>

@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
   Button,
   Grid,
-  Icon,
   Typography
 } from '@material-ui/core';
+import Add from '@material-ui/icons/Add';
 
 import SectionTitle from '../common/SectionTitle';
 import SnackBar from '../common/SnackBar';
@@ -67,7 +67,7 @@ const Music: React.StatelessComponent<Props> = props => {
           </Grid>
           <div className="nabi-margin-top-medium">
             <Button color="primary" variant="contained" onClick={props.toggleMusicForm}>
-              <Icon className="nabi-margin-right-xsmall">add</Icon>
+              <Add className="nabi-margin-right-xsmall" />
               {MusicComponent.Text.AddMusic}
             </Button>
           </div>

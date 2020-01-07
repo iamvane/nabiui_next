@@ -7,10 +7,10 @@ import {
   Avatar,
   Button,
   Grid,
-  Icon,
   IconButton,
   Typography,
 } from '@material-ui/core';
+import Star from '@material-ui/icons/Star';
 
 import { Rates } from '../../redux/models/InstructorModel';
 import PlaceForlessons from '../PlaceForLessons/PlaceForLessons';
@@ -47,9 +47,9 @@ const displayRatingStars = (reviewsNumber: number) => {
   let ratingStars: JSX.Element[] = [];
   for (let i = 0; i < 5; i++ ) {
     if (i < reviewsNumber) {
-      ratingStars.push(<Icon key={i}>star</Icon>);
+      ratingStars.push(<Star key={i} />);
     } else {
-      ratingStars.push(<Icon color="disabled" key={i}>star</Icon>);
+      ratingStars.push(<Star color="disabled" key={i} />);
     }
   }
   return ratingStars;

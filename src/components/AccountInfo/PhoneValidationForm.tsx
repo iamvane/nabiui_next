@@ -5,12 +5,12 @@ import {
   Grid,
   TextField,
   Button,
-  Icon,
   Input,
   Select,
   Typography,
   FormControl
 } from '@material-ui/core';
+import Close from '@material-ui/icons/Close';
 
 import NumberFormat from 'react-number-format';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -144,7 +144,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
               variant="contained"
               onClick={props.toggleChangePhoneNumber}
             >
-              <Icon className="nabi-margin-right-xsmall">close</Icon>
+              <Close className="nabi-margin-right-xsmall" />
               {PhoneValidationFormComponent.Buttons.Cancel}
             </Button>
           </Grid>

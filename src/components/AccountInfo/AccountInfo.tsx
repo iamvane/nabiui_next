@@ -14,9 +14,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import {
   CircularProgress,
-  Icon,
   Typography
 } from '@material-ui/core';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../redux/reducers/store';
 import {
@@ -238,7 +238,7 @@ export class AccountInfo extends React.Component<Props, State> {
           <StepperButtons
             buttonText={CommonStepperButtons.Continue}
             handleNext={this.handleNext}
-            icon={<Icon>arrow_forward</Icon>}
+            icon={<ArrowForward />}
           />
         </div>
       )

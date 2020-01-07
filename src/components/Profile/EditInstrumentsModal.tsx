@@ -6,8 +6,9 @@ import {
   DialogTitle,
   Button,
   Dialog,
-  Icon
 } from '@material-ui/core';
+import Close from '@material-ui/icons/Close';
+import Save from '@material-ui/icons/Save';
 
 import Instruments from '../Instruments/Instruments';
 import { InstrumentsType } from '../Instruments/model';
@@ -54,11 +55,11 @@ const EditInstrumentsModal: React.StatelessComponent<Props> = props => {
         </DialogContent>
         <DialogActions>
           <Button onClick={props.closeHandler} color="default" variant="contained">
-            <Icon className="nabi-margin-right-xsmall">close</Icon>
+            <Close className="nabi-margin-right-xsmall" />
             {ProfileHeaderComponent.Text.Cancel}
           </Button>
           <Button variant="contained" onClick={props.handleSubmit} color="primary">
-            <Icon className="nabi-margin-right-xsmall">save</Icon>
+            <Save className="nabi-margin-right-xsmall" />
             {ProfileHeaderComponent.Text.Save}
           </Button>
         </DialogActions>

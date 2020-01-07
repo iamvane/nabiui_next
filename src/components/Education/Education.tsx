@@ -8,9 +8,10 @@ import { connect } from 'react-redux';
 import {
   Button,
   CircularProgress,
-  Icon,
   Typography,
 } from '@material-ui/core';
+import ArrowForward from '@material-ui/icons/ArrowForward';
+import Add from '@material-ui/icons/Add';
 
 import { StoreState } from '../../redux/reducers/store';
 import {
@@ -272,7 +273,7 @@ export class Education extends React.Component<Props, State > {
                   variant="contained"
                   onClick={this.toggleEducationForm}
                 >
-                  <Icon className="nabi-margin-right-xsmall">add</Icon>
+                  <Add className="nabi-margin-right-xsmall" />
                   {EducationComponent.Text.AddEducation}
                 </Button>
               </div>
@@ -282,7 +283,7 @@ export class Education extends React.Component<Props, State > {
         <StepperButtons
           nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Employment}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.JobPreferences}
-          icon={<Icon>arrow_forward</Icon>}
+          icon={<ArrowForward />}
           errors={
             this.props.fetchEducationError ||
             this.props.addEducationError ||

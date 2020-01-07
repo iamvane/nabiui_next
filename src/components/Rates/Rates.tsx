@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import {
   Grid,
-  Icon,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
   TextField,
   Typography
 } from '@material-ui/core';
+import AttachMoney from '@material-ui/icons/AttachMoney';
 
 import NumberFormat from 'react-number-format';
 import SectionTitle from '../common/SectionTitle';
@@ -85,7 +85,7 @@ const Rates: React.StatelessComponent<Props> = props => {
               }
             />
             <ListItemSecondaryAction>
-              <Icon color="primary">attach_money</Icon>
+              <AttachMoney color="primary" />
               <TextField
                 id={list.name}
                 name={list.name}
