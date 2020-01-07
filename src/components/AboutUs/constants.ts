@@ -20,7 +20,7 @@ export const team: Teammate[] = [
     name: 'Jennie Legary',
     role: 'Marketing Strategist',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/jennie-legary.jpeg',
-    bio: 'Jennie is a mezzo-soprano opera singer with a Master in Performing Arts Management from Accademia Teatro alla Scala. She’s also a design, marketing, and business consultant, with experience in promoting classical music, real estate, and early stage startups. With her two other singer colleagues, she has co-founded Coloratura: The Opera Dolls,, a company that produces educational musical toys for children.'
+    bio: 'Jennie is a mezzo-soprano opera singer with a Master in Performing Arts Management from Accademia Teatro alla Scala. She’s also a design, marketing, and business consultant, with experience in promoting classical music, real estate, and early-stage startups. With her two other singer colleagues, she has co-founded Coloratura: The Opera Dolls, a company that produces educational musical toys for children.'
   },
   {
     name: 'Luis Llave',
@@ -46,5 +46,5 @@ export const team: Teammate[] = [
 export const titleAbout = 'About Nabi Music';
 export const ourMission = 'Our mission is to make music education easily accessible and bring encouragement to every young musician.';
 export const titleWhatWeDo = 'What We Do';
-export const whatWeDo = 'Nabi Music provides a well-rounded music learning experience for children by allowing parents to connect with qualified instructors nearby and providing unique features that motivate parents’ involvement in their children musical path.'
-export const titleTeam = 'The Nabi Music Team';
+export const whatWeDo = 'Nabi Music provides an innovative music learning experience for children by allowing parents to connect with qualified instructors nearby and providing unique features that motivate parents’ involvement in their children musical path.'
+export const titleTeam = 'The Team';
