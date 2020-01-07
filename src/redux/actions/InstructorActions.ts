@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios  from 'axios';
@@ -19,22 +18,6 @@ import {
   withDataAction,
   withErrorAction,
 } from './actions';
-=======
-import { Action, Dispatch } from "redux";
-import { ThunkAction } from "redux-thunk";
-import axios from "axios";
-
-import { ProfileType } from "../../components/ProfileBuilder/ProfileStep/models";
-import { defaultApiError } from "../../constants/apiConstants";
-import { getError } from "../../utils/handleApiErros";
-import { ApiEndpoints } from "../../constants/apiEndpoints";
-import { EducationType } from "../../components/Education/model";
-import { EmploymentType } from "../../components/Employment/model";
-import { StoreState } from "../reducers/store";
-import { InstructorType } from "../models/InstructorModel";
-import { InstructorActions } from "../actions/InstructorActionTypes";
-import { requestAction, withDataAction, withErrorAction } from "./actions";
->>>>>>> ac499ff... added contants and redux action to fetch more instructors
 
 // Default error message
 let errorMessage = defaultApiError;
@@ -469,7 +452,7 @@ export const fetchMoreInstructors = (
       params: params && params
     };
     const response = await axios.get(
-      `v1/instructors/?page=${String(pageNumber)}`,
+      `${ApiEndpoints.fetchMoreInstructor}${String(pageNumber)}`,
       config
     );
     dispatch(
