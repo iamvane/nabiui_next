@@ -233,7 +233,8 @@ export const InstructorsList = (props: Props) => {
   }
 
   window.onscroll = debounce(() => {
-    if (props.isRequesting) return;
+    const hasMoreData = props.instructors.results.length + 1 < props.instructors.count
+    if (props.isRequesting || !hasMoreData) return;
     if (
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
