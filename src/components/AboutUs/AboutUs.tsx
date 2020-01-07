@@ -9,10 +9,6 @@ import '../../../assets/scss/AboutUs.scss';
 import { Role } from '../../constants/Roles';
 import * as constants from './constants';
 
-interface Props {
-  role: Role;
-}
-
 const teammate = (teamate : constants.Teammate) => (
   <div>
     <Avatar src={teamate.image} className="nabi-margin-center nabi-margin-top-medium big-avatar" />
@@ -49,7 +45,7 @@ const teammate = (teamate : constants.Teammate) => (
   </div>
 );
 
-export const AboutUs = (props: Props) => {
+export const AboutUs = () => {
   return (
     <React.Fragment>
       <div className="about-banner nabi-color-white nabi-background-nabi nabi-text-center">
