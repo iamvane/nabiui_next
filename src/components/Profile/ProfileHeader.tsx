@@ -91,7 +91,7 @@ export const ProfileHeader = (props: Props) => {
         <div className="hide-on-desktop nabi-margin-bottom-xsmall">
           <div className="nabi-display-inline-block">
             {/*tslint:disable-next-line:max-line-length*/}
-            <h1 className="nabi-text-mediumbold  nabi-margin-remove nabi-jennasue-title">
+            <h1 className="nabi-text-normalbold nabi-color-nabi nabi-margin-remove nabi-jennasue-title">
               {bioTitle}
             </h1>
           </div>
@@ -126,7 +126,7 @@ export const ProfileHeader = (props: Props) => {
               <div>
                 <div className="nabi-display-inline-block">
                   {/*tslint:disable-next-line:max-line-length*/}
-                  <h1 className="nabi-text-mediumbold nabi-color-nabi nabi-margin-remove nabi-jennasue-title">
+                  <h1 className="nabi-text-normalbold nabi-color-nabi nabi-margin-remove nabi-jennasue-title">
                     {bioTitle}
                   </h1>
                 </div>
