@@ -6,7 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 
 import '../../../assets/scss/AboutUs.scss';
-import { Role } from '../../constants/Roles';
 import * as constants from './constants';
 
 const teammate = (teamate : constants.Teammate) => (
