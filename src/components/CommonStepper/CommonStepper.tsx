@@ -65,7 +65,7 @@ export const CommonStepper = (props: Props) => {
     <div className="nabi-container">
       <PageTitle pageTitle={props.pageTitle} />
 
-      <div className="nabi-background-white nabi-section">
+      <div className="nabi-background-white nabi-section nabi-margin-bottom-medium">
         {renderStepperLabels()}
         {getStepContent()}
       </div>

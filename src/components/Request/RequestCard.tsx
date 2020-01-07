@@ -82,7 +82,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
           </Typography>
         </Grid>
         <Grid item={true} xs={12} md={6}>
-            <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-top-zero nabi-text-center nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-left-md">
+            <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-top-zero nabi-text-center nabi-margin-bottom-xsmall nabi-text-left-md">
               {requestTitle}
             </p>
           <Typography>

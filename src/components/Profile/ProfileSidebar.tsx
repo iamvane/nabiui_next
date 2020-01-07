@@ -85,7 +85,7 @@ const ProfileSidebar: React.StatelessComponent<Props> = props => {
           </Typography>
         }
       </div>
-      <div className="nabi-section-wide nabi-background-white nabi-margin-top-xsmall">
+      <div className="nabi-section-wide nabi-background-white nabi-margin-top-xsmall nabi-margin-bottom-medium">
         <Grid container={true}>
           <Grid item={true} xs={12}>
           {/* tslint:disable-next-line:max-line-length */}
