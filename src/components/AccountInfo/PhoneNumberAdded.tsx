@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import {
   Grid,
-  Icon,
   IconButton,
   Typography
 } from '@material-ui/core';
+import Done from '@material-ui/icons/Done';
 
 import { PhoneValidationFormComponent } from './constants';
 
@@ -33,7 +33,7 @@ const PhoneNumberAdded: React.StatelessComponent<Props> = props => {
           {PhoneValidationFormComponent.validationSucessful}
         </Typography>
         <IconButton color="primary" disabled={true}>
-          <Icon>done</Icon>
+          <Done />
         </IconButton>
       </Grid>
     </Grid>

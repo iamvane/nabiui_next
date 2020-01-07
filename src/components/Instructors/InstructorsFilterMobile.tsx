@@ -5,11 +5,11 @@ import {
   Drawer,
   FormControl,
   Grid,
-  Icon,
   InputLabel,
   Select,
   Slider
 } from '@material-ui/core';
+import FilterList from '@material-ui/icons/FilterList';
 
 import SectionTitle from '../common/SectionTitle';
 import PlaceForLessonsForm from '../PlaceForLessons/PlaceForLessonsForm';
@@ -96,7 +96,7 @@ const InstructorFilterMobile: React.StatelessComponent<Props> = props => {
         fullWidth={true}
       >
         Filter
-        <Icon>filter_list</Icon>
+        <FilterList />
       </Button>
       <Drawer
         open={isFilterOpen}

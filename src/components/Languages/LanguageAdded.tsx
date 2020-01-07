@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   Grid,
-  Icon,
   IconButton,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
 
 import { LanguageAddedComponent } from './constants';
 
@@ -32,7 +32,7 @@ const LanguageAdded: React.StatelessComponent<Props> = props => {
           />
           <ListItemSecondaryAction>
             <IconButton aria-label="Delete" onClick={() => props.deleteLanguage(props.language)}>
-              <Icon>delete</Icon>
+              <Delete />
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>

@@ -4,11 +4,13 @@ import {
   Button,
   FormControl,
   Grid,
-  Icon,
   Input,
   Select,
   TextField
 } from '@material-ui/core';
+import Save from '@material-ui/icons/Save';
+import Add from '@material-ui/icons/Add';
+import Close from '@material-ui/icons/Close';
 
 import { YearsList } from '../../utils/YearsList';
 import { EducationType } from './model';
@@ -45,7 +47,7 @@ const EducationForm: React.StatelessComponent<Props> = props => {
       type="submit"
       disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">save</Icon>
+      <Save className="nabi-margin-right-xsmall" />
       <span className="nabi-margin-left-xsmall">{EducationFormComponent.Text.SaveChangesButton}</span>
     </Button>
   );
@@ -59,7 +61,7 @@ const EducationForm: React.StatelessComponent<Props> = props => {
       type="submit"
       disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">add</Icon>
+      <Add className="nabi-margin-right-xsmall" />
       <span className="nabi-margin-left-xsmall">{EducationFormComponent.Text.AddButton}</span>
     </Button>
   );
@@ -152,7 +154,7 @@ const EducationForm: React.StatelessComponent<Props> = props => {
             className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-xsmall"
             onClick={props.handleCancel}
           >
-            <Icon className="nabi-margin-right-xsmall">close</Icon>
+            <Close className="nabi-margin-right-xsmall" />
             <span className="nabi-margin-left-xsmall">{EducationFormComponent.Text.CancelButton}</span>
           </Button>
         </form>

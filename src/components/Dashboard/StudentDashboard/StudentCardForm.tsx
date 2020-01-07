@@ -3,13 +3,15 @@ import * as React from 'react';
 import {
   Button,
   FormControl,
-  Icon,
   Input,
   ListItem,
   Select,
   TextField,
   Typography
 } from '@material-ui/core';
+import Save from '@material-ui/icons/Save';
+import Add from '@material-ui/icons/Add';
+import Close from '@material-ui/icons/Close';
 
 import { instruments } from '../../../../assets/data/instruments';
 import { Role } from '../../Auth/Registration/constants';
@@ -63,7 +65,7 @@ const StudentCardForm: React.StatelessComponent<Props> = props => {
       type="submit"
       disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">save</Icon>
+      <Save className="nabi-margin-right-xsmall" />
       <span className="nabi-margin-left-xsmall">{StudentCardFormComponent.ButtonText.EditSubmit}</span>
     </Button>
   );
@@ -77,7 +79,7 @@ const StudentCardForm: React.StatelessComponent<Props> = props => {
       type="submit"
       disabled={!props.allFieldsFilled ? true : false}
     >
-      <Icon className="nabi-margin-right-xsmall">add</Icon>
+      <Add className="nabi-margin-right-xsmall" />
       <span className="nabi-margin-left-xsmall">{StudentCardFormComponent.ButtonText.AddSubmit}</span>
     </Button>
   );
@@ -254,7 +256,7 @@ const StudentCardForm: React.StatelessComponent<Props> = props => {
             className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-xsmall"
             onClick={props.handleCancel}
           >
-            <Icon className="nabi-margin-right-xsmall">close</Icon>
+            <Close className="nabi-margin-right-xsmall" />
             <span className="nabi-margin-left-xsmall">{StudentCardFormComponent.ButtonText.Cancel}</span>
           </Button>
         </React.Fragment>

@@ -10,11 +10,11 @@ import { connect } from 'react-redux';
 import {
   Button,
   CircularProgress,
-  Icon,
   Grid,
   TextField,
   Typography
 } from '@material-ui/core';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import SelectedEmail from './SelectedEmail';
 
@@ -182,7 +182,7 @@ export class Recommendations extends React.Component<Props, State> {
         <StepperButtons
           nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Screening}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Employment}
-          icon={<Icon>arrow_forward</Icon>}
+          icon={<ArrowForward />}
         />
         <SnackBar
           isOpen={!!this.props.message}

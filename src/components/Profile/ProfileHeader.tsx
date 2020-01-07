@@ -3,7 +3,6 @@ import * as React from 'react';
 import {
   Avatar,
   Grid,
-  Icon,
   IconButton,
   Typography,
   TextField,
@@ -19,6 +18,7 @@ import { BioComponent } from '../Bio/constants';
 import { InstrumentsType } from '../Instruments/model';
 import { ProfileHeaderComponent } from './constants';
 import EditRatesModal from './EditRatesModal';
+import { Star } from '@material-ui/icons';
 
 interface Props {
   instructor: any;
@@ -46,7 +46,6 @@ export const ProfileHeader = (props: Props) => {
     rates,
     memberSince,
     backgroundCheck,
-    favorite,
     lessonsTaught,
     instruments
   } = props.instructor;
@@ -55,9 +54,9 @@ export const ProfileHeader = (props: Props) => {
     let ratingStars: JSX.Element[] = [];
     for (let i = 0; i < 5; i++ ) {
       if (i < reviewsNumber) {
-        ratingStars.push(<Icon key={i}>star</Icon>);
+        ratingStars.push(<Star key={i} />);
       } else {
-        ratingStars.push(<Icon color="disabled" key={i}>star</Icon>);
+        ratingStars.push(<Star color="disabled" key={i} />);
       }
     }
     return ratingStars;

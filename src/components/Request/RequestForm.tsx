@@ -4,7 +4,6 @@ import {
   Button,
   FormControl,
   Grid,
-  Icon,
   Input,
   ListItem,
   Select,
@@ -12,6 +11,9 @@ import {
   Typography,
   CircularProgress
 } from '@material-ui/core';
+import Save from '@material-ui/icons/Save';
+import Add from '@material-ui/icons/Add';
+import Close from '@material-ui/icons/Close';
 
 import SectionTitle from '../common/SectionTitle';
 import DistanceSelect from '../common/DistanceSelect';
@@ -94,7 +96,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
     >
       {props.isEditingRequest ? <CircularProgress color="inherit" size={25} /> :
         <React.Fragment>
-          <Icon className="nabi-margin-right-xsmall">save</Icon>
+          <Save className="nabi-margin-right-xsmall" />
           <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.EditSubmit}</span>
         </React.Fragment>}
     </Button>
@@ -111,7 +113,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
     >
       {props.isCreatingRequest ? <CircularProgress color="inherit" size={25} /> :
         <React.Fragment>
-          <Icon className="nabi-margin-right-xsmall">add</Icon>
+          <Add className="nabi-margin-right-xsmall" />
           <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.AddSubmit}</span>
         </React.Fragment>}
     </Button>
@@ -273,7 +275,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
         className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-xsmall"
         onClick={props.handleCancel}
       >
-        <Icon className="nabi-margin-right-xsmall">close</Icon>
+        <Close className="nabi-margin-right-xsmall" />
         <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.Cancel}</span>
       </Button>
     </form>

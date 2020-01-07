@@ -6,9 +6,9 @@ import {
   Avatar,
   Button,
   Grid,
-  Icon,
   Typography
 } from '@material-ui/core';
+import Check from '@material-ui/icons/Check';
 
 import { Request } from '../../redux/models/RequestModel';
 
@@ -65,7 +65,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
       >
         {applied &&
           <Typography color="primary" className="nabi-display-inline-block nabi-margin-right-xsmall">
-            <Icon className="nabi-vertical-bottom">check</Icon> Applied
+            <Check className="nabi-vertical-bottom" /> Applied
           </Typography>}
       </div>
       <Grid container={true} spacing={3}>

@@ -4,9 +4,9 @@ import moment from 'moment';
 import {
   Avatar,
   Grid,
-  Icon,
   Typography
 } from '@material-ui/core';
+import Star from '@material-ui/icons/Star';
 
 import { ReviewsType } from './model';
 
@@ -16,7 +16,7 @@ const getRatingStars = (ratingNumber: number ) => {
   let ratingStars: JSX.Element[] = [];
   let roundedNumber = Math.round(ratingNumber);
   for (let i = 0; i < roundedNumber; i++ ) {
-    ratingStars.push(<Icon color="primary" key={i}>star</Icon>);
+    ratingStars.push(<Star color="primary" key={i} />);
   }
   return ratingStars;
 };

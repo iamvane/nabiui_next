@@ -1,11 +1,12 @@
 import * as React from 'react';
 
 import {
-  Icon,
   IconButton,
   Grid,
   Typography
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 
 import { EducationType }  from './model';
 import {
@@ -35,7 +36,7 @@ const EducationAdded: React.StatelessComponent<Props> = props => {
           aria-label="Delete"
           onClick={() => props.deleteEducation(props.id)}
         >
-          <Icon>delete</Icon>
+          <Delete />
         </IconButton>
 
         <IconButton
@@ -44,7 +45,7 @@ const EducationAdded: React.StatelessComponent<Props> = props => {
           aria-label="Edit"
           onClick={() => props.editEducation(props.id)}
         >
-          <Icon>edit</Icon>
+          <Edit />
         </IconButton>
       </div>
 

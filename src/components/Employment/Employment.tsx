@@ -8,9 +8,10 @@ import { connect } from 'react-redux';
 import {
   Button,
   CircularProgress,
-  Icon,
   Typography
 } from '@material-ui/core';
+import ArrowForward from '@material-ui/icons/ArrowForward';
+import Add from '@material-ui/icons/Add';
 
 import { StoreState } from '../../redux/reducers/store';
 import {
@@ -313,7 +314,7 @@ export class Employment extends React.Component<Props, State> {
               </ul>
               <div className="nabi-margin-top-medium">
                 <Button color="primary" variant="contained" onClick={this.toggleEmploymentForm}>
-                  <Icon className="nabi-margin-right-xsmall">add</Icon>
+                  <Add className="nabi-margin-right-xsmall" />
                   {EmploymentComponent.Text.AddEmployment}
                 </Button>
               </div>
@@ -323,7 +324,7 @@ export class Employment extends React.Component<Props, State> {
         <StepperButtons
           nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.References}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
-          icon={<Icon>arrow_forward</Icon>}
+          icon={<ArrowForward />}
         />
       </div>
     );

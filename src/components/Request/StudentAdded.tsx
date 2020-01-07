@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
   Grid,
-  Icon,
   IconButton,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
 
 import { StudentType } from './models';
 import { StudentAddedComponent } from './constants';
@@ -37,7 +37,7 @@ const StudentAdded: React.StatelessComponent<Props> = props => {
         />
         <ListItemSecondaryAction>
           <IconButton aria-label="Delete" onClick={() => props.deleteStudent(props.name)}>
-            <Icon>delete</Icon>
+            <Delete />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>

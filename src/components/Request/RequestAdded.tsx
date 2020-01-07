@@ -2,10 +2,11 @@ import * as React from 'react';
 
 import {
   Grid,
-  Icon,
   IconButton,
   Typography
 } from '@material-ui/core';
+import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 
 import { RequestType }  from '../../redux/models/RequestModel';
 import { RequestAddedComponent } from './constants';
@@ -53,7 +54,7 @@ const RequestAdded: React.StatelessComponent<Props> = props => {
           aria-label="Delete"
           onClick={() => props.deleteRequest && props.deleteRequest(props.id)}
         >
-          <Icon>delete</Icon>
+          <Delete />
         </IconButton>
 
         <IconButton
@@ -62,7 +63,7 @@ const RequestAdded: React.StatelessComponent<Props> = props => {
           aria-label="Edit"
           onClick={() => props.editRequest && props.editRequest(props.id)}
         >
-          <Icon>edit</Icon>
+          <Edit />
         </IconButton>
       </div>
 

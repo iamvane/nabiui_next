@@ -6,10 +6,8 @@ import {
 import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
 
-import {
-  Checkbox,
-  Icon,
-} from '@material-ui/core';
+import { Checkbox } from '@material-ui/core';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../redux/reducers/store';
 import { UserType } from '../../redux/models/UserModel';
@@ -451,7 +449,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
           handleNext={this.handleNext}
-          icon={<Icon>arrow_forward</Icon>}
+          icon={<ArrowForward />}
           isRequesting={this.props.isRequesting}
           errors={this.props.buildJobPreferencesError}
         />
