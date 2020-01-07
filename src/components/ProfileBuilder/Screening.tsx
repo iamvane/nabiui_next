@@ -12,7 +12,10 @@ import {
 } from '@material-ui/core';
 
 import { StoreState } from '../../redux/reducers/store';
-import { requestBackgroundCheck } from "../../redux/actions/InstructorActions";
+import {
+  requestBackgroundCheck,
+  fetchBackgroundCheckStatus
+} from "../../redux/actions/InstructorActions";
 import SectionTitle from '../common/SectionTitle';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import { Routes } from '../common/constants/Routes';
@@ -30,6 +33,7 @@ interface OwnProps { }
 
 interface DispatchProps {
   requestBackgroundCheck: (params: BackgroundCheckParams) => void;
+  fetchBackgroundCheckStatus: () => void;
 }
 
 interface Props extends
@@ -41,7 +45,7 @@ export const Screening = (props: Props) => {
   const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
 
   React.useEffect(() => {
-
+    props.fetchBackgroundCheckStatus();
     /* tslint:disable */
   }, []);
 
@@ -138,6 +142,7 @@ const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
   requestBackgroundCheck: (params: BackgroundCheckParams) => dispatch(requestBackgroundCheck(params)),
+  fetchBackgroundCheckStatus: () => dispatch(fetchBackgroundCheckStatus()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Screening);

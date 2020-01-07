@@ -466,3 +466,26 @@ export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkActi
     dispatch(withErrorAction(InstructorActions.REQUEST_BACKGROUND_CHECK_FAILURE, errorMessage));
   }
 };
+
+
+export const fetchBackgroundCheckStatus = (params?: {instructorId: number}): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
+  try {
+    const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgwNDg3NDA0LCJqdGkiOiJlMWEwOTlkMTZiYTk0ODE5OWJjNDMzN2JiMmUzYzAxMSIsInVzZXJfaWQiOjR9.fF4JpCB1FvYShiAbQ4ug_-LVKWkUrur1XGqMhQx5pcU';
+    let config = {
+      headers: authToken && { 'Authorization': `Bearer ${authToken}` },
+      params: params && params
+    };
+
+    const response = await axios.get(ApiEndpoints.backgroundCheck, config);
+    dispatch(withDataAction(InstructorActions.REQUEST_BACKGROUND_CHECK_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(InstructorActions.REQUEST_BACKGROUND_CHECK_FAILURE, errorMessage));
+  }
+};

@@ -701,6 +701,44 @@ export default function instructorReducer(
         }
       };
 
+    case InstructorActions.FETCH_BACKGROUND_CHECK_STATUS:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBackgroundCheckStatus: {
+            isRequesting: true,
+            error: '',
+          }
+        }
+      };
+
+    case InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_SUCCESS:
+      const {data: backgroundStatusMessage} = <APIActions.WithData<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBackgroundCheckStatus: {
+            isRequesting: false,
+            error: ''
+          }
+        }
+      };
+
+    case InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_FAILURE:
+      const { error: backgroundStatusError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBackgroundCheckStatus: {
+            isRequesting: false,
+            error: backgroundStatusError,
+          }
+        }
+      };
+
     default:
       return state;
   }
