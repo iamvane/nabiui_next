@@ -233,14 +233,14 @@ export const InstructorsList = (props: Props) => {
   }
 
   window.onscroll = debounce(() => {
-    const hasMoreData = props.instructors.results.length + 1 < props.instructors.count
-    if (props.isRequesting || !hasMoreData) return;
+    const hasMoreData =
+      props.instructors.results.length + 1 > props.instructors.count;
+    if (props.isRequesting || props.isRequestingMoreInstructors || hasMoreData) return;
     if (
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
     ) {
       props.fetchMoreInstructors(count, queryParams);
-      alert(String(count));
       incrementCount();
     }
   }, 100);
@@ -310,9 +310,7 @@ const mapStateToProps = (
     actions: {
       fetchInstructors: { isRequesting },
       fetchInstructor: { isRequesting: isRequestingInstructor },
-      fetchMoreInstructors: {
-        isRequesting: isRequestingMoreInstructors
-      }
+      fetchMoreInstructors: { isRequesting: isRequestingMoreInstructors }
     }
   } = state.instructor;
 
