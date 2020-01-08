@@ -5,7 +5,6 @@ import {
 } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
-
 import { useRouter } from 'next/router';
 
 import { Grid, CircularProgress } from '@material-ui/core';
@@ -14,16 +13,8 @@ import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
 import { InstructorType } from '../../redux/models/InstructorModel';
 import { changeAvatar } from '../../redux/actions/UserActions';
-import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';
-import { RatesType } from '../Rates/model';
-import { SkillLevel } from '../Instruments/constants';
+import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';;
 import PageTitle from '../common/PageTitle';
-// import { ReviewsType } from '../Reviews/model';
-import { QualificationsType } from '../Qualifications/model';
-import { Qualifications } from '../Qualifications/constants';
-import { InstrumentsType } from '../Instruments/model';
-import { EmploymentType } from '../Employment/model';
-import { EducationType } from '../Education/model';
 import { ProfileComponent, ProfileContentComponent } from './constants';
 import ProfileHeader from './ProfileHeader';
 import ProfileContent from './ProfileContent';

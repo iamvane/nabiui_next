@@ -260,7 +260,7 @@ export namespace RequestViewComponent {
   export const sendApplication = 'Send Application';
   export const sendMessageTo = 'Send message to {userReplace}';
   export const lessonDurationPlaceHolder = '{lessonDurationReplace}';
-  export const lessonDuration = '{lessonDurationReplace} mins lesson';
+  export const lessonDuration = '{lessonDurationReplace} lesson';
   export const applicationDate = 'Date Applied';
   export const application = 'Application';
   export const rate = 'Rate:';
@@ -277,6 +277,7 @@ export namespace RequestViewComponent {
     StudentDetais = 'Student details:',
     LessonDuration = 'Lesson duration:',
     Message = 'Message:',
+    SkillLevel = 'Skill level:'
   }
 
   export enum FieldNames {

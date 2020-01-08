@@ -36,7 +36,7 @@ export const Footer = () => {
             <Typography className="nabi-cursor-pointer"><Link href={Routes.HowItWorksParents}><a>How It Works - Parents</a></Link></Typography>
             <Typography className="nabi-cursor-pointer"><Link href={Routes.HowItWorksInstructors}><a>How It Works - Instructors</a></Link></Typography>
             <Typography className="nabi-cursor-pointer"><Link href=""><a>About Us</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link href="https://blog.nabimusic.com"><a target="_blank">Blog</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><a href="https://blog.nabimusic.com" target="_blank">Blog</a></Typography>
           </Grid>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">Legal</p>

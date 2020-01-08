@@ -45,7 +45,6 @@ interface StateProps {
   birthday?: string;
   requests: RequestType[];
   request: RequestType;
-  isFetchingRequest: boolean;
   isFetchingRequests: boolean;
   isCreatingRequest: boolean;
   isEditingRequest: boolean;
@@ -567,9 +566,6 @@ function mapStateToProps(state: StoreState, _ownProps: {}): StateProps {
       requests,
       request,
       actions: {
-        fetchRequest: {
-          isRequesting: isFetchingRequest
-        },
         fetchRequests: {
           isRequesting: isFetchingRequests
         },
@@ -595,7 +591,6 @@ function mapStateToProps(state: StoreState, _ownProps: {}): StateProps {
     requests: requests,
     request: request,
     isFetchingRequests,
-    isFetchingRequest,
     isCreatingRequest,
     isEditingRequest,
     isDeletingRequest,
