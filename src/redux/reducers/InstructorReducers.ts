@@ -760,7 +760,7 @@ export default function instructorReducer(
           }
         };
 
-      case InstructorActions.SUBMIT_APPLICACTION_FAILURE:
+      case InstructorActions.SUBMIT_APPLICACTION_SUCCESS:
         const {data: submitApplicationMessage} = <APIActions.WithData<string>> action;
         return {
           ...state,
