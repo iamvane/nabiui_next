@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 
 import { fetchRequest } from '../../redux/actions/RequestActions';
+import { submitApplication } from '../../redux/actions/InstructorActions';
 import { StoreState } from '../../redux/reducers/store';
 import PageTitle from '../common/PageTitle';
 import { RequestViewComponent } from './constants';
@@ -30,6 +31,8 @@ interface OwnProps {
 
 interface DispatchProps {
   fetchRequest: (id: number) => void;
+  submitApplication: (payload: any) => void;
+
 }
 
 interface StateProps {
@@ -199,7 +202,8 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchRequest: (id: number) => dispatch(fetchRequest(id))
+  fetchRequest: (id: number) => dispatch(fetchRequest(id)),
+  submitApplication: (payload: any) => dispatch(submitApplication(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequestView);

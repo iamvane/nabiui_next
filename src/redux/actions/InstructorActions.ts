@@ -9,6 +9,7 @@ import { ApiEndpoints } from '../../constants/apiEndpoints';
 import { EducationType } from '../../components/Education/model';
 import { EmploymentType } from '../../components/Employment/model';
 import { BackgroundCheckParams } from '../../components/ProfileBuilder/models';
+import { ApplicationPayload } from '../../components/Request/models';
 import { StoreState } from '../reducers/store';
 import { InstructorType } from '../models/InstructorModel';
 import { InstructorActions } from '../actions/InstructorActionTypes';
@@ -488,5 +489,26 @@ export const fetchBackgroundCheckStatus = (params?: {instructorId: number}): Thu
       errorMessage = getError(e);
     }
     dispatch(withErrorAction(InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_FAILURE, errorMessage));
+  }
+};
+
+export const submitApplication = (application: ApplicationPayload): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(InstructorActions.SUBMIT_APPLICACTION));
+  try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
+    const response = await axios.post(
+      ApiEndpoints.applicationInstructors,
+      {...application},
+      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
+    dispatch(withDataAction(InstructorActions.SUBMIT_APPLICACTION_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(InstructorActions.SUBMIT_APPLICACTION_FAILURE, errorMessage));
   }
 };

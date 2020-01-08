@@ -747,6 +747,49 @@ export default function instructorReducer(
         }
       };
 
+    case InstructorActions.SUBMIT_APPLICACTION:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            submitApplication: {
+              ...state.actions.submitApplication,
+              isRequesting: true,
+              message: ''
+            }
+          }
+        };
+
+      case InstructorActions.SUBMIT_APPLICACTION_FAILURE:
+        const {data: submitApplicationMessage} = <APIActions.WithData<string>> action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            submitApplication: {
+              ...state.actions.submitApplication,
+              isRequesting: false,
+              error: '',
+              message: submitApplicationMessage
+            }
+          }
+        };
+
+      case InstructorActions.SUBMIT_APPLICACTION_FAILURE:
+        const { error: submitApplicationError } = <APIActions.WithError<string>> action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            submitApplication: {
+              ...state.actions.submitApplication,
+              isRequesting: false,
+              error: submitApplicationError,
+              message: ''
+            }
+          }
+        };
+
     default:
       return state;
   }

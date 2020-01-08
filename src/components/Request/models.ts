@@ -40,3 +40,9 @@ export const defaultRequestsState: RequestsState = {
     updateRequesst: {},
   },
 };
+
+export interface ApplicationPayload {
+  requestId: number;
+  rate: string;
+  message: string;
+}
