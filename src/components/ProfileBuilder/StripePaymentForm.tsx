@@ -1,14 +1,12 @@
-
 import React from "react";
-
-import { Button } from '@material-ui/core';
-
 import {
   StripeProvider,
   CardElement,
   injectStripe,
   Elements
 } from "react-stripe-elements";
+
+import { Button } from '@material-ui/core';
 
 import "../../../assets/scss/StripePaymentForm.scss";
 import { BackgroundCheckParams } from "./models";
@@ -27,7 +25,6 @@ const PaymentForm = (props: any) =>  {
       props.stripe
         .createToken()
         .then((payload: any) => {
-          // this.props.onToken(payload.token);
           const params:BackgroundCheckParams = {
             amount: 33.26,
             stripeToken: payload.token.id
