@@ -72,7 +72,7 @@ export const fetchRequest = (id: number): ThunkAction<Promise<void>, {}, {}> => 
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.get(`${ApiEndpoints.lessonRequest}/${id}`, {
+    const response = await axios.get(ApiEndpoints.requestItem + id, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
 

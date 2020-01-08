@@ -7,16 +7,18 @@ import {
   Dispatch
 } from 'redux';
 
+import { fetchUser } from '../../redux/actions/UserActions';
 import { StoreState } from '../../redux/reducers/store';
 import { ListResource } from '../../redux/models/models';
 import { Request } from '../../redux/models/RequestModel';
+import { UserType } from '../../redux/models/UserModel';
 import { fetchRequestsList } from '../../redux/actions/RequestActions';
 import ListTemplate from '../common/Templates/ListTemplate';
 import { ListTemplateComponent } from '../common/constants/ListTemplate';
 import RequestsFilter from './RequestsFilter';
 import RequestsFilterMobile from './RequestsFilterMobile';
 import Requests from './Requests';
-
+import RegisterModal from './RegisterModal';
 import {
   RequestListComponent,
   RequestFilterComponent,
@@ -30,12 +32,14 @@ interface StateProps {
   requests: ListResource<Request>;
   isRequesting: boolean;
   error: string;
+  user: UserType
 }
 
 interface OwnProps { }
 
 interface DispatchProps {
   fetchRequestList: (params?: any) => void;
+  fetchUser: () => void;
 }
 
 interface Props extends
@@ -54,9 +58,11 @@ export const InstructorsList = (props: Props) => {
   const [placeForLessonsMobile, setPlaceForLessonsMobile] = React.useState(defaultPlaceForLessons);
   const [ageMobile, setAgeMobile] = React.useState('');
   const [queryParams, setQueryParams] = React.useState(defaultQueryParams);
+  const [register, setRegister] = React.useState(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
+      await props.fetchUser();
       if (queryParams) {
         await props.fetchRequestList(queryParams);
       } else {
@@ -100,6 +106,10 @@ export const InstructorsList = (props: Props) => {
         return;
     }
     setQueryParams(queryParamsValues);
+  };
+
+  const toggleRegisterModal = () => {
+    setRegister(prevOpen => !prevOpen);
   };
 
   const handleMobileChange = (event: any) => {
@@ -156,42 +166,47 @@ export const InstructorsList = (props: Props) => {
   };
 
   return (
-    <ListTemplate
-      pageTitle={RequestListComponent.pageTitle}
-      results={props.requests.count}
-      handleChange={handleChange}
-      getLatLng={getLatLng}
-      getLocation={getLocation}
-      instrument={instrument}
-      address={address}
-      isRequesting={props.isRequesting}
-      filterSection={
-        <React.Fragment>
-          <RequestsFilter
-            sortBy={sortBy}
-            distance={distance}
-            placeForLessons={placeForLessons}
-            age={age}
-            handleChange={handleChange}
+    <React.Fragment>
+      <ListTemplate
+        pageTitle={RequestListComponent.pageTitle}
+        results={props.requests.count}
+        handleChange={handleChange}
+        getLatLng={getLatLng}
+        getLocation={getLocation}
+        instrument={instrument}
+        address={address}
+        isRequesting={props.isRequesting}
+        filterSection={
+          <React.Fragment>
+            <RequestsFilter
+              sortBy={sortBy}
+              distance={distance}
+              placeForLessons={placeForLessons}
+              age={age}
+              handleChange={handleChange}
+            />
+            <RequestsFilterMobile
+              sortBy={sortBy}
+              distance={distanceMobile}
+              placeForLessons={placeForLessonsMobile}
+              age={ageMobile}
+              handleChange={handleMobileChange}
+              handleMobileSortBy={handleMobileSortBy}
+              setQueryParams={setQueryParamsMobile}
+            />
+          </React.Fragment>
+        }
+        mainContent={
+          <Requests
+            user={props.user}
+            requests={props.requests.results}
+            isRequesting={props.isRequesting}
+            toggleRegisterModal={toggleRegisterModal}
           />
-          <RequestsFilterMobile
-            sortBy={sortBy}
-            distance={distanceMobile}
-            placeForLessons={placeForLessonsMobile}
-            age={ageMobile}
-            handleChange={handleMobileChange}
-            handleMobileSortBy={handleMobileSortBy}
-            setQueryParams={setQueryParamsMobile}
-          />
-        </React.Fragment>
-      }
-      mainContent={
-        <Requests
-          requests={props.requests.results}
-          isRequesting={props.isRequesting}
-        />
-      }
-    />
+        }
+      />
+      <RegisterModal isOpen={register} handleClose={toggleRegisterModal} />
+    </React.Fragment>
   );
 };
 
@@ -209,14 +224,16 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
   return {
     requests: requestsList,
     isRequesting,
-    error
+    error,
+    user: state.user.user
   };
 };
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchRequestList: (params?) => dispatch(fetchRequestsList(params))
+  fetchRequestList: (params?) => dispatch(fetchRequestsList(params)),
+  fetchUser: () => dispatch(fetchUser()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstructorsList);

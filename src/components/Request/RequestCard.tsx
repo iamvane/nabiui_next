@@ -1,7 +1,7 @@
 import * as React from 'react';
 import moment from 'moment';
 import Link from 'next/link';
-
+import Router from 'next/router';
 import {
   Avatar,
   Button,
@@ -11,7 +11,7 @@ import {
 import Check from '@material-ui/icons/Check';
 
 import { Request } from '../../redux/models/RequestModel';
-
+import { UserType } from '../../redux/models/UserModel';
 import { Routes } from '../common/constants/Routes';
 import {
   Role,
@@ -24,6 +24,8 @@ import { RequestCardComponent } from './constants';
 
 interface Props {
   request: Request;
+  user: UserType;
+  toggleRegisterModal:() => void;
 }
 
 const RequestCard: React.StatelessComponent<Props> = props => {
@@ -57,8 +59,16 @@ const RequestCard: React.StatelessComponent<Props> = props => {
   ));
   const instrumentDisplay = instruments.find(t => t.value === instrument);
 
+  const navigateToRequest = () => {
+    if (props.user.email) {
+      Router.push(`${Routes.Request}/${id}`)
+    } else {
+      props.toggleRegisterModal();
+    }
+
+  }
   return (
-    <div className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative">
+    <div onClick={navigateToRequest} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative item-card">
       <div
         style={{right: '20px'}}
         className={`nabi-float-right ${!applied && 'nabi-position-absolute'} nabi-position-absolute-md`}
@@ -142,19 +152,13 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             {applicationsReceived} {RequestCardComponent.Text.Applications}
             </Typography>
             <br />
-            <Link
-              href={`${Routes.Request}/${id}`}
-            >
-              <a>
-                <Button
-                  color="primary"
-                  className="nabi-responsive-button nabi-margin-top-xsmall"
-                  variant="contained"
-                >
-                  {applied ? RequestCardComponent.Text.ViewApplication : RequestCardComponent.Text.SendApplication}
-                </Button>
-              </a>
-            </Link>
+              <Button
+                color="primary"
+                className="nabi-responsive-button nabi-margin-top-xsmall"
+                variant="contained"
+              >
+                {applied ? RequestCardComponent.Text.ViewApplication : RequestCardComponent.Text.SendApplication}
+              </Button>
             {/* <br />
             <Button
               color="default"
