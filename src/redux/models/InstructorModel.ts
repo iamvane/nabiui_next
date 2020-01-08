@@ -42,6 +42,13 @@ export interface InstructorType {
   age?: number;
   instructorId?: number;
   references?: string[];
+  backgroundCheckStatus?: string;
+  backgroundCheckResults?: {
+    requestorEmail: string;
+    status:string;
+    result: string;
+    createdAt: string;
+  };
 }
 
 export interface Rates {
@@ -103,6 +110,12 @@ export interface InstructorState {
 export const defaultInstructorState: InstructorState = {
   instructor: {
     userId: 0,
+    backgroundCheckResults: {
+      requestorEmail: '',
+      status: '',
+      result: '',
+      createdAt: '',
+    },
   },
   instructors: {
     count: 0,

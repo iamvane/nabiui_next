@@ -635,6 +635,7 @@ export default function instructorReducer(
       return {
         ...state,
         instructor: {
+          ...state.instructor,
           references: action.data.emails,
         },
         actions: {
@@ -714,9 +715,16 @@ export default function instructorReducer(
       };
 
     case InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_SUCCESS:
-      const {data: backgroundStatusMessage} = <APIActions.WithData<string>> action;
       return {
         ...state,
+        instructor: {
+          backgroundCheckResults: {
+            requestorEmail: action.data.requestorEmail,
+            status: action.data.status,
+            result: action.data.result,
+            createdAt: action.data.createdAt
+          }
+        },
         actions: {
           ...state.actions,
           fetchBackgroundCheckStatus: {

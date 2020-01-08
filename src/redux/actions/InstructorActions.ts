@@ -453,7 +453,7 @@ export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkActi
   dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
   try {
     const state = getState();
-    const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgwNDg3NDA0LCJqdGkiOiJlMWEwOTlkMTZiYTk0ODE5OWJjNDMzN2JiMmUzYzAxMSIsInVzZXJfaWQiOjR9.fF4JpCB1FvYShiAbQ4ug_-LVKWkUrur1XGqMhQx5pcU';
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.backgroundCheck,
       {...params},
@@ -472,20 +472,21 @@ export const fetchBackgroundCheckStatus = (params?: {instructorId: number}): Thu
   dispatch: Dispatch<{}>,
   getState
 ) => {
-  dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
+  dispatch(requestAction(InstructorActions.FETCH_BACKGROUND_CHECK_STATUS));
   try {
-    const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTgwNDg3NDA0LCJqdGkiOiJlMWEwOTlkMTZiYTk0ODE5OWJjNDMzN2JiMmUzYzAxMSIsInVzZXJfaWQiOjR9.fF4JpCB1FvYShiAbQ4ug_-LVKWkUrur1XGqMhQx5pcU';
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { 'Authorization': `Bearer ${authToken}` },
       params: params && params
     };
 
     const response = await axios.get(ApiEndpoints.backgroundCheck, config);
-    dispatch(withDataAction(InstructorActions.REQUEST_BACKGROUND_CHECK_SUCCESS, response.data));
+    dispatch(withDataAction(InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === 'string') {
       errorMessage = getError(e);
     }
-    dispatch(withErrorAction(InstructorActions.REQUEST_BACKGROUND_CHECK_FAILURE, errorMessage));
+    dispatch(withErrorAction(InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_FAILURE, errorMessage));
   }
 };
