@@ -16,26 +16,31 @@ import {
 
 import { fetchRequest } from '../../redux/actions/RequestActions';
 import { StoreState } from '../../redux/reducers/store';
+import { submitApplication } from '../../redux/actions/InstructorActions';
 import PageTitle from '../common/PageTitle';
+import SnackBar from '../common/SnackBar';
 import { RequestViewComponent } from './constants';
-import { useForm } from '../../hooks/useForm';
-import { Role } from '../../constants/Roles';
 import { PlaceForLessons } from '../PlaceForLessons/constants';
 import { instruments } from '../../../assets/data/instruments';
 import ApplicationForm from './ApplicationForm';
 import RequestApplied from './RequestApplied';
+import { ApplicationPayload } from './models';
 
 interface OwnProps {
 }
 
 interface DispatchProps {
   fetchRequest: (id: number) => void;
+  submitApplication: (payload: ApplicationPayload) => void;
 }
 
 interface StateProps {
   // TODO: set to RequestType on api integration
   request: any;
   isFetchingRequest: boolean;
+  isSubmittingApplication: boolean;
+  submitApplicationMessage: string
+  submitApplicationError: string
 }
 
 interface Props extends
@@ -43,6 +48,11 @@ interface Props extends
   StateProps {}
 
 export const RequestView = (props: Props) => {
+  const [rate, setRate] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState('');
+
   const router = useRouter();
   const id = Number(router.query.id);
 
@@ -53,8 +63,41 @@ export const RequestView = (props: Props) => {
       }
     };
     fetchData();
+    if (props.submitApplicationMessage) {
+      setShowSnackbar(true);
+      setSnackbarMessage('Application sent successfully.')
+    }
+    if (props.submitApplicationError) {
+      setShowSnackbar(true);
+      setSnackbarMessage('There was an error processing your request.')
+    }
     /* tslint:disable */
-  }, []);
+  },[props.submitApplicationMessage, props.submitApplicationError]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.currentTarget;
+    const value = target.value;
+    const name = target.name;
+
+    if (name === RequestViewComponent.FieldNames.LessonRate) {
+      setRate(value)
+    } else if (name === RequestViewComponent.FieldNames.Message) {
+      setMessage(value)
+    }
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    if (event) {
+      event.preventDefault();
+    }
+
+    const payload: ApplicationPayload = {
+      requestId: props.request.id,
+      rate,
+      message
+    }
+    await props.submitApplication(payload);
+  }
 
   const AvatarStyles = { width: '140px', height: '140px'};
 
@@ -63,16 +106,10 @@ export const RequestView = (props: Props) => {
     message: ''
   };
 
-  const { values, handleChange, handleSubmit } = useForm(sendAplication, state);
-
-  function sendAplication() {
-    console.log(values);
-  }
-
   const instrument = instruments.find(t => t.value === props.request.instrument);
   const pageTitle = props.request.applied ? RequestViewComponent.Labels.Request : RequestViewComponent.sendApplication;
 
-  const isRequesting = props.isFetchingRequest;
+  const isRequesting = props.isFetchingRequest || props.isSubmittingApplication;
 
   return (
     <div className="nabi-container">
@@ -175,31 +212,47 @@ export const RequestView = (props: Props) => {
               {props.request.applied ?
                 <RequestApplied application={props.request.application} /> :
                 <ApplicationForm
-                  handleChange={handleChange}
-                  handleSubmit={handleSubmit}
-                  values={values}
                   request={props.request}
+                  handleChange={handleChange}
+                  message={message}
+                  rate={rate}
+                  handleSubmit={handleSubmit}
                 />
               }
             </div>
           </Grid>
         </Grid>
       }
+      <SnackBar
+        isOpen={showSnackbar}
+        message={snackbarMessage}
+        handleClose={() => setShowSnackbar(false)}
+        variant={props.submitApplicationMessage ? "success" : "error"}
+      />
     </div>
   );
 };
 
 const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
+  const {
+    isRequesting: isSubmittingApplication,
+    message: submitApplicationMessage,
+    error: submitApplicationError,
+  } = state.instructor.actions.submitApplication
   return {
     request: state.requests.request,
     isFetchingRequest: state.requests.actions.fetchRequest.isRequesting,
+    isSubmittingApplication,
+    submitApplicationMessage,
+    submitApplicationError
   };
 };
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchRequest: (id: number) => dispatch(fetchRequest(id))
+  fetchRequest: (id: number) => dispatch(fetchRequest(id)),
+  submitApplication: (payload: any) => dispatch(submitApplication(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequestView);
