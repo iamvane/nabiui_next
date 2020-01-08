@@ -20,7 +20,8 @@ export const setProfile = (user: UserType ) => {
       travelDistance: user.travelDistance,
       education: user.education,
       employment: user.employment,
-      instructorId: user.instructorId
+      instructorId: user.instructorId,
+      backgroundCheckStatus: user.backgroundCheckStatus
     };
   }
   if (user.role === Role.student) {

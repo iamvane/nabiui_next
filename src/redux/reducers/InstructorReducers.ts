@@ -635,6 +635,7 @@ export default function instructorReducer(
       return {
         ...state,
         instructor: {
+          ...state.instructor,
           references: action.data.emails,
         },
         actions: {
@@ -656,6 +657,92 @@ export default function instructorReducer(
           fetchReferences: {
             isRequesting: false,
             error: fetchReferencesError
+          }
+        }
+      };
+    
+    case InstructorActions.REQUEST_BACKGROUND_CHECK:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          requestBackgroundCheck: {
+            isRequesting: true,
+            error: '',
+            message: ''
+          }
+        }
+      };
+
+    case InstructorActions.REQUEST_BACKGROUND_CHECK_SUCCESS:
+      const {data: backgroundMessage} = <APIActions.WithData<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          requestBackgroundCheck: {
+            isRequesting: false,
+            message: backgroundMessage,
+            error: ''
+          }
+        }
+      };
+
+    case InstructorActions.REQUEST_BACKGROUND_CHECK_FAILURE:
+      const { error: backgroundCheckError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          requestBackgroundCheck: {
+            isRequesting: false,
+            error: backgroundCheckError,
+            message: ''
+          }
+        }
+      };
+
+    case InstructorActions.FETCH_BACKGROUND_CHECK_STATUS:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBackgroundCheckStatus: {
+            isRequesting: true,
+            error: '',
+          }
+        }
+      };
+
+    case InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_SUCCESS:
+      return {
+        ...state,
+        instructor: {
+          backgroundCheckResults: {
+            requestorEmail: action.data.requestorEmail,
+            status: action.data.status,
+            result: action.data.result,
+            createdAt: action.data.createdAt
+          }
+        },
+        actions: {
+          ...state.actions,
+          fetchBackgroundCheckStatus: {
+            isRequesting: false,
+            error: ''
+          }
+        }
+      };
+
+    case InstructorActions.FETCH_BACKGROUND_CHECK_STATUS_FAILURE:
+      const { error: backgroundStatusError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBackgroundCheckStatus: {
+            isRequesting: false,
+            error: backgroundStatusError,
           }
         }
       };

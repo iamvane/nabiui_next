@@ -42,6 +42,13 @@ export interface InstructorType {
   age?: number;
   instructorId?: number;
   references?: string[];
+  backgroundCheckStatus?: string;
+  backgroundCheckResults?: {
+    requestorEmail: string;
+    status:string;
+    result: string;
+    createdAt: string;
+  };
 }
 
 export interface Rates {
@@ -95,12 +102,20 @@ export interface InstructorState {
     fetchInstructor: ActionStatus;
     requestReference: ActionStatusWithMessage;
     fetchReferences: ActionStatus;
+    requestBackgroundCheck: ActionStatusWithMessage;
+    fetchBackgroundCheckStatus: ActionStatus;
   };
 }
 
 export const defaultInstructorState: InstructorState = {
   instructor: {
     userId: 0,
+    backgroundCheckResults: {
+      requestorEmail: '',
+      status: '',
+      result: '',
+      createdAt: '',
+    },
   },
   instructors: {
     count: 0,
@@ -173,6 +188,15 @@ export const defaultInstructorState: InstructorState = {
       message: ''
     },
     fetchReferences: {
+      isRequesting: false,
+      error: ''
+    },
+    requestBackgroundCheck: {
+      isRequesting: false,
+      error: '',
+      message: ''
+    },
+    fetchBackgroundCheckStatus: {
       isRequesting: false,
       error: ''
     }

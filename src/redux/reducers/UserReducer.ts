@@ -6,7 +6,7 @@ import {
 import { UserState, UserType } from '../models/UserModel'
 import { UserActions } from '../actions/UserActionTypes';
 import { APIActions } from '../models/models';
-import {getCookie, setCookie, removeCookie} from '../../utils/cookies';
+import {setCookie, removeCookie} from '../../utils/cookies';
 import { setProfile } from './utils';
 
 export default function usersReducer(
@@ -28,9 +28,9 @@ export default function usersReducer(
 
     case UserActions.CREATE_USER_SUCCESS:
       const { data: userDetails } = action;
+      setCookie("token", action.data.token.access);
       return {
         ...state,
-        token: action.data.token.access,
         user: {
           ...state.user,
           id: userDetails.id,
