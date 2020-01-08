@@ -27,11 +27,9 @@ const PaymentForm = (props: any) =>  {
       props.stripe
         .createToken()
         .then((payload: any) => {
-          console.log(payload.token);
           // this.props.onToken(payload.token);
           const params:BackgroundCheckParams = {
-            instructorId: 3,
-            amount: 30.00,
+            amount: 33.26,
             stripeToken: payload.token.id
           }
           props.submitPayment(params);
@@ -39,26 +37,6 @@ const PaymentForm = (props: any) =>  {
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
-
-    // if (props.stripe) {
-    //   props.stripe
-    //   .createPaymentMethod({
-    //     type: 'card',
-    //     card: cardElement,
-    //     billing_details: {name: 'Jenny Rosen'},
-    //   })
-    //   .then(({paymentMethod}) => {
-    //     console.log('Received Stripe PaymentMethod:', paymentMethod);
-    //   });
-    // }
-    //   props.stripe
-    //     .createToken()
-    //     .then((payload: any) => {
-    //       props.onToken(payload.token);
-    //     });
-    // } else {
-    //   console.log("Stripe.js hasn't loaded yet.");
-    // }
   };
   const createOptions = () => {
     return {
@@ -100,14 +78,6 @@ const PaymentForm = (props: any) =>  {
 const InjectedCheckoutForm = injectStripe(PaymentForm);
 
 export const StripePaymentForm = (props: Props) => {
-  // const [stripe, setStripe] = React.useState(window.Stripe('pk_test_0bqLmpsvPKYaGFgPeTrmsh3s00hMjjwCJm'));
-
-  // React.useEffect(() => {
-  //   if (window) {
-  //     setStripe(window.Stripe('pk_test_0bqLmpsvPKYaGFgPeTrmsh3s00hMjjwCJm'));
-  //   }
-  // }, []);
-
   const stripe = window.Stripe('pk_test_0bqLmpsvPKYaGFgPeTrmsh3s00hMjjwCJm');
 
   const renderItems = () => {
