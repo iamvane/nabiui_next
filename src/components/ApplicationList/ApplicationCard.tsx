@@ -2,7 +2,6 @@ import * as React from 'react';
 import Link from 'next/link';
 const reactStringReplace = require('react-string-replace');
 
-
 import {
   Avatar,
   Button,

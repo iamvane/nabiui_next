@@ -81,7 +81,6 @@ export const ApplicationList = (props: Props) => {
         )}
       </React.Fragment>}
     </div>
-
   )
 }
 

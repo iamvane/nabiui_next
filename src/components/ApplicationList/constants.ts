@@ -1,4 +1,3 @@
-
 export namespace ApplicationListComponent {
   export const breadcrumbLabels = {
     home: 'Home',
