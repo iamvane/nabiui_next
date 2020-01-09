@@ -68,7 +68,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
 
   }
   return (
-    <div onClick={navigateToRequest} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative item-card">
+    <div onClick={navigateToRequest} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative nabi-cursor-pointer item-card">
       <div
         style={{right: '20px'}}
         className={`nabi-float-right ${!applied && 'nabi-position-absolute'} nabi-position-absolute-md`}

@@ -4,6 +4,7 @@ import {
   ListResource
 } from './models';
 import { StudentType } from '../../components/Request/models';
+import { ApplicationListType } from '../../components/ApplicationList/model';
 
 export interface RequestType {
   id: number;
@@ -41,6 +42,7 @@ export interface RequestState {
   request: RequestType;
   requestsList: ListResource<Request>;
   requests: RequestType[];
+  applicationList: ApplicationListType;
   actions: {
     createRequest: ActionStatus;
     fetchRequests: ActionStatus;
@@ -48,6 +50,7 @@ export interface RequestState {
     editRequest: ActionStatusWithMessage;
     deleteRequest: ActionStatusWithMessage;
     fetchRequestList: ActionStatus;
+    fetchApplicationList: ActionStatus;
   };
 }
 
@@ -70,6 +73,12 @@ export const defaultRequestState: RequestState = {
     previous: '',
     next: '',
     results: []
+  },
+  applicationList: {
+    id: 0,
+    requestTitle: '',
+    dateCreated: '',
+    applications: []
   },
   actions: {
     createRequest: {
@@ -97,6 +106,10 @@ export const defaultRequestState: RequestState = {
     fetchRequestList: {
       isRequesting: false,
       error: '',
-    }
+    },
+    fetchApplicationList: {
+      isRequesting: false,
+      error: '',
+    },
   }
 };

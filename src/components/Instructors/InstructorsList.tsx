@@ -220,6 +220,7 @@ export const InstructorsList = (props: Props) => {
       instrument={instrument}
       address={address}
       isRequesting={props.isRequesting}
+      hasCallToAction={true}
       filterSection={
         <React.Fragment>
           <InstructorsFilter

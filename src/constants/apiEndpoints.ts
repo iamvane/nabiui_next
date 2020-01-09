@@ -26,4 +26,5 @@ export namespace ApiEndpoints {
     export const requestItem = '/v1/lesson-request-item/';
     export const backgroundCheck = '/v1/background-check-request/';
     export const applicationInstructors = '/v1/applications/';
+    export const applicationList = '/v1/application-list/';
 }
