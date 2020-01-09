@@ -156,3 +156,25 @@ export const fetchRequestsList = (params?: any): ThunkAction<Promise<void>, {}, 
     dispatch(withErrorAction(RequestActions.FETCH_REQUESTS_LIST_FAILURE, errorMessage));
   }
 };
+
+
+export const fetchApplicationList = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(RequestActions.FETCH_APPLICATION_LIST));
+  try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
+    const response = await axios.get(`${ApiEndpoints.applicationList}${id}`, {
+      headers: { 'Authorization': `Bearer ${authToken}` }
+    });
+    dispatch(withDataAction(RequestActions.FETCH_APPLICATION_LIST_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(RequestActions.FETCH_APPLICATION_LIST_FAILURE, errorMessage));
+  }
+};
+

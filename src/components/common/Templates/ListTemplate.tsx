@@ -40,23 +40,18 @@ export const ListTemplate: React.StatelessComponent<Props> = (props) => {
 
   const SearchSection = (): JSX.Element => {
     return (
-      <div className={`${!hasCallToAction && 'nabi-section-widest nabi-background-nabi'} nabi-margin-bottom-small`}>
+      <div className="nabi-section-widest nabi-background-nabi nabi-margin-bottom-small">
         <Grid container={true} spacing={2}>
-          <Grid item={true} xs={12} sm={4} className="nabi-vertical-align-center">
-            {!hasCallToAction ?
+          {hasCallToAction &&
+            <Grid item={true} xs={12} sm={4} className="nabi-vertical-align-center">
               <React.Fragment>
                 <Button color="secondary" variant="contained">
                   {ListTemplateComponent.ctaButton}
                 </Button>
                 <Typography className="nabi-margin-left-small nabi-color-white">or search:</Typography>
-              </React.Fragment> :
-              <Hidden only={['xs']}>
-                <Typography className="nabi-margin-left-xsmall nabi-margin-top-xsmall nabi-margin-bottom-xsmall">
-                  1-20 of {results} results
-                </Typography>
-              </Hidden>
-            }
-          </Grid>
+              </React.Fragment>
+            </Grid>
+          }
           <Grid item={true} xs={12} sm={3} className="nabi-vertical-align-center">
             <FormControl fullWidth={true}>
               <Select
@@ -75,7 +70,7 @@ export const ListTemplate: React.StatelessComponent<Props> = (props) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item={true} xs={12} sm={5} className="nabi-vertical-align-center">
+          <Grid item={true} xs={12} sm={hasCallToAction ? 5 : 9} className="nabi-vertical-align-center">
             <LocationField getLatLng={props.getLatLng} address={props.address} getLocation={props.getLocation} />
           </Grid>
         </Grid>

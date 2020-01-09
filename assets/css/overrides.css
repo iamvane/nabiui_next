@@ -74,14 +74,27 @@
 .MuiIconButton-colorSecondary {
   background: #FB7F6B !important;
 }
-/* containedPrimary: {
-  backgroundColor: '#06c3e1 !important',
-  color: '#fff',
-  '&:hover': {
-      backgroundColor: '#01bedc !important',
-  },
-  '&$disabled': {
-      color: '#c6c9d0 !important',
-      background: '#e2e4e7 !important'
-  }
-}, */
+
+.MuiAppBar-colorPrimary {
+  color: #717a8a !important;
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.MuiTab-root {
+  border: 1px solid #ebeef1 !important;
+}
+
+.MuiTab-root.Mui-selected {
+  color: #06c3e1;
+}
+
+.MuiTabs-indicator {
+  background-color: #06c3e1 !important;
+}
+
+.MuiTab-root {
+  width: 14.3% !important;
+  max-width: 14.3% !important;
+  min-width: 14.3% !important;
+}

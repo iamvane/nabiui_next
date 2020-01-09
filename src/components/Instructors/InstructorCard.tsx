@@ -95,7 +95,7 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
     Router.push(`/profile/${id}`)
   };
   return (
-    <div onClick={navigateToProfile} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative item-card">
+    <div onClick={navigateToProfile} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative nabi-cursor-pointer item-card">
       {/* <div style={{right: '20px'}} className="nabi-float-right nabi-position-absolute">
         <IconButton color={favorite ? 'primary' : 'secondary'}>
           <Icon>favorite</Icon>
