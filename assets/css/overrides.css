@@ -98,3 +98,12 @@
   max-width: 14.3% !important;
   min-width: 14.3% !important;
 }
+
+.MuiRadio-root {
+  background: none !important;
+  color: #06c3e1 !important;
+}
+
+.MuiRadio-root.Mui-checked {
+  color: #06c3e1 !important;
+}

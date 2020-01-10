@@ -1,6 +1,8 @@
 import { Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
+
+import { BookLessonsPayload } from '../../components/BookLessons/model';
 import { getError } from '../../utils/handleApiErros';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import {
@@ -178,3 +180,27 @@ export const fetchApplicationList = (id: number): ThunkAction<Promise<void>, {},
   }
 };
 
+export const bookLessons = (data: BookLessonsPayload): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(RequestActions.BOOK_LESSONS));
+  try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
+    const response = await axios.post(
+      ApiEndpoints.bookLessons,
+      data,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+    dispatch(withDataAction(RequestActions.BOOK_LESSONS_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.BOOK_LESSONS_FAILURE, errorMessage));
+  }
+};

@@ -212,13 +212,6 @@ export const theme = createMuiTheme({
                 borderRadius: '3px'
             }
         },
-        MuiRadio: {
-            root: {
-                '&$checked': {
-                    color: '#06c3e1 !important'
-                }
-            }
-        },
         MuiSelect: {
             select: {
                 width: 'calc(100% - 50px)',

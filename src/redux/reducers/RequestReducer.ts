@@ -302,6 +302,48 @@ export default function requestsReducer(
         }
       };
 
+    case RequestActions.BOOK_LESSONS:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          bookLessons: {
+            ...state.actions.bookLessons,
+            isRequesting: true,
+            message: ''
+          }
+        }
+      };
+
+    case RequestActions.BOOK_LESSONS_SUCCESS:
+      const {data: bookLessonMessage} = <APIActions.WithData<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          bookLessons: {
+            ...state.actions.bookLessons,
+            message: bookLessonMessage,
+            isRequesting: false,
+            error: ''
+          }
+        }
+      };
+
+    case RequestActions.BOOK_LESSONS_FAILURE:
+      const { error: bookLessonsError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          bookLessons: {
+            isRequesting: false,
+            error: bookLessonsError,
+            message: ''
+          }
+        }
+      };
+
     default:
       return state;
   }

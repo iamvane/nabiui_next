@@ -23,10 +23,9 @@ import { InstructorType } from '../../redux/models/InstructorModel';
 import SectionTitle from '../common/SectionTitle';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import { Routes } from '../common/constants/Routes';
-import { BackgroundCheckStatus } from '../ProfileBuilder/constants'
+import StripePaymentForm from "../PaymentForm/StripePaymentForm";
 import { ProfileBuilderStepper } from './constants';
 import { BackgroundCheckParams } from "./models";
-import StripePaymentForm from "./StripePaymentForm";
 
 
 interface StateProps {
@@ -71,7 +70,11 @@ export const Screening = (props: Props) => {
     setIsPaymentSuccessful(success);
   };
 
-  const submitPayment = async (params: BackgroundCheckParams) => {
+  const submitPayment = async (stripeToken: string) => {
+    const params: BackgroundCheckParams = {
+      stripeToken,
+      amount: 33.26
+    }
     await props.requestBackgroundCheck(params);
   }
 
