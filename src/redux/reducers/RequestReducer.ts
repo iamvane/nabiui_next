@@ -344,6 +344,46 @@ export default function requestsReducer(
         }
       };
 
+    case RequestActions.FETCH_BOOK_LESSONS_DATA:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBookLessonsData: {
+            ...state.actions.fetchBookLessonsData,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.FETCH_BOOK_LESSONS_DATA_SUCCESS:
+      const {data: bookingRate} = action;
+      return {
+        ...state,
+        bookingRate,
+        actions: {
+          ...state.actions,
+          fetchBookLessonsData: {
+            ...state.actions.fetchBookLessonsData,
+            isRequesting: false,
+            error: ''
+          }
+        }
+      };
+
+    case RequestActions.FETCH_BOOK_LESSONS_DATA_FAILURE:
+      const { error: fetchBookLessonsDataError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBookLessonsData: {
+            isRequesting: false,
+            error: fetchBookLessonsDataError
+          }
+        }
+      };
+
     default:
       return state;
   }

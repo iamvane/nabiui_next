@@ -43,6 +43,7 @@ export interface RequestState {
   requestsList: ListResource<Request>;
   requests: RequestType[];
   applicationList: ApplicationListType;
+  bookingRate: number;
   actions: {
     createRequest: ActionStatus;
     fetchRequests: ActionStatus;
@@ -52,6 +53,7 @@ export interface RequestState {
     fetchRequestList: ActionStatus;
     fetchApplicationList: ActionStatus;
     bookLessons: ActionStatusWithMessage;
+    fetchBookLessonsData: ActionStatus;
   };
 }
 
@@ -81,6 +83,7 @@ export const defaultRequestState: RequestState = {
     dateCreated: '',
     applications: []
   },
+  bookingRate: 0,
   actions: {
     createRequest: {
       isRequesting: false,
@@ -116,6 +119,10 @@ export const defaultRequestState: RequestState = {
       isRequesting: false,
       error: '',
       message: ''
+    },
+    fetchBookLessonsData: {
+      isRequesting: false,
+      error: '',
     }
   }
 };
