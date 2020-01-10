@@ -14,6 +14,7 @@ import { InstrumentsComponent } from "../../Instruments/constants";
 import { LocationField } from "../../Instructors/LocationField";
 import PageTitle from "../PageTitle";
 import { ListTemplateComponent } from "../constants/ListTemplate";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   pageTitle: string;
@@ -28,9 +29,14 @@ interface Props {
   getLatLng: (lat: string, lng: string) => void;
   getLocation: (location: string) => void;
   isRequesting: boolean;
+  loadMoreData: () => void;
 }
 
 export const ListTemplate: React.StatelessComponent<Props> = props => {
+  const [ref, inView, entry] = useInView({
+    threshold: 0
+  });
+
   const instrumentSelectItems = instruments.map(instrument => {
     return (
       <option key={instrument.value} value={instrument.value}>
@@ -38,6 +44,14 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
       </option>
     );
   });
+
+  const loadMoreData = () => {
+    if (inView) {
+     props.loadMoreData()
+    }
+  };
+
+  loadMoreData();
 
   const { hasCallToAction, results } = props;
 
@@ -115,12 +129,13 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
                     {results} result(s)
                   </Typography>
                   {props.mainContent}
-
-                  {props.isRequestingMoreData &&
-                    <div className="nabi-text-center nabi-full-width">
-                     <CircularProgress />
-                   </div>
-                  }
+                  <div ref={ref}>
+                    {props.isRequestingMoreData && (
+                      <div className="nabi-text-center nabi-full-width">
+                        <CircularProgress />
+                      </div>
+                    )}
+                  </div>
                 </React.Fragment>
               )}
             </Grid>

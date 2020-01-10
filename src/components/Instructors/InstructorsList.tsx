@@ -27,7 +27,6 @@ import {
   defaultQualifications,
   defaultPlaceForLessons
 } from "./constants";
-import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 
 interface StateProps {
   instructors: ListResource<Instructor>;
@@ -69,17 +68,6 @@ export const InstructorsList = (props: Props) => {
     defaultQualifications
   );
   const [queryParams, setQueryParams] = React.useState(defaultQueryParams);
-
-  const [] = useInfiniteScroll(fetchMoreInstructors);
-
-  function fetchMoreInstructors() {
-    const hasMoreData =
-      props.instructors.results.length + 1 > props.instructors.count;
-    if (props.isRequesting || hasMoreData) return;
-
-    props.fetchMoreInstructors(count, queryParams);
-    incrementCount();
-  }
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -244,6 +232,15 @@ export const InstructorsList = (props: Props) => {
     count++;
   }
 
+  function fetchMoreInstructors() {
+    const hasMoreData =
+      props.instructors.results.length + 1 > props.instructors.count;
+    if (props.isRequesting || hasMoreData) return;
+
+    props.fetchMoreInstructors(count, queryParams);
+    incrementCount();
+  }
+
   return (
     <ListTemplate
       pageTitle={InstructorsComponent.pageTitle}
@@ -251,6 +248,7 @@ export const InstructorsList = (props: Props) => {
       handleChange={handleChange}
       getLatLng={getLatLng}
       getLocation={getLocation}
+      loadMoreData={fetchMoreInstructors}
       instrument={instrument}
       address={address}
       isRequestingMoreData={props.isRequestingMoreInstructors}
