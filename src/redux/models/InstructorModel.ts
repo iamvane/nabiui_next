@@ -107,7 +107,6 @@ export interface InstructorState {
 
 export const defaultInstructorState: InstructorState = {
   instructor: {
-<<<<<<< HEAD
     userId: 0,
     backgroundCheckResults: {
       requestorEmail: '',
@@ -115,9 +114,6 @@ export const defaultInstructorState: InstructorState = {
       result: '',
       createdAt: '',
     },
-=======
-    userId: 0
->>>>>>> ac499ff... added contants and redux action to fetch more instructors
   },
   instructors: {
     count: 0,
@@ -195,7 +191,6 @@ export const defaultInstructorState: InstructorState = {
     },
     fetchReferences: {
       isRequesting: false,
-<<<<<<< HEAD
       error: ''
     },
     requestBackgroundCheck: {
@@ -212,9 +207,5 @@ export const defaultInstructorState: InstructorState = {
       error: '',
       message: ''
     },
-=======
-      error: ""
-    }
->>>>>>> ac499ff... added contants and redux action to fetch more instructors
   }
 };

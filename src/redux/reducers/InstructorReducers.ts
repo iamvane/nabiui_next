@@ -722,12 +722,8 @@ export default function instructorReducer(
       return {
         ...state,
         instructor: {
-<<<<<<< HEAD
           ...state.instructor,
           references: action.data.emails,
-=======
-          references: action.data.emails
->>>>>>> ac499ff... added contants and redux action to fetch more instructors
         },
         actions: {
           ...state.actions,
@@ -753,7 +749,7 @@ export default function instructorReducer(
           }
         }
       };
-    
+
     case InstructorActions.REQUEST_BACKGROUND_CHECK:
       return {
         ...state,
