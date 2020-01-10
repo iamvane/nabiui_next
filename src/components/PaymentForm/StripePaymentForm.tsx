@@ -6,13 +6,16 @@ import {
   Elements
 } from "react-stripe-elements";
 
-import { Button } from '@material-ui/core';
+import {
+  Button,
+  CircularProgress
+} from '@material-ui/core';
 
 import "../../../assets/scss/StripePaymentForm.scss";
-import { BackgroundCheckParams } from "./models";
 
 interface Props {
-  submitPayment: (params : BackgroundCheckParams) => void;
+  submitPayment: (stripeToken : string) => void;
+  isRequesting?: boolean;
 }
 
 const PaymentForm = (props: any) =>  {
@@ -25,11 +28,7 @@ const PaymentForm = (props: any) =>  {
       props.stripe
         .createToken()
         .then((payload: any) => {
-          const params:BackgroundCheckParams = {
-            amount: 33.26,
-            stripeToken: payload.token.id
-          }
-          props.submitPayment(params);
+          props.submitPayment(payload.token.id);
         });
     } else {
       console.log("Stripe.js hasn't loaded yet.");
@@ -60,14 +59,16 @@ const PaymentForm = (props: any) =>  {
       <div id="card-element">
         <CardElement className="nabi-stripe-form" {...createOptions()} />
       </div>
-      <Button
-        className="nabi-margin-top-small"
-        color="primary"
-        variant="contained"
-        type="submit"
-      >
-        Confirm order
-      </Button>
+      {props.isRequesting ? <div className="nabi-margin-top-small"><CircularProgress /></div> :
+        <Button
+          className="nabi-margin-top-small"
+          color="primary"
+          variant="contained"
+          type="submit"
+        >
+          Confirm order
+        </Button>
+     }
     </form>
   );
 }
@@ -82,7 +83,7 @@ export const StripePaymentForm = (props: Props) => {
       return (
         <StripeProvider stripe={stripe}>
           <Elements>
-            <InjectedCheckoutForm submitPayment={props.submitPayment} />
+            <InjectedCheckoutForm submitPayment={props.submitPayment} isRequesting={props.isRequesting} />
           </Elements>
         </StripeProvider>
       )

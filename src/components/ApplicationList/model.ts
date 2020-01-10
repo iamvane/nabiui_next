@@ -1,10 +1,10 @@
 import { AvailabilityType } from '../Availability/model';
 
 export interface Application {
+  applicationId: number;
   instructorId: number;
   applicationMessage: string;
   applicationRate: string;
-  rate: string
   availability: AvailabilityType;
   avatar: string;
   displayName: string;

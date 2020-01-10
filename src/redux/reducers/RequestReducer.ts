@@ -302,6 +302,88 @@ export default function requestsReducer(
         }
       };
 
+    case RequestActions.BOOK_LESSONS:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          bookLessons: {
+            ...state.actions.bookLessons,
+            isRequesting: true,
+            message: ''
+          }
+        }
+      };
+
+    case RequestActions.BOOK_LESSONS_SUCCESS:
+      const {data: bookLessonMessage} = <APIActions.WithData<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          bookLessons: {
+            ...state.actions.bookLessons,
+            message: bookLessonMessage,
+            isRequesting: false,
+            error: ''
+          }
+        }
+      };
+
+    case RequestActions.BOOK_LESSONS_FAILURE:
+      const { error: bookLessonsError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          bookLessons: {
+            isRequesting: false,
+            error: bookLessonsError,
+            message: ''
+          }
+        }
+      };
+
+    case RequestActions.FETCH_BOOK_LESSONS_DATA:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBookLessonsData: {
+            ...state.actions.fetchBookLessonsData,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.FETCH_BOOK_LESSONS_DATA_SUCCESS:
+      const {data: bookingRate} = action;
+      return {
+        ...state,
+        bookingRate: bookingRate.lessonRate,
+        actions: {
+          ...state.actions,
+          fetchBookLessonsData: {
+            ...state.actions.fetchBookLessonsData,
+            isRequesting: false,
+            error: ''
+          }
+        }
+      };
+
+    case RequestActions.FETCH_BOOK_LESSONS_DATA_FAILURE:
+      const { error: fetchBookLessonsDataError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchBookLessonsData: {
+            isRequesting: false,
+            error: fetchBookLessonsDataError
+          }
+        }
+      };
+
     default:
       return state;
   }

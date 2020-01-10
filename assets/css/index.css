@@ -222,6 +222,10 @@ li.nabi-list-style-position-inside {
   text-transform: uppercase !important;
 }
 
+.nabi-text-striketrhough {
+	text-decoration: line-through !important;
+}
+
 /*MARGIN*/
 .nabi-margin-remove {
 	margin: 0px !important;
@@ -269,6 +273,10 @@ li.nabi-list-style-position-inside {
 
 .nabi-margin-top-xlarge {
 	margin-top: 60px !important;
+}
+
+.nabi-margin-right-zero {
+  margin-right: 0px !important;
 }
 
 .nabi-margin-right-xsmall {
