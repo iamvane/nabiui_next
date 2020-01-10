@@ -12,6 +12,7 @@ import {
 import Star from '@material-ui/icons/Star';
 
 import { Rates } from '../../redux/models/InstructorModel';
+import { Routes } from '../common/constants/Routes';
 import SectionTitle from '../common/SectionTitle';
 import AvailabilityTab from '../Availability/AvailabilityTab';
 import { InstructorCardComponent } from '../Instructors/constants';
@@ -43,7 +44,7 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
     instructorId,
     applicationMessage,
     applicationRate,
-    rate,
+    applicationId,
     availability,
     age,
     avatar,
@@ -85,7 +86,7 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
         </Grid>
         <Grid item={true} xs={12} md={6}>
           <SectionTitle text={ApplicationCardComponent.availabilitySection} />
-          <AvailabilityTab availability={props.application.availability} />
+          <AvailabilityTab availability={availability} />
 
           <SectionTitle text={ApplicationCardComponent.messageSection} />
           <Typography className="nabi-margin-top-xsmall">
@@ -103,13 +104,18 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
               (i: string) => <span key={i} className="nabi-font-large">${Number(applicationRate).toFixed(2)}</span>
             )}
           </Typography>
-          <Button
-            color="primary"
-            className="nabi-responsive-button nabi-margin-top-xsmall"
-            variant="contained"
-          >
-            {ApplicationCardComponent.bookLessons}
-          </Button>
+          applicationId
+          <Link href={`${Routes.BookLessons}/${applicationId}`}>
+            <a>
+              <Button
+                color="primary"
+                className="nabi-responsive-button nabi-margin-top-xsmall"
+                variant="contained"
+              >
+                {ApplicationCardComponent.bookLessons}
+              </Button>
+            </a>
+          </Link>
           <Link href={`/profile/${instructorId}`}>
             <a>
               <Button

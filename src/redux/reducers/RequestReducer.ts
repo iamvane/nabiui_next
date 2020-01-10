@@ -360,7 +360,7 @@ export default function requestsReducer(
       const {data: bookingRate} = action;
       return {
         ...state,
-        bookingRate,
+        bookingRate: bookingRate.lessonRate,
         actions: {
           ...state.actions,
           fetchBookLessonsData: {

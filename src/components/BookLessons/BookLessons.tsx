@@ -164,7 +164,7 @@ export const BookLessons = (props: Props) => {
                               <p className="nabi-font-medium nabi-text-uppercase nabi-color-white nabi-margin-top-xsmall nabi-margin-bottom-zero">
                                 {BookLessonsComponent.lessonCost.replace(
                                   BookLessonsComponent.lessonCostPlaceholer,
-                                  String(props.lessonPrice)
+                                  String(props.lessonPrice.toFixed(2))
                                 )}
                               </p>
                               <Typography
@@ -312,7 +312,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     bookLessonsMessage,
     bookLessonsDataRequesting,
     bookLessonsDataError,
-    lessonPrice: bookingRate
+    lessonPrice: Number(bookingRate)
   }
 };
 
