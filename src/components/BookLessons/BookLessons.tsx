@@ -51,7 +51,6 @@ interface DispatchProps {
 
 interface OwnProps { }
 
-
 interface Props extends
   OwnProps,
   StateProps,
@@ -96,7 +95,6 @@ export const BookLessons = (props: Props) => {
     lessonPackage.lessonNumber * props.lessonPrice;
   const processingFeeTotal: number = Number(((subTotal * BookLessonsComponent.processingFee) + .30).toFixed(2));
   const total = Number((subTotal +  processingFeeTotal + BookLessonsComponent.placementFee)).toFixed(2);
-
 
   const submitPayment = async (stripeToken: string) => {
     const params: BookLessonsPayload = {

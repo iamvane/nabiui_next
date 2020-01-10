@@ -205,7 +205,6 @@ export const bookLessons = (data: BookLessonsPayload): ThunkAction<Promise<void>
   }
 };
 
-
 export const fetchBookLessonsData = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
