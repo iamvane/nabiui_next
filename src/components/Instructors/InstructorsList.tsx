@@ -235,7 +235,7 @@ export const InstructorsList = (props: Props) => {
   function fetchMoreInstructors() {
     const hasMoreData =
       props.instructors.results.length + 1 > props.instructors.count;
-    if (props.isRequesting || hasMoreData) return;
+    if (props.isRequesting || props.isRequestingMoreInstructors || hasMoreData) return;
 
     props.fetchMoreInstructors(count, queryParams);
     incrementCount();
