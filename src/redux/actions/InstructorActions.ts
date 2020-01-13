@@ -2,6 +2,7 @@ import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios  from 'axios';
 
+import { getCookie } from '../../utils/cookies';
 import { ProfileType } from '../../components/ProfileBuilder/ProfileStep/models';
 import { defaultApiError } from '../../constants/apiConstants';
 import { getError } from '../../utils/handleApiErros';
@@ -10,7 +11,6 @@ import { EducationType } from '../../components/Education/model';
 import { EmploymentType } from '../../components/Employment/model';
 import { BackgroundCheckParams } from '../../components/ProfileBuilder/models';
 import { ApplicationPayload } from '../../components/Request/models';
-import { StoreState } from '../reducers/store';
 import { InstructorType } from '../models/InstructorModel';
 import { InstructorActions } from '../actions/InstructorActionTypes';
 import {
@@ -18,6 +18,8 @@ import {
   withDataAction,
   withErrorAction,
 } from './actions';
+
+const authToken = getCookie("token");
 
 // Default error message
 let errorMessage = defaultApiError;
@@ -35,11 +37,12 @@ export const fetchProfile = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_PROFILE));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.get(ApiEndpoints.fetchProfile, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    const response = await axios.get(
+      ApiEndpoints.fetchProfile,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
 
     dispatch(
       withDataAction(InstructorActions.FETCH_PROFILE_SUCCESS, response.data)
@@ -76,11 +79,13 @@ export const buildProfile = (
 ) => {
   dispatch(requestAction(InstructorActions.BUILD_PROFILE));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    await axios.put(ApiEndpoints.buildProfile, data, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    await axios.put(
+      ApiEndpoints.buildProfile,
+      data,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
     dispatch(withDataAction(InstructorActions.BUILD_PROFILE_SUCCESS, data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === "string") {
@@ -104,17 +109,19 @@ export const buildJobPreferences = (
 ) => {
   dispatch(requestAction(InstructorActions.BUILD_JOB_PREFERENCES));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.post(ApiEndpoints.buildJobPreferences, data, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    const response = await axios.post(
+      ApiEndpoints.buildJobPreferences,
+      data,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
     dispatch(
       withDataAction(
         InstructorActions.BUILD_JOB_PREFERENCES_SUCCESS,
         response.data
       )
-    );
+    )
   } catch (e) {
     if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
@@ -140,11 +147,13 @@ export const addEducation = (
 ) => {
   dispatch(requestAction(InstructorActions.ADD_EDUCATION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.post(ApiEndpoints.education, education, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    const response = await axios.post(
+      ApiEndpoints.education,
+      education,
+      {
+        headers: {'Authorization': `Bearer ${authToken}`}
+      },
+    );
     dispatch(
       withDataAction(InstructorActions.ADD_EDUCATION_SUCCESS, response.data)
     );
@@ -168,8 +177,6 @@ export const fetchEducation = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_EDUCATION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(ApiEndpoints.education, {
       headers: { Authorization: `Bearer ${authToken}` }
     });
@@ -199,8 +206,6 @@ export const editEducation = (
 ) => {
   dispatch(requestAction(InstructorActions.EDIT_EDUCATION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.education}${education.id}/`,
       education,
@@ -234,11 +239,12 @@ export const deleteEducation = (
 ) => {
   dispatch(requestAction(InstructorActions.DELETE_EDUCATION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.delete(`${ApiEndpoints.education}${id}/`, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    const response = await axios.delete(
+      `${ApiEndpoints.education}${id}/`,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
 
     dispatch(
       withDataAction(InstructorActions.DELETE_EDUCATION_SUCCESS, response.data)
@@ -265,11 +271,13 @@ export const addEmployment = (
 ) => {
   dispatch(requestAction(InstructorActions.ADD_EMPLOYMENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.post(ApiEndpoints.employment, employment, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    const response = await axios.post(
+      ApiEndpoints.employment,
+      employment,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
     dispatch(
       withDataAction(InstructorActions.ADD_EMPLOYMENT_SUCCESS, response.data)
     );
@@ -293,11 +301,12 @@ export const fetchEmployment = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_EMPLOYMENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.get(ApiEndpoints.employment, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    const response = await axios.get(
+      ApiEndpoints.employment,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
 
     dispatch(
       withDataAction(InstructorActions.FETCH_EMPLOYMENT_SUCCESS, response.data)
@@ -324,8 +333,6 @@ export const editEmployment = (
 ) => {
   dispatch(requestAction(InstructorActions.EDIT_EMPLOYMENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.employment}${employment.id}/`,
       employment,
@@ -359,11 +366,12 @@ export const deleteEmployment = (
 ) => {
   dispatch(requestAction(InstructorActions.DELETE_EMPLOYMENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.delete(`${ApiEndpoints.employment}${id}/`, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
+    const response = await axios.delete(
+      `${ApiEndpoints.employment}${id}/`,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
 
     dispatch(
       withDataAction(InstructorActions.DELETE_EMPLOYMENT_SUCCESS, response.data)
@@ -387,8 +395,6 @@ export const fetchInstructors = (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_INSTRUCTORS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { Authorization: `Bearer ${authToken}` },
       params: params && params
@@ -416,9 +422,6 @@ export const fetchInstructor = (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_INSTRUCTOR));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-
     const response = await axios.get(
       `${ApiEndpoints.fetchInstructors}${instructorId}`,
       { headers: authToken && { Authorization: `Bearer ${authToken}` } }
@@ -445,8 +448,6 @@ export const fetchMoreInstructors = (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_MORE_INSTRUCTORS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const config = {
       headers: authToken && { Authorization: `Bearer ${authToken}` },
       params: params && params
@@ -482,8 +483,6 @@ export const requestReference = (
 ) => {
   dispatch(requestAction(InstructorActions.REQUEST_REFERENCE));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.requestReferences,
       { emails: [references] },
@@ -511,14 +510,10 @@ export const fetchReferences = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_REFERENCES));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
-    const response = await axios.get(ApiEndpoints.fetchReferences, {
-      headers: authToken && { Authorization: `Bearer ${authToken}` }
-    });
-    dispatch(
-      withDataAction(InstructorActions.FETCH_REFERENCES_SUCCESS, response.data)
-    );
+    const response = await axios.get(
+      ApiEndpoints.fetchReferences,
+      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
+    dispatch(withDataAction(InstructorActions.FETCH_REFERENCES_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
@@ -535,8 +530,6 @@ export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkActi
 ) => {
   dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.backgroundCheck,
       {...params},
@@ -557,8 +550,6 @@ export const fetchBackgroundCheckStatus = (params?: {instructorId: number}): Thu
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_BACKGROUND_CHECK_STATUS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { 'Authorization': `Bearer ${authToken}` },
       params: params && params
@@ -580,8 +571,6 @@ export const submitApplication = (application: ApplicationPayload): ThunkAction<
 ) => {
   dispatch(requestAction(InstructorActions.SUBMIT_APPLICACTION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.applicationInstructors,
       {...application},

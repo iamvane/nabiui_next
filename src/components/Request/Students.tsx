@@ -54,7 +54,7 @@ const Students: React.StatelessComponent<Props> = props => {
         </Typography>
       </Grid>
 
-      <Grid spacing={8} container={true}>
+      <Grid spacing={1} container={true}>
         <Grid item={true} md={3} xs={12}>
           <TextField
             id={RequestFormComponent.Ids.StudentName}

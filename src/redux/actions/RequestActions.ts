@@ -4,13 +4,13 @@ import axios from 'axios';
 
 import { BookLessonsPayload } from '../../components/BookLessons/model';
 import { getError } from '../../utils/handleApiErros';
+import { getCookie } from '../../utils/cookies';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import {
   defaultApiError
 } from '../../constants/apiConstants';
 import { RequestType } from '../models/RequestModel';
 
-import { StoreState } from '../reducers/store';
 import { RequestActions } from './RequestActionTypes';
 import {
   requestAction,
@@ -18,6 +18,7 @@ import {
   withErrorAction,
 } from './actions';
 
+const authToken = getCookie("token");
 let errorMessage = defaultApiError;
 
 export const createRequest = (data: RequestType): ThunkAction<Promise<void>, {}, {}> => async (
@@ -26,8 +27,6 @@ export const createRequest = (data: RequestType): ThunkAction<Promise<void>, {},
 ) => {
   dispatch(requestAction(RequestActions.CREATE_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.lessonRequest,
       data,
@@ -51,8 +50,6 @@ export const fetchRequests = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(RequestActions.FETCH_REQUESTS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(ApiEndpoints.lessonRequest, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -72,8 +69,6 @@ export const fetchRequest = (id: number): ThunkAction<Promise<void>, {}, {}> => 
 ) => {
   dispatch(requestAction(RequestActions.FETCH_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(ApiEndpoints.requestItem + id, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -94,8 +89,6 @@ export const editRequestAsync = (id: number, data: RequestType): ThunkAction<Pro
 ) => {
   dispatch(requestAction(RequestActions.EDIT_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.lessonRequest}${id}/`,
       data,
@@ -121,8 +114,6 @@ export const deleteRequestAsnyc = (id: number): ThunkAction<Promise<void>, {}, {
 ) => {
   dispatch(requestAction(RequestActions.DELETE_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.delete(`${ApiEndpoints.lessonRequest}${id}/`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -143,8 +134,6 @@ export const fetchRequestsList = (params?: any): ThunkAction<Promise<void>, {}, 
 ) => {
   dispatch(requestAction(RequestActions.FETCH_REQUESTS_LIST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { 'Authorization': `Bearer ${authToken}` },
       params: params && params
@@ -166,8 +155,6 @@ export const fetchApplicationList = (id: number): ThunkAction<Promise<void>, {},
 ) => {
   dispatch(requestAction(RequestActions.FETCH_APPLICATION_LIST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(`${ApiEndpoints.applicationList}${id}`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -186,8 +173,6 @@ export const bookLessons = (data: BookLessonsPayload): ThunkAction<Promise<void>
 ) => {
   dispatch(requestAction(RequestActions.BOOK_LESSONS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.bookLessons,
       data,
@@ -211,8 +196,6 @@ export const fetchBookLessonsData = (id: number): ThunkAction<Promise<void>, {},
 ) => {
   dispatch(requestAction(RequestActions.FETCH_BOOK_LESSONS_DATA));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(`${ApiEndpoints.bookLessonsData}${id}`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import Router from "next/router";
 import { withRouter, NextRouter } from 'next/router';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import Link from 'next/link';
@@ -72,8 +73,10 @@ export const Header = (props: HeaderProps) => {
   };
 
   const isLocationHomepage: boolean = props.router.route === Routes.HomePage;
-  const hanldeUserLogout = () => {
-    props.logOutUser();
+  const hanldeUserLogout = async () => {
+    await props.logOutUser();
+    Router.push(Routes.HomePage);
+
   };
   const logo = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png';
   const menuWhitelist = [

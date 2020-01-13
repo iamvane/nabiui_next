@@ -21,6 +21,7 @@ export interface State {
 
 interface StateProps {
   user: UserType;
+  token: string;
 }
 
 export interface Props extends
@@ -39,7 +40,7 @@ export const Homepage = (props: Props) => {
     };
     page('Home', analiticsProps);
 
-    if (props.user.email) {
+    if (props.token) {
       Router.push(Routes.Dashboard)
     }
   }, []);
@@ -57,11 +58,13 @@ export const Homepage = (props: Props) => {
 
 const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   const {
-    user
+    user,
+    token
   } = state.user;
 
   return {
     user,
+    token
   };
 };
 

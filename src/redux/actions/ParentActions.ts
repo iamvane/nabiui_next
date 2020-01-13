@@ -3,13 +3,13 @@ import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
 
 import { getError } from '../../utils/handleApiErros';
+import { getCookie } from '../../utils/cookies';
 import {
   defaultApiError,
   unauthorizedError
 } from '../../constants/apiConstants';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import { StudentDetailsType } from '../../components/Dashboard/StudentDashboard/model';
-import { StoreState } from '../reducers/store';
 import { ParentActions } from '../actions/ParentActionTypes';
 import {
   requestAction,
@@ -24,6 +24,9 @@ let errorMessage = defaultApiError;
  * Action cretator to add a student object
  */
 
+
+const authToken = getCookie("token");
+
 export const addStudent = (
   student: StudentDetailsType
 ): ThunkAction<Promise<void>, {}, {}> => async (
@@ -32,8 +35,6 @@ export const addStudent = (
 ) => {
     dispatch(requestAction(ParentActions.ADD_STUDENT));
     try {
-      const state = getState();
-      const authToken = (state as StoreState).user.token;
       const response = await axios.post(
         ApiEndpoints.students,
         student,
@@ -61,8 +62,6 @@ export const fetchStudents = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(ParentActions.FETCH_STUDENTS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.students,
       {
@@ -90,8 +89,6 @@ export const editStudent = (
 ) => {
   dispatch(requestAction(ParentActions.EDIT_STUDENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.students}${student.id}/`,
       student,
@@ -121,8 +118,6 @@ export const deleteStudent = (
 ) => {
   dispatch(requestAction(ParentActions.DELETE_STUDENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.delete(
       `${ApiEndpoints.students}${id}/`,
       {

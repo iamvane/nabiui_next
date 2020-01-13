@@ -13,7 +13,6 @@ import {
 
 import { checkErrors } from '../../../utils/checkErrors';
 import { StoreState } from '../../../redux/reducers/store';
-import { RedirectState } from '../../../redux/models/models';
 import { createUser } from '../../../redux/actions/UserActions';
 import PageTitle from '../../common/PageTitle';
 import { Routes } from '../../common/constants/Routes';
@@ -67,7 +66,7 @@ interface Props extends
 export const Registration = (props: Props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [role, setRole] = React.useState('');
+  const [role, setRole] = React.useState(props.role);
   const [birthday, setBirthday] = React.useState('');
   const [openModal, toggleModal] = React.useState(false);
   const [isUnderage, setIsUnderAge] = React.useState(false);
@@ -83,46 +82,43 @@ export const Registration = (props: Props) => {
     };
     page('Registration', analiticsProps);
 
-    if (props.role) {
-      setRole(props.role);
-    }
-
     if (registration && !isUnderage) {
-      const fetchData = async () => {
-        const isError = checkErrors(Object.values(formErrors));
+      const isError = checkErrors(Object.values(formErrors));
 
-        if (isError) {
-          let userValues: RegistrationType = {
-            birthday: moment(birthday).format('YYYY-MM-DD'),
-            email: email.toLocaleLowerCase(),
-            password,
-            role
-          };
-          if (props.invitationToken) {
-            userValues.referringCode = props.invitationToken;
-          }
-          setRegistration(true);
-          await props.createUser(userValues);
-        }
-
-        if (!props.apiError && !props.isRequesting) {
-          const analiticsProps = {
-            userId: email,
-            properties: {
-              referrer: document.referrer
-            }
-          };
-          track('Created Account', analiticsProps);
-
-          role === Role.instructor ?
-            Router.push(Routes.BuildProfile + Routes.AccountInfo) :
-            Router.push(Routes.BuildRequest + Routes.AccountInfo)
-        }
+      if (!isError) {
+        createUser();
       }
-      fetchData();
     }
 
-  }, [registration, isUnderage, props.apiError, props.isRequesting ]);
+  }, [registration, isUnderage, formErrors]);
+
+  const createUser = async () => {
+    setRegistration(false);
+    let userValues: RegistrationType = {
+      birthday: moment(birthday).format('YYYY-MM-DD'),
+      email: email.toLocaleLowerCase(),
+      password,
+      role
+    };
+    if (props.invitationToken) {
+      userValues.referringCode = props.invitationToken;
+    }
+    await props.createUser(userValues);
+
+    if (!props.apiError && !props.isRequesting) {
+      const analiticsProps = {
+        userId: email,
+        properties: {
+          referrer: document.referrer
+        }
+      };
+      track('Created Account', analiticsProps);
+
+      role === Role.instructor ?
+        Router.push(Routes.BuildProfile + Routes.AccountInfo) :
+        Router.push(Routes.BuildRequest + Routes.AccountInfo)
+    }
+  }
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
@@ -131,7 +127,7 @@ export const Registration = (props: Props) => {
 
     switch (name) {
       case RegistrationFormComponent.FieldNames.Role:
-        setRole(value);
+        setRole(value as any);
         break;
       case RegistrationFormComponent.FieldNames.Email:
         setEmail(value);
@@ -194,7 +190,7 @@ export const Registration = (props: Props) => {
     return setFormErrors(formErrors);
   }
 
-  const handleSubmit = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
+  const handleSubmit = (event: React.SyntheticEvent<HTMLInputElement>): void => {
     if (event) {
       event.preventDefault();
     }
@@ -205,7 +201,7 @@ export const Registration = (props: Props) => {
 
   const closeModal = () => toggleModal(false);
   return (
-    <div className="nabi-container">
+    <div className="nabi-container nabi-margin-bottom-medium">
       <PageTitle pageTitle={RegistrationComponent.pageTitle} />
 
       <div className="nabi-background-white nabi-section">
