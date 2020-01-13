@@ -37,20 +37,21 @@ export const fetchProfile = (): ThunkAction<Promise<void>, {}, {}> => async (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.get(
-      ApiEndpoints.fetchProfile,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
-    );
+    const response = await axios.get(ApiEndpoints.fetchProfile, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
 
-    dispatch(withDataAction(InstructorActions.FETCH_PROFILE_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.FETCH_PROFILE_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.FETCH_PROFILE_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.FETCH_PROFILE_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -60,14 +61,16 @@ export const fetchProfile = (): ThunkAction<Promise<void>, {}, {}> => async (
 export function updateInstructor(instructor: InstructorType): UpdateInstructor {
   return {
     instructor,
-    type: 'Delete this'
+    type: "Delete this"
   };
 }
 
 /**
  * Action creator to build profile
  */
-export const buildProfile = (data: ProfileType): ThunkAction<Promise<void>, {}, {}> => async (
+export const buildProfile = (
+  data: ProfileType
+): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
@@ -75,20 +78,18 @@ export const buildProfile = (data: ProfileType): ThunkAction<Promise<void>, {}, 
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    await axios.put(
-      ApiEndpoints.buildProfile,
-      data,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
-    );
+    await axios.put(ApiEndpoints.buildProfile, data, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
     dispatch(withDataAction(InstructorActions.BUILD_PROFILE_SUCCESS, data));
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.BUILD_PROFILE_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.BUILD_PROFILE_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -96,7 +97,7 @@ export const buildProfile = (data: ProfileType): ThunkAction<Promise<void>, {}, 
  * Action creator to build job preferences
  */
 export const buildJobPreferences = (
-  data: InstructorType,
+  data: InstructorType
 ): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
@@ -105,20 +106,26 @@ export const buildJobPreferences = (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.post(
-      ApiEndpoints.buildJobPreferences,
-      data,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
+    const response = await axios.post(ApiEndpoints.buildJobPreferences, data, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    dispatch(
+      withDataAction(
+        InstructorActions.BUILD_JOB_PREFERENCES_SUCCESS,
+        response.data
+      )
     );
-    dispatch(withDataAction(InstructorActions.BUILD_JOB_PREFERENCES_SUCCESS, response.data));
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.BUILD_JOB_PREFERENCES_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(
+        InstructorActions.BUILD_JOB_PREFERENCES_FAILURE,
+        errorMessage
+      )
+    );
   }
 };
 
@@ -126,7 +133,7 @@ export const buildJobPreferences = (
  * Action creator to add an education object
  */
 export const addEducation = (
-  education: EducationType,
+  education: EducationType
 ): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
@@ -135,20 +142,20 @@ export const addEducation = (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.post(
-      ApiEndpoints.education,
-      education,
-      {
-        headers: {'Authorization': `Bearer ${authToken}`}
-      },
+    const response = await axios.post(ApiEndpoints.education, education, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    dispatch(
+      withDataAction(InstructorActions.ADD_EDUCATION_SUCCESS, response.data)
     );
-    dispatch(withDataAction(InstructorActions.ADD_EDUCATION_SUCCESS, response.data));
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.ADD_EDUCATION_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.ADD_EDUCATION_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -164,16 +171,20 @@ export const fetchEducation = (): ThunkAction<Promise<void>, {}, {}> => async (
     const state = getState();
     const authToken = (state as StoreState).user.token;
     const response = await axios.get(ApiEndpoints.education, {
-      headers: {'Authorization': `Bearer ${authToken}`}
+      headers: { Authorization: `Bearer ${authToken}` }
     });
 
-    dispatch(withDataAction(InstructorActions.FETCH_EDUCATION_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.FETCH_EDUCATION_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.FETCH_EDUCATION_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.FETCH_EDUCATION_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -194,17 +205,21 @@ export const editEducation = (
       `${ApiEndpoints.education}${education.id}/`,
       education,
       {
-        headers: { 'Authorization': `Bearer ${authToken}` }
+        headers: { Authorization: `Bearer ${authToken}` }
       }
     );
 
-    dispatch(withDataAction(InstructorActions.EDIT_EDUCATION_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.EDIT_EDUCATION_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.EDIT_EDUCATION_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.EDIT_EDUCATION_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -221,20 +236,21 @@ export const deleteEducation = (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.delete(
-      `${ApiEndpoints.education}${id}/`,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
-    );
+    const response = await axios.delete(`${ApiEndpoints.education}${id}/`, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
 
-    dispatch(withDataAction(InstructorActions.DELETE_EDUCATION_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.DELETE_EDUCATION_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.DELETE_EDUCATION_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.DELETE_EDUCATION_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -242,7 +258,7 @@ export const deleteEducation = (
  * Action creator to add an employment object
  */
 export const addEmployment = (
-  employment: EmploymentType,
+  employment: EmploymentType
 ): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
@@ -251,20 +267,20 @@ export const addEmployment = (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.post(
-      ApiEndpoints.employment,
-      employment,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
+    const response = await axios.post(ApiEndpoints.employment, employment, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    dispatch(
+      withDataAction(InstructorActions.ADD_EMPLOYMENT_SUCCESS, response.data)
     );
-    dispatch(withDataAction(InstructorActions.ADD_EMPLOYMENT_SUCCESS, response.data));
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.ADD_EMPLOYMENT_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.ADD_EMPLOYMENT_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -279,20 +295,21 @@ export const fetchEmployment = (): ThunkAction<Promise<void>, {}, {}> => async (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.get(
-      ApiEndpoints.employment,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
-    );
+    const response = await axios.get(ApiEndpoints.employment, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
 
-    dispatch(withDataAction(InstructorActions.FETCH_EMPLOYMENT_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.FETCH_EMPLOYMENT_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.FETCH_EMPLOYMENT_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.FETCH_EMPLOYMENT_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -300,7 +317,7 @@ export const fetchEmployment = (): ThunkAction<Promise<void>, {}, {}> => async (
  * Action cretator to edit an employment object
  */
 export const editEmployment = (
-  employment: Partial<EmploymentType>,
+  employment: Partial<EmploymentType>
 ): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
@@ -313,17 +330,21 @@ export const editEmployment = (
       `${ApiEndpoints.employment}${employment.id}/`,
       employment,
       {
-        headers: { 'Authorization': `Bearer ${authToken}` }
+        headers: { Authorization: `Bearer ${authToken}` }
       }
     );
 
-    dispatch(withDataAction(InstructorActions.EDIT_EMPLOYMENT_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.EDIT_EMPLOYMENT_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.EDIT_EMPLOYMENT_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.EDIT_EMPLOYMENT_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -331,7 +352,7 @@ export const editEmployment = (
  * Action cretator to delete an employment object
  */
 export const deleteEmployment = (
-  id: number,
+  id: number
 ): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
@@ -340,24 +361,27 @@ export const deleteEmployment = (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.delete(
-      `${ApiEndpoints.employment}${id}/`,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
-    );
+    const response = await axios.delete(`${ApiEndpoints.employment}${id}/`, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
 
-    dispatch(withDataAction(InstructorActions.DELETE_EMPLOYMENT_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.DELETE_EMPLOYMENT_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.DELETE_EMPLOYMENT_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.DELETE_EMPLOYMENT_FAILURE, errorMessage)
+    );
   }
 };
 
-export const fetchInstructors = (params?: any): ThunkAction<Promise<void>, {}, {}> => async (
+export const fetchInstructors = (
+  params?: any
+): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
@@ -366,21 +390,27 @@ export const fetchInstructors = (params?: any): ThunkAction<Promise<void>, {}, {
     const state = getState();
     const authToken = (state as StoreState).user.token;
     let config = {
-      headers: authToken && { 'Authorization': `Bearer ${authToken}` },
+      headers: authToken && { Authorization: `Bearer ${authToken}` },
       params: params && params
     };
 
     const response = await axios.get(ApiEndpoints.fetchInstructors, config);
-    dispatch(withDataAction(InstructorActions.FETCH_INSTRUCTORS_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.FETCH_INSTRUCTORS_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
-    dispatch(withErrorAction(InstructorActions.FETCH_INSTRUCTORS_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.FETCH_INSTRUCTORS_FAILURE, errorMessage)
+    );
   }
 };
 
-export const fetchInstructor = (instructorId: number): ThunkAction<Promise<void>, {}, {}> => async (
+export const fetchInstructor = (
+  instructorId: number
+): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
@@ -388,15 +418,59 @@ export const fetchInstructor = (instructorId: number): ThunkAction<Promise<void>
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
+
     const response = await axios.get(
       `${ApiEndpoints.fetchInstructors}${instructorId}`,
-      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
-    dispatch(withDataAction(InstructorActions.FETCH_INSTRUCTOR_SUCCESS, response.data));
+      { headers: authToken && { Authorization: `Bearer ${authToken}` } }
+    );
+    dispatch(
+      withDataAction(InstructorActions.FETCH_INSTRUCTOR_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
-    dispatch(withErrorAction(InstructorActions.FETCH_INSTRUCTOR_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.FETCH_INSTRUCTOR_FAILURE, errorMessage)
+    );
+  }
+};
+
+export const fetchMoreInstructors = (
+  pageNumber: number,
+  params: any
+): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(InstructorActions.FETCH_MORE_INSTRUCTORS));
+  try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
+    const config = {
+      headers: authToken && { Authorization: `Bearer ${authToken}` },
+      params: params && params
+    };
+    const response = await axios.get(
+      `${ApiEndpoints.fetchMoreInstructor}${String(pageNumber)}`,
+      config
+    );
+    dispatch(
+      withDataAction(
+        InstructorActions.FETCH_MORE_INSTRUCTORS_SUCCESS,
+        response.data
+      )
+    );
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === "string") {
+      errorMessage = getError(e);
+    }
+    dispatch(
+      withErrorAction(
+        InstructorActions.FETCH_MORE_INSTRUCTORS_FAILURE,
+        errorMessage
+      )
+    );
   }
 };
 
@@ -412,18 +486,22 @@ export const requestReference = (
     const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.requestReferences,
-      {emails: [references]},
+      { emails: [references] },
       {
-        headers: { 'Authorization': `Bearer ${authToken}` }
+        headers: { Authorization: `Bearer ${authToken}` }
       }
     );
-    dispatch(withDataAction(InstructorActions.REQUEST_REFERENCE_SUCCESS, response.data));
+    dispatch(
+      withDataAction(InstructorActions.REQUEST_REFERENCE_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
 
-    dispatch(withErrorAction(InstructorActions.REQUEST_REFERENCE_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.REQUEST_REFERENCE_FAILURE, errorMessage)
+    );
   }
 };
 
@@ -435,15 +513,19 @@ export const fetchReferences = (): ThunkAction<Promise<void>, {}, {}> => async (
   try {
     const state = getState();
     const authToken = (state as StoreState).user.token;
-    const response = await axios.get(
-      ApiEndpoints.fetchReferences,
-      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
-    dispatch(withDataAction(InstructorActions.FETCH_REFERENCES_SUCCESS, response.data));
+    const response = await axios.get(ApiEndpoints.fetchReferences, {
+      headers: authToken && { Authorization: `Bearer ${authToken}` }
+    });
+    dispatch(
+      withDataAction(InstructorActions.FETCH_REFERENCES_SUCCESS, response.data)
+    );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
+    if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e);
     }
-    dispatch(withErrorAction(InstructorActions.FETCH_REFERENCES_FAILURE, errorMessage));
+    dispatch(
+      withErrorAction(InstructorActions.FETCH_REFERENCES_FAILURE, errorMessage)
+    );
   }
 };
 

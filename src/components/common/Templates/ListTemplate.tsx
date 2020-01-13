@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Button,
   CircularProgress,
@@ -6,14 +6,15 @@ import {
   Grid,
   Hidden,
   Select,
-  Typography,
- } from '@material-ui/core';
+  Typography
+} from "@material-ui/core";
 
-import { instruments } from '../../../../assets/data/instruments';
-import { InstrumentsComponent } from '../../Instruments/constants';
-import { LocationField } from '../../Instructors/LocationField';
-import PageTitle from '../PageTitle';
-import { ListTemplateComponent } from '../constants/ListTemplate';
+import { instruments } from "../../../../assets/data/instruments";
+import { InstrumentsComponent } from "../../Instruments/constants";
+import { LocationField } from "../../Instructors/LocationField";
+import PageTitle from "../PageTitle";
+import { ListTemplateComponent } from "../constants/ListTemplate";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
   pageTitle: string;
@@ -21,20 +22,36 @@ interface Props {
   handleChange: (event: React.FormEvent<{}>) => void;
   hasCallToAction?: boolean;
   address: string;
+  isRequestingMoreData: boolean;
   instrument: string;
   filterSection: JSX.Element;
   mainContent: JSX.Element;
   getLatLng: (lat: string, lng: string) => void;
   getLocation: (location: string) => void;
   isRequesting: boolean;
+  loadMoreData: () => void;
 }
 
-export const ListTemplate: React.StatelessComponent<Props> = (props) => {
+export const ListTemplate: React.StatelessComponent<Props> = props => {
+  const [ref, inView, entry] = useInView({
+    threshold: 0
+  });
+
   const instrumentSelectItems = instruments.map(instrument => {
     return (
-      <option key={instrument.value} value={instrument.value}>{instrument.name}</option>
+      <option key={instrument.value} value={instrument.value}>
+        {instrument.name}
+      </option>
     );
   });
+
+  const loadMoreData = () => {
+    if (inView) {
+     props.loadMoreData()
+    }
+  };
+
+  loadMoreData();
 
   const { hasCallToAction, results } = props;
 
@@ -63,10 +80,10 @@ export const ListTemplate: React.StatelessComponent<Props> = (props) => {
                   name: ListTemplateComponent.FieldNames.Instruments
                 }}
               >
-              <option value="" disabled={true}>
-                {InstrumentsComponent.DisabledPlaceholders.SelectInstrument}
-              </option>
-              {instrumentSelectItems}
+                <option value="" disabled={true}>
+                  {InstrumentsComponent.DisabledPlaceholders.SelectInstrument}
+                </option>
+                {instrumentSelectItems}
               </Select>
             </FormControl>
           </Grid>
@@ -85,10 +102,11 @@ export const ListTemplate: React.StatelessComponent<Props> = (props) => {
         <Grid item={true} xs={12}>
           <SearchSection />
         </Grid>
-        {props.isRequesting ?
+        {props.isRequesting ? (
           <div className="nabi-text-center nabi-full-width">
             <CircularProgress />
-          </div> :
+          </div>
+        ) : (
           <React.Fragment>
             <Grid item={true} xs={12}>
               <div className="nabi-section-widest nabi-background-white">
@@ -96,21 +114,33 @@ export const ListTemplate: React.StatelessComponent<Props> = (props) => {
               </div>
             </Grid>
             <Grid item={true} xs={12}>
-              {results === 0 ?
-              <div className="nabi-section-widest nabi-background-white nabi-text-center nabi-margin-top-small">
-                <Typography>No results. Contact us if you need help.</Typography>
-              </div> :
-              <React.Fragment>
-                <Typography
-                  color="primary"
-                  className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-center"
-                >
-                  {results} result(s)
-                </Typography>
-                {props.mainContent}
-              </React.Fragment>}
+              {results === 0 ? (
+                <div className="nabi-section-widest nabi-background-white nabi-text-center nabi-margin-top-small">
+                  <Typography>
+                    No results. Contact us if you need help.
+                  </Typography>
+                </div>
+              ) : (
+                <React.Fragment>
+                  <Typography
+                    color="primary"
+                    className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-center"
+                  >
+                    {results} result(s)
+                  </Typography>
+                  {props.mainContent}
+                  <div ref={ref}>
+                    {props.isRequestingMoreData && (
+                      <div className="nabi-text-center nabi-full-width">
+                        <CircularProgress />
+                      </div>
+                    )}
+                  </div>
+                </React.Fragment>
+              )}
             </Grid>
-          </React.Fragment>}
+          </React.Fragment>
+        )}
       </Grid>
     </div>
   );

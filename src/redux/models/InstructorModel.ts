@@ -1,19 +1,15 @@
-import {
-  ActionStatus,
-  ActionStatusWithMessage,
-  ListResource
-} from './models';
-import { PlaceForLessonsType } from '../../components/PlaceForLessons/model';
-import { RatesType } from '../../components/Rates/model';
-import { EducationType } from '../../components/Education/model';
-import { EmploymentType } from '../../components/Employment/model';
-import { AvailabilityType } from '../../components/Availability/model';
-import { InstrumentsType } from '../../components/Instruments/model';
+import { ActionStatus, ActionStatusWithMessage, ListResource } from "./models";
+import { PlaceForLessonsType } from "../../components/PlaceForLessons/model";
+import { RatesType } from "../../components/Rates/model";
+import { EducationType } from "../../components/Education/model";
+import { EmploymentType } from "../../components/Employment/model";
+import { AvailabilityType } from "../../components/Availability/model";
+import { InstrumentsType } from "../../components/Instruments/model";
 import {
   LessonSizeType,
   AgeGroupType
-} from '../../components/JobPreferences/model';
-import { QualificationsType } from '../../components/Qualifications/model';
+} from "../../components/JobPreferences/model";
+import { QualificationsType } from "../../components/Qualifications/model";
 
 export interface InstructorType {
   userId?: number;
@@ -99,6 +95,7 @@ export interface InstructorState {
     editEmployment: ActionStatusWithMessage;
     deleteEmployment: ActionStatusWithMessage;
     fetchInstructors: ActionStatus;
+    fetchMoreInstructors: ActionStatus;
     fetchInstructor: ActionStatus;
     requestReference: ActionStatusWithMessage;
     fetchReferences: ActionStatus;
@@ -120,73 +117,77 @@ export const defaultInstructorState: InstructorState = {
   },
   instructors: {
     count: 0,
-    previous: '',
-    next: '',
+    previous: "",
+    next: "",
     results: []
   },
   actions: {
     buildProfile: {
       isRequesting: false,
-      error: '',
+      error: ""
     },
     buildJobPreferences: {
       isRequesting: false,
-      error: '',
+      error: ""
     },
     fetchProfile: {
       isRequesting: false,
-      error: '',
+      error: ""
     },
     addEducation: {
       isRequesting: false,
-      error: '',
-      message: ''
+      error: "",
+      message: ""
     },
     fetchEducation: {
       isRequesting: false,
-      error: '',
+      error: ""
     },
     editEducation: {
       isRequesting: false,
-      error: '',
-      message: ''
+      error: "",
+      message: ""
     },
     deleteEducation: {
       isRequesting: false,
-      error: '',
-      message: ''
+      error: "",
+      message: ""
     },
     addEmployment: {
       isRequesting: false,
-      error: '',
-      message: ''
+      error: "",
+      message: ""
     },
     fetchEmployment: {
       isRequesting: false,
-      error: '',
+      error: ""
     },
     editEmployment: {
       isRequesting: false,
-      error: '',
-      message: ''
+      error: "",
+      message: ""
     },
     deleteEmployment: {
       isRequesting: false,
-      error: '',
-      message: ''
+      error: "",
+      message: ""
     },
     fetchInstructors: {
       isRequesting: false,
-      error: ''
+      error: ""
     },
     fetchInstructor: {
       isRequesting: false,
-      error: ''
-     },
+      error: ""
+    },
+    fetchMoreInstructors: {
+      isRequesting: false,
+      error: ""
+    },
     requestReference: {
       isRequesting: false,
-      error: '',
-      message: ''
+      error: "",
+      message: ""
     },
     fetchReferences: {
       isRequesting: false,
