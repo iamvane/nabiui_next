@@ -11,6 +11,7 @@ import {
   Dispatch
 } from 'redux';
 
+import { checkErrors } from '../../../utils/checkErrors';
 import { StoreState } from '../../../redux/reducers/store';
 import { RedirectState } from '../../../redux/models/models';
 import { createUser } from '../../../redux/actions/UserActions';
@@ -60,83 +61,108 @@ interface Props extends
   DispatchProps,
   StateProps { }
 
-interface OpenModalState {
-  openModal: boolean;
-  isDisabled: boolean;
-}
-
-interface State extends
-  RegistrationType,
-  RedirectState,
-  OpenModalState {
-  errors: RegistrationErrors;
-  isUnderAge: boolean;
-  agreeWithTerms: boolean;
-}
-
 /**
  * Contains a form to register new users
  */
-export class Registration extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      role: Role.student,
-      birthday: undefined,
-      openModal: false,
-      isDisabled: true,
-      isUnderAge: false,
-      errors: {},
-      performRedirect: false,
-      agreeWithTerms: false
-    };
-  }
+export const Registration = (props: Props) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [role, setRole] = React.useState('');
+  const [birthday, setBirthday] = React.useState('');
+  const [openModal, toggleModal] = React.useState(false);
+  const [isUnderage, setIsUnderAge] = React.useState(false);
+  const [agreeWithTerms, setAgreeWithTerms] = React.useState(false);
+  const [formErrors, setFormErrors] = React.useState({});
+  const [registration, setRegistration] = React.useState(false);
 
-  componentDidMount() {
-    if (this.props.role) {
-      this.setState({ role: this.props.role });
-    }
-
+  React.useEffect(() => {
     const analiticsProps = {
       properties: {
         referrer: document.referrer
       }
     };
     page('Registration', analiticsProps);
-  }
 
-  public handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
+    if (props.role) {
+      setRole(props.role);
+    }
+
+    if (registration && !isUnderage) {
+      const fetchData = async () => {
+        const isError = checkErrors(Object.values(formErrors));
+
+        if (isError) {
+          let userValues: RegistrationType = {
+            birthday: moment(birthday).format('YYYY-MM-DD'),
+            email: email.toLocaleLowerCase(),
+            password,
+            role
+          };
+          if (props.invitationToken) {
+            userValues.referringCode = props.invitationToken;
+          }
+          setRegistration(true);
+          await props.createUser(userValues);
+        }
+
+        if (!props.apiError && !props.isRequesting) {
+          const analiticsProps = {
+            userId: email,
+            properties: {
+              referrer: document.referrer
+            }
+          };
+          track('Created Account', analiticsProps);
+
+          role === Role.instructor ?
+            Router.push(Routes.BuildProfile + Routes.AccountInfo) :
+            Router.push(Routes.BuildRequest + Routes.AccountInfo)
+        }
+      }
+      fetchData();
+    }
+
+  }, [registration, isUnderage, props.apiError, props.isRequesting ]);
+
+  const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.value;
     const name = target.name;
 
-    this.setState({
-      ...this.state,
-      [name]: value
-    });
+    switch (name) {
+      case RegistrationFormComponent.FieldNames.Role:
+        setRole(value);
+        break;
+      case RegistrationFormComponent.FieldNames.Email:
+        setEmail(value);
+        break;
+      case RegistrationFormComponent.FieldNames.Password:
+        setPassword(value);
+        break;
+      case RegistrationFormComponent.FieldNames.AgreeWithTerms:
+        setAgreeWithTerms(target.checked);
+        break;
+      default:
+        return;
+    }
   }
 
-  public handleBirthdayChange = (date: moment.Moment): void => {
-    this.setState({ birthday: String(date) });
+  const handleBirthdayChange = (date: moment.Moment): void => {
+    setBirthday(String(date));
   }
 
-  public displayAgeDisclaimer(): void {
-    const userAge = Math.abs(moment(this.state.birthday).diff(moment(), 'years'));
+  const displayAgeDisclaimer = (): void => {
+    const userAge = Math.abs(moment(birthday).diff(moment(), 'years'));
 
     if (userAge >= RegistrationComponent.minimumAge) {
-      return this.setState({ isUnderAge: false });
+      return setIsUnderAge(false);
     }
-    return this.setState({ openModal: true, isUnderAge: true });
+    toggleModal(true);
+    setIsUnderAge(true);
+    return;
   }
 
-  public validate = (userValues: RegistrationErrors) => {
-    const {
-      email,
-      password,
-    } = userValues;
-
+  const validate = () => {
     const { FieldKey } = RegistrationFormComponent;
 
     const formErrors: RegistrationErrors = {
@@ -164,96 +190,44 @@ export class Registration extends React.Component<Props, State> {
     }
 
     // Validate birthday
-    this.displayAgeDisclaimer();
-
-    return formErrors;
+    displayAgeDisclaimer();
+    return setFormErrors(formErrors);
   }
 
-  public handleSubmit = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
+  const handleSubmit = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
-    const valuesToValidate: RegistrationErrors = {
-      email: this.state.email.trim().toLocaleLowerCase(),
-      password: this.state.password,
-    };
 
-    const formErrors = this.validate(valuesToValidate);
-
-    await this.setState({ errors: formErrors }, () => {
-      const checkErrors = (array: string[]) => {
-        for (var i = 0; i < array.length; i++) {
-          if (array[i]) {
-            return true;
-          }
-        }
-        return false;
-      };
-      const errorsArray = Object.values(this.state.errors);
-      const isError = checkErrors(errorsArray);
-
-      if (!isError && !this.state.isUnderAge) {
-        let userValues: RegistrationType = {
-          birthday: moment(this.state.birthday).format('YYYY-MM-DD'),
-          email: this.state.email.toLocaleLowerCase(),
-          password: this.state.password,
-          role: this.state.role,
-        };
-        if (this.props.invitationToken) {
-          userValues.referringCode = this.props.invitationToken;
-        }
-        this.props.createUser(userValues);
-      }
-
-      if (!isError && !this.props.apiError && !this.state.isUnderAge) {
-        const analiticsProps = {
-          userId: this.state.email,
-          properties: {
-            referrer: document.referrer
-          }
-        };
-        track('Created Account', analiticsProps);
-        if (this.props.apiError) {
-          console.log(this.props.apiError);
-        }
-        this.setState({ performRedirect: true });
-      }
-    });
+    validate();
+    setRegistration(true);
   }
 
-  public render(): JSX.Element {
-    const closeModal = () => { this.setState({ openModal: false }); };
-    return (
-      <div className="nabi-container">
-        <PageTitle pageTitle={RegistrationComponent.pageTitle} />
+  const closeModal = () => toggleModal(false);
+  return (
+    <div className="nabi-container">
+      <PageTitle pageTitle={RegistrationComponent.pageTitle} />
 
-        <div className="nabi-background-white nabi-section">
-          <RegistrationForm
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            handleBirthdayChange={this.handleBirthdayChange}
-            birthday={this.state.birthday ? this.state.birthday : ''}
-            selectedRole={this.state.role || ''}
-            formErrors={this.state.errors}
-            apiError={this.props.apiError}
-            isRequesting={this.props.isRequesting}
-            agreeWithTerms={this.state.agreeWithTerms}
-          />
-        </div>
-
-        <AgeDisclaimer
-          isFormDialogOpen={this.state.openModal}
-          closeHandler={closeModal}
+      <div className="nabi-background-white nabi-section">
+        <RegistrationForm
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          handleBirthdayChange={handleBirthdayChange}
+          birthday={birthday ? birthday : ''}
+          selectedRole={role || ''}
+          formErrors={formErrors}
+          apiError={props.apiError}
+          isRequesting={props.isRequesting}
+          agreeWithTerms={agreeWithTerms}
         />
-
-        {this.state.performRedirect && !this.props.apiError && !this.props.isRequesting && (
-          this.state.role === Role.instructor ?
-            Router.push(Routes.BuildProfile + Routes.AccountInfo) :
-            Router.push(Routes.BuildRequest + Routes.AccountInfo)
-        )}
       </div>
-    );
-  }
+
+      <AgeDisclaimer
+        isFormDialogOpen={openModal}
+        closeHandler={closeModal}
+      />
+    </div>
+  );
 }
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {

@@ -32,10 +32,12 @@ const FreeLesson = () => {
           <p className="nabi-color-white nabi-margin-bottom-xsmall nabi-font-medium">
             {description}
           </p>
-          <Link href={Routes.RegistrationInstructor}>
-            <Button className="nabi-margin-top-xsmall" color="primary" variant="contained">
-              {button}
-            </Button>
+          <Link href={Routes.Registration}>
+            <a>
+              <Button className="nabi-margin-top-xsmall" color="primary" variant="contained">
+                {button}
+              </Button>
+            </a>
           </Link>
         </Grid>
       </Grid>

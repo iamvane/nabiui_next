@@ -40,9 +40,12 @@
 }
 
 .become-an-instructor-icon {
-	width: 200px;
+	width: 100px;
 }
 @media (min-width: 960px) {
+  .become-an-instructor-icon {
+    width: 200px;
+  }
   .become-an-instructor-cta {
     padding-left: 189px;
   }

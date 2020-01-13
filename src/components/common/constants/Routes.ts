@@ -1,4 +1,5 @@
 export enum Routes {
+  AboutUs= '/about-us',
   HomePage = '/',
   Registration = '/registration',
   RegistrationStudent = '/registration-student',
@@ -32,13 +33,14 @@ export enum Routes {
   Help = '/help',
   Instructors = '/instructors',
   BookLessons = '/book-lessons',
-  Pricing = '/pricing',
+  LessonPackages = '/lesson-packages',
   HowItWorksInstructors = '/how-it-works-instructors',
   HowItWorksParents = '/how-it-works-parents-students',
   FAQParents = '/faq-parents-students',
   FAQInstructors = '/faq-instructors',
   FeaturesParents = '/features-parents-students',
   FeaturesInstructors = '/features-instructors',
+  VetInstructor = '/vetting-process'
 }
 
 export enum SocialLinks {

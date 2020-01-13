@@ -76,40 +76,58 @@ export const Header = (props: HeaderProps) => {
     props.logOutUser();
   };
   const logo = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png';
+  const menuWhitelist = [
+    Routes.AboutUs,
+    Routes.TermsOfUse,
+    Routes.ContactUs,
+    Routes.LessonPackages,
+    Routes.HowItWorksInstructors,
+    Routes.HowItWorksParents,
+    Routes.FAQParents,
+    Routes.FAQInstructors,
+    Routes.FeaturesParents,
+    Routes.FeaturesInstructors,
+    Routes.VetInstructor
+  ];
+
   return (
     <header>
       <div
         className={`${isLocationHomepage ? 'nabi-header-container-home' : 'nabi-header-container'} nabi-position-relative`}
       >
-        <div className="nabi-header-menu hide-on-desktop">
-          <IconButton onClick={toggleDrawerMenu}><Menu /></IconButton>
-          <DrawerMenu isOpen={isDrawerMenuOpen} closeMenu={toggleDrawerMenu} />
-        </div>
-        <div className="nabi-header-menu hide-on-mobile">
-          <p
-            className="nabi-text-uppercase nabi-text-semibold nabi-cursor-pointer nabi-display-inline nabi-color-nabi"
-            onClick={openStudentParentMenu}
-          >
-            {headerMenuLabels.student}
-          </p>
-          <StudentParentMenu
-            isMenuOpen={isStudentParentMenuOpen}
-            toggleMenu={() => setStudentParentMenuOpen(false)}
-            anchorEl={anchorElStudentParentMenu}
-          />
-          <p
-            className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small nabi-display-inline nabi-color-nabi nabi-cursor-pointer"
-            onClick={openInstructorMenu}
-          >
-            {headerMenuLabels.instructors}
-          </p>
-          <InstructorMenu
-            isMenuOpen={Boolean(isInstructorMenuOpen && anchorElInstructorMenu)}
-            toggleMenu={() => setInstructorMenuOpen(false)}
-            anchorEl={anchorElInstructorMenu}
-          />
-          <a href="https://blog.nabimusic.com" className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small" target="_blank">{headerMenuLabels.blog}</a>
-        </div>
+        {(menuWhitelist as string[]).includes(props.router.route) &&
+          <React.Fragment>
+            <div className="nabi-header-menu hide-on-desktop">
+              <IconButton onClick={toggleDrawerMenu}><Menu /></IconButton>
+              <DrawerMenu isOpen={isDrawerMenuOpen} closeMenu={toggleDrawerMenu} />
+            </div>
+            <div className="nabi-header-menu hide-on-mobile">
+              <p
+                className="nabi-text-uppercase nabi-text-semibold nabi-cursor-pointer nabi-display-inline nabi-color-nabi"
+                onClick={openStudentParentMenu}
+              >
+                {headerMenuLabels.student}
+              </p>
+              <StudentParentMenu
+                isMenuOpen={isStudentParentMenuOpen}
+                toggleMenu={() => setStudentParentMenuOpen(false)}
+                anchorEl={anchorElStudentParentMenu}
+              />
+              <p
+                className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small nabi-display-inline nabi-color-nabi nabi-cursor-pointer"
+                onClick={openInstructorMenu}
+              >
+                {headerMenuLabels.instructors}
+              </p>
+              <InstructorMenu
+                isMenuOpen={Boolean(isInstructorMenuOpen && anchorElInstructorMenu)}
+                toggleMenu={() => setInstructorMenuOpen(false)}
+                anchorEl={anchorElInstructorMenu}
+              />
+              <a href="https://blog.nabimusic.com" className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small" target="_blank">{headerMenuLabels.blog}</a>
+            </div>
+          </React.Fragment>
+        }
         <div className="nabi-logo-anchor">
           <Link href={props.user.email ? Routes.Dashboard : Routes.HomePage}>
             <a>
@@ -133,9 +151,11 @@ export const Header = (props: HeaderProps) => {
         {props.router.route === Routes.HomePage &&
           <div className="nabi-header-button">
             <Link href={Routes.Login}>
-              <Button color="primary" variant="contained" className="nabi-responsive-button nabi-margin-left-small">
-                {logIn}
-              </Button>
+              <a>
+                <Button color="primary" variant="contained" className="nabi-responsive-button nabi-margin-left-small">
+                  {logIn}
+                </Button>
+              </a>
             </Link>
           </div>
         }

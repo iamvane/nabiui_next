@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from 'next/link';
 
 import {
   Button,
@@ -7,6 +8,7 @@ import {
 } from '@material-ui/core';
 
 import '../../../assets/scss/Features.scss'
+import { Routes } from '../common/constants//Routes';
 import {
   title,
   features,
@@ -39,9 +41,13 @@ export const Features = () => {
           ))}
         </Grid>
         <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
-          <Button fullWidth={true} className="nabi-margin-top-xsmall" color="primary" variant="contained">
-            {button}
-          </Button>
+          <Link href={Routes.Registration}>
+            <a>
+              <Button fullWidth={true} className="nabi-margin-top-xsmall" color="primary" variant="contained">
+                {button}
+              </Button>
+            </a>
+          </Link>
         </Grid>
       </div>
       <img className="nabi-full-width" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-music-violin-lessons-piano-guitar-near-me-drums.jpg" />

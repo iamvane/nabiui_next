@@ -22,8 +22,8 @@ export const Footer = () => {
         <Grid className="nabi-padding-top-xlarge nabi-padding-bottom-medium" container={true}>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">Learn More</p>
-            <Typography className="nabi-cursor-pointer"><Link href={Routes.Pricing}><a>Pricing</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>How We Screen Instructors</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.LessonPackages}><a>Lesson Packages</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.VetInstructor}><a>How We Screen Instructors</a></Link></Typography>
           </Grid>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">Need Help?</p>
@@ -35,7 +35,7 @@ export const Footer = () => {
             <p className="nabi-text-mediumbold nabi-font-medium">About Nabi</p>
             <Typography className="nabi-cursor-pointer"><Link href={Routes.HowItWorksParents}><a>How It Works - Parents</a></Link></Typography>
             <Typography className="nabi-cursor-pointer"><Link href={Routes.HowItWorksInstructors}><a>How It Works - Instructors</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link href=""><a>About Us</a></Link></Typography>
+            <Typography className="nabi-cursor-pointer"><Link href={Routes.AboutUs}><a>About Us</a></Link></Typography>
             <Typography className="nabi-cursor-pointer"><a href="https://blog.nabimusic.com" target="_blank">Blog</a></Typography>
           </Grid>
           <Grid item={true} xs={12} md={3}>

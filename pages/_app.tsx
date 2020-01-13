@@ -10,6 +10,7 @@ import {
 
 import { Footer } from '../src/components/common/Footer';
 import Header from '../src/components/Header/Header';
+import { fetchUser, setInvitationToken } from '../src/redux/actions/UserActions';
 import '../assets/css/overrides.css';
 import '../assets/css/index.css';
 import { getStore } from '../src/redux/reducers/store';
@@ -24,6 +25,15 @@ class NabiApp extends App<any, any> {
     const pageProps = Component.getInitialProps ? await
       Component.getInitialProps(ctx) : {};
     return { pageProps };
+  }
+
+  public componentDidMount(): void {
+    let { token } = this.props.router.query;
+    token = token || '';
+    this.props.store.dispatch(fetchUser());
+    if (token) {
+      this.props.dispatch(setInvitationToken(token));
+    }
   }
   render() {
     const { Component, pageProps, store } = this.props;

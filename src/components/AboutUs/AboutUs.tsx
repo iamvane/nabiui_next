@@ -47,7 +47,7 @@ const teammate = (teamate : constants.Teammate) => (
 export const AboutUs = () => {
   return (
     <React.Fragment>
-      <div className="about-banner nabi-color-white nabi-background-nabi nabi-text-center">
+      <div className="about-banner nabi-color-white nabi-background-nabi nabi-text-center nabi-padding-top-medium">
         <p className="nabi-jennasue-title nabi-margin-bottom-xsmall nabi-margin-top-xsmall">{constants.titleAbout}</p>
         <Grid xs={12} md={6} className="nabi-margin-center"><p className="nabi-font-large">{constants.ourMission}</p></Grid>
       </div>
