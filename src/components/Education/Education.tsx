@@ -20,7 +20,7 @@ import {
   editEducation,
   deleteEducation
  } from '../../redux/actions/InstructorActions';
- import { Routes } from '../common/constants/Routes';
+import { Routes } from '../common/constants/Routes';
 import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import SectionTitle from '../common/SectionTitle';

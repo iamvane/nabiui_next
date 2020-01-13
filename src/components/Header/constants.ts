@@ -15,7 +15,7 @@ export const headerMenuLabels  = {
 export const studentParentMenuLabels = {
   howItWorks: 'How It works',
   faqs: 'FAQs',
-  pricing: 'Pricing',
+  lessonPackages: 'Lesson Packages',
   features: 'Features',
   start: 'Try Free Lesson'
 };

@@ -54,7 +54,7 @@ export const InstructorMenu = (props: Props) => {
                     </a>
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={props.toggleMenu}>
+                {/* <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.FeaturesInstructors}>
                     <a>
                       <Typography color="primary">
@@ -62,7 +62,7 @@ export const InstructorMenu = (props: Props) => {
                       </Typography>
                     </a>
                   </Link>
-                </MenuItem>
+                </MenuItem> */}
                 <Link href={Routes.RegistrationInstructor}>
                   <a>
                     <Button color="primary" variant="contained" className="nabi-responsive-button">{instructorMenuLabels.start}</Button>

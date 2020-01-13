@@ -37,8 +37,9 @@ export default function usersReducer(
           birthday: userDetails.birthday,
           email: userDetails.email,
           referralToken: userDetails.referralToken,
-          role: userDetails.role
+          role: userDetails.role,
         },
+        token: action.data.token.access,
         actions: {
           ...state.actions,
           createUser: {

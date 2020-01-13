@@ -14,7 +14,7 @@ const BecomeATeacher = () => {
   return (
     <div className="nabi-background-nabi nabi-color-white nabi-padding-bottom-medium">
       <Grid
-        className="nabi-container nabi-padding-top-medium nabi-padding-bottom-medium nabi-text-center"
+        className="nabi-container nabi-padding-top-medium nabi-padding-bottom-small nabi-text-center"
         container={true}
       >
         <Grid item={true} xs={12} md={1} />
@@ -28,10 +28,12 @@ const BecomeATeacher = () => {
           <Typography className="nabi-color-white nabi-margin-bottom-xsmall">
             {constants.description}
           </Typography>
-          <Link href={Routes.RegistrationInstructor}>
-            <Button className="nabi-margin-top-xsmall" color="secondary" variant="contained">
-              {constants.button}
-            </Button>
+          <Link href={Routes.Registration}>
+            <a>
+              <Button className="nabi-margin-top-xsmall nabi-margin-bottom-small" color="secondary" variant="contained">
+                {constants.button}
+              </Button>
+            </a>
           </Link>
         </Grid>
         <Grid item={true} xs={12} md={3} className="nabi-margin-bottom-xsmall nabi-padding-left-small-md nabi-text-center nabi-text-left-md nabi-color-white">

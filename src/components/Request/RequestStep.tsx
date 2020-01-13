@@ -108,19 +108,17 @@ export class Request extends React.Component<Props, State>  {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
   }
 
-  public componentDidMount() {
-    this.props.fetchRequests();
+  public async componentDidMount(): Promise<void> {
+    await this.props.fetchRequests();
+    this.setRequests();
   }
 
   public componentDidUpdate(prevProps: Props): void {
     if (prevProps.requests.length !== this.props.requests.length) {
-      this.setState({
-        requests: this.props.requests ? this.props.requests : []
-      });
+      this.setRequests();
     }
     if (prevProps.request.id !== this.props.request.id) {
       this.setState({
@@ -142,6 +140,12 @@ export class Request extends React.Component<Props, State>  {
         snackBarMessage: RequestCreateSuccessMessage.deletedRequest
       });
     }
+  }
+
+  public setRequests(): void {
+    this.setState({
+      requests: this.props.requests
+    });
   }
 
   public closeSnackbar = () => this.setState({ showSnackbar: false });
@@ -236,9 +240,12 @@ export class Request extends React.Component<Props, State>  {
       'requestTitle',
       'lessonDuration',
       'requestMessage',
-      'placeForLessons',
-      'students'
+      'placeForLessons'
     ];
+
+    if (this.props.role === Role.parent) {
+      validationFields.push('students')
+    }
 
     const requestFields = requestState.requestDetail.placeForLessons === 'studio'
       ? validationFields.slice(0, 6).concat(['travelDistance'])
@@ -264,12 +271,14 @@ export class Request extends React.Component<Props, State>  {
     });
   }
 
-  public handleSubmit(event: React.SyntheticEvent<HTMLInputElement>): void {
+  public handleSubmit = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
     delete this.state.requestDetail.id;
-    this.props.createRequest(this.state.requestDetail);
+    await this.props.createRequest(this.state.requestDetail);
+    await this.props.fetchRequests();
+    this.toggleRequestForm();
   }
 
   public handleEditSubmit(event: React.SyntheticEvent<HTMLInputElement>): void {
@@ -278,7 +287,11 @@ export class Request extends React.Component<Props, State>  {
     }
     const id = this.state.requestDetail.id;
     delete this.state.requestDetail.id;
+    if (this.props.role === Role.student) {
+      delete this.state.requestDetail.students;
+    }
     this.props.editRequest(id, this.state.requestDetail);
+    this.toggleRequestForm();
   }
 
   public addStudent = (): void => {

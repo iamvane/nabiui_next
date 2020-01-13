@@ -1,10 +1,12 @@
 import * as React from 'react';
 
+import Link from 'next/link';
 import {
   Button,
   Grid,
   Typography,
 } from '@material-ui/core';
+import { Routes } from '../common/constants//Routes';
 
 import '../../../assets/scss/Testimonials.scss'
 import {
@@ -42,9 +44,13 @@ export const Testimonials = () => {
           ))}
         </Grid>
         <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
-          <Button fullWidth={true} className="nabi-margin-top-xsmall" color="primary" variant="contained">
-            {button}
-          </Button>
+        <Link href={Routes.Registration}>
+          <a>
+            <Button fullWidth={true} className="nabi-margin-top-xsmall" color="primary" variant="contained">
+              {button}
+            </Button>
+          </a>
+        </Link>
         </Grid>
         <h2 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
           {recognition}
@@ -61,9 +67,13 @@ export const Testimonials = () => {
           }
         </Grid>
         <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
-          <Button fullWidth={true} className="nabi-margin-top-medium" color="secondary" variant="contained">
-            {recognizedButton}
-          </Button>
+          <Link href={Routes.Registration}>
+            <a>
+              <Button fullWidth={true} className="nabi-margin-top-medium" color="secondary" variant="contained">
+                {recognizedButton}
+              </Button>
+            </a>
+          </Link>
         </Grid>
       </div>
     </Grid>

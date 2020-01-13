@@ -68,35 +68,16 @@ const Login = (props: Props) => {
       }
     };
     page('Login', analiticsProps);
-  }, []);
 
-// export class Login extends React.Component<Props, State> {
-//   constructor(props: Props) {
-//     super(props);
-//     this.state = {
-//       email: '',
-//       password: '',
-//       showSnackbar: false,
-//     };
-//   }
+    if (!props.loginError) {
+      const fetchUser = async () => {
+        await props.fetchUser(props.token);
+      };
+      fetchUser();
+      props.user.email && Router.push(Routes.Dashboard)
+    }
+  }, [props.loginError, props.passwordSetMessage]);
 
-  // public componentDidMount() {
-  //   this.setState({
-  //     showSnackbar: this.props.passwordSetMessage ? true : false
-  //   });
-  //   const analiticsProps = {
-  //     properties: {
-  //       referrer: document.referrer
-  //     }
-  //   };
-  //   page('Login', analiticsProps);
-  // }
-
-  // public componentDidUpdate(prevProps: Props): void {
-  //   if (prevProps.token !== this.props.token) {
-  //     this.props.fetchUser(this.props.token);
-  //   }
-  // }
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
     const value = target.value;
@@ -117,8 +98,6 @@ const Login = (props: Props) => {
     await props.authenticateUser(email.toLocaleLowerCase(), password);
 
     if (!props.loginError) {
-      await props.fetchUser(props.token);
-
       const analiticsProps = {
         userId: email,
         properties: {
@@ -126,7 +105,6 @@ const Login = (props: Props) => {
         }
       };
       track('Logged in', analiticsProps);
-      props.user.email && Router.push(Routes.Dashboard)
     }
   }
 

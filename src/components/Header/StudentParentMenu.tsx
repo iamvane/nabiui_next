@@ -55,15 +55,15 @@ export const StudentParentMenu = (props: Props) => {
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.Pricing}>
+                  <Link href={Routes.LessonPackages}>
                     <a>
                       <Typography color="primary">
-                        {studentParentMenuLabels.pricing}
+                        {studentParentMenuLabels.lessonPackages}
                       </Typography>
                     </a>
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={props.toggleMenu}>
+                {/* <MenuItem onClick={props.toggleMenu}>
                   <Link href={Routes.FeaturesParents}>
                     <a>
                       <Typography color="primary">
@@ -71,7 +71,7 @@ export const StudentParentMenu = (props: Props) => {
                       </Typography>
                     </a>
                   </Link>
-                </MenuItem>
+                </MenuItem> */}
                 <Link href={Routes.RegistrationParent}>
                   <a>
                     <Button color="primary" variant="contained" className="nabi-responsive-button">{studentParentMenuLabels.start}</Button>

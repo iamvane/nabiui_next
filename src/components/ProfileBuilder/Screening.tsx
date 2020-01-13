@@ -82,8 +82,7 @@ export const Screening = (props: Props) => {
     <div>
       <SectionTitle text="Screening" />
       {props.isStatusRequesting ?
-        <CircularProgress /> :
-
+        <div className="nabi-text-center"><CircularProgress /></div> :
           props.status ?
             <React.Fragment>
               <Typography>

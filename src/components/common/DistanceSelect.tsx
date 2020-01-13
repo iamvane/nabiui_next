@@ -29,7 +29,7 @@ const DistanceSelect: React.StatelessComponent<Props> = props => {
   };
 
   return (
-    <Grid container={true} spacing={8}>
+    <Grid container={true} spacing={1}>
       <Grid className="nabi-align-vertical-items" item={true} xs={12} lg={4}>
         <Typography>
           {props.label || constants.defaultLabel}

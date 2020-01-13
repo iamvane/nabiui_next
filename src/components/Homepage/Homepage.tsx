@@ -21,23 +21,16 @@ export interface State {
 
 interface StateProps {
   user: UserType;
+  token: string;
 }
 
 export interface Props extends
   // RouteComponentProps<{}>,
   StateProps { }
 
-export class Homepage extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      performRedirect: false
-    };
-  }
-
-  public componentDidMount() {
-    const userId = this.props.user ? this.props.user.email : 'anonymous';
+export const Homepage = (props: Props) => {
+  React.useEffect(() => {
+    const userId = props.user ? props.user.email : 'anonymous';
 
     const analiticsProps = {
       userId,
@@ -46,35 +39,32 @@ export class Homepage extends React.Component<Props, State> {
       }
     };
     page('Home', analiticsProps);
-  }
 
-  public componentDidUpdate(prevProps: Props): void {
-    if (prevProps.user !== this.props.user && this.props.user.email) {
-      this.setState({performRedirect: true});
+    if (props.token) {
+      Router.push(Routes.Dashboard)
     }
-  }
+  }, []);
 
-  public render() {
-    return (
-      <div>
-        <Banner />
-        <Features />
-        <Testimonials />
-        <BecomeATeacher />
-        <FreeLesson />
-        {this.state.performRedirect && Router.push(Routes.Dashboard)}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Banner />
+      <Features />
+      <Testimonials />
+      <BecomeATeacher />
+      <FreeLesson />
+    </div>
+  );
 }
 
 const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   const {
-    user
+    user,
+    token
   } = state.user;
 
   return {
     user,
+    token
   };
 };
 
