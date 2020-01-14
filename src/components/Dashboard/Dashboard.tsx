@@ -22,8 +22,9 @@ import { AnnouncementConstants } from '../common/constants/Announcement';
 import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
 import { Routes } from '../common/constants/Routes';
 import { Role } from '../Auth/Registration/constants';
-import PreLaunchInstructorDashboard from './InstructorDashboard/PreLaunchInstructorDashboard';
-import PreLaunchStudentDashboard from './StudentDashboard/PreLaunchStudentDashboard';
+import InviteFriends from '../InviteFriends/InviteFriends';
+import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
+import ParentStudentDashboard from './ParentStudentDashboard/ParentStudentDashboard';
 import {
   DashboardComponent,
   PreLaunchInstructorDashboardComponent as constants
@@ -92,32 +93,11 @@ export class Dashboard extends React.Component<Props, State> {
         <React.Fragment>
           <LoggedInPageTemplate
             sidebarContent={
-              this.props.user.role === Role.instructor ?
-              <React.Fragment>
-                 <SectionTitle text="Things to do" />
-                  <img
-                    /* tslint:disable-next-line:max-line-length */
-                    src="https://nabimusic.s3.us-east-2.amazonaws.com/things-to-do-nabi-music-lessons-boston-new-york.png"
-                    className="dashboard-view-profile-image"
-                  />
-                  <Typography><Link href={Routes.BuildProfile}><a>{constants.editProfileLink}</a></Link></Typography>
-                  {/* tslint:disable-next-line:max-line-length */}
-                  <Typography><Link href={`profile/${this.props.user.profile && (this.props.user.profile as InstructorType).instructorId}`}><a>{constants.viewProfileLink}</a></Link></Typography>
-                  <Typography><a target="_blank" href="https://www.facebook.com/pg/nabimusicinfo/jobs">{constants.viewJobsLink}</a></Typography>
-              </React.Fragment>
-                :
-              <React.Fragment>
-                <SectionTitle text={`Hello ${this.props.firstName ? this.props.firstName : ''}`} />
-                <img
-                  className="nabi-responsive-image"
-                  alt="logo"
-                  src={LinkedInPic}
-                />
-            </React.Fragment>
+              <InviteFriends />
             }
             mainContent={
               this.props.user.role === Role.instructor ?
-              <PreLaunchInstructorDashboard /> : <PreLaunchStudentDashboard />}
+              <InstructorDashboard /> : <ParentStudentDashboard />}
             pageTitle={DashboardComponent.pageTitle}
           />
           <SnackBar

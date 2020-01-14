@@ -7,6 +7,7 @@ import { UserState, UserType } from '../models/UserModel'
 import { UserActions } from '../actions/UserActionTypes';
 import { APIActions } from '../models/models';
 import {setCookie, removeCookie} from '../../utils/cookies';
+import { setDashboard } from '../../utils/setDashboard';
 import { setProfile } from './utils';
 
 export default function usersReducer(
@@ -608,7 +609,6 @@ export default function usersReducer(
       };
 
     case UserActions.FETCH_LOWEST_RATE_SUCCESS:
-      console.log(action);
       return {
         ...state,
         lowestRate: action.data.minRate,
@@ -633,6 +633,50 @@ export default function usersReducer(
             fetchLowestRate: {
               isRequesting: false,
               error: lowestRateError
+            }
+          }
+        }
+      };
+
+      case UserActions.FETCH_DASHBOARD:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          actions: {
+            fetchDashboard: {
+              isRequesting: true,
+              error: ''
+            }
+          }
+        }
+      };
+
+    case UserActions.FETCH_DASHBOARD_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          dashboard: setDashboard(action.data),
+          actions: {
+            fetchDashboard: {
+              isRequesting: false,
+              error: ''
+            }
+          }
+        }
+      };
+
+    case UserActions.FETCH_DASHBOARD_FAILURE:
+      const { error: fetchDashboardError } = <APIActions.WithError<string>> action;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          actions: {
+            fetchDashboard: {
+              isRequesting: false,
+              error: fetchDashboardError
             }
           }
         }

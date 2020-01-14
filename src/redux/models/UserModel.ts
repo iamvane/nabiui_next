@@ -6,12 +6,17 @@ import {
   } from './models';
   import { AccountInfoType } from '../../components/AccountInfo/models';
   import { RegistrationType } from '../../components/Auth/Registration/models';
-  import { InstructorType } from './InstructorModel';
   import {
     StudentDetailsType,
     ParentProfileType
-  } from '../../components/Dashboard/StudentDashboard/model';
-  import {getCookie, setCookie, removeCookie} from '../../utils/cookies';
+  } from '../../components/Dashboard/ParentStudentDashboard/model';
+  import { getCookie } from '../../utils/cookies';
+import {
+  InstructorDashboardType,
+  ParentDashboardType,
+  StudentDashboardType
+} from '../../components/Dashboard/models';
+import { InstructorType } from './InstructorModel';
 
   export interface UserType extends
     AccountInfoType,
@@ -31,8 +36,9 @@ import {
     referralToken: string;
     [key: string]: any;
     profile?: InstructorType | StudentDetailsType | ParentProfileType;
+    dashboard?: InstructorDashboardType | ParentDashboardType | StudentDashboardType;
   }
-  
+
   export interface FetchLocationData {
     userId: string;
     zipCode: string;
@@ -40,7 +46,7 @@ import {
     state: string;
     country: string;
   }
-  
+
   export interface UserState {
     lowestRate?: number;
     user: UserType;
@@ -63,9 +69,10 @@ import {
       setPassword: ActionStatusWithMessage;
       referralInvite: ActionStatusWithMessage;
       fetchLowestRate: ActionStatus;
+      fetchDashboard: ActionStatus;
     };
   }
-  
+
   export const defaultUsersState: UserState = {
     // TODO: users should default to an empty object
     user: {
@@ -162,7 +169,10 @@ import {
       fetchLowestRate: {
         isRequesting: false,
         error: ''
+      },
+      fetchDashboard: {
+        isRequesting: false,
+        error: ''
       }
     },
   };
-  

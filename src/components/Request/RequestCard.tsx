@@ -25,7 +25,8 @@ import { RequestCardComponent } from './constants';
 interface Props {
   request: Request;
   user: UserType;
-  toggleRegisterModal:() => void;
+  toggleRegisterModal?:() => void;
+  inDashboard?: boolean;
 }
 
 const RequestCard: React.StatelessComponent<Props> = props => {
@@ -46,11 +47,12 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     role,
     distance,
     skillLevel,
+    elapsedTime
   } = props.request;
 
-  const studentInfo =
+  const studentInfo = studentDetails.length > 0 &&
     `${studentDetails[0].age} ${RequestCardComponent.Text.YrsOld} (${SkillLevel[skillLevel]})`;
-  const studentsDetails = studentDetails.map((student: any, i: any) => (
+  const studentsDetails = studentDetails.length > 0 && studentDetails.map((student: any, i: any) => (
     <li key={i} className="nabi-list nabi-margin-top-xsmall">
       <Typography className="nabi-color-default">
         {`${student.name}, ${student.age} ${RequestCardComponent.Text.YrsOld} (${SkillLevel[skillLevel]})`}
@@ -63,12 +65,15 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     if (props.user.email) {
       Router.push(`${Routes.Request}/${id}`)
     } else {
-      props.toggleRegisterModal();
+      props.toggleRegisterModal && props.toggleRegisterModal();
     }
 
   }
   return (
-    <div onClick={navigateToRequest} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative nabi-cursor-pointer item-card">
+    <div
+      onClick={navigateToRequest}
+      className={`${props.inDashboard ? 'nabi-section-widest' : 'nabi-section'} nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative nabi-cursor-pointer item-card`}
+    >
       <div
         style={{right: '20px'}}
         className={`nabi-float-right ${!applied && 'nabi-position-absolute'} nabi-position-absolute-md`}
@@ -88,7 +93,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             {RoleLabels[role]}
           </Typography>
           <Typography>
-            {distance && String(distance.toFixed(1)) + ' mi away'}
+            {distance && (typeof distance === 'string' ? distance : String(distance.toFixed(1))) + ' mi away'}
           </Typography>
         </Grid>
         <Grid item={true} xs={12} md={6}>
@@ -121,7 +126,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             >
               {RequestCardComponent.Text.lessonDuration}
             </Typography>
-            <Typography className="nabi-display-inline-block">{lessonDuration} mins</Typography>
+            <Typography className="nabi-display-inline-block">{lessonDuration}</Typography>
              <br />
             <Typography
               color="primary"
@@ -145,7 +150,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
         <Grid item={true} xs={12} md={3} className="nabi-text-center nabi-text-left-md">
           <div className="nabi-margin-top-small-md">
             <Typography className="nabi-display-inline-block nabi-margin-top-small-md">
-              {moment(new Date()).to(new Date(createdAt ? createdAt : String(new Date())))}
+              {elapsedTime ? elapsedTime + ' ago': (moment(new Date()).to(new Date(createdAt ? createdAt : String(new Date()))))}
             </Typography>
             <br />
             <Typography className="nabi-margin-right-xsmall nabi-display-inline-block">

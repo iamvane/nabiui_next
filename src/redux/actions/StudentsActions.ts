@@ -9,7 +9,7 @@ import {
 import { getError } from '../../utils/handleApiErros';
 import { getCookie } from '../../utils/cookies';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
-import { StudentDetailsType } from '../../components/Dashboard/StudentDashboard/model';
+import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
 import { StudentActions } from './StudentsActionTypes';
 import {
   requestAction,

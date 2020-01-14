@@ -21,7 +21,8 @@ export interface RequestType {
 
 export interface Request {
   id: number;
-  createdAt: string;
+  createdAt?: string;
+  elapsedTime?: string;
   displayName: string;
   distance: number;
   instrument: string;
@@ -32,7 +33,7 @@ export interface Request {
   skillLevel: string;
   role: string;
   applicationsReceived: number;
-  applied: boolean;
+  applied?: boolean;
   studentDetails: StudentType[];
   avatar: string;
   location: string;

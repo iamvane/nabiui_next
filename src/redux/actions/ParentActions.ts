@@ -9,7 +9,7 @@ import {
   unauthorizedError
 } from '../../constants/apiConstants';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
-import { StudentDetailsType } from '../../components/Dashboard/StudentDashboard/model';
+import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
 import { ParentActions } from '../actions/ParentActionTypes';
 import {
   requestAction,

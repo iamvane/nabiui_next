@@ -57,6 +57,7 @@ const Login = (props: Props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [displaySnackBar, setDisplaySnackBar] = React.useState(false);
+  const [login, setLogin ] = React.useState(false);
 
   React.useEffect(() => {
     if (props.passwordSetMessage) {
@@ -69,14 +70,14 @@ const Login = (props: Props) => {
     };
     page('Login', analiticsProps);
 
-    if (!props.loginError) {
+    if (!props.loginError && props.token && login) {
       const fetchUser = async () => {
         await props.fetchUser(props.token);
       };
       fetchUser();
-      props.user.email && Router.push(Routes.Dashboard)
+      props.user.email && Router.push(Routes.Dashboard);
     }
-  }, [props.loginError, props.passwordSetMessage]);
+  }, [props.loginError, props.token, props.passwordSetMessage, login, props.user.email]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
@@ -97,6 +98,7 @@ const Login = (props: Props) => {
 
     await props.authenticateUser(email.toLocaleLowerCase(), password);
 
+    setLogin(true);
     if (!props.loginError) {
       const analiticsProps = {
         userId: email,
