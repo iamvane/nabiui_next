@@ -3,8 +3,130 @@ export namespace DashboardComponent {
 }
 
 export namespace InstructorDashboardComponent {
-  export const myStudents = 'My Students';
-  export const noStundets = 'You currently have no students';
+  export const profileStatusSectionTitle = 'Profile Status';
+  export const profileStatusText = 'Profile Status:';
+  export const profileStatusLabels = {
+    complete: 'Complete',
+    incomplete: 'Incomplete'
+  };
+  export const profileRecommendationsSectionTitle = 'Profile Recommendations'
+  export const incompleteText = "You don’t appear in searches and can’t apply to jobs. Please complete the following:";
+  export const recommendationFields = ['qualifications', 'music'];
+  export const missingFieldsArray = [
+    'firstName',
+    'lastName',
+    'displayName',
+    'birthday',
+    'location',
+    'avatar',
+    'references',
+    'isPhoneVerified',
+    'bioTitle',
+    'bioDescription',
+    'instruments',
+    'lessonSize',
+    'ageGroup',
+    'rates',
+    'availability',
+    'employment',
+    'education',
+    'qualification',
+    'music'
+  ]
+  export const missingFieldsDisplay = {
+    firstName: {
+      label: 'First Name',
+      url: '/account-info'
+    },
+    lastName: {
+      label: 'Last Name',
+      url: '/account-info'
+    },
+    location: {
+      label: 'Location',
+      url: '/account-info'
+    },
+    isPhoneVerified: {
+      label: 'Phone Verification',
+      url: '/account-info'
+    },
+    avatar: {
+      label: 'Avatar image',
+      url: '/profile'
+    },
+    bioTitle: {
+      label: 'Bio Title',
+      url: '/profile'
+    },
+    bioDescription: {
+      label: 'Bio Description',
+      url: '/profile'
+    },
+    music: {
+      label: 'Music',
+      url: '/profile'
+    },
+    instruments: {
+      label: 'Instruments',
+      url: '/job-preferences'
+    },
+    lessonSize: {
+      label: 'Lesson Size',
+      url: '/job-preferences'
+    },
+    ageGroup: {
+      label: 'Age Group',
+      url: '/job-preferences'
+    },
+    rates: {
+      label: 'Rates',
+      url: '/job-preferences'
+    },
+    availability: {
+      label: 'Availability',
+      url: '/job-preferences'
+    },
+    qualification: {
+      label: 'Qualifications',
+      url: '/job-preferences'
+    },
+    education: {
+      label: 'Education',
+      url: '/education'
+    },
+    employment: {
+      label: 'Employment',
+      url: '/employment'
+    },
+    references: {
+      label: 'References',
+      url: '/references'
+    }
+  }
+  export const backgroundCheckSectionTitle = 'Background Check Status';
+  export const backgroundCheckStatusText = 'Background Check Status:';
+  export const backgroundCheckStatusLabels = {
+    verified: 'Verified',
+    notVerified: 'Not Verified'
+  };
+  export const backgroundCheckCTA = {
+    text: 'Get more jobs by adding a {textReplace}.',
+    backgroundCheckText: 'background check',
+    textPlaceholder: '{textReplace}',
+    url: '/screening'
+  }
+  export const myStudentsSectionTitle = 'My Students';
+  export const noStundetsText = 'You currently have no students.';
+  export const lessonsRemaining = 'Lessons remaining';
+  export const gradeLessonButton = 'Grade Lesson';
+  export const lessonDetailLabels = {
+    name: 'Name',
+    age: 'Age',
+    students: 'Student(s)',
+    parent: 'Parent',
+    instrument: 'Instrument',
+    skillLevel: 'Skill level'
+  }
   export const findJobsButton = 'Find Jobs';
   export const applyToJobs = 'Apply to Jobs Near You';
   export const viewAll = 'View all';
@@ -68,9 +190,7 @@ export namespace BuyMoreLessonsModalComponent {
 }
 
 export namespace PreLaunchInstructorDashboardComponent {
-  export const profileCompletionSectionTitle = 'Profile Completion';
   export const profileSectionTitle = 'View Profile';
-  export const descriptionText = 'Your profile is';
   export const percentPlaceholder = '{percentReplace}';
   export const completionText = '{percentReplace}% completed';
   export const editProfileLink = 'Edit your profile';

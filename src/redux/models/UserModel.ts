@@ -6,13 +6,17 @@ import {
   } from './models';
   import { AccountInfoType } from '../../components/AccountInfo/models';
   import { RegistrationType } from '../../components/Auth/Registration/models';
-  import { InstructorType } from './InstructorModel';
   import {
     StudentDetailsType,
     ParentProfileType
   } from '../../components/Dashboard/ParentStudentDashboard/model';
   import { getCookie } from '../../utils/cookies';
-import { InstructorDashboardType, ParentDashboardType, StudentDashboardType } from '../../utils/setDashboard';
+import {
+  InstructorDashboardType,
+  ParentDashboardType,
+  StudentDashboardType
+} from '../../components/Dashboard/models';
+import { InstructorType } from './InstructorModel';
 
   export interface UserType extends
     AccountInfoType,
