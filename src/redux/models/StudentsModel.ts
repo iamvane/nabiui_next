@@ -2,7 +2,7 @@ import {
   ActionStatus,
   ActionStatusWithMessage
 } from './models';
-import { StudentDetailsType } from '../../components/Dashboard/StudentDashboard/model';
+import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
 
 export interface StudentState {
   userId?: number;

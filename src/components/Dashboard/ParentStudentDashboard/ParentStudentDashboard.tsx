@@ -8,7 +8,7 @@ import { StoreState } from '../../../redux/reducers/store';
 import { UserType } from '../../../redux/models/UserModel';
 import { Routes } from '../../common/constants/Routes';
 
-import SectionTitle from '../..//common/SectionTitle';
+import SectionTitle from '../../common/SectionTitle';
 import InviteFriends from '../../InviteFriends/InviteFriends';
 import { Role } from '../../Auth/Registration/constants';
 import { PreLaunchStudentDashboardComponent as constants } from '../constants';

@@ -30,4 +30,5 @@ export namespace ApiEndpoints {
     export const bookLessons = '/v1/booking-lessons/';
     export const bookLessonsData = '/v1/application-data/';
     export const fetchMoreInstructor = "v1/instructors/?page=";
+    export const dashboard = '/v1/dashboard/'
 }

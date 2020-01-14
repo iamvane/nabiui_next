@@ -22,8 +22,8 @@ import { AnnouncementConstants } from '../common/constants/Announcement';
 import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
 import { Routes } from '../common/constants/Routes';
 import { Role } from '../Auth/Registration/constants';
-import PreLaunchInstructorDashboard from './InstructorDashboard/PreLaunchInstructorDashboard';
-import PreLaunchStudentDashboard from './StudentDashboard/PreLaunchStudentDashboard';
+import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
+import ParentStudentDashboard from './ParentStudentDashboard/ParentStudentDashboard';
 import {
   DashboardComponent,
   PreLaunchInstructorDashboardComponent as constants
@@ -117,7 +117,7 @@ export class Dashboard extends React.Component<Props, State> {
             }
             mainContent={
               this.props.user.role === Role.instructor ?
-              <PreLaunchInstructorDashboard /> : <PreLaunchStudentDashboard />}
+              <InstructorDashboard /> : <ParentStudentDashboard />}
             pageTitle={DashboardComponent.pageTitle}
           />
           <SnackBar

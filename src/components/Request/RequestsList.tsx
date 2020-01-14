@@ -176,6 +176,8 @@ export const InstructorsList = (props: Props) => {
         instrument={instrument}
         address={address}
         isRequesting={props.isRequesting}
+        loadMoreData={() => console.log()}
+        isRequestingMoreData={false}
         filterSection={
           <React.Fragment>
             <RequestsFilter

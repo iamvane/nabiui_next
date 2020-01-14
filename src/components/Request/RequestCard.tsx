@@ -48,9 +48,9 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     skillLevel,
   } = props.request;
 
-  const studentInfo =
+  const studentInfo = studentDetails.length > 0 &&
     `${studentDetails[0].age} ${RequestCardComponent.Text.YrsOld} (${SkillLevel[skillLevel]})`;
-  const studentsDetails = studentDetails.map((student: any, i: any) => (
+  const studentsDetails = studentDetails.length > 0 && studentDetails.map((student: any, i: any) => (
     <li key={i} className="nabi-list nabi-margin-top-xsmall">
       <Typography className="nabi-color-default">
         {`${student.name}, ${student.age} ${RequestCardComponent.Text.YrsOld} (${SkillLevel[skillLevel]})`}
@@ -121,7 +121,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             >
               {RequestCardComponent.Text.lessonDuration}
             </Typography>
-            <Typography className="nabi-display-inline-block">{lessonDuration} mins</Typography>
+            <Typography className="nabi-display-inline-block">{lessonDuration}</Typography>
              <br />
             <Typography
               color="primary"
