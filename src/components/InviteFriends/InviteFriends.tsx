@@ -176,14 +176,14 @@ export class InviteFriends extends React.Component<Props, State> {
     );
 
     return (
-      <div className="nabi-margin-top-large">
+      <React.Fragment>
         <SectionTitle text={InviteFriendsComponent.sectionTitle} />
 
         <Typography className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-semibold">
           {InviteFriendsComponent.ctaTitle}
         </Typography>
 
-        <Grid item={true} md={10}>
+        <Grid item={true}>
           <Typography className="nabi-margin-top-xsmall">
             {this.props.user.role === Role.instructor ?
               instructorDescription :
@@ -192,8 +192,8 @@ export class InviteFriends extends React.Component<Props, State> {
           </Typography>
         </Grid>
 
-        <Grid container={true} spacing={2}>
-          <Grid item={true} md={7} container={true}>
+        <Grid container={true} spacing={1}>
+          <Grid item={true} md={8}>
             <TextField
               id={InviteFriendsComponent.ids[FieldKey.Email]}
               name={fieldNames[FieldKey.Email]}
@@ -207,7 +207,7 @@ export class InviteFriends extends React.Component<Props, State> {
               value={this.state.email}
             />
           </Grid>
-          <Grid item={true} md={3} container={true}>
+          <Grid item={true} md={4}>
             <Button
               color="primary"
               variant="contained"
@@ -221,11 +221,11 @@ export class InviteFriends extends React.Component<Props, State> {
             </Button>
           </Grid>
           <Grid item={true} md={12}>
-            <Typography className="nabi-margin-top-large nabi-margin-bottom-xsmall nabi-text-mediumbold">
+            <Typography className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold">
               {InviteFriendsComponent.fieldLabel}
             </Typography>
           </Grid>
-          <Grid item={true} md={7} container={true}>
+          <Grid item={true} md={8}>
             <TextField
               id={InviteFriendsComponent.ids[FieldKey.CopyLink]}
               name={InviteFriendsComponent.fieldNames[FieldKey.CopyLink]}
@@ -236,7 +236,7 @@ export class InviteFriends extends React.Component<Props, State> {
               autoFocus={true}
             />
           </Grid>
-          <Grid item={true} md={3} container={true}>
+          <Grid item={true} md={4}>
             <Button onClick={this.copyInviteLink} color="primary">{InviteFriendsComponent.copyLink}</Button>
           </Grid>
         </Grid>
@@ -256,7 +256,7 @@ export class InviteFriends extends React.Component<Props, State> {
           handleClose={this.closeInviteSnackBar}
           variant={this.props.inviteError ? 'error' : 'success'}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

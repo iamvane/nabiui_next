@@ -35,7 +35,7 @@ interface StateProps {
   // TODO: set to RequestType when api integration is done
   user: UserType;
   profile: InstructorType;
-  dashboard:InstructorDashboardType;
+  dashboard: InstructorDashboardType;
 }
 
 interface DispatchProps {
@@ -48,7 +48,6 @@ interface Props extends
   DispatchProps {}
 
 export const InstructorDashboard = (props: Props) => {
-
   React.useEffect(() => {
     props.fetchDashboard(props.user.role as Role);
 

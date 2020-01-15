@@ -132,6 +132,40 @@ export namespace InstructorDashboardComponent {
   export const viewAll = 'View all';
 }
 
+export namespace ParentStudentDashboardComponent {
+  export const lessonsRemaining = 'Lessons remaining';
+  export const buyLessonButton = 'Buy More Lessons'
+  export const studentSectionTitle = 'Student Details';
+  export const requestsSectionTitle = 'Requests';
+  export const addRequestSectionTitle = 'Add Request';
+  export const studentDetailLabels = {
+    age: 'Age',
+    students: 'Student(s)',
+    instrument: 'Instrument',
+    skillLevel: 'Skill level',
+    instructor: 'Instructor',
+    placeForLessons: 'Teaching location',
+    lessonDuration: 'Lesson duration'
+  };
+  export const requestCardLabels = {
+    students: 'Student(s):',
+    instrument: 'Instrument:',
+    skillLevel: 'Skill level:',
+    placeForLessons: 'Teaching location:',
+    lessonDuration: 'Lesson duration:'
+  };
+  export const addRequestText = {
+    withBookingDescription: 'Request another music instructor.',
+    withoutBookingDescription: 'Get started by requesting a music instructor.',
+    button: 'Request Instructor'
+  }
+  export const editRequestTextlink = 'Edit request';
+  export const applicationButton = {
+    buttonText: '{textReplace} Applications',
+    textPlaceholder: '{textReplace}'
+  };
+}
+
 export namespace StudentCardComponent {
   export const studentLabel = 'Student';
   export const ageLabel = 'Age';
@@ -199,7 +233,6 @@ export namespace PreLaunchInstructorDashboardComponent {
 }
 
 export namespace PreLaunchStudentDashboardComponent {
-  export const studentSectionTitle = 'Student Details';
   export enum Labels {
     Instrument = 'Instrument',
     SkillLevel = 'Skill level',
