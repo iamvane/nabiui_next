@@ -140,8 +140,9 @@ export const fetchRequestsList = (params?: any): ThunkAction<Promise<void>, {}, 
   }
 };
 
+let counter = 2
 
-export const fetchMoreRequestsList = (pageNumber: number, params?: any): ThunkAction<Promise<void>, {}, {}> => async (
+export const fetchMoreRequestsList = (params?: any): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
 ) => {
   dispatch(requestAction(RequestActions.FETCH_MORE_REQUESTS_LIST));
@@ -150,7 +151,8 @@ export const fetchMoreRequestsList = (pageNumber: number, params?: any): ThunkAc
       headers: authToken && { 'Authorization': `Bearer ${authToken}` },
       params: params && params
     };
-    const response = await axios.get(`${ApiEndpoints.fetchMoreRequests}${String(pageNumber)}`, config);
+    const response = await axios.get(`${ApiEndpoints.fetchMoreRequests}${String(counter)}`, config);
+    counter++
     dispatch(withDataAction(RequestActions.FETCH_MORE_REQUESTS_LIST_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === 'string') {

@@ -323,8 +323,7 @@ const mapStateToProps = (
 const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
   fetchInstructors: (params?) => dispatch(fetchInstructors(params)),
   fetchInstructor: (id: number) => dispatch(fetchInstructor(id)),
-  fetchMoreInstructors: (pageNumber: number, params: any) =>
-    dispatch(fetchMoreInstructors(pageNumber, params))
+  fetchMoreInstructors: (pageNumber: number, params: any) => dispatch(fetchMoreInstructors(pageNumber, params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstructorsList);

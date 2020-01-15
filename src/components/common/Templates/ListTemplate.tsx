@@ -15,6 +15,7 @@ import { LocationField } from "../../Instructors/LocationField";
 import PageTitle from "../PageTitle";
 import { ListTemplateComponent } from "../constants/ListTemplate";
 import { useInView } from "react-intersection-observer";
+import { InView } from 'react-intersection-observer'
 
 interface Props {
   pageTitle: string;
@@ -34,7 +35,8 @@ interface Props {
 
 export const ListTemplate: React.StatelessComponent<Props> = props => {
   const [ref, inView, entry] = useInView({
-    threshold: 0
+    threshold: 0,
+    triggerOnce: true
   });
 
   const instrumentSelectItems = instruments.map(instrument => {
@@ -45,13 +47,11 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
     );
   });
 
-  const loadMoreData = () => {
+  const loadMoreData = (inView) => {
     if (inView) {
      props.loadMoreData()
     }
   };
-
-  loadMoreData();
 
   const { hasCallToAction, results } = props;
 
@@ -129,13 +129,15 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
                     {results} result(s)
                   </Typography>
                   {props.mainContent}
-                  <div ref={ref}>
-                    {props.isRequestingMoreData && (
-                      <div className="nabi-text-center nabi-full-width">
-                        <CircularProgress />
-                      </div>
-                    )}
-                  </div>
+                  <InView onChange={(inView, entry) => loadMoreData(inView)}>
+                    <div>
+                      {props.isRequestingMoreData && (
+                        <div className="nabi-text-center nabi-full-width">
+                          <CircularProgress />
+                        </div>
+                      )}
+                    </div>
+                  </InView>
                 </React.Fragment>
               )}
             </Grid>

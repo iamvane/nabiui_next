@@ -52,6 +52,7 @@ export interface RequestState {
     editRequest: ActionStatusWithMessage;
     deleteRequest: ActionStatusWithMessage;
     fetchRequestList: ActionStatus;
+    fetchMoreRequestList: ActionStatus;
     fetchApplicationList: ActionStatus;
     bookLessons: ActionStatusWithMessage;
     fetchBookLessonsData: ActionStatus;
@@ -91,6 +92,10 @@ export const defaultRequestState: RequestState = {
       error: '',
     },
     fetchRequests: {
+      isRequesting: false,
+      error: '',
+    },
+    fetchMoreRequestList: {
       isRequesting: false,
       error: '',
     },
