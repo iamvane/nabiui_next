@@ -40,7 +40,7 @@ interface OwnProps {}
 
 interface DispatchProps {
   fetchInstructors: (params?: any) => void;
-  fetchMoreInstructors: (pageNumber: number, params: any) => void;
+  fetchMoreInstructors: (params: any) => void;
   fetchInstructor: (id: number) => void;
 }
 
@@ -226,19 +226,12 @@ export const InstructorsList = (props: Props) => {
     setQueryParams(queryParamsValues);
   };
 
-  var count = 2;
-
-  function incrementCount() {
-    count++;
-  }
-
   function fetchMoreInstructors() {
     const hasMoreData =
       props.instructors.results.length + 1 > props.instructors.count;
     if (props.isRequesting || props.isRequestingMoreInstructors || hasMoreData) return;
 
-    props.fetchMoreInstructors(count, queryParams);
-    incrementCount();
+    props.fetchMoreInstructors(queryParams);
   }
 
   return (
@@ -323,7 +316,7 @@ const mapStateToProps = (
 const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
   fetchInstructors: (params?) => dispatch(fetchInstructors(params)),
   fetchInstructor: (id: number) => dispatch(fetchInstructor(id)),
-  fetchMoreInstructors: (pageNumber: number, params: any) => dispatch(fetchMoreInstructors(pageNumber, params))
+  fetchMoreInstructors: (params: any) => dispatch(fetchMoreInstructors(params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstructorsList);
