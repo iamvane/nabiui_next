@@ -11,7 +11,6 @@ import {
 import { instruments } from '../../../../assets/data/instruments';
 import { Routes } from '../../common/constants/Routes';
 import { PlaceForLessons } from '../../PlaceForLessons/constants';
-import { SkillLevel } from '../../Instruments/constants';
 import { ParentStudentDashboardComponent as constants } from '../constants';
 import { MyRequestType } from '../models';
 
