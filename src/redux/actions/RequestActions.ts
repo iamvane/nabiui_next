@@ -141,6 +141,25 @@ export const fetchRequestsList = (params?: any): ThunkAction<Promise<void>, {}, 
 };
 
 
+export const fetchMoreRequestsList = (pageNumber: number, params?: any): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+) => {
+  dispatch(requestAction(RequestActions.FETCH_MORE_REQUESTS_LIST));
+  try {
+    let config = {
+      headers: authToken && { 'Authorization': `Bearer ${authToken}` },
+      params: params && params
+    };
+    const response = await axios.get(`${ApiEndpoints.fetchMoreRequests}${String(pageNumber)}`, config);
+    dispatch(withDataAction(RequestActions.FETCH_MORE_REQUESTS_LIST_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(RequestActions.FETCH_MORE_REQUESTS_LIST_FAILURE, errorMessage));
+  }
+};
+
 export const fetchApplicationList = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
 ) => {
