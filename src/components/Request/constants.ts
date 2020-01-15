@@ -8,9 +8,9 @@ export namespace RequestComponent {
   export const title = 'Build Request';
 
   /* tslint:disable-next-line */
-  export const descriptionStudent = 'A request highlights the deatils of a lessons. You must create a separate request for each instrument you are interested in learning.'
+  export const descriptionStudent = 'A request highlights the details of a lessons. You must create a separate request for each instrument you are interested in learning.'
   /* tslint:disable-next-line */
-  export const descriptionParent = 'A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrument your child (or children) wants to learn.';
+  export const descriptionParent = 'A request highlights the details of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrument your child/children wants/want to learn.';
 
   export enum ButtonText {
     Add = 'Add Request',
