@@ -15,6 +15,27 @@ export interface LessonsType {
   students: StudentType[]
 }
 
+export interface Booking {
+  instrument: string;
+  skillLevel: string;
+  instructor: string;
+  lessonsRemaining: number;
+  students: StudentType[];
+}
+
+export interface MyRequestType {
+  id: number;
+  instrument: string;
+  placeForLessons: string;
+  requestMessage: string;
+  requestTitle: string;
+  skillLevel: string;
+  lessonDuration: string;
+  applications: number;
+  studentDetails: StudentType[];
+  createdAt: string;
+}
+
 export interface InstructorDashboardType {
   complete?: boolean;
   missingFields?: string[]
@@ -24,16 +45,11 @@ export interface InstructorDashboardType {
 }
 
 export interface ParentDashboardType {
-  instrument: string;
-  skillLevel: string;
-  instrtructor: string;
-  lessonsRemaining: number;
-  students: StudentType[]
+  bookings: Booking[];
+  requests: MyRequestType[];
 }
 
 export interface StudentDashboardType {
-  instrument: string;
-  skillLevel: string;
-  instructor: string;
-  lessonsRemaining: number;
+  bookings: Booking[];
+  requests: MyRequestType[];
 }

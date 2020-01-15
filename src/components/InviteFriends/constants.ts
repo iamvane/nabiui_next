@@ -1,11 +1,11 @@
 export namespace InviteFriendsComponent {
-  export const sectionTitle = 'Invite Friends';
+  export const sectionTitle = 'Give 20%, get $5';
   export const ctaTitle = 'Share your love for music';
   export const termsText = 'Terms apply';
   export const termsPlaceholder = '{termsReplace}';
   // tslint:disable-next-line
-  export const ctaDescriptionInstructor = 'Invite people you know to join Nabi Music. For every person who completes a lesson, you’ll get a lesson free of commission. {termsReplace}.';
-  export const ctaDescriptionStudent = 'Invite people you know to join Nabi Music. For every person who completes a lesson, you’ll get a FREE lesson. {termsReplace}.';
+  export const ctaDescriptionInstructor = 'Give your friends 20% off music lessons when they book a package from your referral link. You get $5 back. {termsReplace}.';
+  export const ctaDescriptionStudent = 'Give your friends 20% off music lessons when they book a package from your referral link. You get $5 towards lessons {termsReplace}.';
   export const placeholder = 'Enter email address';
   export const fieldLabel = 'Share your invite link';
   export const inviteButton = 'Invite';

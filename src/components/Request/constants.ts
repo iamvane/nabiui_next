@@ -10,7 +10,7 @@ export namespace RequestComponent {
   /* tslint:disable-next-line */
   export const descriptionStudent = 'A request highlights the deatils of a lessons. You must create a separate request for each instrument you are interested in learning.'
   /* tslint:disable-next-line */
-  export const descriptionParent = 'A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrumnet your child (or children) wants to learn.';
+  export const descriptionParent = 'A request highlights the deatils of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrument your child (or children) wants to learn.';
 
   export enum ButtonText {
     Add = 'Add Request',
