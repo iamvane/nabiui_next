@@ -1,16 +1,15 @@
 
 import {
-    ActionStatus,
-    ActionStatusWithRedirect,
-    ActionStatusWithMessage
-  } from './models';
-  import { AccountInfoType } from '../../components/AccountInfo/models';
-  import { RegistrationType } from '../../components/Auth/Registration/models';
-  import {
-    StudentDetailsType,
-    ParentProfileType
-  } from '../../components/Dashboard/ParentStudentDashboard/model';
-  import { getCookie } from '../../utils/cookies';
+  ActionStatus,
+  ActionStatusWithRedirect,
+  ActionStatusWithMessage
+} from './models';
+import { AccountInfoType } from '../../components/AccountInfo/models';
+import { RegistrationType } from '../../components/Auth/Registration/models';
+import {
+  StudentDetailsType,
+  ParentProfileType
+} from '../../components/Dashboard/ParentStudentDashboard/model';
 import {
   InstructorDashboardType,
   ParentDashboardType,
@@ -97,7 +96,7 @@ import { InstructorType } from './InstructorModel';
       avatar: '',
       referralToken: ''
     },
-    token: getCookie("token") || '',
+    token: '',
     invitationToken: '',
     actions: {
       createUser: {
