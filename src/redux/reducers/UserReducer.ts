@@ -410,7 +410,6 @@ export default function usersReducer(
       };
 
     case UserActions.LOGOUT_USER_SUCCESS:
-      // removeCookie("token");
       const { data: message } = <APIActions.WithData<string>> action;
       return {
         ...state,
