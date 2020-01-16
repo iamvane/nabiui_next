@@ -5,7 +5,7 @@ import {
   Dispatch
 } from 'redux';
 import { RouteComponentProps } from 'react-router';
-import Link from 'next/link';
+import Router from 'next/router';
 
 import {
   CircularProgress,
@@ -38,6 +38,7 @@ interface StateProps {
   user: UserType;
   isRequesting: boolean;
   firstName: string;
+  token: string;
 }
 
 interface DispatchProps {
@@ -64,6 +65,9 @@ export class Dashboard extends React.Component<Props, State> {
   public async componentDidMount(): Promise<void> {
     await this.props.fetchUser();
 
+    if (!this.props.token) {
+      Router.push(Routes.HomePage);
+    }
     // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
     //   this.setState({
     //     showSnackbar: true
@@ -84,7 +88,6 @@ export class Dashboard extends React.Component<Props, State> {
   public closeSnackbar = () => this.setState({ showSnackbar: false });
 
   render() {
-    const LinkedInPic = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/linkedin-pic.jpg';
     return (
       <React.Fragment>
         {this.props.isRequesting ?
@@ -126,7 +129,8 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   return {
     user: state.user.user,
     firstName: state.user.user.firstName,
-    isRequesting
+    isRequesting,
+    token: state.user.token
   };
 }
 
