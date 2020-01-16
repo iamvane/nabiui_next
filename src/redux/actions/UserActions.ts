@@ -146,6 +146,13 @@ export function setInvitationToken(token: string): ReferralToken {
     type: UserActions.SET_INVITATION_TOKEN
   };
 }
+
+export function setAuthToken(authToken: string) {
+  return {
+    authToken,
+    type: UserActions.SET_AUTH_TOKEN
+  };
+}
 export const uploadAvatar = (value: string): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
