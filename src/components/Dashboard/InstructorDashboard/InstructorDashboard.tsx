@@ -18,7 +18,6 @@ import Check from '@material-ui/icons/Check';
 
 import { StoreState } from '../../../redux/reducers/store';
 import { UserType } from '../../../redux/models/UserModel';
-import { InstructorType } from '../../../redux/models/InstructorModel';
 import { fetchDashboard } from '../../../redux/actions/UserActions';
 import { Routes } from '../../common/constants/Routes';
 import SectionTitle from '../../common/SectionTitle';
@@ -29,12 +28,10 @@ import { InstructorDashboardComponent as constants }  from '../constants';
 import { InstructorDashboardType } from '../models';
 
 interface OwnProps {
+  user: UserType;
 }
 
 interface StateProps {
-  // TODO: set to RequestType when api integration is done
-  user: UserType;
-  profile: InstructorType;
   dashboard: InstructorDashboardType;
 }
 
@@ -49,7 +46,7 @@ interface Props extends
 
 export const InstructorDashboard = (props: Props) => {
   React.useEffect(() => {
-    props.fetchDashboard(props.user.role as Role);
+    props.fetchDashboard(Role.instructor);
 
   }, []);
 
@@ -237,8 +234,6 @@ export const InstructorDashboard = (props: Props) => {
 
 const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
   return {
-    user: state.user.user,
-    profile: state.user.user.profile as InstructorType,
     dashboard: state.user.user.dashboard as InstructorDashboardType
   };
 };

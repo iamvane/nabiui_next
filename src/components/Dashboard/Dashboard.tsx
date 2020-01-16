@@ -61,8 +61,9 @@ export class Dashboard extends React.Component<Props, State> {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchUser();
+  public async componentDidMount(): Promise<void> {
+    await this.props.fetchUser();
+
     // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
     //   this.setState({
     //     showSnackbar: true
@@ -97,7 +98,7 @@ export class Dashboard extends React.Component<Props, State> {
             }
             mainContent={
               this.props.user.role === Role.instructor ?
-              <InstructorDashboard /> : <ParentStudentDashboard />}
+              <InstructorDashboard user={this.props.user} /> : <ParentStudentDashboard role={this.props.user.role} />}
             pageTitle={DashboardComponent.pageTitle}
           />
           <SnackBar

@@ -44,12 +44,7 @@ export interface InstructorDashboardType {
   requests: Request[];
 }
 
-export interface ParentDashboardType {
-  bookings: Booking[];
-  requests: MyRequestType[];
-}
-
-export interface StudentDashboardType {
+export interface ParentStudentDashboardType {
   bookings: Booking[];
   requests: MyRequestType[];
 }

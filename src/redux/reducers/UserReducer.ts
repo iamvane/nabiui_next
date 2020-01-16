@@ -138,7 +138,8 @@ export default function usersReducer(
           lat: user.lat,
           lng: user.lng,
           referralToken: user.referralToken,
-          profile: setProfile(user)
+          profile: setProfile(user),
+          avatar: user.avatar
         },
         actions: {
           ...state.actions,

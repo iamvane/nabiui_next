@@ -15,29 +15,22 @@ import {
 
 import { StoreState } from '../../../redux/reducers/store';
 import { fetchDashboard } from '../../../redux/actions/UserActions';
-import { UserType } from '../../../redux/models/UserModel';
 import { Routes } from '../../common/constants/Routes';
 
 import SectionTitle from '../../common/SectionTitle';
 import { Role } from '../../Auth/Registration/constants';
 import { ParentStudentDashboardComponent as constants } from '../constants';
-import {
-  ParentDashboardType,
-  StudentDashboardType
-} from '../models';
+import { ParentStudentDashboardType } from '../models';
 import MyRequestCard from './MyRequestCard';
-import {
-  StudentDetailsType,
-  ParentProfileType
-} from './model';
 
 interface OwnProps {
+  role: string;
 }
 
 interface StateProps {
-  user: UserType;
-  profile: StudentDetailsType | ParentProfileType;
-  dashboard: ParentDashboardType | StudentDashboardType;
+  isRequesting: boolean;
+  error: string;
+  dashboard: ParentStudentDashboardType;
 }
 
 interface DispatchProps {
@@ -51,7 +44,11 @@ interface Props extends
 
 export const ParentStudentDashboard = (props: Props) => {
   React.useEffect(() => {
-    props.fetchDashboard(props.user.role as Role);
+    const fetchData = async () => {
+      await props.fetchDashboard(props.role as Role);
+    }
+
+    fetchData();
 
   }, []);
 
@@ -80,7 +77,7 @@ export const ParentStudentDashboard = (props: Props) => {
                   </Grid>
                   <Grid item={true} xs={12} md={8}>
                     <Grid container={true}>
-                      {props.user.role === Role.parent &&
+                      {props.role === Role.parent &&
                         <React.Fragment>
                           <Grid item={true} xs={6}>
                             <Typography className="nabi-text-mediumbold">{constants.studentDetailLabels.students}</Typography>
@@ -159,12 +156,22 @@ export const ParentStudentDashboard = (props: Props) => {
 }
 
 const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
-  const { user } = state.user;
-
+  const {
+    user: {
+      dashboard
+    },
+    actions: {
+      fetchDashboard: {
+        isRequesting,
+        error
+      }
+    }
+  } = state.user;
+  
   return {
-    user,
-    profile: state.user.user.profile as StudentDetailsType | ParentProfileType,
-    dashboard: state.user.user.dashboard as ParentDashboardType | StudentDashboardType
+    isRequesting,
+    error,
+    dashboard: dashboard as ParentStudentDashboardType
   };
 };
 

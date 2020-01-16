@@ -32,8 +32,7 @@ const RequestAdded: React.StatelessComponent<Props> = props => {
         <mark>
           {RequestAddedComponent.studentDetails.replace(
             RequestAddedComponent.studentNameReplace, student.name)
-            .replace(RequestAddedComponent.studentAgeReplace, String(student.age))
-            .replace(RequestAddedComponent.studentSkillLevelReplace, String(student.skillLevel)
+            .replace(RequestAddedComponent.studentAgeReplace, String(student.age)
           )}
         </mark>
       </Typography>
@@ -80,7 +79,15 @@ const RequestAdded: React.StatelessComponent<Props> = props => {
           {props.instrument}
         </mark>
       </Typography>
-
+      <Typography>
+        <mark>
+          <span className="nabi-color-nabi">
+            {RequestAddedComponent.Labels.SkillLevel}
+            {' '}
+          </span>
+          {props.skillLevel}
+        </mark>
+      </Typography>
       <Typography>
         <mark>
           <span className="nabi-color-nabi">
