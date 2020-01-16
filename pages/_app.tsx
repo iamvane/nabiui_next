@@ -13,12 +13,10 @@ import Header from '../src/components/Header/Header';
 import { fetchUser, setInvitationToken } from '../src/redux/actions/UserActions';
 import '../assets/css/overrides.css';
 import '../assets/css/index.css';
-import { getStore } from '../src/redux/reducers/store';
+import store from '../src/redux/reducers/store';
 import { theme } from '../theme/theme';
 
 require('../src/utils/axiosClient');
-
-const { makeStore, persistor } = getStore();
 
 class NabiApp extends App<any, any> {
   static async getInitialProps({ Component, ctx }) {
@@ -43,7 +41,7 @@ class NabiApp extends App<any, any> {
           <title>Nabi Music - Music Lessons for Children and Qualified Music Teachers</title>
         </Head>
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor(store)}>
+          <PersistGate loading={null} persistor={store.__PERSISTOR}>
             <MuiThemeProvider theme={theme}>
               <Header {...pageProps} />
               <Component {...pageProps} />
@@ -56,4 +54,4 @@ class NabiApp extends App<any, any> {
   }
 }
 
-export default withRedux(makeStore)(NabiApp);
+export default withRedux(store)(NabiApp);
