@@ -2,7 +2,6 @@ import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios  from 'axios';
 
-import { getCookie } from '../../utils/cookies';
 import { ProfileType } from '../../components/ProfileBuilder/ProfileStep/models';
 import { defaultApiError } from '../../constants/apiConstants';
 import { getError } from '../../utils/handleApiErros';
@@ -11,6 +10,7 @@ import { EducationType } from '../../components/Education/model';
 import { EmploymentType } from '../../components/Employment/model';
 import { BackgroundCheckParams } from '../../components/ProfileBuilder/models';
 import { ApplicationPayload } from '../../components/Request/models';
+import { StoreState } from '../reducers/store';
 import { InstructorType } from '../models/InstructorModel';
 import { InstructorActions } from '../actions/InstructorActionTypes';
 import {
@@ -18,8 +18,6 @@ import {
   withDataAction,
   withErrorAction,
 } from './actions';
-
-const authToken = getCookie("token");
 
 // Default error message
 let errorMessage = defaultApiError;
@@ -37,6 +35,8 @@ export const fetchProfile = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_PROFILE));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.fetchProfile,
       {
@@ -79,6 +79,8 @@ export const buildProfile = (
 ) => {
   dispatch(requestAction(InstructorActions.BUILD_PROFILE));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     await axios.put(
       ApiEndpoints.buildProfile,
       data,
@@ -109,6 +111,8 @@ export const buildJobPreferences = (
 ) => {
   dispatch(requestAction(InstructorActions.BUILD_JOB_PREFERENCES));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.buildJobPreferences,
       data,
@@ -147,6 +151,8 @@ export const addEducation = (
 ) => {
   dispatch(requestAction(InstructorActions.ADD_EDUCATION));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.education,
       education,
@@ -175,6 +181,8 @@ export const fetchEducation = (): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
+  const state = getState();
+  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.FETCH_EDUCATION));
   try {
     const response = await axios.get(ApiEndpoints.education, {
@@ -206,6 +214,8 @@ export const editEducation = (
 ) => {
   dispatch(requestAction(InstructorActions.EDIT_EDUCATION));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.education}${education.id}/`,
       education,
@@ -237,6 +247,8 @@ export const deleteEducation = (
   dispatch: Dispatch<{}>,
   getState
 ) => {
+  const state = getState();
+  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.DELETE_EDUCATION));
   try {
     const response = await axios.delete(
@@ -271,6 +283,8 @@ export const addEmployment = (
 ) => {
   dispatch(requestAction(InstructorActions.ADD_EMPLOYMENT));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.employment,
       employment,
@@ -299,6 +313,8 @@ export const fetchEmployment = (): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
+  const state = getState();
+  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.FETCH_EMPLOYMENT));
   try {
     const response = await axios.get(
@@ -331,6 +347,8 @@ export const editEmployment = (
   dispatch: Dispatch<{}>,
   getState
 ) => {
+  const state = getState();
+  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.EDIT_EMPLOYMENT));
   try {
     const response = await axios.put(
@@ -366,6 +384,8 @@ export const deleteEmployment = (
 ) => {
   dispatch(requestAction(InstructorActions.DELETE_EMPLOYMENT));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.delete(
       `${ApiEndpoints.employment}${id}/`,
       {
@@ -395,6 +415,8 @@ export const fetchInstructors = (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_INSTRUCTORS));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { Authorization: `Bearer ${authToken}` },
       params: params && params
@@ -422,6 +444,8 @@ export const fetchInstructor = (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_INSTRUCTOR));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       `${ApiEndpoints.fetchInstructors}${instructorId}`,
       { headers: authToken && { Authorization: `Bearer ${authToken}` } }
@@ -448,6 +472,8 @@ export const fetchMoreInstructors = (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_MORE_INSTRUCTORS));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const config = {
       headers: authToken && { Authorization: `Bearer ${authToken}` },
       params: params && params
@@ -483,6 +509,8 @@ export const requestReference = (
 ) => {
   dispatch(requestAction(InstructorActions.REQUEST_REFERENCE));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.requestReferences,
       { emails: [references] },
@@ -510,6 +538,8 @@ export const fetchReferences = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_REFERENCES));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.fetchReferences,
       { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
@@ -530,6 +560,8 @@ export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkActi
 ) => {
   dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.backgroundCheck,
       {...params},
@@ -550,6 +582,8 @@ export const fetchBackgroundCheckStatus = (params?: {instructorId: number}): Thu
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_BACKGROUND_CHECK_STATUS));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { 'Authorization': `Bearer ${authToken}` },
       params: params && params
@@ -571,6 +605,8 @@ export const submitApplication = (application: ApplicationPayload): ThunkAction<
 ) => {
   dispatch(requestAction(InstructorActions.SUBMIT_APPLICACTION));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.applicationInstructors,
       {...application},

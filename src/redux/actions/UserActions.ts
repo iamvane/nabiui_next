@@ -2,7 +2,7 @@ import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
 
-import { getCookie } from '../../utils/cookies';
+import { StoreState } from '../reducers/store';
 import {
   defaultApiError,
   unauthorizedError
@@ -22,7 +22,6 @@ import {
   VerificationChannel
 } from '../../components/AccountInfo/models';
 
-const authToken = getCookie("token");
 
 interface ChangeAvatar extends Action {
   id: string;
@@ -106,8 +105,9 @@ export const fetchUser = (): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>,
   getState
 ) => {
-
   dispatch(requestAction(UserActions.FETCH_USER));
+  const state = getState();
+  const authToken = (state as StoreState).user.token;
   try {
     const response = await axios.get(
       ApiEndpoints.fetchUser,
@@ -152,6 +152,8 @@ export const uploadAvatar = (value: string): ThunkAction<Promise<void>, {}, {}> 
 ) => {
   dispatch(requestAction(UserActions.UPLOAD_AVATAR));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const url = ApiEndpoints.uploadAvatar;
     const requestBody = new FormData();
     requestBody.append('avatar', value);
@@ -183,6 +185,8 @@ export const updateUser = (data: AccountInfoType): ThunkAction<Promise<void>, {}
 
   dispatch(requestAction(UserActions.UPDATE_USER));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       ApiEndpoints.updateUser,
       data,
@@ -216,6 +220,8 @@ export const requestToken = (
       channel
     };
     try {
+      const state = getState();
+      const authToken = (state as StoreState).user.token;
       const response = await axios.post(
         ApiEndpoints.phoneVerificationToken,
         data,
@@ -250,6 +256,8 @@ export const verifyToken = (
       code: token
     };
     try {
+      const state = getState();
+      const authToken = (state as StoreState).user.token;
       const response = await axios.put(
         ApiEndpoints.phoneVerificationToken,
         data,
@@ -272,9 +280,10 @@ export const sendReferralInvite = (email: string): ThunkAction<Promise<void>, {}
   dispatch: Dispatch<{}>,
   getState
 ) => {
-
   dispatch(requestAction(UserActions.SEND_REFERRAL_INVITE));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.referralInvite,
       { email },
@@ -296,6 +305,8 @@ export const logOutUser = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(UserActions.LOGOUT_USER));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.logout,
       { headers: { 'Authorization': `Bearer ${authToken}` } }
@@ -364,10 +375,13 @@ export const fetchLowestRate = (): ThunkAction<Promise<void>, {}, {}> => async (
 };
 
 export const fetchDashboard = (role: Role): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>
+  dispatch: Dispatch<{}>,
+  getState
 ) => {
   dispatch(requestAction(UserActions.FETCH_DASHBOARD));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.dashboard,
       { headers: { 'Authorization': `Bearer ${authToken}` } }

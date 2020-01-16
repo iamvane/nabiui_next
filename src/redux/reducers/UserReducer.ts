@@ -6,7 +6,6 @@ import {
 import { UserState, UserType } from '../models/UserModel'
 import { UserActions } from '../actions/UserActionTypes';
 import { APIActions } from '../models/models';
-import {setCookie, removeCookie} from '../../utils/cookies';
 import { setDashboard } from '../../utils/setDashboard';
 import { setProfile } from './utils';
 
@@ -29,7 +28,6 @@ export default function usersReducer(
 
     case UserActions.CREATE_USER_SUCCESS:
       const { data: userDetails } = action;
-      setCookie("token", action.data.token.access);
       return {
         ...state,
         user: {
@@ -78,7 +76,6 @@ export default function usersReducer(
       };
 
     case UserActions.AUTHENTICATE_USER_SUCCESS:
-      setCookie("token", action.data.access);
       return {
         ...state,
         token: action.data.access,
@@ -413,7 +410,7 @@ export default function usersReducer(
       };
 
     case UserActions.LOGOUT_USER_SUCCESS:
-      removeCookie("token");
+      // removeCookie("token");
       const { data: message } = <APIActions.WithData<string>> action;
       return {
         ...state,

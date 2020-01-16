@@ -7,9 +7,9 @@ import {
   defaultApiError
 } from '../../constants/apiConstants';
 import { getError } from '../../utils/handleApiErros';
-import { getCookie } from '../../utils/cookies';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
+import { StoreState } from '../reducers/store';
 import { StudentActions } from './StudentsActionTypes';
 import {
   requestAction,
@@ -17,7 +17,6 @@ import {
   withErrorAction,
 } from './actions';
 
-const authToken = getCookie("token");
 let errorMessage = defaultApiError;
 
 export const updateStudentDetails = (
@@ -28,6 +27,8 @@ export const updateStudentDetails = (
 ) => {
     dispatch(requestAction(StudentActions.UPDATE_STUDENT_DETAILS));
     try {
+      const state = getState();
+      const authToken = (state as StoreState).user.token;
       const response = await axios.put(
         ApiEndpoints.updateStudentDetail,
         data,
@@ -51,6 +52,8 @@ export const fetchStudentDetails = (): ThunkAction<Promise<void>, {}, {}> => asy
 ) => {
   dispatch(requestAction(StudentActions.FETCH_STUDENT_DETAILS));
   try {
+    const state = getState();
+    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.fetchStudentDetail,
       {
