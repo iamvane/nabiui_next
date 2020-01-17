@@ -23,6 +23,7 @@ import { InstructorType } from '../../redux/models/InstructorModel';
 import SectionTitle from '../common/SectionTitle';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import { Routes } from '../common/constants/Routes';
+import SnackBar from '../common/SnackBar';
 import StripePaymentForm from "../PaymentForm/StripePaymentForm";
 import { ProfileBuilderStepper } from './constants';
 import { BackgroundCheckParams } from "./models";
@@ -39,6 +40,7 @@ interface StateProps {
   email: string;
   isStatusRequesting: boolean;
   errorStatus: string;
+  message: string;
 }
 
 interface OwnProps { }
@@ -55,6 +57,8 @@ interface Props extends
   DispatchProps { }
 
 export const Screening = (props: Props) => {
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState('');
   const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
   const [isPaymentSubmitted, setIsPaymentSubmitted] = React.useState(false);
 
@@ -68,8 +72,17 @@ export const Screening = (props: Props) => {
       await props.fetchUser();
     };
     fetchData();
+
+    if (props.message) {
+      setShowSnackbar(true);
+      setSnackbarMessage('Background check requested successfully.')
+    }
+    if (props.error) {
+      setShowSnackbar(true);
+      setSnackbarMessage(props.error)
+    }
     /* tslint:disable */
-  }, [isPaymentSubmitted, props.error]);
+  }, [isPaymentSubmitted, props.error, props.message]);
 
   const submitPayment = async (stripeToken: string) => {
     const params: BackgroundCheckParams = {
@@ -150,6 +163,12 @@ export const Screening = (props: Props) => {
               </Grid>
             </React.Fragment>
         }
+      <SnackBar
+        isOpen={showSnackbar}
+        message={snackbarMessage}
+        handleClose={() => setShowSnackbar(false)}
+        variant={props.message ? "success" : "error"}
+      />
       <StepperButtons
         isNextDisabled={(!isPaymentSuccessful && !props.result) || !!props.status}
         nextPath={Routes.Dashboard}
@@ -172,11 +191,12 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     actions: {
       requestBackgroundCheck: {
         isRequesting,
-        error
+        error,
+        message
       },
       fetchBackgroundCheckStatus: {
         isRequesting: isStatusRequesting,
-        error: errorStatus
+        error: errorStatus,
       }
     }
   } = state.instructor;
@@ -185,6 +205,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
   return {
     isRequesting,
     error,
+    message,
     backgroundCheckStatus: profile && profile.backgroundCheckStatus,
     requestorEmail: requestorEmail,
     status,

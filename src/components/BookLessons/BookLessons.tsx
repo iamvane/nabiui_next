@@ -5,6 +5,7 @@ import {
   Dispatch
 } from 'redux';
 import { useRouter } from 'next/router';
+import Router from "next/router";
 
 import {
   Card,
@@ -24,6 +25,7 @@ import {
   bookLessons,
   fetchBookLessonsData
 } from "../../redux/actions/RequestActions";
+import { Routes } from '../common/constants/Routes';
 import { CommonConstants } from '../common/constants/common';
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
@@ -78,10 +80,11 @@ export const BookLessons = (props: Props) => {
     if (props.bookLessonsMessage) {
       setShowSnackbar(true);
       setSnackbarMessage('Lessons booked successfully.')
+      setInterval(() => Router.push(Routes.Dashboard), 3000);
     }
     if (props.bookLessonsError) {
       setShowSnackbar(true);
-      setSnackbarMessage('There was an error processing your request.')
+      setSnackbarMessage(props.bookLessonsError)
     }
     /* tslint:disable */
   },[props.bookLessonsMessage, props.bookLessonsError]);
@@ -274,7 +277,7 @@ export const BookLessons = (props: Props) => {
             </Grid>
           </div>
           <Grid item={true} xs={12} md={6}>
-            <StripePaymentForm submitPayment={submitPayment} isRequesting={props.bookLessonsRequesting}/>
+            <StripePaymentForm submitPayment={submitPayment} isRequesting={props.bookLessonsRequesting} />
           </Grid>
         </div>
       }
