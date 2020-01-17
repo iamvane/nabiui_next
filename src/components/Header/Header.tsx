@@ -73,6 +73,8 @@ export const Header = (props: HeaderProps) => {
   };
 
   const isLocationHomepage: boolean = props.router.route === Routes.HomePage;
+  console.log(props.router.route);
+  console.log(isLocationHomepage)
   const hanldeUserLogout = async () => {
     await props.logOutUser();
     Router.push(Routes.HomePage);
@@ -90,18 +92,17 @@ export const Header = (props: HeaderProps) => {
     Routes.FAQInstructors,
     Routes.FeaturesParents,
     Routes.FeaturesInstructors,
-    Routes.VetInstructor
+    Routes.VetInstructor,
+    Routes.HomePage
   ];
 
   return (
     <header>
-      <div
-        className={`${isLocationHomepage ? 'nabi-header-container-home' : 'nabi-header-container'} nabi-position-relative`}
-      >
+      <div className="nabi-header-container nabi-position-relative">
         {(menuWhitelist as string[]).includes(props.router.route) &&
           <React.Fragment>
             <div className="nabi-header-menu hide-on-desktop">
-              <IconButton onClick={toggleDrawerMenu}><Menu /></IconButton>
+              <Menu onClick={toggleDrawerMenu} color="primary" />
               <DrawerMenu isOpen={isDrawerMenuOpen} closeMenu={toggleDrawerMenu} />
             </div>
             <div className="nabi-header-menu hide-on-mobile">

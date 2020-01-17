@@ -56,19 +56,20 @@ interface Props extends
 
 export const Screening = (props: Props) => {
   const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
+  const [isPaymentSubmitted, setIsPaymentSubmitted] = React.useState(false);
 
   React.useEffect(() => {
+    if (!props.error && isPaymentSubmitted) {
+      setIsPaymentSuccessful(true);
+    }
+
     const fetchData = async () => {
       await props.fetchBackgroundCheckStatus();
       await props.fetchUser();
     };
     fetchData();
     /* tslint:disable */
-  }, []);
-
-  const setPaymentSuccess= (success: boolean) => {
-    setIsPaymentSuccessful(success);
-  };
+  }, [isPaymentSubmitted, props.error]);
 
   const submitPayment = async (stripeToken: string) => {
     const params: BackgroundCheckParams = {
@@ -76,6 +77,7 @@ export const Screening = (props: Props) => {
       amount: 33.26
     }
     await props.requestBackgroundCheck(params);
+    setIsPaymentSubmitted(true);
   }
 
   return(
@@ -149,7 +151,7 @@ export const Screening = (props: Props) => {
             </React.Fragment>
         }
       <StepperButtons
-        isNextDisabled={!isPaymentSuccessful && !props.result}
+        isNextDisabled={(!isPaymentSuccessful && !props.result) || !!props.status}
         nextPath={Routes.Dashboard}
         backPath={Routes.BuildProfile+ ProfileBuilderStepper.StepsPaths.References}
       />
@@ -183,7 +185,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
   return {
     isRequesting,
     error,
-    backgroundCheckStatus: profile.backgroundCheckStatus,
+    backgroundCheckStatus: profile && profile.backgroundCheckStatus,
     requestorEmail: requestorEmail,
     status,
     result,

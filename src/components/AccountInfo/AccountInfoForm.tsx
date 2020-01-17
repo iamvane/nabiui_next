@@ -60,7 +60,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
       <div>
         {props.hasImageUploader &&
           <div className="nabi-text-center nabi-margin-bottom-small">
-            <AvatarUploader imageChanged={(avatar: String) => null} />
+            <AvatarUploader originalImage={props.user.avatar} imageChanged={(avatar: String) => null} />
           </div>
         }
 
@@ -74,7 +74,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
               onChange={props.handleChange}
               placeholder={AccountInfoComponent.Placeholders.FirstName}
               required={true}
-              value={firstName || props.user.firstName}
+              value={firstName}
               error={!!props.errors.firstName}
               helperText={props.errors.firstName}
             />
@@ -87,7 +87,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
               placeholder={AccountInfoComponent.Placeholders.LastName}
               onChange={props.handleChange}
               required={true}
-              value={lastName || props.user.lastName}
+              value={lastName}
               error={!!props.errors.lastName}
               helperText={props.errors.lastName}
             />
@@ -103,7 +103,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
                 row={true}
                 name={FieldNames[FieldKey.Gender]}
                 onChange={props.handleChange}
-                value={(gender && gender) || props.user.gender}
+                value={(gender && gender)}
               >
                 <FormControlLabel
                   control={<Radio />}
@@ -147,7 +147,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
       <Location
         handleLocationChange={props.handleLocationChange}
         handleLocationSelect={props.handleLocationSelect}
-        location={props.location || props.user.location || ''}
+        location={props.location || ''}
       />
     </div>
   );

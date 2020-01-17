@@ -10,7 +10,7 @@ import { EducationType } from '../../components/Education/model';
 import { EmploymentType } from '../../components/Employment/model';
 import { BackgroundCheckParams } from '../../components/ProfileBuilder/models';
 import { ApplicationPayload } from '../../components/Request/models';
-import { StoreState } from '../reducers/store';
+import { getCookie } from '../../utils/cookies';
 import { InstructorType } from '../models/InstructorModel';
 import { InstructorActions } from '../actions/InstructorActionTypes';
 import {
@@ -26,17 +26,16 @@ interface UpdateInstructor extends Action {
   instructor: InstructorType;
 }
 
+const authToken = getCookie('token');
+
 /**
  * Action cretator to fetch instructor profile a new instructor
  */
 export const fetchProfile = (): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_PROFILE));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.fetchProfile,
       {
@@ -74,13 +73,10 @@ export function updateInstructor(instructor: InstructorType): UpdateInstructor {
 export const buildProfile = (
   data: ProfileType
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.BUILD_PROFILE));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     await axios.put(
       ApiEndpoints.buildProfile,
       data,
@@ -106,13 +102,10 @@ export const buildProfile = (
 export const buildJobPreferences = (
   data: InstructorType
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.BUILD_JOB_PREFERENCES));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.buildJobPreferences,
       data,
@@ -146,13 +139,10 @@ export const buildJobPreferences = (
 export const addEducation = (
   education: EducationType
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.ADD_EDUCATION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.education,
       education,
@@ -178,11 +168,8 @@ export const addEducation = (
  * Action cretator to fetch instructor education
  */
 export const fetchEducation = (): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
-  const state = getState();
-  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.FETCH_EDUCATION));
   try {
     const response = await axios.get(ApiEndpoints.education, {
@@ -209,13 +196,10 @@ export const fetchEducation = (): ThunkAction<Promise<void>, {}, {}> => async (
 export const editEducation = (
   education: Partial<EducationType>
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.EDIT_EDUCATION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.education}${education.id}/`,
       education,
@@ -244,11 +228,8 @@ export const editEducation = (
 export const deleteEducation = (
   id: number
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
-  const state = getState();
-  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.DELETE_EDUCATION));
   try {
     const response = await axios.delete(
@@ -278,13 +259,10 @@ export const deleteEducation = (
 export const addEmployment = (
   employment: EmploymentType
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.ADD_EMPLOYMENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.employment,
       employment,
@@ -310,11 +288,8 @@ export const addEmployment = (
  * Action cretator to fetch instructor employment
  */
 export const fetchEmployment = (): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
-  const state = getState();
-  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.FETCH_EMPLOYMENT));
   try {
     const response = await axios.get(
@@ -344,11 +319,8 @@ export const fetchEmployment = (): ThunkAction<Promise<void>, {}, {}> => async (
 export const editEmployment = (
   employment: Partial<EmploymentType>
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
-  const state = getState();
-  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(InstructorActions.EDIT_EMPLOYMENT));
   try {
     const response = await axios.put(
@@ -379,13 +351,10 @@ export const editEmployment = (
 export const deleteEmployment = (
   id: number
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.DELETE_EMPLOYMENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.delete(
       `${ApiEndpoints.employment}${id}/`,
       {
@@ -410,13 +379,10 @@ export const deleteEmployment = (
 export const fetchInstructors = (
   params?: any
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_INSTRUCTORS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { Authorization: `Bearer ${authToken}` },
       params: params && params
@@ -439,13 +405,10 @@ export const fetchInstructors = (
 export const fetchInstructor = (
   instructorId: number
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_INSTRUCTOR));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       `${ApiEndpoints.fetchInstructors}${instructorId}`,
       { headers: authToken && { Authorization: `Bearer ${authToken}` } }
@@ -467,13 +430,10 @@ export const fetchMoreInstructors = (
   pageNumber: number,
   params: any
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_MORE_INSTRUCTORS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const config = {
       headers: authToken && { Authorization: `Bearer ${authToken}` },
       params: params && params
@@ -504,13 +464,10 @@ export const fetchMoreInstructors = (
 export const requestReference = (
   references: string
 ): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.REQUEST_REFERENCE));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.requestReferences,
       { emails: [references] },
@@ -533,13 +490,10 @@ export const requestReference = (
 };
 
 export const fetchReferences = (): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_REFERENCES));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.fetchReferences,
       { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
@@ -555,13 +509,10 @@ export const fetchReferences = (): ThunkAction<Promise<void>, {}, {}> => async (
 };
 
 export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.REQUEST_BACKGROUND_CHECK));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.backgroundCheck,
       {...params},
@@ -577,13 +528,10 @@ export const requestBackgroundCheck = (params: BackgroundCheckParams): ThunkActi
 
 
 export const fetchBackgroundCheckStatus = (params?: {instructorId: number}): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.FETCH_BACKGROUND_CHECK_STATUS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { 'Authorization': `Bearer ${authToken}` },
       params: params && params
@@ -600,13 +548,10 @@ export const fetchBackgroundCheckStatus = (params?: {instructorId: number}): Thu
 };
 
 export const submitApplication = (application: ApplicationPayload): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(InstructorActions.SUBMIT_APPLICACTION));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.applicationInstructors,
       {...application},

@@ -73,6 +73,7 @@ export const Registration = (props: Props) => {
   const [agreeWithTerms, setAgreeWithTerms] = React.useState(false);
   const [formErrors, setFormErrors] = React.useState({});
   const [registration, setRegistration] = React.useState(false);
+  const [isAttemptToRegister, setIsAttemptToRegister] = React.useState(false);
 
   React.useEffect(() => {
     const analiticsProps = {
@@ -90,7 +91,20 @@ export const Registration = (props: Props) => {
       }
     }
 
-  }, [registration, isUnderage, formErrors]);
+    if (!props.apiError && isAttemptToRegister && !props.isRequesting) {
+      const analiticsProps = {
+        userId: email,
+        properties: {
+          referrer: document.referrer
+        }
+      };
+      track('Created Account', analiticsProps);
+
+      role === Role.instructor ?
+        Router.push(Routes.BuildProfile + Routes.AccountInfo) :
+        Router.push(Routes.BuildRequest + Routes.AccountInfo)
+    }
+  }, [registration, isUnderage, formErrors, props.apiError, isAttemptToRegister]);
 
   const createUser = async () => {
     setRegistration(false);
@@ -104,20 +118,7 @@ export const Registration = (props: Props) => {
       userValues.referringCode = props.invitationToken;
     }
     await props.createUser(userValues);
-
-    if (!props.apiError && !props.isRequesting) {
-      const analiticsProps = {
-        userId: email,
-        properties: {
-          referrer: document.referrer
-        }
-      };
-      track('Created Account', analiticsProps);
-
-      role === Role.instructor ?
-        Router.push(Routes.BuildProfile + Routes.AccountInfo) :
-        Router.push(Routes.BuildRequest + Routes.AccountInfo)
-    }
+    setIsAttemptToRegister(true);
   }
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {

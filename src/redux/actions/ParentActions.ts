@@ -8,8 +8,8 @@ import {
   unauthorizedError
 } from '../../constants/apiConstants';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
+import { getCookie } from '../../utils/cookies';
 import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
-import { StoreState } from '../reducers/store';
 import { ParentActions } from '../actions/ParentActionTypes';
 import {
   requestAction,
@@ -19,7 +19,7 @@ import {
 
 // Default error message
 let errorMessage = defaultApiError;
-
+const authToken = getCookie('token');
 /**
  * Action cretator to add a student object
  */
@@ -32,8 +32,6 @@ export const addStudent = (
 ) => {
     dispatch(requestAction(ParentActions.ADD_STUDENT));
     try {
-      const state = getState();
-      const authToken = (state as StoreState).user.token;
       const response = await axios.post(
         ApiEndpoints.students,
         student,
@@ -61,8 +59,6 @@ export const fetchStudents = (): ThunkAction<Promise<void>, {}, {}> => async (
 ) => {
   dispatch(requestAction(ParentActions.FETCH_STUDENTS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(
       ApiEndpoints.students,
       {
@@ -90,8 +86,6 @@ export const editStudent = (
 ) => {
   dispatch(requestAction(ParentActions.EDIT_STUDENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.students}${student.id}/`,
       student,
@@ -121,8 +115,6 @@ export const deleteStudent = (
 ) => {
   dispatch(requestAction(ParentActions.DELETE_STUDENT));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.delete(
       `${ApiEndpoints.students}${id}/`,
       {

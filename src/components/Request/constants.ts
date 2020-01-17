@@ -235,15 +235,15 @@ export namespace RequestAddedComponent {
 
   export const studentNameReplace = '{studentNamePlaceholder}';
   export const studentAgeReplace = '{studentAgePlaceholder}';
-  export const studentSkillLevelReplace = '{studentSkillLevelPlaceholder}';
   /* tslint:disable-next-line */
-  export const studentDetails = "- {studentNamePlaceholder}, {studentAgePlaceholder} yrs old ({studentSkillLevelPlaceholder})";
+  export const studentDetails = "- {studentNamePlaceholder}, {studentAgePlaceholder} yrs old";
 
   export enum Labels {
     Instrument = 'Instrument:',
     PlaceForLessons = 'Place for lessons:',
     LessonDuration = 'Lesson duration:',
     StudentDetails = 'Student details:',
+    SkillLevel = 'Skill level:',
     Message = 'Message:'
   }
 }

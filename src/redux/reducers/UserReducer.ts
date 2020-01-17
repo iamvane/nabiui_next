@@ -1,8 +1,7 @@
 import { AnyAction } from 'redux';
 
-import {
-    defaultUsersState
-} from '../models/UserModel';
+import {setCookie, removeCookie} from '../../utils/cookies';
+import { defaultUsersState } from '../models/UserModel';
 import { UserState, UserType } from '../models/UserModel'
 import { UserActions } from '../actions/UserActionTypes';
 import { APIActions } from '../models/models';
@@ -27,6 +26,7 @@ export default function usersReducer(
       };
 
     case UserActions.CREATE_USER_SUCCESS:
+      setCookie('token', action.data.token.access);
       const { data: userDetails } = action;
       return {
         ...state,
@@ -76,6 +76,7 @@ export default function usersReducer(
       };
 
     case UserActions.AUTHENTICATE_USER_SUCCESS:
+      setCookie('token', action.data.access);
       return {
         ...state,
         token: action.data.access,
@@ -103,6 +104,13 @@ export default function usersReducer(
           }
         }
       };
+
+    case UserActions.SET_AUTH_TOKEN:
+      return {
+        ...state,
+        token: action.authToken
+      };
+
 
     case UserActions.FETCH_USER:
       return {
@@ -138,7 +146,8 @@ export default function usersReducer(
           lat: user.lat,
           lng: user.lng,
           referralToken: user.referralToken,
-          profile: setProfile(user)
+          profile: setProfile(user),
+          avatar: user.avatar
         },
         actions: {
           ...state.actions,
@@ -410,6 +419,7 @@ export default function usersReducer(
       };
 
     case UserActions.LOGOUT_USER_SUCCESS:
+      removeCookie("token");
       const { data: message } = <APIActions.WithData<string>> action;
       return {
         ...state,

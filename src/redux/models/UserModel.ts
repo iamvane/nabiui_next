@@ -12,8 +12,7 @@ import {
 } from '../../components/Dashboard/ParentStudentDashboard/model';
 import {
   InstructorDashboardType,
-  ParentDashboardType,
-  StudentDashboardType
+  ParentStudentDashboardType
 } from '../../components/Dashboard/models';
 import { InstructorType } from './InstructorModel';
 
@@ -35,7 +34,7 @@ import { InstructorType } from './InstructorModel';
     referralToken: string;
     [key: string]: any;
     profile?: InstructorType | StudentDetailsType | ParentProfileType;
-    dashboard?: InstructorDashboardType | ParentDashboardType | StudentDashboardType;
+    dashboard?: InstructorDashboardType | ParentStudentDashboardType;
   }
 
   export interface FetchLocationData {

@@ -67,6 +67,7 @@ interface State {
   errors: AccountInfoComponent.Errors;
   performRedirect: boolean;
   redirectToLogin: boolean;
+  initialized?: boolean;
 }
 
 export class AccountInfo extends React.Component<Props, State> {
@@ -91,13 +92,26 @@ export class AccountInfo extends React.Component<Props, State> {
     };
   }
 
-  public componentDidMount(): void {
-    this.props.fetchUser();
+  public async componentDidMount(): Promise<void> {
+    await this.props.fetchUser();
+    this.setAccountInfo();
+  }
+
+  public setAccountInfo(): void {
+    this.setState({
+      accountInfo: {
+        firstName: this.props.user.firstName,
+        lastName: this.props.user.lastName,
+        gender: this.props.user.gender,
+        location: this.props.user.location
+      }
+    });
   }
 
   public handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = event.currentTarget;
     this.setState({
+      initialized: true,
       accountInfo: {
         ...this.state.accountInfo,
         [name]: value
@@ -171,11 +185,11 @@ export class AccountInfo extends React.Component<Props, State> {
     this.setState({errors: formErrors}, () => {
       const errorsArray = Object.values(this.state.errors);
       const isError = errorsArray.some(value => value);
-      if (!isError) {
+      if (!isError && this.state.initialized) {
         this.props.updateUser({...this.state.accountInfo});
         this.props.fetchUser();
         if (!this.props.errorUpdate) {
-          this.setState({performRedirect: true});
+          this.setState({performRedirect: true, initialized: false});
         }
       }
     });
