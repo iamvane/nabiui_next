@@ -1,16 +1,17 @@
-import { AnyAction } from 'redux';
+import { AnyAction } from "redux";
 
-import { APIActions } from '../models/models';
+import { APIActions } from "../models/models";
 import {
   defaultRequestState,
   RequestState,
   RequestType
-} from '../models/RequestModel';
-import { RequestActions } from '../actions/RequestActionTypes';
+} from "../models/RequestModel";
+import { RequestActions } from "../actions/RequestActionTypes";
 
 export default function requestsReducer(
   state: RequestState = defaultRequestState,
-  action: AnyAction): RequestState {
+  action: AnyAction
+): RequestState {
   switch (action.type) {
     case RequestActions.CREATE_REQUEST:
       return {
@@ -25,33 +26,35 @@ export default function requestsReducer(
       };
 
     case RequestActions.CREATE_REQUEST_SUCCESS:
-      const {data: createdRequest} = <APIActions.WithData<Partial<RequestType>>> action;
+      const { data: createdRequest } = <
+        APIActions.WithData<Partial<RequestType>>
+      >action;
       return {
         ...state,
         request: {
           ...state.request,
           ...createdRequest
         },
-        requests: [
-          ...state.requests, createdRequest as RequestType
-        ],
+        requests: [...state.requests, createdRequest as RequestType],
         actions: {
           ...state.actions,
           createRequest: {
             ...state.actions.createRequest,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case RequestActions.CREATE_REQUEST_FAILURE:
-      const { error: createRequestError } = <APIActions.WithError<string>> action;
+      const { error: createRequestError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
           ...state.actions,
-        createRequest: {
+          createRequest: {
             isRequesting: false,
             error: createRequestError
           }
@@ -71,7 +74,7 @@ export default function requestsReducer(
       };
 
     case RequestActions.FETCH_REQUESTS_SUCCESS:
-      const {data: requests} = action;
+      const { data: requests } = action;
       return {
         ...state,
         requests,
@@ -80,18 +83,20 @@ export default function requestsReducer(
           fetchRequests: {
             ...state.actions.fetchRequests,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case RequestActions.FETCH_REQUESTS_FAILURE:
-      const { error: fetchRequestsError } = <APIActions.WithError<string>> action;
+      const { error: fetchRequestsError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
           ...state.actions,
-        fetchRequests: {
+          fetchRequests: {
             isRequesting: false,
             error: fetchRequestsError
           }
@@ -111,7 +116,7 @@ export default function requestsReducer(
       };
 
     case RequestActions.FETCH_REQUEST_SUCCESS:
-      const {data: request} = action;
+      const { data: request } = action;
       return {
         ...state,
         request,
@@ -120,107 +125,111 @@ export default function requestsReducer(
           fetchRequest: {
             ...state.actions.fetchRequest,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case RequestActions.FETCH_REQUEST_FAILURE:
-      const { error: fetchRequestError } = <APIActions.WithError<string>> action;
+      const { error: fetchRequestError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
           ...state.actions,
-        fetchRequest: {
+          fetchRequest: {
             isRequesting: false,
             error: fetchRequestError
           }
         }
       };
 
-      case RequestActions.EDIT_REQUEST:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            editRequest: {
-              ...state.actions.editRequest,
-              isRequesting: true,
-              message: ''
-            }
-          }
-        };
-
-      case RequestActions.EDIT_REQUEST_SUCCESS:
-        const {data: editRequestMessage} = <APIActions.WithData<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            editRequest: {
-              ...state.actions.editRequest,
-              isRequesting: false,
-              error: '',
-              message: editRequestMessage
-            }
-          }
-        };
-
-      case RequestActions.EDIT_REQUEST_FAILURE:
-        const { error: editRequestError } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
+    case RequestActions.EDIT_REQUEST:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
           editRequest: {
-              isRequesting: false,
-              error: editRequestError,
-              message: ''
-            }
+            ...state.actions.editRequest,
+            isRequesting: true,
+            message: ""
           }
-        };
+        }
+      };
 
-      case RequestActions.DELETE_REQUEST:
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            deleteRequest: {
-              ...state.actions.deleteRequest,
-              isRequesting: true,
-              message: ''
-            }
+    case RequestActions.EDIT_REQUEST_SUCCESS:
+      const { data: editRequestMessage } = <APIActions.WithData<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          editRequest: {
+            ...state.actions.editRequest,
+            isRequesting: false,
+            error: "",
+            message: editRequestMessage
           }
-        };
+        }
+      };
 
-      case RequestActions.DELETE_REQUEST_SUCCESS:
-        const {data: deleteRequestMessage} = <APIActions.WithData<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
-            deleteRequest: {
-              ...state.actions.deleteRequest,
-              isRequesting: false,
-              error: '',
-              message: deleteRequestMessage
-            }
+    case RequestActions.EDIT_REQUEST_FAILURE:
+      const { error: editRequestError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          editRequest: {
+            isRequesting: false,
+            error: editRequestError,
+            message: ""
           }
-        };
+        }
+      };
 
-      case RequestActions.EDIT_REQUEST_FAILURE:
-        const { error: deleteRequestError } = <APIActions.WithError<string>> action;
-        return {
-          ...state,
-          actions: {
-            ...state.actions,
+    case RequestActions.DELETE_REQUEST:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
           deleteRequest: {
-              isRequesting: false,
-              error: deleteRequestError,
-              message: ''
-            }
+            ...state.actions.deleteRequest,
+            isRequesting: true,
+            message: ""
           }
-        };
+        }
+      };
+
+    case RequestActions.DELETE_REQUEST_SUCCESS:
+      const { data: deleteRequestMessage } = <APIActions.WithData<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          deleteRequest: {
+            ...state.actions.deleteRequest,
+            isRequesting: false,
+            error: "",
+            message: deleteRequestMessage
+          }
+        }
+      };
+
+    case RequestActions.EDIT_REQUEST_FAILURE:
+      const { error: deleteRequestError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          deleteRequest: {
+            isRequesting: false,
+            error: deleteRequestError,
+            message: ""
+          }
+        }
+      };
 
     case RequestActions.FETCH_REQUESTS_LIST:
       return {
@@ -229,7 +238,7 @@ export default function requestsReducer(
           ...state.actions,
           fetchRequestList: {
             ...state.actions.fetchRequestList,
-            isRequesting: true,
+            isRequesting: true
           }
         }
       };
@@ -244,13 +253,15 @@ export default function requestsReducer(
           fetchRequestList: {
             ...state.actions.fetchRequestList,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case RequestActions.FETCH_REQUESTS_LIST_FAILURE:
-      const { error: fetchRequestListError } = <APIActions.WithError<string>> action;
+      const { error: fetchRequestListError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -262,6 +273,51 @@ export default function requestsReducer(
         }
       };
 
+    case RequestActions.FETCH_MORE_REQUESTS_LIST:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchMoreRequestList: {
+            error: '',
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.FETCH_MORE_REQUESTS_LIST_SUCCESS:
+      const { results } = action.data;
+      return {
+        ...state,
+        requestsList: {
+          ...state.requestsList,
+          results: [...state.requestsList.results, ...results]
+        },
+        actions: {
+          ...state.actions,
+          fetchMoreRequestList: {
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_MORE_REQUESTS_LIST_FAILURE: {
+      const { error: fetchRequestListError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchMoreRequestList: {
+            isRequesting: false,
+            error: fetchRequestListError
+          }
+        }
+      };
+    }
+
     case RequestActions.FETCH_APPLICATION_LIST:
       return {
         ...state,
@@ -269,7 +325,7 @@ export default function requestsReducer(
           ...state.actions,
           fetchApplicationList: {
             ...state.actions.fetchApplicationList,
-            isRequesting: true,
+            isRequesting: true
           }
         }
       };
@@ -284,13 +340,15 @@ export default function requestsReducer(
           fetchApplicationList: {
             ...state.actions.fetchApplicationList,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case RequestActions.FETCH_APPLICATION_LIST_FAILURE:
-      const { error: applicationListError } = <APIActions.WithError<string>> action;
+      const { error: applicationListError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -310,13 +368,13 @@ export default function requestsReducer(
           bookLessons: {
             ...state.actions.bookLessons,
             isRequesting: true,
-            message: ''
+            message: ""
           }
         }
       };
 
     case RequestActions.BOOK_LESSONS_SUCCESS:
-      const {data: bookLessonMessage} = <APIActions.WithData<string>> action;
+      const { data: bookLessonMessage } = <APIActions.WithData<string>>action;
       return {
         ...state,
         actions: {
@@ -325,13 +383,13 @@ export default function requestsReducer(
             ...state.actions.bookLessons,
             message: bookLessonMessage,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case RequestActions.BOOK_LESSONS_FAILURE:
-      const { error: bookLessonsError } = <APIActions.WithError<string>> action;
+      const { error: bookLessonsError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -339,7 +397,7 @@ export default function requestsReducer(
           bookLessons: {
             isRequesting: false,
             error: bookLessonsError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -357,7 +415,7 @@ export default function requestsReducer(
       };
 
     case RequestActions.FETCH_BOOK_LESSONS_DATA_SUCCESS:
-      const {data: bookingRate} = action;
+      const { data: bookingRate } = action;
       return {
         ...state,
         bookingRate: bookingRate.lessonRate,
@@ -366,13 +424,15 @@ export default function requestsReducer(
           fetchBookLessonsData: {
             ...state.actions.fetchBookLessonsData,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case RequestActions.FETCH_BOOK_LESSONS_DATA_FAILURE:
-      const { error: fetchBookLessonsDataError } = <APIActions.WithError<string>> action;
+      const { error: fetchBookLessonsDataError } = <
+        APIActions.WithError<string>
+      >action;
       return {
         ...state,
         actions: {

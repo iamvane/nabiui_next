@@ -426,8 +426,9 @@ export const fetchInstructor = (
   }
 };
 
+let instructorsPageCounter = 2
+
 export const fetchMoreInstructors = (
-  pageNumber: number,
   params: any
 ): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
@@ -439,9 +440,10 @@ export const fetchMoreInstructors = (
       params: params && params
     };
     const response = await axios.get(
-      `${ApiEndpoints.fetchMoreInstructor}${String(pageNumber)}`,
+      `${ApiEndpoints.fetchMoreInstructor}${String(instructorsPageCounter )}`,
       config
     );
+    instructorsPageCounter++
     dispatch(
       withDataAction(
         InstructorActions.FETCH_MORE_INSTRUCTORS_SUCCESS,
