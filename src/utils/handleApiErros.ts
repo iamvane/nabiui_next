@@ -1,6 +1,9 @@
 export const getError = (e: any, type?: string): string => {
   if (e.response && e.response.data) {
     const {data} = e.response;
+    if (data.message) {
+      return data.message;
+    }
     if (data.detail) {
       return data.detail;
     } else if (data['__all__']) {
