@@ -10,7 +10,6 @@ import { getError } from '../../utils/handleApiErros';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
 import { getCookie } from '../../utils/cookies';
-import { StoreState } from '../reducers/store';
 import { StudentActions } from './StudentsActionTypes';
 import {
   requestAction,

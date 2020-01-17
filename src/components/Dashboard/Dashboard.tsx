@@ -29,7 +29,6 @@ import {
   DashboardComponent,
   PreLaunchInstructorDashboardComponent as constants
 } from './constants';
-import { parseCookies } from '../../utils/parseCookies';
 import { InstructorDashboardType, ParentStudentDashboardType } from './models';
 
 interface State {
@@ -61,13 +60,6 @@ interface Props extends
   DispatchProps {}
 
 export class Dashboard extends React.Component<Props, State> {
-  static async getInitialProps({ req}) {
-    const cookies = parseCookies(req)
-    return {
-      token: cookies.token
-     };
-  }
-
   constructor(props: Props) {
     super(props);
     this.state = {

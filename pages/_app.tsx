@@ -2,7 +2,6 @@ import * as React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
 import withRedux from 'next-redux-wrapper';
 import {
   MuiThemeProvider
@@ -10,7 +9,7 @@ import {
 
 import { Footer } from '../src/components/common/Footer';
 import Header from '../src/components/Header/Header';
-import { fetchUser, setInvitationToken, setAuthToken } from '../src/redux/actions/UserActions';
+import { setAuthToken } from '../src/redux/actions/UserActions';
 import '../assets/css/overrides.css';
 import '../assets/css/index.css';
 import store from '../src/redux/reducers/store';
