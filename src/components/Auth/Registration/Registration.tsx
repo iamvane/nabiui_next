@@ -104,7 +104,6 @@ export const Registration = (props: Props) => {
         Router.push(Routes.BuildProfile + Routes.AccountInfo) :
         Router.push(Routes.BuildRequest + Routes.AccountInfo)
     }
-
   }, [registration, isUnderage, formErrors, props.apiError, isAttemptToRegister]);
 
   const createUser = async () => {

@@ -104,7 +104,6 @@ export class AccountInfo extends React.Component<Props, State> {
         lastName: this.props.user.lastName,
         gender: this.props.user.gender,
         location: this.props.user.location
-
       }
     });
   }
