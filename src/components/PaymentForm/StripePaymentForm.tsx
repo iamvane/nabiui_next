@@ -76,23 +76,28 @@ const PaymentForm = (props: any) =>  {
 const InjectedCheckoutForm = injectStripe(PaymentForm);
 
 export const StripePaymentForm = (props: Props) => {
-  const stripe = window.Stripe('pk_test_0bqLmpsvPKYaGFgPeTrmsh3s00hMjjwCJm');
+  const isClient = typeof window !== "undefined";
+  if (isClient) {
+    const stripe = window.Stripe('pk_test_0bqLmpsvPKYaGFgPeTrmsh3s00hMjjwCJm');
 
-  const renderItems = () => {
-    if (stripe) {
-      return (
-        <StripeProvider stripe={stripe}>
-          <Elements>
-            <InjectedCheckoutForm submitPayment={props.submitPayment} isRequesting={props.isRequesting} />
-          </Elements>
-        </StripeProvider>
-      )
+    const renderItems = () => {
+      if (stripe) {
+        return (
+          <StripeProvider stripe={stripe}>
+            <Elements>
+              <InjectedCheckoutForm submitPayment={props.submitPayment} isRequesting={props.isRequesting} />
+            </Elements>
+          </StripeProvider>
+        )
+      }
+      return;
     }
-    return;
+    return (
+      renderItems()
+    );
+  } else {
+    return <p>Unable to display form. Please contact us at info@nabimusic.com.</p>
   }
-  return (
-    renderItems()
-  );
 }
 
 export default StripePaymentForm;

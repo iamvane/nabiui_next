@@ -33,6 +33,7 @@ export namespace InstructorDashboardComponent {
     'qualification',
     'music'
   ]
+
   export const missingFieldsDisplay = {
     firstName: {
       label: 'First Name',
@@ -40,6 +41,10 @@ export namespace InstructorDashboardComponent {
     },
     lastName: {
       label: 'Last Name',
+      url: '/account-info'
+    },
+    displayName: {
+      label: 'First Name & Last Name',
       url: '/account-info'
     },
     location: {

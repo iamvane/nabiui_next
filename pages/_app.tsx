@@ -31,14 +31,8 @@ class NabiApp extends App<any, any> {
   }
 
   public componentDidMount(): void {
-    let { inviteToken } = this.props.router.query;
-    inviteToken = inviteToken || '';
     if (this.props.token) {
       this.props.store.dispatch(setAuthToken(this.props.token));
-    }
-    this.props.store.dispatch(fetchUser());
-    if (inviteToken) {
-      this.props.dispatch(setInvitationToken(inviteToken));
     }
   }
   render() {

@@ -13,7 +13,7 @@ import {
 
 import { StoreState } from '../../redux/reducers/store';
 import { UserType } from '../../redux/models/UserModel';
-import { fetchUser } from '../../redux/actions/UserActions';
+import { fetchUser, fetchDashboard } from '../../redux/actions/UserActions';
 import { InstructorType } from '../../redux/models/InstructorModel';
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
@@ -29,6 +29,8 @@ import {
   DashboardComponent,
   PreLaunchInstructorDashboardComponent as constants
 } from './constants';
+import { parseCookies } from '../../utils/parseCookies';
+import { InstructorDashboardType, ParentStudentDashboardType } from './models';
 
 interface State {
   showSnackbar: boolean;
@@ -39,10 +41,14 @@ interface StateProps {
   isRequesting: boolean;
   firstName: string;
   token: string;
+  dashboard: InstructorDashboardType | ParentStudentDashboardType;
+  isFetchingDashboard: boolean;
+  errorFetchingDashboard: string;
 }
 
 interface DispatchProps {
   fetchUser: () => void;
+  fetchDashboard: (role: Role) => void;
 }
 
 interface OwnProps {
@@ -55,6 +61,13 @@ interface Props extends
   DispatchProps {}
 
 export class Dashboard extends React.Component<Props, State> {
+  static async getInitialProps({ req}) {
+    const cookies = parseCookies(req)
+    return {
+      token: cookies.token
+     };
+  }
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -64,9 +77,11 @@ export class Dashboard extends React.Component<Props, State> {
 
   public async componentDidMount(): Promise<void> {
     await this.props.fetchUser();
-
     if (!this.props.token) {
       Router.push(Routes.HomePage);
+    }
+    if( this.props.user.role) {
+      await this.props.fetchDashboard(Role.instructor);
     }
     // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
     //   this.setState({
@@ -90,7 +105,7 @@ export class Dashboard extends React.Component<Props, State> {
   render() {
     return (
       <React.Fragment>
-        {this.props.isRequesting ?
+        {this.props.isRequesting  || this.props.isFetchingDashboard ?
         <div className="nabi-text-center">
           <CircularProgress />
         </div> :
@@ -100,8 +115,11 @@ export class Dashboard extends React.Component<Props, State> {
               <InviteFriends />
             }
             mainContent={
-              this.props.user.role === Role.instructor ?
-              <InstructorDashboard user={this.props.user} /> : <ParentStudentDashboard role={this.props.user.role} />}
+              this.props.user.role &&
+                (this.props.user.role === Role.instructor ?
+                  <InstructorDashboard user={this.props.user} dashboard={this.props.dashboard as InstructorDashboardType} /> : 
+                  <ParentStudentDashboard role={this.props.user.role}  dashboard={this.props.dashboard as ParentStudentDashboardType} />)
+            }
             pageTitle={DashboardComponent.pageTitle}
           />
           <SnackBar
@@ -122,22 +140,30 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     actions: {
       fetchUser: {
         isRequesting,
+      },
+      fetchDashboard: {
+        isRequesting: isFetchingDashboard,
+        error: errorFetchingDashboard
       }
     }
   } = state.user;
 
   return {
+    isFetchingDashboard,
+    errorFetchingDashboard,
     user: state.user.user,
     firstName: state.user.user.firstName,
     isRequesting,
-    token: state.user.token
+    token: state.user.token,
+    dashboard: state.user.user.dashboard as InstructorDashboardType | ParentStudentDashboardType
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchUser: () => dispatch(fetchUser())
+  fetchUser: () => dispatch(fetchUser()),
+  fetchDashboard: (role: Role) => dispatch(fetchDashboard(role))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

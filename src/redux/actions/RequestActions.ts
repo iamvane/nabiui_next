@@ -5,10 +5,8 @@ import axios from 'axios';
 import { BookLessonsPayload } from '../../components/BookLessons/model';
 import { getError } from '../../utils/handleApiErros';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
-import {
-  defaultApiError
-} from '../../constants/apiConstants';
-import { StoreState } from '../reducers/store';
+import { defaultApiError } from '../../constants/apiConstants';
+import { getCookie } from '../../utils/cookies';
 import { RequestType } from '../models/RequestModel';
 
 import { RequestActions } from './RequestActionTypes';
@@ -19,15 +17,13 @@ import {
 } from './actions';
 
 let errorMessage = defaultApiError;
+const authToken = getCookie('token');
 
 export const createRequest = (data: RequestType): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.CREATE_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.post(
       ApiEndpoints.lessonRequest,
       data,
@@ -46,13 +42,10 @@ export const createRequest = (data: RequestType): ThunkAction<Promise<void>, {},
 };
 
 export const fetchRequests = (): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.FETCH_REQUESTS));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(ApiEndpoints.lessonRequest, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -67,13 +60,10 @@ export const fetchRequests = (): ThunkAction<Promise<void>, {}, {}> => async (
 };
 
 export const fetchRequest = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.FETCH_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(ApiEndpoints.requestItem + id, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -89,13 +79,10 @@ export const fetchRequest = (id: number): ThunkAction<Promise<void>, {}, {}> => 
 };
 
 export const editRequestAsync = (id: number, data: RequestType): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.EDIT_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.put(
       `${ApiEndpoints.lessonRequest}${id}/`,
       data,
@@ -116,13 +103,10 @@ export const editRequestAsync = (id: number, data: RequestType): ThunkAction<Pro
 };
 
 export const deleteRequestAsnyc = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.DELETE_REQUEST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.delete(`${ApiEndpoints.lessonRequest}${id}/`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -138,13 +122,10 @@ export const deleteRequestAsnyc = (id: number): ThunkAction<Promise<void>, {}, {
 };
 
 export const fetchRequestsList = (params?: any): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.FETCH_REQUESTS_LIST));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     let config = {
       headers: authToken && { 'Authorization': `Bearer ${authToken}` },
       params: params && params
@@ -161,11 +142,8 @@ export const fetchRequestsList = (params?: any): ThunkAction<Promise<void>, {}, 
 
 
 export const fetchApplicationList = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
-  const state = getState();
-  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(RequestActions.FETCH_APPLICATION_LIST));
   try {
     const response = await axios.get(`${ApiEndpoints.applicationList}${id}`, {
@@ -181,11 +159,8 @@ export const fetchApplicationList = (id: number): ThunkAction<Promise<void>, {},
 };
 
 export const bookLessons = (data: BookLessonsPayload): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
-  const state = getState();
-  const authToken = (state as StoreState).user.token;
   dispatch(requestAction(RequestActions.BOOK_LESSONS));
   try {
     const response = await axios.post(
@@ -206,13 +181,10 @@ export const bookLessons = (data: BookLessonsPayload): ThunkAction<Promise<void>
 };
 
 export const fetchBookLessonsData = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>,
-  getState
+  dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.FETCH_BOOK_LESSONS_DATA));
   try {
-    const state = getState();
-    const authToken = (state as StoreState).user.token;
     const response = await axios.get(`${ApiEndpoints.bookLessonsData}${id}`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });

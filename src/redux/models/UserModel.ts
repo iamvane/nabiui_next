@@ -93,8 +93,7 @@ import { InstructorType } from './InstructorModel';
       displayName: '',
       birthday: '',
       avatar: '',
-      referralToken: '',
-      dashboard: {} as InstructorDashboardType | ParentStudentDashboardType,
+      referralToken: ''
     },
     token: '',
     invitationToken: '',

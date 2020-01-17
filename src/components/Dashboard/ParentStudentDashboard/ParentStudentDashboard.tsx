@@ -13,8 +13,6 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { StoreState } from '../../../redux/reducers/store';
-import { fetchDashboard } from '../../../redux/actions/UserActions';
 import { Routes } from '../../common/constants/Routes';
 
 import SectionTitle from '../../common/SectionTitle';
@@ -23,45 +21,19 @@ import { ParentStudentDashboardComponent as constants } from '../constants';
 import { ParentStudentDashboardType } from '../models';
 import MyRequestCard from './MyRequestCard';
 
-interface OwnProps {
+interface Props {
   role: string;
-}
-
-interface StateProps {
-  isRequesting: boolean;
-  error: string;
   dashboard: ParentStudentDashboardType;
 }
 
-interface DispatchProps {
-  fetchDashboard: (role: Role) => void;
-}
-
-interface Props extends
-  OwnProps,
-  StateProps,
-  DispatchProps {}
-
 export const ParentStudentDashboard = (props: Props) => {
-  React.useEffect(() => {
-    const fetchData = async () => {
-      await props.fetchDashboard(props.role as Role);
-    }
-
-    fetchData();
-
-  }, []);
-
-  const {
-    bookings,
-    requests
-  } = props.dashboard;
   return (
     <React.Fragment>
-       {bookings && bookings.length > 0  &&
+      {props.dashboard &&
+       props.dashboard.bookings && props.dashboard.bookings.length > 0  &&
           <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small">
             <SectionTitle text={constants.studentSectionTitle} />
-            {bookings.map((booking, i) => (
+            {props.dashboard.bookings.map((booking, i) => (
               <React.Fragment key={i}>
                 <Grid container={true} spacing={2} className="nabi-margin-bottom-small nabi-margin-top-xsmall">
                   <Grid item={true} xs={12} md={4} className="nabi-text-center">
@@ -118,28 +90,29 @@ export const ParentStudentDashboard = (props: Props) => {
                     </Grid>
                   </Grid>
                 </Grid>
-                {i !== bookings.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
+                {i !== props.dashboard.bookings.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
               </React.Fragment>
             ))}
           </div>
-        }
-
-      {requests && requests.length > 0 &&
+          }
+    {props.dashboard &&
+      props.dashboard.requests && props.dashboard.requests.length > 0 &&
         <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small">
           <SectionTitle text={constants.requestsSectionTitle} />
-          {requests.map((request, i)=> (
+          {props.dashboard.requests.map((request, i)=> (
             <React.Fragment key={i}>
               <MyRequestCard request={request} />
-              {i !== requests.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
+              {i !== props.dashboard.requests.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
             </React.Fragment>
           ))}
         </div>
       }
 
+    {props.dashboard &&
       <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small">
         <SectionTitle text={constants.addRequestSectionTitle} />
         <Typography>
-          {bookings.length > 0 || requests.length > 0 ?
+          {props.dashboard.bookings && props.dashboard.bookings.length > 0 || props.dashboard.requests.length > 0 ?
             constants.addRequestText.withBookingDescription :
             constants.addRequestText.withoutBookingDescription}
           </Typography>
@@ -151,34 +124,8 @@ export const ParentStudentDashboard = (props: Props) => {
           </a>
         </Link>
       </div>
+    }
     </React.Fragment>
   );
 }
-
-const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
-  const {
-    user: {
-      dashboard
-    },
-    actions: {
-      fetchDashboard: {
-        isRequesting,
-        error
-      }
-    }
-  } = state.user;
-  
-  return {
-    isRequesting,
-    error,
-    dashboard: dashboard as ParentStudentDashboardType
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
-): DispatchProps => ({
-  fetchDashboard: (role: Role) => dispatch(fetchDashboard(role))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ParentStudentDashboard);
+export default ParentStudentDashboard;
