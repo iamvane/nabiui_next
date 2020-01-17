@@ -6,17 +6,9 @@ import { withRouter, NextRouter } from 'next/router';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import Link from 'next/link';
 
-import {
-  Button,
-  IconButton
-} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Menu from '@material-ui/icons/Menu';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-import {
-  Action,
-  Dispatch
-} from 'redux';
 
 import '../../../assets/scss/Header.scss';
 import { StoreState } from '../../redux/reducers/store';
@@ -72,9 +64,6 @@ export const Header = (props: HeaderProps) => {
     setStudentParentMenuOpen(true);
   };
 
-  const isLocationHomepage: boolean = props.router.route === Routes.HomePage;
-  console.log(props.router.route);
-  console.log(isLocationHomepage)
   const hanldeUserLogout = async () => {
     await props.logOutUser();
     Router.push(Routes.HomePage);

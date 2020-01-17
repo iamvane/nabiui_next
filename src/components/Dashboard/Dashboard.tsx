@@ -73,7 +73,7 @@ export class Dashboard extends React.Component<Props, State> {
       Router.push(Routes.HomePage);
     }
     if( this.props.user.role) {
-      await this.props.fetchDashboard(Role.instructor);
+      await this.props.fetchDashboard(Role[this.props.user.role]);
     }
     // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
     //   this.setState({
@@ -110,7 +110,7 @@ export class Dashboard extends React.Component<Props, State> {
               this.props.user.role &&
                 (this.props.user.role === Role.instructor ?
                   <InstructorDashboard user={this.props.user} dashboard={this.props.dashboard as InstructorDashboardType} /> : 
-                  <ParentStudentDashboard role={this.props.user.role}  dashboard={this.props.dashboard as ParentStudentDashboardType} />)
+                  <ParentStudentDashboard role={this.props.user.role} dashboard={this.props.dashboard as ParentStudentDashboardType} />)
             }
             pageTitle={DashboardComponent.pageTitle}
           />

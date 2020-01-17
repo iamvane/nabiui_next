@@ -7,6 +7,7 @@ import {
 export const setDashboard = (data) => {
   let dashboard;
   if (data.role === Role.instructor) {
+    console.log('role ' + data.role);
     return (dashboard as InstructorDashboardType) = {
       complete: data.apiResponse.complete,
       missingFields: data.apiResponse.missingFields,
