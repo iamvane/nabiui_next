@@ -49,20 +49,16 @@ export const ParentStudentDashboard = (props: Props) => {
                   </Grid>
                   <Grid item={true} xs={12} md={8}>
                     <Grid container={true}>
-                      {props.role === Role.parent &&
-                        <React.Fragment>
-                          <Grid item={true} xs={6}>
-                            <Typography className="nabi-text-mediumbold">{constants.studentDetailLabels.students}</Typography>
-                          </Grid>
-                          <Grid item={true} xs={6}>
-                            <Typography>
-                              {booking.students.map((student) => <span>
-                                {`${student.name} ${student.age} ${booking.students[booking.students.length - 1] ? '' : ', '}`}</span>
-                              )}
-                            </Typography>
-                          </Grid>
-                        </React.Fragment>
-                      }
+                      <Grid item={true} xs={6}>
+                        <Typography className="nabi-text-mediumbold">{constants.studentDetailLabels.students}</Typography>
+                      </Grid>
+                      <Grid item={true} xs={6}>
+                        <Typography>
+                          {booking.students.map((student) => <span>
+                            {`${student.name} ${student.age} ${booking.students[booking.students.length - 1] ? '' : ', '}`}</span>
+                          )}
+                        </Typography>
+                      </Grid>
                       <Grid item={true} xs={6}>
                         <Typography className="nabi-text-mediumbold">{constants.studentDetailLabels.instrument}</Typography>
                       </Grid>
@@ -74,12 +70,6 @@ export const ParentStudentDashboard = (props: Props) => {
                       </Grid>
                       <Grid item={true} xs={6}>
                         <Typography>{booking.skillLevel}</Typography>
-                      </Grid>
-                      <Grid item={true} xs={6}>
-                        <Typography className="nabi-text-mediumbold">{constants.studentDetailLabels.instrument}</Typography>
-                      </Grid>
-                      <Grid item={true} xs={6}>
-                        <Typography>{booking.instrument}</Typography>
                       </Grid>
                       <Grid item={true} xs={6}>
                         <Typography className="nabi-text-mediumbold">{constants.studentDetailLabels.instructor}</Typography>
