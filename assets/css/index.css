@@ -197,6 +197,10 @@ li.nabi-list-style-position-inside {
 	align-items: center;
 }
 
+.nabi-align-self-center {
+   align-self: center !important
+}
+
 .nabi-vertical-align-center {
 	display: flex;
 	align-items: center !important;

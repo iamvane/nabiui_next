@@ -33,12 +33,12 @@ export interface Props
 
 export const Homepage = (props: Props) => {
   const { query } = useRouter();
-  const [openModal, setOpenModal] = React.useState(true)
+  const [openModal, setOpenModal] = React.useState(false)
 
   React.useEffect(() => {
 
     if (query.token) {
-      setOpenModal(true)
+      setOpenModal(false)
     }
 
     const userId = props.user ? props.user.email : "anonymous";
@@ -58,7 +58,7 @@ export const Homepage = (props: Props) => {
 
   return (
     <div>
-      <Banner />
+      <Banner showClaimDiscountBanner={true} />
       <Features />
       <Testimonials />
       <BecomeATeacher />
