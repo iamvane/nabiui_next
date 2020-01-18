@@ -38,7 +38,7 @@ export const Homepage = (props: Props) => {
   React.useEffect(() => {
 
     if (query.token) {
-      setOpenModal(false)
+      setOpenModal(true)
     }
 
     const userId = props.user ? props.user.email : "anonymous";

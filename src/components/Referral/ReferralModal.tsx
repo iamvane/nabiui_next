@@ -16,6 +16,12 @@ interface Props {
 }
 
 const ReferralModal: React.StatelessComponent<Props> = props => {
+  const [email, setEmail] = React.useState("");
+
+  const handleSetEmail = () => {
+    alert(email);
+  };
+
   return (
     <div>
       <Dialog
@@ -40,6 +46,8 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
             margin="normal"
             placeholder="Email address"
             required={true}
+            value={email}
+            onChange={event => setEmail(event.target.value)}
           />
           <div className="nabi-text-center nabi-margin-top-small">
             <Button
@@ -47,6 +55,7 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
               className="nabi-text-uppercase"
               variant="contained"
               type="submit"
+              onClick={handleSetEmail}
             >
               GET STARTED
             </Button>
