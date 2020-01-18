@@ -1,16 +1,19 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React from "react";
+import { connect } from "react-redux";
 import Router from "next/router";
 
-import { StoreState } from '../../redux/reducers/store';
-import { page } from '../../utils/analytics';
-import { UserType } from '../../redux/models/UserModel';
-import { Routes } from '../common/constants/Routes';
-import Banner from './Banner';
-import Features from './Features';
-import Testimonials from './Testimonials';
-import BecomeATeacher from './BecomeATeacher';
-import FreeLesson from './FreeLesson';
+import { StoreState } from "../../redux/reducers/store";
+import { page } from "../../utils/analytics";
+import { UserType } from "../../redux/models/UserModel";
+import { Routes } from "../common/constants/Routes";
+import Banner from "./Banner";
+import Features from "./Features";
+import Testimonials from "./Testimonials";
+import BecomeATeacher from "./BecomeATeacher";
+import FreeLesson from "./FreeLesson";
+import { useRouter } from "next/router";
+import ReferralModal from '../Referral/ReferralModal';
+
 /**
  * Homepage component
  */
@@ -24,13 +27,21 @@ interface StateProps {
   token: string;
 }
 
-export interface Props extends
-  // RouteComponentProps<{}>,
-  StateProps { }
+export interface Props
+  extends // RouteComponentProps<{}>,
+  StateProps {}
 
 export const Homepage = (props: Props) => {
+  const { query } = useRouter();
+  const [openModal, setOpenModal] = React.useState(true)
+
   React.useEffect(() => {
-    const userId = props.user ? props.user.email : 'anonymous';
+
+    if (query.token) {
+      setOpenModal(true)
+    }
+
+    const userId = props.user ? props.user.email : "anonymous";
 
     const analiticsProps = {
       userId,
@@ -38,10 +49,10 @@ export const Homepage = (props: Props) => {
         referrer: document.referrer
       }
     };
-    page('Home', analiticsProps);
+    page("Home", analiticsProps);
 
     if (props.token) {
-      Router.push(Routes.Dashboard)
+      Router.push(Routes.Dashboard);
     }
   }, []);
 
@@ -52,15 +63,13 @@ export const Homepage = (props: Props) => {
       <Testimonials />
       <BecomeATeacher />
       <FreeLesson />
+      <ReferralModal isOpen={openModal} handleClose={() => setOpenModal(true)}/>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
-  const {
-    user,
-    token
-  } = state.user;
+  const { user, token } = state.user;
 
   return {
     user,
