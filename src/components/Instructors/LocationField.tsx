@@ -33,6 +33,12 @@ export class LocationField extends React.Component<Props, State> {
     };
   }
 
+  public componentDidMount(): void {
+    this.setState({
+      location: this.props.address
+    });
+  }
+
   public componentDidUpdate(prevProps: Props): void {
     if (prevProps.address !== this.props.address) {
       this.setState({
