@@ -46,11 +46,11 @@ interface DispatchProps {
 
 interface Props extends OwnProps, StateProps, DispatchProps {}
 
-export const InstructorsList = (props: Props) => {
+export const ReuqestsList = (props: Props) => {
   const [instrument, setInstrument] = React.useState("");
   const [address, setAddress] = React.useState("");
   const [sortBy, setSortBy] = React.useState("");
-  const [distance, setDistance] = React.useState(10);
+  const [distance, setDistance] = React.useState(50);
   const [placeForLessons, setPlaceForLessons] = React.useState([]);
   const [age, setAge] = React.useState("");
   const [distanceMobile, setDistanceMobile] = React.useState(50);
@@ -254,4 +254,4 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
   fetchMoreRequests: (params: any) => dispatch(fetchMoreRequestsList(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(InstructorsList);
+export default connect(mapStateToProps, mapDispatchToProps)(ReuqestsList);
