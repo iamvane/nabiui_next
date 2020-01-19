@@ -50,7 +50,7 @@ export const InstructorsList = (props: Props) => {
   const [instrument, setInstrument] = React.useState("");
   const [address, setAddress] = React.useState("");
   const [sortBy, setSortBy] = React.useState("");
-  const [distance, setDistance] = React.useState(10);
+  const [distance, setDistance] = React.useState(50);
   const [placeForLessons, setPlaceForLessons] = React.useState([]);
   const [availability, setAvailability] = React.useState([]);
   const [priceRange, setPriceRange] = React.useState<number[]>([0, 200]);
