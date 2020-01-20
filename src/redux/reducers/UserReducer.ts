@@ -111,6 +111,13 @@ export default function usersReducer(
         token: action.authToken
       };
 
+    case UserActions.SET_URL_PATHNAME:
+      console.log(action)
+      setCookie('pathname', action.pathname);
+      return {
+        ...state,
+        pathname: action.pathname
+      };
 
     case UserActions.FETCH_USER:
       return {

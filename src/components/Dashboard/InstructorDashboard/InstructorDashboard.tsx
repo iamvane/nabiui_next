@@ -1,9 +1,4 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import {
-  Action,
-  Dispatch
-} from 'redux';
 import Link from 'next/link';
 const reactStringReplace = require('react-string-replace');
 
@@ -16,12 +11,9 @@ import {
 import Warning from '@material-ui/icons/Warning';
 import Check from '@material-ui/icons/Check';
 
-import { StoreState } from '../../../redux/reducers/store';
 import { UserType } from '../../../redux/models/UserModel';
-import { fetchDashboard } from '../../../redux/actions/UserActions';
 import { Routes } from '../../common/constants/Routes';
 import SectionTitle from '../../common/SectionTitle';
-import { Role } from '../../Auth/Registration/constants';
 import { BackgroundCheckStatus } from '../../ProfileBuilder/constants';
 import RequestCard from '../../Request/RequestCard';
 import { InstructorDashboardComponent as constants }  from '../constants';
@@ -201,7 +193,7 @@ export const InstructorDashboard = (props: Props) => {
           />
           {props.dashboard.requests.map((request, i) => (
             <React.Fragment key={i}>
-              <RequestCard request={request} user={props.user} inDashboard={true} />
+              <RequestCard request={request} isLoggedIn={true} inDashboard={true} />
               {i !== props.dashboard.requests.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
             </React.Fragment>
           ))}

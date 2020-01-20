@@ -7,7 +7,7 @@ import RequestCard from './RequestCard';
 interface Props {
   requests: Request[];
   isRequesting: boolean;
-  user: UserType
+  isLoggedIn: boolean;
   toggleRegisterModal: () => void;
 }
 
@@ -15,7 +15,7 @@ const Requests: React.StatelessComponent<Props> = props => {
   return (
     <div>
       {props.requests && props.requests.map((request, i) => (
-        <RequestCard key={i} request={request} user={props.user} toggleRegisterModal={props.toggleRegisterModal} />
+        <RequestCard key={i} request={request} isLoggedIn={props.isLoggedIn} toggleRegisterModal={props.toggleRegisterModal} />
       ))}
     </div>
   );

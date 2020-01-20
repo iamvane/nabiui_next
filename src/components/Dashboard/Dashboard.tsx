@@ -7,17 +7,17 @@ import {
 import { RouteComponentProps } from 'react-router';
 import Router from 'next/router';
 
-import {
-  CircularProgress,
-  Typography } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
 import { StoreState } from '../../redux/reducers/store';
 import { UserType } from '../../redux/models/UserModel';
-import { fetchUser, fetchDashboard } from '../../redux/actions/UserActions';
-import { InstructorType } from '../../redux/models/InstructorModel';
+import {
+  fetchUser,
+  fetchDashboard,
+  setPathname
+} from '../../redux/actions/UserActions';
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
-import SectionTitle from '../common/SectionTitle';
 import { AnnouncementConstants } from '../common/constants/Announcement';
 import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
 import { Routes } from '../common/constants/Routes';
@@ -48,6 +48,7 @@ interface StateProps {
 interface DispatchProps {
   fetchUser: () => void;
   fetchDashboard: (role: Role) => void;
+  setPathname: (pathname: string) => void;
 }
 
 interface OwnProps {
@@ -75,6 +76,8 @@ export class Dashboard extends React.Component<Props, State> {
     if( this.props.user.role) {
       await this.props.fetchDashboard(Role[this.props.user.role]);
     }
+
+    this.props.setPathname(Router.pathname)
     // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
     //   this.setState({
     //     showSnackbar: true
@@ -155,7 +158,8 @@ const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
   fetchUser: () => dispatch(fetchUser()),
-  fetchDashboard: (role: Role) => dispatch(fetchDashboard(role))
+  fetchDashboard: (role: Role) => dispatch(fetchDashboard(role)),
+  setPathname: (pathname: string) => dispatch(setPathname(pathname))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

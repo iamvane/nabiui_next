@@ -187,6 +187,10 @@ export const qualificationOptions: SelectOption[] = [
 
 export namespace InstructorsComponent {
   export const pageTitle = 'Instructors';
+  export const breadcrumbLabels = {
+    home: 'Home',
+    requests: 'Instructors'
+  }
 }
 
 export namespace InstructorCardComponent {

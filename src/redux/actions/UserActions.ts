@@ -150,6 +150,14 @@ export function setAuthToken(authToken: string) {
     type: UserActions.SET_AUTH_TOKEN
   };
 }
+
+export function setPathname(pathname: string) {
+  return {
+    pathname,
+    type: UserActions.SET_URL_PATHNAME
+  };
+}
+
 export const uploadAvatar = (value: string): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
 ) => {

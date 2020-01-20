@@ -1,10 +1,5 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { connect } from 'react-redux';
-import {
-  Action,
-  Dispatch
-} from 'redux';
 
 import {
   Button,
@@ -16,7 +11,6 @@ import {
 import { Routes } from '../../common/constants/Routes';
 
 import SectionTitle from '../../common/SectionTitle';
-import { Role } from '../../Auth/Registration/constants';
 import { ParentStudentDashboardComponent as constants } from '../constants';
 import { ParentStudentDashboardType } from '../models';
 import MyRequestCard from './MyRequestCard';

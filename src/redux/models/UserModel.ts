@@ -14,6 +14,7 @@ import {
   InstructorDashboardType,
   ParentStudentDashboardType
 } from '../../components/Dashboard/models';
+import { getCookie } from '../../utils/cookies';
 import { InstructorType } from './InstructorModel';
 
   export interface UserType extends
@@ -50,6 +51,7 @@ import { InstructorType } from './InstructorModel';
     user: UserType;
     token: string;
     invitationToken: string;
+    pathname?: string;
     actions: {
       createUser: ActionStatus;
       authenticateUser: ActionStatusWithRedirect;
@@ -93,7 +95,8 @@ import { InstructorType } from './InstructorModel';
       displayName: '',
       birthday: '',
       avatar: '',
-      referralToken: ''
+      referralToken: '',
+      pathname: getCookie('pathname'),
     },
     token: '',
     invitationToken: '',

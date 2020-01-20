@@ -6,16 +6,27 @@ import {
 import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-import { Grid, CircularProgress } from '@material-ui/core';
+import {
+  Grid,
+  CircularProgress,
+  Typography
+} from '@material-ui/core';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
+import { getCookie } from '../../utils/cookies';
 import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
 import { InstructorType } from '../../redux/models/InstructorModel';
 import { changeAvatar } from '../../redux/actions/UserActions';
-import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';;
+import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';
+import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
-import { ProfileComponent, ProfileContentComponent } from './constants';
+import {
+  ProfileComponent,
+  ProfileContentComponent
+} from './constants';
 import ProfileHeader from './ProfileHeader';
 import ProfileContent from './ProfileContent';
 import ProfileSidebar from './ProfileSidebar';
@@ -24,6 +35,7 @@ interface StateProps {
   user: UserType;
   instructor: InstructorType;
   isRequestingInstructor: boolean;
+  pathname: string
 }
 
 interface DispatchProps {
@@ -88,15 +100,28 @@ export const Profile = (props: Props) =>  {
     return days;
   }
 
+  const pathname = getCookie('pathname');
+
   return (
     <div className="nabi-container">
       <PageTitle pageTitle={ProfileComponent.pageTitle} />
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link  href={Routes.Dashboard}>
+            <a>{ProfileComponent.breadcrumbLabels.home}</a>
+          </Link>
+          {pathname && pathname.includes('application') &&
+            <Link  href={pathname}>
+              <a>{ProfileComponent.breadcrumbLabels.applicationList}</a>
+            </Link>
+          }
+          <Typography>{ProfileComponent.breadcrumbLabels.profile}</Typography>
+        </Breadcrumbs>
       {props.isRequestingInstructor ?
         <div className="nabi-section nabi-profile-loader-container">
           <CircularProgress />
         </div> :
         <React.Fragment>
-          <div className="nabi-section nabi-background-white">
+          <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
             <Grid container={true}>
               <Grid item={true} md={12} xs={12} className="nabi-margin-top-xsmall">
                 <ProfileHeader instructor={props.instructor} />
@@ -130,7 +155,8 @@ export const Profile = (props: Props) =>  {
 const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   const {
     user: {
-      user
+      user,
+      pathname
     },
     instructor: {
       instructor,
@@ -144,7 +170,8 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   return {
     user,
     instructor,
-    isRequestingInstructor
+    isRequestingInstructor,
+    pathname
   };
 };
 
