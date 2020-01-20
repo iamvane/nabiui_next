@@ -11,6 +11,7 @@ import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../redux/reducers/store';
 import { UserType } from '../../redux/models/UserModel';
+import { fetchUser } from '../../redux/actions/UserActions';
 import { buildJobPreferences } from '../../redux/actions/InstructorActions';
 import { Routes } from '../common/constants/Routes';
 import { PlaceForLessonsType } from '../PlaceForLessons/model';
@@ -41,10 +42,12 @@ interface StateProps {
   user: UserType;
   isRequesting: boolean;
   buildJobPreferencesError: string;
+  isFetchingUser: boolean;
 }
 
 interface DispatchProps {
   buildJobPreferences: (instructor: InstructorType) => void;
+  fetchUser: () => void;
 }
 
 interface OwnProps {}
@@ -105,7 +108,8 @@ export class JobPreferencesStep extends React.Component<Props, State> {
     };
   }
 
-  public componentDidMount(): void {
+  public async componentDidMount(): Promise<void> {
+    await this.props.fetchUser();
     const profile = this.props.user.profile as InstructorType;
 
     // set instruments state
@@ -451,7 +455,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
           handleNext={this.handleNext}
           icon={<ArrowForward />}
-          isRequesting={this.props.isRequesting}
+          isRequesting={this.props.isRequesting || this.props.isFetchingUser}
           errors={this.props.buildJobPreferencesError}
         />
       </div>
@@ -472,7 +476,8 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   return {
     user: state.user.user,
     isRequesting,
-    buildJobPreferencesError
+    buildJobPreferencesError,
+    isFetchingUser: state.user.actions.fetchUser.isRequesting
   };
 };
 
@@ -483,6 +488,7 @@ function mapDispatchToProps(
   return {
     buildJobPreferences: (instructor: InstructorType) =>
       dispatch(buildJobPreferences(instructor)),
+    fetchUser:() => dispatch(fetchUser())
   };
 }
 
