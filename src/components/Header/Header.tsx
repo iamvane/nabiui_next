@@ -34,6 +34,7 @@ interface StateProps {
   isRequesting: boolean;
   logOutError: string;
   message: string;
+  token;
 }
 
 export interface HeaderProps extends
@@ -122,7 +123,7 @@ export const Header = (props: HeaderProps) => {
           </React.Fragment>
         }
         <div className="nabi-logo-anchor">
-          <Link href={props.user.email ? Routes.Dashboard : Routes.HomePage}>
+          <Link href={props.token ? Routes.Dashboard : Routes.HomePage}>
             <a>
               <>
                 <img
@@ -141,7 +142,7 @@ export const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        {props.router.route === Routes.HomePage &&
+        {(menuWhitelist as string[]).includes(props.router.route) &&
           <div className="nabi-header-button">
             <Link href={Routes.Login}>
               <a>
@@ -160,8 +161,7 @@ export const Header = (props: HeaderProps) => {
               className="nabi-responsive-button"
               onClick={hanldeUserLogout}
             >
-              {props.isRequesting ? <CircularProgress color="inherit" size={25} /> :
-                  logOut}
+              {props.isRequesting ? <CircularProgress color="inherit" size={25} /> : logOut}
             </Button>
           </div>
         }
@@ -173,6 +173,7 @@ export const Header = (props: HeaderProps) => {
 const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   const {
     user,
+    token,
     actions: {
       logOutUser: {
         isRequesting,
@@ -186,6 +187,7 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
     isRequesting,
     message,
     logOutError,
+    token
   };
 };
 
