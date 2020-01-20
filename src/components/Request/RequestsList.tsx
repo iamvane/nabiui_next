@@ -1,18 +1,21 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import * as _ from "lodash";
-
 import { Action, Dispatch } from "redux";
+import Link from 'next/link';
+
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
 
 import { fetchUser } from "../../redux/actions/UserActions";
 import { StoreState } from "../../redux/reducers/store";
 import { ListResource } from "../../redux/models/models";
 import { Request } from "../../redux/models/RequestModel";
-import { UserType } from "../../redux/models/UserModel";
 import {
   fetchRequestsList,
   fetchMoreRequestsList
 } from "../../redux/actions/RequestActions";
+import { Routes } from '../common/constants/Routes';
 import ListTemplate from "../common/Templates/ListTemplate";
 import { ListTemplateComponent } from "../common/constants/ListTemplate";
 import RequestsFilter from "./RequestsFilter";
@@ -20,7 +23,7 @@ import RequestsFilterMobile from "./RequestsFilterMobile";
 import Requests from "./Requests";
 import RegisterModal from "./RegisterModal";
 import {
-  RequestListComponent,
+  RequestsListComponent,
   RequestFilterComponent,
   RequestListQueryParams,
   defaultQueryParams
@@ -33,7 +36,7 @@ interface StateProps {
   isRequesting: boolean;
   isRequestingMoreRequest: boolean;
   error: string;
-  user: UserType;
+  isLoggedIn: boolean;
 }
 
 interface OwnProps {}
@@ -183,7 +186,7 @@ export const ReuqestsList = (props: Props) => {
   return (
     <React.Fragment>
       <ListTemplate
-        pageTitle={RequestListComponent.pageTitle}
+        pageTitle={RequestsListComponent.pageTitle}
         results={props.requests.count}
         handleChange={handleChange}
         getLatLng={getLatLng}
@@ -193,6 +196,14 @@ export const ReuqestsList = (props: Props) => {
         isRequesting={props.isRequesting}
         loadMoreData={fetchMoreRequestsList}
         isRequestingMoreData={props.isRequestingMoreRequest}
+        breadcrumbs={
+          <Breadcrumbs aria-label="breadcrumb" className="nabi-margin-bottom-xsmall">
+            <Link href={props.isLoggedIn ? Routes.Dashboard : Routes.HomePage}>
+              <a>{RequestsListComponent.breadcrumbLabels.home}</a>
+            </Link>
+            <Typography> {RequestsListComponent.breadcrumbLabels.requests}</Typography>
+          </Breadcrumbs>
+        }
         filterSection={
           <React.Fragment>
             <RequestsFilter
@@ -215,7 +226,7 @@ export const ReuqestsList = (props: Props) => {
         }
         mainContent={
           <Requests
-            user={props.user}
+            isLoggedIn={props.isLoggedIn}
             requests={props.requests.results}
             isRequesting={props.isRequesting}
             toggleRegisterModal={toggleRegisterModal}
@@ -244,7 +255,7 @@ const mapStateToProps = (
     isRequesting,
     isRequestingMoreRequest,
     error,
-    user: state.user.user
+    isLoggedIn: !!state.user.user.email
   };
 };
 

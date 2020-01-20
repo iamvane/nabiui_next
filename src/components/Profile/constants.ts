@@ -1,5 +1,10 @@
 export namespace ProfileComponent {
   export const pageTitle = 'Profile';
+  export const breadcrumbLabels = {
+    home: 'Home',
+    applicationList: 'Application List',
+    profile: 'Profile'
+  }
 }
 
 export namespace EditModalComponent {

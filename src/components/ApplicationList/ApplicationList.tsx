@@ -15,6 +15,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import PageTitle from '../common/PageTitle';
 import { Routes } from '../common/constants/Routes';
 import { StoreState } from '../../redux/reducers/store';
+import { setPathname } from '../../redux/actions/UserActions';
 import { fetchApplicationList } from '../../redux/actions/RequestActions';
 import {
   Application,
@@ -31,6 +32,7 @@ interface StateProps {
 
 interface DispatchProps {
   fetchApplicationList: (id: number) => void;
+  setPathname: (pathname: string) => void;
 }
 
 interface OwnProps { }
@@ -50,6 +52,7 @@ export const ApplicationList = (props: Props) => {
       }
     };
     fetchData();
+    props.setPathname(router.asPath);
     /* tslint:disable */
   }, []);
 
@@ -58,13 +61,13 @@ export const ApplicationList = (props: Props) => {
       <PageTitle pageTitle={ApplicationListComponent.pageTitle} />
       {props.isRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
       <React.Fragment>
-        <Breadcrumbs aria-label="breadcrumb" className="nabi-margin-bottom-xsmall">
+        <Breadcrumbs aria-label="breadcrumb">
           <Link  href={Routes.Dashboard}>
             <a>{ApplicationListComponent.breadcrumbLabels.home}</a>
           </Link>
-          <Typography color="textPrimary"> {ApplicationListComponent.breadcrumbLabels.applications}</Typography>
+          <Typography> {ApplicationListComponent.breadcrumbLabels.applications}</Typography>
         </Breadcrumbs>
-        <div className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-margin-bottom-small nabi-background-white nabi-text-center">
+        <div className="nabi-section nabi-margin-top-xsmall nabi-padding-top-small nabi-padding-bottom-small nabi-margin-bottom-small nabi-background-white nabi-text-center">
           <p className="nabi-text-normalbold nabi-color-nabi nabi-margin-remove nabi-jennasue-title">
             {props.applicationList.requestTitle}
           </p>
@@ -106,7 +109,8 @@ function mapDispatchToProps(
   _ownProps: OwnProps
 ): DispatchProps {
   return {
-    fetchApplicationList: (id: number) => dispatch(fetchApplicationList(id))
+    fetchApplicationList: (id: number) => dispatch(fetchApplicationList(id)),
+    setPathname: (pathname: string) => dispatch(setPathname(pathname))
   };
 }
 

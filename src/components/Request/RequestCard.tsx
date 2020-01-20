@@ -24,7 +24,7 @@ import { RequestCardComponent } from './constants';
 
 interface Props {
   request: Request;
-  user: UserType;
+  isLoggedIn: boolean;
   toggleRegisterModal?:() => void;
   inDashboard?: boolean;
 }
@@ -62,7 +62,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
   const instrumentDisplay = instruments.find(t => t.value === instrument);
 
   const navigateToRequest = () => {
-    if (props.user.email) {
+    if (props.isLoggedIn) {
       Router.push(`${Routes.Request}/${id}`)
     } else {
       props.toggleRegisterModal && props.toggleRegisterModal();

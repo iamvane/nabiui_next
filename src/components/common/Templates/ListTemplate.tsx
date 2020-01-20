@@ -31,6 +31,7 @@ interface Props {
   getLocation: (location: string) => void;
   isRequesting: boolean;
   loadMoreData: () => void;
+  breadcrumbs: JSX.Element;
 }
 
 export const ListTemplate: React.StatelessComponent<Props> = props => {
@@ -98,6 +99,7 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md">
       <PageTitle pageTitle={props.pageTitle} />
+      {props.breadcrumbs}
       <Grid container={true} spacing={0}>
         <Grid item={true} xs={12}>
           <SearchSection />

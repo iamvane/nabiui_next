@@ -1,8 +1,11 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import * as _ from "lodash";
-
+import Link from 'next/link';
 import { Action, Dispatch } from "redux";
+
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
 
 import { StoreState } from "../../redux/reducers/store";
 import { ListResource } from "../../redux/models/models";
@@ -12,6 +15,7 @@ import {
   fetchInstructor,
   fetchMoreInstructors
 } from "../../redux/actions/InstructorActions";
+import { Routes } from '../common/constants/Routes';
 import ListTemplate from "../common/Templates/ListTemplate";
 import { ListTemplateComponent } from "../common/constants/ListTemplate";
 import InstructorsFilter from "./InstructorsFilter";
@@ -34,6 +38,7 @@ interface StateProps {
   isRequestingInstructor: boolean;
   instructor: InstructorType;
   isRequestingMoreInstructors: boolean;
+  email: string;
 }
 
 interface OwnProps {}
@@ -247,6 +252,14 @@ export const InstructorsList = (props: Props) => {
       isRequestingMoreData={props.isRequestingMoreInstructors}
       isRequesting={props.isRequesting}
       hasCallToAction={true}
+      breadcrumbs={
+        <Breadcrumbs aria-label="breadcrumb" className="nabi-margin-bottom-xsmall">
+          <Link href={props.email ? Routes.Dashboard : Routes.HomePage}>
+            <a>{InstructorsComponent.breadcrumbLabels.home}</a>
+          </Link>
+          <Typography> {InstructorsComponent.breadcrumbLabels.requests}</Typography>
+        </Breadcrumbs>
+      }
       filterSection={
         <React.Fragment>
           <InstructorsFilter
@@ -309,7 +322,8 @@ const mapStateToProps = (
     instructor,
     isRequestingMoreInstructors,
     isRequesting,
-    isRequestingInstructor
+    isRequestingInstructor,
+    email: state.user.user.email
   };
 };
 

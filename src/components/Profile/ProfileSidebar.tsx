@@ -34,10 +34,10 @@ const displayAvailabilityDay = (availability: {
   return (
     <React.Fragment>
       {
-        days.map((day) => {
+        days.map((day, i) => {
           if (availability[day] && availability[day].length) {
             return (
-              <React.Fragment>
+              <React.Fragment key={i}>
                 <Typography className="nabi-text-mediumbold nabi-text-uppercase">
                   {day}
                 </Typography>

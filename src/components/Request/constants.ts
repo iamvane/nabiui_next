@@ -1,9 +1,5 @@
 import { CommonConstants } from '../common/constants/common';
 
-export namespace RequestListComponent {
-  export const pageTitle = 'Requests';
-}
-
 export namespace RequestComponent {
   export const title = 'Build Request';
 
@@ -118,6 +114,10 @@ export const sortByOptions: SortByOptionsType = {
 
 export namespace RequestsListComponent {
   export const pageTitle = 'Requests';
+  export const breadcrumbLabels = {
+    home: 'Home',
+    requests: 'Requests'
+  }
 }
 
 export namespace RequestFilterComponent {
@@ -288,6 +288,11 @@ export namespace RequestViewComponent {
   export enum Ids {
     LessonRate = 'lessonRate',
     Message = 'message'
+  }
+  export const breadcrumbLabels = {
+    home: 'Home',
+    requests: 'Requests',
+    sendApplication: "Send Application"
   }
 }
 
