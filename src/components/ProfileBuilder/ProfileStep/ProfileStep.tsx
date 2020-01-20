@@ -14,7 +14,7 @@ import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../../redux/reducers/store';
 import { UserType } from '../../../redux/models/UserModel';
-import { changeAvatar } from '../../../redux/actions/UserActions';
+import { changeAvatar, fetchUser } from '../../../redux/actions/UserActions';
 import { InstructorType } from '../../../redux/models/InstructorModel';
 import {
   buildProfile,
@@ -48,6 +48,7 @@ interface DispatchProps {
   buildProfile: (profile: ProfileType) => void;
   changeAvatar: (id: string, avatar: string) => void;
   fetchProfile: () => void;
+  fetchUser: () => void;
 }
 
 interface OwnProps { }
@@ -89,6 +90,7 @@ export class ProfileStep extends React.Component<Props, State> {
 
   public componentDidMount(): void {
     this.props.fetchProfile();
+    this.props.fetchUser();
   }
 
   public componentDidUpdate(prevProps: Props) {
@@ -231,6 +233,7 @@ export class ProfileStep extends React.Component<Props, State> {
       <div>
         <Grid className="nabi-text-center nabi-margin-center" item={true} xs={6}>
           <AvatarUploader
+            originalImage={this.props.user.avatar ? this.props.user.avatar: undefined}
             imageChanged={(avatar: string) => {
               this.props.changeAvatar(this.props.user.id || '', avatar);
             }}
@@ -310,6 +313,7 @@ function mapDispatchToProps(
     buildProfile: (profile: ProfileType) => dispatch(buildProfile(profile)),
     fetchProfile: () => dispatch(fetchProfile()),
     changeAvatar: (id: string, avatar: string) => dispatch(changeAvatar(id, avatar)),
+    fetchUser: () => dispatch(fetchUser())
   };
 }
 

@@ -21,6 +21,7 @@ import {
   deleteRequestAsnyc,
   editRequestAsync
 } from '../../redux/actions/RequestActions';
+import { fetchUser } from '../../redux/actions/UserActions';
 import { Role } from '../Auth/Registration/constants';
 import SectionTitle from '../common/SectionTitle';
 import { Routes } from '../common/constants/Routes';
@@ -57,6 +58,7 @@ interface DispatchProps {
   fetchRequests: () => void;
   deleteRequest: (id: number) => void;
   editRequest: (id: number, data: RequestType) => void;
+  fetchUser: () => void;
 }
 
 export interface Props extends
@@ -113,10 +115,13 @@ export class Request extends React.Component<Props, State>  {
 
   public async componentDidMount(): Promise<void> {
     await this.props.fetchRequests();
+    if (!this.props.role) {
+      await this.props.fetchUser()
+    }
     this.setRequests();
   }
 
-  public componentDidUpdate(prevProps: Props): void {
+  public async componentDidUpdate(prevProps: Props): Promise<void> {
     if (prevProps.requests.length !== this.props.requests.length) {
       this.setRequests();
     }
@@ -132,6 +137,7 @@ export class Request extends React.Component<Props, State>  {
         showSnackbar: !this.state.showSnackbar,
         snackBarMessage: RequestCreateSuccessMessage.editedRequest
       });
+      await this.props.fetchRequests();
     }
 
     if (prevProps.deleteRequestMessage !== this.props.deleteRequestMessage) {
@@ -281,7 +287,7 @@ export class Request extends React.Component<Props, State>  {
     this.toggleRequestForm();
   }
 
-  public handleEditSubmit(event: React.SyntheticEvent<HTMLInputElement>): void {
+  public handleEditSubmit = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
@@ -290,7 +296,7 @@ export class Request extends React.Component<Props, State>  {
     if (this.props.role === Role.student) {
       delete this.state.requestDetail.students;
     }
-    this.props.editRequest(id, this.state.requestDetail);
+    await this.props.editRequest(id, this.state.requestDetail);
     this.toggleRequestForm();
   }
 
@@ -487,10 +493,6 @@ export class Request extends React.Component<Props, State>  {
     />
   )
 
-  public handleNext = () => {
-    // ff
-  }
-
   public render(): JSX.Element {
     const requestAdded = this.state.requests.map((request, i) => (
       <li className="nabi-list" key={i}>
@@ -550,7 +552,6 @@ export class Request extends React.Component<Props, State>  {
         <StepperButtons
           nextPath={Routes.Dashboard}
           backPath={Routes.BuildRequest + RequestBuilderStepper.StepsPaths.AccountInfo}
-          handleNext={this.handleNext}
           icon={<ArrowForward />}
         />
         <SnackBar
@@ -618,7 +619,8 @@ const mapDispatchToProps = (
   createRequest: (requests: RequestType) => dispatch(createRequest(requests)),
   fetchRequests: () => dispatch(fetchRequests()),
   deleteRequest: (id: number) => dispatch(deleteRequestAsnyc(id)),
-  editRequest: (id: number, data: RequestType) => dispatch(editRequestAsync(id, data))
+  editRequest: (id: number, data: RequestType) => dispatch(editRequestAsync(id, data)),
+  fetchUser: () => dispatch(fetchUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Request);

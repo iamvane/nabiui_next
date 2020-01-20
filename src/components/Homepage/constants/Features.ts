@@ -1,5 +1,5 @@
 export const title = 'Nabi Music Features';
-export const description = 'Nabi Music provides a well-rounded music learning experience, allowing parents to connect with qualified instructors nearby and providing unique features that motivate parents’ involvement in their children musical path.';
+export const description = 'Nabi Music is an innovative music learning experience for children that allows parents to connect with qualified instructors nearby and privides unique features that motivate parents’ involvement in their children musical path.';
 export const features = [
   {
     title: 'Pre-Screening',

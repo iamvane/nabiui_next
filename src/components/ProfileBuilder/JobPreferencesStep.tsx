@@ -73,7 +73,6 @@ export class JobPreferencesStep extends React.Component<Props, State> {
     this.state = {
       name: '',
       language: '',
-      skillLevel: SkillLevel.beginner,
       instruments: [],
       languages: [],
       mins30: 0,
@@ -101,6 +100,8 @@ export class JobPreferencesStep extends React.Component<Props, State> {
       musicTheory: false,
       youngChildrenExperience: false,
       repertoireSelection: false,
+      instrument: '',
+      skillLevel: '' as SkillLevel
     };
   }
 
