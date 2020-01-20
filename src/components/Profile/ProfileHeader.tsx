@@ -38,7 +38,7 @@ export const ProfileHeader = (props: Props) => {
   const BackgroundCheckIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg';
   const {
     bioTitle,
-    avatarImage,
+    avatar,
     displayName,
     reviews,
     experience,
@@ -98,7 +98,7 @@ export const ProfileHeader = (props: Props) => {
         </div>
         <div>
           <div className="nabi-display-inline-block">
-            <Avatar alt={displayName} src={avatarImage ? avatarImage : defaultAvatar} className="profile-avatar"/>
+            <Avatar alt={displayName} src={avatar ? avatar : defaultAvatar} className="profile-avatar"/>
             {/*tslint:disable-next-line:max-line-length*/}
             {/* <AvatarUploader originalImage={avatarImage} imageChanged={(avatarImg: string) => { props.changeAvatar(avatarImg); }} /> */}
           </div>
