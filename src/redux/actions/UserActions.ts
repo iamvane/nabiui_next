@@ -368,6 +368,23 @@ export const fetchLowestRate = (): ThunkAction<Promise<void>, {}, {}> => async (
   }
 };
 
+
+export const fetchReferralInfo = (token): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(UserActions.FETCH_REFERRAL_INFO));
+  try {
+    const response = await axios.get(`${ApiEndpoints.fetchReferralInfo}${token}`);
+
+    dispatch(withDataAction(UserActions.FETCH_REFERRAL_INFO_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(UserActions.FETCH_REFERRAL_INFO_FAILURE, errorMessage));
+  }
+};
+
 export const fetchDashboard = (role: Role): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
 ) => {
@@ -390,3 +407,9 @@ export const fetchDashboard = (role: Role): ThunkAction<Promise<void>, {}, {}> =
     dispatch(withErrorAction(UserActions.FETCH_DASHBOARD_FAILURE, errorMessage));
   }
 };
+
+
+export const setUserEmail = (email) => ({
+  email,
+  type: ''
+})

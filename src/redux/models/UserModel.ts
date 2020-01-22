@@ -46,10 +46,16 @@ import { InstructorType } from './InstructorModel';
     country: string;
   }
 
+  interface ReferralInfo {
+    displayName: string;
+    avatar: string;
+  }
+
   export interface UserState {
     lowestRate?: number;
     user: UserType;
     token: string;
+    referralInfo: ReferralInfo;
     invitationToken: string;
     pathname?: string;
     actions: {
@@ -70,6 +76,7 @@ import { InstructorType } from './InstructorModel';
       referralInvite: ActionStatusWithMessage;
       fetchLowestRate: ActionStatus;
       fetchDashboard: ActionStatus;
+      fetchReferralInfo: ActionStatus;
     };
   }
 
@@ -100,6 +107,10 @@ import { InstructorType } from './InstructorModel';
     },
     token: '',
     invitationToken: '',
+    referralInfo: {
+      displayName: '',
+      avatar: ''
+    },
     actions: {
       createUser: {
         isRequesting: false,
@@ -124,6 +135,10 @@ import { InstructorType } from './InstructorModel';
         message: ''
       },
       fetchStudentDetail: {
+        isRequesting: false,
+        error: ''
+      },
+      fetchReferralInfo: {
         isRequesting: false,
         error: ''
       },
