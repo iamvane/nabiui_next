@@ -7,8 +7,10 @@ import {
   TextField,
   Button
 } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 import "../../../assets/scss/ReferralModal.scss";
+import { StoreState } from "../../redux/reducers/store";
 
 interface Props {
   isOpen: boolean;
@@ -17,6 +19,7 @@ interface Props {
 
 const ReferralModal: React.StatelessComponent<Props> = props => {
   const [email, setEmail] = React.useState("");
+  const referralInfo = useSelector((state: StoreState) => state.user.referralInfo);
 
   const handleSetEmail = () => {
     alert(email);
@@ -33,13 +36,13 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
         <DialogContent>
           <Avatar
             alt="Remy Sharp"
-            src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg"
+            src={referralInfo.avatar}
             className="nabi-margin-center avatar nabi-margin-bottom-small"
           />
 
           <DialogContentText className="nabi-text-center">
             Sign up today to get 20% off your first lesson package. Your invite
-            from mariana expires in 30 days
+            from {referralInfo.displayName} expires in 30 days
           </DialogContentText>
           <TextField
             fullWidth={true}

@@ -7,6 +7,7 @@ import { UserActions } from "../actions/UserActionTypes";
 import { APIActions } from "../models/models";
 import { setDashboard } from "../../utils/setDashboard";
 import { setProfile } from "./utils";
+import _ from "lodash";
 
 export default function usersReducer(
   state: UserState = defaultUsersState,
@@ -75,14 +76,11 @@ export default function usersReducer(
       };
 
     case UserActions.FETCH_REFERRAL_INFO_SUCCESS:
-      const referralInfo = {
-        displayName: action.displayName,
-        avatar: action.avatar
-      };
-
       return {
         ...state,
-        referralInfo,
+        referralInfo: {
+          ...action.data
+        },
         actions: {
           ...state.actions,
           fetchReferralInfo: {
@@ -94,14 +92,16 @@ export default function usersReducer(
       };
 
     case UserActions.FETCH_REFERRAL_INFO_FAILURE: {
-      const { message } = action;
+      const { error: referralInfoError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
           ...state.actions,
           fetchReferralInfo: {
             isRequesting: false,
-            error: message,
+            error: referralInfoError,
           }
         }
       };

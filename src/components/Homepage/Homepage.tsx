@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import Router from "next/router";
 
 import { StoreState } from "../../redux/reducers/store";
@@ -12,7 +12,8 @@ import Testimonials from "./Testimonials";
 import BecomeATeacher from "./BecomeATeacher";
 import FreeLesson from "./FreeLesson";
 import { useRouter } from "next/router";
-import ReferralModal from '../Referral/ReferralModal';
+import ReferralModal from "../Referral/ReferralModal";
+import { fetchReferralInfo } from "../../redux/actions/UserActions";
 
 /**
  * Homepage component
@@ -27,18 +28,27 @@ interface StateProps {
   token: string;
 }
 
-export interface Props
-  extends // RouteComponentProps<{}>,
-  StateProps {}
+export interface Props extends StateProps {} // RouteComponentProps<{}>,
 
 export const Homepage = (props: Props) => {
   const { query } = useRouter();
-  const [openModal, setOpenModal] = React.useState(false)
+  const dispath = useDispatch();
+  const [openModal, setOpenModal] = React.useState(false);
+  const displayName = useSelector(
+    (state: StoreState) => state.user.referralInfo.displayName
+  );
 
   React.useEffect(() => {
+    if (displayName) {
+      setOpenModal(true);
+    }
+
+    if (props.token) {
+      Router.push(Routes.Dashboard);
+    }
 
     if (query.token) {
-      setOpenModal(true)
+      dispath(fetchReferralInfo(query.token));
     }
 
     const userId = props.user ? props.user.email : "anonymous";
@@ -50,20 +60,19 @@ export const Homepage = (props: Props) => {
       }
     };
     page("Home", analiticsProps);
-
-    if (props.token) {
-      Router.push(Routes.Dashboard);
-    }
-  }, []);
+  }, [displayName]);
 
   return (
     <div>
-      <Banner showClaimDiscountBanner={true} />
+      <Banner showClaimDiscountBanner={displayName ? true : false} />
       <Features />
       <Testimonials />
       <BecomeATeacher />
       <FreeLesson />
-      <ReferralModal isOpen={openModal} handleClose={() => setOpenModal(true)}/>
+      <ReferralModal
+        isOpen={openModal}
+        handleClose={() => setOpenModal(false)}
+      />
     </div>
   );
 };

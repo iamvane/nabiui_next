@@ -26,15 +26,24 @@ const ClaimDiscountBanner = () => {
         Available for new users only.{" "}
         <span className="nabi-color-nabi">Terms apply</span>
       </Typography>
-      <Grid xs={4} className="nabi-display-flex nabi-margin-center nabi-margin-top-small">
-        <Avatar
-          alt="Remy Sharp"
-          src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg"
-          className="avatar nabi-margin-right-xsmall"
-        />
-        <Typography className="nabi-align-self-center">
-          Your invitation from Mariana expire in 30 days.
-        </Typography>
+      <Grid
+        xs={12}
+        md={3}
+        container
+        className="nabi-display-flex nabi-margin-center nabi-margin-top-small"
+      >
+        <Grid xs={12} md={3}>
+          <Avatar
+            alt="Remy Sharp"
+            src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg"
+            className="avatar nabi-margin-right-xsmall"
+          />
+        </Grid>
+        <Grid xs={12} md={9} className="nabi-align-self-center">
+          <Typography>
+            Your invitation from Mariana expire in 30 days.
+          </Typography>
+        </Grid>
       </Grid>
     </div>
   );
