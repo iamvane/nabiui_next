@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import Router from "next/router";
@@ -6,7 +6,7 @@ import { Routes } from "../common/constants/Routes";
 
 import "../../../assets/scss/ReferralModal.scss";
 import { StoreState } from "../../redux/reducers/store";
-import { setUserEmail } from '../../redux/actions/UserActions';
+import { setUserEmail } from "../../redux/actions/UserActions";
 
 import {
   Dialog,
@@ -17,20 +17,46 @@ import {
   Button
 } from "@material-ui/core";
 
-
 interface Props {
   isOpen: boolean;
   handleClose: () => void;
 }
 
 const ReferralModal: React.StatelessComponent<Props> = props => {
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = useState("");
   const dispatch = useDispatch();
-  const referralInfo = useSelector((state: StoreState) => state.user.referralInfo);
+  const [emailError, setEmailError] = useState("");
+  const [submitEmail, setSubmitEmail] = useState(false);
+  const referralInfo = useSelector(
+    (state: StoreState) => state.user.referralInfo
+  );
+
+  React.useEffect(() => {
+    if (submitEmail && !emailError) {
+      dispatch(setUserEmail(email));
+      Router.push(Routes.Registration);
+    }
+  }, [submitEmail]);
 
   const handleSetEmail = () => {
-    dispatch(setUserEmail(email))
-    Router.push(Routes.Registration)
+    validateEmail();
+    setSubmitEmail(true);
+  };
+
+  const validateEmail = () => {
+    if (
+      !/^([a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{1,64}@([a-zA-Z0-9-]+.[a-zA-Z0-9-]{2,}){1,255}){1,320}$/.test(
+        email
+      ) ||
+      /^\s*$/.test(email)
+    ) {
+      setEmailError("Invalid email. Enter a valid email address.");
+    }
+  };
+
+  const handleChangeEmail = event => {
+    setEmail(event.target.value);
+    setEmailError("");
   };
 
   return (
@@ -58,14 +84,15 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
             placeholder="Email address"
             required={true}
             value={email}
-            onChange={event => setEmail(event.target.value)}
+            error={!!emailError}
+            helperText={emailError}
+            onChange={handleChangeEmail}
           />
           <div className="nabi-text-center nabi-margin-top-small">
             <Button
               color="primary"
               className="nabi-text-uppercase"
               variant="contained"
-              type="submit"
               onClick={handleSetEmail}
             >
               GET STARTED
