@@ -32,14 +32,14 @@ const ClaimDiscountBanner = () => {
         container
         className="nabi-display-flex nabi-margin-center nabi-margin-top-small"
       >
-        <Grid xs={12} md={3}>
+        <Grid item xs={12} md={3}>
           <Avatar
             alt="Remy Sharp"
             src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg"
-            className="avatar nabi-margin-right-xsmall"
+            className="avatar nabi-margin-center"
           />
         </Grid>
-        <Grid xs={12} md={9} className="nabi-align-self-center">
+        <Grid item xs={12} md={9} className="nabi-align-self-center">
           <Typography>
             Your invitation from Mariana expire in 30 days.
           </Typography>
