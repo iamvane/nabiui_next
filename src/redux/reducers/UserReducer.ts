@@ -76,6 +76,7 @@ export default function usersReducer(
       };
 
     case UserActions.FETCH_REFERRAL_INFO_SUCCESS:
+        setCookie("token", action.data.token);
       return {
         ...state,
         referralInfo: {
