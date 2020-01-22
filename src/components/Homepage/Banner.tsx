@@ -22,7 +22,7 @@ export const Banner = (props: Props) => {
         {props.showClaimDiscountBanner ? (
           <ClaimDiscountBanner />
         ) : (
-          <div>
+          <>
             <h1 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-white nabi-margin-bottom-xsmall nabi-text-center nabi-text-shadow">
               {BannerComponent.text}
             </h1>
@@ -34,7 +34,7 @@ export const Banner = (props: Props) => {
                 <Grid item={true} xs={12} md={6}>
                   <Link href={Routes.Registration}>
                     <a>
-                      <Button color="primary" variant="contained">
+                      <Button color="primary" variant="contained" className="nabi-full-width">
                         {BannerComponent.findInstructorButton}
                       </Button>
                     </a>
@@ -43,7 +43,7 @@ export const Banner = (props: Props) => {
                 <Grid item={true} xs={12} md={6}>
                   <Link href={Routes.Registration}>
                     <a>
-                      <Button color="secondary" variant="contained">
+                      <Button color="secondary" variant="contained" className="nabi-full-width">
                         {BannerComponent.startTeachingButton}
                       </Button>
                     </a>
@@ -51,7 +51,7 @@ export const Banner = (props: Props) => {
                 </Grid>
               </Grid>
             </Grid>
-          </div>
+          </>
         )}
       </div>
     </section>

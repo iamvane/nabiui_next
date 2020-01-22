@@ -64,7 +64,7 @@ export const Homepage = (props: Props) => {
 
   return (
     <div>
-      <Banner showClaimDiscountBanner={displayName ? true : false} />
+      <Banner showClaimDiscountBanner={false} />
       <Features />
       <Testimonials />
       <BecomeATeacher />
