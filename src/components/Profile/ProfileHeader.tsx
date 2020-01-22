@@ -41,7 +41,7 @@ export const ProfileHeader = (props: Props) => {
     avatar,
     displayName,
     reviews,
-    experience,
+    yearsOfExperience,
     age,
     rates,
     memberSince,
@@ -116,7 +116,7 @@ export const ProfileHeader = (props: Props) => {
           <span className="nabi-color-nabi">{reviews}</span>
         </div>
         <Typography className="nabi-text-uppercase">
-          {experience} {ProfileHeaderComponent.Text.YearExperiece} | {age} {ProfileHeaderComponent.Text.YearOld}
+          {yearsOfExperience} {ProfileHeaderComponent.Text.YearExperiece} | {age} {ProfileHeaderComponent.Text.YearOld}
         </Typography>
       </Grid>
       <Grid item={true} md={7} xs={12} className="nabi-text-center nabi-text-left-md nabi-padding-left-large-md">
