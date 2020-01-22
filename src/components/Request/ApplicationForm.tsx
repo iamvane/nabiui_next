@@ -10,6 +10,7 @@ import {
 
 import SectionTitle from '../common/SectionTitle';
 import { RequestViewComponent } from './constants';
+import { RatesComponent } from '../Rates/constants';
 
 interface Props {
   request: any;
@@ -42,6 +43,10 @@ function NumberFormatCustom(props: any) {
 }
 
 const ApplicationForm = (props:Props) => {
+  const instructorGain: number =
+    isNaN(Number(props.rate) - (Number(props.rate) * .25))
+    ? 0
+    : (Number(props.rate)) - (Number(props.rate) * .25);
   return (
     <React.Fragment>
       <form noValidate={true} autoComplete="off" onSubmit={props.handleSubmit}>
@@ -71,6 +76,19 @@ const ApplicationForm = (props:Props) => {
               inputComponent: NumberFormatCustom,
             }}
           />
+           {instructorGain !== 0  &&
+            <Typography
+              color="secondary"
+              className="nabi-color-orange"
+            >
+              {
+                RatesComponent.instructorGain.replace(
+                  RatesComponent.gainPlaceholder,
+                  String(instructorGain.toFixed(2))
+                )
+              }
+            </Typography>
+          }
         </Grid>
         <Typography
           className="nabi-text-mediumbold nabi-text-center nabi-margin-bottom-xsmall nabi-text-uppercase"

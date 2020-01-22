@@ -99,7 +99,7 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
         }
       />
       <Typography className="nabi-margin-bottom-medium">
-        {props.instructor.bio ? props.instructor.bio : ProfileContentComponent.Text.noContent}
+        {props.instructor.bioDescription ? props.instructor.bioDescription : ProfileContentComponent.Text.noContent}
       </Typography>
       <SectionTitle text={ProfileContentComponent.Text.TeachingExperience} />
       {props.instructor.employment && props.instructor.employment.length ?
