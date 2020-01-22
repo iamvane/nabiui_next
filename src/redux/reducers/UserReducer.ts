@@ -158,7 +158,6 @@ export default function usersReducer(
       };
 
     case UserActions.SET_URL_PATHNAME:
-      console.log(action)
       setCookie('pathname', action.pathname);
       return {
         ...state,

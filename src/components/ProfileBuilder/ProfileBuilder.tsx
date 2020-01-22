@@ -33,7 +33,6 @@ export const ProfileBuilder = (props: Props) => {
   };
 
   const router = useRouter();
-  console.log(router);
   const snackBarMessage = reactStringReplace(
     AnnouncementConstants.preLaunchWelcomeInstructor,
     AnnouncementConstants.welcomePlaceholder,

@@ -71,7 +71,6 @@ export const Registration = (props: Props) => {
   const [isAttemptToRegister, setIsAttemptToRegister] = React.useState(false);
 
   React.useEffect(() => {
-    alert(props.email);
     setEmail(props.email);
     const analiticsProps = {
       properties: {
