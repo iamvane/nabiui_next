@@ -7,6 +7,7 @@ import { Routes } from "../common/constants/Routes";
 import "../../../assets/scss/ReferralModal.scss";
 import { StoreState } from "../../redux/reducers/store";
 import { setUserEmail } from "../../redux/actions/UserActions";
+import { ReferralModalComponent } from "./constants";
 
 import {
   Dialog,
@@ -75,8 +76,11 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
           />
 
           <DialogContentText className="nabi-text-center">
-            Sign up today to get 20% off your first lesson package. Your invite
-            from {referralInfo.displayName} expires in 30 days
+            {ReferralModalComponent.Text.SingUpToday}
+            {ReferralModalComponent.Text.YourInviteFrom.replace(
+              ReferralModalComponent.Text.UserPlaceHolder,
+              referralInfo.displayName
+            )}
           </DialogContentText>
           <TextField
             fullWidth={true}
@@ -95,7 +99,7 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
               variant="contained"
               onClick={handleSetEmail}
             >
-              GET STARTED
+              {ReferralModalComponent.Btn.GetStarted}
             </Button>
           </div>
         </DialogContent>
