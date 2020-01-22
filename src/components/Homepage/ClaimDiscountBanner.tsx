@@ -4,18 +4,17 @@ import Router from "next/router";
 import { Routes } from "../common/constants/Routes";
 
 import { Typography, Button, Avatar, Grid } from "@material-ui/core";
+import { ClaimDiscountBannerComponent } from "./constants/ClaimDiscountBanner";
 
 const ClaimDiscountBanner = () => {
   return (
     <div className="nabi-section-wide nabi-background-white nabi-text-center">
       <h1 className="nabi-color-nabi">
-        Join Nabi Music and get 20% off your first lesson package
+        {ClaimDiscountBannerComponent.joinNabiMusic}
       </h1>
-      <Typography>
-        Nabi Music provides a well-rounded music learning experience
-      </Typography>
+      <Typography>{ClaimDiscountBannerComponent.nabiMusicProvides}</Typography>
       <Typography className="nabi-margin-bottom-small">
-        Connect with qualified instructors nearby and get started
+        {ClaimDiscountBannerComponent.connectWith}
       </Typography>
       <Button
         color="primary"
@@ -23,11 +22,13 @@ const ClaimDiscountBanner = () => {
         variant="contained"
         onClick={() => Router.push(Routes.Registration)}
       >
-        CLAIM YOUR DISCOUNT
+        {ClaimDiscountBannerComponent.claimYourDiscount}
       </Button>
       <Typography className="nabi-margin-top-xsmall">
-        Available for new users only.{" "}
-        <span className="nabi-color-nabi">Terms apply</span>
+        {ClaimDiscountBannerComponent.availableForNewUsersOnly}{" "}
+        <span className="nabi-color-nabi">
+          {ClaimDiscountBannerComponent.termsApply}
+        </span>
       </Typography>
       <Grid
         xs={12}
@@ -44,7 +45,7 @@ const ClaimDiscountBanner = () => {
         </Grid>
         <Grid item xs={12} md={9} className="nabi-align-self-center">
           <Typography>
-            Your invitation from Mariana expire in 30 days.
+            {ClaimDiscountBannerComponent.YourInvitationFrom}
           </Typography>
         </Grid>
       </Grid>
