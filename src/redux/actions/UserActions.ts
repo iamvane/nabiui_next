@@ -442,5 +442,5 @@ export const fetchDashboard = (
 
 export const setUserEmail = email => ({
   email,
-  type: ""
+  type: UserActions.SET_USER_EMAIL
 });

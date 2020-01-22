@@ -1,5 +1,8 @@
 import React from "react";
 
+import Router from "next/router";
+import { Routes } from "../common/constants/Routes";
+
 import { Typography, Button, Avatar, Grid } from "@material-ui/core";
 
 const ClaimDiscountBanner = () => {
@@ -18,7 +21,7 @@ const ClaimDiscountBanner = () => {
         color="primary"
         className="nabi-text-uppercase nabi-margin-top-small"
         variant="contained"
-        type="submit"
+        onClick={() => Router.push(Routes.Registration)}
       >
         CLAIM YOUR DISCOUNT
       </Button>

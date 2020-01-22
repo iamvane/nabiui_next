@@ -92,16 +92,14 @@ export default function usersReducer(
       };
 
     case UserActions.FETCH_REFERRAL_INFO_FAILURE: {
-      const { error: referralInfoError } = <APIActions.WithError<string>>(
-        action
-      );
+      const { error: referralInfoError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
           ...state.actions,
           fetchReferralInfo: {
             isRequesting: false,
-            error: referralInfoError,
+            error: referralInfoError
           }
         }
       };
@@ -747,6 +745,14 @@ export default function usersReducer(
               error: fetchDashboardError
             }
           }
+        }
+      };
+    case UserActions.SET_USER_EMAIL:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          email: action.email
         }
       };
 

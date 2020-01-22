@@ -1,4 +1,13 @@
 import * as React from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import Router from "next/router";
+import { Routes } from "../common/constants/Routes";
+
+import "../../../assets/scss/ReferralModal.scss";
+import { StoreState } from "../../redux/reducers/store";
+import { setUserEmail } from '../../redux/actions/UserActions';
+
 import {
   Dialog,
   DialogContent,
@@ -7,10 +16,7 @@ import {
   TextField,
   Button
 } from "@material-ui/core";
-import { useSelector } from "react-redux";
 
-import "../../../assets/scss/ReferralModal.scss";
-import { StoreState } from "../../redux/reducers/store";
 
 interface Props {
   isOpen: boolean;
@@ -19,10 +25,12 @@ interface Props {
 
 const ReferralModal: React.StatelessComponent<Props> = props => {
   const [email, setEmail] = React.useState("");
+  const dispatch = useDispatch();
   const referralInfo = useSelector((state: StoreState) => state.user.referralInfo);
 
   const handleSetEmail = () => {
-    alert(email);
+    dispatch(setUserEmail(email))
+    Router.push(Routes.Registration)
   };
 
   return (
