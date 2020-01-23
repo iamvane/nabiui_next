@@ -45,7 +45,7 @@ const ClaimDiscountBanner = (props: Props) => {
         className="nabi-display-flex nabi-margin-center"
       >
         {props.referralInfo && props.referralInfo.avatar ? (
-          <Grid item xs={12} md={3} className="nabi-margin-bottom-xsmall nabi-margin-top-smal">
+          <Grid item xs={12} md={3} className="nabi-margin-bottom-xsmall nabi-margin-top-small">
             <Badge
               overlap="circle"
               anchorOrigin={{
