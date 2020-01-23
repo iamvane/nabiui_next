@@ -2,10 +2,11 @@ import React from "react";
 
 import Router from "next/router";
 import { Routes } from "../common/constants/Routes";
+import Link from "next/link";
 
 import { Typography, Button, Avatar, Grid } from "@material-ui/core";
 import { ClaimDiscountBannerComponent } from "./constants/ClaimDiscountBanner";
-import { ReferralInfo } from '../Referral/models';
+import { ReferralInfo } from "../Referral/models";
 
 interface Props {
   referralInfo: ReferralInfo;
@@ -31,9 +32,11 @@ const ClaimDiscountBanner = (props: Props) => {
       </Button>
       <Typography className="nabi-margin-top-xsmall">
         {ClaimDiscountBannerComponent.availableForNewUsersOnly}{" "}
-        <span className="nabi-color-nabi">
-          {ClaimDiscountBannerComponent.termsApply}
-        </span>
+        <Link href={Routes.TermsOfUse}>
+          <span className="nabi-color-nabi nabi-cursor-pointer">
+            {ClaimDiscountBannerComponent.termsApply}
+          </span>
+        </Link>
       </Typography>
       <Grid
         xs={12}
