@@ -34,12 +34,12 @@ export const Homepage = (props: Props) => {
   const { query } = useRouter();
   const dispath = useDispatch();
   const [openModal, setOpenModal] = React.useState(false);
-  const displayName = useSelector(
-    (state: StoreState) => state.user.referralInfo.displayName
+  const referralInfo = useSelector(
+    (state: StoreState) => state.user.referralInfo
   );
 
   React.useEffect(() => {
-    if (displayName) {
+    if (referralInfo.displayName) {
       setOpenModal(true);
     }
 
@@ -60,11 +60,11 @@ export const Homepage = (props: Props) => {
       }
     };
     page("Home", analiticsProps);
-  }, [displayName]);
+  }, [referralInfo.displayName]);
 
   return (
     <div>
-      <Banner showClaimDiscountBanner={displayName ? true : false} />
+      <Banner referralInfo={referralInfo} />
       <Features />
       <Testimonials />
       <BecomeATeacher />

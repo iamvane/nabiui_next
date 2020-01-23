@@ -6,7 +6,11 @@ import { Routes } from "../common/constants/Routes";
 import { Typography, Button, Avatar, Grid } from "@material-ui/core";
 import { ClaimDiscountBannerComponent } from "./constants/ClaimDiscountBanner";
 
-const ClaimDiscountBanner = () => {
+interface Props {
+  referralInfo: any;
+}
+
+const ClaimDiscountBanner = (props: Props) => {
   return (
     <div className="nabi-section-wide nabi-background-white nabi-text-center">
       <h1 className="nabi-color-nabi">
@@ -36,16 +40,24 @@ const ClaimDiscountBanner = () => {
         container
         className="nabi-display-flex nabi-margin-center nabi-margin-top-small"
       >
-        <Grid item xs={12} md={3}>
-          <Avatar
-            alt="Remy Sharp"
-            src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg"
-            className="avatar nabi-margin-center"
-          />
-        </Grid>
+        {props.referralInfo && props.referralInfo.avatar ? (
+          <Grid item xs={12} md={3}>
+            <Avatar
+              alt="referrer-user"
+              src={props.referralInfo.avatar}
+              className="avatar nabi-margin-center"
+            />
+          </Grid>
+        ) : (
+          ""
+        )}
+
         <Grid item xs={12} md={9} className="nabi-align-self-center">
           <Typography>
-            {ClaimDiscountBannerComponent.YourInvitationFrom}
+            {ClaimDiscountBannerComponent.yourInviteFrom.replace(
+              ClaimDiscountBannerComponent.userPlaceHolder,
+              props.referralInfo.displayName
+            )}
           </Typography>
         </Grid>
       </Grid>

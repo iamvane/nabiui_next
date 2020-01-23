@@ -69,11 +69,15 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
         scroll="body"
       >
         <DialogContent>
-          <Avatar
-            alt="Remy Sharp"
-            src={referralInfo.avatar}
-            className="nabi-margin-center avatar nabi-margin-bottom-small"
-          />
+          {referralInfo.avatar ? (
+            <Avatar
+              alt="referrer-user"
+              src={referralInfo.avatar}
+              className="nabi-margin-center avatar nabi-margin-bottom-small"
+            />
+          ) : (
+            ""
+          )}
 
           <DialogContentText className="nabi-text-center">
             {ReferralModalComponent.Text.SingUpToday}

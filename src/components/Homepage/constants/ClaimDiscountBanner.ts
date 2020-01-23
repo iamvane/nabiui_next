@@ -4,6 +4,7 @@ export namespace ClaimDiscountBannerComponent {
   export const claimYourDiscount = "Claim your discount";
   export const connectWith = "Connect with qualified instructors nearby and get started";
   export const availableForNewUsersOnly  = "Available for new users only.";
-  export const termsApply = "Terms apply"
-  export const YourInvitationFrom = "Your invitation from Mariana expire in 30 days."
+  export const termsApply = "Terms apply";
+  export const userPlaceHolder = "{user}";
+  export const yourInviteFrom = "Your invite from {user} expires in 30 days";
 }

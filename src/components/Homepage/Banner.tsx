@@ -9,7 +9,7 @@ import { BannerComponent } from "./constants/Banner";
 import ClaimDiscountBanner from "./ClaimDiscountBanner";
 
 interface Props {
-  showClaimDiscountBanner?: boolean;
+  referralInfo?: any;
 }
 
 /**
@@ -19,8 +19,8 @@ export const Banner = (props: Props) => {
   return (
     <section id="banner" className="nabi-position-relative">
       <div className="container">
-        {props.showClaimDiscountBanner ? (
-          <ClaimDiscountBanner />
+        {props.referralInfo && props.referralInfo.displayName ? (
+          <ClaimDiscountBanner referralInfo={props.referralInfo} />
         ) : (
           <>
             <h1 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-white nabi-margin-bottom-xsmall nabi-text-center nabi-text-shadow">
