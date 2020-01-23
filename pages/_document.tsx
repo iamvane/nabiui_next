@@ -1,10 +1,25 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
+import * as Sentry from '@sentry/browser';
+
+process.on('unhandledRejection', (err) => {
+  Sentry.captureException(err);
+});
+
+process.on('uncaughtException', (err) => {
+  Sentry.captureException(err);
+});
 
 class NabiDocument extends Document {
   constructor (props) {
     super(props);
   }
+
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return {...initialProps};
+  }
+
   componentDidMount () {
     !(function () {
       var analytics = window.analytics = window.analytics || []; if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {

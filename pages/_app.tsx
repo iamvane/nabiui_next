@@ -3,6 +3,7 @@ import App from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
+import * as Sentry from '@sentry/browser';
 import {
   MuiThemeProvider
 } from '@material-ui/core/styles';
@@ -17,6 +18,11 @@ import { parseCookies } from '../src/utils/parseCookies';
 import { theme } from '../theme/theme';
 
 require('../src/utils/axiosClient');
+
+
+Sentry.init({
+  dsn: "https://bbb8a78b6945414fa1a9b3d32f16a5b6@sentry.io/1774691"
+});
 
 class NabiApp extends App<any, any> {
   static async getInitialProps({ Component, ctx}) {
@@ -34,6 +40,19 @@ class NabiApp extends App<any, any> {
       this.props.store.dispatch(setAuthToken(this.props.token));
     }
   }
+
+  componentDidCatch(error, errorInfo) {
+    Sentry.withScope((scope) => {
+      Object.keys(errorInfo).forEach((key) => {
+        scope.setExtra(key, errorInfo[key]);
+      });
+
+      Sentry.captureException(error);
+    });
+
+    super.componentDidCatch(error, errorInfo);
+  }
+
   render() {
     const { Component, pageProps, store } = this.props;
     return (
