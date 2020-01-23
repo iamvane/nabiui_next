@@ -7,9 +7,10 @@ import "../../../assets/scss/Banner.scss";
 import { Routes } from "../common/constants//Routes";
 import { BannerComponent } from "./constants/Banner";
 import ClaimDiscountBanner from "./ClaimDiscountBanner";
+import { ReferralInfo } from '../Referral/models';
 
 interface Props {
-  referralInfo?: any;
+  referralInfo?: ReferralInfo;
 }
 
 /**

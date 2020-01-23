@@ -5,9 +5,10 @@ import { Routes } from "../common/constants/Routes";
 
 import { Typography, Button, Avatar, Grid } from "@material-ui/core";
 import { ClaimDiscountBannerComponent } from "./constants/ClaimDiscountBanner";
+import { ReferralInfo } from '../Referral/models';
 
 interface Props {
-  referralInfo: any;
+  referralInfo: ReferralInfo;
 }
 
 const ClaimDiscountBanner = (props: Props) => {

@@ -33,7 +33,7 @@ interface StateProps {
   invitationToken: string;
   isRequesting: boolean;
   apiError: string;
-  email: any;
+  email: string;
 }
 
 interface OwnProps {
