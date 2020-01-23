@@ -901,6 +901,11 @@ li.nabi-list-style-position-inside {
 	height: 120px !important;
 }
 
+.small-avatar {
+	width: 30px !important;
+	height: 30px !important;
+}
+
 .completed-button {
 	background-image: linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
 	background-image: -o-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);

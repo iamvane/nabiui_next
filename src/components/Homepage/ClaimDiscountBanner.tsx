@@ -4,7 +4,7 @@ import Router from "next/router";
 import { Routes } from "../common/constants/Routes";
 import Link from "next/link";
 
-import { Typography, Button, Avatar, Grid } from "@material-ui/core";
+import { Typography, Button, Avatar, Grid, Badge } from "@material-ui/core";
 import { ClaimDiscountBannerComponent } from "./constants/ClaimDiscountBanner";
 import { ReferralInfo } from "../Referral/models";
 
@@ -42,15 +42,30 @@ const ClaimDiscountBanner = (props: Props) => {
         xs={12}
         md={3}
         container
-        className="nabi-display-flex nabi-margin-center nabi-margin-top-small"
+        className="nabi-display-flex nabi-margin-center"
       >
         {props.referralInfo && props.referralInfo.avatar ? (
-          <Grid item xs={12} md={3}>
-            <Avatar
-              alt="referrer-user"
-              src={props.referralInfo.avatar}
-              className="avatar nabi-margin-center"
-            />
+          <Grid item xs={12} md={3} className="nabi-margin-bottom-xsmall nabi-margin-top-smal">
+            <Badge
+              overlap="circle"
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right"
+              }}
+              badgeContent={
+                <Avatar
+                  alt="gift"
+                  className="small-avatar"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+                />
+              }
+            >
+              <Avatar
+                alt="referrer-user"
+                src={props.referralInfo.avatar}
+                className="avatar nabi-margin-center"
+              />
+            </Badge>
           </Grid>
         ) : (
           ""

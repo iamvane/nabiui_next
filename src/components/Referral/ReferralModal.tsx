@@ -14,6 +14,7 @@ import {
   DialogContent,
   DialogContentText,
   Avatar,
+  Badge,
   TextField,
   Button
 } from "@material-ui/core";
@@ -70,11 +71,29 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
       >
         <DialogContent>
           {referralInfo.avatar ? (
-            <Avatar
-              alt="referrer-user"
-              src={referralInfo.avatar}
-              className="nabi-margin-center avatar nabi-margin-bottom-small"
-            />
+            <div className="nabi-text-center nabi-margin-bottom-xsmall">
+              <Badge
+                className="nabi-margin-center"
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right"
+                }}
+                badgeContent={
+                  <Avatar
+                    alt="gift"
+                    className="small-avatar"
+                    src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+                  />
+                }
+              >
+                <Avatar
+                  alt="referrer-user"
+                  src={referralInfo.avatar}
+                  className="avatar"
+                />
+              </Badge>
+            </div>
           ) : (
             ""
           )}
