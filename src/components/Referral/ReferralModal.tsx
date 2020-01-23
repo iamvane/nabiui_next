@@ -51,7 +51,7 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
       ) ||
       /^\s*$/.test(email)
     ) {
-      setEmailError("Invalid email. Enter a valid email address.");
+      setEmailError(ReferralModalComponent.Text.invalidEmail);
     }
   };
 
@@ -80,9 +80,9 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
           )}
 
           <DialogContentText className="nabi-text-center">
-            {ReferralModalComponent.Text.SingUpToday}
-            {ReferralModalComponent.Text.YourInviteFrom.replace(
-              ReferralModalComponent.Text.UserPlaceHolder,
+            {ReferralModalComponent.Text.singUpToday}
+            {ReferralModalComponent.Text.yourInviteFrom.replace(
+              ReferralModalComponent.Text.userPlaceHolder,
               referralInfo.displayName
             )}
           </DialogContentText>
