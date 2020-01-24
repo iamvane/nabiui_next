@@ -1,29 +1,32 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
+import * as React from "react";
+import { connect, useSelector } from "react-redux";
 
 import Router from "next/router";
-import { withRouter, NextRouter } from 'next/router';
-import { WithRouterProps } from 'next/dist/client/with-router';
-import Link from 'next/link';
+import { withRouter, NextRouter } from "next/router";
+import { WithRouterProps } from "next/dist/client/with-router";
+import Link from "next/link";
 
-import { Button } from '@material-ui/core';
-import Menu from '@material-ui/icons/Menu';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Button, Typography, Avatar, Badge } from "@material-ui/core";
+import Menu from "@material-ui/icons/Menu";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-import '../../../assets/scss/Header.scss';
-import { StoreState } from '../../redux/reducers/store';
-import { UserType } from '../../redux/models/UserModel';
-import { logOutUser } from '../../redux/actions/UserActions';
-import { Routes } from '../common/constants/Routes';
+import "../../../assets/scss/Header.scss";
+import { StoreState } from "../../redux/reducers/store";
+import { UserType } from "../../redux/models/UserModel";
+import { logOutUser } from "../../redux/actions/UserActions";
+import { Routes } from "../common/constants/Routes";
 import {
   nabiMusic,
   logIn,
   logOut,
-  headerMenuLabels
-} from './constants';
-import { DrawerMenu } from './DrawerMenu';
-import  { InstructorMenu } from './InstructorMenu';
-import  { StudentParentMenu } from './StudentParentMenu';
+  headerMenuLabels,
+  signUp
+} from "./constants";
+import { DrawerMenu } from "./DrawerMenu";
+import { InstructorMenu } from "./InstructorMenu";
+import { StudentParentMenu } from "./StudentParentMenu";
+
+import HelpIcon from "@material-ui/icons/Help";
 
 interface DispatchProps {
   logOutUser: () => void;
@@ -37,19 +40,30 @@ interface StateProps {
   token;
 }
 
-export interface HeaderProps extends
-  WithRouterProps,
-  NextRouter,
-  DispatchProps,
-  StateProps {
-}
+export interface HeaderProps
+  extends WithRouterProps,
+    NextRouter,
+    DispatchProps,
+    StateProps {}
 
 export const Header = (props: HeaderProps) => {
   const [isDrawerMenuOpen, setIsDraweMenuOpen] = React.useState(false);
-  const [isStudentParentMenuOpen, setStudentParentMenuOpen] = React.useState(false);
-  const [anchorElStudentParentMenu, setAnchorElStudentParentMenu] = React.useState<null | HTMLElement>(null);
+  const [isStudentParentMenuOpen, setStudentParentMenuOpen] = React.useState(
+    false
+  );
+  const [
+    anchorElStudentParentMenu,
+    setAnchorElStudentParentMenu
+  ] = React.useState<null | HTMLElement>(null);
   const [isInstructorMenuOpen, setInstructorMenuOpen] = React.useState(false);
-  const [anchorElInstructorMenu, setAnchorElInstructorMenu] = React.useState<null | HTMLElement>(null);
+  const [
+    anchorElInstructorMenu,
+    setAnchorElInstructorMenu
+  ] = React.useState<null | HTMLElement>(null);
+
+  const { avatar, displayName } = useSelector(
+    (state: StateProps) => state.user.referralInfo
+  );
 
   const toggleDrawerMenu = () => {
     setIsDraweMenuOpen(prevOpen => !prevOpen);
@@ -61,16 +75,18 @@ export const Header = (props: HeaderProps) => {
   };
 
   const openStudentParentMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElStudentParentMenu(anchorElStudentParentMenu || event.currentTarget);
+    setAnchorElStudentParentMenu(
+      anchorElStudentParentMenu || event.currentTarget
+    );
     setStudentParentMenuOpen(true);
   };
 
   const hanldeUserLogout = async () => {
     await props.logOutUser();
     Router.push(Routes.HomePage);
-
   };
-  const logo = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png';
+  const logo =
+    "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png";
   const menuWhitelist = [
     Routes.AboutUs,
     Routes.TermsOfUse,
@@ -89,11 +105,14 @@ export const Header = (props: HeaderProps) => {
   return (
     <header>
       <div className="nabi-header-container nabi-position-relative">
-        {(menuWhitelist as string[]).includes(props.router.route) &&
+        {(menuWhitelist as string[]).includes(props.router.route) && (
           <React.Fragment>
             <div className="nabi-header-menu hide-on-desktop">
               <Menu onClick={toggleDrawerMenu} color="primary" />
-              <DrawerMenu isOpen={isDrawerMenuOpen} closeMenu={toggleDrawerMenu} />
+              <DrawerMenu
+                isOpen={isDrawerMenuOpen}
+                closeMenu={toggleDrawerMenu}
+              />
             </div>
             <div className="nabi-header-menu hide-on-mobile">
               <p
@@ -114,23 +133,31 @@ export const Header = (props: HeaderProps) => {
                 {headerMenuLabels.instructors}
               </p>
               <InstructorMenu
-                isMenuOpen={Boolean(isInstructorMenuOpen && anchorElInstructorMenu)}
+                isMenuOpen={Boolean(
+                  isInstructorMenuOpen && anchorElInstructorMenu
+                )}
                 toggleMenu={() => setInstructorMenuOpen(false)}
                 anchorEl={anchorElInstructorMenu}
               />
-              <a href="https://blog.nabimusic.com" className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small" target="_blank">{headerMenuLabels.blog}</a>
+              <a
+                href="https://blog.nabimusic.com"
+                className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small"
+                target="_blank"
+              >
+                {headerMenuLabels.blog}
+              </a>
             </div>
           </React.Fragment>
-        }
-        <div className="nabi-logo-anchor">
+        )}
+        <div
+          className={`nabi-logo-anchor ${
+            displayName ? "nabi-margin-top-medium-sm" : ""
+          }`}
+        >
           <Link href={props.token ? Routes.Dashboard : Routes.HomePage}>
             <a>
               <>
-                <img
-                  className="nabi-text-center"
-                  alt="logo"
-                  src={logo}
-                />
+                <img className="nabi-text-center" alt="logo" src={logo} />
                 <p
                   id="nabi-logo-text"
                   className="nabi-text-center nabi-font-montserrat nabi-text-extrabold"
@@ -142,18 +169,67 @@ export const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        {(menuWhitelist as string[]).includes(props.router.route) &&
+        {(menuWhitelist as string[]).includes(props.router.route) && (
           <div className="nabi-header-button">
             <Link href={Routes.Login}>
               <a>
-                <Button color="primary" variant="contained" className="nabi-responsive-button nabi-margin-left-small">
+                <Button
+                  color="primary"
+                  variant="contained"
+                  className="nabi-responsive-button nabi-margin-left-small"
+                >
                   {logIn}
                 </Button>
               </a>
             </Link>
           </div>
-        }
-        {props.router.route === Routes.Dashboard &&
+        )}
+        {displayName && (
+          <div>
+            <div className="nabi-header-button nabi-display-flex">
+              <Typography
+                color="primary"
+                className="nabi-text-semibold nabi-margin-right-xsmall nabi-align-self-center"
+              >
+                Claim you 20% off
+              </Typography>
+              <HelpIcon color="primary" className="nabi-align-self-center" />
+
+              <Badge
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right"
+                }}
+                badgeContent={
+                  <Avatar
+                    alt="gift"
+                    className="nabi-small-avatar-responsive"
+                    src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+                  />
+                }
+              >
+                <Avatar
+                  alt="referrer-user"
+                  src={avatar}
+                  className="nabi-big-avatar-responsive nabi-margin-center"
+                />
+              </Badge>
+              <Link href={Routes.Registration}>
+                <a className="nabi-align-self-center">
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className="nabi-responsive-button nabi-margin-left-small"
+                  >
+                    {signUp}
+                  </Button>
+                </a>
+              </Link>
+            </div>
+          </div>
+        )}
+        {props.router.route === Routes.Dashboard && (
           <div className="nabi-header-button">
             <Button
               color="primary"
@@ -161,10 +237,14 @@ export const Header = (props: HeaderProps) => {
               className="nabi-responsive-button"
               onClick={hanldeUserLogout}
             >
-              {props.isRequesting ? <CircularProgress color="inherit" size={25} /> : logOut}
+              {props.isRequesting ? (
+                <CircularProgress color="inherit" size={25} />
+              ) : (
+                logOut
+              )}
             </Button>
           </div>
-        }
+        )}
       </div>
     </header>
   );
@@ -175,12 +255,8 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
     user,
     token,
     actions: {
-      logOutUser: {
-        isRequesting,
-        error: logOutError,
-        message
-      },
-    },
+      logOutUser: { isRequesting, error: logOutError, message }
+    }
   } = state.user;
   return {
     user,
@@ -191,9 +267,7 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   };
 };
 
-const mapDispatchToProps = (
-  dispatch: any
-): DispatchProps => ({
+const mapDispatchToProps = (dispatch: any): DispatchProps => ({
   logOutUser: () => dispatch(logOutUser())
 });
 
