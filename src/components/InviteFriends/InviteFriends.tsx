@@ -2,6 +2,11 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Action, Dispatch } from "redux";
 import Link from "next/link";
+import {
+  FacebookShareButton,
+  EmailShareButton,
+  TwitterShareButton
+} from "react-share";
 
 const reactStringReplace = require("react-string-replace");
 
@@ -197,7 +202,12 @@ export class InviteFriends extends React.Component<Props, State> {
         <Typography className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center">
           SHARE NOW
         </Typography>
-        <Grid container direction="row" justify="center" className="nabi-margin-bottom-small">
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          className="nabi-margin-bottom-small"
+        >
           <Grid item xs={2}>
             <img
               className="nabi-img-icon-size"
@@ -205,21 +215,36 @@ export class InviteFriends extends React.Component<Props, State> {
             />
           </Grid>
           <Grid xs={2}>
-            <img
-              className="nabi-img-icon-size"
-              src=" https://nabimusic.s3.us-east-2.amazonaws.com/mail.png"
+            <EmailShareButton
+              children={
+                <img
+                  className="nabi-img-icon-size"
+                  src=" https://nabimusic.s3.us-east-2.amazonaws.com/mail.png"
+                />
+              }
+              url={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
-            <img
-              className="nabi-img-icon-size"
-              src="https://nabimusic.s3.us-east-2.amazonaws.com/twitter.png"
+            <TwitterShareButton
+              children={
+                <img
+                  className="nabi-img-icon-size"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/twitter.png"
+                />
+              }
+              url={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
-            <img
-              className="nabi-img-icon-size"
-              src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
+            <FacebookShareButton
+              children={
+                <img
+                  className="nabi-img-icon-size"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
+                />
+              }
+              url={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
