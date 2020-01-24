@@ -543,7 +543,7 @@ li.nabi-list-style-position-inside {
 }
 
 .nabi-text-color-red {
-  color: #fb7e6a;
+  color: #fb7e6a !important;
 }
 
 .nabi-text-size-medium {
@@ -574,6 +574,11 @@ li.nabi-list-style-position-inside {
 	margin-bottom: 0px;
 	margin-top: 4px;
 	text-transform: uppercase;
+}
+
+.nabi-img-icon-size {
+  width: 30px;
+  height: 30px;
 }
 
 /*Header*/

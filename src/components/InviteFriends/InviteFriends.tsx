@@ -1,11 +1,9 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import {
-  Action,
-  Dispatch
-} from 'redux';
-import Link from 'next/link';
-const reactStringReplace = require('react-string-replace');
+import * as React from "react";
+import { connect } from "react-redux";
+import { Action, Dispatch } from "redux";
+import Link from "next/link";
+
+const reactStringReplace = require("react-string-replace");
 
 import {
   Button,
@@ -13,30 +11,26 @@ import {
   TextField,
   Typography,
   CircularProgress
-} from '@material-ui/core';
+} from "@material-ui/core";
 
-import { StoreState } from '../../redux/reducers/store';
-import { UserType } from '../../redux/models/UserModel';
-import { sendReferralInvite } from '../../redux/actions/UserActions';
-import { track } from '../../utils/analytics';
-import { ValidatorState as InviteFriendsValidatorState } from '../../utils/Validator';
-import { Routes } from '../common/constants/Routes';
-import SectionTitle from '../common/SectionTitle';
-import { InviteFriendsComponent } from '../InviteFriends/constants';
-import {
-  fields,
-  validateField
-} from '../InviteFriends/InviteFriendsValidator';
+import { StoreState } from "../../redux/reducers/store";
+import { UserType } from "../../redux/models/UserModel";
+import { sendReferralInvite } from "../../redux/actions/UserActions";
+import { track } from "../../utils/analytics";
+import { ValidatorState as InviteFriendsValidatorState } from "../../utils/Validator";
+import { Routes } from "../common/constants/Routes";
+import SectionTitle from "../common/SectionTitle";
+import { InviteFriendsComponent } from "../InviteFriends/constants";
+import { fields, validateField } from "../InviteFriends/InviteFriendsValidator";
 
-import { Role } from '../Auth/Registration/constants';
-import SnackBar from '../common/SnackBar';
+import { Role } from "../Auth/Registration/constants";
+import SnackBar from "../common/SnackBar";
 
 interface DispatchProps {
   sendReferralInvite: (email: string) => void;
 }
 
-interface OwnProps {
-}
+interface OwnProps {}
 
 interface StateProps {
   user: UserType;
@@ -45,10 +39,7 @@ interface StateProps {
   inviteMessage: string;
 }
 
-interface Props extends
-  OwnProps,
-  StateProps,
-  DispatchProps { }
+interface Props extends OwnProps, StateProps, DispatchProps {}
 
 interface State extends InviteFriendsValidatorState {
   showSnackbar: boolean;
@@ -67,14 +58,16 @@ export class InviteFriends extends React.Component<Props, State> {
       isSendingInvite: false,
       showInviteSnackbar: false,
       emailIsFilled: false,
-      email: '',
+      email: "",
       fields: fields
     };
   }
 
   componentDidUpdate(prevProps: Props) {
     if (this.state.showSnackbar) {
-      setTimeout(() => { this.setState(() => ({showSnackbar: false})); }, 2000);
+      setTimeout(() => {
+        this.setState(() => ({ showSnackbar: false }));
+      }, 2000);
     }
     if (prevProps.inviteError !== this.props.inviteError) {
       this.setState({
@@ -88,14 +81,14 @@ export class InviteFriends extends React.Component<Props, State> {
     }
   }
 
-  public handleSubmit = async(event: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
+  public handleSubmit = async (
+    event: React.MouseEvent<HTMLButtonElement>
+  ): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
 
-    const {
-      email
-    } = this.state;
+    const { email } = this.state;
     await this.props.sendReferralInvite(email.trim().toLocaleLowerCase());
     if (!this.props.inviteError) {
       const analiticsProps = {
@@ -104,12 +97,14 @@ export class InviteFriends extends React.Component<Props, State> {
           referrer: document.referrer
         }
       };
-      track('Invited friend', analiticsProps);
+      track("Invited friend", analiticsProps);
     }
-    this.setState({email: ''});
-  }
+    this.setState({ email: "" });
+  };
 
-  public handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+  public handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
     const target = event.currentTarget;
     const name = target.name;
     const value = target.value;
@@ -121,7 +116,7 @@ export class InviteFriends extends React.Component<Props, State> {
         emailIsFilled: this.confirmEmailFieldIsFilled(this.state)
       });
     });
-  }
+  };
 
   public handleOnBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
@@ -135,35 +130,37 @@ export class InviteFriends extends React.Component<Props, State> {
         emailIsFilled: this.confirmEmailFieldIsFilled(this.state)
       });
     });
-  }
+  };
 
   public confirmEmailFieldIsFilled = (educationState: State) => {
     return educationState.fields.email.error.length === 0;
-  }
+  };
 
   public copyInviteLink = () => {
-    let inviteLink = document.getElementById(InviteFriendsComponent.ids.copyLink);
+    let inviteLink = document.getElementById(
+      InviteFriendsComponent.ids.copyLink
+    );
     if (inviteLink) {
       (inviteLink as HTMLInputElement).select();
       (inviteLink as HTMLInputElement).setSelectionRange(0, 99999);
-      document.execCommand('copy');
-      this.setState({ showSnackbar: true});
+      document.execCommand("copy");
+      this.setState({ showSnackbar: true });
     }
-  }
+  };
 
-  public closeSnackbar = () => this.setState({ showSnackbar: false});
-  public closeInviteSnackBar = () => this.setState({ showInviteSnackbar: false });
+  public closeSnackbar = () => this.setState({ showSnackbar: false });
+  public closeInviteSnackBar = () =>
+    this.setState({ showInviteSnackbar: false });
 
-  public render (): JSX.Element {
-    const {
-      FieldKey,
-      fieldNames
-    } = InviteFriendsComponent;
+  public render(): JSX.Element {
+    const { FieldKey, fieldNames } = InviteFriendsComponent;
     const instructorDescription = reactStringReplace(
       InviteFriendsComponent.ctaDescriptionInstructor,
       InviteFriendsComponent.termsPlaceholder,
       (i: number) => (
-        <Link href={Routes.TermsOfUse} key={i}><a>{InviteFriendsComponent.termsText}</a></Link>
+        <Link href={Routes.TermsOfUse} key={i}>
+          <a>{InviteFriendsComponent.termsText}</a>
+        </Link>
       )
     );
 
@@ -171,7 +168,9 @@ export class InviteFriends extends React.Component<Props, State> {
       InviteFriendsComponent.ctaDescriptionStudent,
       InviteFriendsComponent.termsPlaceholder,
       (i: number) => (
-        <Link href={Routes.TermsOfUse} key={i}><a>{InviteFriendsComponent.termsText}</a></Link>
+        <Link href={Routes.TermsOfUse} key={i}>
+          <a>{InviteFriendsComponent.termsText}</a>
+        </Link>
       )
     );
 
@@ -179,21 +178,59 @@ export class InviteFriends extends React.Component<Props, State> {
       <React.Fragment>
         <SectionTitle text={InviteFriendsComponent.sectionTitle} />
 
-        <Typography className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-semibold">
-          {InviteFriendsComponent.ctaTitle}
+        <div>
+          <img
+            className="nabi-full-width"
+            src="https://nabimusic.s3.us-east-2.amazonaws.com/referral-design-nabi-music.jpg"
+          />
+        </div>
+        <Typography className="nabi-margin-top-small nabi-text-color-red nabi-margin-bottom-small nabi-text-semibold nabi-text-center">
+          REFER AND EARN
         </Typography>
-
         <Grid item={true}>
           <Typography className="nabi-margin-top-xsmall">
-            {this.props.user.role === Role.instructor ?
-              instructorDescription :
-              studentDescription
-            }
+            {this.props.user.role === Role.instructor
+              ? instructorDescription
+              : studentDescription}
           </Typography>
         </Grid>
-
+        <Typography className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center">
+          SHARE NOW
+        </Typography>
+        <Grid container direction="row" justify="center" className="nabi-margin-bottom-small">
+          <Grid item xs={2}>
+            <img
+              className="nabi-img-icon-size"
+              src="https://nabimusic.s3.us-east-2.amazonaws.com/copy.png"
+            />
+          </Grid>
+          <Grid xs={2}>
+            <img
+              className="nabi-img-icon-size"
+              src=" https://nabimusic.s3.us-east-2.amazonaws.com/mail.png"
+            />
+          </Grid>
+          <Grid xs={2}>
+            <img
+              className="nabi-img-icon-size"
+              src="https://nabimusic.s3.us-east-2.amazonaws.com/twitter.png"
+            />
+          </Grid>
+          <Grid xs={2}>
+            <img
+              className="nabi-img-icon-size"
+              src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
+            />
+          </Grid>
+          <Grid xs={2}>
+            <img
+              className="nabi-img-icon-size"
+              src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
+            />
+          </Grid>
+        </Grid>
         <Grid container={true} spacing={1}>
-          <Grid item={true} md={8}>
+          <Grid item={true} xs={12} md={12}>
             <TextField
               id={InviteFriendsComponent.ids[FieldKey.Email]}
               name={fieldNames[FieldKey.Email]}
@@ -207,25 +244,26 @@ export class InviteFriends extends React.Component<Props, State> {
               value={this.state.email}
             />
           </Grid>
-          <Grid item={true} md={4}>
+          <Grid item={true} xs={12} md={12}>
             <Button
               color="primary"
               variant="contained"
-              className="nabi-text-uppercase nabi-margin-top-xsmall"
+              className="nabi-text-uppercase nabi-margin-top-xsmall nabi-full-width"
               onClick={this.handleSubmit}
-              disabled={!this.state.emailIsFilled ? true : false}
             >
-              {
-                this.props.isRequestingInvite ? <CircularProgress color="inherit" size={25} /> :
-                InviteFriendsComponent.inviteButton}
+              {this.props.isRequestingInvite ? (
+                <CircularProgress color="inherit" size={25} />
+              ) : (
+                InviteFriendsComponent.inviteButton
+              )}
             </Button>
           </Grid>
-          <Grid item={true} md={12}>
+          <Grid item={true} xs={12} md={12}>
             <Typography className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold">
               {InviteFriendsComponent.fieldLabel}
             </Typography>
           </Grid>
-          <Grid item={true} md={8}>
+          <Grid item={true} md={12}>
             <TextField
               id={InviteFriendsComponent.ids[FieldKey.CopyLink]}
               name={InviteFriendsComponent.fieldNames[FieldKey.CopyLink]}
@@ -236,8 +274,14 @@ export class InviteFriends extends React.Component<Props, State> {
               autoFocus={true}
             />
           </Grid>
-          <Grid item={true} md={4}>
-            <Button onClick={this.copyInviteLink} color="primary">{InviteFriendsComponent.copyLink}</Button>
+          <Grid item={true} md={12}>
+            <Button
+              onClick={this.copyInviteLink}
+              color="primary"
+              className="nabi-full-width"
+            >
+              {InviteFriendsComponent.copyLink}
+            </Button>
           </Grid>
         </Grid>
         <SnackBar
@@ -249,19 +293,22 @@ export class InviteFriends extends React.Component<Props, State> {
         <SnackBar
           isOpen={this.state.showInviteSnackbar}
           message={
-            this.props.inviteError ?
-            this.props.inviteError :
-            this.props.inviteMessage as string
+            this.props.inviteError
+              ? this.props.inviteError
+              : (this.props.inviteMessage as string)
           }
           handleClose={this.closeInviteSnackBar}
-          variant={this.props.inviteError ? 'error' : 'success'}
+          variant={this.props.inviteError ? "error" : "success"}
         />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
+const mapStateToProps = (
+  state: StoreState,
+  _ownProps: OwnProps
+): StateProps => {
   const {
     user,
     actions: {
@@ -270,14 +317,14 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
         error: inviteError,
         message: inviteMessage
       }
-    },
+    }
   } = state.user;
 
   return {
     user,
     isRequestingInvite,
     inviteError,
-    inviteMessage,
+    inviteMessage
   };
 };
 
