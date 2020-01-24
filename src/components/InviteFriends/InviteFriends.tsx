@@ -189,7 +189,10 @@ export class InviteFriends extends React.Component<Props, State> {
             src="https://nabimusic.s3.us-east-2.amazonaws.com/referral-design-nabi-music.jpg"
           />
         </div>
-        <Typography className="nabi-margin-top-small nabi-text-color-red nabi-margin-bottom-small nabi-text-semibold nabi-text-center">
+        <Typography
+          color="secondary"
+          className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-semibold nabi-text-center"
+        >
           REFER AND EARN
         </Typography>
         <Grid item={true}>
@@ -199,7 +202,10 @@ export class InviteFriends extends React.Component<Props, State> {
               : studentDescription}
           </Typography>
         </Grid>
-        <Typography className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center">
+        <Typography
+          color="secondary"
+          className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center"
+        >
           SHARE NOW
         </Typography>
         <Grid
@@ -209,10 +215,12 @@ export class InviteFriends extends React.Component<Props, State> {
           className="nabi-margin-bottom-small"
         >
           <Grid item xs={2}>
-            <img
-              className="nabi-img-icon-size"
-              src="https://nabimusic.s3.us-east-2.amazonaws.com/copy.png"
-            />
+            <div onClick={this.copyInviteLink}>
+              <img
+                className="nabi-img-icon-size"
+                src="https://nabimusic.s3.us-east-2.amazonaws.com/copy.png"
+              />
+            </div>
           </Grid>
           <Grid xs={2}>
             <EmailShareButton
@@ -281,31 +289,6 @@ export class InviteFriends extends React.Component<Props, State> {
               ) : (
                 InviteFriendsComponent.inviteButton
               )}
-            </Button>
-          </Grid>
-          <Grid item={true} xs={12} md={12}>
-            <Typography className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold">
-              {InviteFriendsComponent.fieldLabel}
-            </Typography>
-          </Grid>
-          <Grid item={true} md={12}>
-            <TextField
-              id={InviteFriendsComponent.ids[FieldKey.CopyLink]}
-              name={InviteFriendsComponent.fieldNames[FieldKey.CopyLink]}
-              placeholder={InviteFriendsComponent.placeholder}
-              required={true}
-              fullWidth={true}
-              value={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
-              autoFocus={true}
-            />
-          </Grid>
-          <Grid item={true} md={12}>
-            <Button
-              onClick={this.copyInviteLink}
-              color="primary"
-              className="nabi-full-width"
-            >
-              {InviteFriendsComponent.copyLink}
             </Button>
           </Grid>
         </Grid>
