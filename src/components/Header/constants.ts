@@ -5,6 +5,7 @@ export const logOut = 'Logout';
 export const signUp = 'Sign up';
 export const forParents = 'For Parents & Students';
 export const forInstructors = 'For Instructors';
+export const ClaimYour = 'Claim your 20% off'
 
 export const headerMenuLabels  = {
   student: 'Parents & Students',

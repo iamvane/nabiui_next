@@ -20,7 +20,8 @@ import {
   logIn,
   logOut,
   headerMenuLabels,
-  signUp
+  signUp,
+  ClaimYour
 } from "./constants";
 import { DrawerMenu } from "./DrawerMenu";
 import { InstructorMenu } from "./InstructorMenu";
@@ -191,7 +192,7 @@ export const Header = (props: HeaderProps) => {
                 color="primary"
                 className="nabi-text-semibold nabi-margin-right-xsmall nabi-align-self-center"
               >
-                Claim you 20% off
+                {ClaimYour}
               </Typography>
               <HelpIcon color="primary" className="nabi-align-self-center" />
 
