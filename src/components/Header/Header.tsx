@@ -185,7 +185,7 @@ export const Header = (props: HeaderProps) => {
             </Link>
           </div>
         )}
-        {props.router.route.includes("referral") ||
+        {props.router.route.includes("referral") && displayName ||
         (props.router.route == Routes.HomePage && displayName) ? (
           <div>
             <div className="nabi-header-button nabi-display-flex">
