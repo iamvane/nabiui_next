@@ -11,6 +11,9 @@ export namespace InviteFriendsComponent {
   export const inviteButton = 'Invite';
   export const copyLink = 'Copy';
   export const copiedMessage = 'Copied to clipboard';
+  export const referAndEarn = 'Refer and earn';
+  export const shareNow = 'Share now';
+  export const referUrl = 'http://www.nabimusic.com/registration?token=';
 
   export enum FieldKey {
     Email = 'email',

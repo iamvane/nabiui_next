@@ -7,6 +7,7 @@ import {
   EmailShareButton,
   TwitterShareButton
 } from "react-share";
+import { FacebookProvider } from "react-facebook";
 
 const reactStringReplace = require("react-string-replace");
 
@@ -179,6 +180,13 @@ export class InviteFriends extends React.Component<Props, State> {
       )
     );
 
+    const uri = `${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`
+
+    const encodeUrl = encodeURI(uri)
+
+    const shareLinkDesktop = "http://www.facebook.com/dialog/send?app_id=148582506595325&link=" + InviteFriendsComponent.referUrl + this.props.user.referralToken + "&redirect_uri=https://www.nabimusic.com/";
+    const shareLinkMobile = "fb-messenger://share/?link=" + encodeUrl + "&app_id=148582506595325";
+
     return (
       <React.Fragment>
         <SectionTitle text={InviteFriendsComponent.sectionTitle} />
@@ -191,9 +199,9 @@ export class InviteFriends extends React.Component<Props, State> {
         </div>
         <Typography
           color="secondary"
-          className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-semibold nabi-text-center"
+          className="nabi-margin-top-small nabi-text-uppercase nabi-margin-bottom-small nabi-text-semibold nabi-text-center"
         >
-          REFER AND EARN
+          {InviteFriendsComponent.referAndEarn}
         </Typography>
         <Grid item={true}>
           <Typography className="nabi-margin-top-xsmall">
@@ -204,9 +212,9 @@ export class InviteFriends extends React.Component<Props, State> {
         </Grid>
         <Typography
           color="secondary"
-          className="nabi-margin-top-small nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center"
+          className="nabi-margin-top-small nabi-text-uppercase nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center"
         >
-          SHARE NOW
+          {InviteFriendsComponent.shareNow}
         </Typography>
         <Grid
           container
@@ -230,7 +238,7 @@ export class InviteFriends extends React.Component<Props, State> {
                   src=" https://nabimusic.s3.us-east-2.amazonaws.com/mail.png"
                 />
               }
-              url={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
@@ -241,7 +249,7 @@ export class InviteFriends extends React.Component<Props, State> {
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/twitter.png"
                 />
               }
-              url={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
@@ -252,14 +260,25 @@ export class InviteFriends extends React.Component<Props, State> {
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
                 />
               }
-              url={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
-            <img
-              className="nabi-img-icon-size"
-              src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
-            />
+            <FacebookProvider appId="148582506595325">
+              <a target="_blank" href={shareLinkDesktop} className="hide-on-mobile">
+                <img
+                  className="nabi-img-icon-size"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
+                />
+
+              </a>
+              <a target="_blank" href={shareLinkMobile} className="hide-on-desktop">
+                <img
+                  className="nabi-img-icon-size"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
+                />
+              </a>
+            </FacebookProvider>
           </Grid>
         </Grid>
         <Grid container={true} spacing={1}>

@@ -41,16 +41,27 @@ class NabiDocument extends Document {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5,user-scalable=0, shrink-to-fit=no" />
           <meta name="theme-color" content="#000000" />
+          <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
           <meta name="p:domain_verify" content="fc7573e0c0933bb2a115da9aab66e9db"/>
           <link rel="manifest" href="/manifest.json" />
           <link rel="shortcut icon" href="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/favicon.ico" />
           <script src="https://js.stripe.com/v3/"></script>
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<<<<<<< HEAD
           <link href="https://fonts.googleapis.com/css?family=Montserrat: 400,500,600,800" rel="stylesheet" />
           <script defer={true} id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"></script>
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
           <script dangerouslySetInnerHTML={{ __html: segmentScript }} />
           <script defer={true} dangerouslySetInnerHTML={{ __html: inspectletScript }} />
+=======
+          <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800" rel="stylesheet" />
+          <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"></script>
+<<<<<<< HEAD
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+=======
+
+>>>>>>> 7d9d82b... more editions
+>>>>>>> 6940b80... more editions
         </Head>
         <body>
           <Main />
