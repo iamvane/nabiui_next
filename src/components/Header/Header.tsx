@@ -170,7 +170,7 @@ export const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        {(menuWhitelist as string[]).includes(props.router.route) && (
+        {(menuWhitelist as string[]).includes(props.router.route) && !displayName && (
           <div className="nabi-header-button">
             <Link href={Routes.Login}>
               <a>
@@ -185,7 +185,8 @@ export const Header = (props: HeaderProps) => {
             </Link>
           </div>
         )}
-        {displayName && (
+        {props.router.route.includes("referral") ||
+        (props.router.route == Routes.HomePage && displayName) ? (
           <div>
             <div className="nabi-header-button nabi-display-flex">
               <Typography
@@ -195,27 +196,29 @@ export const Header = (props: HeaderProps) => {
                 {ClaimYour}
               </Typography>
               <HelpIcon color="primary" className="nabi-align-self-center" />
-
-              <Badge
-                overlap="circle"
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right"
-                }}
-                badgeContent={
+              {avatar && (
+                <Badge
+                  overlap="circle"
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right"
+                  }}
+                  badgeContent={
+                    <Avatar
+                      alt="gift"
+                      className="nabi-small-avatar-responsive"
+                      src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+                    />
+                  }
+                >
                   <Avatar
-                    alt="gift"
-                    className="nabi-small-avatar-responsive"
-                    src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+                    alt="referrer-user"
+                    src={avatar}
+                    className="nabi-big-avatar-responsive nabi-margin-center"
                   />
-                }
-              >
-                <Avatar
-                  alt="referrer-user"
-                  src={avatar}
-                  className="nabi-big-avatar-responsive nabi-margin-center"
-                />
-              </Badge>
+                </Badge>
+              )}
+
               <Link href={Routes.Registration}>
                 <a className="nabi-align-self-center">
                   <Button
@@ -229,6 +232,8 @@ export const Header = (props: HeaderProps) => {
               </Link>
             </div>
           </div>
+        ) : (
+          ""
         )}
         {props.router.route === Routes.Dashboard && (
           <div className="nabi-header-button">
