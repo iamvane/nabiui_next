@@ -1,3 +1,3 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://nabiapistaging.herokuapp.com/";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
