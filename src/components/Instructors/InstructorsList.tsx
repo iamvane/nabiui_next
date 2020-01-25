@@ -253,12 +253,14 @@ export const InstructorsList = (props: Props) => {
       isRequesting={props.isRequesting}
       hasCallToAction={true}
       breadcrumbs={
-        <Breadcrumbs aria-label="breadcrumb" className="nabi-margin-bottom-xsmall">
-          <Link href={props.email ? Routes.Dashboard : Routes.HomePage}>
-            <a>{InstructorsComponent.breadcrumbLabels.home}</a>
-          </Link>
-          <Typography> {InstructorsComponent.breadcrumbLabels.requests}</Typography>
-        </Breadcrumbs>
+        <div className="nabi-margin-bottom-xsmall">
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link href={props.email ? Routes.Dashboard : Routes.HomePage}>
+              <a>{InstructorsComponent.breadcrumbLabels.home}</a>
+            </Link>
+            <Typography> {InstructorsComponent.breadcrumbLabels.requests}</Typography>
+          </Breadcrumbs>
+        </div>
       }
       filterSection={
         <React.Fragment>

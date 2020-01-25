@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "nodemon -w server.js server.js",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,6 +34,7 @@
     "@zeit/next-typescript": "^1.1.1",
     "axios": "^0.19.0",
     "cropperjs": "^1.5.6",
+    "express": "^4.17.1",
     "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "moment": "^2.24.0",

@@ -197,12 +197,14 @@ export const ReuqestsList = (props: Props) => {
         loadMoreData={fetchMoreRequestsList}
         isRequestingMoreData={props.isRequestingMoreRequest}
         breadcrumbs={
-          <Breadcrumbs aria-label="breadcrumb" className="nabi-margin-bottom-xsmall">
-            <Link href={props.isLoggedIn ? Routes.Dashboard : Routes.HomePage}>
-              <a>{RequestsListComponent.breadcrumbLabels.home}</a>
-            </Link>
-            <Typography> {RequestsListComponent.breadcrumbLabels.requests}</Typography>
-          </Breadcrumbs>
+          <div className="nabi-margin-bottom-xsmall">
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link href={props.isLoggedIn ? Routes.Dashboard : Routes.HomePage}>
+                <a>{RequestsListComponent.breadcrumbLabels.home}</a>
+              </Link>
+              <Typography> {RequestsListComponent.breadcrumbLabels.requests}</Typography>
+            </Breadcrumbs>
+          </div>
         }
         filterSection={
           <React.Fragment>

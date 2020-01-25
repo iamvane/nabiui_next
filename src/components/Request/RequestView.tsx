@@ -130,15 +130,17 @@ export const RequestView = (props: Props) => {
       ''}
 
       <PageTitle pageTitle={pageTitle} />
-      <Breadcrumbs aria-label="breadcrumb" className="nabi-margin-bottom-xsmall">
-        <Link href={Routes.Dashboard}>
-          <a>{RequestViewComponent.breadcrumbLabels.home}</a>
-        </Link>
-        <Link href={Routes.Requests}>
-          <a>{RequestViewComponent.breadcrumbLabels.requests}</a>
-        </Link>
-        <Typography>{RequestViewComponent.breadcrumbLabels.sendApplication}</Typography>
-      </Breadcrumbs>
+      <div className="nabi-margin-bottom-xsmall">
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link href={Routes.Dashboard}>
+            <a>{RequestViewComponent.breadcrumbLabels.home}</a>
+          </Link>
+          <Link href={Routes.Requests}>
+            <a>{RequestViewComponent.breadcrumbLabels.requests}</a>
+          </Link>
+          <Typography>{RequestViewComponent.breadcrumbLabels.sendApplication}</Typography>
+        </Breadcrumbs>
+      </div>
       {isRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
         <Grid container={true} spacing={1} >
           <Grid xs={12} item={true} md={6} className="nabi-margin-bottom-medium">
