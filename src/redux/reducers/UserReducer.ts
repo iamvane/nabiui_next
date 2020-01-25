@@ -1,12 +1,13 @@
-import { AnyAction } from 'redux';
+import { AnyAction } from "redux";
 
-import {setCookie, removeCookie} from '../../utils/cookies';
-import { defaultUsersState } from '../models/UserModel';
-import { UserState, UserType } from '../models/UserModel'
-import { UserActions } from '../actions/UserActionTypes';
-import { APIActions } from '../models/models';
-import { setDashboard } from '../../utils/setDashboard';
-import { setProfile } from './utils';
+import { setCookie, removeCookie } from "../../utils/cookies";
+import { defaultUsersState } from "../models/UserModel";
+import { UserState, UserType } from "../models/UserModel";
+import { UserActions } from "../actions/UserActionTypes";
+import { APIActions } from "../models/models";
+import { setDashboard } from "../../utils/setDashboard";
+import { setProfile } from "./utils";
+import _ from "lodash";
 
 export default function usersReducer(
   state: UserState = defaultUsersState,
@@ -20,13 +21,13 @@ export default function usersReducer(
           ...state.actions,
           createUser: {
             ...state.actions.createUser,
-            isRequesting: true,
+            isRequesting: true
           }
         }
       };
 
     case UserActions.CREATE_USER_SUCCESS:
-      setCookie('token', action.data.token.access);
+      setCookie("token", action.data.token.access);
       const { data: userDetails } = action;
       return {
         ...state,
@@ -36,7 +37,7 @@ export default function usersReducer(
           birthday: userDetails.birthday,
           email: userDetails.email,
           referralToken: userDetails.referralToken,
-          role: userDetails.role,
+          role: userDetails.role
         },
         token: action.data.token.access,
         actions: {
@@ -44,23 +45,66 @@ export default function usersReducer(
           createUser: {
             ...state.actions.createUser,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case UserActions.CREATE_USER_FAILURE:
-      const { error: createUserError } = <APIActions.WithError<string>> action;
+      const { error: createUserError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
           ...state.actions,
           createUser: {
             isRequesting: false,
-            error: createUserError,
+            error: createUserError
           }
         }
       };
+
+    case UserActions.FETCH_REFERRAL_INFO:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchReferralInfo: {
+            ...state.actions.fetchReferralInfo,
+            isRequesting: true
+          }
+        }
+      };
+
+    case UserActions.FETCH_REFERRAL_INFO_SUCCESS:
+      setCookie("referral-token", action.data && action.data.token);
+      return {
+        ...state,
+        referralInfo: {
+          ...action.data
+        },
+        actions: {
+          ...state.actions,
+          fetchReferralInfo: {
+            ...state.actions.authenticateUser,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case UserActions.FETCH_REFERRAL_INFO_FAILURE: {
+      const { error: referralInfoError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchReferralInfo: {
+            isRequesting: false,
+            error: referralInfoError
+          }
+        }
+      };
+    }
 
     case UserActions.AUTHENTICATE_USER:
       return {
@@ -76,7 +120,7 @@ export default function usersReducer(
       };
 
     case UserActions.AUTHENTICATE_USER_SUCCESS:
-      setCookie('token', action.data.access);
+      setCookie("token", action.data.access);
       return {
         ...state,
         token: action.data.access,
@@ -85,14 +129,16 @@ export default function usersReducer(
           authenticateUser: {
             ...state.actions.authenticateUser,
             isRequesting: false,
-            error: '',
+            error: "",
             redirect: true
           }
         }
       };
 
     case UserActions.AUTHENTICATE_USER_FAILURE:
-      const { error: authenticateUserError } = <APIActions.WithError<string>> action;
+      const { error: authenticateUserError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -112,7 +158,6 @@ export default function usersReducer(
       };
 
     case UserActions.SET_URL_PATHNAME:
-      console.log(action)
       setCookie('pathname', action.pathname);
       return {
         ...state,
@@ -126,7 +171,7 @@ export default function usersReducer(
           ...state.actions,
           fetchUser: {
             ...state.actions.fetchUser,
-            isRequesting: true,
+            isRequesting: true
           }
         }
       };
@@ -161,7 +206,7 @@ export default function usersReducer(
           fetchUser: {
             ...state.actions.fetchUser,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
@@ -173,14 +218,14 @@ export default function usersReducer(
           ...state.actions,
           fetchUser: {
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case UserActions.FETCH_USER_FAILURE:
     case UserActions.FETCH_USER_NOT_AUTHENTICATED_FAILURE:
-      const { error } = <APIActions.WithError<string>> action;
+      const { error } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -205,7 +250,9 @@ export default function usersReducer(
       };
 
     case UserActions.UPDATE_USER_SUCCESS:
-      const { data: updatedUser } = <APIActions.WithData<Partial<UserType>>> action;
+      const { data: updatedUser } = <APIActions.WithData<Partial<UserType>>>(
+        action
+      );
       return {
         ...state,
         user: {
@@ -217,20 +264,20 @@ export default function usersReducer(
           updateUser: {
             ...state.actions.updateUser,
             isRequesting: false,
-            error: ''
+            error: ""
           }
         }
       };
 
     case UserActions.UPDATE_USER_FAILURE:
-      const { error: updateUserError } = <APIActions.WithError<string>> action;
+      const { error: updateUserError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
           ...state.actions,
           updateUser: {
             isRequesting: false,
-            error: updateUserError,
+            error: updateUserError
           }
         }
       };
@@ -258,14 +305,14 @@ export default function usersReducer(
           ...state.actions,
           requestToken: {
             isRequesting: false,
-            error: '',
+            error: "",
             message: requestTokenData.message
           }
         }
       };
 
     case UserActions.REQUEST_TOKEN_FAILURE:
-      const { error: requestTokenError } = <APIActions.WithError<string>> action;
+      const { error: requestTokenError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -273,7 +320,7 @@ export default function usersReducer(
           requestToken: {
             isRequesting: false,
             error: requestTokenError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -285,7 +332,7 @@ export default function usersReducer(
           ...state.actions,
           requestToken: {
             ...state.actions.requestToken,
-            message: ''
+            message: ""
           }
         }
       };
@@ -315,14 +362,14 @@ export default function usersReducer(
           ...state.actions,
           verifyToken: {
             isRequesting: false,
-            error: '',
+            error: "",
             message: verifyTokenMessage.message
           }
         }
       };
 
     case UserActions.VERIFY_TOKEN_FAILURE:
-      const { error: verifyTokenError } = <APIActions.WithError<string>> action;
+      const { error: verifyTokenError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -330,7 +377,7 @@ export default function usersReducer(
           verifyToken: {
             isRequesting: false,
             error: verifyTokenError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -342,7 +389,7 @@ export default function usersReducer(
           ...state.actions,
           verifyToken: {
             ...state.actions.verifyToken,
-            message: ''
+            message: ""
           }
         }
       };
@@ -351,9 +398,9 @@ export default function usersReducer(
       const withAvatar =
         state.user.id === action.id
           ? {
-            ...state.user,
-            avatar: action.avatar
-          }
+              ...state.user,
+              avatar: action.avatar
+            }
           : state.user;
 
       return {
@@ -392,14 +439,14 @@ export default function usersReducer(
           ...state.actions,
           uploadAvatar: {
             isRequesting: false,
-            error: '',
+            error: "",
             message: uploadAvatarMessage.message
           }
         }
       };
 
     case UserActions.UPLOAD_AVATAR_FAILURE:
-      const { error: uploadAvatarError } = <APIActions.WithError<string>> action;
+      const { error: uploadAvatarError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -407,7 +454,7 @@ export default function usersReducer(
           uploadAvatar: {
             isRequesting: false,
             error: uploadAvatarError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -420,53 +467,53 @@ export default function usersReducer(
           logOutUser: {
             ...state.actions.logOutUser,
             isRequesting: true,
-            message: ''
+            message: ""
           }
         }
       };
 
     case UserActions.LOGOUT_USER_SUCCESS:
       removeCookie("token");
-      const { data: message } = <APIActions.WithData<string>> action;
+      const { data: message } = <APIActions.WithData<string>>action;
       return {
         ...state,
-        token: '',
+        token: "",
         user: {
           ...state.user,
-          email: '',
-          firstName: '',
-          lastName: '',
-          middleName: '',
-          gender: '',
-          role: '',
-          birthday: '',
-          location: '',
+          email: "",
+          firstName: "",
+          lastName: "",
+          middleName: "",
+          gender: "",
+          role: "",
+          birthday: "",
+          location: "",
           phone: {
-            phoneNumber: '',
+            phoneNumber: "",
             isVerified: false
           },
-          lat: '',
-          lng: ''
+          lat: "",
+          lng: ""
         },
         actions: {
           ...state.actions,
           logOutUser: {
             ...state.actions.logOutUser,
             isRequesting: false,
-            error: '',
+            error: "",
             message
           },
           authenticateUser: {
             ...state.actions.authenticateUser,
             isRequesting: false,
-            error: '',
+            error: "",
             redirect: false
-          },
+          }
         }
       };
 
     case UserActions.LOGOUT_USER_FAILURE:
-      const logoutError = <APIActions.WithError<string>> action;
+      const logoutError = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -474,7 +521,7 @@ export default function usersReducer(
           logOutUser: {
             isRequesting: false,
             error: logoutError.error,
-            message: ''
+            message: ""
           }
         }
       };
@@ -487,13 +534,13 @@ export default function usersReducer(
           setPassword: {
             ...state.actions.setPassword,
             isRequesting: true,
-            message: ''
+            message: ""
           }
         }
       };
 
     case UserActions.SET_NEW_PASSWORD_SUCCESS:
-      const { data: setPasswordMessage } = <APIActions.WithData<string>> action;
+      const { data: setPasswordMessage } = <APIActions.WithData<string>>action;
       return {
         ...state,
         actions: {
@@ -501,14 +548,14 @@ export default function usersReducer(
           setPassword: {
             ...state.actions.requestPasswordRecovery,
             isRequesting: false,
-            error: '',
+            error: "",
             message: setPasswordMessage
           }
         }
       };
 
     case UserActions.SET_NEW_PASSWORD_FAILURE:
-      const setPasswordError = <APIActions.WithError<string>> action;
+      const setPasswordError = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -516,7 +563,7 @@ export default function usersReducer(
           setPassword: {
             isRequesting: false,
             error: setPasswordError.error,
-            message: ''
+            message: ""
           }
         }
       };
@@ -529,13 +576,15 @@ export default function usersReducer(
           requestPasswordRecovery: {
             ...state.actions.requestPasswordRecovery,
             isRequesting: true,
-            message: ''
+            message: ""
           }
         }
       };
 
     case UserActions.REQUEST_PASSWORD_RECOVERY_SUCCESS:
-      const { data: passwordRecoveryMessage } = <APIActions.WithData<string>> action;
+      const { data: passwordRecoveryMessage } = <APIActions.WithData<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -543,14 +592,14 @@ export default function usersReducer(
           requestPasswordRecovery: {
             ...state.actions.requestPasswordRecovery,
             isRequesting: false,
-            error: '',
+            error: "",
             message: passwordRecoveryMessage
           }
         }
       };
 
     case UserActions.REQUEST_PASSWORD_RECOVERY_FAILURE:
-      const passwordRecoveryError = <APIActions.WithError<string>> action;
+      const passwordRecoveryError = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -558,7 +607,7 @@ export default function usersReducer(
           requestPasswordRecovery: {
             isRequesting: false,
             error: passwordRecoveryError.error,
-            message: ''
+            message: ""
           }
         }
       };
@@ -587,14 +636,16 @@ export default function usersReducer(
           ...state.actions,
           referralInvite: {
             isRequesting: false,
-            error: '',
+            error: "",
             message: referralInviteMessage.message
           }
         }
       };
 
     case UserActions.SEND_REFFERRAL_INVITE_FAILURE:
-      const { error: referralInviteError } = <APIActions.WithError<string>> action;
+      const { error: referralInviteError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         actions: {
@@ -602,7 +653,7 @@ export default function usersReducer(
           referralInvite: {
             isRequesting: false,
             error: referralInviteError,
-            message: ''
+            message: ""
           }
         }
       };
@@ -615,7 +666,7 @@ export default function usersReducer(
           actions: {
             fetchLowestRate: {
               isRequesting: true,
-              error: ''
+              error: ""
             }
           }
         }
@@ -630,14 +681,14 @@ export default function usersReducer(
           actions: {
             fetchLowestRate: {
               isRequesting: false,
-              error: ''
+              error: ""
             }
           }
         }
       };
 
     case UserActions.FETCH_LOWEST_RATE_FAILURE:
-      const { error: lowestRateError } = <APIActions.WithError<string>> action;
+      const { error: lowestRateError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         user: {
@@ -651,7 +702,7 @@ export default function usersReducer(
         }
       };
 
-      case UserActions.FETCH_DASHBOARD:
+    case UserActions.FETCH_DASHBOARD:
       return {
         ...state,
         user: {
@@ -659,7 +710,7 @@ export default function usersReducer(
           actions: {
             fetchDashboard: {
               isRequesting: true,
-              error: ''
+              error: ""
             }
           }
         }
@@ -674,14 +725,16 @@ export default function usersReducer(
           actions: {
             fetchDashboard: {
               isRequesting: false,
-              error: ''
+              error: ""
             }
           }
         }
       };
 
     case UserActions.FETCH_DASHBOARD_FAILURE:
-      const { error: fetchDashboardError } = <APIActions.WithError<string>> action;
+      const { error: fetchDashboardError } = <APIActions.WithError<string>>(
+        action
+      );
       return {
         ...state,
         user: {
@@ -692,6 +745,14 @@ export default function usersReducer(
               error: fetchDashboardError
             }
           }
+        }
+      };
+    case UserActions.SET_USER_EMAIL:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          email: action.email
         }
       };
 

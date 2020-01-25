@@ -197,6 +197,10 @@ li.nabi-list-style-position-inside {
 	align-items: center;
 }
 
+.nabi-align-self-center {
+   align-self: center !important
+}
+
 .nabi-vertical-align-center {
 	display: flex;
 	align-items: center !important;
@@ -264,6 +268,10 @@ li.nabi-list-style-position-inside {
 }
 
 .nabi-margin-top-medium {
+	margin-top: 30px !important;
+}
+
+.nabi-margin-top-medium-sm {
 	margin-top: 30px !important;
 }
 
@@ -897,6 +905,21 @@ li.nabi-list-style-position-inside {
 	height: 120px !important;
 }
 
+.small-avatar {
+	width: 30px !important;
+	height: 30px !important;
+}
+
+.nabi-big-avatar-responsive {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.nabi-small-avatar-responsive {
+	width: 18px !important;
+	height: 18px !important;
+}
+
 .completed-button {
 	background-image: linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
 	background-image: -o-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
@@ -1115,13 +1138,17 @@ li.nabi-list-style-position-inside {
 		font-size: 55px !important;
 	}
 
+	.nabi-margin-top-medium-sm {
+	  margin-top: 0px !important;
+	}
+
 	/*header*/
 	#header-social-menu {
 		top: 37% !important;
 		position: absolute;
 	}
 	.nabi-header-button {
-		top: 35% !important;
+		top: 25% !important;
 	}
 	.nabi-header-line {
 		border: 0px;
@@ -1168,6 +1195,16 @@ li.nabi-list-style-position-inside {
 	.nabi-background-white-md {
 		background-color: #fff;
 	}
+
+	.nabi-big-avatar-responsive {
+		width: 70px !important;
+		height: 70px !important;
+	  }
+
+	  .nabi-small-avatar-responsive {
+		  width: 30px !important;
+		  height: 30px !important;
+	  }
 
 	/****DISPLAY****/
 	.nabi-display-inline-block-md {

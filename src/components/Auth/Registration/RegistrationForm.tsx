@@ -34,6 +34,7 @@ interface Props {
   formErrors: any;
   apiError: string;
   isRequesting: boolean;
+  email: string;
   agreeWithTerms: boolean;
 }
 
@@ -99,6 +100,7 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
         onChange={handleChange}
         placeholder={RegistrationFormComponent.Placeholders.Email}
         required={true}
+        value={props.email}
         error={!!formErrors.email}
         helperText={formErrors.email}
       />
