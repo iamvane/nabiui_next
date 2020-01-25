@@ -4,20 +4,12 @@ import {
   Avatar,
   Grid,
   IconButton,
-  Typography,
-  TextField,
-  Button
+  Typography
 } from '@material-ui/core';
 
 import '../../../assets/scss/ProfileHeader.scss';
 import { BackgroundCheckStatus } from '../ProfileBuilder/constants';
-import { UserType } from '../../redux/models/UserModel';
-import { RatesType } from '../Rates/model';
-import EditInstrumentsModal from '../Profile/EditInstrumentsModal';
-import { BioComponent } from '../Bio/constants';
-import { InstrumentsType } from '../Instruments/model';
 import { ProfileHeaderComponent } from './constants';
-import EditRatesModal from './EditRatesModal';
 import { Star } from '@material-ui/icons';
 
 interface Props {
