@@ -56,11 +56,11 @@ class NabiDocument extends Document {
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800" rel="stylesheet" />
           <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
         </Head>
         <body>
           <Main />
           <NextScript />
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
         </body>
       </html>
     );
