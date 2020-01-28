@@ -143,6 +143,7 @@ export class InviteFriends extends React.Component<Props, State> {
   };
 
   public copyInviteLink = () => {
+    alert("hola");
     let inviteLink = document.getElementById(
       InviteFriendsComponent.ids.copyLink
     );
@@ -180,12 +181,17 @@ export class InviteFriends extends React.Component<Props, State> {
       )
     );
 
-    const uri = `${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`
+    const uri = `${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`;
 
-    const encodeUrl = encodeURI(uri)
+    const encodeUrl = encodeURI(uri);
 
-    const shareLinkDesktop = "http://www.facebook.com/dialog/send?app_id=148582506595325&link=" + InviteFriendsComponent.referUrl + this.props.user.referralToken + "&redirect_uri=https://www.nabimusic.com/";
-    const shareLinkMobile = "fb-messenger://share/?link=" + encodeUrl + "&app_id=148582506595325";
+    const shareLinkDesktop =
+      "http://www.facebook.com/dialog/send?app_id=148582506595325&link=" +
+      InviteFriendsComponent.referUrl +
+      this.props.user.referralToken +
+      "&redirect_uri=https://www.nabimusic.com/";
+    const shareLinkMobile =
+      "fb-messenger://share/?link=" + encodeUrl + "&&app_id=148582506595325";
 
     return (
       <React.Fragment>
@@ -222,14 +228,6 @@ export class InviteFriends extends React.Component<Props, State> {
           justify="center"
           className="nabi-margin-bottom-small"
         >
-          <Grid item xs={2}>
-            <div onClick={this.copyInviteLink}>
-              <img
-                className="nabi-img-icon-size"
-                src="https://nabimusic.s3.us-east-2.amazonaws.com/copy.png"
-              />
-            </div>
-          </Grid>
           <Grid xs={2}>
             <EmailShareButton
               children={
@@ -265,14 +263,21 @@ export class InviteFriends extends React.Component<Props, State> {
           </Grid>
           <Grid xs={2}>
             <FacebookProvider appId="148582506595325">
-              <a target="_blank" href={shareLinkDesktop} className="hide-on-mobile">
+              <a
+                target="_blank"
+                href={shareLinkDesktop}
+                className="hide-on-mobile"
+              >
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
                 />
-
               </a>
-              <a target="_blank" href={shareLinkMobile} className="hide-on-desktop">
+              <a
+                target="_blank"
+                href={shareLinkMobile}
+                className="hide-on-desktop"
+              >
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
@@ -309,6 +314,40 @@ export class InviteFriends extends React.Component<Props, State> {
                 InviteFriendsComponent.inviteButton
               )}
             </Button>
+          </Grid>
+          <Grid item={true} md={12}>
+            <TextField
+              id={InviteFriendsComponent.ids[FieldKey.CopyLink]}
+              className="nabi-display-none"
+              name={InviteFriendsComponent.fieldNames[FieldKey.CopyLink]}
+              placeholder={InviteFriendsComponent.placeholder}
+              required={true}
+              fullWidth={true}
+              value={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
+              autoFocus={true}
+            />
+          </Grid>
+
+          <Grid item={true}>
+            <Typography className="nabi-margin-top-xsmall">
+              {InviteFriendsComponent.referUrl} {""}
+              {this.props.user.referralToken}
+            </Typography>
+          </Grid>
+          <Grid item={true} md={12}>
+            <Grid className="nabi-display-flex nabi-margin-center" xs={4}>
+              <Button onClick={this.copyInviteLink} color="primary">
+                {InviteFriendsComponent.copyLink}
+              </Button>
+              <Grid item xs={2}>
+                <div onClick={this.copyInviteLink}>
+                  <img
+                    className="nabi-img-icon-size"
+                    src="https://nabimusic.s3.us-east-2.amazonaws.com/copy.png"
+                  />
+                </div>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         <SnackBar
