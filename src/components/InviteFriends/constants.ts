@@ -13,7 +13,7 @@ export namespace InviteFriendsComponent {
   export const copiedMessage = 'Copied to clipboard';
   export const referAndEarn = 'Refer and earn';
   export const shareNow = 'Share now';
-  export const referUrl = 'http://www.nabimusic.com/registration?token=';
+  export const referUrl = 'http://localhost:3000/referral/';
 
   export enum FieldKey {
     Email = 'email',
