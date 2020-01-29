@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-import * as React from 'react';
-import App from 'next/app';
-import Head from 'next/head';
-import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
-import * as Sentry from '@sentry/browser';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-
-import { Footer } from '../src/components/common/Footer';
-import Header from '../src/components/Header/Header';
-import { setAuthToken } from '../src/redux/actions/UserActions';
-import '../assets/css/overrides.css';
-import '../assets/css/index.css';
-import store from '../src/redux/reducers/store';
-import { parseCookies } from '../src/utils/parseCookies';
-import { theme } from '../theme/theme';
-import Offer from '../src/components/Offers/Offer';
-require('../src/utils/axiosClient');
-=======
 import * as React from "react";
 import App from "next/app";
 import Head from "next/head";
@@ -25,7 +5,6 @@ import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import * as Sentry from "@sentry/browser";
 import { MuiThemeProvider } from "@material-ui/core/styles";
->>>>>>> 23c3ec4... added actions and endpoints
 
 import { Footer } from "../src/components/common/Footer";
 import Header from "../src/components/Header/Header";
@@ -77,13 +56,7 @@ class NabiApp extends App<any, any> {
     return (
       <>
         <Head>
-<<<<<<< HEAD
           <title>Nabi Music | On-demand Music Lessons for Children</title>
-=======
-          <title>
-            Nabi Music - Music Lessons for Children and Qualified Music Teachers
-          </title>
->>>>>>> 23c3ec4... added actions and endpoints
         </Head>
         <Provider store={store}>
           <MuiThemeProvider theme={theme}>

@@ -450,7 +450,7 @@ export const fetchOffer = (): ThunkAction<Promise<void>, {}, {}> => async (
     dispatch(withDataAction(UserActions.FETCH_OFFER_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e, "email");
+      errorMessage = getError(e);
     }
     dispatch(withErrorAction(UserActions.FETCH_OFFER_FAILURE, errorMessage));
   }
