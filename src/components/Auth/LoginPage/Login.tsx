@@ -22,6 +22,7 @@ import { LoginComponent } from './constants';
 import PageTitle from '../../common/PageTitle';
 import { Routes } from '../../common/constants/Routes';
 import SnackBar from '../../common/SnackBar';
+import PrivateRoute from '../../Auth/PrivateRoutes';
 import { LoginType } from './model';
 import LoginForm from './LoginForm';
 import { LoginFormComponent } from './constants';
@@ -172,4 +173,4 @@ const mapDispatchToProps = (
   fetchUser: (token: string) => dispatch(fetchUserOnLogin(token))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(Login, 'Public'));

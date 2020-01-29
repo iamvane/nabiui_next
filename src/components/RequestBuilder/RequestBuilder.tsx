@@ -7,9 +7,8 @@ import { AnnouncementConstants } from '../common/constants/Announcement';
 import CommonStepper from '../CommonStepper/CommonStepper';
 import AccountInfo from '../AccountInfo/AccountInfo';
 import RequestStep from '../Request/RequestStep';
-// import SendRequest from 'components/RequestBuilder/SendRequest';
 import { Routes } from '../common/constants/Routes';
-// import PreLaunchStudentDetails from './PreLaunchStudentDetails';
+import PrivateRoute from '../Auth/PrivateRoutes';
 import {
   RequestBuilderStepper,
   RequestBuilderComponent
@@ -81,4 +80,4 @@ export class RequestBuilder extends React.Component<Props, State> {
   }
 }
 
-export default RequestBuilder;
+export default PrivateRoute(RequestBuilder, 'Private', ['Student', 'Parent']);

@@ -13,6 +13,7 @@ import BecomeATeacher from "./BecomeATeacher";
 import FreeLesson from "./FreeLesson";
 import { useRouter } from "next/router";
 import ReferralModal from "../Referral/ReferralModal";
+import PrivateRoute from '../Auth/PrivateRoutes';
 import { fetchReferralInfo } from "../../redux/actions/UserActions";
 
 /**
@@ -86,4 +87,4 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   };
 };
 
-export default connect(mapStateToProps, undefined)(Homepage);
+export default connect(mapStateToProps, undefined)(PrivateRoute(Homepage, 'Public'));

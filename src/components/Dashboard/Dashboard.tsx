@@ -23,6 +23,7 @@ import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
 import { Routes } from '../common/constants/Routes';
 import { Role } from '../Auth/Registration/constants';
 import InviteFriends from '../InviteFriends/InviteFriends';
+import PrivateRoute from '../Auth/PrivateRoutes';
 import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
 import ParentStudentDashboard from './ParentStudentDashboard/ParentStudentDashboard';
 import {
@@ -162,4 +163,4 @@ const mapDispatchToProps = (
   setPathname: (pathname: string) => dispatch(setPathname(pathname))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(Dashboard, 'Private', ['Student', 'Parent', 'Instructor']));
