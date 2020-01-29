@@ -75,7 +75,7 @@ export interface UserState {
     fetchStudentDetail: ActionStatus;
     requestToken: ActionStatusWithMessage;
     verifyToken: ActionStatusWithMessage;
-    fetchOffers: ActionStatus;
+    fetchOffer: ActionStatus;
     changeAvatar: any;
     uploadAvatar: ActionStatusWithMessage;
     fetchLocation: ActionStatus;
@@ -208,7 +208,7 @@ export const defaultUsersState: UserState = {
       isRequesting: false,
       error: ""
     },
-    fetchOffers: {
+    fetchOffer: {
       isRequesting: false,
       error: ""
     }
