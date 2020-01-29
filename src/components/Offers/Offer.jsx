@@ -3,9 +3,9 @@ import OfferContent from "./OfferContent";
 
 const Offer = () => {
   return (
-    <div className>
+    <>
       <OfferContent />
-    </div>
+    </>
   );
 };
 

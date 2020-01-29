@@ -578,10 +578,10 @@ li.nabi-list-style-position-inside {
 
 /*Header*/
 .special-offer {
-	padding: 5px;
+	padding: 10px;
 	background: #FFAE33;
 	text-align: center;
-	color: #ffffff;
+	color: #ffffff !important;
 }
 
 .nabi-header-container,

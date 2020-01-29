@@ -14,7 +14,7 @@ import '../assets/css/index.css';
 import store from '../src/redux/reducers/store';
 import { parseCookies } from '../src/utils/parseCookies';
 import { theme } from '../theme/theme';
-
+import Offer from '../src/components/Offers/Offer';
 require('../src/utils/axiosClient');
 
 
@@ -60,6 +60,7 @@ class NabiApp extends App<any, any> {
         </Head>
         <Provider store={store}>
           <MuiThemeProvider theme={theme}>
+            <Offer />
             <Header {...pageProps} />
             <Component {...pageProps} />
             <Footer />
