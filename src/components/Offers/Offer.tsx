@@ -23,8 +23,9 @@ const Offer = () => {
     if (hideAt) {
       interval = setInterval(() => {
         const countdown = moment(
-          Date.parse(hideAt) - Date.parse(String(new Date()))
+          Date.parse(String(new Date(hideAt))) - Date.parse(String(new Date()))
         );
+        alert(String(new Date()));
         const days = countdown.format("D");
         const hours = countdown.format("HH");
         const minutes = countdown.format("mm");
