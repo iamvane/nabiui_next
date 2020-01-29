@@ -4,6 +4,7 @@ import { Action, Dispatch } from "redux";
 import Link from "next/link";
 import {
   FacebookShareButton,
+  WhatsappShareButton,
   EmailShareButton,
   TwitterShareButton
 } from "react-share";
@@ -256,6 +257,17 @@ export class InviteFriends extends React.Component<Props, State> {
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
+                />
+              }
+              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
+            />
+          </Grid>
+          <Grid xs={2}>
+            <WhatsappShareButton
+              children={
+                <img
+                  className="nabi-img-icon-size"
+                  src="https://image.flaticon.com/icons/png/512/124/124034.png"
                 />
               }
               url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
