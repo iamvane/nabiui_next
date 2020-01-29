@@ -7,10 +7,8 @@ import { AnnouncementConstants } from '../common/constants/Announcement';
 import CommonStepper from '../CommonStepper/CommonStepper';
 import AccountInfo from '../AccountInfo/AccountInfo';
 import RequestStep from '../Request/RequestStep';
-// import SendRequest from 'components/RequestBuilder/SendRequest';
 import { Routes } from '../common/constants/Routes';
 import PrivateRoute from '../Auth/PrivateRoutes';
-// import PreLaunchStudentDetails from './PreLaunchStudentDetails';
 import {
   RequestBuilderStepper,
   RequestBuilderComponent
