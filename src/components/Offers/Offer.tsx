@@ -25,7 +25,6 @@ const Offer = () => {
         const countdown = moment(
           Date.parse(String(new Date(hideAt))) - Date.parse(String(new Date()))
         );
-        alert(String(new Date()));
         const days = countdown.format("D");
         const hours = countdown.format("HH");
         const minutes = countdown.format("mm");
