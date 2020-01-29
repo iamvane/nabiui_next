@@ -8,7 +8,6 @@ import { APIActions } from "../models/models";
 import { setDashboard } from "../../utils/setDashboard";
 import { setProfile } from "./utils";
 import _ from "lodash";
-import { fetchOffer } from "../actions/UserActions";
 
 export default function usersReducer(
   state: UserState = defaultUsersState,

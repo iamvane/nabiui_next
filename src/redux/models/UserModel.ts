@@ -122,12 +122,12 @@ export const defaultUsersState: UserState = {
     openModal: false
   },
   offer: {
-    content: "San Valentin Special, get 10% off music lessons.",
+    content: "",
     freeLesson: false,
-    hideAt: "2020-01-31 19:12:57",
-    name: "San Valentin Special",
-    percentDiscount: 20,
-    showAt: "2020-01-28 19:12:49"
+    hideAt: "",
+    name: "",
+    percentDiscount: 0,
+    showAt: ""
   },
   actions: {
     createUser: {
