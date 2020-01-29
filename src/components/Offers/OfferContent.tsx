@@ -2,11 +2,17 @@ import React from "react";
 
 import { Typography } from "@material-ui/core";
 
-const OfferContent = () => {
+interface Props {
+  expireAt: string;
+  content: string;
+}
+
+const OfferContent = (props: Props) => {
+  const { expireAt, content } = props;
   return (
     <div className="special-offer">
       <Typography className="nabi-color-white nabi-text-semibold">
-          hola como estas?
+        {content}. Expire: {expireAt}
       </Typography>
     </div>
   );

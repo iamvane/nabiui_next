@@ -162,9 +162,9 @@ export function setPathname(pathname: string) {
   };
 }
 
-export const uploadAvatar = (value: string): ThunkAction<Promise<void>, {}, {}> => async (
-  dispatch: Dispatch<{}>
-) => {
+export const uploadAvatar = (
+  value: string
+): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
   dispatch(requestAction(UserActions.UPLOAD_AVATAR));
   try {
     const url = ApiEndpoints.uploadAvatar;
@@ -437,6 +437,22 @@ export const fetchDashboard = (
     dispatch(
       withErrorAction(UserActions.FETCH_DASHBOARD_FAILURE, errorMessage)
     );
+  }
+};
+
+export const fetchOffer = (): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(UserActions.FETCH_OFFER));
+  try {
+    const response = await axios.get(ApiEndpoints.offers);
+
+    dispatch(withDataAction(UserActions.FETCH_OFFER_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === "string") {
+      errorMessage = getError(e, "email");
+    }
+    dispatch(withErrorAction(UserActions.FETCH_OFFER_FAILURE, errorMessage));
   }
 };
 

@@ -4,7 +4,10 @@ import OfferContent from "./OfferContent";
 const Offer = () => {
   return (
     <>
-      <OfferContent />
+      <OfferContent
+        content="San Valentin Special, get 10% off music lessons"
+        expireAt="21-09-2019"
+      />
     </>
   );
 };
