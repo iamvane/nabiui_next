@@ -14,10 +14,11 @@ import {
 import Education from '../Education/Education';
 import Employment from '../Employment/Employment';
 import AccountInfo from '../AccountInfo/AccountInfo';
+import References from '../Recommendations/Recommendations';
+import PrivateRoute from '../Auth/PrivateRoutes';
 import ProfileStep from './ProfileStep/ProfileStep';
 import JobPreferencesStep from './JobPreferencesStep';
 import Screening from './Screening';
-import References from '../Recommendations/Recommendations';
 
 interface State {
   showSnackbar: boolean;
@@ -78,4 +79,4 @@ export const ProfileBuilder = (props: Props) => {
   );
 }
 
-export default ProfileBuilder;
+export default PrivateRoute(ProfileBuilder, 'Private', ['Instructor']);

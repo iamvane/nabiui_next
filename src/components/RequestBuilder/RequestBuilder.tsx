@@ -9,6 +9,7 @@ import AccountInfo from '../AccountInfo/AccountInfo';
 import RequestStep from '../Request/RequestStep';
 // import SendRequest from 'components/RequestBuilder/SendRequest';
 import { Routes } from '../common/constants/Routes';
+import PrivateRoute from '../Auth/PrivateRoutes';
 // import PreLaunchStudentDetails from './PreLaunchStudentDetails';
 import {
   RequestBuilderStepper,
@@ -81,4 +82,4 @@ export class RequestBuilder extends React.Component<Props, State> {
   }
 }
 
-export default RequestBuilder;
+export default PrivateRoute(RequestBuilder, 'Private', ['Student', 'Parent']);
