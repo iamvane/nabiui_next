@@ -4,20 +4,11 @@ import { parseCookies } from '../../utils/parseCookies';
 
 export default (ChildComponent, permission = 'Public', roles = []) => class extends React.Component<any> {
   static async getInitialProps(context) {
-    let { req, res, store, pathname } = context;
+    let { res, pathname } = context;
 
     const cookies = parseCookies(context.req)
-    const { user } = store.getState();
     const token = cookies.token;
     const role = cookies.role;
-    let initialProps = {
-      isServer: !!req,
-      permission,
-      roles,
-      token,
-      user,
-      role
-    };
 
     const isLoginPage = pathname.startsWith(Routes.Login);
     roles = roles.map((role) => role.toLowerCase());
@@ -45,7 +36,7 @@ export default (ChildComponent, permission = 'Public', roles = []) => class exte
       });
       res.end();
     }
-    return initialProps;
+    return {};
   }
 
   render() {
