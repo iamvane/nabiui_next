@@ -182,13 +182,13 @@ export class InviteFriends extends React.Component<Props, State> {
       )
     );
 
-    const uri = `${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`;
+    const uri = `${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`;
 
     const encodeUrl = encodeURI(uri);
 
     const shareLinkDesktop =
       "http://www.facebook.com/dialog/send?app_id=148582506595325&link=" +
-      InviteFriendsComponent.referUrl +
+      InviteFriendsComponent.referralUrl +
       this.props.user.referralToken +
       "&redirect_uri=https://www.nabimusic.com/";
     const shareLinkMobile =
@@ -237,7 +237,7 @@ export class InviteFriends extends React.Component<Props, State> {
                   src=" https://nabimusic.s3.us-east-2.amazonaws.com/mail.png"
                 />
               }
-              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
@@ -248,7 +248,7 @@ export class InviteFriends extends React.Component<Props, State> {
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/twitter.png"
                 />
               }
-              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
@@ -259,7 +259,7 @@ export class InviteFriends extends React.Component<Props, State> {
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
                 />
               }
-              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
@@ -270,7 +270,7 @@ export class InviteFriends extends React.Component<Props, State> {
                   src="https://image.flaticon.com/icons/png/512/124/124034.png"
                 />
               }
-              url={`${InviteFriendsComponent.referUrl}${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
             />
           </Grid>
           <Grid xs={2}>
@@ -342,7 +342,7 @@ export class InviteFriends extends React.Component<Props, State> {
 
           <Grid item={true}>
             <Typography className="nabi-margin-top-xsmall">
-              {InviteFriendsComponent.referUrl} {""}
+              {InviteFriendsComponent.referralUrl} {""}
               {this.props.user.referralToken}
             </Typography>
           </Grid>
