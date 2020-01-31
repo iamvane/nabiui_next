@@ -12,12 +12,15 @@ import {
   CircularProgress,
   FormControl,
   FormControlLabel,
-  Radio,
-  RadioGroup,
+  FormHelperText,
+  Grid,
+  Input,
+  Select,
   TextField,
   Typography
 } from '@material-ui/core';
 
+import { selectOptions } from '../../../utils/formUtils';
 import SectionTitle from '../../common/SectionTitle';
 import {
   Role,
@@ -36,6 +39,9 @@ interface Props {
   isRequesting: boolean;
   email: string;
   agreeWithTerms: boolean;
+  firstName: string;
+  lastName: string;
+  reference: string;
 }
 
 /**
@@ -64,34 +70,37 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
       onSubmit={props.handleSubmit}
       autoComplete="off"
     >
-      {selectedRole !== Role.instructor && (
-        <React.Fragment>
-          <SectionTitle text={RegistrationFormComponent.IAmA} />
-          <FormControl required={true}>
-            <RadioGroup
-              name={RegistrationFormComponent.FieldNames.Role}
-              onChange={handleChange}
-              value={selectedRole}
-            >
-              <FormControlLabel
-                control={<Radio />}
-                label={RegistrationFormComponent.Labels.ProspectiveStudent}
-                value={Role.student}
-              />
-              <FormControlLabel
-                control={<Radio />}
-                label={RegistrationFormComponent.Labels.ParentGuardian}
-                value={Role.parent}
-              />
-            </RadioGroup>
-          </FormControl>
-        </React.Fragment>
-      )}
-
       <div className="nabi-margin-top-small">
        <SectionTitle text={registerAsText} />
       </div>
-
+      <Grid container={true} spacing={1}>
+        <Grid item={true} xs={12} md={6}>
+          <TextField
+            fullWidth={true}
+            id={RegistrationFormComponent.Ids.FirstName}
+            name={RegistrationFormComponent.FieldNames.FirstName}
+            onChange={handleChange}
+            placeholder={RegistrationFormComponent.Placeholders.FirstName}
+            required={true}
+            value={props.firstName}
+            error={!!formErrors.firstName}
+            helperText={formErrors.firstName}
+          />
+        </Grid>
+        <Grid item={true} xs={12} md={6}>
+          <TextField
+            fullWidth={true}
+            id={RegistrationFormComponent.Ids.LastName}
+            name={RegistrationFormComponent.FieldNames.LastName}
+            onChange={handleChange}
+            placeholder={RegistrationFormComponent.Placeholders.LastName}
+            required={true}
+            value={props.lastName}
+            error={!!formErrors.lastName}
+            helperText={formErrors.lastName}
+          />
+        </Grid>
+      </Grid>
       <TextField
         fullWidth={true}
         margin="normal"
@@ -131,6 +140,25 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
           showYearDropdown={true}
           dropdownMode="select"
         />
+      </FormControl>
+
+      <FormControl
+        fullWidth={true}
+        className="nabi-margin-top-small"
+        error={!!formErrors.reference}
+      >
+        <Select
+          native={true}
+          value={props.reference}
+          onChange={props.handleChange}
+          input={<Input name={RegistrationFormComponent.FieldNames.Reference} />}
+        >
+          <option value="" disabled={true}>
+            {RegistrationFormComponent.Placeholders.Reference}
+          </option>
+          {selectOptions(RegistrationFormComponent.referenceOptions)}
+        </Select>
+      <FormHelperText>{formErrors.reference}</FormHelperText>
       </FormControl>
 
       <div className="nabi-margin-top-small nabi-margin-left-xsmall">

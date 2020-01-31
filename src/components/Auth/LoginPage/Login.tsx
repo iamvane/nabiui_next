@@ -64,14 +64,24 @@ const Login = (props: Props) => {
     if (props.passwordSetMessage) {
       setDisplaySnackBar(true)
     }
-    const analiticsProps = {
-      properties: {
-        referrer: document.referrer
-      }
-    };
-    page('Login', analiticsProps);
+    if (!login) {
+      const analiticsProps = {
+        properties: {
+          referrer: document.referrer
+        }
+      };
+      page('Login', analiticsProps);
+    }
 
     if (!props.loginError && props.token && login) {
+      const analiticsProps = {
+        userId: email,
+        properties: {
+          referrer: document.referrer
+        }
+      };
+      track('Logged in', analiticsProps);
+
       const fetchUser = async () => {
         await props.fetchUser(props.token);
       };
@@ -100,15 +110,6 @@ const Login = (props: Props) => {
     await props.authenticateUser(email.toLocaleLowerCase(), password);
 
     setLogin(true);
-    if (!props.loginError) {
-      const analiticsProps = {
-        userId: email,
-        properties: {
-          referrer: document.referrer
-        }
-      };
-      track('Logged in', analiticsProps);
-    }
   }
 
   return (

@@ -25,8 +25,11 @@ import { RegistrationType } from "./models";
 import { page, track } from "../../../utils/analytics";
 
 export interface RegistrationErrors {
+  [RegistrationFormComponent.FieldKey.FirstName]?: string;
+  [RegistrationFormComponent.FieldKey.LastName]?: string;
   [RegistrationFormComponent.FieldKey.Email]?: string;
   [RegistrationFormComponent.FieldKey.Password]?: string;
+  [RegistrationFormComponent.FieldKey.Reference]?: string;
 }
 
 interface StateProps {
@@ -59,25 +62,32 @@ interface Props
  * Contains a form to register new users
  */
 export const Registration = (props: Props) => {
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [role, setRole] = React.useState(props.role);
   const [birthday, setBirthday] = React.useState("");
   const [openModal, toggleModal] = React.useState(false);
   const [isUnderage, setIsUnderAge] = React.useState(false);
+  const [reference, setReference] = React.useState("");
   const [agreeWithTerms, setAgreeWithTerms] = React.useState(false);
   const [formErrors, setFormErrors] = React.useState({});
   const [registration, setRegistration] = React.useState(false);
   const [isAttemptToRegister, setIsAttemptToRegister] = React.useState(false);
 
   React.useEffect(() => {
-    setEmail(props.email);
-    const analiticsProps = {
-      properties: {
-        referrer: document.referrer
-      }
-    };
-    page("Registration", analiticsProps);
+    if (props.email) {
+      setEmail(props.email);
+    }
+    
+    if (!registration) {
+      const analiticsProps = {
+        properties: {
+          referrer: document.referrer
+        }
+      };
+      page("Registration", analiticsProps);
+    }
 
     if (registration && !isUnderage) {
       const isError = checkErrors(Object.values(formErrors));
@@ -96,7 +106,7 @@ export const Registration = (props: Props) => {
       };
       track("Created Account", analiticsProps);
 
-      role === Role.instructor
+      props.role === Role.instructor
         ? Router.push(Routes.BuildProfile + Routes.AccountInfo)
         : Router.push(Routes.BuildRequest + Routes.AccountInfo);
     }
@@ -112,10 +122,15 @@ export const Registration = (props: Props) => {
   const createUser = async () => {
     setRegistration(false);
     let userValues: RegistrationType = {
+      firstName,
+      lastName,
       birthday: moment(birthday).format("YYYY-MM-DD"),
       email: email.toLocaleLowerCase(),
       password,
-      role
+      reference,
+      termsAccepted: agreeWithTerms,
+      role: props.role
+
     };
     if (props.invitationToken) {
       userValues.referringCode = props.invitationToken;
@@ -130,14 +145,20 @@ export const Registration = (props: Props) => {
     const name = target.name;
 
     switch (name) {
-      case RegistrationFormComponent.FieldNames.Role:
-        setRole(value as any);
+      case RegistrationFormComponent.FieldNames.FirstName:
+        setFirstName(value);
+        break;
+      case RegistrationFormComponent.FieldNames.LastName:
+        setLastName(value);
         break;
       case RegistrationFormComponent.FieldNames.Email:
         setEmail(value);
         break;
       case RegistrationFormComponent.FieldNames.Password:
         setPassword(value);
+        break;
+      case RegistrationFormComponent.FieldNames.Reference:
+        setReference(value);
         break;
       case RegistrationFormComponent.FieldNames.AgreeWithTerms:
         setAgreeWithTerms(target.checked);
@@ -167,8 +188,21 @@ export const Registration = (props: Props) => {
 
     const formErrors: RegistrationErrors = {
       email: "",
-      password: ""
+      password: "",
+      firstName: "",
+      lastName: "",
+      reference: ""
     };
+
+    // Validate first name
+    if (!firstName) {
+      formErrors[FieldKey.FirstName] = RegistrationFormComponent.ErrorMessages.FirstName;
+    }
+
+    // Validate first name
+    if (!lastName) {
+      formErrors[FieldKey.LastName] = RegistrationFormComponent.ErrorMessages.LastName;
+    }
 
     // Validate email
     if (!email) {
@@ -200,6 +234,11 @@ export const Registration = (props: Props) => {
       }
     }
 
+    // Validate reference
+    if (!reference) {
+      formErrors[FieldKey.Reference] = RegistrationFormComponent.ErrorMessages.Reference;
+    }
+
     // Validate birthday
     displayAgeDisclaimer();
     return setFormErrors(formErrors);
@@ -227,12 +266,15 @@ export const Registration = (props: Props) => {
           handleSubmit={handleSubmit}
           handleBirthdayChange={handleBirthdayChange}
           birthday={birthday ? birthday : ""}
-          selectedRole={role || ""}
+          selectedRole={props.role || ""}
           formErrors={formErrors}
           apiError={props.apiError}
           email={email}
+          firstName={firstName}
+          lastName={lastName}
           isRequesting={props.isRequesting}
           agreeWithTerms={agreeWithTerms}
+          reference={reference}
         />
       </div>
 

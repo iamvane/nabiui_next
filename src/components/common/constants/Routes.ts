@@ -5,6 +5,7 @@ export enum Routes {
   RegistrationStudent = '/registration-student',
   RegistrationParent = '/registration-parent',
   RegistrationInstructor = '/registration-instructor',
+  RegistrationParentStudent = '/registration-parent-student',
   Requests = '/requests',
   BuildProfile = '/build-profile',
   BuildRequest = '/build-request',

@@ -19,6 +19,9 @@ export namespace RegistrationFormComponent {
   export enum FieldKey {
     Email = 'email',
     Password = 'password',
+    FirstName = 'firstName',
+    LastName = 'lastName',
+    Reference = 'reference'
   }
 
   export enum Labels {
@@ -28,13 +31,19 @@ export namespace RegistrationFormComponent {
 
   export enum Placeholders {
     Email = 'Email',
-    Password = 'Password'
+    Password = 'Password',
+    FirstName = 'First Name',
+    LastName = 'Last Name',
+    Reference = 'How did you hear about us?'
   }
 
   export enum FieldNames {
     Role = 'role',
     Email = 'email',
     Password = 'password',
+    FirstName = 'firstName',
+    LastName = 'lastName',
+    Reference = 'reference',
     AgreeWithTerms = 'agreeWithTerms'
   }
 
@@ -42,6 +51,8 @@ export namespace RegistrationFormComponent {
     Role = 'role',
     Email = 'email',
     Password = 'password',
+    FirstName = 'firstName',
+    LastName = 'lastName',
   }
 
   export enum RegisterText {
@@ -51,13 +62,56 @@ export namespace RegistrationFormComponent {
   }
 
   export enum ErrorMessages {
+    FirstName = 'Enter a valid first name.',
+    LastName = 'Enter a valid last name.',
     Email = 'Invalid email. Enter a valid email address.',
     Password = 'Invalid password. Must contain at least 5 characters, a letter and a number.',
+    Reference = 'Select an option.'
   }
+
+  export const referenceOptions = [
+    {
+      label: 'Care.com',
+      value: 'care.com'
+    },
+    {
+      label: 'Facebook',
+      value: 'facebook'
+    },
+    {
+      label: 'Indeed Jobs',
+      value: 'indeed jobs'
+    },
+    {
+      label: 'Instagram',
+      value: 'instagram'
+    },
+    {
+      label: 'LinkedIn',
+      value: 'linkedIn'
+    },
+    {
+      label: 'Nabi Music Blog',
+      value: 'nabi blog'
+    },
+    {
+      label: 'Other',
+      value: 'other'
+    },
+    {
+      label: 'Pinterest',
+      value: 'pinterest'
+    },
+    {
+      label: 'Twitter',
+      value: 'twitter'
+    }
+  ]
 
   export const agreeWithTerms = 'I agree with the {termsOfServiceReplace} of NabiMusic.';
   export const termsOfServicePlaceholder = '{termsOfServiceReplace}';
   export const termsText = 'Terms of Use';
+
 }
 
 export namespace RegistrationOptionsComponent {
@@ -71,4 +125,11 @@ export namespace RegistrationOptionsComponent {
   export const preLaunchStudentCTADescription = 'Take music lessons with a qualified instructor.';
   export const preLaunchStudentButton = 'Find a Music Instructor';
   export const preLaunchInstructorCTATitle = 'Find Teaching Jobs';
+}
+
+export namespace RegistrationParentstudentOptionsComponent {
+  export const description = 'Are you a student or a parent?';
+  export const parent = 'I am a parent';
+  export const student = 'I am a student';
+  export const InstructorUrl = 'Register as an instructor';
 }
