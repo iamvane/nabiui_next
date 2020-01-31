@@ -130,7 +130,6 @@ export const Registration = (props: Props) => {
       reference,
       termsAccepted: agreeWithTerms,
       role: props.role
-
     };
     if (props.invitationToken) {
       userValues.referringCode = props.invitationToken;

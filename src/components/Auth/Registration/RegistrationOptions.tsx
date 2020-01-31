@@ -49,7 +49,6 @@ const RegistrationOptions: React.StatelessComponent<Props> = props => {
           </Button>
         </Link>
       </div>
-
     </div>
   );
 };
