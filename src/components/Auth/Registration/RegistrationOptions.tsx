@@ -17,7 +17,7 @@ interface Props {}
  */
 const RegistrationOptions: React.StatelessComponent<Props> = props => {
   return (
-    <div className="nabi-container">
+    <div className="nabi-container nabi-margin-bottom-small">
       <div className="nabi-background-white nabi-section nabi-text-center">
         <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-margin-bottom-zero">
           {RegistrationOptionsComponent.preLaunchStudentCTATitle}
@@ -25,7 +25,7 @@ const RegistrationOptions: React.StatelessComponent<Props> = props => {
         <Typography className="nabi-margin-small">
           {RegistrationOptionsComponent.preLaunchStudentCTADescription}
         </Typography>
-        <Link href={Routes.RegistrationStudent}>
+        <Link href={Routes.RegistrationParentStudent}>
           <Button
             color="primary"
             variant="contained"
@@ -49,7 +49,6 @@ const RegistrationOptions: React.StatelessComponent<Props> = props => {
           </Button>
         </Link>
       </div>
-
     </div>
   );
 };
