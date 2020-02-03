@@ -144,7 +144,6 @@ export class InviteFriends extends React.Component<Props, State> {
   };
 
   public copyInviteLink = () => {
-    alert("hola");
     let inviteLink = document.getElementById(
       InviteFriendsComponent.ids.copyLink
     );
