@@ -24,6 +24,7 @@ const teammate = (teamate : constants.Teammate) => (
         color="primary"
         href={teamate.linkedIn}
         target="_blank"
+        rel="noreferrer"
       >
         <img
         src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/linkedin.png"

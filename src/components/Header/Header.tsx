@@ -144,6 +144,7 @@ export const Header = (props: HeaderProps) => {
                 href="https://blog.nabimusic.com"
                 className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small"
                 target="_blank"
+                rel="noreferrer"
               >
                 {headerMenuLabels.blog}
               </a>

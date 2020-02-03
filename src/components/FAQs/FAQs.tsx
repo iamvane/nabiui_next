@@ -64,7 +64,7 @@ export const FAQs = (props: Props) => {
                           item.answer,
                           linkReplace,
                           (i: number) => (
-                            <Link key={i} href={item.linkUrl}><a target={item.targetBlank && '_blank'}>{item.linkText}</a></Link>
+                            <Link key={i} href={item.linkUrl}><a target={item.targetBlank && '_blank'} rel="noreferrer">{item.linkText}</a></Link>
                           )
                         ):
                         item.answer
