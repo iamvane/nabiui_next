@@ -230,9 +230,9 @@ export class InviteFriends extends React.Component<Props, State> {
         >
           <Grid xs={2}>
             <EmailShareButton
-              subject="I want to give you 20% off music lessons with Nabi Music"
+              subject={InviteFriendsComponent.iWantToGiveYou}
               separator=" "
-              body="Hello friend, join  Nabi Music using my referral url and get 20% off."
+              body={InviteFriendsComponent.helloFriends}
               children={
                 <img
                   className="nabi-img-icon-size"
@@ -272,7 +272,7 @@ export class InviteFriends extends React.Component<Props, State> {
           </Grid>
           <Grid xs={2}>
             <WhatsappShareButton
-              title={InviteFriendsComponent.iWantToGiveYou}
+              title={`${InviteFriendsComponent.iWantToGiveYou}${InviteFriendsComponent.useMyReferralLink}`}
               separator=" "
               children={
                 <img
