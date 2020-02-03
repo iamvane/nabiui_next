@@ -8,12 +8,14 @@ import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import PageTitle from '../common/PageTitle';
 import { Routes } from '../common/constants/Routes';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import { StoreState } from '../../redux/reducers/store';
 import { setPathname } from '../../redux/actions/UserActions';
 import { fetchApplicationList } from '../../redux/actions/RequestActions';
@@ -58,6 +60,10 @@ export const ApplicationList = (props: Props) => {
 
   return (
     <div className="nabi-container">
+      <Head>
+        <title>{pageTitlesAndDescriptions.applicationList.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.applicationList.description}></meta>
+      </Head>
       <PageTitle pageTitle={ApplicationListComponent.pageTitle} />
       {props.isRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
       <React.Fragment>

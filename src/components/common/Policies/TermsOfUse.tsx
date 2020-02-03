@@ -1,6 +1,9 @@
 import * as React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
+
 import { Routes } from '../constants/Routes';
+import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
 
 import { Typography } from '@material-ui/core';
 
@@ -8,6 +11,10 @@ export const TermsOfUse: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
     <div className="nabi-container">
+      <Head>
+        <title>{pageTitlesAndDescriptions.termsOfUse.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.termsOfUse.description}></meta>
+      </Head>
       <Typography variant="h3" align="center">Terms of Use</Typography>
       <Typography variant="h3" align="center">Last modified: Oct 15, 2019</Typography>
 

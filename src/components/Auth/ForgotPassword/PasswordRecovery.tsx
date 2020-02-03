@@ -4,6 +4,7 @@ import {
   Action,
   Dispatch
 } from 'redux';
+import Head from 'next/head';
 
 import {
   Button,
@@ -16,6 +17,7 @@ import {
 import { StoreState } from '../../../redux/reducers/store';
 import { requestPasswordRecovery } from '../../../redux/actions/UserActions';
 import { UserType } from '../../../redux/models/UserModel';
+import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import SnackBar from '../../common/SnackBar';
 import PageTitle from '../../common/PageTitle';
 import { PasswordRecoveryComponent } from './constants';
@@ -77,6 +79,10 @@ interface Props extends
 
   return (
     <div className="nabi-margin-bottom-xlarge">
+      <Head>
+        <title>{pageTitlesAndDescriptions.accountRecovery.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.accountRecovery.description}></meta>
+      </Head>
       <PageTitle pageTitle={PasswordRecoveryComponent.pageTitle} />
       <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
         <div className="form-card nabi-background-white nabi-section">

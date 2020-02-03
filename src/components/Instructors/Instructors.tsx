@@ -1,13 +1,13 @@
 import * as React from "react";
-import { Redirect } from "react-router-dom";
+import Head from 'next/head';
 
-import InstructorCard from "./InstructorCard";
-import { Route } from "./constants";
 import {
   Instructor,
   Rates,
   InstructorType
 } from "../../redux/models/InstructorModel";
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
+import InstructorCard from "./InstructorCard";
 
 interface Props {
   instructors: Instructor[];
@@ -22,6 +22,10 @@ const Instructors: React.StatelessComponent<Props> = props => {
       {
         // props.instructor.id ? <Redirect to={`${Route.Profile}/${props.instructor.id}`} /> :
         <React.Fragment>
+          <Head>
+            <title>{pageTitlesAndDescriptions.instructors.title}</title>
+            <meta name="description" content={pageTitlesAndDescriptions.instructors.description}></meta>
+          </Head>
           {props.instructors && props.instructors.length > 0 && props.instructors.map((instructor: Instructor, i: number) => (
             <InstructorCard
               key={i}

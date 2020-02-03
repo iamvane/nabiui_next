@@ -7,6 +7,7 @@ import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 
 import {
   Grid,
@@ -22,6 +23,7 @@ import { InstructorType } from '../../redux/models/InstructorModel';
 import { changeAvatar } from '../../redux/actions/UserActions';
 import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';
 import { Routes } from '../common/constants/Routes';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import PageTitle from '../common/PageTitle';
 import {
   ProfileComponent,
@@ -104,6 +106,10 @@ export const Profile = (props: Props) =>  {
 
   return (
     <div className="nabi-container">
+      <Head>
+        <title>{pageTitlesAndDescriptions.profile.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.profile.description}></meta>
+      </Head>
       <PageTitle pageTitle={ProfileComponent.pageTitle} />
         <Breadcrumbs aria-label="breadcrumb">
           <Link  href={Routes.Dashboard}>

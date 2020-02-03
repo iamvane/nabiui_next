@@ -6,6 +6,7 @@ import {
 } from 'redux';
 import { RouteComponentProps } from 'react-router';
 import Router from 'next/router';
+import Head from 'next/head';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -19,6 +20,7 @@ import {
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
 import { AnnouncementConstants } from '../common/constants/Announcement';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
 import { Routes } from '../common/constants/Routes';
 import { Role } from '../Auth/Registration/constants';
@@ -101,6 +103,10 @@ export class Dashboard extends React.Component<Props, State> {
   render() {
     return (
       <React.Fragment>
+        <Head>
+          <title>{pageTitlesAndDescriptions.dashboard.title}</title>
+          <meta name="description" content={pageTitlesAndDescriptions.dashboard.description}></meta>
+        </Head>
         {this.props.isRequesting  || this.props.isFetchingDashboard ?
         <div className="nabi-text-center">
           <CircularProgress />

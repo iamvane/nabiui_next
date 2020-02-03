@@ -5,6 +5,7 @@ import {
   Dispatch
 } from 'redux';
 import Router from 'next/router';
+import Head from 'next/head';
 
 import { Grid } from '@material-ui/core';
 
@@ -21,6 +22,7 @@ import {
 import { LoginComponent } from './constants';
 import PageTitle from '../../common/PageTitle';
 import { Routes } from '../../common/constants/Routes';
+import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import SnackBar from '../../common/SnackBar';
 import PrivateRoute from '../../Auth/PrivateRoutes';
 import { LoginType } from './model';
@@ -114,6 +116,10 @@ const Login = (props: Props) => {
 
   return (
     <div className="nabi-margin-bottom-xlarge">
+      <Head>
+        <title>{pageTitlesAndDescriptions.login.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.login.description}></meta>
+      </Head>
       <PageTitle pageTitle={LoginComponent.pageTitle} />
       <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
         <div className="form-card nabi-background-white nabi-section">

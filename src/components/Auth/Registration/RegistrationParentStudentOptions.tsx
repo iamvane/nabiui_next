@@ -1,13 +1,10 @@
 import * as React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 
-import {
-  Button,
-  Grid,
-  Divider,
-  Typography
-} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
+import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import { Routes } from '../../common/constants/Routes';
 import { RegistrationParentstudentOptionsComponent } from './constants';
 
@@ -19,6 +16,10 @@ interface Props {}
 const RegistrationParentStudentOptions: React.StatelessComponent<Props> = props => {
   return (
     <div className="nabi-container nabi-margin-bottom-small">
+      <Head>
+        <title>{pageTitlesAndDescriptions.registrationParentStudent.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.registrationParentStudent.description}></meta>
+      </Head>
       <div className="nabi-background-white nabi-section nabi-text-center">
         <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-small nabi-margin-top-zero">
           {RegistrationParentstudentOptionsComponent.description}

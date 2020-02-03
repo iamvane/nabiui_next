@@ -14,27 +14,29 @@ export default (ChildComponent, permission = 'Public', roles = []) => class exte
     roles = roles.map((role) => role.toLowerCase());
     const hasRole = roles.includes(role);
 
-    if (token) {
-      if (permission === 'Public') {
+    if (res) {
+      if (token) {
+        if (permission === 'Public') {
+          res.writeHead(302, {
+            Location: Routes.Dashboard,
+          });
+          res.end();
+        }
+        if (permission === 'Private' && role && !hasRole) {
+          res.writeHead(302, {
+            Location: Routes.Dashboard,
+          });
+          res.end();
+        }
+      }
+
+
+      if (!token && !isLoginPage && permission === 'Private') {
         res.writeHead(302, {
-          Location: Routes.Dashboard,
+          Location: Routes.Login,
         });
         res.end();
       }
-      if (permission === 'Private' && role && !hasRole) {
-        res.writeHead(302, {
-          Location: Routes.Dashboard,
-        });
-        res.end();
-      }
-    }
-
-
-    if (!token && !isLoginPage && permission === 'Private') {
-      res.writeHead(302, {
-        Location: Routes.Login,
-      });
-      res.end();
     }
     return {};
   }

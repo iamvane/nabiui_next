@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as _ from "lodash";
 import { Action, Dispatch } from "redux";
 import Link from 'next/link';
+import Head from 'next/head';
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
@@ -18,6 +19,7 @@ import {
 import { Routes } from '../common/constants/Routes';
 import ListTemplate from "../common/Templates/ListTemplate";
 import { ListTemplateComponent } from "../common/constants/ListTemplate";
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import RequestsFilter from "./RequestsFilter";
 import RequestsFilterMobile from "./RequestsFilterMobile";
 import Requests from "./Requests";
@@ -185,6 +187,10 @@ export const ReuqestsList = (props: Props) => {
 
   return (
     <React.Fragment>
+      <Head>
+        <title>{pageTitlesAndDescriptions.requests.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.requests.description}></meta>
+      </Head>
       <ListTemplate
         pageTitle={RequestsListComponent.pageTitle}
         results={props.requests.count}

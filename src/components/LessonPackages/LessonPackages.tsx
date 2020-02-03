@@ -5,6 +5,7 @@ import {
   Dispatch
 } from 'redux';
 import Link from 'next/link';
+import Head from 'next/head';
 
 import {
   Button,
@@ -17,6 +18,7 @@ import {
 import { fetchLowestRate } from '../../redux/actions/UserActions';
 import { StoreState } from '../../redux/reducers/store';
 import { Routes } from '../common/constants/Routes';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import PageTitle from '../common/PageTitle';
 import { BookLessonsComponent } from '../BookLessons/constants';
 import * as constants from './constants';
@@ -46,6 +48,10 @@ export class Pricing extends React.Component<Props, {}> {
   public render(): JSX.Element {
     return (
       <div className="nabi-container nabi-text-center">
+        <Head>
+          <title>{pageTitlesAndDescriptions.lessonPackages.title}</title>
+          <meta name="description" content={pageTitlesAndDescriptions.lessonPackages.description}></meta>
+        </Head>
         <PageTitle pageTitle={constants.pageTitle} />
 
         <div className="nabi-section nabi-padding-top-zero">

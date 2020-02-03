@@ -2,10 +2,12 @@ import * as React from 'react';
 
 const reactStringReplace = require('react-string-replace');
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import CommonStepper from '../CommonStepper/CommonStepper';
 import { Routes } from '../common/constants/Routes';
 import { AnnouncementConstants } from '../common/constants/Announcements';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import SnackBar from '../common/SnackBar';
 import {
   ProfileBuilderStepper,
@@ -60,6 +62,10 @@ export const ProfileBuilder = (props: Props) => {
 
   return(
     <React.Fragment>
+      <Head>
+        <title>{pageTitlesAndDescriptions.buildProfile.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.buildProfile.description}></meta>
+      </Head>
       <CommonStepper
         steps={ProfileBuilderStepper.steps}
         pageTitle={ProfileBuilderComponent.pageTitle}

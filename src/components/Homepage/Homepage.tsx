@@ -1,11 +1,13 @@
 import * as React from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import Router from "next/router";
+import Head from 'next/head';
 
 import { StoreState } from "../../redux/reducers/store";
 import { page } from "../../utils/analytics";
 import { UserType } from "../../redux/models/UserModel";
 import { Routes } from "../common/constants/Routes";
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import Banner from "./Banner";
 import Features from "./Features";
 import Testimonials from "./Testimonials";
@@ -63,8 +65,16 @@ export const Homepage = (props: Props) => {
     page("Home", analiticsProps);
   }, [referralInfo.displayName]);
 
+  const docTitle = referralInfo.displayName ? pageTitlesAndDescriptions.referral.title :
+    pageTitlesAndDescriptions.homepage.title;
+  const docDescription =  referralInfo.displayName ? pageTitlesAndDescriptions.referral.description :
+    pageTitlesAndDescriptions.homepage.description;
   return (
     <div>
+      <Head>
+        <title>{docTitle}</title>
+        <meta name="description" content={docDescription}></meta>
+      </Head>
       <Banner referralInfo={referralInfo} />
       <Features />
       <Testimonials />
