@@ -16,6 +16,8 @@ export namespace InviteFriendsComponent {
   export const referAndEarn = "Refer and earn";
   export const shareNow = "Share now";
   export const referralUrl = "http://nabimusic.com/referral/";
+  export const iWantToGiveYou = " I want to give you 20% off music lessons with Nabi Music. Use my referral link to sign up!"
+  export const helloFriends = "Hello friends! I want to give you 20% off music lessons. Use my referral link:"
 
   export enum FieldKey {
     Email = "email",

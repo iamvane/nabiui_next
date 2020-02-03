@@ -230,6 +230,9 @@ export class InviteFriends extends React.Component<Props, State> {
         >
           <Grid xs={2}>
             <EmailShareButton
+              subject="I want to give you 20% off music lessons with Nabi Music"
+              separator=" "
+              body="Hello friend, join  Nabi Music using my referral url and get 20% off."
               children={
                 <img
                   className="nabi-img-icon-size"
@@ -241,6 +244,9 @@ export class InviteFriends extends React.Component<Props, State> {
           </Grid>
           <Grid xs={2}>
             <TwitterShareButton
+              title={`${InviteFriendsComponent.helloFriends}${" "}${
+                InviteFriendsComponent.referralUrl
+              }${this.props.user.referralToken}`}
               children={
                 <img
                   className="nabi-img-icon-size"
@@ -252,17 +258,22 @@ export class InviteFriends extends React.Component<Props, State> {
           </Grid>
           <Grid xs={2}>
             <FacebookShareButton
+              quote={`${InviteFriendsComponent.helloFriends}${" "}${
+                InviteFriendsComponent.referralUrl
+              }${this.props.user.referralToken}`}
               children={
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
                 />
               }
-              url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
+              url={`${InviteFriendsComponent.referralUrl}`}
             />
           </Grid>
           <Grid xs={2}>
             <WhatsappShareButton
+              title={InviteFriendsComponent.iWantToGiveYou}
+              separator=" "
               children={
                 <img
                   className="nabi-img-icon-size"
