@@ -4,9 +4,7 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import * as Sentry from '@sentry/browser';
-import {
-  MuiThemeProvider
-} from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import { Footer } from '../src/components/common/Footer';
 import Header from '../src/components/Header/Header';
@@ -58,7 +56,7 @@ class NabiApp extends App<any, any> {
     return (
       <>
         <Head>
-          <title>Nabi Music - Music Lessons for Children and Qualified Music Teachers</title>
+          <title>Nabi Music | On-demand Music Lessons for Children</title>
         </Head>
         <Provider store={store}>
           <MuiThemeProvider theme={theme}>

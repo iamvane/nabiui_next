@@ -4,7 +4,7 @@ export const pageTitlesAndDescriptions = {
     description: 'Meet the Nabi Music team and learn about our mission.'
   },
   accountRecovery: {
-    title: 'Account Recovery',
+    title: 'Account Recovery | Request new password url token',
     description: 'Request a link to set a new password by providing your email.'
   },
   applicationList: {
@@ -16,7 +16,7 @@ export const pageTitlesAndDescriptions = {
     description: 'Choose a package, purchase music lessons and start learning.'
   },
   buildProfile: {
-    title: 'Nabi Music: Build Your Music Instructor Profile',
+    title: 'Nabi Music | Build Your Music Instructor Profile',
     description: 'Tell students who you are, and share what makes you a great music instructor.'
   },
   contactUs: {
@@ -40,15 +40,15 @@ export const pageTitlesAndDescriptions = {
     description: 'Set a new password and login to your account.'
   },
   homepage: {
-    title: 'We make education easily accessible',
+    title: 'Nabi Music | Making Education Easily Accessible',
     description: 'Music lessons for children and adults. Music teaching jobs.'
   },
   howItWorksInstructors: {
-    title: 'How It Works | Music Instructors',
+    title: 'How It Works - Instructors | Teach Music with Nabi',
     description: '1. Build your profile, 2. Apply to lesson requests, 3. Start teaching'
   },
   howItWorksParentsStudents: {
-    title: 'How It Works | Parents & Students',
+    title: 'How It Works - Parents & Students | Learn music',
     description: '1. Post a lesson request, 2. Review Applicants, 3. Book lessons and start learning '
   },
   instructorPolicy: {
@@ -60,11 +60,11 @@ export const pageTitlesAndDescriptions = {
     description: 'Qualified instructors for music lessons at home, in studio or online.'
   },
   lessonPackages: {
-    title: 'Lesson Packages | Start learning music!',
+    title: 'Lesson Packages | Start taking music lessons today',
     description: 'Learn piano, guitar, violin, singing, clarinet, flute, saxophone and more!'
   },
   login: {
-    title: 'Nabi Music | Login',
+    title: 'Nabi Music | Login to Your Dashboard',
     description: 'Visit your dashboard.'
   },
   privacyPolicy: {
@@ -76,15 +76,15 @@ export const pageTitlesAndDescriptions = {
     description: 'Meet your instructor, see their rates, instruments, bio, experience and more!'
   },
   referral: {
-    title: 'Your friend invited you to Join Nabi Music!',
+    title: 'Referral | Your invitation to Join Nabi Music',
     description: 'Accept your friend\'s invitation and get 20% off.'
   },
   registrationInstructor: {
-    title: 'Instructor Registration | Sign up and start teaching',
+    title: 'Instructor Registration | Sign up & start teaching',
     description: 'Create your instructor account, find teaching jobs and make money teaching music.'
   },
   registrationParentStudent: {
-    title: 'Are you a parent or a student',
+    title: 'Choose your role | Are you a parent or a student',
     description: 'Select your role.'
   },
   registrationParent: {
