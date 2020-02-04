@@ -72,10 +72,10 @@ const ClaimDiscountBanner = (props: Props) => {
 
         <Grid item xs={12} md={9} className="nabi-align-self-center">
           <Typography>
-            {ClaimDiscountBannerComponent.yourInviteFrom.replace(
+            {props.referralInfo.displayName ? ClaimDiscountBannerComponent.yourInviteFrom.replace(
               ClaimDiscountBannerComponent.userPlaceHolder,
               props.referralInfo.displayName
-            )}
+            ) : ClaimDiscountBannerComponent.youWhereInvite}
           </Typography>
         </Grid>
       </Grid>

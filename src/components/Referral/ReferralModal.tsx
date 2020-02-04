@@ -99,11 +99,13 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
           )}
 
           <DialogContentText className="nabi-text-center">
-            {ReferralModalComponent.Text.singUpToday}
-            {ReferralModalComponent.Text.yourInviteFrom.replace(
-              ReferralModalComponent.Text.userPlaceHolder,
-              referralInfo.displayName
-            )}
+            {ReferralModalComponent.Text.singUpToday} <br />
+            {referralInfo.displayName
+              ? ReferralModalComponent.Text.yourInviteFrom.replace(
+                  ReferralModalComponent.Text.userPlaceHolder,
+                  referralInfo.displayName
+                )
+              : ReferralModalComponent.Text.youWhereInvite}
           </DialogContentText>
           <TextField
             fullWidth={true}
