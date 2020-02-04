@@ -23,7 +23,11 @@ const FreeLesson = () => {
         spacing={4}
       >
         <Grid item={true} xs={12} md={4} className="nabi-margin-bottom-xsmall nabi-text-right-md nabi-color-white">
-          <img src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg" className="free-trial-icon" alt="become-an-instructor" />
+          <img
+            src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+            className="free-trial-icon"
+            alt="become-an-instructor"
+          />
         </Grid>
         <Grid item={true} xs={12} md={5} className="nabi-margin-bottom-xsmall nabi-color-white nabi-text-left-md">
           <h2 className="nabi-margin-top-zero nabi-margin-top-medium-md nabi-text-normalbold nabi-color-white nabi-margin-bottom-xsmall nabi-text-center nabi-font-large">

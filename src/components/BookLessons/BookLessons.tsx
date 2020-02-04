@@ -6,6 +6,7 @@ import {
 } from 'redux';
 import { useRouter } from 'next/router';
 import Router from "next/router";
+import Head from 'next/head';
 
 import {
   Card,
@@ -27,6 +28,7 @@ import {
 } from "../../redux/actions/RequestActions";
 import { Routes } from '../common/constants/Routes';
 import { CommonConstants } from '../common/constants/common';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
 import SectionTitle from '../common/SectionTitle';
@@ -112,6 +114,10 @@ export const BookLessons = (props: Props) => {
 
   return (
     <div className="nabi-container">
+      <Head>
+        <title>{pageTitlesAndDescriptions.bookLessons.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.bookLessons.description}></meta>
+      </Head>
       <PageTitle pageTitle={BookLessonsComponent.pageTitle} />
       {props.bookLessonsDataRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
         <div className="nabi-section nabi-background-white">

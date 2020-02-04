@@ -5,5 +5,5 @@ export namespace FooterComponent {
 
   export const CopyrightText = '\u00A9 {NabiMusicReplace}';
   export const NabiMusicPlaceholder = '{NabiMusicReplace}';
-  export const NabiMusicCenter = 'Nabi Music Center 2019.';
+  export const NabiMusicCenter = 'Nabi Music Center 2020.';
 }

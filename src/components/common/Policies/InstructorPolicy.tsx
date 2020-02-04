@@ -1,11 +1,18 @@
 import * as React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
+
 import { Routes } from '../constants/Routes';
+import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
 
 export const InstructorPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
     <div className="nabi-container">
+      <Head>
+        <title>{pageTitlesAndDescriptions.instructorPolicy.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.instructorPolicy.description}></meta>
+      </Head>
       At Nabi Music, both instructors and students are required to follow certain guidelines when using our Website and Service(s).
       <h5>As an Instructor, you are required to:</h5>
       <ul>

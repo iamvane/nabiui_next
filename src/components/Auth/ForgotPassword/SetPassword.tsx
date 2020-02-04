@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Router, { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import {
   Action,
@@ -20,6 +21,7 @@ import { UserType } from '../../../redux/models/UserModel';
 import { StoreState } from '../../../redux/reducers/store';
 import { setPassword  } from '../../../redux/actions/UserActions';
 import PageTitle from '../../common/PageTitle';
+import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import { Routes } from '../../common/constants/Routes';
 
 import { SetPasswordComponent } from './constants';
@@ -101,6 +103,10 @@ export const PasswordRecovery = (props: Props) => {
 
   return (
     <div className="nabi-margin-bottom-xlarge">
+      <Head>
+        <title>{pageTitlesAndDescriptions.forgotPassword.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.forgotPassword.description}></meta>
+      </Head>
       <PageTitle pageTitle={SetPasswordComponent.pageTitle} />
       <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
         <div className="form-card nabi-background-white nabi-section">

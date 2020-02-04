@@ -1,14 +1,20 @@
 import * as React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 
 import { Typography } from '@material-ui/core';
 
 import { Routes } from '../constants/Routes';
+import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
 
 export const PrivacyPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
     <div className="nabi-container">
+      <Head>
+        <title>{pageTitlesAndDescriptions.privacyPolicy.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.privacyPolicy.description}></meta>
+      </Head>
       <Typography variant="h3" align="center">Nabi Music Center, LLC. dba Nabi Music Privacy Policy</Typography>
       <Typography variant="h3" align="center">Last revised: Oct 15, 2019</Typography>
       Your privacy is very important to us. We want to make your experience with us as enjoyable and rewarding as possible, and we want you to use Nabi Music.com and our mobile site (collectively referred to as the “Website”) and all of our services with complete confidence. We are sensitive to the issue of confidentiality in online dealings and committed to transparency regarding our protection of individual privacy. This Privacy Policy is intended to inform users about the general approach we use in collecting, using and disseminating user information via the Website and demonstrate our commitment to privacy and security and supplement our <Link href={Routes.TermsOfUse}>Terms of Use</Link>.

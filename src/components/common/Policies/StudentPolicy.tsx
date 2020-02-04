@@ -1,11 +1,18 @@
 import * as React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
+
 import { Routes } from '../constants/Routes';
+import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
 
 export const StudentPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
     <div className="nabi-container">
+       <Head>
+        <title>{pageTitlesAndDescriptions.studentPolicy.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.studentPolicy.description}></meta>
+      </Head>
       At Nabi Muisc, we encourage both teachers and students follow certain guidelines. These guidelines supplement our Terms of Use and are conditional to the use of our Website and Service(s).
       <h5>As a Student or Parent, you will be required to:</h5>
       <ul>

@@ -1,6 +1,7 @@
 import React from "react"
 import Link from 'next/link';
 const reactStringReplace = require('react-string-replace');
+import Head from 'next/head';
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -15,6 +16,7 @@ import {
   FAQItem
 } from '../../../assets/data/faqs';
 import { Role } from '../../constants/Roles';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import PageBanner from "../common/PageBanner"
 import PageBannerCta from "../common/PageBannerCta"
 import * as constants from './constants';
@@ -33,9 +35,17 @@ export const FAQs = (props: Props) => {
   const description = props.role === Role.instructor ? constants.descriptionInstructor : constants.descriptionParent;
   const ctaText = props.role === Role.instructor ? constants.ctaParent : constants.ctaInstructor;
   const ctaLink = props.role === Role.instructor ? Routes.FAQParents : Routes.FAQInstructors;
+  const docTitle = props.role === Role.instructor ? pageTitlesAndDescriptions.faqInstructors.title :
+    pageTitlesAndDescriptions.faqParentsStudents.title;
+  const docDescription =  props.role === Role.instructor ? pageTitlesAndDescriptions.faqInstructors.description :
+    pageTitlesAndDescriptions.faqParentsStudents.description;
 
   return (
     <React.Fragment>
+      <Head>
+        <title>{docTitle}</title>
+        <meta name="description" content={docDescription}></meta>
+      </Head>
       <PageBanner title={constants.pageTitle} description={description} />
       <div className="nabi-container">
         <div className="nabi-background-white nabi-section nabi-margin-top-large nabi-margin-bottom-large nabi-border-radius">
@@ -54,7 +64,7 @@ export const FAQs = (props: Props) => {
                           item.answer,
                           linkReplace,
                           (i: number) => (
-                            <Link key={i} href={item.linkUrl}><a target={item.targetBlank && '_blank'}>{item.linkText}</a></Link>
+                            <Link key={i} href={item.linkUrl}><a target={item.targetBlank && '_blank'} rel="noreferrer">{item.linkText}</a></Link>
                           )
                         ):
                         item.answer

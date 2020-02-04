@@ -1,0 +1,9 @@
+{
+  "short_name": "Nabi Music",
+  "name": "nabi Music: Music lessons for children and adults in New York and Massachusetts",
+  "start_url": "/",
+  "background_color": "#f0f3f6",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#f0f3f6"
+}

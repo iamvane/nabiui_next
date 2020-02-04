@@ -16,6 +16,7 @@ const SocialMenu = () => {
         color="primary"
         href={SocialLinks.Facebook}
         target="_blank"
+        rel="noreferrer"
       >
         <img
          src={FacebookIcon}
@@ -29,6 +30,7 @@ const SocialMenu = () => {
         className="nabi-margin-left-xsmall"
         href={SocialLinks.Twitter}
         target="_blank"
+        rel="noreferrer"
       >
         <img
          src={TwitterIcon}
@@ -42,6 +44,7 @@ const SocialMenu = () => {
         className="nabi-margin-left-xsmall"
         href={SocialLinks.Instagram}
         target="_blank"
+        rel="noreferrer"
       >
         <img
          src={InstagramIcon}
@@ -55,6 +58,7 @@ const SocialMenu = () => {
         className="nabi-margin-left-xsmall"
         href={SocialLinks.Pinterest}
         target="_blank"
+        rel="noreferrer"
       >
         <img
          src={PinterestIcon}

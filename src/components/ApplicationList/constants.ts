@@ -7,7 +7,6 @@ export namespace ApplicationListComponent {
   export const pageTitle = 'Applications';
 }
 
-
 export namespace ApplicationCardComponent {
   export const availabilitySection = 'Availability';
   export const messageSection = 'Message';

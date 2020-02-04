@@ -1,10 +1,10 @@
 import * as React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
-
 import Router from "next/router";
 import { withRouter, NextRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
+import Head from 'next/head';
 
 import { Action, Dispatch } from "redux";
 
@@ -13,6 +13,7 @@ import { StoreState } from "../../../redux/reducers/store";
 import { createUser } from "../../../redux/actions/UserActions";
 import PageTitle from "../../common/PageTitle";
 import { Routes } from "../../common/constants/Routes";
+import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import RegistrationForm from "./RegistrationForm";
 import AgeDisclaimer from "./AgeDisclaimer";
 
@@ -255,8 +256,18 @@ export const Registration = (props: Props) => {
   };
 
   const closeModal = () => toggleModal(false);
+
+  const docTitle = props.role === Role.instructor ? pageTitlesAndDescriptions.registrationInstructor.title :
+    props.role === Role.parent ? pageTitlesAndDescriptions.registrationParent.title : pageTitlesAndDescriptions.registrationStudent.title;
+  const docDescription = props.role === Role.instructor ? pageTitlesAndDescriptions.registrationInstructor.description :
+    props.role === Role.parent ? pageTitlesAndDescriptions.registrationParent.description : pageTitlesAndDescriptions.registrationStudent.description;
+
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
+      <Head>
+        <title>{docTitle}</title>
+        <meta name="description" content={docDescription}></meta>
+      </Head>
       <PageTitle pageTitle={RegistrationComponent.pageTitle} />
 
       <div className="nabi-background-white nabi-section">

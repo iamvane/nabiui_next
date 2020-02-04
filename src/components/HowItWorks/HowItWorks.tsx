@@ -1,5 +1,6 @@
 import React from "react"
 import Link from 'next/link';
+import Head from 'next/head';
 const reactStringReplace = require('react-string-replace');
 
 import Grid from '@material-ui/core/Grid';
@@ -12,6 +13,7 @@ import PageBanner from "../common/PageBanner"
 import PageBannerCta from "../common/PageBannerCta"
 import * as constants from './constants';
 import { Routes } from '../common/constants/Routes';
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 
 interface Props {
   role: Role;
@@ -21,9 +23,17 @@ export const HowItWorks = (props: Props) => {
   const description = props.role === Role.instructor ? constants.descriptionInstructor : constants.descriptionParent;
   const ctaText = props.role === Role.instructor ? constants.ctaParent : constants.ctaInstructor;
   const ctaLink = props.role === Role.instructor ? Routes.HowItWorksParents : Routes.HowItWorksInstructors;
+  const docTitle = props.role === Role.instructor ? pageTitlesAndDescriptions.howItWorksInstructors.title :
+    pageTitlesAndDescriptions.howItWorksParentsStudents.title;
+  const docDescription =  props.role === Role.instructor ? pageTitlesAndDescriptions.howItWorksInstructors.description :
+    pageTitlesAndDescriptions.howItWorksParentsStudents.description;
 
   return (
     <React.Fragment>
+       <Head>
+        <title>{docTitle}</title>
+        <meta name="description" content={docDescription}></meta>
+      </Head>
       <PageBanner title={constants.pageTitle} description={description} />
       <div className="nabi-container">
         <div className="nabi-background-white nabi-section nabi-margin-top-large nabi-margin-bottom-large nabi-border-radius">
