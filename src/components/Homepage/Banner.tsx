@@ -7,7 +7,7 @@ import "../../../assets/scss/Banner.scss";
 import { Routes } from "../common/constants//Routes";
 import { BannerComponent } from "./constants/Banner";
 import ClaimDiscountBanner from "./ClaimDiscountBanner";
-import { ReferralInfo } from '../Referral/models';
+import { ReferralInfo } from "../Referral/models";
 
 interface Props {
   referralInfo?: ReferralInfo;
@@ -21,7 +21,7 @@ export const Banner = (props: Props) => {
   return (
     <section id="banner" className="nabi-position-relative">
       <div className="container">
-        {!props.error ? (
+        {!props.error && props.referralInfo.token ? (
           <ClaimDiscountBanner referralInfo={props.referralInfo} />
         ) : (
           <>
@@ -36,7 +36,11 @@ export const Banner = (props: Props) => {
                 <Grid item={true} xs={12} md={6}>
                   <Link href={Routes.Registration}>
                     <a>
-                      <Button color="primary" variant="contained" className="nabi-full-width">
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        className="nabi-full-width"
+                      >
                         {BannerComponent.findInstructorButton}
                       </Button>
                     </a>
@@ -45,7 +49,11 @@ export const Banner = (props: Props) => {
                 <Grid item={true} xs={12} md={6}>
                   <Link href={Routes.Registration}>
                     <a>
-                      <Button color="secondary" variant="contained" className="nabi-full-width">
+                      <Button
+                        color="secondary"
+                        variant="contained"
+                        className="nabi-full-width"
+                      >
                         {BannerComponent.startTeachingButton}
                       </Button>
                     </a>
