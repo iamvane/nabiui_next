@@ -57,10 +57,10 @@ export const Testimonials = () => {
         </h2>
         <Grid container={true} className="nabi-margin-top-xlarge nabi-margin-bottom-small">
           {
-            recognizedImages.map((item) => (
-              <Grid md={2} item={true} key={item} className="nabi-margin-center">
+            recognizedImages.map((item, i) => (
+              <Grid md={2} item={true} key={i} className="nabi-margin-center">
                 <div className="recognized-item">
-                  <img src={item} />
+                  <img src={item.src} alt={item.alt}/>
                 </div>
               </Grid>
             ))

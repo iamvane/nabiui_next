@@ -13,7 +13,11 @@ export const VettingProcess = () => {
         <meta name="description" content={pageTitlesAndDescriptions.vettingProcess.description}></meta>
       </Head>
       <p className="vetting-process-title nabi-color-nabi nabi-text-center nabi-text-extrabold nabi-margin-top-small nabi-margin-bottom-small">Child safety is serious for us.</p>
-      <img className="nabi-background-white nabi-full-width" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/vetting-process-nabi-music-lessons.png" />
+      <img
+        className="nabi-background-white nabi-full-width"
+        alt="nabi-music-vetting-process"
+        src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/vetting-process-nabi-music-lessons.jpg" 
+      />
     </div>
   )
 }

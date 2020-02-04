@@ -81,7 +81,7 @@ const ReferralModal: React.StatelessComponent<Props> = props => {
                 }}
                 badgeContent={
                   <Avatar
-                    alt="gift"
+                    alt="free-trial-music-lesson"
                     className="small-avatar"
                     src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
                   />

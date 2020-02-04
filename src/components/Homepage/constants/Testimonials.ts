@@ -38,12 +38,30 @@ export const button = 'Start With a Free Lesson';
 export const recognition = "Recognized By";
 
 export const recognizedImages = [
-  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/startup-next-nabi-01.png',
-  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/sound-of-boston-nabi-01.jpg',
-  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/missadventures-in-mommyhood-nabi-01.png',
-  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/mommy-poppins-nabi-01.png',
-  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/boston-central-01.jpg',
-  'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/umass-boston-nabi-01.png',
+  {
+    src: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/startup-next-nabi-01.png',
+    alt: 'nabi-music-start-up-next'
+  },
+  {
+    src: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/sound-of-boston-nabi-01.jpg',
+    alt: 'nabi-music-sound-of-boston'
+  },
+  {
+    src: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/missadventures-in-mommyhood-nabi-01.png',
+    alt: 'nabi-music-missadventures-in-mommyhood'
+  },
+  {
+    src: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/mommy-poppins-nabi-01.png',
+    alt: 'nabi-mommy-poppins'
+  },
+  {
+    src: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/boston-central-01.jpg',
+    alt: 'nabi-music-boston-central'
+  },
+  {
+    src: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/umass-boston-nabi-01.png',
+    alt: 'nabi-music-umass-boston'
+  }
 ];
 
 export const recognizedButton = 'Sign Up Today For A Trial';
