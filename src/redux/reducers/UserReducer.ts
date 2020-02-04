@@ -81,7 +81,8 @@ export default function usersReducer(
       return {
         ...state,
         referralInfo: {
-          ...action.data
+          ...action.data,
+          openModal: true
         },
         actions: {
           ...state.actions,

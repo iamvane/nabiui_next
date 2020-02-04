@@ -46,29 +46,27 @@ export const Homepage = (props: Props) => {
   );
 
   React.useEffect(() => {
-    if (error) {
-      setOpenModal(false);
-    } else {
-      if (props.token) {
-        Router.push(Routes.Dashboard);
-      }
-
-      if (query.token) {
-        dispath(fetchReferralInfo(query.token));
-        setOpenModal(true);
-      } else {
-        const userId = props.user ? props.user.email : "anonymous";
-
-        const analiticsProps = {
-          userId,
-          properties: {
-            referrer: document.referrer
-          }
-        };
-        page("Home", analiticsProps);
-      }
+    if (referralInfo.openModal) {
+      setOpenModal(true);
     }
-  }, [error]);
+    if (props.token) {
+      Router.push(Routes.Dashboard);
+    }
+
+    if (query.token) {
+      dispath(fetchReferralInfo(query.token));
+    } else {
+      const userId = props.user ? props.user.email : "anonymous";
+
+      const analiticsProps = {
+        userId,
+        properties: {
+          referrer: document.referrer
+        }
+      };
+      page("Home", analiticsProps);
+    }
+  }, [error, referralInfo.openModal]);
 
   const docTitle = referralInfo.displayName ? pageTitlesAndDescriptions.referral.title :
     pageTitlesAndDescriptions.homepage.title;

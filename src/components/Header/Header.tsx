@@ -62,7 +62,7 @@ export const Header = (props: HeaderProps) => {
     setAnchorElInstructorMenu
   ] = React.useState<null | HTMLElement>(null);
 
-  const { avatar, displayNamem, token } = useSelector(
+  const { avatar, token } = useSelector(
     (state: StateProps) => state.user.referralInfo
   );
 
@@ -175,7 +175,7 @@ export const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        {(menuWhitelist as string[]).includes(props.router.route) && (
+        {(menuWhitelist as string[]).includes(props.router.route) || error && (
           <div className="nabi-header-button">
             <Link href={Routes.Login}>
               <a>

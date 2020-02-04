@@ -49,6 +49,7 @@ import { InstructorType } from './InstructorModel';
   interface ReferralInfo {
     displayName: string;
     avatar: string;
+    openModal: boolean;
   }
 
   export interface UserState {
@@ -109,7 +110,8 @@ import { InstructorType } from './InstructorModel';
     invitationToken: '',
     referralInfo: {
       displayName: '',
-      avatar: ''
+      avatar: '',
+      openModal: false
     },
     actions: {
       createUser: {
