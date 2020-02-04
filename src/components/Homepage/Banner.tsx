@@ -11,6 +11,7 @@ import { ReferralInfo } from '../Referral/models';
 
 interface Props {
   referralInfo?: ReferralInfo;
+  error: string;
 }
 
 /**
@@ -20,7 +21,7 @@ export const Banner = (props: Props) => {
   return (
     <section id="banner" className="nabi-position-relative">
       <div className="container">
-        {props.referralInfo && props.referralInfo.displayName ? (
+        {!props.error ? (
           <ClaimDiscountBanner referralInfo={props.referralInfo} />
         ) : (
           <>

@@ -41,29 +41,34 @@ export const Homepage = (props: Props) => {
     (state: StoreState) => state.user.referralInfo
   );
 
+  const { error, isRequesting } = useSelector(
+    (state: StoreState) => state.user.actions.fetchReferralInfo
+  );
+
   React.useEffect(() => {
-    if (referralInfo.displayName) {
-      setOpenModal(true);
-    }
-
-    if (props.token) {
-      Router.push(Routes.Dashboard);
-    }
-
-    if (query.token) {
-      dispath(fetchReferralInfo(query.token));
-    }
-
-    const userId = props.user ? props.user.email : "anonymous";
-
-    const analiticsProps = {
-      userId,
-      properties: {
-        referrer: document.referrer
+    if (error) {
+      setOpenModal(false);
+    } else {
+      if (props.token) {
+        Router.push(Routes.Dashboard);
       }
-    };
-    page("Home", analiticsProps);
-  }, [referralInfo.displayName]);
+
+      if (query.token) {
+        dispath(fetchReferralInfo(query.token));
+        setOpenModal(true);
+      } else {
+        const userId = props.user ? props.user.email : "anonymous";
+
+        const analiticsProps = {
+          userId,
+          properties: {
+            referrer: document.referrer
+          }
+        };
+        page("Home", analiticsProps);
+      }
+    }
+  }, [error]);
 
   const docTitle = referralInfo.displayName ? pageTitlesAndDescriptions.referral.title :
     pageTitlesAndDescriptions.homepage.title;
@@ -75,7 +80,7 @@ export const Homepage = (props: Props) => {
         <title>{docTitle}</title>
         <meta name="description" content={docDescription}></meta>
       </Head>
-      <Banner referralInfo={referralInfo} />
+      <Banner referralInfo={referralInfo} error={error} />
       <Features />
       <Testimonials />
       <BecomeATeacher />

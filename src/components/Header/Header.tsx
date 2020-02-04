@@ -70,6 +70,10 @@ export const Header = (props: HeaderProps) => {
     setIsDraweMenuOpen(prevOpen => !prevOpen);
   };
 
+  const { error } = useSelector(
+    (state: StoreState) => state.user.actions.fetchReferralInfo
+  );
+
   const openInstructorMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElInstructorMenu(anchorElInstructorMenu || event.currentTarget);
     setInstructorMenuOpen(true);
@@ -171,23 +175,24 @@ export const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        {(menuWhitelist as string[]).includes(props.router.route) && !displayName && (
-          <div className="nabi-header-button">
-            <Link href={Routes.Login}>
-              <a>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  className="nabi-responsive-button nabi-margin-left-small"
-                >
-                  {logIn}
-                </Button>
-              </a>
-            </Link>
-          </div>
-        )}
-        {props.router.route.includes("referral") && displayName ||
-        (props.router.route == Routes.HomePage && displayName) ? (
+        {(menuWhitelist as string[]).includes(props.router.route) ||
+          error && (
+            <div className="nabi-header-button">
+              <Link href={Routes.Login}>
+                <a>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className="nabi-responsive-button nabi-margin-left-small"
+                  >
+                    {logIn}
+                  </Button>
+                </a>
+              </Link>
+            </div>
+          )}
+        {(props.router.route.includes("referral") && !error) ||
+        (props.router.route == Routes.HomePage && !error) ? (
           <div>
             <div className="nabi-header-button nabi-display-flex">
               <Typography
