@@ -41,7 +41,7 @@ export const Homepage = (props: Props) => {
     (state: StoreState) => state.user.referralInfo
   );
 
-  const { error, isRequesting } = useSelector(
+  const { error } = useSelector(
     (state: StoreState) => state.user.actions.fetchReferralInfo
   );
 

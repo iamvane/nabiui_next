@@ -70,7 +70,7 @@ const ClaimDiscountBanner = (props: Props) => {
           ""
         )}
 
-        <Grid item xs={12} md={9} className="nabi-align-self-center">
+        <Grid item xs={12} md={12} className="nabi-align-self-center nabi-margin-top-xsmall">
           <Typography>
             {props.referralInfo.displayName ? ClaimDiscountBannerComponent.yourInviteFrom.replace(
               ClaimDiscountBannerComponent.userPlaceHolder,
