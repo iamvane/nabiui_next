@@ -20,6 +20,7 @@ import {
   CircularProgress
 } from "@material-ui/core";
 
+import "../../../assets/scss/InviteFriends.scss";
 import { StoreState } from "../../redux/reducers/store";
 import { UserType } from "../../redux/models/UserModel";
 import { sendReferralInvite } from "../../redux/actions/UserActions";
@@ -201,6 +202,7 @@ export class InviteFriends extends React.Component<Props, State> {
           <img
             className="nabi-full-width"
             src="https://nabimusic.s3.us-east-2.amazonaws.com/referral-design-nabi-music.jpg"
+            alt="Refer a friend and earn five dollars"
           />
         </div>
         <Typography
@@ -226,7 +228,7 @@ export class InviteFriends extends React.Component<Props, State> {
           container
           direction="row"
           justify="center"
-          className="nabi-margin-bottom-small"
+          className="nabi-margin-bottom-small nabi-text-center"
         >
           <Grid xs={2}>
             <EmailShareButton
@@ -236,7 +238,8 @@ export class InviteFriends extends React.Component<Props, State> {
               children={
                 <img
                   className="nabi-img-icon-size"
-                  src=" https://nabimusic.s3.us-east-2.amazonaws.com/mail.png"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/mail.png"
+                  alt="Refer by email"
                 />
               }
               url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
@@ -251,6 +254,7 @@ export class InviteFriends extends React.Component<Props, State> {
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/twitter.png"
+                  alt="Refer using Twitter"
                 />
               }
               url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
@@ -265,6 +269,7 @@ export class InviteFriends extends React.Component<Props, State> {
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/facebook.png"
+                  alt="Refer using Facebook"
                 />
               }
               url={`${InviteFriendsComponent.referralUrl}`}
@@ -277,7 +282,8 @@ export class InviteFriends extends React.Component<Props, State> {
               children={
                 <img
                   className="nabi-img-icon-size"
-                  src="https://image.flaticon.com/icons/png/512/124/124034.png"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/whatsapp.png"
+                  alt="Refer through Whatsapp"
                 />
               }
               url={`${InviteFriendsComponent.referralUrl}${this.props.user.referralToken}`}
@@ -293,6 +299,7 @@ export class InviteFriends extends React.Component<Props, State> {
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
+                  alt="Refer through Messenger"
                 />
               </a>
               <a
@@ -303,75 +310,76 @@ export class InviteFriends extends React.Component<Props, State> {
                 <img
                   className="nabi-img-icon-size"
                   src="https://nabimusic.s3.us-east-2.amazonaws.com/messenger.png"
+                  alt="Refer through Messenger"
                 />
               </a>
             </FacebookProvider>
           </Grid>
         </Grid>
-        <Grid container={true} spacing={1}>
-          <Grid item={true} xs={12} md={12}>
-            <TextField
-              id={InviteFriendsComponent.ids[FieldKey.Email]}
-              name={fieldNames[FieldKey.Email]}
-              placeholder={InviteFriendsComponent.placeholder}
-              required={true}
-              fullWidth={true}
-              onChange={this.handleChange}
-              onBlur={this.handleOnBlur}
-              helperText={this.state.fields.email.error}
-              error={!!this.state.fields.email.error}
-              value={this.state.email}
-            />
-          </Grid>
-          <Grid item={true} xs={12} md={12}>
-            <Button
-              color="primary"
-              variant="contained"
-              className="nabi-text-uppercase nabi-margin-top-xsmall nabi-full-width"
-              onClick={this.handleSubmit}
-            >
-              {this.props.isRequestingInvite ? (
-                <CircularProgress color="inherit" size={25} />
-              ) : (
-                InviteFriendsComponent.inviteButton
-              )}
-            </Button>
-          </Grid>
-          <Grid item={true} md={12}>
-            <TextField
-              id={InviteFriendsComponent.ids[FieldKey.CopyLink]}
-              className="nabi-display-none"
-              name={InviteFriendsComponent.fieldNames[FieldKey.CopyLink]}
-              placeholder={InviteFriendsComponent.placeholder}
-              required={true}
-              fullWidth={true}
-              value={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
-              autoFocus={true}
-            />
-          </Grid>
 
-          <Grid item={true}>
-            <Typography className="nabi-margin-top-xsmall">
-              {InviteFriendsComponent.referralUrl} {""}
-              {this.props.user.referralToken}
-            </Typography>
-          </Grid>
-          <Grid item={true} md={12}>
-            <Grid className="nabi-display-flex nabi-margin-center" xs={4}>
-              <Button onClick={this.copyInviteLink} color="primary">
-                {InviteFriendsComponent.copyLink}
-              </Button>
-              <Grid item xs={2}>
-                <div onClick={this.copyInviteLink}>
-                  <img
-                    className="nabi-img-icon-size"
-                    src="https://nabimusic.s3.us-east-2.amazonaws.com/copy.png"
-                  />
-                </div>
-              </Grid>
+        <Typography
+          className="nabi-margin-top-medium nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center"
+        >
+          Copy link
+        </Typography>
+        <Typography className="nabi-margin-top-xsmall nabi-text-center referral-token">
+          {InviteFriendsComponent.referralUrl}{this.props.user.referralToken}
+        </Typography>
+
+        <Grid container={true}>
+          <Grid className="nabi-display-flex nabi-margin-center" xs={4}>
+            <Button onClick={this.copyInviteLink} color="primary">
+              {InviteFriendsComponent.copyLink}
+            </Button>
+            <Grid item xs={2}>
+              <div onClick={this.copyInviteLink}>
+                <img
+                  className="nabi-img-icon-size"
+                  src="https://nabimusic.s3.us-east-2.amazonaws.com/copy.png"
+                />
+              </div>
             </Grid>
           </Grid>
         </Grid>
+        <Typography
+          className="nabi-margin-bottom-xsmall nabi-margin-top-medium nabi-text-mediumbold nabi-text-center"
+        >
+          Invite by email
+        </Typography>
+        <TextField
+          id={InviteFriendsComponent.ids[FieldKey.Email]}
+          name={fieldNames[FieldKey.Email]}
+          placeholder={InviteFriendsComponent.placeholder}
+          required={true}
+          fullWidth={true}
+          onChange={this.handleChange}
+          onBlur={this.handleOnBlur}
+          helperText={this.state.fields.email.error}
+          error={!!this.state.fields.email.error}
+          value={this.state.email}
+        />
+        <Button
+          color="primary"
+          variant="contained"
+          className="nabi-text-uppercase nabi-margin-top-xsmall nabi-full-width"
+          onClick={this.handleSubmit}
+        >
+          {this.props.isRequestingInvite ? (
+            <CircularProgress color="inherit" size={25} />
+          ) : (
+            InviteFriendsComponent.inviteButton
+          )}
+        </Button>
+        <TextField
+          id={InviteFriendsComponent.ids[FieldKey.CopyLink]}
+          className="nabi-display-none"
+          name={InviteFriendsComponent.fieldNames[FieldKey.CopyLink]}
+          placeholder={InviteFriendsComponent.placeholder}
+          required={true}
+          fullWidth={true}
+          value={`http://www.nabimusic.com/registration?token=${this.props.user.referralToken}`}
+          autoFocus={true}
+        />
         <SnackBar
           isOpen={this.state.showSnackbar}
           message={InviteFriendsComponent.copiedMessage}
