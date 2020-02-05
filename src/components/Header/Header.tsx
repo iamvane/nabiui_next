@@ -110,7 +110,7 @@ export const Header = (props: HeaderProps) => {
   return (
     <header>
       <div className="nabi-header-container nabi-position-relative">
-        {(menuWhitelist as string[]).includes(props.router.route) && (
+        {(menuWhitelist as string[]).includes(props.router.route) || error ? (
           <React.Fragment>
             <div className="nabi-header-menu hide-on-desktop">
               <Menu onClick={toggleDrawerMenu} color="primary" />
@@ -154,6 +154,8 @@ export const Header = (props: HeaderProps) => {
               </a>
             </div>
           </React.Fragment>
+        ) : (
+          ""
         )}
         <div
           className={`nabi-logo-anchor ${
@@ -175,7 +177,7 @@ export const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        {(menuWhitelist as string[]).includes(props.router.route) || error && (
+        {(menuWhitelist as string[]).includes(props.router.route) || error ? (
           <div className="nabi-header-button">
             <Link href={Routes.Login}>
               <a>
@@ -189,6 +191,8 @@ export const Header = (props: HeaderProps) => {
               </a>
             </Link>
           </div>
+        ) : (
+          ""
         )}
         {(props.router.route.includes("referral") && !error) ||
         (props.router.route == Routes.HomePage && token) ? (
