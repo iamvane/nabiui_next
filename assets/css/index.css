@@ -543,7 +543,7 @@ li.nabi-list-style-position-inside {
 }
 
 .nabi-text-color-red {
-  color: #fb7e6a;
+  color: #fb7e6a !important;
 }
 
 .nabi-text-size-medium {

@@ -7,4 +7,5 @@ export namespace ClaimDiscountBannerComponent {
   export const termsApply = "Terms apply";
   export const userPlaceHolder = "{user}";
   export const yourInviteFrom = "Your invite from {user} expires in 30 days";
+  export const youWhereInvite = "You were invited to Nabi Music. Your invitation expires in 30 days";
 }
