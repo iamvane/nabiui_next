@@ -232,9 +232,9 @@ export class InviteFriends extends React.Component<Props, State> {
         >
           <Grid xs={2}>
             <EmailShareButton
-              subject={InviteFriendsComponent.iWantToGiveYou}
+              subject={InviteFriendsComponent.referralEmailSubjectLine}
               separator=" "
-              body={InviteFriendsComponent.helloFriends}
+              body={InviteFriendsComponent.referralEmailMessage}
               children={
                 <img
                   className="nabi-img-icon-size"
@@ -247,9 +247,7 @@ export class InviteFriends extends React.Component<Props, State> {
           </Grid>
           <Grid xs={2}>
             <TwitterShareButton
-              title={`${InviteFriendsComponent.helloFriends}${" "}${
-                InviteFriendsComponent.referralUrl
-              }${this.props.user.referralToken}`}
+              title={InviteFriendsComponent.referralMessage}
               children={
                 <img
                   className="nabi-img-icon-size"
@@ -262,7 +260,7 @@ export class InviteFriends extends React.Component<Props, State> {
           </Grid>
           <Grid xs={2}>
             <FacebookShareButton
-              quote={`${InviteFriendsComponent.helloFriends}${" "}${
+              quote={`${InviteFriendsComponent.referralMessage}${" "}${
                 InviteFriendsComponent.referralUrl
               }${this.props.user.referralToken}`}
               children={
@@ -277,7 +275,7 @@ export class InviteFriends extends React.Component<Props, State> {
           </Grid>
           <Grid xs={2}>
             <WhatsappShareButton
-              title={`${InviteFriendsComponent.iWantToGiveYou}${InviteFriendsComponent.useMyReferralLink}`}
+              title={InviteFriendsComponent.referralMessage}
               separator=" "
               children={
                 <img
@@ -320,7 +318,7 @@ export class InviteFriends extends React.Component<Props, State> {
         <Typography
           className="nabi-margin-top-medium nabi-margin-bottom-xsmall nabi-text-mediumbold nabi-text-center"
         >
-          Copy link
+          {InviteFriendsComponent.copyLinkText}
         </Typography>
         <Typography className="nabi-margin-top-xsmall nabi-text-center referral-token">
           {InviteFriendsComponent.referralUrl}{this.props.user.referralToken}
@@ -329,7 +327,7 @@ export class InviteFriends extends React.Component<Props, State> {
         <Grid container={true}>
           <Grid className="nabi-display-flex nabi-margin-center" xs={4}>
             <Button onClick={this.copyInviteLink} color="primary">
-              {InviteFriendsComponent.copyLink}
+              {InviteFriendsComponent.copyLinkButton}
             </Button>
             <Grid item xs={2}>
               <div onClick={this.copyInviteLink}>
@@ -344,7 +342,7 @@ export class InviteFriends extends React.Component<Props, State> {
         <Typography
           className="nabi-margin-bottom-xsmall nabi-margin-top-medium nabi-text-mediumbold nabi-text-center"
         >
-          Invite by email
+          {InviteFriendsComponent.emailInviteText}
         </Typography>
         <TextField
           id={InviteFriendsComponent.ids[FieldKey.Email]}

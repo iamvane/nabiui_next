@@ -11,14 +11,16 @@ export namespace InviteFriendsComponent {
   export const placeholder = "Enter email address";
   export const fiseldLabel = "Share your invite link";
   export const inviteButton = "Invite";
-  export const copyLink = "Copy";
+  export const copyLinkText = "Copy link";
+  export const copyLinkButton = "Copy";
   export const copiedMessage = "Copied to clipboard";
   export const referAndEarn = "Refer and earn";
   export const shareNow = "Share now";
+  export const emailInviteText = "Invite by email";
   export const referralUrl = "http://nabimusic.com/referral/";
-  export const iWantToGiveYou = " I want to give you 20% off music lessons with Nabi Music."
-  export const useMyReferralLink = "Use my referral link to sign up!"
-  export const helloFriends = "Hello friends! I want to give you 20% off music lessons. Use my referral link:"
+  export const referralMessage = "I want to give you 20% off music lessons with Nabi Music. Sign up using my referral link:"
+  export const referralEmailSubjectLine = "My gift to you: 20% off music lessons"
+  export const referralEmailMessage = "Hello friend! I want to give you 20% off music lessons with Nabi Music. To get your discount, sign up using my referral link:"
 
   export enum FieldKey {
     Email = "email",
