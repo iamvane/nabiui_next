@@ -776,7 +776,7 @@ export default function usersReducer(
       return {
         ...state,
         offer: {
-          ...offer[0]
+          ...offer
         },
         actions: {
           ...state.actions,
