@@ -160,7 +160,7 @@ export default function usersReducer(
       };
 
     case UserActions.SET_URL_PATHNAME:
-      setCookie('pathname', action.pathname);
+      setCookie("pathname", action.pathname);
       return {
         ...state,
         pathname: action.pathname
@@ -755,6 +755,48 @@ export default function usersReducer(
         user: {
           ...state.user,
           email: action.email
+        }
+      };
+
+    case UserActions.FETCH_OFFER:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchOffer: {
+            ...state.actions.fetchOffer,
+            isRequesting: true
+          }
+        }
+      };
+
+    case UserActions.FETCH_OFFER_SUCCESS:
+      const { data: offer } = action;
+
+      return {
+        ...state,
+        offer: {
+          ...offer
+        },
+        actions: {
+          ...state.actions,
+          fetchOffer: {
+            ...state.actions.fetchOffer,
+            isRequesting: false
+          }
+        }
+      };
+
+    case UserActions.FETCH_OFFER_FAILURE:
+      const { error: offerError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchOffer: {
+            isRequesting: false,
+            error: offerError
+          }
         }
       };
 

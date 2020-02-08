@@ -1,0 +1,21 @@
+
+/*Header*/
+.special-offer {
+	padding: 10px;
+	background: #FFAE33;
+	text-align: center;
+	color: #ffffff !important;
+	position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.special-offer-wrapper {
+  height: 62px;
+}
+
+@media only screen and (min-width: 600px) {
+  .special-offer-wrapper {
+    height: 20px;
+  }
+}
