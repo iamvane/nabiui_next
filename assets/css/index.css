@@ -576,14 +576,6 @@ li.nabi-list-style-position-inside {
 	text-transform: uppercase;
 }
 
-/*Header*/
-.special-offer {
-	padding: 10px;
-	background: #FFAE33;
-	text-align: center;
-	color: #ffffff !important;
-}
-
 .nabi-header-container,
 .nabi-header-container-home {
 	width: 100%;

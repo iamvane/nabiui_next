@@ -1,6 +1,6 @@
 
 export namespace OfferContentComponent {
-  export const expire = "Expire: {days} {hours}h:{minutes}m:{seconds}s";
+  export const expire = "Expires: {days} {hours}h:{minutes}m:{seconds}s";
   export const daysPlaceholder = "{days}";
   export const hoursPlaceholder = "{hours}";
   export const minutesPlaceholder = "{minutes}";

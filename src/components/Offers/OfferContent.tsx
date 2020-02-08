@@ -3,6 +3,7 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 import Countdown from "react-countdown-now";
 import { OfferContentComponent } from "./constants";
+import "../../../assets/scss/OfferContent.scss";
 
 interface Props {
   expireAt: any;
@@ -20,6 +21,7 @@ const OfferContent = (props: Props) => {
       return "";
     } else {
       return (
+        <div className="special-offer-wrapper">
         <div className="special-offer">
           <Typography className="nabi-color-white nabi-text-semibold">
             {content}.{" "}
@@ -29,6 +31,7 @@ const OfferContent = (props: Props) => {
               .replace(OfferContentComponent.minutesPlaceholder, minutes)
               .replace(OfferContentComponent.secondsPlaceholder, seconds)}
           </Typography>
+        </div>
         </div>
       );
     }
