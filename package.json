@@ -22,6 +22,7 @@
   "dependencies": {
     "@material-ui/core": "^4.7.1",
     "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.42",
     "@sentry/browser": "^5.11.1",
     "@types/axios": "^0.14.0",
     "@types/js-cookie": "^2.2.4",
