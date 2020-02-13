@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Router from 'next/router';
 
 import {
   Button,
@@ -10,20 +11,23 @@ import { setCookie } from "../../../utils/cookies";
 import { instruments } from '../../../../assets/data/instruments';
 import { Role } from '../../Auth/Registration/constants';
 import { SkillLevel } from '../../Instruments/constants';
+import { Routes } from '../../common/constants/Routes';
 import { InstructorDashboardComponent as constants }  from '../constants';
 
 interface Props {
   // TODO: change to Re1uestType when doing API integration
   lesson: any;
-  toggleBuyLessonsForm: () => void;
+  // toggleBuyLessonsForm: () => void;
 }
 
 const LessonCard: React.StatelessComponent<Props> = props => {
-  // const gradeLesson = () => {
-  //   setCookie("lessonBookingId", props.bookingId);
-  //   setCookie("lessonStudentName", props.lesson.name);
-  //   setCookie("lessonInstrument", props.instrument);
-  // }
+  const gradeLesson = () => {
+    setCookie("lessonBookingId", props.lesson.bookingId);
+    setCookie("lessonStudentName", props.lesson.studentName);
+    setCookie("lessonInstrument", props.lesson.instrument);
+
+    Router.push(Routes.GradeLesson);
+  }
 
   return (
     <Grid container={true}>
@@ -34,6 +38,7 @@ const LessonCard: React.StatelessComponent<Props> = props => {
           variant="contained"
           color="primary"
           className="nabi-responsive-button"
+          onClick={gradeLesson}
         >
           {constants.gradeLessonButton}
         </Button>

@@ -18,6 +18,7 @@ import { BackgroundCheckStatus } from '../../ProfileBuilder/constants';
 import RequestCard from '../../Request/RequestCard';
 import { InstructorDashboardComponent as constants }  from '../constants';
 import { InstructorDashboardType } from '../models';
+import LessonCard from './LessonCard';
 
 interface Props {
   user: UserType;
@@ -39,71 +40,75 @@ export const InstructorDashboard = (props: Props) => {
 
   const displayLessons = () => (
     props.dashboard.lessons.map((item, i) => (
-      <Grid container={true} key={i}>
-        <Grid item={true} xs={12} md={4} className="nabi-text-center">
-          <p className="nabi-font-large nabi-color-nabi nabi-margin-top-xsmall nabi-margin-bottom-zero nabi-text-semibold">{item.lessonsRemaining}</p>
-          <Typography color="primary">{constants.lessonsRemaining}</Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            className="nabi-responsive-button"
-          >
-            {constants.gradeLessonButton}
-          </Button>
-        </Grid>
-        <Grid item={true} xs={12} md={8}>
-          <Grid container={true} className="nabi-margin-top-small">
-            {item.parent ?
-            <React.Fragment>
-              <Grid item={true} xs={6}>
-                <Typography>{constants.lessonDetailLabels.parent}</Typography>
-              </Grid>
-              <Grid item={true} xs={6}>
-                <Typography>{item.parent}</Typography>
-              </Grid>
-              <Grid item={true} xs={6}>
-                <Typography>{constants.lessonDetailLabels.students}</Typography>
-              </Grid>
-              <Grid item={true} xs={6}>
-                <Typography>
-                  {item.students.map((student, i) =>
-                    <span key={i}>{`${student.name} ${student.age} ${item.students[item.students.length - 1] ? '' : ', '}`}</span>
-                )}
-                </Typography>
-              </Grid>
-            </React.Fragment>
-            :
-            <React.Fragment>
-              <Grid item={true} xs={6}>
-                <Typography>{constants.lessonDetailLabels.name}</Typography>
-              </Grid>
-              <Grid item={true} xs={6}>
-                <Typography>{item.studentName}</Typography>
-              </Grid>
-              <Grid item={true} xs={6}>
-                <Typography>{constants.lessonDetailLabels.age}</Typography>
-              </Grid>
-              <Grid item={true} xs={6}>
-                <Typography>{item.age}</Typography>
-              </Grid>
-              </React.Fragment>
-            }
-            <Grid item={true} xs={6}>
-              <Typography>{constants.lessonDetailLabels.instrument}</Typography>
-            </Grid>
-            <Grid item={true} xs={6}>
-              <Typography>{item.instrument}</Typography>
-            </Grid>
-            <Grid item={true} xs={6}>
-              <Typography>{constants.lessonDetailLabels.skillLevel}</Typography>
-            </Grid>
-            <Grid item={true} xs={6}>
-              <Typography>{item.skillLevel}</Typography>
-            </Grid>
-          </Grid>
-        </Grid>
+      <React.Fragment key={i}>
+        <LessonCard lesson={item} />
         {i !== props.dashboard.lessons.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
-      </Grid>
+      </React.Fragment>
+      // <Grid container={true} key={i}>
+      //   <Grid item={true} xs={12} md={4} className="nabi-text-center">
+      //     <p className="nabi-font-large nabi-color-nabi nabi-margin-top-xsmall nabi-margin-bottom-zero nabi-text-semibold">{item.lessonsRemaining}</p>
+      //     <Typography color="primary">{constants.lessonsRemaining}</Typography>
+      //     <Button
+      //       variant="contained"
+      //       color="primary"
+      //       className="nabi-responsive-button"
+      //     >
+      //       {constants.gradeLessonButton}
+      //     </Button>
+      //   </Grid>
+      //   <Grid item={true} xs={12} md={8}>
+      //     <Grid container={true} className="nabi-margin-top-small">
+      //       {item.parent ?
+      //       <React.Fragment>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>{constants.lessonDetailLabels.parent}</Typography>
+      //         </Grid>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>{item.parent}</Typography>
+      //         </Grid>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>{constants.lessonDetailLabels.students}</Typography>
+      //         </Grid>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>
+      //             {item.students.map((student, i) =>
+      //               <span key={i}>{`${student.name} ${student.age} ${item.students[item.students.length - 1] ? '' : ', '}`}</span>
+      //           )}
+      //           </Typography>
+      //         </Grid>
+      //       </React.Fragment>
+      //       :
+      //       <React.Fragment>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>{constants.lessonDetailLabels.name}</Typography>
+      //         </Grid>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>{item.studentName}</Typography>
+      //         </Grid>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>{constants.lessonDetailLabels.age}</Typography>
+      //         </Grid>
+      //         <Grid item={true} xs={6}>
+      //           <Typography>{item.age}</Typography>
+      //         </Grid>
+      //         </React.Fragment>
+      //       }
+      //       <Grid item={true} xs={6}>
+      //         <Typography>{constants.lessonDetailLabels.instrument}</Typography>
+      //       </Grid>
+      //       <Grid item={true} xs={6}>
+      //         <Typography>{item.instrument}</Typography>
+      //       </Grid>
+      //       <Grid item={true} xs={6}>
+      //         <Typography>{constants.lessonDetailLabels.skillLevel}</Typography>
+      //       </Grid>
+      //       <Grid item={true} xs={6}>
+      //         <Typography>{item.skillLevel}</Typography>
+      //       </Grid>
+      //     </Grid>
+      //   </Grid>
+       
+      // </Grid>
     ))
   );
 

@@ -879,6 +879,49 @@ export default function instructorReducer(
           }
         };
 
+      case InstructorActions.GRADE_LESSON:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            submitApplication: {
+              ...state.actions.submitApplication,
+              isRequesting: true,
+              message: ''
+            }
+          }
+        };
+
+      case InstructorActions.GRADE_LESSON_SUCCESS:
+        const {data: gradeLessonMessage} = <APIActions.WithData<string>> action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            gradeLesson: {
+              ...state.actions.gradeLesson,
+              isRequesting: false,
+              error: '',
+              message: gradeLessonMessage
+            }
+          }
+        };
+
+      case InstructorActions.GRADE_LESSON_FAILURE:
+        const { error: gradeLessonError } = <APIActions.WithError<string>> action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            gradeLesson: {
+              ...state.actions.gradeLesson,
+              isRequesting: false,
+              error: gradeLessonError,
+              message: ''
+            }
+          }
+        };
+
     default:
       return state;
   }

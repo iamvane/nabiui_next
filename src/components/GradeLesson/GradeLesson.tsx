@@ -20,13 +20,11 @@ import {
 } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 
+import { getCookie } from '../../utils/cookies';
 import { StoreState } from '../../redux/reducers/store';
 import { UserType } from '../../redux/models/UserModel';
-import {
-  fetchUser,
-  fetchDashboard,
-  setPathname
-} from '../../redux/actions/UserActions';
+
+import { gradeLesson } from '../../redux/actions/InstructorActions';
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
@@ -39,6 +37,7 @@ import { Role } from '../Auth/Registration/constants';
 import InviteFriends from '../InviteFriends/InviteFriends';
 import PrivateRoute from '../Auth/PrivateRoutes';
 import * as constants from './constants';
+import { GradeData } from './models';
 // import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
 // import ParentStudentDashboard from './ParentStudentDashboard/ParentStudentDashboard';
 // import {
@@ -52,18 +51,13 @@ interface State {
 }
 
 interface StateProps {
-  user: UserType;
   isRequesting: boolean;
-  firstName: string;
-  token: string;
-  isFetchingDashboard: boolean;
-  errorFetchingDashboard: string;
+  message: string;
+  error: string;
 }
 
 interface DispatchProps {
-  fetchUser: () => void;
-  fetchDashboard: (role: Role) => void;
-  setPathname: (pathname: string) => void;
+  gradeLesson: (gradeData: GradeData) => void;
 }
 
 interface OwnProps {
@@ -76,6 +70,9 @@ interface Props extends
   DispatchProps {}
 
 export const GradeLesson = (props: Props) => {
+  const [date, setDate] = React.useState("");
+  const [grade, setGrade] = React.useState(0);
+  const [comment, setComment] = React.useState("");
 
   // public async componentDidMount(): Promise<void> {
   //   await this.props.fetchUser();
@@ -106,8 +103,41 @@ export const GradeLesson = (props: Props) => {
 
   // public closeSnackbar = () => this.setState({ showSnackbar: false });
 
-  const handleChange = () => {
-    console.log('me');
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.currentTarget;
+    const value = target.value;
+    const name = target.name;
+
+    switch (name) {
+      case constants.FieldNames.Grade:
+        setGrade(Number(value));
+        break;
+
+      case constants.FieldNames.Comment:
+        setComment(value);
+        break;
+
+      default:
+        return;
+    }
+  }
+
+  const handleDateChange = (date: moment.Moment): void => {
+    setDate(String(date));
+  };
+
+  const gradeLesson  = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    if (event) {
+      event.preventDefault();
+    }
+
+    const gradeData: GradeData = {
+      date,
+      grade,
+      comment,
+      bookingId: getCookie('lessonBookingId')
+    }
+    await props.gradeLesson(gradeData);
   }
 
   return (
@@ -119,61 +149,56 @@ export const GradeLesson = (props: Props) => {
       <PageTitle pageTitle={constants.pageTitle} />
       <div className="nabi-background-white nabi-section nabi-margin-bottom-medium">
         <SectionTitle text={constants.studentNameSection} />
-        <Typography className="nabi-margin-bottom-small">Zoe</Typography>
+        <Typography className="nabi-margin-bottom-small">{getCookie('lessonStudentName')}</Typography>
         <SectionTitle text={constants.instrumentSection} />
-        <Typography className="nabi-margin-bottom-small">Piano</Typography>
-
-        <SectionTitle text={constants.dateOfLessonSection} />
-        <FormControl fullWidth={false} required={true} className="nabi-margin-bottom-small">
-          <DatePicker
-            selected={ moment(Date.now())}
+        <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
+        <form noValidate={true} autoComplete="off" onSubmit={gradeLesson}>
+          <SectionTitle text={constants.dateOfLessonSection} />
+          <FormControl fullWidth={false} required={true} className="nabi-margin-bottom-small">
+            <DatePicker
+              selected={moment(Date.now())}
+              onChange={handleDateChange}
+              peekNextMonth={true}
+              showMonthDropdown={true}
+              showYearDropdown={true}
+              dropdownMode="select"
+            />
+          </FormControl>
+          <SectionTitle text={constants.gradeSection} />
+          <Rating
+            name={constants.FieldNames.Grade}
+            max={3}
+            className="nabi-margin-bottom-small"
+            value={grade}
             onChange={handleChange}
-            peekNextMonth={true}
-            showMonthDropdown={true}
-            showYearDropdown={true}
-            dropdownMode="select"
           />
-        </FormControl>
-        <SectionTitle text={constants.gradeSection} />
-        <Rating
-          name="simple-controlled"
-          max={3}
-          className="nabi-margin-bottom-small"
-          // value={value}
-          // onChange={(event, newValue) => {
-          //   setValue(newValue);
-          // }}
-        />
-        <SectionTitle text={constants.commentsSection} />
-        <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
-          <TextField
-            // id={BioComponent.Ids.bioDescription}
-            margin="normal"
-            // name={BioComponent.FieldNames.bioDescription}
-            // placeholder={BioComponent.Placeholders.CharactersMax}
-            // onChange={props.handleChange}
-            // onBlur={props.handleOnBlur}
-            // required={true}
-            multiline={true}
-            fullWidth={true}
-            rows={6}
-            // error={!!props.bioDescriptionError}
-            // helperText={props.bioDescriptionError}
-            // value={props.bioDescription}
-          />
-        </Grid>
-        <Button
-          variant="contained"
-          color="primary"
-        >
-          {constants.button}
-        </Button>
+          <SectionTitle text={constants.commentsSection} />
+          <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
+            <TextField
+              name={constants.FieldNames.Comment}
+              margin="normal"
+              onChange={handleChange}
+              multiline={true}
+              fullWidth={true}
+              rows={6}
+              value={comment}
+            />
+          </Grid>
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={!grade || !comment || !date}
+            type="submit"
+          >
+            {constants.button}
+          </Button>
+        </form>
       </div>
-      {/* {this.props.isRequesting  || this.props.isFetchingDashboard ? */}
-      {/* <div className="nabi-text-center">
-        <CircularProgress />
-      </div> */}
-      <React.Fragment>
+      {props.isRequesting  &&
+        <div className="nabi-text-center">
+          <CircularProgress />
+        </div>
+      }
 
         {/* <SnackBar
           isOpen={this.state.showSnackbar}
@@ -182,7 +207,6 @@ export const GradeLesson = (props: Props) => {
           variant="success"
           hideIcon={true}
         /> */}
-      </React.Fragment>
     </div>
   );
 }
@@ -190,32 +214,25 @@ export const GradeLesson = (props: Props) => {
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
     actions: {
-      fetchUser: {
+      gradeLesson: {
         isRequesting,
-      },
-      fetchDashboard: {
-        isRequesting: isFetchingDashboard,
-        error: errorFetchingDashboard
+        error,
+        message
       }
     }
-  } = state.user;
+  } = state.instructor;
 
   return {
-    isFetchingDashboard,
-    errorFetchingDashboard,
-    user: state.user.user,
-    firstName: state.user.user.firstName,
     isRequesting,
-    token: state.user.token
+    error,
+    message
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchUser: () => dispatch(fetchUser()),
-  fetchDashboard: (role: Role) => dispatch(fetchDashboard(role)),
-  setPathname: (pathname: string) => dispatch(setPathname(pathname))
+  gradeLesson: (gradeData: GradeData) => dispatch(gradeLesson(gradeData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(GradeLesson, 'Private', ['Instructor']));

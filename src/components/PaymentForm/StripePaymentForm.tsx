@@ -78,7 +78,7 @@ const InjectedCheckoutForm = injectStripe(PaymentForm);
 export const StripePaymentForm = (props: Props) => {
   const isClient = typeof window !== "undefined";
   if (isClient) {
-    const stripe = window.Stripe('pk_live_w3eJuwclLTq3awfhENpZwqpx002APtyTMh');
+    const stripe = window.Stripe('pk_test_0bqLmpsvPKYaGFgPeTrmsh3s00hMjjwCJm');
 
     const renderItems = () => {
       if (stripe) {
