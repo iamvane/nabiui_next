@@ -34,4 +34,5 @@ export namespace ApiEndpoints {
   export const fetchMoreRequests = "/v1/lesson-request-list/?page=";
   export const dashboard = "/v1/dashboard/";
   export const offers = "/v1/offers-active/";
+  export const gradeLesson = "/v1/grade-lesson/"
 }

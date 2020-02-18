@@ -5,14 +5,15 @@ interface StudentType {
   age: number;
 }
 
-export interface LessonsType {
-  lessonsRemaining: number;
-  studentName: string;
-  age: number;
+export interface LessonType {
+  bookingId: number;
   instrument: string;
   skillLevel: string;
-  parent: string,
-  students: StudentType[]
+  lessonsRemaining: number;
+  parent?: string;
+  studentName?: string;
+  students?: StudentType[];
+  age?: number;
 }
 
 export interface Booking {
@@ -40,7 +41,7 @@ export interface InstructorDashboardType {
   complete?: boolean;
   missingFields?: string[]
   backgroundCheckStatus: string;
-  lessons: LessonsType[];
+  lessons: LessonType[];
   requests: Request[];
 }
 

@@ -71,22 +71,8 @@ export class InviteFriends extends React.Component<Props, State> {
     };
   }
 
-  componentDidUpdate(prevProps: Props) {
-    if (this.state.showSnackbar) {
-      setTimeout(() => {
-        this.setState(() => ({ showSnackbar: false }));
-      }, 2000);
-    }
-    if (prevProps.inviteError !== this.props.inviteError) {
-      this.setState({
-        showInviteSnackbar: this.props.inviteError ? true : false
-      });
-    }
-    if (prevProps.inviteMessage !== this.props.inviteMessage) {
-      this.setState({
-        showInviteSnackbar: this.props.inviteMessage ? true : false
-      });
-    }
+  public delayedAction = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   public handleSubmit = async (
@@ -106,7 +92,15 @@ export class InviteFriends extends React.Component<Props, State> {
         }
       };
       track("Invited friend", analiticsProps);
+      this.setState({
+        showInviteSnackbar: true
+      });
+    } else {
+      this.setState({
+        showInviteSnackbar: true
+      });
     }
+    this.delayedAction(2000).then(() => this.setState(() => ({ showInviteSnackbar: false })));
     this.setState({ email: "" });
   };
 
@@ -153,6 +147,7 @@ export class InviteFriends extends React.Component<Props, State> {
       (inviteLink as HTMLInputElement).setSelectionRange(0, 99999);
       document.execCommand("copy");
       this.setState({ showSnackbar: true });
+      this.delayedAction(2000).then(() => this.setState(() => ({ showSnackbar: false })));
     }
   };
 

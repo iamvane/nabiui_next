@@ -10,6 +10,7 @@ import { EducationType } from '../../components/Education/model';
 import { EmploymentType } from '../../components/Employment/model';
 import { BackgroundCheckParams } from '../../components/ProfileBuilder/models';
 import { ApplicationPayload } from '../../components/Request/models';
+import { GradeData } from '../../components/GradeLesson/models';
 import { getCookie } from '../../utils/cookies';
 import { InstructorType } from '../models/InstructorModel';
 import { InstructorActions } from '../actions/InstructorActionTypes';
@@ -564,5 +565,25 @@ export const submitApplication = (application: ApplicationPayload): ThunkAction<
       errorMessage = getError(e);
     }
     dispatch(withErrorAction(InstructorActions.SUBMIT_APPLICACTION_FAILURE, errorMessage));
+  }
+};
+
+export const gradeLesson = (gradeData: GradeData): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(InstructorActions.GRADE_LESSON));
+  try {
+    const response = await axios.post(
+      ApiEndpoints.gradeLesson,
+      {...gradeData},
+      { headers:
+        authToken && { 'Authorization': `Bearer ${authToken}` },
+      });
+    dispatch(withDataAction(InstructorActions.GRADE_LESSON_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(InstructorActions.GRADE_LESSON_FAILURE, errorMessage));
   }
 };

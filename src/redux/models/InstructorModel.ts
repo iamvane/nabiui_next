@@ -102,6 +102,7 @@ export interface InstructorState {
     requestBackgroundCheck: ActionStatusWithMessage;
     fetchBackgroundCheckStatus: ActionStatus;
     submitApplication: ActionStatusWithMessage;
+    gradeLesson: ActionStatusWithMessage;
   };
 }
 
@@ -207,5 +208,10 @@ export const defaultInstructorState: InstructorState = {
       error: '',
       message: ''
     },
+    gradeLesson: {
+      isRequesting: false,
+      error: '',
+      message: ''
+    }
   }
 };

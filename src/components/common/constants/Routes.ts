@@ -42,7 +42,8 @@ export enum Routes {
   FeaturesParents = '/features-parents-students',
   FeaturesInstructors = '/features-instructors',
   VetInstructor = '/vetting-process',
-  ApplicationList = '/application-list'
+  ApplicationList = '/application-list',
+  GradeLesson = '/grade-lesson'
 }
 
 export enum SocialLinks {
