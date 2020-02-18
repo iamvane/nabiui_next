@@ -73,20 +73,17 @@ export class InviteFriends extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     if (this.state.showSnackbar) {
-      setTimeout(() => {
-        this.setState(() => ({ showSnackbar: false }));
-      }, 2000);
+      this.delayedAction(2000).then(() => this.setState(() => ({ showSnackbar: false })));
+
     }
-    if (prevProps.inviteError !== this.props.inviteError) {
-      this.setState({
-        showInviteSnackbar: this.props.inviteError ? true : false
-      });
+
+    if (this.state.showInviteSnackbar) {
+      this.delayedAction(2000).then(() => this.setState(() => ({ showInviteSnackbar: false })));
     }
-    if (prevProps.inviteMessage !== this.props.inviteMessage) {
-      this.setState({
-        showInviteSnackbar: this.props.inviteMessage ? true : false
-      });
-    }
+  }
+
+  public delayedAction = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   public handleSubmit = async (
@@ -106,6 +103,14 @@ export class InviteFriends extends React.Component<Props, State> {
         }
       };
       track("Invited friend", analiticsProps);
+      this.setState({
+        showInviteSnackbar: true
+      });
+      // this
+    } else {
+      this.setState({
+        showInviteSnackbar: true
+      });
     }
     this.setState({ email: "" });
   };

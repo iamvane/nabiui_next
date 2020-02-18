@@ -8,22 +8,27 @@ import {
 } from '@material-ui/core';
 
 import { setCookie } from "../../../utils/cookies";
-import { instruments } from '../../../../assets/data/instruments';
-import { Role } from '../../Auth/Registration/constants';
-import { SkillLevel } from '../../Instruments/constants';
 import { Routes } from '../../common/constants/Routes';
 import { InstructorDashboardComponent as constants }  from '../constants';
+import { LessonType } from '../models';
 
 interface Props {
   // TODO: change to Re1uestType when doing API integration
-  lesson: any;
-  // toggleBuyLessonsForm: () => void;
+  lesson: LessonType;
 }
 
 const LessonCard: React.StatelessComponent<Props> = props => {
   const gradeLesson = () => {
+    if (props.lesson.parent) {
+      const studentNames: string[] = [];
+      props.lesson.students.forEach(student =>
+        studentNames.push(student.name)
+      );
+      setCookie("lessonStudentName", studentNames.join(', '));
+    } else {
+      setCookie("lessonStudentName", props.lesson.studentName);
+    }
     setCookie("lessonBookingId", props.lesson.bookingId);
-    setCookie("lessonStudentName", props.lesson.studentName);
     setCookie("lessonInstrument", props.lesson.instrument);
 
     Router.push(Routes.GradeLesson);
@@ -39,6 +44,7 @@ const LessonCard: React.StatelessComponent<Props> = props => {
           color="primary"
           className="nabi-responsive-button"
           onClick={gradeLesson}
+          disabled={!props.lesson.lessonsRemaining}
         >
           {constants.gradeLessonButton}
         </Button>

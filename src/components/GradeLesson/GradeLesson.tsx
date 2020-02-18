@@ -6,7 +6,7 @@ import {
 } from 'redux';
 import moment from 'moment';
 import { RouteComponentProps } from 'react-router';
-import Router from 'next/router';
+import Router from "next/router";
 import Head from 'next/head';
 import DatePicker from 'react-datepicker';
 
@@ -22,33 +22,18 @@ import Rating from '@material-ui/lab/Rating';
 
 import { getCookie } from '../../utils/cookies';
 import { StoreState } from '../../redux/reducers/store';
-import { UserType } from '../../redux/models/UserModel';
-
+import { requestAction } from '../../redux/actions/actions';
 import { gradeLesson } from '../../redux/actions/InstructorActions';
-import { page } from '../../utils/analytics';
+import { InstructorActions } from '../../redux/actions/InstructorActionTypes';
+
+import { Routes } from '../common/constants/Routes';
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
 import SectionTitle from '../common/SectionTitle';
-import { AnnouncementConstants } from '../common/constants/Announcement';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
-import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
-import { Routes } from '../common/constants/Routes';
-import { Role } from '../Auth/Registration/constants';
-import InviteFriends from '../InviteFriends/InviteFriends';
 import PrivateRoute from '../Auth/PrivateRoutes';
 import * as constants from './constants';
 import { GradeData } from './models';
-// import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
-// import ParentStudentDashboard from './ParentStudentDashboard/ParentStudentDashboard';
-// import {
-//   DashboardComponent,
-//   PreLaunchInstructorDashboardComponent as constants
-// } from './constants';
-// import { InstructorDashboardType, ParentStudentDashboardType } from './models';
-
-interface State {
-  showSnackbar: boolean;
-}
 
 interface StateProps {
   isRequesting: boolean;
@@ -58,6 +43,7 @@ interface StateProps {
 
 interface DispatchProps {
   gradeLesson: (gradeData: GradeData) => void;
+  resetGradeLessonMessage: () => void;
 }
 
 interface OwnProps {
@@ -70,38 +56,31 @@ interface Props extends
   DispatchProps {}
 
 export const GradeLesson = (props: Props) => {
-  const [date, setDate] = React.useState("");
+  const [date, setDate] = React.useState(moment(Date.now()));
   const [grade, setGrade] = React.useState(0);
   const [comment, setComment] = React.useState("");
+  const [snackbarMessage, setSnackbarMessage] = React.useState('');
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
+  const [circularProgress, displayCircularProgress] = React.useState(false);
 
-  // public async componentDidMount(): Promise<void> {
-  //   await this.props.fetchUser();
-  //   if (!this.props.token) {
-  //     Router.push(Routes.HomePage);
-  //   }
-  //   if( this.props.user.role) {
-  //     await this.props.fetchDashboard(Role[this.props.user.role]);
-  //   }
+  React.useEffect(() => {
+    if (props.message) {
+      props.resetGradeLessonMessage();
+      setSnackbarMessage('Your grade was submitted successfully.')
+      setShowSnackbar(true);
+      displayCircularProgress(true);
+      delayedRedirect(2000).then(() => Router.push(Routes.Dashboard));
+    }
+    if (props.error) {
+      setShowSnackbar(true);
+      setSnackbarMessage('There was an error processing your request.')
+    }
+    /* tslint:disable */
+  },[props.message, props.error]);
 
-  //   this.props.setPathname(Router.pathname)
-  //   // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
-  //   //   this.setState({
-  //   //     showSnackbar: true
-  //   //   });
-  //   // }
-
-  //   const userId = this.props.user ? this.props.user.email : 'anonymous';
-
-  //   const analiticsProps = {
-  //     userId,
-  //     properties: {
-  //       referrer: document.referrer
-  //     }
-  //   };
-  //   page('Dashboard', analiticsProps);
-  // }
-
-  // public closeSnackbar = () => this.setState({ showSnackbar: false });
+  function delayedRedirect(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.currentTarget;
@@ -123,7 +102,7 @@ export const GradeLesson = (props: Props) => {
   }
 
   const handleDateChange = (date: moment.Moment): void => {
-    setDate(String(date));
+    setDate(date);
   };
 
   const gradeLesson  = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -132,7 +111,7 @@ export const GradeLesson = (props: Props) => {
     }
 
     const gradeData: GradeData = {
-      date,
+      date: moment(date).format("YYYY-MM-DD"),
       grade,
       comment,
       bookingId: getCookie('lessonBookingId')
@@ -148,65 +127,65 @@ export const GradeLesson = (props: Props) => {
       </Head>
       <PageTitle pageTitle={constants.pageTitle} />
       <div className="nabi-background-white nabi-section nabi-margin-bottom-medium">
-        <SectionTitle text={constants.studentNameSection} />
-        <Typography className="nabi-margin-bottom-small">{getCookie('lessonStudentName')}</Typography>
-        <SectionTitle text={constants.instrumentSection} />
-        <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
-        <form noValidate={true} autoComplete="off" onSubmit={gradeLesson}>
-          <SectionTitle text={constants.dateOfLessonSection} />
-          <FormControl fullWidth={false} required={true} className="nabi-margin-bottom-small">
-            <DatePicker
-              selected={moment(Date.now())}
-              onChange={handleDateChange}
-              peekNextMonth={true}
-              showMonthDropdown={true}
-              showYearDropdown={true}
-              dropdownMode="select"
-            />
-          </FormControl>
-          <SectionTitle text={constants.gradeSection} />
-          <Rating
-            name={constants.FieldNames.Grade}
-            max={3}
-            className="nabi-margin-bottom-small"
-            value={grade}
-            onChange={handleChange}
-          />
-          <SectionTitle text={constants.commentsSection} />
-          <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
-            <TextField
-              name={constants.FieldNames.Comment}
-              margin="normal"
+        {props.isRequesting || circularProgress ?
+          <div className="nabi-text-center">
+            <CircularProgress />
+          </div>
+        :
+        <React.Fragment>
+          <SectionTitle text={constants.studentNameSection} />
+          <Typography className="nabi-margin-bottom-small">{getCookie('lessonStudentName')}</Typography>
+          <SectionTitle text={constants.instrumentSection} />
+          <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
+          <form noValidate={true} autoComplete="off" onSubmit={gradeLesson}>
+            <SectionTitle text={constants.dateOfLessonSection} />
+            <FormControl fullWidth={false} required={true} className="nabi-margin-bottom-small">
+              <DatePicker
+                selected={date && moment(date)}
+                onChange={handleDateChange}
+                peekNextMonth={true}
+                showMonthDropdown={true}
+                showYearDropdown={true}
+                dropdownMode="select"
+              />
+            </FormControl>
+            <SectionTitle text={constants.gradeSection} />
+            <Rating
+              name={constants.FieldNames.Grade}
+              max={3}
+              className="nabi-margin-bottom-small"
+              value={grade}
               onChange={handleChange}
-              multiline={true}
-              fullWidth={true}
-              rows={6}
-              value={comment}
             />
-          </Grid>
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={!grade || !comment || !date}
-            type="submit"
-          >
-            {constants.button}
-          </Button>
-        </form>
+            <SectionTitle text={constants.commentsSection} />
+            <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
+              <TextField
+                name={constants.FieldNames.Comment}
+                margin="normal"
+                onChange={handleChange}
+                multiline={true}
+                fullWidth={true}
+                rows={6}
+                value={comment}
+              />
+            </Grid>
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={!grade || !comment || !date}
+              type="submit"
+            >
+              {constants.button}
+            </Button>
+          </form>
+        </React.Fragment>}
       </div>
-      {props.isRequesting  &&
-        <div className="nabi-text-center">
-          <CircularProgress />
-        </div>
-      }
-
-        {/* <SnackBar
-          isOpen={this.state.showSnackbar}
-          message={AnnouncementConstants.requestSentMessage}
-          handleClose={this.closeSnackbar}
-          variant="success"
-          hideIcon={true}
-        /> */}
+      <SnackBar
+        isOpen={showSnackbar}
+        message={snackbarMessage}
+        handleClose={() => setShowSnackbar(false)}
+        variant={props.error ? "error" : "success" }
+      />
     </div>
   );
 }
@@ -233,6 +212,7 @@ const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
   gradeLesson: (gradeData: GradeData) => dispatch(gradeLesson(gradeData)),
+  resetGradeLessonMessage: () => dispatch(requestAction(InstructorActions.RESET_GRADE_LESSON_MESSAGE))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(GradeLesson, 'Private', ['Instructor']));

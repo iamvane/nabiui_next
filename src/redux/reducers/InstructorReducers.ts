@@ -922,6 +922,19 @@ export default function instructorReducer(
           }
         };
 
+
+      case InstructorActions.RESET_GRADE_LESSON_MESSAGE:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            gradeLesson: {
+              ...state.actions.gradeLesson,
+              message: undefined
+            }
+          }
+        };
+
     default:
       return state;
   }
