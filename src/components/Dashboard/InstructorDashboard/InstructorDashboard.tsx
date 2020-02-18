@@ -29,7 +29,6 @@ interface Props {
 }
 
 export const InstructorDashboard = (props: Props) => {
-
   const displayMissingFields = () => (
     props.dashboard.missingFields.map((item, i) => (
       <Typography key={i}>
@@ -124,7 +123,7 @@ export const InstructorDashboard = (props: Props) => {
       }
 
       {props.dashboard && props.dashboard.requests.length > 0 &&
-        <div className="nabi-section-widest nabi-background-white">
+        <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-medium">
           <SectionTitle
             text={constants.applyToJobs}
             cta={
