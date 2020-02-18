@@ -71,17 +71,6 @@ export class InviteFriends extends React.Component<Props, State> {
     };
   }
 
-  componentDidUpdate(prevProps: Props) {
-    if (this.state.showSnackbar) {
-      this.delayedAction(2000).then(() => this.setState(() => ({ showSnackbar: false })));
-
-    }
-
-    if (this.state.showInviteSnackbar) {
-      this.delayedAction(2000).then(() => this.setState(() => ({ showInviteSnackbar: false })));
-    }
-  }
-
   public delayedAction = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -106,12 +95,12 @@ export class InviteFriends extends React.Component<Props, State> {
       this.setState({
         showInviteSnackbar: true
       });
-      // this
     } else {
       this.setState({
         showInviteSnackbar: true
       });
     }
+    this.delayedAction(2000).then(() => this.setState(() => ({ showInviteSnackbar: false })));
     this.setState({ email: "" });
   };
 
@@ -158,6 +147,7 @@ export class InviteFriends extends React.Component<Props, State> {
       (inviteLink as HTMLInputElement).setSelectionRange(0, 99999);
       document.execCommand("copy");
       this.setState({ showSnackbar: true });
+      this.delayedAction(2000).then(() => this.setState(() => ({ showSnackbar: false })));
     }
   };
 

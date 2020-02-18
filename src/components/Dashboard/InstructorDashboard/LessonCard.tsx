@@ -13,7 +13,6 @@ import { InstructorDashboardComponent as constants }  from '../constants';
 import { LessonType } from '../models';
 
 interface Props {
-  // TODO: change to Re1uestType when doing API integration
   lesson: LessonType;
 }
 

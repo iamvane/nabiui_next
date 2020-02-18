@@ -1,6 +1,6 @@
 import { Request } from '../../redux/models/RequestModel';
 
-export interface StudentType {
+interface StudentType {
   name: string;
   age: number;
 }
