@@ -4,11 +4,32 @@ import {
   Snackbar,
   SnackbarContent
 } from '@material-ui/core';
-import CheckCircle from '@material-ui/icons/CheckCircle';
-import Warning from '@material-ui/icons/Warning';
-import Error from '@material-ui/icons/Error';
-import Info from '@material-ui/icons/Info';
-import Close from '@material-ui/icons/Close';
+// import CheckCircle from '@material-ui/icons/CheckCircle';
+// import Warning from '@material-ui/icons/Warning';
+// import Error from '@material-ui/icons/Error';
+// import Info from '@material-ui/icons/Info';
+// import Close from '@material-ui/icons/Close';
+
+import dynamic from "next/dynamic";
+const CheckCircle = dynamic(() => import('@material-ui/icons/CheckCircle'), {
+  ssr: false,
+});
+
+const Warning = dynamic(() => import('@material-ui/icons/Warning'), {
+  ssr: false,
+});
+
+const Error = dynamic(() => import('@material-ui/icons/Error'), {
+  ssr: false,
+});
+
+const Info = dynamic(() => import('@material-ui/icons/Info'), {
+  ssr: false,
+});
+
+const Close = dynamic(() => import('@material-ui/icons/Close'), {
+  ssr: false,
+});
 
 interface Props {
   isOpen: boolean;

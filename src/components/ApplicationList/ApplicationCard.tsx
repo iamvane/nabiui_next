@@ -9,7 +9,11 @@ import {
   IconButton,
   Typography,
 } from '@material-ui/core';
-import Star from '@material-ui/icons/Star';
+// import Star from '@material-ui/icons/Star';
+import dynamic from "next/dynamic";
+const Star = dynamic(() => import('@material-ui/icons/Star'), {
+  ssr: false,
+});
 
 import { Rates } from '../../redux/models/InstructorModel';
 import { Routes } from '../common/constants/Routes';

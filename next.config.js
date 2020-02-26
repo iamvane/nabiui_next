@@ -3,8 +3,12 @@ const withCSS = require('@zeit/next-css');
 const withFonts = require('next-images');
 const webpack = require('webpack');
 const withSourceMaps = require('@zeit/next-source-maps');
+const withPWA = require('next-pwa');
 
-module.exports = withSourceMaps(withCSS(withSass(withFonts({
+module.exports = withPWA(withSourceMaps(withCSS(withSass(withFonts({
+  pwa: {
+    dest: 'public'
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.(ttf|woff|woff2)$/,
@@ -15,4 +19,4 @@ module.exports = withSourceMaps(withCSS(withSass(withFonts({
     config.plugins.push(new webpack.EnvironmentPlugin(['REACT_APP_API_URL']));
     return config;
   }
-}))));
+})))));

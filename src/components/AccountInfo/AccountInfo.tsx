@@ -16,7 +16,11 @@ import {
   CircularProgress,
   Typography
 } from '@material-ui/core';
-import ArrowForward from '@material-ui/icons/ArrowForward';
+// import ArrowForward from '@material-ui/icons/ArrowForward';
+import dynamic from "next/dynamic";
+const ArrowForward = dynamic(() => import('@material-ui/icons/ArrowForward'), {
+  ssr: false,
+});
 
 import { StoreState } from '../../redux/reducers/store';
 import {

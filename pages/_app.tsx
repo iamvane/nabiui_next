@@ -16,6 +16,7 @@ import { parseCookies } from "../src/utils/parseCookies";
 import { theme } from "../theme/theme";
 import Offer from "../src/components/Offers/Offer";
 require("../src/utils/axiosClient");
+import 'lazysizes';
 
 Sentry.init({
   dsn: "https://bbb8a78b6945414fa1a9b3d32f16a5b6@sentry.io/1774691"

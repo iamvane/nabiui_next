@@ -215,7 +215,7 @@ export const Header = (props: HeaderProps) => {
                   badgeContent={
                     <Avatar
                       alt="gift"
-                      className="nabi-small-avatar-responsive"
+                      className="nabi-small-avatar-responsive lazyload"
                       src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
                     />
                   }
