@@ -9,6 +9,7 @@ import {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import Head from 'next/head';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -235,6 +236,9 @@ export class AccountInfo extends React.Component<Props, State> {
         </div>
       ) : (
         <div>
+          <Head>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+          </Head>
           <AccountInfoForm
             user={this.props.user}
             accountInfo={this.state.accountInfo}

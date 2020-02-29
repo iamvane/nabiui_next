@@ -24,8 +24,8 @@ const FreeLesson = () => {
       >
         <Grid item={true} xs={12} md={4} className="nabi-margin-bottom-xsmall nabi-text-right-md nabi-color-white">
           <img
-            src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
-            className="free-trial-icon"
+            data-src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+            className="free-trial-icon lazyload"
             alt="become-an-instructor"
           />
         </Grid>

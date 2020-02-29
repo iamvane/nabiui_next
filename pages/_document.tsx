@@ -29,15 +29,6 @@ class NabiDocument extends Document<any> {
       ? `var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
     analytics.load("CCqHyxi5VFuKmmHqKJuRzGgr5972QeUC");analytics.page();}`
       : "";
-    const inspectletScript = prod
-      ? `window.__insp = window.__insp || [];
-    const __insp =  window.__insp  || [];
-    __insp.push(['wid', 417049237]);
-    var ldinsp = function () {
-      if (typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=417049237&r=' + Math.floor(new Date().getTime() / 3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x);
-    };
-    setTimeout(ldinsp, 0);`
-      : "";
     /* tslint:enable */
     return (
       <html lang="en" dir="ltr">
@@ -96,37 +87,12 @@ class NabiDocument extends Document<any> {
           <meta name="msapplication-TileColor" content="#f0f3f6" />
           <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png" />
           <meta name="theme-color" content="#f0f3f6" />
-          <script defer={true} src="https://js.stripe.com/v3/"></script>
           <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Montserrat: 400,500,600,800&display=swap"
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800&display=swap"
             rel="stylesheet"
           />
-          <script
-            defer={true}
-            id="ze-snippet"
-            src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"
-          ></script>
-          <script async={true} dangerouslySetInnerHTML={{ __html: segmentScript }} />
-          <script
-            defer={true}
-            dangerouslySetInnerHTML={{ __html: inspectletScript }}
-          />
-
-          <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800"
-            rel="stylesheet"
-          />
-          <script
-            defer={true}
-            id="ze-snippet"
-            src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"
-          ></script>
-
-          <script async={true} src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+          <script async defer dangerouslySetInnerHTML={{ __html: segmentScript }} />
+          <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7039981.js"></script>
         </Head>
         <body>
           <Main />

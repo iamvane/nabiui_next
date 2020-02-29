@@ -216,7 +216,7 @@ export const Header = (props: HeaderProps) => {
                     <Avatar
                       alt="gift"
                       className="nabi-small-avatar-responsive lazyload"
-                      src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
+                      data-src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg"
                     />
                   }
                 >

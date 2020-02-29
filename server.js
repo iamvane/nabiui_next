@@ -1,3 +1,4 @@
+const { createServer } = require('http')
 const express = require('express');
 const next = require('next');
 
@@ -5,10 +6,23 @@ const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const compression = require('compression');
+const server = express();
+
+server.use(compression());
 
 app.prepare().then(() => {
-  const server = express();
+  createServer((req, res) => {
+    const parsedUrl = parse(req.url, true)
+    const { pathname } = parsedUrl
 
+    if (pathname === '/sw.js' || pathname.startsWith('/workbox-')) {
+      const filePath = join(__dirname, '.next', pathname)
+      app.serveStatic(req, res, filePath)
+    } else {
+      handle(req, res, parsedUrl)
+    }
+  });
   server.use((req, res, next) => {
     const hostname = req.hostname === 'www.nabimusic.com' ? 'nabimusic.com' : req.hostname;
 
