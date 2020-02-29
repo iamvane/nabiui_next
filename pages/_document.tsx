@@ -10,7 +10,7 @@ process.on("uncaughtException", err => {
   Sentry.captureException(err);
 });
 
-class NabiDocument extends Document<any> {
+class NabiDocument extends Document {
   constructor(props) {
     super(props);
   }
