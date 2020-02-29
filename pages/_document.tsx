@@ -1,7 +1,6 @@
 import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import * as Sentry from "@sentry/browser";
-import { setAuthToken } from "../src/redux/actions/UserActions";
 
 process.on("unhandledRejection", err => {
   Sentry.captureException(err);
@@ -21,21 +20,6 @@ class NabiDocument extends Document<any> {
     return {
       ...initialProps
     };
-  }
-
-  // static async getInitialProps( ctx ) {
-  //   const pageProps = await Document.getInitialProps(ctx)
-  //   const cookies = parseCookies(ctx.req);
-  //   return {
-  //     ...pageProps,
-  //     token: cookies.token
-  //   };
-  // }
-
-  public componentDidMount(): void {
-    if (this.props.token) {
-      this.props.store.dispatch(setAuthToken(this.props.token));
-    }
   }
 
   render() {

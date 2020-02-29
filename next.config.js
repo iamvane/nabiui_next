@@ -7,7 +7,8 @@ const withPWA = require('next-pwa');
 
 module.exports = withPWA(withSourceMaps(withCSS(withSass(withFonts({
   pwa: {
-    dest: 'public'
+    dest: 'public',
+    sw: 'public/sw.js',
   },
   webpack(config, options) {
     config.module.rules.push({
