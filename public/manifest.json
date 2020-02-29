@@ -1,9 +1,22 @@
 {
+  "name": "Nabi Music: Music lessons for children and adults in New York and Massachusetts",
   "short_name": "Nabi Music",
-  "name": "nabi Music: Music lessons for children and adults in New York and Massachusetts",
-  "start_url": "/",
+  "theme_color": "#06c3e1",
   "background_color": "#f0f3f6",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#f0f3f6"
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "images/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
 }

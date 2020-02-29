@@ -33,7 +33,7 @@ export const Features = () => {
           {features.map((item, i) => (
             <Grid key={i} item={true} md={4} xs={12}>
               <div className="feature-item nabi-background-white nabi-box-shadow nabi-text-center nabi-border-radius">
-                <img src={item.image} alt={item.alt} />
+                <img data-src={item.image} alt={item.alt} className="lazyload" />
                 <Typography className="nabi-text-semibold">{item.title}</Typography>
                 <Typography>{item.description}</Typography>
               </div>
@@ -51,8 +51,8 @@ export const Features = () => {
         </Grid>
       </div>
       <img
-        className="nabi-full-width"
-        src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-music-violin-lessons-piano-guitar-near-me-drums-new-york-massachusetts.jpg"
+        className="nabi-full-width lazyload"
+        data-src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-music-violin-lessons-piano-guitar-near-me-drums-new-york-massachusetts.jpg"
         alt="violin-lessons-boston"
       />
     </Grid>

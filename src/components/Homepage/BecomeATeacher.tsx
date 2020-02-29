@@ -37,7 +37,7 @@ const BecomeATeacher = () => {
           </Link>
         </Grid>
         <Grid item={true} xs={12} md={3} className="nabi-margin-bottom-xsmall nabi-padding-left-small-md nabi-text-center nabi-text-left-md nabi-color-white">
-          <img src={MoneyIllustration} className="become-an-instructor-icon" alt="become-an-instructor" />
+          <img data-src={MoneyIllustration} className="become-an-instructor-icon lazyload" alt="become-an-instructor" />
         </Grid>
       </Grid>
     </div>

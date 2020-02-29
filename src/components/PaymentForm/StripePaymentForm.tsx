@@ -5,6 +5,7 @@ import {
   injectStripe,
   Elements
 } from "react-stripe-elements";
+import Head from 'next/head';
 
 import {
   Button,
@@ -93,7 +94,12 @@ export const StripePaymentForm = (props: Props) => {
       return;
     }
     return (
-      renderItems()
+      <div>
+        <Head>
+          <script async defer src="https://js.stripe.com/v3/"></script>
+        </Head>
+        {renderItems()}
+      </div>
     );
   } else {
     return <p>Unable to display form. Please contact us at info@nabimusic.com.</p>

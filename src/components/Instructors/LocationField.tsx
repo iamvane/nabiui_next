@@ -3,6 +3,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import Head from 'next/head';
 import {
   IconButton,
   InputAdornment,
@@ -72,56 +73,61 @@ export class LocationField extends React.Component<Props, State> {
   public render () {
     const locationIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/pin-location.png';
     return (
-      <PlacesAutocomplete
-        value={this.state.location}
-        onChange={this.handleLocationChange}
-        onSelect={this.handleLocationSelect}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="nabi-full-width">
-            <TextField
-              {...getInputProps({
-                fullWidth: true,
-                placeholder: ListTemplateComponent.locationPlaceholder,
-                InputProps: {
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton
-                        aria-label="location"
-                      >
-                        <img src={locationIcon} className="nabi-custom-button-icon" alt="location-icon" />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }
-              })}
-            />
-            <div className="filter-autocomplete-suggestion-list nabi-position-absolute">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                    key={suggestion}
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
+      <div>
+        <Head>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+        </Head>
+        <PlacesAutocomplete
+          value={this.state.location}
+          onChange={this.handleLocationChange}
+          onSelect={this.handleLocationSelect}
+        >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div className="nabi-full-width">
+              <TextField
+                {...getInputProps({
+                  fullWidth: true,
+                  placeholder: ListTemplateComponent.locationPlaceholder,
+                  InputProps: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <IconButton
+                          aria-label="location"
+                        >
+                          <img src={locationIcon} className="nabi-custom-button-icon" alt="location-icon" />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }
+                })}
+              />
+              <div className="filter-autocomplete-suggestion-list nabi-position-absolute">
+                {loading && <div>Loading...</div>}
+                {suggestions.map(suggestion => {
+                  const className = suggestion.active
+                    ? 'suggestion-item--active'
+                    : 'suggestion-item';
+                  // inline style for demonstration purpose
+                  const style = suggestion.active
+                    ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                  return (
+                    <div
+                      key={suggestion}
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style,
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
+          )}
+        </PlacesAutocomplete>
+      </div>
     );
   }
 }

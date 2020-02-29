@@ -8,11 +8,19 @@ import {
   MobileStepper,
   Typography
 } from '@material-ui/core';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-
 import { Routes } from '../common/constants/Routes';
 import { CommonStepperButtons } from './constants';
+// import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+// import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+
+import dynamic from "next/dynamic";
+const KeyboardArrowLeft = dynamic(() => import('@material-ui/icons/KeyboardArrowLeft'), {
+  ssr: false,
+});
+
+const KeyboardArrowRight = dynamic(() => import('@material-ui/icons/KeyboardArrowRight'), {
+  ssr: false,
+});
 
 interface Props {
   nextPath?: string;

@@ -19,9 +19,9 @@ const SocialMenu = () => {
         rel="noreferrer"
       >
         <img
-         src={FacebookIcon}
-         className="nabi-custom-button-icon"
-         alt="facebook-icon"
+          data-src={FacebookIcon}
+          className="nabi-custom-button-icon lazyload"
+          alt="facebook-icon"
         />
       </IconButton>
 
@@ -33,9 +33,9 @@ const SocialMenu = () => {
         rel="noreferrer"
       >
         <img
-         src={TwitterIcon}
-         className="nabi-custom-button-icon"
-         alt="twitter-icon"
+          data-src={TwitterIcon}
+          className="nabi-custom-button-icon lazyload"
+          alt="twitter-icon"
         />
       </IconButton>
 
@@ -47,9 +47,9 @@ const SocialMenu = () => {
         rel="noreferrer"
       >
         <img
-         src={InstagramIcon}
-         className="nabi-custom-button-icon"
-         alt="instagram-icon"
+          data-src={InstagramIcon}
+          className="nabi-custom-button-icon lazyload"
+          alt="instagram-icon"
         />
       </IconButton>
 
@@ -61,9 +61,9 @@ const SocialMenu = () => {
         rel="noreferrer"
       >
         <img
-         src={PinterestIcon}
-         className="nabi-custom-button-icon"
-         alt="pinterest-icon"
+          data-src={PinterestIcon}
+          className="nabi-custom-button-icon lazyload"
+          alt="pinterest-icon"
         />
       </IconButton>
     </div>

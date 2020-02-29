@@ -10,7 +10,11 @@ import {
   Typography,
   FormControl
 } from '@material-ui/core';
-import Close from '@material-ui/icons/Close';
+// import Close from '@material-ui/icons/Close';
+import dynamic from "next/dynamic";
+const Close = dynamic(() => import('@material-ui/icons/Close'), {
+  ssr: false,
+});
 
 import NumberFormat from 'react-number-format';
 import 'react-datepicker/dist/react-datepicker.css';

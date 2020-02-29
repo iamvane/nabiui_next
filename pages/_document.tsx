@@ -29,15 +29,6 @@ class NabiDocument extends Document {
       ? `var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
     analytics.load("CCqHyxi5VFuKmmHqKJuRzGgr5972QeUC");analytics.page();}`
       : "";
-    const inspectletScript = prod
-      ? `window.__insp = window.__insp || [];
-    const __insp =  window.__insp  || [];
-    __insp.push(['wid', 417049237]);
-    var ldinsp = function () {
-      if (typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=417049237&r=' + Math.floor(new Date().getTime() / 3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x);
-    };
-    setTimeout(ldinsp, 0);`
-      : "";
     /* tslint:enable */
     return (
       <html lang="en" dir="ltr">
@@ -47,7 +38,7 @@ class NabiDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=5,user-scalable=0, shrink-to-fit=no"
           />
-          <meta name="theme-color" content="#000000" />
+          <meta name='keywords' content="guitar lessons, piano lessons, piano lessons near me, singing lessons, kids piano, music lessons near me, music school, violin lessons near me, voice lessons, violin lessons, music lessons for kids, piano lessons for kids, new york, massachusetts, boston" />
           <script
             async
             defer
@@ -57,42 +48,51 @@ class NabiDocument extends Document {
             name="p:domain_verify"
             content="fc7573e0c0933bb2a115da9aab66e9db"
           />
-          <link rel="manifest" href="/manifest.json" />
           <link
             rel="shortcut icon"
             href="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/favicon.ico"
           />
-          <script src="https://js.stripe.com/v3/"></script>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Montserrat: 400,500,600,800"
-            rel="stylesheet"
-          />
-          <script
-            defer={true}
-            id="ze-snippet"
-            src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"
-          ></script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
-          <script dangerouslySetInnerHTML={{ __html: segmentScript }} />
-          <script
-            defer={true}
-            dangerouslySetInnerHTML={{ __html: inspectletScript }}
-          />
 
+          {/* iOS */}
+          <link href="/images/icons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
+          <link href="/images/icons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60" />
+          <link href="/images/icons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72" />
+          <link href="/images/icons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+          <link href="/images/icons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114" />
+          <link href="/images/icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+          <link href="/images/icons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144" />
+          <link href="/images/icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+          <link href="/images/icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+
+          {/* Startup Image */}
+          <link href="/images/icons/apple-icon-180x180.png" rel="apple-touch-startup-image" />
+
+          {/* Pinned Tab */}
+          <link href="/images/icons/favicon.svg" rel="mask-icon" color="#000000" />
+
+          {/* Android */}
+          <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+          <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png" />
+          <link rel="icon" type="image/png" sizes="128x128" href="/images/icons/icon-128x128.png" />
+          <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png" />
+
+          {/* Others */}
+          <link rel="shortcut icon" href="/images/icons/favicon.ico" />
+
+          {/* Manifest.json */}
+          <link href="/manifest.json" rel="manifest" />
+
+          <meta name="msapplication-TileColor" content="#f0f3f6" />
+          <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png" />
+          <meta name="theme-color" content="#f0f3f6" />
           <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800"
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800&display=swap"
             rel="stylesheet"
           />
-          <script
-            id="ze-snippet"
-            src="https://static.zdassets.com/ekr/snippet.js?key=db8a6365-908c-4f48-8845-ade2abc55a3f"
-          ></script>
-
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+          <script async defer dangerouslySetInnerHTML={{ __html: segmentScript }} />
+          <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7039981.js"></script>
         </Head>
         <body>
           <Main />

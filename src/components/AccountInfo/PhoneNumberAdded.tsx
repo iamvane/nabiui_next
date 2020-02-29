@@ -5,7 +5,11 @@ import {
   IconButton,
   Typography
 } from '@material-ui/core';
-import Done from '@material-ui/icons/Done';
+// import Done from '@material-ui/icons/Done';
+import dynamic from "next/dynamic";
+const Done = dynamic(() => import('@material-ui/icons/Done'), {
+  ssr: false,
+});
 
 import { PhoneValidationFormComponent } from './constants';
 
