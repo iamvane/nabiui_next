@@ -52,6 +52,10 @@ class NabiDocument extends Document {
             rel="shortcut icon"
             href="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/favicon.ico"
           />
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat: 400,500,600,800"
+            rel="stylesheet"
+          />
 
           {/* iOS */}
           <link href="/images/icons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
