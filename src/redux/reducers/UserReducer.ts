@@ -227,6 +227,7 @@ export default function usersReducer(
 
     case UserActions.FETCH_USER_FAILURE:
     case UserActions.FETCH_USER_NOT_AUTHENTICATED_FAILURE:
+      removeCookie("token");
       const { error } = <APIActions.WithError<string>>action;
       return {
         ...state,
