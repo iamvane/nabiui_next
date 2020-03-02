@@ -37,7 +37,7 @@ export const StudentParentMenu = (props: Props) => {
             <ClickAwayListener onClickAway={props.toggleMenu}>
               <MenuList>
                 <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.HowItWorksParents}>
+                  <Link prefetch={false} href={Routes.HowItWorksParents}>
                     <a>
                       <Typography color="primary">
                         {studentParentMenuLabels.howItWorks}
@@ -46,7 +46,7 @@ export const StudentParentMenu = (props: Props) => {
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.FAQParents}>
+                  <Link prefetch={false} href={Routes.FAQParents}>
                     <a>
                       <Typography color="primary">
                         {studentParentMenuLabels.faqs}
@@ -55,7 +55,7 @@ export const StudentParentMenu = (props: Props) => {
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.LessonPackages}>
+                  <Link prefetch={false} href={Routes.LessonPackages}>
                     <a>
                       <Typography color="primary">
                         {studentParentMenuLabels.lessonPackages}
@@ -64,7 +64,7 @@ export const StudentParentMenu = (props: Props) => {
                   </Link>
                 </MenuItem>
                 {/* <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.FeaturesParents}>
+                  <Link prefetch={false} href={Routes.FeaturesParents}>
                     <a>
                       <Typography color="primary">
                         {studentParentMenuLabels.features}
@@ -72,7 +72,7 @@ export const StudentParentMenu = (props: Props) => {
                     </a>
                   </Link>
                 </MenuItem> */}
-                <Link href={Routes.RegistrationParent}>
+                <Link prefetch={false} href={Routes.RegistrationParent}>
                   <a>
                     <Button color="primary" variant="contained" className="nabi-responsive-button">{studentParentMenuLabels.start}</Button>
                   </a>

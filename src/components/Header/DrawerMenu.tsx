@@ -34,59 +34,59 @@ export const DrawerMenu = (props: Props) => {
           <Typography color="secondary" className="nabi-text-semibold">{forParents}</Typography>
           <MenuList>
             <MenuItem onClick={props.closeMenu}>
-              <Link href={Routes.HowItWorksParents}>
+              <Link prefetch={false} href={Routes.HowItWorksParents}>
                 <Typography color="primary">
                   {studentParentMenuLabels.howItWorks}
                 </Typography>
               </Link>
             </MenuItem>
             <MenuItem onClick={props.closeMenu}>
-              <Link href={Routes.FAQParents}>
+              <Link prefetch={false} href={Routes.FAQParents}>
                 <Typography color="primary">
                   {studentParentMenuLabels.faqs}
                 </Typography>
               </Link>
             </MenuItem>
             <MenuItem onClick={props.closeMenu}>
-              <Link href={Routes.LessonPackages}>
+              <Link prefetch={false} href={Routes.LessonPackages}>
                 <Typography color="primary">
                   {studentParentMenuLabels.lessonPackages}
                 </Typography>
               </Link>
             </MenuItem>
             {/* <MenuItem onClick={props.closeMenu}>
-              <Link href={Routes.FeaturesParents}>
+              <Link prefetch={false} href={Routes.FeaturesParents}>
                 <Typography color="primary">
                   {studentParentMenuLabels.features}
                 </Typography>
               </Link>
             </MenuItem> */}
-            <Link href={Routes.RegistrationParent}>
+            <Link prefetch={false} href={Routes.RegistrationParent}>
               <Button color="primary" variant="contained" className="nabi-responsive-button">{studentParentMenuLabels.start}</Button>
             </Link>
             <Typography color="secondary" className="nabi-text-semibold nabi-margin-top-medium">{forInstructors}</Typography>
             <MenuItem onClick={props.closeMenu}>
-              <Link href={Routes.HowItWorksInstructors}>
+              <Link prefetch={false} href={Routes.HowItWorksInstructors}>
                 <Typography color="primary">
                   {instructorMenuLabels.howItWorks}
                 </Typography>
               </Link>
             </MenuItem>
             <MenuItem onClick={props.closeMenu}>
-              <Link href={Routes.FAQInstructors}>
+              <Link prefetch={false} href={Routes.FAQInstructors}>
                 <Typography color="primary">
                   {instructorMenuLabels.faqs}
                 </Typography>
               </Link>
             </MenuItem>
             {/* <MenuItem onClick={props.closeMenu}>
-              <Link href={Routes.FeaturesInstructors}>
+              <Link prefetch={false} href={Routes.FeaturesInstructors}>
                 <Typography color="primary">
                   {instructorMenuLabels.features}
                 </Typography>
               </Link>
             </MenuItem> */}
-            <Link href={Routes.RegistrationInstructor}>
+            <Link prefetch={false} href={Routes.RegistrationInstructor}>
               <Button color="primary" variant="contained" className="nabi-responsive-button">{instructorMenuLabels.start}</Button>
             </Link>
           </MenuList>

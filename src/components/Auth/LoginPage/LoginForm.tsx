@@ -61,7 +61,7 @@ const LoginForm: React.StatelessComponent<Props> = props => {
       <Divider className="nabi-margin-top-small nabi-margin-bottom-xsmall"/>
 
       <Typography align="center" className="nabi-margin-top-small nabi-cursor-pointer">
-        <Link href={Routes.AccountRecovery}>
+        <Link prefetch={false} href={Routes.AccountRecovery}>
           <a>
             {LoginFormComponent.Text.ForgotPassword}
           </a>
@@ -73,7 +73,7 @@ const LoginForm: React.StatelessComponent<Props> = props => {
           LoginFormComponent.registerInvite,
           LoginFormComponent.singUpPlaceholder,
           (i: number) => (
-            <Link key={i} href={Routes.Registration}><a>{LoginFormComponent.Text.SingUp}</a></Link>
+            <Link prefetch={false} key={i} href={Routes.Registration}><a>{LoginFormComponent.Text.SingUp}</a></Link>
           )
         )}
       </Typography>
