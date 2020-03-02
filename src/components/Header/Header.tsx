@@ -179,7 +179,7 @@ export const Header = (props: HeaderProps) => {
 
         {(menuWhitelist as string[]).includes(props.router.route) || error ? (
           <div className="nabi-header-button">
-            <Link href={Routes.Login}>
+            <Link href={Routes.Login} prefetch={false}>
               <a>
                 <Button
                   color="primary"
@@ -228,7 +228,7 @@ export const Header = (props: HeaderProps) => {
                 </Badge>
               )}
 
-              <Link href={Routes.Registration}>
+              <Link href={Routes.Registration} prefetch={false}>
                 <a className="nabi-align-self-center">
                   <Button
                     color="primary"

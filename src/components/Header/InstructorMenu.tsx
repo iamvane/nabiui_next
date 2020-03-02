@@ -37,7 +37,7 @@ export const InstructorMenu = (props: Props) => {
             <ClickAwayListener onClickAway={props.toggleMenu}>
               <MenuList>
                 <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.HowItWorksInstructors}>
+                  <Link prefetch={false} href={Routes.HowItWorksInstructors}>
                     <a>
                       <Typography color="primary">
                         {instructorMenuLabels.howItWorks}
@@ -46,7 +46,7 @@ export const InstructorMenu = (props: Props) => {
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.FAQInstructors}>
+                  <Link prefetch={false} href={Routes.FAQInstructors}>
                     <a>
                       <Typography color="primary">
                         {instructorMenuLabels.faqs}
@@ -55,7 +55,7 @@ export const InstructorMenu = (props: Props) => {
                   </Link>
                 </MenuItem>
                 {/* <MenuItem onClick={props.toggleMenu}>
-                  <Link href={Routes.FeaturesInstructors}>
+                  <Link prefetch={false} href={Routes.FeaturesInstructors}>
                     <a>
                       <Typography color="primary">
                         {instructorMenuLabels.features}
@@ -63,7 +63,7 @@ export const InstructorMenu = (props: Props) => {
                     </a>
                   </Link>
                 </MenuItem> */}
-                <Link href={Routes.RegistrationInstructor}>
+                <Link prefetch={false} href={Routes.RegistrationInstructor}>
                   <a>
                     <Button color="primary" variant="contained" className="nabi-responsive-button">{instructorMenuLabels.start}</Button>
                   </a>

@@ -87,10 +87,6 @@ class NabiDocument extends Document {
           <meta name="msapplication-TileColor" content="#f0f3f6" />
           <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png" />
           <meta name="theme-color" content="#f0f3f6" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800&display=swap"
-            rel="stylesheet"
-          />
           <script async defer dangerouslySetInnerHTML={{ __html: segmentScript }} />
           <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7039981.js"></script>
         </Head>
