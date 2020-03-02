@@ -69,6 +69,14 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     }
 
   }
+
+  const getRequestDate = (): string => {
+    const today = new Date();
+
+    const end = moment(today);
+    return end.to(moment(createdAt));
+  };
+
   return (
     <div
       onClick={navigateToRequest}
@@ -150,7 +158,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
         <Grid item={true} xs={12} md={3} className="nabi-text-center nabi-text-left-md">
           <div className="nabi-margin-top-small-md">
             <Typography className="nabi-display-inline-block nabi-margin-top-small-md">
-              {elapsedTime ? elapsedTime + ' ago': (moment(new Date()).to(new Date(createdAt ? createdAt : String(new Date()))))}
+              {getRequestDate()}
             </Typography>
             <br />
             <Typography className="nabi-margin-right-xsmall nabi-display-inline-block">
