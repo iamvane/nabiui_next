@@ -39,7 +39,6 @@ export const ContacUs: React.StatelessComponent<Props> = (props: Props) =>  {
       <div className="nabi-background-white nabi-section nabi-text-center">
         <Typography className="nabi-text-mediumbold">Chat with us using the chat widget or fill out this form:</Typography>
         <div id="hubspotForm"></div>
-        {/*  */}
       </div>
     </div>
   );
