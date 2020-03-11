@@ -31,6 +31,7 @@ export interface RegistrationErrors {
   [RegistrationFormComponent.FieldKey.Email]?: string;
   [RegistrationFormComponent.FieldKey.Password]?: string;
   [RegistrationFormComponent.FieldKey.Reference]?: string;
+  [RegistrationFormComponent.FieldKey.OtherText]?: string;
 }
 
 interface StateProps {
@@ -71,6 +72,7 @@ export const Registration = (props: Props) => {
   const [openModal, toggleModal] = React.useState(false);
   const [isUnderage, setIsUnderAge] = React.useState(false);
   const [reference, setReference] = React.useState("");
+  const [otherText, setOtherText] = React.useState("");
   const [agreeWithTerms, setAgreeWithTerms] = React.useState(false);
   const [formErrors, setFormErrors] = React.useState({});
   const [registration, setRegistration] = React.useState(false);
@@ -80,7 +82,7 @@ export const Registration = (props: Props) => {
     if (props.email) {
       setEmail(props.email);
     }
-    
+
     if (!registration) {
       const analiticsProps = {
         properties: {
@@ -128,7 +130,7 @@ export const Registration = (props: Props) => {
       birthday: moment(birthday).format("YYYY-MM-DD"),
       email: email.toLocaleLowerCase(),
       password,
-      reference,
+      reference: otherText || reference,
       termsAccepted: agreeWithTerms,
       role: props.role
     };
@@ -159,6 +161,9 @@ export const Registration = (props: Props) => {
         break;
       case RegistrationFormComponent.FieldNames.Reference:
         setReference(value);
+        break;
+      case RegistrationFormComponent.FieldNames.OtherText:
+        setOtherText(value);
         break;
       case RegistrationFormComponent.FieldNames.AgreeWithTerms:
         setAgreeWithTerms(target.checked);
@@ -191,7 +196,8 @@ export const Registration = (props: Props) => {
       password: "",
       firstName: "",
       lastName: "",
-      reference: ""
+      reference: "",
+      otherText: ""
     };
 
     // Validate first name
@@ -237,6 +243,11 @@ export const Registration = (props: Props) => {
     // Validate reference
     if (!reference) {
       formErrors[FieldKey.Reference] = RegistrationFormComponent.ErrorMessages.Reference;
+    }
+
+     // Validate otherText
+     if (reference === 'other' && !otherText) {
+      formErrors[FieldKey.OtherText] = RegistrationFormComponent.ErrorMessages.OtherText;
     }
 
     // Validate birthday
@@ -285,6 +296,7 @@ export const Registration = (props: Props) => {
           isRequesting={props.isRequesting}
           agreeWithTerms={agreeWithTerms}
           reference={reference}
+          otherText={otherText}
         />
       </div>
 

@@ -42,6 +42,7 @@ interface Props {
   firstName: string;
   lastName: string;
   reference: string;
+  otherText?: string;
 }
 
 /**
@@ -59,7 +60,7 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
     RegistrationFormComponent.agreeWithTerms,
     RegistrationFormComponent.termsOfServicePlaceholder,
     (i: number) => (
-      <Link href={Routes.TermsOfUse} key={i}>{RegistrationFormComponent.termsText}</Link>
+      <Link href={Routes.TermsOfUse} key={i}><a>{RegistrationFormComponent.termsText}</a></Link>
     )
   );
 
@@ -158,8 +159,21 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
           </option>
           {selectOptions(RegistrationFormComponent.referenceOptions)}
         </Select>
-      <FormHelperText>{formErrors.reference}</FormHelperText>
+        <FormHelperText>{formErrors.reference}</FormHelperText>
       </FormControl>
+      {props.reference === 'other' &&
+        <TextField
+            fullWidth={true}
+            id={RegistrationFormComponent.Ids.OtherText}
+            name={RegistrationFormComponent.FieldNames.OtherText}
+            onChange={handleChange}
+            placeholder={RegistrationFormComponent.Placeholders.Reference}
+            required={true}
+            value={props.otherText}
+            error={!!formErrors.otherText}
+            helperText={formErrors.otherText}
+          />
+      }
 
       <div className="nabi-margin-top-small nabi-margin-left-xsmall">
         <FormControlLabel
