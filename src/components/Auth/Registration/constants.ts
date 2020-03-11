@@ -21,7 +21,8 @@ export namespace RegistrationFormComponent {
     Password = 'password',
     FirstName = 'firstName',
     LastName = 'lastName',
-    Reference = 'reference'
+    Reference = 'reference',
+    OtherText = 'otherText'
   }
 
   export enum Labels {
@@ -44,7 +45,8 @@ export namespace RegistrationFormComponent {
     FirstName = 'firstName',
     LastName = 'lastName',
     Reference = 'reference',
-    AgreeWithTerms = 'agreeWithTerms'
+    AgreeWithTerms = 'agreeWithTerms',
+    OtherText = 'otherText'
   }
 
   export enum Ids {
@@ -53,6 +55,7 @@ export namespace RegistrationFormComponent {
     Password = 'password',
     FirstName = 'firstName',
     LastName = 'lastName',
+    OtherText = 'otherText'
   }
 
   export enum RegisterText {
@@ -66,7 +69,8 @@ export namespace RegistrationFormComponent {
     LastName = 'Enter a valid last name.',
     Email = 'Invalid email. Enter a valid email address.',
     Password = 'Invalid password. Must contain at least 5 characters, a letter and a number.',
-    Reference = 'Select an option.'
+    Reference = 'Select an option.',
+    OtherText = 'Enter a value.'
   }
 
   export const referenceOptions = [
@@ -95,17 +99,21 @@ export namespace RegistrationFormComponent {
       value: 'nabi blog'
     },
     {
-      label: 'Other',
-      value: 'other'
-    },
-    {
       label: 'Pinterest',
       value: 'pinterest'
     },
     {
       label: 'Twitter',
       value: 'twitter'
-    }
+    },
+    {
+      label: 'Word of Mouth',
+      value: 'word of mouth'
+    },
+    {
+      label: 'Other',
+      value: 'other'
+    },
   ]
 
   export const agreeWithTerms = 'I agree with the {termsOfServiceReplace} of NabiMusic.';
