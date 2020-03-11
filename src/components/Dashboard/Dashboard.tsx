@@ -80,22 +80,6 @@ export const Dashboard = (props: Props) => {
     page('Dashboard', analiticsProps);
   },[]);
 
-  // public async componentDidMount(): Promise<void> {
-  //   await this.props.fetchUser();
-  //   if (!this.props.token) {
-  //     Router.push(Routes.HomePage);
-  //   }
-  //   if( this.props.user.role) {
-  //     await this.props.fetchDashboard(Role[this.props.user.role]);
-  //   }
-
-  //   this.props.setPathname(Router.pathname)
-  //   if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
-  //     this.setState({
-  //       showSnackbar: true
-  //     });
-  //   }
-  // }
   return (
     <React.Fragment>
       <Head>
