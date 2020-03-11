@@ -18,8 +18,6 @@ import {
   setPathname
 } from '../../redux/actions/UserActions';
 import { page } from '../../utils/analytics';
-import SnackBar from '../common/SnackBar';
-import { AnnouncementConstants } from '../common/constants/Announcement';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import { LoggedInPageTemplate } from '../common/Templates/LoggedInPageTemplate';
 import { Routes } from '../common/constants/Routes';
@@ -33,10 +31,6 @@ import {
   PreLaunchInstructorDashboardComponent as constants
 } from './constants';
 import { InstructorDashboardType, ParentStudentDashboardType } from './models';
-
-interface State {
-  showSnackbar: boolean;
-}
 
 interface StateProps {
   user: UserType;
@@ -63,31 +57,19 @@ interface Props extends
   StateProps,
   DispatchProps {}
 
-export class Dashboard extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      showSnackbar: false
+export const Dashboard = (props: Props) => {
+  React.useEffect(() => {
+    const fetchData = async () => {
+      await props.fetchUser();
+      if (!props.token) {
+        Router.push(Routes.HomePage);
+      }
+      if (props.user.role) {
+        await props.fetchDashboard(Role[props.user.role]);
+      }
     };
-  }
-
-  public async componentDidMount(): Promise<void> {
-    await this.props.fetchUser();
-    if (!this.props.token) {
-      Router.push(Routes.HomePage);
-    }
-    if( this.props.user.role) {
-      await this.props.fetchDashboard(Role[this.props.user.role]);
-    }
-
-    this.props.setPathname(Router.pathname)
-    // if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
-    //   this.setState({
-    //     showSnackbar: true
-    //   });
-    // }
-
-    const userId = this.props.user ? this.props.user.email : 'anonymous';
+    fetchData();
+    const userId = props.user ? props.user.email : 'anonymous';
 
     const analiticsProps = {
       userId,
@@ -96,45 +78,52 @@ export class Dashboard extends React.Component<Props, State> {
       }
     };
     page('Dashboard', analiticsProps);
-  }
+  },[]);
 
-  public closeSnackbar = () => this.setState({ showSnackbar: false });
+  // public async componentDidMount(): Promise<void> {
+  //   await this.props.fetchUser();
+  //   if (!this.props.token) {
+  //     Router.push(Routes.HomePage);
+  //   }
+  //   if( this.props.user.role) {
+  //     await this.props.fetchDashboard(Role[this.props.user.role]);
+  //   }
 
-  render() {
-    return (
+  //   this.props.setPathname(Router.pathname)
+  //   if (this.props.location.state && this.props.location.state.redirectedFrom === Routes.BuildRequest) {
+  //     this.setState({
+  //       showSnackbar: true
+  //     });
+  //   }
+  // }
+  return (
+    <React.Fragment>
+      <Head>
+        <title>{pageTitlesAndDescriptions.dashboard.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.dashboard.description}></meta>
+      </Head>
+      {props.isRequesting  || props.isFetchingDashboard ?
+      <div className="nabi-text-center">
+        <CircularProgress />
+      </div> :
       <React.Fragment>
-        <Head>
-          <title>{pageTitlesAndDescriptions.dashboard.title}</title>
-          <meta name="description" content={pageTitlesAndDescriptions.dashboard.description}></meta>
-        </Head>
-        {this.props.isRequesting  || this.props.isFetchingDashboard ?
-        <div className="nabi-text-center">
-          <CircularProgress />
-        </div> :
-        <React.Fragment>
-          <LoggedInPageTemplate
-            sidebarContent={
-              <InviteFriends />
-            }
-            mainContent={
-              this.props.user.role &&
-                (this.props.user.role === Role.instructor ?
-                  <InstructorDashboard user={this.props.user} dashboard={this.props.dashboard as InstructorDashboardType} /> : 
-                  <ParentStudentDashboard role={this.props.user.role} dashboard={this.props.dashboard as ParentStudentDashboardType} />)
-            }
-            pageTitle={DashboardComponent.pageTitle}
-          />
-          <SnackBar
-            isOpen={this.state.showSnackbar}
-            message={AnnouncementConstants.requestSentMessage}
-            handleClose={this.closeSnackbar}
-            variant="success"
-            hideIcon={true}
-          />
-        </React.Fragment>}
-      </React.Fragment>
-    );
-  }
+        <LoggedInPageTemplate
+          sidebarContent={
+            <InviteFriends />
+          }
+          mainContent={
+            props.user.role &&
+              (props.user.role === Role.instructor ?
+                <InstructorDashboard user={props.user} dashboard={props.dashboard as InstructorDashboardType} /> : 
+                <ParentStudentDashboard role={props.user.role} dashboard={props.dashboard as ParentStudentDashboardType} />)
+          }
+          pageTitle={DashboardComponent.pageTitle}
+          instructorId={props.user.instructorId}
+          role={props.user.role}
+        />
+      </React.Fragment>}
+    </React.Fragment>
+  );
 }
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {

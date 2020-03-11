@@ -27,7 +27,6 @@ export enum Routes {
   Applications = '/applications',
   Messages = '/messages',
   Lessons = '/lessons',
-  JobRequests = '/job-requests',
   Payments = '/payments',
   Settings = '/settings',
   MyInstructors = '/my-instructors',
@@ -43,7 +42,8 @@ export enum Routes {
   FeaturesInstructors = '/features-instructors',
   VetInstructor = '/vetting-process',
   ApplicationList = '/application-list',
-  GradeLesson = '/grade-lesson'
+  GradeLesson = '/grade-lesson',
+  Referrals = '/referrals'
 }
 
 export enum SocialLinks {
