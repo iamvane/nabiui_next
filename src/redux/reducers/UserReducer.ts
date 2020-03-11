@@ -201,7 +201,8 @@ export default function usersReducer(
           lng: user.lng,
           referralToken: user.referralToken,
           profile: setProfile(user),
-          avatar: user.avatar
+          avatar: user.avatar,
+          instructorId: user.instructorId
         },
         actions: {
           ...state.actions,
