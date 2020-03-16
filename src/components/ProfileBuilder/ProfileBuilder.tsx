@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 const reactStringReplace = require('react-string-replace');
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 import CommonStepper from '../CommonStepper/CommonStepper';
@@ -35,7 +34,6 @@ export const ProfileBuilder = (props: Props) => {
     toggleSnackbar(prevOpen => !prevOpen);
   };
 
-  const router = useRouter();
   const snackBarMessage = reactStringReplace(
     AnnouncementConstants.preLaunchWelcomeInstructor,
     AnnouncementConstants.welcomePlaceholder,

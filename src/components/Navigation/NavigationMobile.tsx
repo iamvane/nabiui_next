@@ -120,13 +120,13 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
           </React.Fragment>
           
           }
-          <MenuItem>
+          {/* <MenuItem>
               <Typography>
                 <Link href={Routes.Referrals}>
                   <a>{NavigationComponent.NavigationLabels.Referrals}</a>
                 </Link>
               </Typography>
-            </MenuItem>
+            </MenuItem> */}
           <Divider />
           {/* <MenuItem>
             <Typography>
