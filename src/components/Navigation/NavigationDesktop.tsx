@@ -104,13 +104,13 @@ const NavigationDesktop = (props: Props) => {
               </li>
             </React.Fragment>
           }
-          <li>
+          {/* <li>
             <Typography>
               <Link href={Routes.Referrals}>
                 <a>{NavigationComponent.NavigationLabels.Referrals}</a>
               </Link>
             </Typography>
-          </li>
+          </li> */}
         </ul>
       </Grid>
       <Grid
