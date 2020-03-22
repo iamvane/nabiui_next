@@ -141,3 +141,13 @@ export namespace RegistrationParentstudentOptionsComponent {
   export const student = 'I am a student';
   export const InstructorUrl = 'Register as an instructor';
 }
+
+export namespace RegistrationLandingComponent {
+  export const thankYou = 'Thank You!';
+  export const interestText = 'for your interest in';
+  export const defaultTitle = 'Music Lessons';
+  export const registerText = 'Ready to get started?';
+  export const registerButton = 'Complete Registration';
+  export const notConvincedText = ' Still not convinced?';
+  export const scheduleCallButton = 'Schedule A Call';
+}

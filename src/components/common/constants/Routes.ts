@@ -43,7 +43,9 @@ export enum Routes {
   VetInstructor = '/vetting-process',
   ApplicationList = '/application-list',
   GradeLesson = '/grade-lesson',
-  Referrals = '/referrals'
+  Referrals = '/referrals',
+  RegistrationLanding = '/registration-landing'
+
 }
 
 export enum SocialLinks {
