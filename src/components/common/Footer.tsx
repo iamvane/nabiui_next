@@ -25,9 +25,9 @@ export const Footer = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    if (!isLoggedIn &&!isPrivatePage() &&!router.pathname.includes("registration")) {
+    if (!isLoggedIn && !isPrivatePage() &&!router.pathname.includes("registration")) {
       if (!hbspt) {
-        setHubsport();
+        setHubSpot();
         return;
       }
 
@@ -44,12 +44,13 @@ export const Footer = () => {
       Routes.BuildProfile,
       Routes.BuildRequest,
       Routes.Dashboard,
-      Routes.Requests
+      Routes.Requests,
+      '/student-profile-builder'
     ];
     return privateRoutes.indexOf(router.pathname) > -1;
   }
 
-  const setHubsport = () => {
+  const setHubSpot = () => {
     const hs = typeof window !== 'undefined' && (window as any)['hbspt'];
     setHbspt(hs);
   }
@@ -60,7 +61,10 @@ export const Footer = () => {
         <script type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
       </Head>
       <div className="nabi-container">
-       {(!isLoggedIn && !router.pathname.includes("registration")) && <p className="nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-small nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>}
+       {(!isLoggedIn &&
+        !router.pathname.includes("registration") &&
+        !router.pathname.includes("student-profile-builder")) &&
+        <p className="nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-small nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>}
         <div id="hubspotFormFooter"></div>
         <Grid className="nabi-padding-top-xlarge nabi-padding-bottom-medium" container={true}>
           <Grid item={true} xs={12} md={3}>
