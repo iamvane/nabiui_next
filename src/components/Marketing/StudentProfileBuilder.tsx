@@ -1,19 +1,10 @@
 import * as React from 'react';
-import Link from 'next/link';
 import { useRouter } from "next/router";
-
-import {
-  Button,
-  Typography
-} from '@material-ui/core';
 
 import { getCookie } from '../../utils/cookies';
 
 interface Props {}
 
-/**
- * Contains the registration form fields
- */
 const StudentProfileBuilder: React.StatelessComponent<Props> = props => {
   const [hbspt, setHbspt] = React.useState(typeof window !== 'undefined' && (window as any)['hbspt']);
   const isLoggedIn = getCookie('token');
