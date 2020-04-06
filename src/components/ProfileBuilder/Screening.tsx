@@ -87,7 +87,7 @@ export const Screening = (props: Props) => {
   const submitPayment = async (stripeToken: string) => {
     const params: BackgroundCheckParams = {
       stripeToken,
-      amount: 33.26
+      amount: 44.25
     }
     await props.requestBackgroundCheck(params);
     setIsPaymentSubmitted(true);
@@ -124,7 +124,7 @@ export const Screening = (props: Props) => {
                   <Typography className="nabi-color-white">- National criminal history</Typography>
                   <Typography className="nabi-color-white">- County criminal history</Typography>
                   <Typography className="nabi-color-white">- Global terror watchlist</Typography>
-                  <p className="nabi-margin-top-medium nabi-font-large nabi-margin-bottom-xsmall">$29.99</p>
+                  <p className="nabi-margin-top-medium nabi-font-large nabi-margin-bottom-xsmall">$39.99</p>
                 </Grid>
               </div>
               <SectionTitle text="Payment Info" />
@@ -140,25 +140,25 @@ export const Screening = (props: Props) => {
                   <Typography>Background Check</Typography>
                 </Grid>
                 <Grid item={true} xs={12} md={8}>
-                  <Typography>$29.99</Typography>
+                  <Typography>$39.99</Typography>
                 </Grid>
                 <Grid item={true} xs={12} md={4}>
                   <Typography>Processing Fee</Typography>
                 </Grid>
                 <Grid item={true} xs={12} md={8}>
-                  <Typography>$1.17</Typography>
+                  <Typography>$1.46</Typography>
                 </Grid>
                 <Grid item={true} xs={12} md={4}>
                   <Typography>Sales Tax (7%)</Typography>
                 </Grid>
                 <Grid item={true} xs={12} md={8}>
-                  <Typography>$2.10</Typography>
+                  <Typography>$2.80</Typography>
                 </Grid>
                 <Grid item={true} xs={12} md={4}>
                   <Typography color="primary" className="nabi-text-mediumbold">Total</Typography>
                 </Grid>
                 <Grid item={true} xs={12} md={8}>
-                  <Typography color="primary" className="nabi-text-mediumbold">$33.26</Typography>
+                  <Typography color="primary" className="nabi-text-mediumbold">$44.25</Typography>
                 </Grid>
               </Grid>
             </React.Fragment>

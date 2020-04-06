@@ -22,13 +22,13 @@ interface Props {
   results: number;
   handleChange: (event: React.FormEvent<{}>) => void;
   hasCallToAction?: boolean;
-  address: string;
+  address?: string;
   isRequestingMoreData: boolean;
   instrument: string;
   filterSection: JSX.Element;
   mainContent: JSX.Element;
-  getLatLng: (lat: string, lng: string) => void;
-  getLocation: (location: string) => void;
+  getLatLng?: (lat: string, lng: string) => void;
+  getLocation?: (location: string) => void;
   isRequesting: boolean;
   loadMoreData: () => void;
   breadcrumbs: JSX.Element;
@@ -88,9 +88,11 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item={true} xs={12} sm={hasCallToAction ? 5 : 9} className="nabi-vertical-align-center">
+          { props.address &&
+            <Grid item={true} xs={12} sm={hasCallToAction ? 5 : 9} className="nabi-vertical-align-center">
             <LocationField getLatLng={props.getLatLng} address={props.address} getLocation={props.getLocation} />
-          </Grid>
+            </Grid>
+          }
         </Grid>
       </div>
     );

@@ -53,7 +53,7 @@ interface Props extends OwnProps, StateProps, DispatchProps {}
 
 export const ReuqestsList = (props: Props) => {
   const [instrument, setInstrument] = React.useState("");
-  const [address, setAddress] = React.useState("");
+  // const [address, setAddress] = React.useState("");
   const [sortBy, setSortBy] = React.useState("");
   const [distance, setDistance] = React.useState(50);
   const [placeForLessons, setPlaceForLessons] = React.useState([]);
@@ -159,15 +159,15 @@ export const ReuqestsList = (props: Props) => {
     setQueryParams(queryParamsValues);
   };
 
-  const getLocation = (location: string) => {
-    setAddress(location);
-  };
+  // const getLocation = (location: string) => {
+  //   setAddress(location);
+  // };
 
-  const getLatLng = (lat: string, lng: string) => {
-    let queryParamsValues: RequestListQueryParams = { ...queryParams };
-    queryParamsValues.location = `${lat},${lng}`;
-    setQueryParams(queryParamsValues);
-  };
+  // const getLatLng = (lat: string, lng: string) => {
+  //   let queryParamsValues: RequestListQueryParams = { ...queryParams };
+  //   queryParamsValues.location = `${lat},${lng}`;
+  //   setQueryParams(queryParamsValues);
+  // };
 
   const setQueryParamsMobile = () => {
     let queryParamsValues: RequestListQueryParams = { ...queryParams };
@@ -195,10 +195,10 @@ export const ReuqestsList = (props: Props) => {
         pageTitle={RequestsListComponent.pageTitle}
         results={props.requests.count}
         handleChange={handleChange}
-        getLatLng={getLatLng}
-        getLocation={getLocation}
+        // getLatLng={getLatLng}
+        // getLocation={getLocation}
         instrument={instrument}
-        address={address}
+        // address={address}
         isRequesting={props.isRequesting}
         loadMoreData={fetchMoreRequestsList}
         isRequestingMoreData={props.isRequestingMoreRequest}
