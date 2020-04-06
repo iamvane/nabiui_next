@@ -216,7 +216,8 @@ export const Registration = (props: Props) => {
         RegistrationFormComponent.ErrorMessages.Email;
     } else if (email) {
       if (
-        !/^([a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{1,64}@([a-zA-Z0-9-]+.[a-zA-Z0-9-]{2,}){1,255}){1,320}$/.test(
+         //!/^([a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{1,64}@([a-zA-Z0-9-]+.[a-zA-Z0-9-]{2,}){1,255}){1,320}$/.test(
+          !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
           email
         ) ||
         /^\s*$/.test(email)
