@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import * as _ from "lodash";
 import Link from 'next/link';
+import Head from 'next/head';
 import { Action, Dispatch } from "redux";
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
@@ -18,6 +19,7 @@ import {
 import { Routes } from '../common/constants/Routes';
 import ListTemplate from "../common/Templates/ListTemplate";
 import { ListTemplateComponent } from "../common/constants/ListTemplate";
+import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import InstructorsFilter from "./InstructorsFilter";
 import InstructorsFilterMobile from "./InstructorsFilterMobile";
 import Instructors from "./Instructors";
@@ -240,68 +242,74 @@ export const InstructorsList = (props: Props) => {
   }
 
   return (
-    <ListTemplate
-      pageTitle={InstructorsComponent.pageTitle}
-      results={props.instructors.count}
-      handleChange={handleChange}
-      getLatLng={getLatLng}
-      getLocation={getLocation}
-      loadMoreData={fetchMoreInstructors}
-      instrument={instrument}
-      address={address}
-      isRequestingMoreData={props.isRequestingMoreInstructors}
-      isRequesting={props.isRequesting}
-      hasCallToAction={true}
-      breadcrumbs={
-        <div className="nabi-margin-bottom-xsmall">
-          <Breadcrumbs aria-label="breadcrumb">
-            <Link href={props.email ? Routes.Dashboard : Routes.HomePage}>
-              <a>{InstructorsComponent.breadcrumbLabels.home}</a>
-            </Link>
-            <Typography> {InstructorsComponent.breadcrumbLabels.requests}</Typography>
-          </Breadcrumbs>
-        </div>
-      }
-      filterSection={
-        <React.Fragment>
-          <InstructorsFilter
-            sortBy={sortBy}
-            distance={distance}
-            placeForLessons={placeForLessons}
-            availability={availability}
-            priceRange={priceRange}
-            age={age}
-            gender={gender}
-            qualifications={qualifications}
-            handleChange={handleChange}
-            handlePriceChange={handlePriceChange}
-            handlePriceCommitted={setPriceQueryParams}
+    <React.Fragment>
+      <Head>
+          <title>{pageTitlesAndDescriptions.instructors.title}</title>
+          <meta name="description" content={pageTitlesAndDescriptions.instructors.description}></meta>
+        </Head>
+      <ListTemplate
+        pageTitle={InstructorsComponent.pageTitle}
+        results={props.instructors.count}
+        handleChange={handleChange}
+        getLatLng={getLatLng}
+        getLocation={getLocation}
+        loadMoreData={fetchMoreInstructors}
+        instrument={instrument}
+        address={address}
+        isRequestingMoreData={props.isRequestingMoreInstructors}
+        isRequesting={props.isRequesting}
+        hasCallToAction={true}
+        breadcrumbs={
+          <div className="nabi-margin-bottom-xsmall">
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link href={props.email ? Routes.Dashboard : Routes.HomePage}>
+                <a>{InstructorsComponent.breadcrumbLabels.home}</a>
+              </Link>
+              <Typography> {InstructorsComponent.breadcrumbLabels.requests}</Typography>
+            </Breadcrumbs>
+          </div>
+        }
+        filterSection={
+          <React.Fragment>
+            <InstructorsFilter
+              sortBy={sortBy}
+              distance={distance}
+              placeForLessons={placeForLessons}
+              availability={availability}
+              priceRange={priceRange}
+              age={age}
+              gender={gender}
+              qualifications={qualifications}
+              handleChange={handleChange}
+              handlePriceChange={handlePriceChange}
+              handlePriceCommitted={setPriceQueryParams}
+            />
+            <InstructorsFilterMobile
+              sortBy={sortBy}
+              distance={distanceMobile}
+              placeForLessons={placeForLessonsMobile}
+              availability={availabilityMobile}
+              priceRange={priceRange}
+              age={ageMobile}
+              gender={genderMobile}
+              qualifications={qualificationsMobile}
+              handleChange={handleMobileChange}
+              handlePriceChange={handlePriceChange}
+              handleMobileSortBy={handleMobileSortBy}
+              setQueryParams={setQueryParamsMobile}
+            />
+          </React.Fragment>
+        }
+        mainContent={
+          <Instructors
+            instructors={props.instructors.results}
+            instructor={props.instructor}
+            isRequestingInstructor={props.isRequestingInstructor}
+            fetchInstructor={props.fetchInstructor}
           />
-          <InstructorsFilterMobile
-            sortBy={sortBy}
-            distance={distanceMobile}
-            placeForLessons={placeForLessonsMobile}
-            availability={availabilityMobile}
-            priceRange={priceRange}
-            age={ageMobile}
-            gender={genderMobile}
-            qualifications={qualificationsMobile}
-            handleChange={handleMobileChange}
-            handlePriceChange={handlePriceChange}
-            handleMobileSortBy={handleMobileSortBy}
-            setQueryParams={setQueryParamsMobile}
-          />
-        </React.Fragment>
-      }
-      mainContent={
-        <Instructors
-          instructors={props.instructors.results}
-          instructor={props.instructor}
-          isRequestingInstructor={props.isRequestingInstructor}
-          fetchInstructor={props.fetchInstructor}
-        />
-      }
-    />
+        }
+      />
+    </React.Fragment>
   );
 };
 
