@@ -7,6 +7,7 @@ import {
 } from 'redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Router from 'next/router';
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Check from '@material-ui/icons/Check';
@@ -18,6 +19,7 @@ import {
 } from '@material-ui/core';
 
 import { fetchRequest } from '../../redux/actions/RequestActions';
+import { fetchUser } from '../../redux/actions/UserActions';
 import { StoreState } from '../../redux/reducers/store';
 import { submitApplication } from '../../redux/actions/InstructorActions';
 import PageTitle from '../common/PageTitle';
@@ -36,6 +38,7 @@ interface OwnProps {
 interface DispatchProps {
   fetchRequest: (id: number) => void;
   submitApplication: (payload: ApplicationPayload) => void;
+  fetchUser: () => void;
 }
 
 interface StateProps {
@@ -44,7 +47,8 @@ interface StateProps {
   isFetchingRequest: boolean;
   isSubmittingApplication: boolean;
   submitApplicationMessage: string
-  submitApplicationError: string
+  submitApplicationError: string;
+  token: string;
 }
 
 interface Props extends
@@ -61,6 +65,13 @@ export const RequestView = (props: Props) => {
   const id = Number(router.query.id);
 
   React.useEffect(() => {
+    const fetchUser = async () => {
+      await props.fetchUser();
+      if (!props.token) {
+        return Router.push(Routes.Requests);
+      }
+    };
+    fetchUser();
     const fetchData = async () => {
       if (id) {
         await props.fetchRequest(id);
@@ -254,18 +265,21 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     message: submitApplicationMessage,
     error: submitApplicationError,
   } = state.instructor.actions.submitApplication
+
   return {
     request: state.requests.request,
     isFetchingRequest: state.requests.actions.fetchRequest.isRequesting,
     isSubmittingApplication,
     submitApplicationMessage,
-    submitApplicationError
+    submitApplicationError,
+    token: state.user.token,
   };
 };
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
+  fetchUser: () => dispatch(fetchUser()),
   fetchRequest: (id: number) => dispatch(fetchRequest(id)),
   submitApplication: (payload: any) => dispatch(submitApplication(payload))
 });
