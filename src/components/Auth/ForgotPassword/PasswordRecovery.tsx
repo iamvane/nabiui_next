@@ -21,6 +21,7 @@ import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescr
 import SnackBar from '../../common/SnackBar';
 import PageTitle from '../../common/PageTitle';
 import { PasswordRecoveryComponent } from './constants';
+import { checkErrors } from "../../../utils/checkErrors";
 
 interface StateProps {
   user: UserType;
@@ -41,19 +42,35 @@ interface Props extends
     const [formErrors, setFormErrors] = React.useState(PasswordRecoveryComponent.defaultErrors);
     const [email, setEmail] = React.useState('');
     const [isSnackbarOpen, toggleSnackbar] = React.useState(false);
+    const [passwordRecovery, setPasswordRecovery] = React.useState(false);
 
     React.useEffect(() => {
+      if (passwordRecovery) {
+        const isError = checkErrors(Object.values(formErrors));
+
+        if (!isError) {
+          sendResetLink();
+        }
+      }
+
       if (props.message) {
         toggleSnackbar(true);
       }
-    });
+    }, [
+      passwordRecovery,
+      props.message
+    ]);
+
+  const sendResetLink = async () => {
+    setPasswordRecovery(false);
+    await props.requestPasswordRecovery(email.toLocaleLowerCase());
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.currentTarget;
     const value = target.value;
 
     setEmail(value);
-    validate();
   }
 
   const validate = () => {
@@ -62,8 +79,7 @@ interface Props extends
     if (!email) {
       formErrors[PasswordRecoveryComponent.FieldNames.Email] = PasswordRecoveryComponent.errorMessages.noValue;
     } else if (email) {
-      if (!(/^([a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{1,64}@([a-zA-Z0-9-]+.[a-zA-Z0-9-]{2,}){1,255}){1,320}$/).test(email) ||
-        (/^\s*$/).test(email)) {
+      if (!(email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))) {
         formErrors[PasswordRecoveryComponent.FieldNames.Email] = PasswordRecoveryComponent.errorMessages.invalidEmail;
       }
     }
@@ -74,7 +90,8 @@ interface Props extends
     if (event) {
       event.preventDefault();
     }
-    await props.requestPasswordRecovery(email.toLocaleLowerCase());
+    validate();
+    setPasswordRecovery(true);
   }
 
   return (
@@ -112,7 +129,7 @@ interface Props extends
                 variant="contained"
                 type="submit"
                 className="nabi-text-uppercase"
-                disabled={!email || formErrors.email ? true : false}
+                disabled={!email}
               >
                 {PasswordRecoveryComponent.Text.PasswordRecovery}
               </Button>
