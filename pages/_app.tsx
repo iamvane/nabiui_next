@@ -36,8 +36,9 @@ class NabiApp extends App<any, any> {
 
   public componentDidMount(): void {
     if (this.props.token) {
-      this.props.store.dispatch(setAuthToken(this.props.token));
+      return this.props.store.dispatch(setAuthToken(this.props.token));
     }
+    this.props.store.dispatch(setAuthToken(''));
   }
 
   componentDidCatch(error, errorInfo) {

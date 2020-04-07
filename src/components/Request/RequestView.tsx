@@ -7,7 +7,6 @@ import {
 } from 'redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Router from 'next/router';
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Check from '@material-ui/icons/Check';
@@ -18,6 +17,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import PrivateRoute from '../Auth/PrivateRoutes';
 import { fetchRequest } from '../../redux/actions/RequestActions';
 import { fetchUser } from '../../redux/actions/UserActions';
 import { StoreState } from '../../redux/reducers/store';
@@ -65,13 +65,6 @@ export const RequestView = (props: Props) => {
   const id = Number(router.query.id);
 
   React.useEffect(() => {
-    const fetchUser = async () => {
-      await props.fetchUser();
-      if (!props.token) {
-        return Router.push(Routes.Requests);
-      }
-    };
-    fetchUser();
     const fetchData = async () => {
       if (id) {
         await props.fetchRequest(id);
@@ -284,4 +277,4 @@ const mapDispatchToProps = (
   submitApplication: (payload: any) => dispatch(submitApplication(payload))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RequestView);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(RequestView, 'Private', ['Instructor'], 'Request View'));
