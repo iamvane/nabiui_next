@@ -215,6 +215,7 @@ export default function usersReducer(
       };
 
     case UserActions.FETCH_USER_NOT_AUTHENTICATED:
+      removeCookie("token");
       return {
         ...state,
         actions: {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import Head from 'next/head';
 
 import { getCookie } from '../../utils/cookies';
@@ -11,7 +11,6 @@ interface Props {}
 const StudentProfileBuilder: React.StatelessComponent<Props> = props => {
   const [hbspt, setHbspt] = React.useState(typeof window !== 'undefined' && (window as any)['hbspt']);
   const isLoggedIn = getCookie('token');
-  const router = useRouter();
 
   React.useEffect(() => {
     if (!isLoggedIn) {
@@ -28,7 +27,7 @@ const StudentProfileBuilder: React.StatelessComponent<Props> = props => {
     } else {
       Router.push(Routes.Dashboard)
     }
-  }, [hbspt, router]);
+  }, [hbspt]);
 
   const setHubSpot = () => {
     const hs = typeof window !== 'undefined' && (window as any)['hbspt'];
