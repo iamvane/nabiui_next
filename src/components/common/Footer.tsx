@@ -25,7 +25,7 @@ export const Footer = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    if (!isLoggedIn && !isPrivatePage() &&!router.pathname.includes("registration")) {
+    if (!isLoggedIn && !isPrivatePage() && !router.pathname.includes("registration")) {
       if (!hbspt) {
         setHubSpot();
         return;
@@ -37,7 +37,7 @@ export const Footer = () => {
         target: '#hubspotFormFooter'
       });
     }
-  }, [hbspt, router]);
+  }, [router.pathname]);
 
   const isPrivatePage = () => {
     const privateRoutes: string[] = [
@@ -64,8 +64,11 @@ export const Footer = () => {
        {(!isLoggedIn &&
         !router.pathname.includes("registration") &&
         !router.pathname.includes("student-profile-builder")) &&
-        <p className="nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-small nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>}
-        <div id="hubspotFormFooter"></div>
+        <div>
+          <p className="nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-small nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>
+          <div id="hubspotFormFooter"></div>
+        </div>
+       }
         <Grid className="nabi-padding-top-xlarge nabi-padding-bottom-medium" container={true}>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">{FooterComponent.learnMoreSection}</p>
