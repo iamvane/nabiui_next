@@ -73,6 +73,13 @@ export class PhoneValidation extends React.Component<Props, State> {
     };
   }
 
+  public handleNumberChange = (value: string): void => {
+    this.setState({
+      ...this.state,
+      phoneNumber: value
+    });
+  }
+
   public handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
     const value = target.value;
@@ -169,6 +176,7 @@ export class PhoneValidation extends React.Component<Props, State> {
           phoneNumber={this.state.phoneNumber}
           isPhoneSet={this.state.isPhoneSet}
           handleChange={this.handleChange}
+          handleNumberChange={this.handleNumberChange}
           token={this.state.token}
           sendVerificationToken={this.sendVerificationToken}
           verifyToken={this.verifyToken}

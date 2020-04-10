@@ -214,7 +214,7 @@ export const requestToken = (
 ): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
   dispatch(requestAction(UserActions.REQUEST_TOKEN));
   const data = {
-    phoneNumber: `+1${phoneNumber}`,
+    phoneNumber,
     channel
   };
   try {
@@ -245,7 +245,7 @@ export const verifyToken = (
 ): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
   dispatch(requestAction(UserActions.VERIFY_TOKEN));
   const data = {
-    phoneNumber: `+1${phoneNumber}`,
+    phoneNumber,
     code: token
   };
   try {
