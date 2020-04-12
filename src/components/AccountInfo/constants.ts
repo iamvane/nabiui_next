@@ -82,7 +82,8 @@ export namespace AccountInfoComponent {
     },
     [FieldKey.Gender]: 'Select an option.',
     PhoneNumberEmpty: 'Enter a valid phone number.',
-    PhoneNumberNotVerified: 'Verify phone number.'
+    PhoneNumberNotVerified: 'Verify phone number.',
+    PhoneMissingCountryCode: 'Select country code.',
   };
 }
 
