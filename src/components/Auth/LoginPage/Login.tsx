@@ -63,7 +63,7 @@ const Login = (props: Props) => {
   const [login, setLogin ] = React.useState(false);
 
   React.useEffect(() => {
-    if (props.passwordSetMessage) {
+    if (props.passwordSetMessage && !login) {
       setDisplaySnackBar(true)
     }
     if (!login) {
@@ -112,6 +112,7 @@ const Login = (props: Props) => {
     await props.authenticateUser(email.toLocaleLowerCase(), password);
 
     setLogin(true);
+    setDisplaySnackBar(false)
   }
 
   return (

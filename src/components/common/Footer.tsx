@@ -45,6 +45,9 @@ export const Footer = () => {
       Routes.BuildRequest,
       Routes.Dashboard,
       Routes.Requests,
+      Routes.AccountRecovery,
+      Routes.Login,
+      Routes.ForgotPassword,
       '/student-profile-builder'
     ];
     return privateRoutes.indexOf(router.pathname) > -1;

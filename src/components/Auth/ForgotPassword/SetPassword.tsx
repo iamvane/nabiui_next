@@ -54,7 +54,7 @@ export const PasswordRecovery = (props: Props) => {
     if (props.message) {
       Router.push(Routes.Login);
     }
-  },[password, confirmPassword]);
+  },[password, confirmPassword, props.message]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.currentTarget;
