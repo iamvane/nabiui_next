@@ -70,6 +70,7 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
       noValidate={true}
       onSubmit={props.handleSubmit}
       autoComplete="off"
+      id="registration-form"
     >
       <div className="nabi-margin-top-small">
        <SectionTitle text={registerAsText} />

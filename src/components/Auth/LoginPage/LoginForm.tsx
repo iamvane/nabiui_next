@@ -24,7 +24,7 @@ const LoginForm: React.StatelessComponent<Props> = props => {
   const { handleChange, handleSubmit, isRequesting} = props;
 
   return (
-    <form noValidate={true} autoComplete="off" onSubmit={handleSubmit}>
+    <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
       <TextField
         fullWidth={true}
         id={LoginFormComponent.Ids.Email}
