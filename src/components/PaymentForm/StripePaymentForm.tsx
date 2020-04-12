@@ -5,7 +5,6 @@ import {
   injectStripe,
   Elements
 } from "react-stripe-elements";
-import Head from 'next/head';
 
 import {
   Button,
@@ -77,9 +76,10 @@ const PaymentForm = (props: any) =>  {
 const InjectedCheckoutForm = injectStripe(PaymentForm);
 
 export const StripePaymentForm = (props: Props) => {
-  const isClient = typeof window !== "undefined";
-  if (isClient) {
-    const stripe = window.Stripe('pk_live_w3eJuwclLTq3awfhENpZwqpx002APtyTMh');
+  const windowObject =  typeof window !== 'undefined' && (window as any);
+
+  if (windowObject) {
+    const stripe =  windowObject.Stripe('pk_live_w3eJuwclLTq3awfhENpZwqpx002APtyTMh');
 
     const renderItems = () => {
       if (stripe) {
@@ -95,9 +95,6 @@ export const StripePaymentForm = (props: Props) => {
     }
     return (
       <div>
-        <Head>
-          <script async defer src="https://js.stripe.com/v3/"></script>
-        </Head>
         {renderItems()}
       </div>
     );

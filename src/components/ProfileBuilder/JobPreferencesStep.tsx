@@ -6,7 +6,10 @@ import {
 import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
 
-import { Checkbox } from '@material-ui/core';
+import {
+  Checkbox,
+  CircularProgress
+} from '@material-ui/core';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../redux/reducers/store';
@@ -281,7 +284,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
     );
   }
 
-  public handleNext = () => {
+  public handleNext = async () => {
     const lessonSize: LessonSizeType = {
       oneStudent: this.state.oneStudent,
       smallGroups: this.state.smallGroups,
@@ -372,84 +375,89 @@ export class JobPreferencesStep extends React.Component<Props, State> {
       languages: this.state.languages,
     };
 
-    this.props.buildJobPreferences(jobPreferences);
+    await this.props.buildJobPreferences(jobPreferences);
   }
 
   public render(): JSX.Element {
     return (
       <div>
-        <div className="nabi-margin-bottom-large">
-          <Instruments
-            instruments={this.state.instruments.length > 0 ? this.state.instruments : undefined}
-            instrument={this.state.instrument}
-            skillLevel={this.state.skillLevel}
-            handleChange={this.handleChange}
-            addInstrument={this.addInstrument}
-            deleteInstrument={this.deleteInstrument}
-          />
-        </div>
-        <div className="nabi-margin-bottom-large">
-          <JobPreferences
-            handleChange={this.handleChange}
-            oneStudent={this.state.oneStudent}
-            smallGroups={this.state.smallGroups}
-            largeGroups={this.state.largeGroups}
-            children={this.state.children}
-            teens={this.state.teens}
-            adults={this.state.adults}
-            seniors={this.state.seniors}
-          />
-        </div>
-        <div className="nabi-margin-bottom-large">
-          <Rates
-            handleChange={this.handleChange}
-            mins30={this.state.mins30}
-            mins45={this.state.mins45}
-            mins60={this.state.mins60}
-            mins90={this.state.mins90}
-          />
-        </div>
-        <div className="nabi-margin-bottom-large">
-          <PlaceForLessonsForm
-            handleChange={this.handleChange}
-            home={this.state.home}
-            studio={this.state.studio}
-            online={this.state.online}
-            distance={this.state.distance}
-            studioAddress={this.state.studioAddress}
-            studioAddressError={this.state.fields.studioAddress.error}
-          />
-        </div>
-        <div className="nabi-margin-bottom-large">
-          <Availability
-            renderCheckbox={this.renderAvailabilityCheckbox}
-            handleChange={this.handleChange}
-          />
-        </div>
-        <div className="nabi-margin-bottom-large">
-          <Qualification
-            handleChange={this.handleChange}
-            certifiedTeacher={this.state.certifiedTeacher}
-            musicTherapy={this.state.musicTherapy}
-            musicProduction={this.state.musicProduction}
-            earTraining={this.state.earTraining}
-            conducting={this.state.conducting}
-            virtuosoRecognition={this.state.virtuosoRecognition}
-            performance={this.state.performance}
-            musicTheory={this.state.musicTheory}
-            youngChildrenExperience={this.state.youngChildrenExperience}
-            repertoireSelection={this.state.repertoireSelection}
-          />
-        </div>
+        {this.props.isFetchingUser ?
+         <div className="nabi-text-center">
+          <CircularProgress />
+        </div> :
+        <div>
+          <div className="nabi-margin-bottom-large">
+            <Instruments
+              instruments={this.state.instruments.length > 0 ? this.state.instruments : undefined}
+              instrument={this.state.instrument}
+              skillLevel={this.state.skillLevel}
+              handleChange={this.handleChange}
+              addInstrument={this.addInstrument}
+              deleteInstrument={this.deleteInstrument}
+            />
+          </div>
+          <div className="nabi-margin-bottom-large">
+            <JobPreferences
+              handleChange={this.handleChange}
+              oneStudent={this.state.oneStudent}
+              smallGroups={this.state.smallGroups}
+              largeGroups={this.state.largeGroups}
+              children={this.state.children}
+              teens={this.state.teens}
+              adults={this.state.adults}
+              seniors={this.state.seniors}
+            />
+          </div>
+          <div className="nabi-margin-bottom-large">
+            <Rates
+              handleChange={this.handleChange}
+              mins30={this.state.mins30}
+              mins45={this.state.mins45}
+              mins60={this.state.mins60}
+              mins90={this.state.mins90}
+            />
+          </div>
+          <div className="nabi-margin-bottom-large">
+            <PlaceForLessonsForm
+              handleChange={this.handleChange}
+              home={this.state.home}
+              studio={this.state.studio}
+              online={this.state.online}
+              distance={this.state.distance}
+              studioAddress={this.state.studioAddress}
+              studioAddressError={this.state.fields.studioAddress.error}
+            />
+          </div>
+          <div className="nabi-margin-bottom-large">
+            <Availability
+              renderCheckbox={this.renderAvailabilityCheckbox}
+              handleChange={this.handleChange}
+            />
+          </div>
+          <div className="nabi-margin-bottom-large">
+            <Qualification
+              handleChange={this.handleChange}
+              certifiedTeacher={this.state.certifiedTeacher}
+              musicTherapy={this.state.musicTherapy}
+              musicProduction={this.state.musicProduction}
+              earTraining={this.state.earTraining}
+              conducting={this.state.conducting}
+              virtuosoRecognition={this.state.virtuosoRecognition}
+              performance={this.state.performance}
+              musicTheory={this.state.musicTheory}
+              youngChildrenExperience={this.state.youngChildrenExperience}
+              repertoireSelection={this.state.repertoireSelection}
+            />
+          </div>
 
-        <Languages
-          languages={this.state.languages}
-          handleChangeLanguage={this.handleChange}
-          addLanguage={this.addLanguage}
-          language={this.state.language}
-          deleteLanguage={this.deleteLanguage}
-        />
-
+          <Languages
+            languages={this.state.languages}
+            handleChangeLanguage={this.handleChange}
+            addLanguage={this.addLanguage}
+            language={this.state.language}
+            deleteLanguage={this.deleteLanguage}
+          />
+        </div>}
         <StepperButtons
           nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}

@@ -9,6 +9,9 @@ module.exports = withPWA(withSourceMaps(withCSS(withSass(withFonts({
   pwa: {
     dest: 'public'
   },
+  env: {
+    STRIPE_SECRET_KEY: "sk_test_LE4KxozC6O8d3krb3FEjbBp00erufO2Bm",
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.(ttf|woff|woff2)$/,

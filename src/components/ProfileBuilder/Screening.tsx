@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Head from 'next/head';
 import {
   Action,
   Dispatch
@@ -95,6 +96,9 @@ export const Screening = (props: Props) => {
 
   return(
     <div>
+      <Head>
+        <script src="https://js.stripe.com/v3/"></script>
+      </Head>
       <SectionTitle text="Screening" />
       {props.isStatusRequesting ?
         <div className="nabi-text-center"><CircularProgress /></div> :

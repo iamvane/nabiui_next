@@ -93,6 +93,7 @@ class NabiDocument extends Document {
           <meta name="theme-color" content="#f0f3f6" />
           <script async defer dangerouslySetInnerHTML={{ __html: segmentScript }} />
           <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7039981.js"></script>
+          {/* <script aync defer src="https://js.stripe.com/v3/"></script> */}
         </Head>
         <body>
           <Main />

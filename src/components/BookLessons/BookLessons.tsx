@@ -117,6 +117,7 @@ export const BookLessons = (props: Props) => {
       <Head>
         <title>{pageTitlesAndDescriptions.bookLessons.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.bookLessons.description}></meta>
+        <script src="https://js.stripe.com/v3/"></script>
       </Head>
       <PageTitle pageTitle={BookLessonsComponent.pageTitle} />
       {props.bookLessonsDataRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
