@@ -55,7 +55,7 @@ interface State {
   showSnackbar: boolean;
   snackbarMessage: string;
   phoneNumber: string;
-  isPhoneVerified: boolean;
+  isPhoneVerified?: boolean;
 }
 
 export class PhoneValidation extends React.Component<Props, State> {
@@ -68,9 +68,16 @@ export class PhoneValidation extends React.Component<Props, State> {
       errors: {},
       showSnackbar: false,
       snackbarMessage: '',
-      phoneNumber: '',
-      isPhoneVerified : true
+      phoneNumber: ''
     };
+  }
+
+  public componentDidMount() {
+    if (this.props.user && this.props.user.phoneNumber) {
+      this.setState({
+        phoneNumber: this.props.user.phoneNumber
+      })
+    }
   }
 
   public handleNumberChange = (value: string): void => {
@@ -123,6 +130,10 @@ export class PhoneValidation extends React.Component<Props, State> {
 
   public sendVerificationToken = async () => {
     const { errorMessages, FieldKey } = AccountInfoComponent;
+
+    if ((document.querySelector("select[name='phoneNumberCountry']") as any).value === 'ZZ') {
+      return this.setState({errors: {...this.state.errors, [FieldKey.PhoneNumber]: errorMessages.PhoneMissingCountryCode}});
+    }
 
     if (!this.state.phoneNumber ||
       this.state.phoneNumber.length < PhoneValidationComponent.usPhoneNumberLenght) {

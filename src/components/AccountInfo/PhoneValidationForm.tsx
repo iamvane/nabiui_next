@@ -1,14 +1,15 @@
 import * as React from 'react';
 
 import {
-  CircularProgress,
-  Grid,
-  TextField,
   Button,
+  CircularProgress,
+  FormControl,
+  FormHelperText,
+  Grid,
   Input,
   Select,
-  Typography,
-  FormControl
+  TextField,
+  Typography
 } from '@material-ui/core';
 // import Close from '@material-ui/icons/Close';
 import '../../../assets/scss/PhoneValidationForm.scss';
@@ -80,6 +81,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
       <Grid container={true}>
         <Grid item={true} xs={12} md={!props.isEditing ? 4 : 6} className="nabi-margin-right-xsmall-md">
           <PhoneInput
+            id="country-code-select"
             className="international-phone-input nabi-margin-top-xsmall"
             name={PhoneValidationFormComponent.FieldNames.PhoneNumber}
             placeholder={PhoneValidationFormComponent.Placeholders.PhoneNumber}
@@ -87,6 +89,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
             onChange={props.handleNumberChange}
             required={true}
           />
+          {props.errors.phoneNumber && <FormHelperText error={true}>{props.errors.phoneNumber}</FormHelperText>}
         </Grid>
         <Grid item={true} xs={6} md={!props.isEditing ? 2 : 4}>
           <FormControl
@@ -186,7 +189,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
     <Grid item={true}>
       <SectionTitle text={PhoneValidationFormComponent.sectionTitle} />
       {
-        props.user.phoneNumber &&
+        (props.phoneNumber || props.user.phoneNumber) &&
         (props.isPhoneVerified || props.user.isPhoneVerified) ? renderVerificationSucessful() :
         (props.isPhoneSet ? renderEnterToken() :
           renderEnterPhoneNumber())
