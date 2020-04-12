@@ -78,7 +78,7 @@ export const Dashboard = (props: Props) => {
       }
     };
     page('Dashboard', analiticsProps);
-  },[]);
+  },[props.token, props.user.role]);
 
   return (
     <React.Fragment>
