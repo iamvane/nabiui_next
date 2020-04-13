@@ -10,6 +10,8 @@ export namespace ApplicationListComponent {
 export namespace ApplicationCardComponent {
   export const availabilitySection = 'Availability';
   export const messageSection = 'Message';
-  export const rate = 'Rate:'
-  export const bookLessons = 'Book Lessons'
+  export const rate = 'Rate:';
+  export const bookLessons = 'Book Lessons';
+  export const scheduleTrialDescription = 'Ready to start learning?';
+  export const scheduleTrial = 'Schedule Free Trial';
 }

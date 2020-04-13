@@ -114,5 +114,9 @@ export const pageTitlesAndDescriptions = {
   studentProfileBuilder: {
     title: 'Complete Your Profile To Meet Your Instructor',
     description: 'Share any information that will help you make the most out of your music lessons.'
+  },
+  scheduleTrial: {
+    title: 'Schedule Your Trial And Start Learning',
+    description: 'Specify the date and time for your free trial music lesson.'
   }
 };
