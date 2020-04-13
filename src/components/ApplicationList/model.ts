@@ -19,4 +19,5 @@ export interface ApplicationListType {
   requestTitle: string;
   dateCreated: string;
   applications: Application[];
+  freeTrial: boolean;
 }

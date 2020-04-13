@@ -27,6 +27,7 @@ import { Application } from './model';
 
 interface Props {
   application: Application;
+  isTrial: boolean;
 }
 
 const displayRatingStars = (reviewsNumber: number) => {
@@ -108,14 +109,19 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
               (i: string) => <span key={i} className="nabi-font-large">${Number(applicationRate).toFixed(2)}</span>
             )}
           </Typography>
-          <Link href={`${Routes.BookLessons}/${applicationId}`}>
+          <Link href={
+              props.isTrial ?
+              `${Routes.ScheduleTrial}?application_id=${applicationId}`:
+              `${Routes.BookLessons}/${applicationId}`
+            }
+          >
             <a>
               <Button
                 color="primary"
                 className="nabi-responsive-button nabi-margin-top-xsmall"
                 variant="contained"
               >
-                {ApplicationCardComponent.bookLessons}
+                {props.isTrial ? ApplicationCardComponent.scheduleTrial : ApplicationCardComponent.bookLessons}
               </Button>
             </a>
           </Link>

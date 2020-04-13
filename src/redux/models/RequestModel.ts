@@ -83,7 +83,8 @@ export const defaultRequestState: RequestState = {
     id: 0,
     requestTitle: '',
     dateCreated: '',
-    applications: []
+    applications: [],
+    freeTrial: false
   },
   bookingRate: 0,
   actions: {

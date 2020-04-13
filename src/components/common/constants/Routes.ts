@@ -44,8 +44,8 @@ export enum Routes {
   ApplicationList = '/application-list',
   GradeLesson = '/grade-lesson',
   Referrals = '/referrals',
-  RegistrationLanding = '/registration-landing'
-
+  RegistrationLanding = '/registration-landing',
+  ScheduleTrial = '/schedule-trial'
 }
 
 export enum SocialLinks {
