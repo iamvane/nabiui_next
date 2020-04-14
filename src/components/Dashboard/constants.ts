@@ -164,11 +164,9 @@ export namespace ParentStudentDashboardComponent {
     withoutBookingDescription: 'Get started by requesting a music instructor.',
     button: 'Request Instructor'
   }
-  export const editRequestTextlink = 'Edit request';
-  export const applicationButton = {
-    buttonText: '{textReplace} Applications',
-    textPlaceholder: '{textReplace}'
-  };
+  export const viewApplication = 'View {textReplace} Application';
+  export const viewApplications = 'View {textReplace} Applications';
+  export const textPlaceholder = '{textReplace}';
 }
 
 export namespace StudentCardComponent {

@@ -40,6 +40,11 @@ const MyRequestCard: React.StatelessComponent<Props> = props => {
     }
     Router.push(`${Routes.ApplicationList}/${id}`);
   }
+
+  const viewApplicationText = (applications > 1 ? constants.viewApplications : constants.viewApplication).replace(
+    constants.textPlaceholder,
+    String(applications)
+    );
   return (
     <div
       onClick={navigateToRequest}
@@ -97,9 +102,13 @@ const MyRequestCard: React.StatelessComponent<Props> = props => {
                 {`${student.name} ${student.age} ${studentDetails[studentDetails.length - 1] ? '' : ', '}`}</span>
               )}
             </Typography>
-            <Typography className="nabi-margin-top-small">
-              <Link href={Routes.BuildRequest + '/request'}><a className="nabi-text-decoration-underline">{constants.editRequestTextlink}</a></Link>
-            </Typography>
+            {applications > 0 &&
+              <Typography className="nabi-margin-top-small">
+                <a className="nabi-text-decoration-underline nabi-text-uppercase">
+                {viewApplicationText}
+                </a>
+              </Typography>
+            }
           </div>
         </Grid>
         <Grid item={true} xs={12} md={3} className="nabi-text-center nabi-text-left-md">
@@ -114,10 +123,7 @@ const MyRequestCard: React.StatelessComponent<Props> = props => {
               color="primary"
               disabled={applications < 1}
             >
-              {constants.applicationButton.buttonText.replace(
-                constants.applicationButton.textPlaceholder,
-                String(applications)
-              )}
+              {viewApplicationText}
             </Button>
           </div>
         </Grid>
