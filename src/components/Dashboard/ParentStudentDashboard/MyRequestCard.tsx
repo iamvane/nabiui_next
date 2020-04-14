@@ -44,7 +44,8 @@ const MyRequestCard: React.StatelessComponent<Props> = props => {
   const viewApplicationText = (applications > 1 ? constants.viewApplications : constants.viewApplication).replace(
     constants.textPlaceholder,
     String(applications)
-    );
+  );
+
   return (
     <div
       onClick={navigateToRequest}
