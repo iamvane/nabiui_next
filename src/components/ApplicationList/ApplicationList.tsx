@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import PageTitle from '../common/PageTitle';
 import { Routes } from '../common/constants/Routes';
+import PrivateRoute from '../Auth/PrivateRoutes';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import { StoreState } from '../../redux/reducers/store';
 import { setPathname } from '../../redux/actions/UserActions';
@@ -120,4 +121,4 @@ function mapDispatchToProps(
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ApplicationList);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(ApplicationList, 'Private', ['Student', 'Parent']));
