@@ -48,7 +48,8 @@ export const Footer = () => {
       Routes.AccountRecovery,
       Routes.Login,
       Routes.ForgotPassword,
-      '/student-profile-builder'
+      '/student-profile-builder',
+      '/free-lesson'
     ];
     return privateRoutes.indexOf(router.pathname) > -1;
   }
@@ -66,7 +67,8 @@ export const Footer = () => {
       <div className="nabi-container">
        {(!isLoggedIn &&
         !router.pathname.includes("registration") &&
-        !router.pathname.includes("student-profile-builder")) &&
+        !router.pathname.includes("student-profile-builder") &&
+        !router.pathname.includes("free-lesson")) &&
         <div>
           <p className="nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-small nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>
           <div id="hubspotFormFooter"></div>
