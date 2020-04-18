@@ -45,15 +45,15 @@ const FreeLessonLanding: React.StatelessComponent<Props> = props => {
   return (
     <React.Fragment>
       <Head>
-        <title>{pageTitlesAndDescriptions.studentProfileBuilder.title}</title>
-        <meta name="description" content={pageTitlesAndDescriptions.studentProfileBuilder.description}></meta>
+        <title>{pageTitlesAndDescriptions.scheduleTrial.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.scheduleTrial.description}></meta>
       </Head>
       <div>
         <div className="header-wrapper">
           <div className="nabi-landing-image-wrapper">
             <img
               data-src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/landing-page-image.png"
-              className="nabi-full-width lazyload"
+              className="lazyload"
               alt="become-an-instructor"
             />
           </div>
