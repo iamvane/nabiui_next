@@ -73,7 +73,7 @@ const FreeLessonLanding: React.StatelessComponent<Props> = props => {
             </div>
           </div>
         </div>
-        <Grid container={true} spacing={3} className="nabi-background-white nabi-padding-small">
+        <Grid container={true} spacing={3} className="nabi-background-white nabi-padding-small features-wrapper">
           <Grid item={true} xs={12} md={4}>
             <div className="nabi-background-nabi nabi-margin-bottom-xsmall nabi-padding-small">
               <Typography className="nabi-text-uppercase nabi-color-white nabi-text-semibold nabi-landing-font-large-md nabi-margin-bottom-small">
