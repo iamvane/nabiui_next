@@ -12,18 +12,18 @@ header {
 
 @media (min-width: 960px) {
   .header-wrapper {
-    height: 480px;
+    height: 339px;
   }
 
   .header-wrapper img {
-    height: 480px;
-    width: none;
+    height: 339px;
+    width: auto;
   }
 
   .nabi-container.nabi-margin-bottom-small.banner-text-wrapper {
-    width: 26%;
-    margin-right: 60%;
-    padding-top: 60px;
+    width: 35%;
+    margin-right: 52%;
+    padding-top: 10px;
   }
   .nabi-container.nabi-margin-bottom-small.banner-text-wrapper p {
     line-height: 47px;
@@ -31,7 +31,7 @@ header {
   }
   .nabi-landing-image-wrapper {
     float: right;
-    height: 480px;
+    height: 339px;
   }
 
   p.nabi-landing-font-large-md {
@@ -39,7 +39,7 @@ header {
   }
 }
 
-@media (min-width: 1224px) {
+@media (min-width: 1600px) {
   .header-wrapper {
     width: 1200px;
   }
