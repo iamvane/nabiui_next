@@ -131,11 +131,12 @@ export const Screening = (props: Props) => {
                   <p className="nabi-margin-top-medium nabi-font-large nabi-margin-bottom-xsmall">$39.99</p>
                 </Grid>
               </div>
+              <Typography color="error"><strong>IMPORTANT NOTICE:</strong> THE BACKGROUND CHECK FEATURE IS TEMPORARILY UNAVAILABLE PLEASE COME BACK TO THIS PAGE AGAIN LATER. IF YOU HAVE A BACKGROUND CHECK FROM ANOTHER COMPANY THAT IS LESS THAN A YEAR OLD, YOU CAN EMAIL IT TO INFO@NABIMUSIC.COM AND WE WILL UPDATE YOUR RECORDS.</Typography>
               <SectionTitle text="Payment Info" />
               <Grid item={true} xs={12} md={5} className="nabi-margin-top-small nabi-margin-bottom-medium">
                 {props.isRequesting ?
                   <CircularProgress /> :
-                  <StripePaymentForm submitPayment={submitPayment} />
+                  <StripePaymentForm disabled={true} submitPayment={submitPayment} />
                 }
               </Grid>
               <SectionTitle text="Order Summary" />

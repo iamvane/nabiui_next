@@ -16,6 +16,7 @@ import "../../../assets/scss/StripePaymentForm.scss";
 interface Props {
   submitPayment: (stripeToken : string) => void;
   isRequesting?: boolean;
+  disabled?: boolean;
 }
 
 const PaymentForm = (props: any) =>  {
@@ -65,6 +66,7 @@ const PaymentForm = (props: any) =>  {
           color="primary"
           variant="contained"
           type="submit"
+          disabled={true}
         >
           Confirm order
         </Button>
