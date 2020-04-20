@@ -31,6 +31,7 @@ interface StateProps {
   applicationList: ApplicationListType;
   error: string;
   isRequesting: boolean;
+  token: string;
 }
 
 interface DispatchProps {
@@ -50,14 +51,14 @@ export const ApplicationList = (props: Props) => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      if (id) {
+      if (id && props.token)  {
         await props.fetchApplicationList(id);
       }
     };
     fetchData();
     props.setPathname(router.asPath);
     /* tslint:disable */
-  }, []);
+  }, [props.token]);
 
   return (
     <div className="nabi-container">
@@ -107,7 +108,8 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   return {
     applicationList,
     isRequesting,
-    error
+    error,
+    token: state.user.token,
   };
 };
 
