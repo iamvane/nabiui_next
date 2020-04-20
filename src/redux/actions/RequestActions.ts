@@ -167,7 +167,7 @@ export const fetchApplicationList = (id: number): ThunkAction<Promise<void>, {},
 ) => {
   dispatch(requestAction(RequestActions.FETCH_APPLICATION_LIST));
   try {
-    const response = await axios.get(`${ApiEndpoints.applicationList}${id}`, {
+    const response = await axios.get(`${ApiEndpoints.applicationList}${id}/`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
     dispatch(withDataAction(RequestActions.FETCH_APPLICATION_LIST_SUCCESS, response.data));
