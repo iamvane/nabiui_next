@@ -5,6 +5,7 @@ import {
 } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
+import Router from "next/router";
 
 import {
   Checkbox,
@@ -376,6 +377,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
     };
 
     await this.props.buildJobPreferences(jobPreferences);
+    Router.push(Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education);
   }
 
   public render(): JSX.Element {
@@ -459,7 +461,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           />
         </div>}
         <StepperButtons
-          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
+          // nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
           handleNext={this.handleNext}
           icon={<ArrowForward />}
