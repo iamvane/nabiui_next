@@ -56,6 +56,10 @@ export const instruments = [
         value: 'conducting'
     },
     {
+        name: 'DJ',
+        value: 'dj'
+    },
+    {
         name: 'Djembe',
         value: 'djembe'
     },
@@ -70,6 +74,10 @@ export const instruments = [
     {
         name: 'Ear Training',
         value: 'ear-training'
+    },
+    {
+        name: 'Electronic Music Production',
+        value: 'electronic-music-production'
     },
     {
         name: 'Fiddle',
