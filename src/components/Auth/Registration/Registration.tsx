@@ -275,7 +275,7 @@ export const Registration = (props: Props) => {
     props.role === Role.parent ? pageTitlesAndDescriptions.registrationParent.description : pageTitlesAndDescriptions.registrationStudent.description;
 
   return (
-    <div className="nabi-container nabi-margin-bottom-medium">
+    <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
       <Head>
         <title>{docTitle}</title>
         <meta name="description" content={docDescription}></meta>

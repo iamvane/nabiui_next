@@ -3,7 +3,6 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
-import Head from 'next/head';
 import {
   IconButton,
   InputAdornment,
@@ -74,9 +73,6 @@ export class LocationField extends React.Component<Props, State> {
     const locationIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/pin-location.png';
     return (
       <div>
-        <Head>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
-        </Head>
         <PlacesAutocomplete
           value={this.state.location}
           onChange={this.handleLocationChange}

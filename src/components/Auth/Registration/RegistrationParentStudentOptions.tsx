@@ -15,7 +15,7 @@ interface Props {}
  */
 const RegistrationParentStudentOptions: React.StatelessComponent<Props> = props => {
   return (
-    <div className="nabi-container nabi-margin-bottom-small">
+    <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
       <Head>
         <title>{pageTitlesAndDescriptions.registrationParentStudent.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.registrationParentStudent.description}></meta>
