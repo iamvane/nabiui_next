@@ -30,7 +30,7 @@ export namespace InstructorDashboardComponent {
     'availability',
     'employment',
     'education',
-    'qualification',
+    'qualifications',
     'music'
   ]
 

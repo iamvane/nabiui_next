@@ -17,7 +17,7 @@ interface Props {}
  */
 const RegistrationOptions: React.StatelessComponent<Props> = props => {
   return (
-    <div className="nabi-container nabi-margin-bottom-small">
+    <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
       <div className="nabi-background-white nabi-section nabi-text-center">
         <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-margin-bottom-zero">
           {RegistrationOptionsComponent.preLaunchStudentCTATitle}

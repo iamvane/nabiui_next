@@ -235,10 +235,7 @@ export class AccountInfo extends React.Component<Props, State> {
           <CircularProgress />
         </div>
       ) : (
-        <div>
-          <Head>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
-          </Head>
+        <div>                              
           <AccountInfoForm
             user={this.props.user}
             accountInfo={this.state.accountInfo}
