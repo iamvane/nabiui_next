@@ -7,18 +7,25 @@ import {
 import { useRouter } from 'next/router';
 import Router from "next/router";
 import Head from 'next/head';
+import moment from 'moment';
+
+
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import {
   Card,
+  CircularProgress,
   Divider,
+  FormControl,
   FormControlLabel,
   Grid,
   Icon,
   Radio,
   RadioGroup,
+  TextField,
   Typography,
-  Tooltip,
-  CircularProgress
+  Tooltip
 } from '@material-ui/core';
 
 import { StoreState } from '../../redux/reducers/store';
@@ -37,6 +44,7 @@ import {
   BookLessonPackages,
   BookLessonsPayload
 } from './model';
+import StripeElementsWrapper from "../PaymentForm/StripeElementsWrapper";
 import StripePaymentForm from "../PaymentForm/StripePaymentForm";
 
 interface StateProps {
@@ -103,17 +111,16 @@ export const BookLessons = (props: Props) => {
 
   const submitPayment = async (stripeToken: string) => {
     const params: BookLessonsPayload = {
-      lessonQty: lessonPackage.lessonNumber,
-      totalAmount: Number(total),
-      chargeDescription: lessonPackage.name,
+      package: 'trial',
       applicationId,
-      stripeToken
     }
+
     await props.bookLessons(params);
   }
 
+  const freeTrial = true;
   return (
-    <div className="nabi-container">
+    <div className="nabi-container nabi-margin-bottom-medium">
       <Head>
         <title>{pageTitlesAndDescriptions.bookLessons.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.bookLessons.description}></meta>
@@ -122,101 +129,138 @@ export const BookLessons = (props: Props) => {
       <PageTitle pageTitle={BookLessonsComponent.pageTitle} />
       {props.bookLessonsDataRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
         <div className="nabi-section nabi-background-white">
-          <Typography className="nabi-text-center">
-            {BookLessonsComponent.description}
-          </Typography>
-          <Typography className="nabi-text-center">
-            {BookLessonsComponent.descriptionSecond}
-          </Typography>
-          <Typography color="primary" className="nabi-text-center nabi-margin-bottom-medium">
-            {BookLessonsComponent.satisfactionGuaranteed}
-          </Typography>
           <Typography color="primary" className="nabi-text-center nabi-margin-bottom-medium nabi-text-uppercase">
-            {BookLessonsComponent.cta}
+            {freeTrial ? BookLessonsComponent.scheduleTrial : BookLessonsComponent.buyLessons}
           </Typography>
           <div>
-            <Grid container={true} direction="row" alignItems="center" spacing={1}>
-              {BookLessonsComponent.bookLessonPackages.map((lessonPackageItem, i) => {
-                return (
-                  <Grid item={true} xs={12} md={4} key={lessonPackageItem.name}>
-                    <RadioGroup
-                      name={lessonPackageItem.name}
-                      value={lessonPackage.name}
-                      onChange={() => selectLessonPackage(lessonPackageItem)}
-                    >
-                      <FormControlLabel
-                        className="nabi-margin-right-zero nabi-margin-left-zero"
-                        value={lessonPackageItem.name}
-                        control={<Radio />}
-                        labelPlacement="top"
-                        label={
-                          <div>
-                            <Typography
-                              color={lessonPackage.name === lessonPackageItem.name && BookLessonsComponent.cardTextColors[i] === 'nabi-color-nabi' ? 'primary' : undefined}
-                              // tslint:disable-next-line:max-line-length
-                              className={`${lessonPackage.name === lessonPackageItem.name ? BookLessonsComponent.cardTextColors[i]: ''} nabi-text-center nabi-font-medium nabi-text-uppercase nabi-margin-bottom-small nabi-text-mediumbold`}
-                            >
-                              {lessonPackageItem.name}
-                            </Typography>
-                            <Grid
-                              item={true}
-                              xs={8}
-                              md={12}
-                              className="nabi-margin-center nabi-margin-bottom-xsmall"
-                            >
-                            {/* tslint:disable-next-line:max-line-length */}
-                            <Card className={`${lessonPackage.name === lessonPackageItem.name ? BookLessonsComponent.cardBackgroundColors[i] : 'nabi-background-disabled'} nabi-text-center nabi-book-lessons-card`}>
-                              <p className="nabi-font-medium nabi-text-uppercase nabi-color-white nabi-margin-top-zero nabi-margin-bottom-zero">
-                                {lessonPackageItem.lessonNumber} {BookLessonsComponent.lessons}
-                              </p>
-                              <p className="nabi-font-medium nabi-text-uppercase nabi-color-white nabi-margin-top-xsmall nabi-margin-bottom-zero">
-                                {BookLessonsComponent.lessonCost.replace(
-                                  BookLessonsComponent.lessonCostPlaceholer,
-                                  String(props.lessonPrice.toFixed(2))
-                                )}
-                              </p>
+            {freeTrial ?
+              <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-margin-center">
+                <form
+                  className="nabi-general-form nabi-margin-top-medium"
+                  noValidate={true}
+                  onSubmit={() => console.log('foo')}
+                  autoComplete="off"
+                  id="trial-form"
+                >
+                  <Typography variant="body2">
+                    Date
+                  </Typography>
+                  <FormControl fullWidth={false} required={true}>
+                    <DatePicker
+                      selected={moment(Date.now())}
+                      onChange={() => console.log('foo')}
+                      peekNextMonth={true}
+                      showMonthDropdown={true}
+                      showYearDropdown={true}
+                      dropdownMode="select"
+                    />
+                  </FormControl>
+                  <TextField
+                    fullWidth={true}
+                    // id={list.name}
+                    // name={list.name}
+                    // className="nabi-rates-field"
+                    // onChange={props.handleChange}
+                    // required={true}
+                    placeholder="Time (i.e. 4:00pm)"
+                    // value={(props as any)[list.name]}
+                  />
+                  <TextField
+                    fullWidth={true}
+                    // id={list.name}
+                    // name={list.name}
+                    // className="nabi-rates-field"
+                    // onChange={props.handleChange}
+                    // required={true}
+                    placeholder="Time Zone (i.e. Eastern Time)"
+                    // value={(props as any)[list.name]}
+                  />
+                </form>
+              </Grid>
+              :
+              <Grid container={true} direction="row" alignItems="center" spacing={1}>
+                {BookLessonsComponent.bookLessonPackages.map((lessonPackageItem, i) => {
+                  return (
+                    <Grid item={true} xs={12} md={4} key={lessonPackageItem.name}>
+                      <RadioGroup
+                        name={lessonPackageItem.name}
+                        value={lessonPackage.name}
+                        onChange={() => selectLessonPackage(lessonPackageItem)}
+                      >
+                        <FormControlLabel
+                          className="nabi-margin-right-zero nabi-margin-left-zero"
+                          value={lessonPackageItem.name}
+                          control={<Radio />}
+                          labelPlacement="top"
+                          label={
+                            <div>
                               <Typography
-                                className="nabi-color-white nabi-margin-top-xsmall"
+                                color={lessonPackage.name === lessonPackageItem.name && BookLessonsComponent.cardTextColors[i] === 'nabi-color-nabi' ? 'primary' : undefined}
+                                // tslint:disable-next-line:max-line-length
+                                className={`${lessonPackage.name === lessonPackageItem.name ? BookLessonsComponent.cardTextColors[i]: ''} nabi-text-center nabi-font-medium nabi-text-uppercase nabi-margin-bottom-small nabi-text-mediumbold`}
                               >
-                                {BookLessonsComponent.includes}
+                                {lessonPackageItem.name}
                               </Typography>
-                              <Typography
-                                className="nabi-color-white nabi-font-small nabi-margin-top-xsmall"
+                              <Grid
+                                item={true}
+                                xs={8}
+                                md={12}
+                                className="nabi-margin-center nabi-margin-bottom-xsmall"
                               >
-                                {lessonPackageItem.lessonNumber} {BookLessonsComponent.lessons}
-                              </Typography>
-                              <Typography
-                                className="nabi-color-white nabi-font-small nabi-margin-top-xsmall"
-                              >
-                                {BookLessonsComponent.freeLesson}
-                              </Typography>
-                              {i === 2 &&
+                              {/* tslint:disable-next-line:max-line-length */}
+                              <Card className={`${lessonPackage.name === lessonPackageItem.name ? BookLessonsComponent.cardBackgroundColors[i] : 'nabi-background-disabled'} nabi-text-center nabi-book-lessons-card`}>
+                                <p className="nabi-font-medium nabi-text-uppercase nabi-color-white nabi-margin-top-zero nabi-margin-bottom-zero">
+                                  {lessonPackageItem.lessonNumber} {BookLessonsComponent.lessons}
+                                </p>
+                                <p className="nabi-font-medium nabi-text-uppercase nabi-color-white nabi-margin-top-xsmall nabi-margin-bottom-zero">
+                                  {BookLessonsComponent.lessonCost.replace(
+                                    BookLessonsComponent.lessonCostPlaceholer,
+                                    String(props.lessonPrice.toFixed(2))
+                                  )}
+                                </p>
+                                <Typography
+                                  className="nabi-color-white nabi-margin-top-xsmall"
+                                >
+                                  {BookLessonsComponent.includes}
+                                </Typography>
                                 <Typography
                                   className="nabi-color-white nabi-font-small nabi-margin-top-xsmall"
                                 >
-                                  {BookLessonsComponent.fivePercentOff}
+                                  {lessonPackageItem.lessonNumber} {BookLessonsComponent.lessons}
                                 </Typography>
-                              }
-                              <Divider className="nabi-margin-top-xsmall" />
-                              <p
-                                className="nabi-color-white nabi-font-large nabi-margin-top-small nabi-next-mediumbold nabi-margin-bottom-small"
-                              >
-                                {BookLessonsComponent.packageCost.replace(
-                                  BookLessonsComponent.packageCostPlaceholer,
-                                  i === 2 ?
-                                  String((lessonPackageItem.lessonNumber * props.lessonPrice) - ((lessonPackageItem.lessonNumber * props.lessonPrice) * .05))  :
-                                  String(lessonPackageItem.lessonNumber * props.lessonPrice)
-                                )}
-                              </p>
-                              </Card>
-                            </Grid>
-                          </div>
-                        }
-                      />
-                    </RadioGroup>
-                  </Grid>
-                )})}
-            </Grid>
+                                <Typography
+                                  className="nabi-color-white nabi-font-small nabi-margin-top-xsmall"
+                                >
+                                  {BookLessonsComponent.freeLesson}
+                                </Typography>
+                                {i === 2 &&
+                                  <Typography
+                                    className="nabi-color-white nabi-font-small nabi-margin-top-xsmall"
+                                  >
+                                    {BookLessonsComponent.fivePercentOff}
+                                  </Typography>
+                                }
+                                <Divider className="nabi-margin-top-xsmall" />
+                                <p
+                                  className="nabi-color-white nabi-font-large nabi-margin-top-small nabi-next-mediumbold nabi-margin-bottom-small"
+                                >
+                                  {BookLessonsComponent.packageCost.replace(
+                                    BookLessonsComponent.packageCostPlaceholer,
+                                    i === 2 ?
+                                    String((lessonPackageItem.lessonNumber * props.lessonPrice) - ((lessonPackageItem.lessonNumber * props.lessonPrice) * .05))  :
+                                    String(lessonPackageItem.lessonNumber * props.lessonPrice)
+                                  )}
+                                </p>
+                                </Card>
+                              </Grid>
+                            </div>
+                          }
+                        />
+                      </RadioGroup>
+                    </Grid>
+                  )})}
+              </Grid>
+            }
           </div>
           <div className="nabi-margin-top-medium nabi-margin-bottom-small">
             <SectionTitle text={String(BookLessonsComponent.BookingSummary.SectionTitle)} />
@@ -284,7 +328,9 @@ export const BookLessons = (props: Props) => {
             </Grid>
           </div>
           <Grid item={true} xs={12} md={6}>
-            <StripePaymentForm submitPayment={submitPayment} isRequesting={props.bookLessonsRequesting} />
+            <StripeElementsWrapper>
+              <StripePaymentForm submitPayment={submitPayment} isRequesting={props.bookLessonsRequesting} />
+            </StripeElementsWrapper>
           </Grid>
         </div>
       }
@@ -301,6 +347,7 @@ export const BookLessons = (props: Props) => {
 const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
   const {
     bookingRate,
+    freeTrial,
     actions: {
       bookLessons: {
         isRequesting: bookLessonsRequesting,
@@ -320,7 +367,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     bookLessonsMessage,
     bookLessonsDataRequesting,
     bookLessonsDataError,
-    lessonPrice: Number(bookingRate)
+    lessonPrice: Number(bookingRate),
   }
 };
 

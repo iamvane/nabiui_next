@@ -9,7 +9,6 @@ import {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
-import Head from 'next/head';
 
 import 'react-datepicker/dist/react-datepicker.css';
 

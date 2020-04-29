@@ -2,9 +2,8 @@ import { BookLessonPackages } from './model';
 
 export namespace BookLessonsComponent {
   export const pageTitle = 'Book Lessons';
-  export const description = 'All of our lesson packages include a FREE trial lesson.';
-  export const descriptionSecond = 'If you are not satisfied after the first lesson you’ll get a full refund.';
-  export const cta = 'Choose a lesson package';
+  export const scheduleTrial = 'Schedule your trial lesson';
+  export const buyLessons = 'Choose a lesson package';
   export const satisfactionGuaranteed = '100% Satisfaction Guaranteed';
 
   export const bookLessonPackages: BookLessonPackages[] = [

@@ -45,6 +45,7 @@ export interface RequestState {
   requests: RequestType[];
   applicationList: ApplicationListType;
   bookingRate: number;
+  freeTrial: boolean;
   actions: {
     createRequest: ActionStatus;
     fetchRequests: ActionStatus;
@@ -87,6 +88,7 @@ export const defaultRequestState: RequestState = {
     freeTrial: false
   },
   bookingRate: 0,
+  freeTrial: false,
   actions: {
     createRequest: {
       isRequesting: false,

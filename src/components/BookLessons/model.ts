@@ -4,9 +4,11 @@ export interface BookLessonPackages {
 }
 
 export interface BookLessonsPayload {
-	lessonQty: number,
-	totalAmount: number;
 	applicationId: number;
-	chargeDescription: string;
-	stripeToken: string;
+	package: string;
+	paymentMethodId?: number;
+	paymentMethodCode?: string;
+	date?: string;
+	time?: string;
+	timezone?: string;
 }
