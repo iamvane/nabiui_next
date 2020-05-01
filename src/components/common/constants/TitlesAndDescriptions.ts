@@ -118,5 +118,9 @@ export const pageTitlesAndDescriptions = {
   scheduleTrial: {
     title: 'Schedule Your Trial And Start Learning',
     description: 'Specify the date and time for your free trial music lesson.'
+  },
+  affiliate: {
+    title: 'Spread The Love For Music by Inviting Your Community',
+    description: 'Bring music to the lives of manuy children.'
   }
 };
