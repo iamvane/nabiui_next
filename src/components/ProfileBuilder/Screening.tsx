@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Head from 'next/head';
 import {
   Action,
   Dispatch
 } from 'redux';
-import moment from 'moment';
 
 import {
+  Button,
   CircularProgress,
   Grid,
   Typography
@@ -24,24 +23,17 @@ import { InstructorType } from '../../redux/models/InstructorModel';
 import SectionTitle from '../common/SectionTitle';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import { Routes } from '../common/constants/Routes';
-import SnackBar from '../common/SnackBar';
-import StripePaymentForm from "../PaymentForm/StripePaymentForm";
 import { ProfileBuilderStepper } from './constants';
 import { BackgroundCheckParams } from "./models";
 
 
 interface StateProps {
-  isRequesting: boolean;
-  error: string;
   backgroundCheckStatus: string;
-  requestorEmail: string;
   status:string;
   result: string;
-  createdAt: string;
   email: string;
   isStatusRequesting: boolean;
   errorStatus: string;
-  message: string;
 }
 
 interface OwnProps { }
@@ -58,124 +50,63 @@ interface Props extends
   DispatchProps { }
 
 export const Screening = (props: Props) => {
-  const [showSnackbar, setShowSnackbar] = React.useState(false);
-  const [snackbarMessage, setSnackbarMessage] = React.useState('');
-  const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
-  const [isPaymentSubmitted, setIsPaymentSubmitted] = React.useState(false);
+  // ADD BACK WHEN BACKGROUND CHECK STATUS RETURNS BG STATUS
+  // React.useEffect(() => {
 
-  React.useEffect(() => {
-    if (!props.error && isPaymentSubmitted) {
-      setIsPaymentSuccessful(true);
-    }
-
-    const fetchData = async () => {
-      await props.fetchBackgroundCheckStatus();
-      await props.fetchUser();
-    };
-    fetchData();
-
-    if (props.message) {
-      setShowSnackbar(true);
-      setSnackbarMessage('Background check requested successfully.')
-    }
-    if (props.error) {
-      setShowSnackbar(true);
-      setSnackbarMessage(props.error)
-    }
-    /* tslint:disable */
-  }, [isPaymentSubmitted, props.error, props.message]);
-
-  const submitPayment = async (stripeToken: string) => {
-    const params: BackgroundCheckParams = {
-      stripeToken,
-      amount: 44.25
-    }
-    await props.requestBackgroundCheck(params);
-    setIsPaymentSubmitted(true);
-  }
+  //   const fetchData = async () => {
+  //     await props.fetchBackgroundCheckStatus();
+  //     await props.fetchUser();
+  //   };
+  //   fetchData();
+  //   /* tslint:disable */
+  // }, [props.email]);
 
   return(
     <div>
-      <Head>
-        <script src="https://js.stripe.com/v3/"></script>
-      </Head>
       <SectionTitle text="Screening" />
       {props.isStatusRequesting ?
         <div className="nabi-text-center"><CircularProgress /></div> :
-          props.status ?
-            <React.Fragment>
-              <Typography>
-                <span className="nabi-text-mediumbold">Background check status:</span>
-                <span className="nabi-text-uppercase nabi-margin-left-xsmall">{props.status}</span>
-              </Typography>
-              <Typography>
-                <span className="nabi-text-mediumbold">Processed on:</span>
-                <span className="nabi-margin-left-xsmall">{moment(props.createdAt).format("MMM Do YYYY")}</span>
-              </Typography>
-              <Typography>
-                <span className="nabi-text-mediumbold">Results:</span>
-                <span className="nabi-text-uppercase nabi-margin-left-xsmall">{props.backgroundCheckStatus}</span>
-              </Typography>
-            </React.Fragment>
+        props.status ?
+          <React.Fragment>
+            <Typography>
+              <span className="nabi-text-mediumbold">Background check status:</span>
+              <span className="nabi-text-uppercase nabi-margin-left-xsmall">{props.status}</span>
+            </Typography>
+            <Typography>
+              <span className="nabi-text-mediumbold">Results:</span>
+              <span className="nabi-text-uppercase nabi-margin-left-xsmall">{props.backgroundCheckStatus}</span>
+            </Typography>
+          </React.Fragment>
           :
-            <React.Fragment>
-              <div className="nabi-text-center nabi-margin-bottom-medium">
-                <h2 className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-normalbold">Establish trust with your students.</h2>
-                <Typography color="primary" className="nabi-margin-bottom-small">Add a background check to your profile and show you’re serious about safety.</Typography>
-                <Grid item={true} xs={12} md={5} className="nabi-background-nabi nabi-color-white nabi-border-radius nabi-padding-small nabi-margin-center">
-                  <p className="nabi-color-white nabi-font-medium nabi-margin-bottom-xsmall">CRIMINAL RECORDS CHECK</p>
-                  <p className="nabi-text-extrabold nabi-margin-top-xsmall">Establish trust and earn more</p>
-                  <Typography className="nabi-color-white">- National criminal history</Typography>
-                  <Typography className="nabi-color-white">- County criminal history</Typography>
-                  <Typography className="nabi-color-white">- Global terror watchlist</Typography>
-                  <p className="nabi-margin-top-medium nabi-font-large nabi-margin-bottom-xsmall">$39.99</p>
-                </Grid>
-              </div>
-              <Typography color="error"><strong>IMPORTANT NOTICE:</strong> THE BACKGROUND CHECK FEATURE IS TEMPORARILY UNAVAILABLE. IF YOU HAVE A BACKGROUND CHECK FROM ANOTHER COMPANY THAT IS LESS THAN A YEAR OLD, YOU CAN EMAIL IT TO INFO@NABIMUSIC.COM AND WE WILL UPDATE YOUR RECORDS.</Typography>
-              <SectionTitle text="Payment Info" />
-              <Grid item={true} xs={12} md={5} className="nabi-margin-top-small nabi-margin-bottom-medium">
-                {props.isRequesting ?
-                  <CircularProgress /> :
-                  <StripePaymentForm disabled={true} submitPayment={submitPayment} />
-                }
+          <React.Fragment>
+            <div className="nabi-text-center nabi-margin-bottom-medium">
+              <h2 className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-normalbold">Establish trust with your students.</h2>
+              <Typography color="primary" className="nabi-margin-bottom-small">Add a background check to your profile and show you’re serious about safety.</Typography>
+              <Grid item={true} xs={12} md={8} className="nabi-background-nabi nabi-color-white nabi-border-radius nabi-padding-small nabi-margin-center">
+                <p className="nabi-color-white nabi-font-medium nabi-margin-bottom-xsmall">CRIMINAL RECORDS CHECK</p>
+                <p className="nabi-text-extrabold nabi-margin-top-xsmall">Establish trust and earn more</p>
+                <Typography className="nabi-color-white">- County Criminal Court Search (Statewide in Select States) 7 Years. All Associated Jurisdictions</Typography>
+                <Typography className="nabi-color-white">- Social Security Number Trace</Typography>
+                <Typography className="nabi-color-white">- Nationwide Criminal Databases Search</Typography>
+                <Typography className="nabi-color-white">- Sex Offender Registry Search</Typography>
+                <p className="nabi-margin-top-medium nabi-font-large nabi-margin-bottom-xsmall">$28</p>
+                <Typography className="nabi-color-white">1 - 3 Business Days</Typography>
+                <a href="https://trueme.goodhire.com/custom-link/2b6b98ae-91d3-4841-ae12-4222ae252ebe" target="_blank">
+                  <Button
+                    color="secondary"
+                    className="nabi-text-uppercase nabi-margin-top-small"
+                    variant="contained"
+                    type="submit"
+                  >
+                    Get Background Check
+                  </Button>
+                </a>
               </Grid>
-              <SectionTitle text="Order Summary" />
-              <Grid container={true}>
-                <Grid item={true} xs={12} md={4}>
-                  <Typography>Background Check</Typography>
-                </Grid>
-                <Grid item={true} xs={12} md={8}>
-                  <Typography>$39.99</Typography>
-                </Grid>
-                <Grid item={true} xs={12} md={4}>
-                  <Typography>Processing Fee</Typography>
-                </Grid>
-                <Grid item={true} xs={12} md={8}>
-                  <Typography>$1.46</Typography>
-                </Grid>
-                <Grid item={true} xs={12} md={4}>
-                  <Typography>Sales Tax (7%)</Typography>
-                </Grid>
-                <Grid item={true} xs={12} md={8}>
-                  <Typography>$2.80</Typography>
-                </Grid>
-                <Grid item={true} xs={12} md={4}>
-                  <Typography color="primary" className="nabi-text-mediumbold">Total</Typography>
-                </Grid>
-                <Grid item={true} xs={12} md={8}>
-                  <Typography color="primary" className="nabi-text-mediumbold">$44.25</Typography>
-                </Grid>
-              </Grid>
-            </React.Fragment>
+            </div>
+            <Typography><strong>IMPORTANT NOTICE:</strong> IF YOU HAVE A BACKGROUND CHECK FROM ANOTHER COMPANY THAT IS LESS THAN A YEAR OLD, YOU CAN EMAIL IT TO INFO@NABIMUSIC.COM AND WE WILL UPDATE YOUR RECORDS.</Typography>
+          </React.Fragment>
         }
-      <SnackBar
-        isOpen={showSnackbar}
-        message={snackbarMessage}
-        handleClose={() => setShowSnackbar(false)}
-        variant={props.message ? "success" : "error"}
-      />
       <StepperButtons
-        isNextDisabled={(!isPaymentSuccessful && !props.result) || !!props.status}
         nextPath={Routes.Dashboard}
         backPath={Routes.BuildProfile+ ProfileBuilderStepper.StepsPaths.References}
       />
@@ -187,18 +118,11 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
   const {
     instructor: {
       backgroundCheckResults: {
-        requestorEmail,
         status,
         result,
-        createdAt,
-      }
+      },
     },
     actions: {
-      requestBackgroundCheck: {
-        isRequesting,
-        error,
-        message
-      },
       fetchBackgroundCheckStatus: {
         isRequesting: isStatusRequesting,
         error: errorStatus,
@@ -208,14 +132,9 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
 
   const profile = state.user.user.profile as InstructorType;
   return {
-    isRequesting,
-    error,
-    message,
     backgroundCheckStatus: profile && profile.backgroundCheckStatus,
-    requestorEmail: requestorEmail,
     status,
     result,
-    createdAt,
     email: state.user.user.email,
     isStatusRequesting,
     errorStatus
