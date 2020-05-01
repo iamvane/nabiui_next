@@ -37,7 +37,7 @@ export const ProfileHeader = (props: Props) => {
     age,
     rates,
     memberSince,
-    backgroundCheck,
+    backgroundCheckStatus,
     lessonsTaught,
     instruments
   } = props.instructor;
@@ -189,37 +189,20 @@ export const ProfileHeader = (props: Props) => {
         </Grid>
       </Grid>
       {/* Start of background check & favorites*/}
-      {backgroundCheck === BackgroundCheckStatus.verified &&
+      {backgroundCheckStatus === BackgroundCheckStatus.verified &&
         <Grid
           item={true}
           md={2}
-          xs={4}
+          xs={12}
           className="nabi-text-center nabi-padding-left-large-md nabi-margin-center"
         >
-          <Grid container={true}>
-            <div className="background-check-and-favorites nabi-margin-center">
-              <Grid
-                item={true}
-                xs={12}
-                className="nabi-margin-remove"
-              >
-                <Grid container={true}>
-                  <Grid item={true} xs={6} className="nabi-margin-bottom-xsmall">
-                    <IconButton
-                      color="primary"
-                      className="nabi-margin-right-xsmall"
-                    >
-                      <img
-                        src={BackgroundCheckIcon}
-                        className="nabi-custom-button-icon"
-                        alt="background-check"
-                      />
-                    </IconButton>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </div>
-          </Grid>
+          <IconButton
+            color="secondary"
+            className="nabi-display-inline-block"
+          >
+            <img src={BackgroundCheckIcon} className="nabi-custom-button-icon" alt="background-check" />
+          </IconButton>
+          <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">Background Check</Typography>
         </Grid>
       }
     </Grid>

@@ -6,13 +6,10 @@ import {
 } from '@material-ui/core';
 
 import SectionTitle from '../common/SectionTitle';
-import { EducationType } from '../Education/model';
 import EducationAdded from '../Education/EducationAdded';
 import { Qualifications } from '../Qualifications/constants';
-import { EmploymentType } from '../Employment/model';
 import EmploymentAdded from '../Employment/EmploymentAdded';
 // import Reviews from '../Reviews/Reviews';
-import { ReviewsType } from '../Reviews/model';
 import MusicAdded from '../Music/MusicAdded';
 import { ProfileContentComponent } from './constants';
 
@@ -25,10 +22,11 @@ interface Props {
  */
 const ProfileContent: React.StatelessComponent<Props> = props => {
   const qualifications = props.instructor.qualifications && Object.keys(props.instructor.qualifications).map((key: string, i: number) => {
+    let qualificationItems = [];
     if (props.instructor.qualifications[key] === true) {
-      return <span key={i} className="nabi-margin-right-small">{key}</span>
+      qualificationItems.push(Qualifications[key])
     }
-    return;
+    return qualificationItems;
   });
 
   const employmentAdded = props.instructor.employment && props.instructor.employment.map((employment, i) => (
@@ -119,8 +117,8 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
         }
       </Grid>
       <SectionTitle text={ProfileContentComponent.Text.AdditionalQualifications} />
-      {props.instructor.qualifications && props.instructor.qualifications.length ?
-        <Typography className="nabi-margin-bottom-medium">{qualifications}</Typography> :
+      {props.instructor.qualifications ?
+        <Typography className="nabi-margin-bottom-medium">{qualifications.join(', ')}</Typography> :
         <Typography className="nabi-margin-bottom-medium">{ProfileContentComponent.Text.noContent}</Typography>
       }
       {/* <SectionTitle text={ProfileContentComponent.Text.Reviews} /> */}
