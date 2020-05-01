@@ -121,6 +121,6 @@ export const pageTitlesAndDescriptions = {
   },
   affiliate: {
     title: 'Spread The Love For Music by Inviting Your Community',
-    description: 'Bring music to the lives of manuy children.'
+    description: 'Bring music to the lives of many children.'
   }
 };
