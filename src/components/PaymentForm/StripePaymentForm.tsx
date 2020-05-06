@@ -1,108 +1,111 @@
-import React from "react";
-import {
-  StripeProvider,
-  CardElement,
-  injectStripe,
-  Elements
-} from "react-stripe-elements";
-
+import React, { useState } from 'react';
 import {
   Button,
-  CircularProgress
+  Typography
 } from '@material-ui/core';
 
+import SnackBar from '../common/SnackBar';
 import "../../../assets/scss/StripePaymentForm.scss";
 
-interface Props {
-  submitPayment: (stripeToken : string) => void;
-  isRequesting?: boolean;
-  disabled?: boolean;
-}
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const PaymentForm = (props: any) =>  {
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const cardElement = props.elements.getElement('card');
-
-
-    if (props.stripe) {
-      props.stripe
-        .createToken()
-        .then((payload: any) => {
-          props.submitPayment(payload.token.id);
-        });
-    } else {
-      console.log("Stripe.js hasn't loaded yet.");
-    }
-  };
-  const createOptions = () => {
-    return {
-      style: {
-        base: {
-          fontSize: "16px",
-          color: '#717a8a',
-          fontFamily: '\'Montserrat\', sans-serif',
-          padding: '17px 18px',
-          background: '#f3f6f9',
-          borderRadius: '5px' ,
-          '::placeholder': {
-            color: "#868e96",
-          },
-        },
-        invalid: {
-          color: '#9e2146',
-        },
+const CARD_OPTIONS = {
+  iconStyle: 'solid' as const,
+  style: {
+    base: {
+      fontSize: "16px",
+      color: '#717a8a',
+      fontFamily: '\'Montserrat\', sans-serif',
+      backgroundColor: '#f3f6f9',
+      borderRadius: '5px' ,
+      '::placeholder': {
+        color: "#868e96",
       },
-    };
-  };
-  return (
-    <form onSubmit={handleSubmit} className="nabi-full-width">
-      <div id="card-element">
-        <CardElement className="nabi-stripe-form" {...createOptions()} />
-      </div>
-      {props.isRequesting ? <div className="nabi-margin-top-small"><CircularProgress /></div> :
-        <Button
-          className="nabi-margin-top-small"
-          color="primary"
-          variant="contained"
-          type="submit"
-          disabled={true}
-        >
-          Confirm order
-        </Button>
-     }
-    </form>
-  );
+    },
+    invalid: {
+      color: '#9e2146',
+    },
+  }
+};
+
+interface Props {
+  submitPayment : (id: string) => void;
+  clientSecret: string;
+  buttonText?: string;
 }
 
-const InjectedCheckoutForm = injectStripe(PaymentForm);
+const StripePaymentForm = (props: Props) => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [error, setError] = useState(null);
+  const [cardComplete, setCardComplete] = useState(false);
+  const [processing, setProcessing] = useState(false);
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
 
-export const StripePaymentForm = (props: Props) => {
-  const windowObject =  typeof window !== 'undefined' && (window as any);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  if (windowObject) {
-    const stripe =  windowObject.Stripe('pk_live_w3eJuwclLTq3awfhENpZwqpx002APtyTMh');
-
-    const renderItems = () => {
-      if (stripe) {
-        return (
-          <StripeProvider stripe={stripe}>
-            <Elements>
-              <InjectedCheckoutForm submitPayment={props.submitPayment} isRequesting={props.isRequesting} />
-            </Elements>
-          </StripeProvider>
-        )
-      }
+    if (!stripe || !elements) {
       return;
     }
-    return (
-      <div>
-        {renderItems()}
-      </div>
-    );
-  } else {
-    return <p>Unable to display form. Please contact us at info@nabimusic.com.</p>
-  }
-}
+
+    if (error) {
+      elements.getElement('card').focus();
+      return;
+    }
+
+    if (cardComplete) {
+      setProcessing(true);
+    }
+
+    stripe.confirmCardSetup(props.clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      }
+    }).then(function(result) {
+      setProcessing(false);
+      if (result.error) {
+        setError(result.error.message);
+        setShowSnackbar(true);
+      } else {
+        props.submitPayment(result.setupIntent.payment_method)
+      }
+    });
+  };
+
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <legend>Your payment details:</legend>
+        <div id="card-element">
+          <CardElement
+            options={CARD_OPTIONS}
+            onChange={(e) => {
+              setError(e.error);
+              setCardComplete(e.complete);
+            }}
+          />
+        </div>
+        <Button
+          className="nabi-margin-top-small"
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={processing || !stripe}
+        >
+          {props.buttonText || 'Submit Payment'}
+        </Button>
+      </form>
+      <SnackBar
+        isOpen={showSnackbar}
+        message={error}
+        handleClose={() => setShowSnackbar(false)}
+        variant={"error"}
+      />
+      {error && <Typography>{error.message}</Typography>}
+    </>
+  );
+};
 
 export default StripePaymentForm;

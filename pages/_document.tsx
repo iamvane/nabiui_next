@@ -57,6 +57,9 @@ class NabiDocument extends Document {
             rel="stylesheet"
           />
 
+          {/* Material Icon CSS */}
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
           {/* iOS */}
           <link href="/images/icons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
           <link href="/images/icons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60" />

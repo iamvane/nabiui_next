@@ -33,13 +33,17 @@ export const ParentStudentDashboard = (props: Props) => {
                   <Grid item={true} xs={12} md={4} className="nabi-text-center">
                     <p className="nabi-font-large nabi-color-nabi nabi-margin-top-xsmall nabi-margin-bottom-zero nabi-text-semibold">{booking.lessonsRemaining}</p>
                     <Typography color="primary">{constants.lessonsRemaining}</Typography>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      className="nabi-responsive-button"
-                    >
-                      {constants.buyLessonButton}
-                    </Button>
+                      <Link href={`${Routes.BookLessons}/${booking.applicationId}`}>
+                        <a>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            className="nabi-responsive-button"
+                          >
+                            {constants.buyLessonButton}
+                          </Button>
+                        </a>
+                      </Link>
                   </Grid>
                   <Grid item={true} xs={12} md={8}>
                     <Grid container={true}>

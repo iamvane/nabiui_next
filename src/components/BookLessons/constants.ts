@@ -2,23 +2,29 @@ import { BookLessonPackages } from './model';
 
 export namespace BookLessonsComponent {
   export const pageTitle = 'Book Lessons';
-  export const description = 'All of our lesson packages include a FREE trial lesson.';
-  export const descriptionSecond = 'If you are not satisfied after the first lesson you’ll get a full refund.';
-  export const cta = 'Choose a lesson package';
+  export const pageTitleTrial = 'Book Trial';
+  export const trialHeading = 'Start Your Free Trial';
+  export const scheduleLessonButton = 'Schedule Lesson';
+  export const bookingConfirmation = 'Thank you for your booking!';
+  export const trialDescription = 'A payment method is required to schedule trial lesson. You will not be charged anything. You can use this payment method later if you decide to purchase a lesson package.';
+  export const buyLessons = 'Choose a lesson package';
   export const satisfactionGuaranteed = '100% Satisfaction Guaranteed';
 
   export const bookLessonPackages: BookLessonPackages[] = [
     {
       name: 'The Artist',
       lessonNumber: 4,
+      value: 'artist'
     },
     {
       name: 'The Maestro',
       lessonNumber: 8,
+      value: 'maestro'
     },
     {
       name: 'The Virtuoso',
       lessonNumber: 12,
+      value: 'virtuoso'
     }
   ];
 
@@ -41,7 +47,6 @@ export namespace BookLessonsComponent {
   export const packageCostPlaceholer = '{packageCost}';
   export const packageCost = '${packageCost}';
 
-  export const placementFee = 12.00;
   export const processingFee = .029;
 
   export enum BookingSummary {
@@ -53,6 +58,8 @@ export namespace BookLessonsComponent {
     FreeLessonCost = 0.00,
     PlacementFee = ' Placement Fee',
     ProcessingFee = 'Processing Fee',
-    Total = 'Total:'
+    Total = 'Total:',
+    SubTotal = 'Sub Total',
+    VirtuosoDiscount = 'Virtuoso Discount'
   }
 }

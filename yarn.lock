@@ -1760,6 +1760,18 @@
     "@sentry/types" "5.11.0"
     tslib "^1.9.3"
 
+"@stripe/react-stripe-js@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-1.1.2.tgz#a7f5ef5b4d7dc7fa723501b706644414cfe6dcba"
+  integrity sha512-07hu8RJXwWKGbvdvd1yt1cYvGtDB8jFX+q10f7FQuItUt9rlSo0am3WIx845iMHANiYgxyRb1PS201Yle9xxPQ==
+  dependencies:
+    prop-types "^15.7.2"
+
+"@stripe/stripe-js@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.4.0.tgz#287b0fb653d9a34321dfa8b52f8c99b7983f2eda"
+  integrity sha512-ZvrD4s0T2VcZLXIll0eO9YO/Gnr2sgHgycqvSVN5A3ok/USesD9SL6j1vX9wTy7DVbm0vvQQE01Jap6PjP1IVw==
+
 "@surma/rollup-plugin-off-main-thread@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-1.1.1.tgz#f30bd28de9c5ec614ab9d5143eb1bd809a15520c"
@@ -7252,13 +7264,6 @@ react-string-replace@^0.4.4:
   integrity sha512-FAMkhxmDpCsGTwTZg7p/2v+/GTmxAp73so3fbSvlAcBBX36ujiGRNEaM/1u+jiYQrArhns+7eE92g2pi5E5FUA==
   dependencies:
     lodash "^4.17.4"
-
-react-stripe-elements@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/react-stripe-elements/-/react-stripe-elements-6.0.1.tgz#f2b1e4c132cb18f140668556a5218e3b8e082794"
-  integrity sha512-WVKTunSgsrkm8Tv1+BEehfYrA2CHdlk01ocmbcECliPb1EDybaoUCx2MR212ptRHyitMrHF+ahUTewjaX98kcQ==
-  dependencies:
-    prop-types "15.7.2"
 
 react-transition-group@^4.3.0:
   version "4.3.0"

@@ -5,6 +5,7 @@ import {
 } from './models';
 import { StudentType } from '../../components/Request/models';
 import { ApplicationListType } from '../../components/ApplicationList/model';
+import { BookLessonsData } from '../../components/BookLessons/model';
 
 export interface RequestType {
   id: number;
@@ -39,12 +40,11 @@ export interface Request {
   location: string;
 }
 
-export interface RequestState {
+export interface RequestState extends BookLessonsData {
   request: RequestType;
   requestsList: ListResource<Request>;
   requests: RequestType[];
   applicationList: ApplicationListType;
-  bookingRate: number;
   actions: {
     createRequest: ActionStatus;
     fetchRequests: ActionStatus;
@@ -56,6 +56,7 @@ export interface RequestState {
     fetchApplicationList: ActionStatus;
     bookLessons: ActionStatusWithMessage;
     fetchBookLessonsData: ActionStatus;
+    chooseLessonsPackage: ActionStatus;
   };
 }
 
@@ -86,7 +87,6 @@ export const defaultRequestState: RequestState = {
     applications: [],
     freeTrial: false
   },
-  bookingRate: 0,
   actions: {
     createRequest: {
       isRequesting: false,
@@ -128,6 +128,10 @@ export const defaultRequestState: RequestState = {
       message: ''
     },
     fetchBookLessonsData: {
+      isRequesting: false,
+      error: '',
+    },
+    chooseLessonsPackage: {
       isRequesting: false,
       error: '',
     }

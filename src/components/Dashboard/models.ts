@@ -17,6 +17,7 @@ export interface LessonType {
 }
 
 export interface Booking {
+  applicationId: number;
   instrument: string;
   skillLevel: string;
   instructor: string;

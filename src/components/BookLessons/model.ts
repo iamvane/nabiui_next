@@ -1,12 +1,25 @@
 export interface BookLessonPackages {
   name: string;
-  lessonNumber: number;
+	lessonNumber: number;
+	value: string;
 }
 
 export interface BookLessonsPayload {
-	lessonQty: number,
-	totalAmount: number;
 	applicationId: number;
-	chargeDescription: string;
-	stripeToken: string;
+	package: string;
+	paymentMethodId?: number;
+	paymentMethodCode?: string;
+}
+
+export interface BookLessonsData {
+	clientSecret?: string;
+	lessonRate?: number
+	lessonsPrice?: number;
+	paymentMethods?: any[]
+	placementFee?: number;
+	processingFee?: number;
+	subTotal?: number
+	total?: number;
+	freeTrial?: boolean;
+	virtuosoDiscount?: number;
 }

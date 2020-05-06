@@ -15,6 +15,7 @@ import {
   withDataAction,
   withErrorAction,
 } from './actions';
+import { BookLessonsData } from '../../components/BookLessons/model';
 
 let errorMessage = defaultApiError;
 const authToken = getCookie('token');
@@ -215,5 +216,27 @@ export const fetchBookLessonsData = (id: number): ThunkAction<Promise<void>, {},
       errorMessage = getError(e);
     }
     dispatch(withErrorAction(RequestActions.FETCH_BOOK_LESSONS_DATA_FAILURE, errorMessage));
+  }
+};
+
+export const chooseLessonPackage = (packageName: string, applicationId: number): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.CHOOSE_LESSON_PACKAGE));
+  try {
+    const response = await axios.post(
+      ApiEndpoints.bookLessonsData + applicationId + '/',
+      {package: packageName},
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+    dispatch(withDataAction(RequestActions.CHOOSE_LESSON_PACKAGE_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.CHOOSE_LESSON_PACKAGE_FAILURE, errorMessage));
   }
 };
