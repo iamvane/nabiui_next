@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Head from 'next/head';
 import { RouteComponentProps } from 'react-router';
 const reactStringReplace = require('react-string-replace');
 
@@ -60,6 +61,9 @@ export class RequestBuilder extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
+        <Head>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+        </Head>
         <CommonStepper
           steps={RequestBuilderStepper.steps}
           pageTitle={RequestBuilderComponent.pageTitle}
