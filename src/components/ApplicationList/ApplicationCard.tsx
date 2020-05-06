@@ -109,9 +109,7 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
               (i: string) => <span key={i} className="nabi-font-large">${Number(applicationRate).toFixed(2)}</span>
             )}
           </Typography>
-          <Link href={
-              `${Routes.BookLessons}/${applicationId}`
-            }
+          <Link href={`${Routes.BookLessons}/${applicationId}`}
           >
             <a>
               <Button

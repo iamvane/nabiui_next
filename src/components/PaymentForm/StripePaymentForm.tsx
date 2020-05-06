@@ -4,6 +4,7 @@ import {
   Typography
 } from '@material-ui/core';
 
+import SnackBar from '../common/SnackBar';
 import "../../../assets/scss/StripePaymentForm.scss";
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -27,20 +28,24 @@ const CARD_OPTIONS = {
   }
 };
 
-const StripePaymentForm = (props: any) => {
+interface Props {
+  submitPayment : (id: string) => void;
+  clientSecret: string;
+  buttonText?: string;
+}
+
+const StripePaymentForm = (props: Props) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
   const [cardComplete, setCardComplete] = useState(false);
   const [processing, setProcessing] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
 
@@ -61,21 +66,9 @@ const StripePaymentForm = (props: any) => {
       setProcessing(false);
       if (result.error) {
         setError(result.error.message);
-        // Show error to your customer (e.g., insufficient funds)
-        console.log(result.error.message);
+        setShowSnackbar(true);
       } else {
-        // props.submitPayment(stripeToken)
-        // setPaymentMethod(result.paymentMethod);
         props.submitPayment(result.setupIntent.payment_method)
-        console.log(result);
-        // The payment has been processed!
-        // if (result.paymentIntent.status === 'succeeded') {
-          // Show a success message to your customer
-          // There's a risk of the customer closing the window before callback
-          // execution. Set up a webhook or plugin to listen for the
-          // payment_intent.succeeded event that handles any business critical
-          // post-payment actions.
-        // }
       }
     });
   };
@@ -101,9 +94,15 @@ const StripePaymentForm = (props: any) => {
           color="primary"
           disabled={processing || !stripe}
         >
-          Submit Payment
+          {props.buttonText || 'Submit Payment'}
         </Button>
       </form>
+      <SnackBar
+        isOpen={showSnackbar}
+        message={error}
+        handleClose={() => setShowSnackbar(false)}
+        variant={"error"}
+      />
       {error && <Typography>{error.message}</Typography>}
     </>
   );

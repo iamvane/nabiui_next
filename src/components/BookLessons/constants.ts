@@ -2,7 +2,11 @@ import { BookLessonPackages } from './model';
 
 export namespace BookLessonsComponent {
   export const pageTitle = 'Book Lessons';
-  export const scheduleTrial = 'Schedule your trial lesson';
+  export const pageTitleTrial = 'Book Trial';
+  export const trialHeading = 'Start Your Free Trial';
+  export const scheduleLessonButton = 'Schedule Lesson';
+  export const bookingConfirmation = 'Thank you for your booking!';
+  export const trialDescription = 'A payment method is required to schedule trial lesson. You will not be charged anything. You can use this payment method later if you decide to purchase a lesson package.';
   export const buyLessons = 'Choose a lesson package';
   export const satisfactionGuaranteed = '100% Satisfaction Guaranteed';
 

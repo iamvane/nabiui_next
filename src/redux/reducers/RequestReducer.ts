@@ -369,20 +369,21 @@ export default function requestsReducer(
           bookLessons: {
             ...state.actions.bookLessons,
             isRequesting: true,
-            message: ""
+            message: "",
+            error: ""
           }
         }
       };
 
     case RequestActions.BOOK_LESSONS_SUCCESS:
-      const { data: bookLessonMessage } = <APIActions.WithData<string>>action;
+      const { data: bookLessonMessage } = <APIActions.WithData<{message: string}>>action;
       return {
         ...state,
         actions: {
           ...state.actions,
           bookLessons: {
             ...state.actions.bookLessons,
-            message: bookLessonMessage,
+            message: bookLessonMessage.message,
             isRequesting: false,
             error: ""
           }

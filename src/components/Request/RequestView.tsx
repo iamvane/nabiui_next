@@ -169,7 +169,7 @@ export const RequestView = (props: Props) => {
                     {props.request.location}
                   </Typography>
                 </Grid>
-                <Grid item={true} className="nabi-margin-center">
+                <Grid item={true} xs={12} className="nabi-margin-center">
                   <h1
                     /* tslint:disable-next-line:max-line-length */
                     className="nabi-text-mediumbold nabi-text-center nabi-jennasue-title nabi-color-nabi nabi-margin-top-small nabi-margin-bottom-small"
