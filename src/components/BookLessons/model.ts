@@ -1,6 +1,7 @@
 export interface BookLessonPackages {
   name: string;
-  lessonNumber: number;
+	lessonNumber: number;
+	value: string;
 }
 
 export interface BookLessonsPayload {
@@ -8,7 +9,17 @@ export interface BookLessonsPayload {
 	package: string;
 	paymentMethodId?: number;
 	paymentMethodCode?: string;
-	date?: string;
-	time?: string;
-	timezone?: string;
+}
+
+export interface BookLessonsData {
+	clientSecret?: string;
+	lessonRate?: number
+	lessonsPrice?: number;
+	paymentMethods?: any[]
+	placementFee?: number;
+	processingFee?: number;
+	subTotal?: number
+	total?: number;
+	freeTrial?: boolean;
+	virtuosoDiscount?: number;
 }

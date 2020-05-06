@@ -27,7 +27,7 @@ export namespace ApiEndpoints {
   export const backgroundCheck = "/v1/background-check-status/";
   export const applicationInstructors = "/v1/applications/";
   export const applicationList = "/v1/application-list/";
-  export const bookLessons = "/v1/booking-lessons/";
+  export const bookLessons = "/v1/confirm-booking/";
   export const bookLessonsData = "/v1/booking-data/";
   export const fetchMoreInstructor = "v1/instructors/?page=";
   export const fetchReferralInfo = "/v1/referral-info/";

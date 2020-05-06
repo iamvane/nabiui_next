@@ -88,7 +88,7 @@ export const ApplicationList = (props: Props) => {
           {props.applicationList.applications.length} result(s)
         </Typography>
         {props.applicationList.applications.map((item: Application, i: number) =>
-          <ApplicationCard key={i} application={item} isTrial={true/*props.applicationList.freeTrial*/} />
+          <ApplicationCard key={i} application={item} isTrial={props.applicationList.freeTrial} />
         )}
       </React.Fragment>}
     </div>

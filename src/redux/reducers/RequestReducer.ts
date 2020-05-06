@@ -7,6 +7,7 @@ import {
   RequestType
 } from "../models/RequestModel";
 import { RequestActions } from "../actions/RequestActionTypes";
+import { BookLessonsData } from '../../components/BookLessons/model';
 
 export default function requestsReducer(
   state: RequestState = defaultRequestState,
@@ -415,10 +416,18 @@ export default function requestsReducer(
       };
 
     case RequestActions.FETCH_BOOK_LESSONS_DATA_SUCCESS:
-      const { data: bookingRate } = action;
+      const { data: bookingData } = action;
       return {
         ...state,
-        bookingRate: bookingRate.lessonRate,
+        clientSecret: bookingData.clientSecret,
+        lessonRate: bookingData.lessonRate,
+        lessonsPrice: bookingData.lessonsPrice,
+        paymentMethods: bookingData.paymentMethods,
+        placementFee: bookingData.placementFee,
+        processingFee: bookingData.processingFee,
+        subTotal: bookingData.subTotal,
+        total: bookingData.total,
+        freeTrial: bookingData.freeTrial,
         actions: {
           ...state.actions,
           fetchBookLessonsData: {
@@ -440,6 +449,58 @@ export default function requestsReducer(
           fetchBookLessonsData: {
             isRequesting: false,
             error: fetchBookLessonsDataError
+          }
+        }
+      };
+
+
+    case RequestActions.CHOOSE_LESSON_PACKAGE:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          chooseLessonsPackage: {
+            ...state.actions.chooseLessonsPackage,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.CHOOSE_LESSON_PACKAGE_SUCCESS:
+      const { data: chooseLessonsData } = <APIActions.WithData<BookLessonsData>>action;
+      console.log(chooseLessonsData);
+      console.log('me')
+      return {
+        ...state,
+        clientSecret: chooseLessonsData.clientSecret,
+        lessonRate: chooseLessonsData.lessonRate,
+        lessonsPrice: chooseLessonsData.lessonsPrice,
+        paymentMethods: chooseLessonsData.paymentMethods,
+        placementFee: chooseLessonsData.placementFee,
+        processingFee: chooseLessonsData.processingFee,
+        subTotal: chooseLessonsData.subTotal,
+        total: chooseLessonsData.total,
+        freeTrial: chooseLessonsData.freeTrial,
+        virtuosoDiscount: chooseLessonsData.virtuosoDiscount,
+        actions: {
+          ...state.actions,
+          chooseLessonsPackage: {
+            ...state.actions.chooseLessonsPackage,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.CHOOSE_LESSON_PACKAGE_FAILURE:
+      const { error: chooseLessonsPackageError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          chooseLessonsPackage: {
+            isRequesting: false,
+            error: chooseLessonsPackageError,
           }
         }
       };

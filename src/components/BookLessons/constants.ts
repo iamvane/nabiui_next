@@ -10,14 +10,17 @@ export namespace BookLessonsComponent {
     {
       name: 'The Artist',
       lessonNumber: 4,
+      value: 'artist'
     },
     {
       name: 'The Maestro',
       lessonNumber: 8,
+      value: 'maestro'
     },
     {
       name: 'The Virtuoso',
       lessonNumber: 12,
+      value: 'virtuoso'
     }
   ];
 
@@ -40,7 +43,6 @@ export namespace BookLessonsComponent {
   export const packageCostPlaceholer = '{packageCost}';
   export const packageCost = '${packageCost}';
 
-  export const placementFee = 12.00;
   export const processingFee = .029;
 
   export enum BookingSummary {
@@ -52,6 +54,8 @@ export namespace BookLessonsComponent {
     FreeLessonCost = 0.00,
     PlacementFee = ' Placement Fee',
     ProcessingFee = 'Processing Fee',
-    Total = 'Total:'
+    Total = 'Total:',
+    SubTotal = 'Sub Total',
+    VirtuosoDiscount = 'Virtuoso Discount'
   }
 }

@@ -53,12 +53,7 @@ const StripePaymentForm = (props: any) => {
       setProcessing(true);
     }
 
-    // const payload = await stripe.createPaymentMethod({
-    //   type: 'card',
-    //   card: elements.getElement(CardElement)
-    // });
-
-    stripe.confirmCardPayment("seti_1Gc0SxDzPkkZe0Mke9Aq1Tga_secret_HAL9dKFTDyzISI12TBe9ibxGwaofq36", {
+    stripe.confirmCardSetup(props.clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
       }
@@ -69,16 +64,18 @@ const StripePaymentForm = (props: any) => {
         // Show error to your customer (e.g., insufficient funds)
         console.log(result.error.message);
       } else {
+        // props.submitPayment(stripeToken)
         // setPaymentMethod(result.paymentMethod);
+        props.submitPayment(result.setupIntent.payment_method)
         console.log(result);
         // The payment has been processed!
-        if (result.paymentIntent.status === 'succeeded') {
+        // if (result.paymentIntent.status === 'succeeded') {
           // Show a success message to your customer
           // There's a risk of the customer closing the window before callback
           // execution. Set up a webhook or plugin to listen for the
           // payment_intent.succeeded event that handles any business critical
           // post-payment actions.
-        }
+        // }
       }
     });
   };

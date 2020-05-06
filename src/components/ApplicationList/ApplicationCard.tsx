@@ -110,8 +110,6 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
             )}
           </Typography>
           <Link href={
-              props.isTrial ?
-              `${Routes.ScheduleTrial}?application_id=${applicationId}`:
               `${Routes.BookLessons}/${applicationId}`
             }
           >
