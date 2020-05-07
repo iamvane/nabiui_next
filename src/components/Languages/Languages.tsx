@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import Done from '@material-ui/icons/Done';
 import Add from '@material-ui/icons/Add';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 import { languages } from '../../../assets/data/languages';
 import SectionTitle from '../common/SectionTitle';

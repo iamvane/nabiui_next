@@ -41,6 +41,10 @@ import Qualification from '../Qualifications/Qualifications';
 import JobPreferences from '../JobPreferences/JobPreferences';
 import Languages from '../Languages/Languages';
 import { JobPreferencesType } from '../ProfileBuilder/models';
+import { AvailabilityComponent } from '../Availability/constants';
+import { placeForLessonsOptions } from '../PlaceForLessons/constants';
+import { qualificationsOptions, } from "../Qualifications/constants"
+
 
 interface StateProps {
   user: UserType;
@@ -62,6 +66,7 @@ interface State extends
   name: string;
   language: string;
   skillLevel: SkillLevel;
+  availability: AvailabilityType;
   fields: any;
 }
 
@@ -82,6 +87,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
       language: '',
       instruments: [],
       languages: [],
+      availability: AvailabilityComponent.availability,
       mins30: 0,
       mins45: 0,
       mins60: 0,
@@ -108,18 +114,59 @@ export class JobPreferencesStep extends React.Component<Props, State> {
       youngChildrenExperience: false,
       repertoireSelection: false,
       instrument: '',
-      skillLevel: '' as SkillLevel
+      skillLevel: '' as SkillLevel,
+      step: [1],
+      currentStep: 0,
+      continue: false,
+      continueStepBtnEnabled: {
+        instruments: false,
+        jobPreferences: false,
+        rates: false,
+        placeForLessons:false,
+        availability: false,
+        qualifications: false,
+        languages: false
+      },
+      jobPreferences: [
+        'instruments',
+        'jobPreferences',
+        'rates',
+        'placeForLessons',
+        'availability',
+        'qualifications',
+        'languages'
+      ]
     };
   }
 
   public async componentDidMount(): Promise<void> {
     await this.props.fetchUser();
     const profile = this.props.user.profile as InstructorType;
-
+    
     // set instruments state
     if (profile) {
       if (profile.instruments) {
-        this.setState({ instruments: profile.instruments });
+        this.setState({
+          instruments: profile.instruments
+        }, () => {
+          if (this.state.instruments.length > 0) {
+            const {
+              step,
+              continueStepBtnEnabled
+            } = this.state;
+
+            this.setState({
+              step: [
+                ...step,
+              ],
+              currentStep: 0,
+              continueStepBtnEnabled: {
+                ...continueStepBtnEnabled,
+                instruments: true
+              }
+            });
+          }
+        });
       }
 
       // set lessonSize state
@@ -128,16 +175,32 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           oneStudent: profile.lessonSize.oneStudent,
           smallGroups: profile.lessonSize.smallGroups,
           largeGroups: profile.lessonSize.largeGroups,
-        });
-      }
-
-      // set ageGroup state
-      if (profile.ageGroup) {
-        this.setState({
-          children: profile.ageGroup.children,
-          teens: profile.ageGroup.teens,
-          adults: profile.ageGroup.adults,
-          seniors: profile.ageGroup.seniors,
+        }, () => {
+          // set ageGroup state
+          if (profile.ageGroup) {
+            this.setState({
+              children: profile.ageGroup.children,
+              teens: profile.ageGroup.teens,
+              adults: profile.ageGroup.adults,
+              seniors: profile.ageGroup.seniors,
+            }, () => {
+              if (this.confirmSelectedJobPreferences(this.state)) {
+                const {
+                  step,
+                  continueStepBtnEnabled
+                } = this.state;
+    
+                this.setState({
+                  step: [...step, 2],
+                  currentStep: 1,
+                  continueStepBtnEnabled: {
+                    ...continueStepBtnEnabled,
+                    jobPreferences: true
+                  }
+                });
+              }
+            });
+          }
         });
       }
 
@@ -148,6 +211,22 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           mins45: profile.rates.mins45,
           mins60: profile.rates.mins60,
           mins90: profile.rates.mins90,
+        }, () => {
+          if (this.confirmSelectedRates(this.state)) {
+            const {
+              step,
+              continueStepBtnEnabled
+            } = this.state;
+
+            this.setState({
+              step: [...step, 3],
+              currentStep: 2,
+              continueStepBtnEnabled: {
+                ...continueStepBtnEnabled,
+                rates: true
+              }
+            });
+          }
         });
       }
 
@@ -157,6 +236,22 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           home: profile.placeForLessons.home,
           studio: profile.placeForLessons.studio,
           online: profile.placeForLessons.online
+        }, () => {
+          if (this.confirmSelectedPlaces(this.state)) {
+            const {
+              step,
+              continueStepBtnEnabled
+            } = this.state;
+
+            this.setState({
+              step: [...step, 4],
+              currentStep: 3,
+              continueStepBtnEnabled: {
+                ...continueStepBtnEnabled,
+                placeForLessons: true
+              }
+            });
+          }
         });
       }
 
@@ -173,34 +268,52 @@ export class JobPreferencesStep extends React.Component<Props, State> {
       // set availability state
       if (profile.availability) {
         this.setState({
-          mon8to10: profile.availability.mon8to10,
-          mon10to12: profile.availability.mon10to12,
-          mon12to3: profile.availability.mon12to3,
-          mon3to6: profile.availability.mon3to6,
-          tue8to10: profile.availability.tue8to10,
-          tue10to12: profile.availability.tue10to12,
-          tue12to3: profile.availability.tue12to3,
-          tue3to6: profile.availability.tue3to6,
-          wed8to10: profile.availability.wed8to10,
-          wed10to12: profile.availability.wed10to12,
-          wed12to3: profile.availability.wed12to3,
-          wed3to6: profile.availability.wed3to6,
-          thu8to10: profile.availability.thu8to10,
-          thu10to12: profile.availability.thu10to12,
-          thu12to3: profile.availability.thu12to3,
-          thu3to6: profile.availability.thu3to6,
-          fri8to10: profile.availability.fri8to10,
-          fri10to12: profile.availability.fri10to12,
-          fri12to3: profile.availability.fri12to3,
-          fri3to6: profile.availability.fri3to6,
-          sat8to10: profile.availability.sat8to10,
-          sat10to12: profile.availability.sat10to12,
-          sat12to3: profile.availability.sat12to3,
-          sat3to6: profile.availability.sat3to6,
-          sun8to10: profile.availability.sun8to10,
-          sun10to12: profile.availability.sun10to12,
-          sun12to3: profile.availability.sun12to3,
-          sun3to6: profile.availability.sun3to6
+          availability: {
+            mon8to10: profile.availability.mon8to10,
+            mon10to12: profile.availability.mon10to12,
+            mon12to3: profile.availability.mon12to3,
+            mon3to6: profile.availability.mon3to6,
+            tue8to10: profile.availability.tue8to10,
+            tue10to12: profile.availability.tue10to12,
+            tue12to3: profile.availability.tue12to3,
+            tue3to6: profile.availability.tue3to6,
+            wed8to10: profile.availability.wed8to10,
+            wed10to12: profile.availability.wed10to12,
+            wed12to3: profile.availability.wed12to3,
+            wed3to6: profile.availability.wed3to6,
+            thu8to10: profile.availability.thu8to10,
+            thu10to12: profile.availability.thu10to12,
+            thu12to3: profile.availability.thu12to3,
+            thu3to6: profile.availability.thu3to6,
+            fri8to10: profile.availability.fri8to10,
+            fri10to12: profile.availability.fri10to12,
+            fri12to3: profile.availability.fri12to3,
+            fri3to6: profile.availability.fri3to6,
+            sat8to10: profile.availability.sat8to10,
+            sat10to12: profile.availability.sat10to12,
+            sat12to3: profile.availability.sat12to3,
+            sat3to6: profile.availability.sat3to6,
+            sun8to10: profile.availability.sun8to10,
+            sun10to12: profile.availability.sun10to12,
+            sun12to3: profile.availability.sun12to3,
+            sun3to6: profile.availability.sun3to6
+          }
+        }, () => {
+          if (this.confirmSelectedAvailability(this.state)) {
+            const {
+              step,
+              continueStepBtnEnabled
+            } = this.state;
+
+            this.setState({
+              step: [...step, 5],
+              currentStep: 4,
+              continueStepBtnEnabled: {
+                ...continueStepBtnEnabled,
+                availability: true
+              }
+            });
+          }
         });
       }
 
@@ -217,12 +330,46 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           musicTheory: profile.qualifications.musicTheory,
           youngChildrenExperience: profile.qualifications.youngChildrenExperience,
           repertoireSelection: profile.qualifications.repertoireSelection
+        }, () => {
+          if (this.confirmSelectedQualifications(this.state)) {
+            const {
+              step,
+              continueStepBtnEnabled
+            } = this.state;
+
+            this.setState({
+              step: [...step, 6],
+              currentStep: 5,
+              continueStepBtnEnabled: {
+                ...continueStepBtnEnabled,
+                qualifications: true
+              }
+            });
+          }
         });
       }
 
       // set languages state
       if (profile.languages) {
-        this.setState({ languages: profile.languages });
+        this.setState({
+          languages: profile.languages
+        }, () => {
+          if (this.state.languages.length) {
+            const {
+              step,
+              continueStepBtnEnabled
+            } = this.state;
+
+            this.setState({
+              step: [...step, 7],
+              currentStep: 6,
+              continueStepBtnEnabled: {
+                ...continueStepBtnEnabled,
+                languages: true
+              }
+            });
+          }
+        });
       }
     }
   }
@@ -231,10 +378,59 @@ export class JobPreferencesStep extends React.Component<Props, State> {
     const target = event.currentTarget;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+    const checkAvailability = Object.keys(this.state.availability).some((available) => {
+      return name === available;
+    });
 
     this.setState({
       ...this.state,
+      ...(checkAvailability && { availability: {
+          ...this.state.availability,
+          [name]: value
+        }
+      }),
       [name]: value,
+    }, () => {
+      this.setState({
+        currentStep: 1,
+        continueStepBtnEnabled: {
+          ...this.state.continueStepBtnEnabled,
+          jobPreferences: this.confirmSelectedJobPreferences(this.state)
+        }
+      }, () => {
+        
+        this.setState({
+          currentStep: 2,
+          continueStepBtnEnabled: {
+            ...this.state.continueStepBtnEnabled,
+            rates: this.confirmSelectedRates(this.state)
+          }
+        }, () => {
+          this.setState({
+            currentStep: 3,
+            continueStepBtnEnabled: {
+              ...this.state.continueStepBtnEnabled,
+              placeForLessons: this.confirmSelectedPlaces(this.state)
+            }
+          }, () => {
+            this.setState({
+              currentStep: 4,
+              continueStepBtnEnabled: {
+                ...this.state.continueStepBtnEnabled,
+                availability: this.confirmSelectedAvailability(this.state)
+              }
+            }, () => {
+              this.setState({
+                currentStep: 5,
+                continueStepBtnEnabled: {
+                  ...this.state.continueStepBtnEnabled,
+                  qualifications: this.confirmSelectedQualifications(this.state)
+                }
+              });
+            });
+          });
+        });
+      });
     });
   }
 
@@ -250,8 +446,73 @@ export class JobPreferencesStep extends React.Component<Props, State> {
         instruments: [...this.state.instruments, instrumentToAdd],
         instrument: '',
         skillLevel: SkillLevel.beginner
+      }, () => {
+        this.setState({
+          currentStep: 0,
+          continueStepBtnEnabled: {
+            ...this.state.continueStepBtnEnabled,
+            instruments: true
+          }
+        })
       });
     }
+  }
+
+  confirmSelectedJobPreferences = (state: State) => {
+    const numberOfStudentsPreferences = ['oneStudent', 'smallGroups', 'largeGroups'];
+    const ageGroupPreferences = ['children', 'teens', 'adults', 'seniors'];
+    const selectNumberOfStudents = numberOfStudentsPreferences.some((preference) => {
+      if (state[preference]) {
+        return true;
+      }
+    });
+    const selectAgeGroup = ageGroupPreferences.some((preference) => {
+      if (state[preference]) {
+        return true;
+      }
+    });
+    return selectNumberOfStudents && selectAgeGroup ? true : false;
+  }
+
+  confirmSelectedRates = (state: State) => {
+    const ratesListContent = [
+      'mins30',
+      'mins45',
+      'mins60',
+      'mins90',
+    ];
+
+    return ratesListContent.every((rate) => {
+      if (state[rate]) {
+        return true
+      }
+    });
+  }
+
+  confirmSelectedPlaces = (state: State) => {
+    return Object.keys(placeForLessonsOptions).some((place) => {
+      const isPlace = `${place.charAt(0).toLowerCase()}${place.substring(1)}`;
+      if (state[isPlace]) {
+        return true;
+      }
+    });
+  }
+
+  confirmSelectedAvailability = (state: State) => {
+    return Object.keys(state.availability).some((available) => {
+      if (state.availability[available]) {
+        return true
+      }
+    });
+  }
+
+  confirmSelectedQualifications = (state: State) => {
+    return Object.keys(qualificationsOptions).some((qualification) => {
+      const selectedQualification = `${qualification.charAt(0).toLowerCase()}${qualification.substring(1)}`;
+      if (state[selectedQualification]) {
+        return true;
+      }
+    });
   }
 
   public deleteInstrument = (instrumentName: string) => {
@@ -265,7 +526,18 @@ export class JobPreferencesStep extends React.Component<Props, State> {
     if (this.state.languages.find(t => t === this.state.language)) {
       return;
     } else if (this.state.language) {
-      this.setState({ languages: [...this.state.languages, this.state.language] });
+      
+      this.setState({
+        languages: [...this.state.languages, this.state.language]
+      }, () => {
+        this.setState({
+          currentStep: 6,
+          continueStepBtnEnabled: {
+            ...this.state.continueStepBtnEnabled,
+            languages: true
+          }
+        });
+      });
     }
   }
 
@@ -278,7 +550,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
   public renderAvailabilityCheckbox = (stateName: string): JSX.Element => {
     return (
       <Checkbox
-        checked={this.state[stateName]}
+        checked={this.state.availability[stateName]}
         name={stateName}
         onChange={this.handleChange}
       />
@@ -325,43 +597,7 @@ export class JobPreferencesStep extends React.Component<Props, State> {
       mins90: this.state.mins90,
     };
 
-    const availability: AvailabilityType = {
-      mon8to10: this.state.mon8to10,
-      mon10to12: this.state.mon10to12,
-      mon12to3: this.state.mon12to3,
-      mon3to6: this.state.mon3to6,
-      mon6to9: this.state.mon6to9,
-      tue8to10: this.state.tue8to10,
-      tue10to12: this.state.tue10to12,
-      tue12to3: this.state.tue12to3,
-      tue3to6: this.state.tue3to6,
-      tue6to9: this.state.tue6to9,
-      wed8to10: this.state.wed8to10,
-      wed10to12: this.state.wed10to12,
-      wed12to3: this.state.wed12to3,
-      wed3to6: this.state.wed3to6,
-      wed6to9: this.state.wed6to9,
-      thu8to10: this.state.thu8to10,
-      thu10to12: this.state.thu10to12,
-      thu12to3: this.state.thu12to3,
-      thu3to6: this.state.thu3to6,
-      thu6to9: this.state.thu6to9,
-      fri8to10: this.state.fri8to10,
-      fri10to12: this.state.fri10to12,
-      fri12to3: this.state.fri12to3,
-      fri3to6: this.state.fri3to6,
-      fri6to9: this.state.fri6to9,
-      sat8to10: this.state.sat8to10,
-      sat10to12: this.state.sat10to12,
-      sat12to3: this.state.sat12to3,
-      sat3to6: this.state.sat3to6,
-      sat6to9: this.state.sat6to9,
-      sun8to10: this.state.sun8to10,
-      sun10to12: this.state.sun10to12,
-      sun12to3: this.state.sun12to3,
-      sun3to6: this.state.sun3to6,
-      sun6to9: this.state.sun6to9,
-    };
+    const availability: AvailabilityType = this.state.availability;
 
     const jobPreferences: InstructorType = {
       rates,
@@ -376,11 +612,33 @@ export class JobPreferencesStep extends React.Component<Props, State> {
       languages: this.state.languages,
     };
 
-    await this.props.buildJobPreferences(jobPreferences);
-    Router.push(Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education);
+    const {
+      step,
+    } = this.state;
+    if (step.length < 7) {
+      this.setState({
+        step: [
+          ...step,
+          step[step.length - 1] + 1
+        ]
+      });
+    } else {
+      await this.props.buildJobPreferences(jobPreferences);
+      Router.push(Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education);
+    }
   }
 
   public render(): JSX.Element {
+    const {
+      jobPreferences,
+      step,
+      continueStepBtnEnabled,
+      instruments,
+      languages,
+      currentStep
+    } = this.state;
+    const preference = jobPreferences[currentStep];
+
     return (
       <div>
         {this.props.isFetchingUser ?
@@ -388,85 +646,106 @@ export class JobPreferencesStep extends React.Component<Props, State> {
           <CircularProgress />
         </div> :
         <div>
-          <div className="nabi-margin-bottom-large">
-            <Instruments
-              instruments={this.state.instruments.length > 0 ? this.state.instruments : undefined}
-              instrument={this.state.instrument}
-              skillLevel={this.state.skillLevel}
-              handleChange={this.handleChange}
-              addInstrument={this.addInstrument}
-              deleteInstrument={this.deleteInstrument}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <JobPreferences
-              handleChange={this.handleChange}
-              oneStudent={this.state.oneStudent}
-              smallGroups={this.state.smallGroups}
-              largeGroups={this.state.largeGroups}
-              children={this.state.children}
-              teens={this.state.teens}
-              adults={this.state.adults}
-              seniors={this.state.seniors}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <Rates
-              handleChange={this.handleChange}
-              mins30={this.state.mins30}
-              mins45={this.state.mins45}
-              mins60={this.state.mins60}
-              mins90={this.state.mins90}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <PlaceForLessonsForm
-              handleChange={this.handleChange}
-              home={this.state.home}
-              studio={this.state.studio}
-              online={this.state.online}
-              distance={this.state.distance}
-              studioAddress={this.state.studioAddress}
-              studioAddressError={this.state.fields.studioAddress.error}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <Availability
-              renderCheckbox={this.renderAvailabilityCheckbox}
-              handleChange={this.handleChange}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <Qualification
-              handleChange={this.handleChange}
-              certifiedTeacher={this.state.certifiedTeacher}
-              musicTherapy={this.state.musicTherapy}
-              musicProduction={this.state.musicProduction}
-              earTraining={this.state.earTraining}
-              conducting={this.state.conducting}
-              virtuosoRecognition={this.state.virtuosoRecognition}
-              performance={this.state.performance}
-              musicTheory={this.state.musicTheory}
-              youngChildrenExperience={this.state.youngChildrenExperience}
-              repertoireSelection={this.state.repertoireSelection}
-            />
-          </div>
+          {(step.includes(1) || (instruments.length > 0)) && (
+            <div className="nabi-margin-bottom-large">
+              <Instruments
+                instruments={this.state.instruments.length > 0 ? this.state.instruments : undefined}
+                instrument={this.state.instrument}
+                skillLevel={this.state.skillLevel}
+                handleChange={this.handleChange}
+                addInstrument={this.addInstrument}
+                deleteInstrument={this.deleteInstrument}
+              />
+            </div>
+          )}
+          {(step.includes(2) || this.confirmSelectedJobPreferences(this.state)) && (
+              <div className="nabi-margin-bottom-large">
+                <JobPreferences
+                  handleChange={this.handleChange}
+                  oneStudent={this.state.oneStudent}
+                  smallGroups={this.state.smallGroups}
+                  largeGroups={this.state.largeGroups}
+                  children={this.state.children}
+                  teens={this.state.teens}
+                  adults={this.state.adults}
+                  seniors={this.state.seniors}
+                />
+              </div>
+          )}
 
-          <Languages
-            languages={this.state.languages}
-            handleChangeLanguage={this.handleChange}
-            addLanguage={this.addLanguage}
-            language={this.state.language}
-            deleteLanguage={this.deleteLanguage}
-          />
+          {(step.includes(3) || this.confirmSelectedRates(this.state)) && (
+            <div className="nabi-margin-bottom-large">
+              <Rates
+                handleChange={this.handleChange}
+                mins30={this.state.mins30}
+                mins45={this.state.mins45}
+                mins60={this.state.mins60}
+                mins90={this.state.mins90}
+              />
+            </div>
+          )}
+
+          {(step.includes(4) || this.confirmSelectedPlaces(this.state)) && (
+            <div className="nabi-margin-bottom-large">
+              <PlaceForLessonsForm
+                handleChange={this.handleChange}
+                home={this.state.home}
+                studio={this.state.studio}
+                online={this.state.online}
+                distance={this.state.distance}
+                studioAddress={this.state.studioAddress}
+                studioAddressError={this.state.fields.studioAddress.error}
+              />
+            </div>
+          )}
+
+          {(step.includes(5) || this.confirmSelectedAvailability(this.state))  && (
+            <div className="nabi-margin-bottom-large">
+              <Availability
+                renderCheckbox={this.renderAvailabilityCheckbox}
+                handleChange={this.handleChange}
+                availability={this.state.availability}
+              />
+            </div>
+          )}
+
+          {(step.includes(6) || this.confirmSelectedQualifications(this.state)) && (
+            <div className="nabi-margin-bottom-large">
+              <Qualification
+                handleChange={this.handleChange}
+                certifiedTeacher={this.state.certifiedTeacher}
+                musicTherapy={this.state.musicTherapy}
+                musicProduction={this.state.musicProduction}
+                earTraining={this.state.earTraining}
+                conducting={this.state.conducting}
+                virtuosoRecognition={this.state.virtuosoRecognition}
+                performance={this.state.performance}
+                musicTheory={this.state.musicTheory}
+                youngChildrenExperience={this.state.youngChildrenExperience}
+                repertoireSelection={this.state.repertoireSelection}
+              />
+            </div>
+          )}
+
+          {(step.includes(7) || languages.length > 0) && (
+            <Languages
+              languages={this.state.languages}
+              handleChangeLanguage={this.handleChange}
+              addLanguage={this.addLanguage}
+              language={this.state.language}
+              deleteLanguage={this.deleteLanguage}
+            />
+          )}
         </div>}
         <StepperButtons
           // nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
           backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
           handleNext={this.handleNext}
           icon={<ArrowForward />}
+          isNextDisabled={!continueStepBtnEnabled[preference] ? true : false}
           isRequesting={this.props.isRequesting || this.props.isFetchingUser}
           errors={this.props.buildJobPreferencesError}
+          // continue={this.state.continue}
         />
       </div>
     );
@@ -503,3 +782,12 @@ function mapDispatchToProps(
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobPreferencesStep);
+
+
+// first template in array
+// continue button is grey
+// save details
+// continue button is enabled
+// click continue
+// add next template to array
+// continue button is greyed

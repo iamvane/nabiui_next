@@ -28,6 +28,7 @@ interface Props {
   buttonText?: string;
   divider?: boolean;
   icon?: any;
+  continue?: boolean;
   isNextDisabled?: boolean;
   hideDesktopButton?: boolean;
   handleNext?: (e: any) => void;
@@ -153,7 +154,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
                     {props.buttonText}
                     <span className="nabi-margin-left-xsmall nabi-display-flex">{props.icon}</span>
                   </Button>
-              )
+            )
           }
         </div>
       </div>
