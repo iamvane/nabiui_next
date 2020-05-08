@@ -7,7 +7,7 @@ import SnackBar from '../common/SnackBar';
 import { AnnouncementConstants } from '../common/constants/Announcement';
 import CommonStepper from '../CommonStepper/CommonStepper';
 import AccountInfo from '../AccountInfo/AccountInfo';
-import RequestStep from '../Request/RequestStep';
+import RequestStep from '../Request/ReqStep';
 import { Routes } from '../common/constants/Routes';
 import PrivateRoute from '../Auth/PrivateRoutes';
 import {

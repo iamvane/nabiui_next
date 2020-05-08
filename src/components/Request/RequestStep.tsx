@@ -125,6 +125,10 @@ export class Request extends React.Component<Props, State>  {
     if (prevProps.requests.length !== this.props.requests.length) {
       this.setRequests();
     }
+
+    if (JSON.stringify(prevProps.requests) !== JSON.stringify(this.props.requests)) {
+      this.setRequests();
+    }
     if (prevProps.request.id !== this.props.request.id) {
       this.setState({
         showSnackbar: !this.state.showSnackbar,
