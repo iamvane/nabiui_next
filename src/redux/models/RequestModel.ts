@@ -57,6 +57,7 @@ export interface RequestState extends BookLessonsData {
     bookLessons: ActionStatusWithMessage;
     fetchBookLessonsData: ActionStatus;
     chooseLessonsPackage: ActionStatus;
+    scheduleLessons: ActionStatusWithMessage;
   };
 }
 
@@ -134,6 +135,11 @@ export const defaultRequestState: RequestState = {
     chooseLessonsPackage: {
       isRequesting: false,
       error: '',
+    },
+    scheduleLessons: {
+      isRequesting: false,
+      error: '',
+      message: ''
     }
   }
 };

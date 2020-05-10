@@ -35,4 +35,5 @@ export namespace ApiEndpoints {
   export const dashboard = "/v1/dashboard/";
   export const offers = "/v1/offers-active/";
   export const gradeLesson = "/v1/grade-lesson/"
+  export const scheduleLessons = "/v1/lessons/"
 }

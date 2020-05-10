@@ -20,6 +20,7 @@ import {
   Icon,
   Radio,
   RadioGroup,
+  TextField,
   Typography,
   Tooltip
 } from '@material-ui/core';
@@ -28,7 +29,8 @@ import { StoreState } from '../../redux/reducers/store';
 import {
   bookLessons,
   fetchBookLessonsData,
-  chooseLessonPackage
+  chooseLessonPackage,
+  scheduleLessons
 } from "../../redux/actions/RequestActions";
 import { Routes } from '../common/constants/Routes';
 import { CommonConstants } from '../common/constants/common';
@@ -40,10 +42,12 @@ import { BookLessonsComponent } from './constants';
 import {
   BookLessonPackages,
   BookLessonsPayload,
-  BookLessonsData
+  BookLessonsData,
+  LessonType
 } from './model';
 import StripeElementsWrapper from "../PaymentForm/StripeElementsWrapper";
 import StripePaymentForm from "../PaymentForm/StripePaymentForm";
+import ScheduleLessons from './ScheduleLessons';
 
 interface StateProps extends BookLessonsData {
   bookLessonsRequesting: boolean;
@@ -53,12 +57,16 @@ interface StateProps extends BookLessonsData {
   bookLessonsDataError: string;
   chooseLessonPackageRequesting: boolean;
   chooseLessonPackageError: string;
+  scheduleLessonsRequesting: boolean;
+  scheduleLessonsError: string;
+  scheduleLessonsMessage: string;
 }
 
 interface DispatchProps {
   bookLessons: (data: BookLessonsPayload) => void;
   fetchBookLessonsData: (id: number) => void;
   chooseLessonPackage: (packageName: string, applicationId: number) => void;
+  scheduleLessons: (data: Partial<LessonType>) => void;
 }
 
 interface OwnProps { }
@@ -77,7 +85,6 @@ export const BookLessons = (props: Props) => {
     lessonNumber: BookLessonsComponent.bookLessonPackages[0].lessonNumber,
     value: BookLessonsComponent.bookLessonPackages[0].value
   });
-  const [striperError, setStripeError] = React.useState('');
 
   const router = useRouter();
   const applicationId = Number(router.query.id);
@@ -123,6 +130,17 @@ export const BookLessons = (props: Props) => {
     await props.bookLessons(params);
   }
 
+  const scheduleLessons = async (data: Partial<LessonType>) => {
+    const params: Partial<LessonType> = {
+      bookingId: applicationId,
+      date: data.date,
+      time: data.time,
+      timezone: data.timezone
+    }
+
+    await props.scheduleLessons(params);
+  }
+
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
       <Head>
@@ -134,10 +152,7 @@ export const BookLessons = (props: Props) => {
       {props.bookLessonsDataRequesting || props.chooseLessonPackageRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
         <div className="nabi-section nabi-background-white">
           {props.bookLessonsMessage ?
-            <React.Fragment>
-            <Typography className="nabi-margin-bottom-small">{BookLessonsComponent.bookingConfirmation}</Typography>
-            <Button variant="contained" color="primary">{BookLessonsComponent.scheduleLessonButton}</Button>
-            </React.Fragment>
+           <ScheduleLessons scheduleLessons={scheduleLessons} />
             :
             <React.Fragment>
               {props.freeTrial ?
@@ -364,6 +379,11 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
       chooseLessonsPackage: {
         isRequesting: chooseLessonPackageRequesting,
         error: chooseLessonPackageError,
+      },
+      scheduleLessons: {
+        isRequesting: scheduleLessonsRequesting,
+        error: scheduleLessonsError,
+        message: scheduleLessonsMessage
       }
     }
   } = state.requests;
@@ -385,7 +405,10 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     freeTrial,
     chooseLessonPackageRequesting,
     chooseLessonPackageError,
-    virtuosoDiscount
+    virtuosoDiscount,
+    scheduleLessonsRequesting,
+    scheduleLessonsError,
+    scheduleLessonsMessage
   }
 };
 
@@ -394,7 +417,8 @@ const mapDispatchToProps = (
 ): DispatchProps => ({
   bookLessons: (data: BookLessonsPayload) => dispatch(bookLessons(data)),
   fetchBookLessonsData: (id: number) => dispatch(fetchBookLessonsData(id)),
-  chooseLessonPackage: (packageName: string, applicationId: number) => dispatch(chooseLessonPackage(packageName, applicationId))
+  chooseLessonPackage: (packageName: string, applicationId: number) => dispatch(chooseLessonPackage(packageName, applicationId)),
+  scheduleLessons: (data: Partial<LessonType>) => dispatch(scheduleLessons(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookLessons);

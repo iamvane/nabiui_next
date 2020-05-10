@@ -43,7 +43,9 @@ const StripePaymentForm = (props: Props) => {
   const [showSnackbar, setShowSnackbar] = React.useState(false);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
 
     if (!stripe || !elements) {
       return;

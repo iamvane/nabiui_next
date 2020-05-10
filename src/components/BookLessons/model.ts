@@ -23,3 +23,19 @@ export interface BookLessonsData {
 	freeTrial?: boolean;
 	virtuosoDiscount?: number;
 }
+
+export enum LessonStatusType {
+	Scheduled = 'scheduled',
+	Missed = 'missed',
+	Conplete = 'complete'
+}
+
+export interface LessonType {
+	bookingId: number;
+	date: string;
+	time: string;
+	timezone: string;
+	status?: LessonStatusType;
+	grade?: number;
+	comment?: string;
+}

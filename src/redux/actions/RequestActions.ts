@@ -2,20 +2,21 @@ import { Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
 
-import { BookLessonsPayload } from '../../components/BookLessons/model';
 import { getError } from '../../utils/handleApiErros';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import { defaultApiError } from '../../constants/apiConstants';
 import { getCookie } from '../../utils/cookies';
 import { RequestType } from '../models/RequestModel';
-
+import {
+  BookLessonsPayload,
+  LessonType
+} from '../../components/BookLessons/model';
 import { RequestActions } from './RequestActionTypes';
 import {
   requestAction,
   withDataAction,
   withErrorAction,
 } from './actions';
-import { BookLessonsData } from '../../components/BookLessons/model';
 
 let errorMessage = defaultApiError;
 const authToken = getCookie('token');
@@ -238,5 +239,27 @@ export const chooseLessonPackage = (packageName: string, applicationId: number):
     }
 
     dispatch(withErrorAction(RequestActions.CHOOSE_LESSON_PACKAGE_FAILURE, errorMessage));
+  }
+};
+
+export const scheduleLessons = (data: Partial<LessonType>): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.SCHEDULE_LESSONS));
+  try {
+    const response = await axios.post(
+      ApiEndpoints.scheduleLessons,
+      data,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+    dispatch(withDataAction(RequestActions.SCHEDULE_LESSONS_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.SHCEDULE_LESSONS_FAILURE, errorMessage));
   }
 };
