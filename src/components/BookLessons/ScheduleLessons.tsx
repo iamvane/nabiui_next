@@ -11,11 +11,13 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import { checkErrors } from "../../utils/checkErrors";
 import { ScheduleLessonsComponent } from './constants';
 import { LessonType } from './model';
 
 interface Props {
   scheduleLessons: (data: Partial<LessonType>) => void;
+  bookingId: number;
 }
 
 
@@ -30,12 +32,20 @@ export const ScheduleLessons = (props: Props) => {
       event.preventDefault();
     }
 
-    const scheduleLessonsData = {
+    let scheduleLessonsData: Partial<LessonType> = {
       date: lessonDate,
       time: lessonTime,
       timezone
     }
-    await props.scheduleLessons(scheduleLessonsData);
+    validate();
+
+    const isError = checkErrors(Object.values(formErrors));
+
+    if (!isError) {
+      scheduleLessonsData.bookingId = props.bookingId;
+
+      await props.scheduleLessons(scheduleLessonsData);
+    }
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

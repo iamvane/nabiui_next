@@ -59,6 +59,7 @@ export interface RequestState extends BookLessonsData {
     chooseLessonsPackage: ActionStatus;
     scheduleLessons: ActionStatusWithMessage;
   };
+  bookingId: number;
 }
 
 export const defaultRequestState: RequestState = {
@@ -88,6 +89,7 @@ export const defaultRequestState: RequestState = {
     applications: [],
     freeTrial: false
   },
+  bookingId: 0,
   actions: {
     createRequest: {
       isRequesting: false,

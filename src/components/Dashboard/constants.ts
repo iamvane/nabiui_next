@@ -32,7 +32,7 @@ export namespace InstructorDashboardComponent {
     'education',
     'qualifications',
     'music'
-  ]
+  ];
 
   export const missingFieldsDisplay = {
     firstName: {

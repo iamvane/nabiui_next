@@ -376,14 +376,15 @@ export default function requestsReducer(
       };
 
     case RequestActions.BOOK_LESSONS_SUCCESS:
-      const { data: bookLessonMessage } = <APIActions.WithData<{message: string}>>action;
+      const { data: bookLessonsData } = <APIActions.WithData<{message: string, booking_id: number}>>action;
       return {
         ...state,
+        bookingId: bookLessonsData.booking_id,
         actions: {
           ...state.actions,
           bookLessons: {
             ...state.actions.bookLessons,
-            message: bookLessonMessage.message,
+            message: bookLessonsData.message,
             isRequesting: false,
             error: ""
           }
@@ -469,8 +470,6 @@ export default function requestsReducer(
 
     case RequestActions.CHOOSE_LESSON_PACKAGE_SUCCESS:
       const { data: chooseLessonsData } = <APIActions.WithData<BookLessonsData>>action;
-      console.log(chooseLessonsData);
-      console.log('me')
       return {
         ...state,
         clientSecret: chooseLessonsData.clientSecret,

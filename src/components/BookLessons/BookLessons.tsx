@@ -60,6 +60,7 @@ interface StateProps extends BookLessonsData {
   scheduleLessonsRequesting: boolean;
   scheduleLessonsError: string;
   scheduleLessonsMessage: string;
+  bookingId: number;
 }
 
 interface DispatchProps {
@@ -152,7 +153,7 @@ export const BookLessons = (props: Props) => {
       {props.bookLessonsDataRequesting || props.chooseLessonPackageRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
         <div className="nabi-section nabi-background-white">
           {props.bookLessonsMessage ?
-           <ScheduleLessons scheduleLessons={scheduleLessons} />
+           <ScheduleLessons scheduleLessons={scheduleLessons} bookingId={props.bookingId} />
             :
             <React.Fragment>
               {props.freeTrial ?
@@ -366,6 +367,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     total,
     freeTrial,
     virtuosoDiscount,
+    bookingId,
     actions: {
       bookLessons: {
         isRequesting: bookLessonsRequesting,
@@ -408,7 +410,8 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     virtuosoDiscount,
     scheduleLessonsRequesting,
     scheduleLessonsError,
-    scheduleLessonsMessage
+    scheduleLessonsMessage,
+    bookingId
   }
 };
 
