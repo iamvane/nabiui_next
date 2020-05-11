@@ -75,7 +75,6 @@ interface Props extends
     });
     const [performRedirect, setPerformRedirect] = React.useState(false);
     const [showSections, setShowSections] = React.useState([]);
-    const [activeSections, setActiveSections] = React.useState([]);
     const [disableContinue, setDisableContinue] = React.useState(true);
 
     React.useEffect(() => {
