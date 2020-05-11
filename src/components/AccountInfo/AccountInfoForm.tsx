@@ -32,7 +32,6 @@ interface Props {
   user: UserType;
   accountInfo: AccountInfoType;
   errors: AccountInfoComponent.Errors;
-  hasImageUploader?: boolean;
   redirectUrl: string;
   handleChange: (event: React.FormEvent<{}>) => void;
   getLatLng: (lat: string, lng: string) => void;
@@ -55,7 +54,6 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
 
     return(
       <div>
-        {props.hasImageUploader &&
           <div className="nabi-margin-bottom-large">
             <div className="nabi-margin-bottom-small">
               <SectionTitle text={AccountInfoComponent.SectionTitles.Avatar} />
@@ -67,7 +65,6 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
               }}
             />
           </div>
-        }
 
         <div className={(props.showSections.includes('gender') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}>
           <SectionTitle text={AccountInfoComponent.SectionTitles.Gender} />

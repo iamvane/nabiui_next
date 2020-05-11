@@ -19,7 +19,6 @@ const ArrowForward = dynamic(() => import('@material-ui/icons/ArrowForward'), {
 });
 
 import { StoreState } from '../../redux/reducers/store';
-import { Role } from '../../constants/Roles';
 import {
   fetchUser,
   updateUser,
@@ -96,11 +95,6 @@ interface Props extends
       // if user data exists show all fields
       if (props.user.gender && props.user.avatar && props.user.location && props.user.isPhoneVerified) {
         setShowSections(['showAll'])
-        // if user data exists show all fields
-      } else if (props.user.role == Role.instructor) {
-        setShowSections(['gender'])
-      } else {
-        setShowSections(['avatar'])
       }
       // updates active section when avatar is chanegd
       if (props.updateAvatarMessage || props.user.avatar || props.user.isPhoneVerified) {
@@ -223,7 +217,6 @@ interface Props extends
           user={props.user}
           accountInfo={accountInfo}
           errors={errors}
-          hasImageUploader={props.hasImageUploader}
           redirectUrl={props.redirectUrl}
           handleChange={handleChange}
           getLatLng={getLatLng}
