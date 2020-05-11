@@ -91,7 +91,7 @@ export namespace InstructorDashboardComponent {
       label: 'Availability',
       url: '/job-preferences'
     },
-    qualification: {
+    qualifications: {
       label: 'Qualifications',
       url: '/job-preferences'
     },
