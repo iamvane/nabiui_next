@@ -2,7 +2,9 @@ import { VerificationChannel } from './models';
 
 export namespace AccountInfoComponent {
   export enum SectionTitles {
-    TellUs = 'Tell Us About Yourself',
+    Gender = 'Gender',
+    Avatar = 'Profile Image',
+    Location = 'Location'
   }
 
   export enum Labels {
@@ -24,7 +26,8 @@ export namespace AccountInfoComponent {
     MiddleName = 'middleName',
     Gender = 'gender',
     PhoneNumber = 'phoneNumber',
-    Token = 'token'
+    Token = 'token',
+    Location = 'location'
   }
 
   export const FieldNames = {
@@ -43,6 +46,8 @@ export namespace AccountInfoComponent {
     [FieldKey.Gender]?: string;
     [FieldKey.PhoneNumber]?: string;
     [FieldKey.Token]?: string;
+    [FieldKey.Location]?: string;
+
   }
 
   export const firstNameMinVal = 1;
@@ -84,6 +89,7 @@ export namespace AccountInfoComponent {
     PhoneNumberEmpty: 'Enter a valid phone number.',
     PhoneNumberNotVerified: 'Verify phone number.',
     PhoneMissingCountryCode: 'Select country code.',
+    [FieldKey.Location]: 'Enter a valid location.'
   };
 }
 

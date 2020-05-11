@@ -5,10 +5,6 @@ import {
   Action,
   Dispatch
 } from 'redux';
-import {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -23,13 +19,14 @@ const ArrowForward = dynamic(() => import('@material-ui/icons/ArrowForward'), {
 });
 
 import { StoreState } from '../../redux/reducers/store';
+import { Role } from '../../constants/Roles';
 import {
   fetchUser,
   updateUser,
+  changeAvatar
 } from '../../redux/actions/UserActions';
 import { UserType } from '../../redux/models/UserModel';
 import { Routes } from '../common/constants/Routes';
-import { validateNames } from '../../utils/formValidation';
 import { CommonStepperButtons } from '../CommonStepper/constants';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import AccountInfoForm  from './AccountInfoForm';
@@ -42,6 +39,7 @@ import {
 interface DispatchProps {
   fetchUser: () => void;
   updateUser: (user: Partial<AccountInfoType>) => void;
+  changeAvatar: (id: string, avatar: string) => void;
 }
 
 interface OwnProps {
@@ -53,6 +51,7 @@ interface StateProps {
   isRequestingFetch: boolean;
   isRequestingUpdate: boolean;
   errorUpdate: string;
+  updateAvatarMessage: string;
 }
 
 interface Props extends
@@ -63,205 +62,191 @@ interface Props extends
     redirectUrl: string;
   }
 
-interface State {
-  accountInfo: AccountInfoType;
-  verificationChannel: VerificationChannel;
-  isPhoneSet: boolean;
-  token: string;
-  errors: AccountInfoComponent.Errors;
-  performRedirect: boolean;
-  redirectToLogin: boolean;
-  initialized?: boolean;
-}
-
-export class AccountInfo extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      verificationChannel: VerificationChannel.Text,
-      isPhoneSet: false,
-      token: '',
-      performRedirect: false,
-      accountInfo: {
-        firstName: '',
-        lastName: '',
-        gender: '',
-        location: '',
-        lat: '',
-        lng: '',
-      },
-      errors: {},
-      redirectToLogin: false
-    };
-  }
-
-  public async componentDidMount(): Promise<void> {
-    await this.props.fetchUser();
-    this.setAccountInfo();
-  }
-
-  public setAccountInfo(): void {
-    this.setState({
-      accountInfo: {
-        firstName: this.props.user.firstName,
-        lastName: this.props.user.lastName,
-        gender: this.props.user.gender,
-        location: this.props.user.location
-      }
+  export const AccountInfo = (props: Props) => {
+    const [accountInfo, setAccountInfo] = React.useState({
+      gender: '',
+      location: '',
+      lat: '',
+      lng: ''
     });
-  }
-
-  public handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value, name } = event.currentTarget;
-    this.setState({
-      initialized: true,
-      accountInfo: {
-        ...this.state.accountInfo,
-        [name]: value
-      }
+    const [errors, setErrors] = React.useState({
+      gender: '',
+      phoneNumber: ''
     });
-  }
+    const [performRedirect, setPerformRedirect] = React.useState(false);
+    const [showSections, setShowSections] = React.useState([]);
+    const [activeSections, setActiveSections] = React.useState([]);
+    const [disableContinue, setDisableContinue] = React.useState(true);
 
-  public validate = (userValues: AccountInfoComponent.Errors) => {
+    React.useEffect(() => {
+      //get user
+      const fetchData = async () => {
+        await props.fetchUser();
+      };
+      fetchData();
+
+      // set state
+      if (props.user) {
+        setAccountInfo({
+          ...accountInfo,
+          gender: props.user.gender,
+          location: props.user.location
+        })
+      }
+
+      // if user data exists show all fields
+      if (props.user.gender && props.user.avatar && props.user.location && props.user.isPhoneVerified) {
+        setShowSections(['showAll'])
+        // if user data exists show all fields
+      } else if (props.user.role == Role.instructor) {
+        setShowSections(['gender'])
+      } else {
+        setShowSections(['avatar'])
+      }
+      // updates active section when avatar is chanegd
+      if (props.updateAvatarMessage || props.user.avatar || props.user.isPhoneVerified) {
+        setDisableContinue(false);
+      }
+
+    },[props.updateAvatarMessage, props.user.gender, props.user.avatar, props.user.location, props.user.isPhoneVerified]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    const { FieldNames } = AccountInfoComponent;
+
+    if (name === FieldNames.gender) {
+      setAccountInfo({
+        ...accountInfo,
+        gender: value
+      })
+      setDisableContinue(false);
+    }
+  };
+
+  const validate = (userValues: AccountInfoComponent.Errors) => {
     const {
-      firstName,
-      lastName,
       gender,
     } = userValues;
+    const formErrors: AccountInfoComponent.Errors = {
+      gender: '',
+    };
 
     const {
       errorMessages,
       FieldKey,
-      firstNameMinVal,
-      firstNameMaxVal,
-      lastNameMinVal,
-      lastNameMaxVal
     } = AccountInfoComponent;
-
-    const formErrors: AccountInfoComponent.Errors = {
-      firstName: '',
-      lastName: '',
-      gender: '',
-    };
-
-    // Validate first name
-    if (!firstName || firstName.trim().length < firstNameMinVal || firstName.trim().length > firstNameMaxVal) {
-      formErrors[FieldKey.FirstName] = errorMessages[FieldKey.FirstName].emptyFirstName;
-    } else if (validateNames(firstName)) {
-      formErrors[FieldKey.FirstName] = errorMessages[FieldKey.FirstName].invalidFirstName;
-    }
-
-    // Validate last name
-    if (!lastName || lastName.trim().length < lastNameMinVal || lastName.trim().length > lastNameMaxVal) {
-      formErrors[FieldKey.LastName] = errorMessages[FieldKey.LastName].emptyLastName;
-    } else if (validateNames(lastName)) {
-      formErrors[FieldKey.LastName] = errorMessages[FieldKey.LastName].invalidLastName;
-    }
-
     // Validate gender
     if (!gender) {
       formErrors[FieldKey.Gender] = errorMessages[FieldKey.Gender];
     }
 
     // Validate phone number
-    if (!this.props.user.isPhoneVerified) {
+    if (!props.user.isPhoneVerified) {
       formErrors[FieldKey.PhoneNumber] = errorMessages.PhoneNumberNotVerified;
     }
-
     return formErrors;
   }
 
-  public handleNext = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    if (e) {
-      e.preventDefault();
+  const handleLocationChange = (location: string) => {
+    setAccountInfo({
+      ...accountInfo,
+      location
+    })
+  }
+
+  const getLatLng = (lat: string, lng: string) => {
+    alert(lat + lng);
+    setAccountInfo({
+      ...accountInfo,
+      lat,
+      lng
+    })
+    setDisableContinue(false);
+  };
+
+  const handleNext = async() => {
+    if (showSections.includes('avatar')) {
+      setShowSections([
+        'gender'
+      ]),
+      setDisableContinue(true);
     }
 
-    const valuesToValidate: AccountInfoComponent.Errors = {
-      firstName: this.state.accountInfo.firstName,
-      lastName: this.state.accountInfo.lastName,
-      gender: this.state.accountInfo.gender,
-      token: this.state.token
-    };
+    if (showSections.includes('gender')) {
+      setShowSections([
+        ...showSections,
+        'phone'
+      ]),
+      setDisableContinue(true);
+    }
 
-    const formErrors = this.validate(valuesToValidate);
+    if (showSections.includes('phone')) {
+      setShowSections([
+        ...showSections,
+        'location'
+      ]),
+      setDisableContinue(true);
+    }
 
-    this.setState({errors: formErrors}, () => {
-      const errorsArray = Object.values(this.state.errors);
+    if (showSections.includes('showAll') || showSections.includes('location')) {
+
+      const valuesToValidate: AccountInfoComponent.Errors = {
+        gender: accountInfo.gender
+      };
+
+      const formErrors = validate(valuesToValidate);
+      const errorsArray = Object.values(formErrors);
       const isError = errorsArray.some(value => value);
-      if (!isError && this.state.initialized) {
-        this.props.updateUser({...this.state.accountInfo});
-        this.props.fetchUser();
-        if (!this.props.errorUpdate) {
-          this.setState({performRedirect: true, initialized: false});
+
+      if (!isError) {
+        await props.updateUser({...accountInfo});
+      }
+
+      alert(props.errorUpdate);
+      if (props.errorUpdate) {
+        return;
+      }
+      // setPerformRedirect(true);
+    }
+  }
+
+  return (
+    props.isRequestingFetch || props.isRequestingUpdate ? (
+      <div className="nabi-text-center">
+        <CircularProgress />
+      </div>
+    ) : (
+      <div>
+        <AccountInfoForm
+          user={props.user}
+          accountInfo={accountInfo}
+          errors={errors}
+          hasImageUploader={props.hasImageUploader}
+          redirectUrl={props.redirectUrl}
+          handleChange={handleChange}
+          getLatLng={getLatLng}
+          handleLocationChange={handleLocationChange}
+          location={accountInfo.location || ''}
+          phoneError={errors.phoneNumber}
+          changeAvatar={props.changeAvatar}
+          showSections={showSections}
+        />
+        {performRedirect && Router.push(props.redirectUrl)}
+        {props.errorUpdate &&
+          <Typography className="nabi-text-center" color="error">{props.errorUpdate}</Typography>
         }
-      }
-    });
-  }
-
-  public handleLocationChange = (location: string) => {
-    this.setState({
-      accountInfo: {
-        ...this.state.accountInfo,
-        location
-      }
-    });
-  }
-
-  public handleLocationSelect = (location: string) => {
-    this.setState({
-      accountInfo: {
-        ...this.state.accountInfo,
-        location
-      }
-    });
-    geocodeByAddress(location)
-      .then(results => getLatLng(results[0]))
-      .then(coordinates => this.setState({
-        accountInfo: {
-          ...this.state.accountInfo,
-          lat: String(coordinates.lat),
-          lng: String(coordinates.lng)
-        }
-      }))
-      .catch(error => console.log('Error', error));
-  }
-
-  public render(): JSX.Element {
-    return (
-      this.props.isRequestingFetch || this.props.isRequestingUpdate ? (
-        <div className="nabi-text-center">
-          <CircularProgress />
-        </div>
-      ) : (
-        <div>                              
-          <AccountInfoForm
-            user={this.props.user}
-            accountInfo={this.state.accountInfo}
-            verificationChannel={this.state.verificationChannel}
-            errors={this.state.errors}
-            hasImageUploader={this.props.hasImageUploader}
-            redirectUrl={this.props.redirectUrl}
-            handleChange={this.handleChange}
-            handleLocationSelect={this.handleLocationSelect}
-            handleLocationChange={this.handleLocationChange}
-            location={this.state.accountInfo.location || ''}
-            phoneError={this.state.errors.phoneNumber}
-          />
-          {this.state.performRedirect && Router.push(this.props.redirectUrl)}
-          {this.state.redirectToLogin && Router.push(Routes.Login)}
-          {this.props.errorUpdate &&
-            <Typography className="nabi-text-center" color="error">{this.props.errorUpdate}</Typography>
-          }
-          <StepperButtons
-            buttonText={CommonStepperButtons.Continue}
-            handleNext={this.handleNext}
-            icon={<ArrowForward />}
-          />
-        </div>
-      )
-    );
-  }
+        <StepperButtons
+          buttonText={CommonStepperButtons.Continue}
+          handleNext={handleNext}
+          icon={<ArrowForward />}
+          isNextDisabled={disableContinue}
+        />
+      </div>
+    )
+  );
 }
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
@@ -274,6 +259,9 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
       updateUser: {
         isRequesting: isRequestingUpdate,
         error: errorUpdate
+      },
+      uploadAvatar: {
+        message: updateAvatarMessage
       }
     },
   } = state.user;
@@ -282,7 +270,8 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     user,
     isRequestingFetch,
     isRequestingUpdate,
-    errorUpdate
+    errorUpdate,
+    updateAvatarMessage
   };
 }
 
@@ -291,6 +280,7 @@ const mapDispatchToProps = (
 ): DispatchProps => ({
   fetchUser: () => dispatch(fetchUser()),
   updateUser: (user: AccountInfoType) => dispatch(updateUser(user)),
+  changeAvatar: (id: string, avatar: string) => dispatch(changeAvatar(id, avatar)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo);

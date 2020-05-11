@@ -7,6 +7,7 @@ import {
   IconButton,
   InputAdornment,
   TextField,
+  Typography
 } from '@material-ui/core';
 
 import { ListTemplateComponent } from '../common/constants/ListTemplate';
@@ -21,6 +22,7 @@ interface State {
   location: string;
   lat: string;
   lng: string;
+  error: string;
 }
 
 export class LocationField extends React.Component<Props, State> {
@@ -30,6 +32,7 @@ export class LocationField extends React.Component<Props, State> {
       location: '',
       lat: '',
       lng: '',
+      error: ''
     };
   }
 
@@ -48,24 +51,31 @@ export class LocationField extends React.Component<Props, State> {
   }
 
   public handleLocationChange = (location: string) => {
-    this.setState({location});
+    this.setState({location, error: ''});
   }
 
   public handleLocationSelect = (location: string) => {
     this.setState({location}, () => {
       geocodeByAddress(location)
       .then(results => getLatLng(results[0]))
-      .then(coordinates => this.setState({
+      .then(coordinates => {
+        this.setState({
         ...this.state,
         lat: String(coordinates.lat),
         lng: String(coordinates.lng)
-      /* tslint:disable */
-      }, () => {
-        this.props.getLatLng(this.state.lat, this.state.lng);
+        });
+        this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
         this.props.getLocation(this.state.location);
-      }))
+      /* tslint:disable */
+      // }, () => {
+      //   this.props.getLatLng(this.state.lat, this.state.lng);
+      //   this.props.getLocation(this.state.location);
+      })
       /* tslint:enable */
-      .catch(error => console.log('Error', error));
+      .catch(error => {
+        this.setState({error: 'Enter a valid location.'})
+        console.log('Error', error)
+      });
     });
   }
 
@@ -123,6 +133,7 @@ export class LocationField extends React.Component<Props, State> {
             </div>
           )}
         </PlacesAutocomplete>
+        {this.state.error && <Typography color="error" className="nabi-margin-top-xsmall">{this.state.error}</Typography>}
       </div>
     );
   }

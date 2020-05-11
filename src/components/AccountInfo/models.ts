@@ -10,8 +10,6 @@ export enum VerificationChannel {
 }
 
 export interface AccountInfoType {
-  firstName: string;
-  lastName: string;
   middleName?: string;
   gender?: Gender | string;
   phoneNumber?: string;

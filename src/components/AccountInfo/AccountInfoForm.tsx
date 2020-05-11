@@ -16,6 +16,7 @@ import {
   Typography
 } from '@material-ui/core';
 
+import { LocationField } from "../Instructors/LocationField";
 import SectionTitle from '../common/SectionTitle';
 import { UserType } from '../../redux/models/UserModel';
 import AvatarUploader from '../AvatarUploader/AvatarUploader';
@@ -25,21 +26,21 @@ import { AccountInfoComponent } from './constants';
 import {
   AccountInfoType,
   Gender,
-  VerificationChannel
 } from './models';
 
 interface Props {
   user: UserType;
   accountInfo: AccountInfoType;
-  verificationChannel: VerificationChannel;
   errors: AccountInfoComponent.Errors;
   hasImageUploader?: boolean;
   redirectUrl: string;
   handleChange: (event: React.FormEvent<{}>) => void;
+  getLatLng: (lat: string, lng: string) => void;
   handleLocationChange: (location: string) => void;
-  handleLocationSelect: (location: string) => void;
   location: string;
   phoneError?: string;
+  changeAvatar: (id: string, avatar: string) => void;
+  showSections: string[];
 }
 
 const AccountInfoForm: React.StatelessComponent <Props> = props => {
@@ -49,51 +50,28 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
     } = AccountInfoComponent;
 
     const {
-      firstName,
-      lastName,
       gender,
     } = props.accountInfo;
-
-    const { birthday } = props.user;
 
     return(
       <div>
         {props.hasImageUploader &&
-          <div className="nabi-text-center nabi-margin-bottom-small">
-            <AvatarUploader originalImage={props.user.avatar} imageChanged={(avatar: String) => null} />
+          <div className="nabi-margin-bottom-large">
+            <div className="nabi-margin-bottom-small">
+              <SectionTitle text={AccountInfoComponent.SectionTitles.Avatar} />
+            </div>
+            <AvatarUploader
+              originalImage={props.user.avatar ? props.user.avatar : undefined}
+              imageChanged={(avatar: string) => {
+                props.changeAvatar(props.user.id || '', avatar);
+              }}
+            />
           </div>
         }
 
-        <SectionTitle text={AccountInfoComponent.SectionTitles.TellUs} />
-
-        <Grid container={true} spacing={1}>
-          <Grid item={true} md={6} xs={12}>
-            <TextField
-              fullWidth={true}
-              name={FieldNames[FieldKey.FirstName]}
-              onChange={props.handleChange}
-              placeholder={AccountInfoComponent.Placeholders.FirstName}
-              required={true}
-              value={firstName}
-              error={!!props.errors.firstName}
-              helperText={props.errors.firstName}
-            />
-          </Grid>
-
-          <Grid item={true} md={6} xs={12}>
-            <TextField
-              fullWidth={true}
-              name={FieldNames[FieldKey.LastName]}
-              placeholder={AccountInfoComponent.Placeholders.LastName}
-              onChange={props.handleChange}
-              required={true}
-              value={lastName}
-              error={!!props.errors.lastName}
-              helperText={props.errors.lastName}
-            />
-          </Grid>
-
-          <Grid item={true} xs={12} className="nabi-padding-left-small">
+        <div className={(props.showSections.includes('gender') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}>
+          <SectionTitle text={AccountInfoComponent.SectionTitles.Gender} />
+          <div className="nabi-padding-left-small">
             <FormControl required={true} error={!!props.errors.gender}>
               <FormLabel className="nabi-margin-bottom-xsmall nabi-text-uppercase">
                 {AccountInfoComponent.Labels.Gender}
@@ -120,35 +98,17 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
 
               <FormHelperText>{props.errors.gender}</FormHelperText>
             </FormControl>
-          </Grid>
+          </div>
+      </div>
 
-          <Grid item={true} md={6} xs={12}>
-          <Typography variant="body2">
-            {AccountInfoComponent.Labels.Birthday}
-          </Typography>
-
-          <FormControl>
-            <DatePicker
-              selected={birthday ? moment(birthday) : null}
-              onChange={() => {/**/}}
-              peekNextMonth={true}
-              showMonthDropdown={true}
-              showYearDropdown={true}
-              dropdownMode="select"
-              disabled={true}
-            />
-          </FormControl>
-        </Grid>
-      </Grid>
-
-      <div className="nabi-margin-top-large">
+      <div className={`nabi-margin-top-large ${(props.showSections.includes('phone') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}`}>
         <PhoneValidation error={props.phoneError} />
       </div>
-      <Location
-        handleLocationChange={props.handleLocationChange}
-        handleLocationSelect={props.handleLocationSelect}
-        location={props.location || ''}
-      />
+
+      <div className={`nabi-margin-top-large ${(props.showSections.includes('location') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}`}>
+        <SectionTitle text={AccountInfoComponent.SectionTitles.Location} />
+        <LocationField getLatLng={props.getLatLng} address={props.location} getLocation={props.handleLocationChange} />
+      </div>
     </div>
   );
 };
