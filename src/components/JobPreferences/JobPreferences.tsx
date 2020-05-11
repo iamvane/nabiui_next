@@ -5,8 +5,6 @@ import {
   FormGroup,
   FormControlLabel,
   Typography,
-  Button,
-  Grid,
 } from '@material-ui/core';
 
 import SectionTitle from '../common/SectionTitle';

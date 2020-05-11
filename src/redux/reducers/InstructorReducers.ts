@@ -28,9 +28,7 @@ export default function instructorReducer(
       };
 
     case InstructorActions.BUILD_PROFILE_SUCCESS:
-      const { data: updatedInstructor } = <
-        APIActions.WithData<Partial<InstructorType>>
-      >action;
+      const { data: updatedInstructor } = <APIActions.WithData<Partial<InstructorType>>>action;
       return {
         ...state,
         instructor: {

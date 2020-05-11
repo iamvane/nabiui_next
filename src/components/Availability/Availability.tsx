@@ -11,7 +11,6 @@ import {
 } from '@material-ui/core';
 
 import { AvailabilityComponent } from '../Availability/constants';
-import { AvailabilityType } from '../Availability/model';
 import SectionTitle from '../common/SectionTitle';
 
 let id = 0;
@@ -23,11 +22,8 @@ function createData(
 }
 
 interface Props {
-  availability: AvailabilityType;
   handleChange: (event: React.FormEvent<{}>) => void;
   renderCheckbox: (stateName: string) => JSX.Element;
-  prevStep?: () => void;
-  nextStep?: () => void;
 }
 
 /**

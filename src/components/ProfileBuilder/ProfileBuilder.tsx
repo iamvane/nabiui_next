@@ -18,7 +18,7 @@ import AccountInfo from '../AccountInfo/AccountInfo';
 import References from '../Recommendations/Recommendations';
 import PrivateRoute from '../Auth/PrivateRoutes';
 import ProfileStep from './ProfileStep/ProfileStep';
-import JobPreferencesStep from './JobPreferencesStep';
+import { JobPreferencesStep } from './JobPreferencesStep';
 import Screening from './Screening';
 
 interface State {
