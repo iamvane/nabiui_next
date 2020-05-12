@@ -37,9 +37,22 @@ export class LocationField extends React.Component<Props, State> {
   }
 
   public componentDidMount(): void {
-    this.setState({
-      location: this.props.address
-    });
+    if (this.props.address) {
+      geocodeByAddress(this.props.address)
+      .then(results => getLatLng(results[0]))
+      .then(coordinates => {
+        this.setState({
+        ...this.state,
+        lat: String(coordinates.lat),
+        lng: String(coordinates.lng)
+        });
+        this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
+        this.props.getLocation(this.state.location);
+      });
+      this.setState({
+        location: this.props.address
+      });
+    }
   }
 
   public componentDidUpdate(prevProps: Props): void {

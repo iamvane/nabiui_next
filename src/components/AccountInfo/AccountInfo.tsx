@@ -5,6 +5,7 @@ import {
   Action,
   Dispatch
 } from 'redux';
+import * as _ from "lodash";
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -34,6 +35,7 @@ import {
   AccountInfoType,
   VerificationChannel
 } from './models';
+import { checkErrors } from "../../utils/checkErrors";
 
 interface DispatchProps {
   fetchUser: () => void;
@@ -73,7 +75,7 @@ interface Props extends
       phoneNumber: ''
     });
     const [performRedirect, setPerformRedirect] = React.useState(false);
-    const [showSections, setShowSections] = React.useState([]);
+    const [showSections, setShowSections] = React.useState(['avatar']);
     const [disableContinue, setDisableContinue] = React.useState(true);
 
     React.useEffect(() => {
@@ -103,6 +105,18 @@ interface Props extends
 
     },[props.updateAvatarMessage, props.user.gender, props.user.avatar, props.user.location, props.user.isPhoneVerified]);
 
+    // if phone is already verified disable continue button
+    React.useEffect(() => {
+      if (props.user.isPhoneVerified && showSections.includes('phone') && !showSections.includes('showAll') && !showSections.includes('location')) {
+        setDisableContinue(false);
+      }
+    },[showSections, props.user.isPhoneVerified]);
+
+    React.useEffect(() => {
+
+
+    }, [performRedirect, props.errorUpdate]);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
     const value = target.value;
@@ -119,12 +133,8 @@ interface Props extends
     }
   };
 
-  const validate = (userValues: AccountInfoComponent.Errors) => {
-    const {
-      gender,
-    } = userValues;
+  const validate = () => {
     const formErrors: AccountInfoComponent.Errors = {
-      gender: '',
     };
 
     const {
@@ -132,13 +142,18 @@ interface Props extends
       FieldKey,
     } = AccountInfoComponent;
     // Validate gender
-    if (!gender) {
+    if (!accountInfo.gender) {
       formErrors[FieldKey.Gender] = errorMessages[FieldKey.Gender];
     }
 
     // Validate phone number
     if (!props.user.isPhoneVerified) {
       formErrors[FieldKey.PhoneNumber] = errorMessages.PhoneNumberNotVerified;
+    }
+
+    // Validate location
+    if (!accountInfo.location) {
+      formErrors[FieldKey.Location] = errorMessages.location;
     }
     return formErrors;
   }
@@ -151,7 +166,6 @@ interface Props extends
   }
 
   const getLatLng = (lat: string, lng: string) => {
-    alert(lat + lng);
     setAccountInfo({
       ...accountInfo,
       lat,
@@ -184,25 +198,36 @@ interface Props extends
       setDisableContinue(true);
     }
 
-    if (showSections.includes('showAll') || showSections.includes('location')) {
 
-      const valuesToValidate: AccountInfoComponent.Errors = {
-        gender: accountInfo.gender
-      };
+    const currentState = {
+      gender: accountInfo.gender,
+      location: accountInfo.location
+    }
 
-      const formErrors = validate(valuesToValidate);
-      const errorsArray = Object.values(formErrors);
-      const isError = errorsArray.some(value => value);
+    const storeState = {
+      gender: props.user.gender,
+      location: props.user.location
+    }
 
-      if (!isError) {
-        await props.updateUser({...accountInfo});
-      }
+    if (showSections.includes('showAll') && _.isEqual(currentState, storeState)) {
+      return setPerformRedirect(true);
+    }
 
-      alert(props.errorUpdate);
-      if (props.errorUpdate) {
+    if (showSections.includes('location') || showSections.includes('showAll')) {
+      const formErrors = validate();
+      const isError = checkErrors(Object.values(formErrors));
+
+      if (isError) {
         return;
       }
-      // setPerformRedirect(true);
+
+      await props.updateUser({...accountInfo, gender: ''});
+
+      if (!props.errorUpdate) {
+        return alert('no error')
+        // setPerformRedirect(true)
+      }
+      return alert('error')
     }
   }
 
