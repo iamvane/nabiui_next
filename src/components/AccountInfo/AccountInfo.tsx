@@ -9,11 +9,7 @@ import * as _ from "lodash";
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {
-  CircularProgress,
-  Typography
-} from '@material-ui/core';
-// import ArrowForward from '@material-ui/icons/ArrowForward';
+import { CircularProgress } from '@material-ui/core';
 import dynamic from "next/dynamic";
 const ArrowForward = dynamic(() => import('@material-ui/icons/ArrowForward'), {
   ssr: false,
@@ -28,13 +24,11 @@ import {
 import { UserType } from '../../redux/models/UserModel';
 import { Routes } from '../common/constants/Routes';
 import { CommonStepperButtons } from '../CommonStepper/constants';
+import ConfirmExit from '../CommonStepper/ConfirmExit';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import AccountInfoForm  from './AccountInfoForm';
 import { AccountInfoComponent } from './constants';
-import {
-  AccountInfoType,
-  VerificationChannel
-} from './models';
+import { AccountInfoType } from './models';
 import { checkErrors } from "../../utils/checkErrors";
 
 interface DispatchProps {
@@ -64,19 +58,13 @@ interface Props extends
   }
 
   export const AccountInfo = (props: Props) => {
-    const [accountInfo, setAccountInfo] = React.useState({
-      gender: '',
-      location: '',
-      lat: '',
-      lng: ''
-    });
-    const [errors, setErrors] = React.useState({
-      gender: '',
-      phoneNumber: ''
-    });
+    const [accountInfo, setAccountInfo] = React.useState({} as AccountInfoType);
+    const [errors, setErrors] = React.useState({} as AccountInfoComponent.Errors);
     const [performRedirect, setPerformRedirect] = React.useState(false);
     const [showSections, setShowSections] = React.useState(['avatar']);
     const [disableContinue, setDisableContinue] = React.useState(true);
+    const [updateUser, setUpdateUser] = React.useState(false);
+    const [displayExitModal, setDisplayExitModal] = React.useState(false);
 
     React.useEffect(() => {
       //get user
@@ -112,10 +100,12 @@ interface Props extends
       }
     },[showSections, props.user.isPhoneVerified]);
 
+    // checks for updateUser state to make api call
     React.useEffect(() => {
-
-
-    }, [performRedirect, props.errorUpdate]);
+      if (!props.errorUpdate && updateUser) {
+        setPerformRedirect(true)
+      }
+    }, [updateUser, props.errorUpdate]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
@@ -155,6 +145,11 @@ interface Props extends
     if (!accountInfo.location) {
       formErrors[FieldKey.Location] = errorMessages.location;
     }
+
+    // Validate avatar
+      if (!props.user.avatar) {
+      formErrors[FieldKey.Avatar] = errorMessages.avatar;
+    }
     return formErrors;
   }
 
@@ -162,6 +157,11 @@ interface Props extends
     setAccountInfo({
       ...accountInfo,
       location
+    })
+    // clear location errors
+    setErrors({
+      ...errors,
+      location: ''
     })
   }
 
@@ -173,6 +173,31 @@ interface Props extends
     })
     setDisableContinue(false);
   };
+
+  const getLocationError = (error: string) => {
+    setErrors({
+      ...errors,
+      location: error
+    })
+    setDisableContinue(true)
+  }
+
+  const currentState = {
+    gender: accountInfo.gender,
+    location: accountInfo.location
+  }
+
+  const storeState = {
+    gender: props.user.gender,
+    location: props.user.location
+  }
+
+  const handleExit = () => {
+    if (showSections.includes('showAll') && _.isEqual(currentState, storeState)) {
+      return Router.push(Routes.Dashboard);
+    }
+    setDisplayExitModal(true)
+  }
 
   const handleNext = async() => {
     if (showSections.includes('avatar')) {
@@ -198,17 +223,7 @@ interface Props extends
       setDisableContinue(true);
     }
 
-
-    const currentState = {
-      gender: accountInfo.gender,
-      location: accountInfo.location
-    }
-
-    const storeState = {
-      gender: props.user.gender,
-      location: props.user.location
-    }
-
+    // if current state and store state are equal redirect
     if (showSections.includes('showAll') && _.isEqual(currentState, storeState)) {
       return setPerformRedirect(true);
     }
@@ -218,16 +233,12 @@ interface Props extends
       const isError = checkErrors(Object.values(formErrors));
 
       if (isError) {
-        return;
+        return setErrors(formErrors);
       }
 
-      await props.updateUser({...accountInfo, gender: ''});
-
-      if (!props.errorUpdate) {
-        return alert('no error')
-        // setPerformRedirect(true)
-      }
-      return alert('error')
+      // On no errors, call api and set update user state
+      await props.updateUser({...accountInfo});
+      setUpdateUser(true)
     }
   }
 
@@ -245,21 +256,25 @@ interface Props extends
           redirectUrl={props.redirectUrl}
           handleChange={handleChange}
           getLatLng={getLatLng}
+          getLocationError={getLocationError}
           handleLocationChange={handleLocationChange}
           location={accountInfo.location || ''}
-          phoneError={errors.phoneNumber}
           changeAvatar={props.changeAvatar}
           showSections={showSections}
         />
         {performRedirect && Router.push(props.redirectUrl)}
-        {props.errorUpdate &&
-          <Typography className="nabi-text-center" color="error">{props.errorUpdate}</Typography>
-        }
         <StepperButtons
           buttonText={CommonStepperButtons.Continue}
           handleNext={handleNext}
           icon={<ArrowForward />}
           isNextDisabled={disableContinue}
+          errors={props.errorUpdate || Object.values(errors)}
+          handleExit={handleExit}
+        />
+        <ConfirmExit
+          isFormDialogOpen={displayExitModal}
+          closeHandler={() => setDisplayExitModal(false)}
+          handleProceed={() => Router.push(Routes.Dashboard)}
         />
       </div>
     )

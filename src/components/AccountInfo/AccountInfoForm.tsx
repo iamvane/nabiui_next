@@ -37,9 +37,9 @@ interface Props {
   getLatLng: (lat: string, lng: string) => void;
   handleLocationChange: (location: string) => void;
   location: string;
-  phoneError?: string;
   changeAvatar: (id: string, avatar: string) => void;
   showSections: string[];
+  getLocationError: (error: string) => void;
 }
 
 const AccountInfoForm: React.StatelessComponent <Props> = props => {
@@ -99,12 +99,17 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
       </div>
 
       <div className={`nabi-margin-top-large ${(props.showSections.includes('phone') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}`}>
-        <PhoneValidation error={props.phoneError} />
+        <PhoneValidation error={props.errors.phoneNumber} />
       </div>
 
       <div className={`nabi-margin-top-large ${(props.showSections.includes('location') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}`}>
         <SectionTitle text={AccountInfoComponent.SectionTitles.Location} />
-        <LocationField getLatLng={props.getLatLng} address={props.location} getLocation={props.handleLocationChange} />
+        <LocationField
+          getLatLng={props.getLatLng}
+          address={props.location}
+          getLocation={props.handleLocationChange}
+          getLocationError={props.getLocationError}
+        />
       </div>
     </div>
   );

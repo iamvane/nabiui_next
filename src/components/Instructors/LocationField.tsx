@@ -16,6 +16,7 @@ interface Props {
   getLatLng: (lat: string, lng: string) => void;
   getLocation: (location: string) => void;
   address: string;
+  getLocationError?: (error: string) => void;
 }
 
 interface State {
@@ -79,14 +80,11 @@ export class LocationField extends React.Component<Props, State> {
         });
         this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
         this.props.getLocation(this.state.location);
-      /* tslint:disable */
-      // }, () => {
-      //   this.props.getLatLng(this.state.lat, this.state.lng);
-      //   this.props.getLocation(this.state.location);
       })
-      /* tslint:enable */
       .catch(error => {
+        this.props.getLocation('');
         this.setState({error: 'Enter a valid location.'})
+        this.props.getLocationError && this.props.getLocationError('Enter a valid location.')
         console.log('Error', error)
       });
     });
