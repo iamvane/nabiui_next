@@ -14,7 +14,7 @@ import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../../redux/reducers/store';
 import { UserType } from '../../../redux/models/UserModel';
-import { changeAvatar, fetchUser } from '../../../redux/actions/UserActions';
+import { fetchUser } from '../../../redux/actions/UserActions';
 import { InstructorType } from '../../../redux/models/InstructorModel';
 import {
   buildProfile,
@@ -28,7 +28,6 @@ import {
 } from '../../Music/constants';
 import Bio from '../../Bio/Bio';
 import { StepperButtons } from '../../CommonStepper/StepperButtons';
-import AvatarUploader from '../../AvatarUploader/AvatarUploader';
 import { ProfileBuilderStepper } from '../constants';
 import {
   fields,
@@ -46,7 +45,6 @@ interface StateProps {
 
 interface DispatchProps {
   buildProfile: (profile: ProfileType) => void;
-  changeAvatar: (id: string, avatar: string) => void;
   fetchProfile: () => void;
   fetchUser: () => void;
 }
@@ -231,14 +229,6 @@ export class ProfileStep extends React.Component<Props, State> {
     const clearError = () => this.setState({ errorMessage: '' });
     return (
       <div>
-        <Grid className="nabi-text-center nabi-margin-center" item={true} xs={6}>
-          <AvatarUploader
-            originalImage={this.props.user.avatar ? this.props.user.avatar: undefined}
-            imageChanged={(avatar: string) => {
-              this.props.changeAvatar(this.props.user.id || '', avatar);
-            }}
-          />
-        </Grid>
         <div className="nabi-margin-bottom-small nabi-text-center">
           <Typography className="nabi-text-mediumbold nabi-margin-bottom-xsmall nabi-display-inline-block">
             {this.props.user.displayName}
@@ -312,7 +302,6 @@ function mapDispatchToProps(
   return {
     buildProfile: (profile: ProfileType) => dispatch(buildProfile(profile)),
     fetchProfile: () => dispatch(fetchProfile()),
-    changeAvatar: (id: string, avatar: string) => dispatch(changeAvatar(id, avatar)),
     fetchUser: () => dispatch(fetchUser())
   };
 }
