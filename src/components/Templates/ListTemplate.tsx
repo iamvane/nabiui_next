@@ -77,7 +77,11 @@ export const ListTemplate: React.StatelessComponent<Props> = (props) => {
             </FormControl>
           </Grid>
           <Grid item={true} xs={12} sm={5} className="nabi-vertical-align-center">
-            <LocationField getLatLng={props.getLatLng} address={props.address} getLocation={props.getLocation} />
+            <LocationField
+              getLatLng={props.getLatLng}
+              address={props.address}
+              getLocation={props.getLocation}
+            />
           </Grid>
         </Grid>
       </div>

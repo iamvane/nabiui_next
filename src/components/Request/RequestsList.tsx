@@ -20,6 +20,7 @@ import { Routes } from '../common/constants/Routes';
 import ListTemplate from "../common/Templates/ListTemplate";
 import { ListTemplateComponent } from "../common/constants/ListTemplate";
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
+import PrivateRoute from '../Auth/PrivateRoutes';
 import RequestsFilter from "./RequestsFilter";
 import RequestsFilterMobile from "./RequestsFilterMobile";
 import Requests from "./Requests";
@@ -273,4 +274,4 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
   fetchMoreRequests: (params: any) => dispatch(fetchMoreRequestsList(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReuqestsList);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(ReuqestsList, 'Public', ['Instructor']));

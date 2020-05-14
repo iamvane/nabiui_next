@@ -16,6 +16,7 @@ interface Props {
   handleLocationSelect: (location: string) => void;
   location: string;
   isFilter?: boolean;
+  handleError: () => void;
 }
 
 const Location: React.StatelessComponent <Props> = props => {
@@ -32,6 +33,7 @@ const Location: React.StatelessComponent <Props> = props => {
         value={props.location}
         onChange={props.handleLocationChange}
         onSelect={props.handleLocationSelect}
+        onError={props.handleError}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>

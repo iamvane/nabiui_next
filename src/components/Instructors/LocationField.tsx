@@ -7,6 +7,7 @@ import {
   IconButton,
   InputAdornment,
   TextField,
+  Typography
 } from '@material-ui/core';
 
 import { ListTemplateComponent } from '../common/constants/ListTemplate';
@@ -15,12 +16,14 @@ interface Props {
   getLatLng: (lat: string, lng: string) => void;
   getLocation: (location: string) => void;
   address: string;
+  getLocationError?: (error: string) => void;
 }
 
 interface State {
   location: string;
   lat: string;
   lng: string;
+  error: string;
 }
 
 export class LocationField extends React.Component<Props, State> {
@@ -30,13 +33,27 @@ export class LocationField extends React.Component<Props, State> {
       location: '',
       lat: '',
       lng: '',
+      error: ''
     };
   }
 
   public componentDidMount(): void {
-    this.setState({
-      location: this.props.address
-    });
+    if (this.props.address) {
+      geocodeByAddress(this.props.address)
+      .then(results => getLatLng(results[0]))
+      .then(coordinates => {
+        this.setState({
+        ...this.state,
+        lat: String(coordinates.lat),
+        lng: String(coordinates.lng)
+        });
+        this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
+        this.props.getLocation(this.state.location);
+      });
+      this.setState({
+        location: this.props.address
+      });
+    }
   }
 
   public componentDidUpdate(prevProps: Props): void {
@@ -48,24 +65,28 @@ export class LocationField extends React.Component<Props, State> {
   }
 
   public handleLocationChange = (location: string) => {
-    this.setState({location});
+    this.setState({location, error: ''});
   }
 
   public handleLocationSelect = (location: string) => {
     this.setState({location}, () => {
       geocodeByAddress(location)
       .then(results => getLatLng(results[0]))
-      .then(coordinates => this.setState({
+      .then(coordinates => {
+        this.setState({
         ...this.state,
         lat: String(coordinates.lat),
         lng: String(coordinates.lng)
-      /* tslint:disable */
-      }, () => {
-        this.props.getLatLng(this.state.lat, this.state.lng);
+        });
+        this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
         this.props.getLocation(this.state.location);
-      }))
-      /* tslint:enable */
-      .catch(error => console.log('Error', error));
+      })
+      .catch(error => {
+        this.props.getLocation('');
+        this.setState({error: 'Enter a valid location.'})
+        this.props.getLocationError && this.props.getLocationError('Enter a valid location.')
+        console.log('Error', error)
+      });
     });
   }
 
@@ -123,6 +144,7 @@ export class LocationField extends React.Component<Props, State> {
             </div>
           )}
         </PlacesAutocomplete>
+        {this.state.error && <Typography color="error" className="nabi-margin-top-xsmall">{this.state.error}</Typography>}
       </div>
     );
   }

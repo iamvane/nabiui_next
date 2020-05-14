@@ -2,7 +2,9 @@ import { VerificationChannel } from './models';
 
 export namespace AccountInfoComponent {
   export enum SectionTitles {
-    TellUs = 'Tell Us About Yourself',
+    Gender = 'Gender',
+    Avatar = 'Profile Image',
+    Location = 'Location'
   }
 
   export enum Labels {
@@ -19,30 +21,26 @@ export namespace AccountInfoComponent {
   }
 
   export enum FieldKey {
-    FirstName = 'firstName',
-    LastName = 'lastName',
-    MiddleName = 'middleName',
+    Avatar = 'avatar',
     Gender = 'gender',
     PhoneNumber = 'phoneNumber',
-    Token = 'token'
+    Token = 'token',
+    Location = 'location'
   }
 
   export const FieldNames = {
-    [FieldKey.FirstName]: 'firstName',
-    [FieldKey.LastName]: 'lastName',
-    [FieldKey.MiddleName]: 'middleName',
     [FieldKey.Gender]: 'gender',
     [FieldKey.PhoneNumber]: 'phoneNumber',
     [FieldKey.Token]: 'token'
   };
 
   export interface Errors {
-    [FieldKey.FirstName]?: string;
-    [FieldKey.LastName]?: string;
-    [FieldKey.MiddleName]?: string;
+    [FieldKey.Avatar]?: string;
     [FieldKey.Gender]?: string;
     [FieldKey.PhoneNumber]?: string;
     [FieldKey.Token]?: string;
+    [FieldKey.Location]?: string;
+
   }
 
   export const firstNameMinVal = 1;
@@ -54,28 +52,7 @@ export namespace AccountInfoComponent {
   export const lastNameMaxVal = 50;
 
   export const errorMessages = {
-    [FieldKey.FirstName]: {
-      emptyFirstName: 'Enter your first name, up to {maxFirstNameValue} characters.'.replace(
-        '{maxFirstNameValue}',
-        firstNameMaxVal.toLocaleString()
-      ),
-      invalidFirstName: 'Enter a valid first name.'
-    },
-    [FieldKey.MiddleName]: {
-      emptyMiddleName: 'Enter your middle name, up to {maxMiddleNameValue} characters.'.replace(
-        '{maxMiddleNameValue}',
-        middleNameMaxVal.toLocaleString()
-      ),
-      invalidMiddleName: 'Enter a valid middle name.'
-
-    },
-    [FieldKey.LastName]: {
-      emptyLastName: 'Enter your last name, up to {maxLastNameValue} characters.'.replace(
-        '{maxLastNameValue}',
-        lastNameMaxVal.toLocaleString()
-      ),
-      invalidLastName: 'Enter a valid last name.'
-    },
+    [FieldKey.Avatar]: 'Upload a profile image.',
     [FieldKey.Token]: {
       invalidVerificationCode: 'Invalid verification code.',
       enterYourVerificationCode: 'Enter verification code.'
@@ -84,6 +61,7 @@ export namespace AccountInfoComponent {
     PhoneNumberEmpty: 'Enter a valid phone number.',
     PhoneNumberNotVerified: 'Verify phone number.',
     PhoneMissingCountryCode: 'Select country code.',
+    [FieldKey.Location]: 'Enter a valid location.'
   };
 }
 

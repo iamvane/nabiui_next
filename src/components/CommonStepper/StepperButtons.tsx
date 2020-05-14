@@ -33,11 +33,19 @@ interface Props {
   handleNext?: (e: any) => void;
   isRequesting?: boolean;
   errors?: string | string[];
+  handleExit?: () => void;
 }
 
 export const StepperButtons: React.StatelessComponent<Props> = (props: Props): JSX.Element => {
   const renderBackMobile = (): JSX.Element => {
-    if (props.backPath) {
+    if (props.handleExit) {
+     return(
+      <Button color="primary" size="small" onClick={props.handleExit}>
+        <KeyboardArrowLeft />
+        {CommonStepperButtons.Back}
+      </Button>
+     );
+    } else if (props.backPath) {
       return (
         <Link href={props.backPath}>
           <Button color="primary" size="small">
@@ -97,16 +105,26 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
       {props.errors && <Typography className="nabi-text-right" color="error">{props.errors}</Typography>}
       <div className="hide-on-mobile nabi-margin-top-large">
         <div className="nabi-text-right">
+          {props.handleExit ?
+            <Button
+              variant="contained"
+              className={`nabi-text-uppercase nabi-margin-right-xsmall-md ${props.hideDesktopButton ? 'nabi-display-none' : ''} `}
+              onClick={props.handleExit}
+            >
+              {CommonStepperButtons.Exit}
+            </Button>
+          :
           <Link href={Routes.Dashboard}>
-            <a className="nabi-margin-right-xsmall-md">
+            <a>
               <Button
                 variant="contained"
-                className={`nabi-text-uppercase ${props.hideDesktopButton ? 'nabi-display-none' : ''} `}
+                className={`nabi-text-uppercase nabi-margin-right-xsmall-md ${props.hideDesktopButton ? 'nabi-display-none' : ''} `}
               >
                 {CommonStepperButtons.Exit}
               </Button>
             </a>
           </Link>
+          }
           {
             props.nextPath ? (
               props.isRequesting ?
