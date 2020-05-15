@@ -17,7 +17,6 @@ export namespace AccountInfoComponent {
   export enum Placeholders {
     FirstName = 'First Name',
     LastName = 'Last Name',
-    MiddleName = 'Middle Name',
   }
 
   export enum FieldKey {
@@ -108,12 +107,4 @@ export namespace PhoneValidationFormComponent {
 export namespace LocationComponent {
   export const sectionTitle = 'Location';
   export const description = 'Please enter your home address.';
-}
-
-export namespace MiddleNameModalComponent {
-  export const title = 'Missing Middle Name';
-  export const message = 'Looks like you didn’t provide a middle name. Please enter it below, if applicable.';
-
-  export const noMiddleName = `I don't have one`;
-  export const applyButton = 'Apply';
 }
