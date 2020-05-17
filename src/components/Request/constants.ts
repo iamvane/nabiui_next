@@ -6,7 +6,7 @@ export namespace RequestComponent {
   /* tslint:disable-next-line */
   export const descriptionStudent = 'A request highlights the details of a lessons. You must create a separate request for each instrument you are interested in learning.'
   /* tslint:disable-next-line */
-  export const descriptionParent = 'A request highlights the details of a lessons. For instance, you can have more than one child learning together the same instrument with the same instructor. You must create a separate request for each instrument your child/children wants/want to learn.';
+  export const descriptionParent = 'You can create multiple requests. Add one child to a request for individual lessons or multiple children to a request if they are learning together.';
 
   export enum ButtonText {
     Add = 'Add Request',
@@ -173,7 +173,7 @@ export namespace RequestFormComponent {
 
   export const addStudent = 'Add Student';
 
-  export const requestMessageDescription = 'Add a message. What else would you like candidates to know?';
+  export const requestMessageDescription = 'Add a message. What else would you like instructors to know?';
 
   export const studentPlaceholder = '{studentPlaceholder}';
 
@@ -192,7 +192,7 @@ export namespace RequestFormComponent {
     Instrument = 'Instrument',
     SkillLevel = 'Skill level',
     StudentSkillLevel = '{studentPlaceholder}‘s skill level',
-    PlaceForLessons = 'Place for lessons',
+    PlaceForLessons = 'Teaching location',
     RequestTitle= 'Add a title (ex: Piano teacher needed)',
     RequestMessage = 'Request message'
   }
@@ -203,7 +203,7 @@ export namespace RequestFormComponent {
     StudentAge= 'Student\'s age',
     Instrument = 'Select instrument',
     SkillLevel = 'Select level',
-    PlaceForLesson = 'Select place for lessons',
+    PlaceForLesson = 'Select teaching location',
     LessonDuration = 'Select lessons duration'
   }
 

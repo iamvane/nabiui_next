@@ -59,7 +59,7 @@ export const InstructorDashboard = (props: Props) => {
             <React.Fragment>
               <Typography className="nabi-display-inline nabi-text-uppercase nabi-margin-right-xsmall">{constants.profileStatusLabels.complete}</Typography>
               <Check className="nabi-position-absolute" color="primary" />
-              {props.dashboard.missingFields ?
+              {props.dashboard.missingFields &&  props.dashboard.missingFields.length > 0 ?
               <div className="nabi-margin-top-medium">
                 <SectionTitle text={constants.profileRecommendationsSectionTitle} />
                 {displayMissingFields()}
@@ -71,7 +71,7 @@ export const InstructorDashboard = (props: Props) => {
               <Typography className="nabi-display-inline nabi-text-uppercase nabi-margin-right-xsmall">{constants.profileStatusLabels.incomplete}</Typography>
               <Warning className="nabi-position-absolute" color="error" />
               <Typography>{constants.incompleteText}</Typography>
-              {displayMissingFields()}
+              {props.dashboard.missingFields.length > 0 && displayMissingFields()}
             </React.Fragment>
           }
 

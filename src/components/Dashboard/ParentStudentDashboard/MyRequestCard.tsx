@@ -5,6 +5,7 @@ import Router from 'next/router';
 import {
   Button,
   Grid,
+  Icon,
   Typography
 } from '@material-ui/core';
 
@@ -45,6 +46,8 @@ const MyRequestCard: React.StatelessComponent<Props> = props => {
     constants.textPlaceholder,
     String(applications)
   );
+
+  const viewApplicationsIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/visibility.png';
 
   return (
     <div
@@ -104,11 +107,18 @@ const MyRequestCard: React.StatelessComponent<Props> = props => {
               )}
             </Typography>
             {applications > 0 &&
-              <Typography className="nabi-margin-top-small">
-                <a className="nabi-text-decoration-underline nabi-text-uppercase">
-                {viewApplicationText}
-                </a>
-              </Typography>
+              <div className="nabi-margin-top-small">
+                <img
+                  src={viewApplicationsIcon}
+                  className="nabi-custom-button-icon lazyload"
+                  alt="view-applications"
+                />
+                <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+                  <a className="nabi-text-decoration-underline nabi-text-uppercase nabi-color-orange">
+                  {viewApplicationText}
+                  </a>
+                </Typography>
+              </div>
             }
           </div>
         </Grid>

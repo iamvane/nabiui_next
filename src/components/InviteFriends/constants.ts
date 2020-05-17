@@ -7,7 +7,7 @@ export namespace InviteFriendsComponent {
   export const ctaDescriptionInstructor =
     "Give your friends 20% off music lessons when they book a package from your referral link. You get $5 back. {termsReplace}.";
   export const ctaDescriptionStudent =
-    "Give your friends 20% off music lessons when they book a package from your referral link. You get $5 towards lessons {termsReplace}.";
+    "Give your friends 20% off music lessons when they book a package from your referral link. You get $5 towards lessons. {termsReplace}.";
   export const placeholder = "Enter email address";
   export const fiseldLabel = "Share your invite link";
   export const inviteButton = "Invite";
