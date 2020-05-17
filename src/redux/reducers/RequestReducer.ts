@@ -505,6 +505,47 @@ export default function requestsReducer(
         }
       };
 
+    case RequestActions.SCHEDULE_LESSONS:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          scheduleLessons: {
+            isRequesting: true,
+            message: "",
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.SCHEDULE_LESSONS_SUCCESS:
+      const { data: scheduleLessonsData } = <APIActions.WithData<{message: string, booking_id: number}>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          scheduleLessons: {
+            message: scheduleLessonsData.message,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.SHCEDULE_LESSONS_FAILURE:
+      const { error: scheduleLessonsError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          scheduleLessons: {
+            isRequesting: false,
+            error: scheduleLessonsError,
+            message: ""
+          }
+        }
+      };
+
     default:
       return state;
   }

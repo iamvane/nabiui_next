@@ -77,7 +77,7 @@ interface Props extends
       if (props.user) {
         setAccountInfo({
           ...accountInfo,
-          gender: props.user.gender,
+          gender: accountInfo.gender || props.user.gender,
           location: props.user.location
         })
       }

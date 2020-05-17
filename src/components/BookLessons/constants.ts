@@ -64,8 +64,10 @@ export namespace BookLessonsComponent {
 }
 
 export namespace ScheduleLessonsComponent {
-  export const title = 'Schedule Lessons';
+  export const title = 'Schedule Your Next Lesson';
+  export const description = 'Set the date and time for your next lesson.'
   export const scheduleLessonButton = 'Schedule Lesson';
+  export const goToDashboardButton = "Go To Dashboard";
 
   export enum Placeholders {
     LessonDate = 'Lesson date',
