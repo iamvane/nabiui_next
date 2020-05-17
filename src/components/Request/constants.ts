@@ -316,6 +316,7 @@ export namespace RequestCardComponent {
 }
 
 export const enableContinueBtn = {
+  none: true,
   requestDetail: false,
   studentDetail: false,
   requestMessage: false

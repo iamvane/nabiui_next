@@ -157,11 +157,8 @@ export default function requestsReducer(
 
     case RequestActions.EDIT_REQUEST_SUCCESS:
       const { data: editRequestMessage } = <APIActions.WithData<string>>action;
-      // const { data: createdRequest } = <APIActions.WithData<Partial<RequestType>>>action;
-      console.log("edit request message", editRequestMessage);
       return {
         ...state,
-        // requests: [...state.requests, createdRequest as RequestType],
         actions: {
           ...state.actions,
           editRequest: {

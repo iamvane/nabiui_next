@@ -13,7 +13,6 @@ import Add from '@material-ui/icons/Add';
 
 import SectionTitle from '../common/SectionTitle';
 import { skillLevelOptions } from '../Instruments/constants';
-// import { InstrumentsType } from '../Instruments/model';
 import { StudentType } from './models';
 import { RequestFormComponent } from './constants';
 import StudentAdded from './StudentAdded';
@@ -21,9 +20,9 @@ import StudentAdded from './StudentAdded';
 interface Props extends  StudentType {
   students: StudentType[];
   handleChange: (event: React.FormEvent<{}>) => void;
-  handleBlur: (event: React.FormEvent<{}>) => void;
   addStudent: (event: React.FormEvent<{}>) => void;
   deleteStudent: (student: string) => void;
+  enableAddStudentBtn?: boolean;
 }
 
 const Students: React.StatelessComponent<Props> = props => {
@@ -63,7 +62,6 @@ const Students: React.StatelessComponent<Props> = props => {
             required={true}
             fullWidth={true}
             onChange={props.handleChange}
-            onBlur={props.handleBlur}
             value={props.name}
           />
         </Grid>
@@ -76,7 +74,6 @@ const Students: React.StatelessComponent<Props> = props => {
             required={true}
             fullWidth={true}
             onChange={props.handleChange}
-            onBlur={props.handleBlur}
             type="number"
             value={!(props.age === 0) ? props.age : ''}
           />
@@ -93,7 +90,6 @@ const Students: React.StatelessComponent<Props> = props => {
                 />}
               value={props.skillLevel}
               onChange={props.handleChange}
-              onBlur={props.handleBlur}
             >
             <option value="" disabled={true}>{RequestFormComponent.Placeholders.SkillLevel}</option>
             {skillLevelItems}
@@ -107,6 +103,7 @@ const Students: React.StatelessComponent<Props> = props => {
             variant="contained"
             className="nabi-text-uppercase nabi-margin-top-xsmall"
             onClick={props.addStudent}
+            disabled={props.enableAddStudentBtn ? false : true}
           >
             <Add />
             {RequestFormComponent.addStudent}
