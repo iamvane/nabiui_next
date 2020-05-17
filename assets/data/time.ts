@@ -147,4 +147,4 @@ export const timeSelect = [
     'label': '11:00PM',
     'value': '23:00'
   }
-]
+];

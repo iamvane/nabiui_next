@@ -64,7 +64,7 @@ export const ScheduleLessons = (props: Props) => {
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarMessage, setSnackbarMessage] = React.useState('');
 
-  // checks for updateUser state to make api call
+  // sets snackbar on success and error
   React.useEffect(() => {
     if (props.scheduleLessonsMessage && scheduleLessons) {
       setShowSnackbar(true);
