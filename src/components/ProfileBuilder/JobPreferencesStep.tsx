@@ -1,10 +1,12 @@
-import * as React from 'react';
 import {
-  Action,
-  Dispatch
+  useState,
+  useEffect,
+  useCallback
+} from 'react';
+import {
+  bindActionCreators
 } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Router from "next/router";
 
 import {
@@ -14,492 +16,802 @@ import {
 import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../redux/reducers/store';
-import { UserType } from '../../redux/models/UserModel';
 import { fetchUser } from '../../redux/actions/UserActions';
 import { buildJobPreferences } from '../../redux/actions/InstructorActions';
 import { Routes } from '../common/constants/Routes';
-import { PlaceForLessonsType } from '../PlaceForLessons/model';
-import { RatesType } from '../Rates/model';
 import { SkillLevel } from '../Instruments/constants';
 import { InstructorType } from '../../redux/models/InstructorModel';
 import { InstrumentsType } from '../Instruments/model';
-import {
-  LessonSizeType,
-  AgeGroupType
-} from '../JobPreferences/model';
-import { QualificationsType } from '../Qualifications/model';
-import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
+import * as ProfileBuilderConstants from '../ProfileBuilder/constants';
 import { fields } from './ProfileStep/ProfileStepValidator';
-import  { ValidatorState as ProfileStepValidatorState } from '../../utils/Validator';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
+import ConfirmExit from '../CommonStepper/ConfirmExit';
 import Instruments from '../Instruments/Instruments';
 import Rates from '../Rates/Rates';
 import PlaceForLessonsForm from '../PlaceForLessons/PlaceForLessonsForm';
 import Availability from '../Availability/Availability';
-import { AvailabilityType } from '../Availability/model';
 import Qualification from '../Qualifications/Qualifications';
 import JobPreferences from '../JobPreferences/JobPreferences';
 import Languages from '../Languages/Languages';
-import { JobPreferencesType } from '../ProfileBuilder/models';
+import SnackBar from '../common/SnackBar';
 
-interface StateProps {
-  user: UserType;
-  isRequesting: boolean;
-  buildJobPreferencesError: string;
-  isFetchingUser: boolean;
-}
+export const JobPreferencesStep = () => {
+  const jobPreferences = [
+    'instruments',
+    'jobPreferences',
+    'rates',
+    'placeForLessons',
+    'availability',
+    'qualifications',
+    'languages'
+  ];
+  const [instruments, setInstruments] = useState({
+    instruments: [],
+    instrument: '',
+    skillLevel: '' as SkillLevel
+  });
 
-interface DispatchProps {
-  buildJobPreferences: (instructor: InstructorType) => void;
-  fetchUser: () => void;
-}
+  const [languages, setLanguages] = useState({
+    languages: [],
+    language: ''
+  });
+  const [availability, setAvailability] = useState(ProfileBuilderConstants.availability);
+  const [rates, setRates] = useState(ProfileBuilderConstants.rates);
+  const [qualifications, setQualification] = useState(ProfileBuilderConstants.qualifications);
+  const [placeForLessons, setPlaceForLesson] = useState(ProfileBuilderConstants.placeForLessons);
+  const [sizeAgePreference, setSizeAgePreference] = useState(ProfileBuilderConstants.sizeAgePreferences);
+  const [studioAddress, setStudioAddress] = useState("");
+  const [travelDistance, setTravelDistance] = useState("");
 
-interface OwnProps {}
+  const [steps, setStep] = useState([1]);
 
-interface State extends
-  JobPreferencesType,
-  ProfileStepValidatorState {
-  name: string;
-  language: string;
-  skillLevel: SkillLevel;
-  fields: any;
-}
+  const [currentStep, setCurrentStep] = useState(0);
 
-interface Props extends
-  DispatchProps,
-  OwnProps,
-  StateProps { }
+  const [enableContinue, setEnableContinue] = useState(ProfileBuilderConstants.enableContinueBtn);
+  const [showSnackbar, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackBarMessage] = useState("");
+  const [exitFormIsOpen, setExitFormOpen] = useState(false);
+  const [allFieldsFilledError, setAllFieldsFilledError] = useState('');
 
-/**
- * Profile: First step of the Profile Builder
- */
-export class JobPreferencesStep extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      name: '',
-      language: '',
-      instruments: [],
-      languages: [],
-      mins30: 0,
-      mins45: 0,
-      mins60: 0,
-      mins90: 0,
-      home: false,
-      studio: false,
-      online: false,
-      fields : fields,
-      oneStudent: false,
-      smallGroups: false,
-      largeGroups: false,
-      children: false,
-      teens: false,
-      adults: false,
-      seniors: false,
-      certifiedTeacher: false,
-      musicTherapy: false,
-      musicProduction: false,
-      earTraining: false,
-      conducting: false,
-      virtuosoRecognition: false,
-      performance: false,
-      musicTheory: false,
-      youngChildrenExperience: false,
-      repertoireSelection: false,
-      instrument: '',
-      skillLevel: '' as SkillLevel
-    };
+  const closeSnackbar = () => setSnackbarOpen(false);
+  const closeExitForm = () => setExitFormOpen(false);
+  const handleProceed = () => {
+    Router.push(Routes.HomePage);
   }
 
-  public async componentDidMount(): Promise<void> {
-    await this.props.fetchUser();
-    const profile = this.props.user.profile as InstructorType;
+  let {
+    instructor,
+    user,
+    isFetchingUser,
+    isRequesting,
+    buildJobPreferencesError
+  } = useSelector((state: StoreState) => {
+    const {
+      instructor,
+      actions: {
+        buildJobPreferences: {
+          isRequesting,
+          error: buildJobPreferencesError,
+        },
+      },
+    } = state.instructor;
 
-    // set instruments state
-    if (profile) {
-      if (profile.instruments) {
-        this.setState({ instruments: profile.instruments });
-      }
+    return {
+      instructor,
+      user: state.user.user,
+      isRequesting,
+      buildJobPreferencesError,
+      isFetchingUser: state.user.actions.fetchUser.isRequesting
+    };
+  });
 
-      // set lessonSize state
-      if (profile.lessonSize) {
-        this.setState({
-          oneStudent: profile.lessonSize.oneStudent,
-          smallGroups: profile.lessonSize.smallGroups,
-          largeGroups: profile.lessonSize.largeGroups,
-        });
-      }
-
-      // set ageGroup state
-      if (profile.ageGroup) {
-        this.setState({
-          children: profile.ageGroup.children,
-          teens: profile.ageGroup.teens,
-          adults: profile.ageGroup.adults,
-          seniors: profile.ageGroup.seniors,
-        });
-      }
-
-      // set rates state
-      if (profile.rates) {
-        this.setState({
-          mins30: profile.rates.mins30,
-          mins45: profile.rates.mins45,
-          mins60: profile.rates.mins60,
-          mins90: profile.rates.mins90,
-        });
-      }
-
-      // set placeForLesson state
-      if (profile.placeForLessons) {
-        this.setState({
-          home: profile.placeForLessons.home,
-          studio: profile.placeForLessons.studio,
-          online: profile.placeForLessons.online
-        });
-      }
-
-      // set studioAddress state
-      if (profile.studioAddress) {
-        this.setState({ studioAddress: profile.studioAddress });
-      }
-
-      // set studioAddress state
-      if (profile.travelDistance) {
-        this.setState({ distance: profile.travelDistance });
-      }
-
-      // set availability state
-      if (profile.availability) {
-        this.setState({
-          mon8to10: profile.availability.mon8to10,
-          mon10to12: profile.availability.mon10to12,
-          mon12to3: profile.availability.mon12to3,
-          mon3to6: profile.availability.mon3to6,
-          tue8to10: profile.availability.tue8to10,
-          tue10to12: profile.availability.tue10to12,
-          tue12to3: profile.availability.tue12to3,
-          tue3to6: profile.availability.tue3to6,
-          wed8to10: profile.availability.wed8to10,
-          wed10to12: profile.availability.wed10to12,
-          wed12to3: profile.availability.wed12to3,
-          wed3to6: profile.availability.wed3to6,
-          thu8to10: profile.availability.thu8to10,
-          thu10to12: profile.availability.thu10to12,
-          thu12to3: profile.availability.thu12to3,
-          thu3to6: profile.availability.thu3to6,
-          fri8to10: profile.availability.fri8to10,
-          fri10to12: profile.availability.fri10to12,
-          fri12to3: profile.availability.fri12to3,
-          fri3to6: profile.availability.fri3to6,
-          sat8to10: profile.availability.sat8to10,
-          sat10to12: profile.availability.sat10to12,
-          sat12to3: profile.availability.sat12to3,
-          sat3to6: profile.availability.sat3to6,
-          sun8to10: profile.availability.sun8to10,
-          sun10to12: profile.availability.sun10to12,
-          sun12to3: profile.availability.sun12to3,
-          sun3to6: profile.availability.sun3to6
-        });
-      }
-
-      // set qualifications state
-      if (profile.qualifications) {
-        this.setState({
-          certifiedTeacher: profile.qualifications.certifiedTeacher,
-          musicTherapy: profile.qualifications.musicTherapy,
-          musicProduction: profile.qualifications.musicProduction,
-          earTraining: profile.qualifications.earTraining,
-          conducting: profile.qualifications.conducting,
-          virtuosoRecognition: profile.qualifications.virtuosoRecognition,
-          performance: profile.qualifications.performance,
-          musicTheory: profile.qualifications.musicTheory,
-          youngChildrenExperience: profile.qualifications.youngChildrenExperience,
-          repertoireSelection: profile.qualifications.repertoireSelection
-        });
-      }
-
-      // set languages state
-      if (profile.languages) {
-        this.setState({ languages: profile.languages });
-      }
+  const confirmSelectedPreferences = (name: string, preference: string) => {
+    if (preference === 'sizeAgePreference') {
+      const lessonSizes = Object.keys(ProfileBuilderConstants.sizeAgePreferences.lessonSize);
+      const ageGroup = Object.keys(ProfileBuilderConstants.sizeAgePreferences.ageGroup);
+      return lessonSizes.concat(ageGroup).includes(name);
     }
+    return Object.keys(ProfileBuilderConstants[preference]).includes(name);
   }
 
-  public handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const target = event.currentTarget;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+  const addInstrument = useCallback(
+    () => {
+      const instrumentToAdd: InstrumentsType = {
+        instrument: instruments.instrument,
+        skillLevel: instruments.skillLevel
+      };
+      if (instruments.instruments.find(t => t.instrument === instrumentToAdd.instrument)) {
+        return;
+      } else if (instrumentToAdd.instrument && instrumentToAdd.skillLevel) {
+        setInstruments(prevState => ({
+          ...prevState,
+          instruments: [...prevState.instruments, instrumentToAdd],
+          instrument: '',
+          skillLevel: SkillLevel.beginner
+        }));
 
-    this.setState({
-      ...this.state,
-      [name]: value,
-    });
-  }
+        setEnableContinue(prevState => ({
+          ...prevState,
+          instruments: true
+        }));
 
-  public addInstrument = (): void => {
-    const instrumentToAdd: InstrumentsType = {
-      instrument: this.state.instrument,
-      skillLevel: this.state.skillLevel
-    };
-    if (this.state.instruments.find(t => t.instrument === instrumentToAdd.instrument)) {
-      return;
-    } else if (instrumentToAdd.instrument && instrumentToAdd.skillLevel) {
-      this.setState({
-        instruments: [...this.state.instruments, instrumentToAdd],
-        instrument: '',
-        skillLevel: SkillLevel.beginner
+        setStep(prevState => ([
+          ...prevState,
+        ]));
+      }
+    },
+    [instruments]
+  );
+
+  const deleteInstrument = useCallback(
+    (instrumentName: string) => {
+      setInstruments(prevState => {
+        const currentState = {
+          ...prevState,
+          instruments: prevState.instruments.filter(instrument =>
+            instrumentName.indexOf(instrument.instrument) === -1)
+        }
+        if (!currentState.instruments.length) {
+          setEnableContinue(prevState => ({
+            ...prevState,
+            instruments: false
+          }));
+        }
+        return currentState;
       });
-    }
-  }
+    },
+    []
+  )
 
-  public deleteInstrument = (instrumentName: string) => {
-    this.setState({
-      instruments: this.state.instruments.filter(instrument =>
-        instrumentName.indexOf(instrument.instrument) === -1)
-    });
-  }
+  const addLanguage = useCallback(
+    () => {
+      if (languages.languages.find(t => t === languages.language)) {
+        return;
+      } else if (languages.language) {
+        setLanguages(prevState => ({
+          ...prevState,
+          languages: [
+            ...prevState.languages,
+            languages.language
+          ]
+        }));
 
-  public addLanguage = (): void =>  {
-    if (this.state.languages.find(t => t === this.state.language)) {
-      return;
-    } else if (this.state.language) {
-      this.setState({ languages: [...this.state.languages, this.state.language] });
-    }
-  }
+        setEnableContinue(prevState => ({
+          ...prevState,
+          languages: true
+        }));
 
-  public deleteLanguage = (languageName: string) => {
-    this.setState({ languages: this.state.languages.filter(language =>
-      languageName.indexOf(language) === -1)
-    });
-  }
+        setStep(prevState => ([
+          ...prevState,
+        ]));
+      }
+    },
+    [languages]
+  );
 
-  public renderAvailabilityCheckbox = (stateName: string): JSX.Element => {
+  const deleteLanguage = useCallback(
+    (languageName: string) => {
+      setLanguages(prevState => {
+        const currentState = {
+          ...prevState,
+          languages: prevState.languages.filter(language =>
+            languageName.indexOf(language) === -1)
+        }
+
+        if (!currentState.languages.length) {
+          setEnableContinue(prevState => ({
+            ...prevState,
+            languages: false
+          }));
+        }
+        return currentState;
+      });
+    },
+    []
+  );
+
+  const renderAvailabilityCheckbox = (stateName: string): JSX.Element => {
     return (
       <Checkbox
-        checked={this.state[stateName]}
+        checked={availability[stateName]}
         name={stateName}
-        onChange={this.handleChange}
+        onChange={handleChange}
       />
     );
   }
 
-  public handleNext = async () => {
-    const lessonSize: LessonSizeType = {
-      oneStudent: this.state.oneStudent,
-      smallGroups: this.state.smallGroups,
-      largeGroups: this.state.largeGroups
-    };
+  const dispatch = useDispatch();
+  const fetchUserAction = bindActionCreators(fetchUser, dispatch);
+  const buildJobPreferencesAction = bindActionCreators(buildJobPreferences, dispatch);
+  const profile = user.profile as InstructorType;
 
-    const ageGroup: AgeGroupType = {
-      children: this.state.children,
-      teens: this.state.teens,
-      adults: this.state.adults,
-      seniors: this.state.seniors,
-    };
+  useEffect(() => {
+    fetchUserAction();
+  }, [JSON.stringify(user)]);
 
-    const placeForLessons: PlaceForLessonsType = {
-      home: this.state.home,
-      studio: this.state.studio,
-      online: this.state.online,
-    };
+  useEffect(() => {
+    if (profile) {
+      const hasSomeJobPreferences = confirmSomeProfileDetails(profile);
+      if (!hasSomeJobPreferences) {
+        setCurrentStep(0);
+        setStep(prevState => ([
+          ...prevState,
+        ]));
+      }
 
-    const qualifications: QualificationsType = {
-      certifiedTeacher: this.state.certifiedTeacher,
-      musicTherapy: this.state.musicTherapy,
-      musicProduction: this.state.musicProduction,
-      earTraining: this.state.earTraining,
-      conducting: this.state.conducting,
-      virtuosoRecognition: this.state.virtuosoRecognition,
-      performance: this.state.performance,
-      musicTheory: this.state.musicTheory,
-      youngChildrenExperience: this.state.youngChildrenExperience,
-      repertoireSelection: this.state.repertoireSelection,
-    };
+      if (hasSomeJobPreferences) {
+        setCurrentStep(6);
+        setStep(prevState => ([
+          ...prevState,
+          2, 3, 4, 5, 6, 7
+        ]));
+        setEnableContinue(prevState => ({
+          ...prevState,
+          instruments: true,
+          jobPreferences: true,
+          qualifications: true,
+          rates: true,
+          availability: true,
+          placeForLessons: true,
+          languages: true
+        }));
+      }
+      if (profile.instruments) {
+        setInstruments(prevState => ({
+          ...prevState,
+          instruments: profile.instruments
+        }));
+      }
 
-    const rates: RatesType = {
-      mins30: this.state.mins30,
-      mins45: this.state.mins45,
-      mins60: this.state.mins60,
-      mins90: this.state.mins90,
-    };
+      if (profile.lessonSize && profile.ageGroup) {
+        setSizeAgePreference(prevState => ({
+          ...prevState,
+          lessonSize: {
+            ...prevState.lessonSize,
+            ...profile.lessonSize
+          },
+          ageGroup: {
+            ...prevState.ageGroup,
+            ...profile.ageGroup
+          }
+        }));
+      }
 
-    const availability: AvailabilityType = {
-      mon8to10: this.state.mon8to10,
-      mon10to12: this.state.mon10to12,
-      mon12to3: this.state.mon12to3,
-      mon3to6: this.state.mon3to6,
-      mon6to9: this.state.mon6to9,
-      tue8to10: this.state.tue8to10,
-      tue10to12: this.state.tue10to12,
-      tue12to3: this.state.tue12to3,
-      tue3to6: this.state.tue3to6,
-      tue6to9: this.state.tue6to9,
-      wed8to10: this.state.wed8to10,
-      wed10to12: this.state.wed10to12,
-      wed12to3: this.state.wed12to3,
-      wed3to6: this.state.wed3to6,
-      wed6to9: this.state.wed6to9,
-      thu8to10: this.state.thu8to10,
-      thu10to12: this.state.thu10to12,
-      thu12to3: this.state.thu12to3,
-      thu3to6: this.state.thu3to6,
-      thu6to9: this.state.thu6to9,
-      fri8to10: this.state.fri8to10,
-      fri10to12: this.state.fri10to12,
-      fri12to3: this.state.fri12to3,
-      fri3to6: this.state.fri3to6,
-      fri6to9: this.state.fri6to9,
-      sat8to10: this.state.sat8to10,
-      sat10to12: this.state.sat10to12,
-      sat12to3: this.state.sat12to3,
-      sat3to6: this.state.sat3to6,
-      sat6to9: this.state.sat6to9,
-      sun8to10: this.state.sun8to10,
-      sun10to12: this.state.sun10to12,
-      sun12to3: this.state.sun12to3,
-      sun3to6: this.state.sun3to6,
-      sun6to9: this.state.sun6to9,
-    };
+      if (profile.rates) {
+        setRates(prevState => ({
+          ...prevState,
+          ...profile.rates
+        }))
+      }
 
-    const jobPreferences: InstructorType = {
-      rates,
-      lessonSize,
-      ageGroup,
-      placeForLessons,
-      availability,
-      studioAddress: this.state.studioAddress,
-      travelDistance: this.state.distance,
-      qualifications,
-      instruments: this.state.instruments,
-      languages: this.state.languages,
-    };
+      if (profile.placeForLessons) {
+        setPlaceForLesson(prevState => ({
+          ...prevState,
+          ...profile.placeForLessons
+        }));
+      }
 
-    await this.props.buildJobPreferences(jobPreferences);
-    Router.push(Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education);
+      if (profile.travelDistance) {
+        setTravelDistance(profile.travelDistance);
+      }
+
+      if (profile.studioAddress) {
+        setStudioAddress(profile.studioAddress);
+      }
+
+      if (profile.availability) {
+        setAvailability(prevState => ({
+          ...prevState,
+          ...profile.availability
+        }));
+      }
+
+      if (profile.qualifications) {
+        setQualification(prevState => ({
+          ...prevState,
+          ...profile.qualifications
+        }));
+      }
+
+      if (profile.languages) {
+        setLanguages(prevState => ({
+          ...prevState,
+          languages: [
+            ...prevState.languages,
+            ...profile.languages
+          ]
+        }));
+      }
+    }
+  }, [JSON.stringify(user.profile)]);
+
+  const confirmSomeProfileDetails = (profile) => {
+    const details = [
+      'instrument',
+      'lessonSize',
+      'ageGroup',
+      'rates',
+      'availability',
+      'qualifications'
+    ];
+    return details.some((detail) => {
+      if (profile[detail] && profile[detail].constructor.name === 'Object') {
+        return Object.values(profile[detail]).length > 0;
+      }
+      if (profile[detail] && Array.isArray(profile[detail])) {
+        return profile[detail].length > 0;
+      }
+    });
   }
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        {this.props.isFetchingUser ?
-         <div className="nabi-text-center">
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>): any => {
+      const target = event.currentTarget;
+      const value = target.type === 'checkbox' ? target.checked : target.value as any;
+      const name = target.name;
+
+      if (name === 'instrument' || name === 'skillLevel') {
+        setInstruments(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+      }
+
+      if (name === 'language') {
+        setLanguages(prevState => ({
+          ...prevState,
+          [name]: value
+        }))
+      }
+      if (confirmSelectedPreferences(name, 'sizeAgePreference')) {
+        const lessonSize = sizeAgePreference.lessonSize;
+        const ageGroup = sizeAgePreference.ageGroup;
+        setSizeAgePreference(prevState => {
+          const currentState = {
+            ...prevState,
+            ...(Object.keys(lessonSize).includes(name) && {
+              lessonSize: {
+                ...prevState.lessonSize,
+                [name]: value
+              }
+            }),
+            ...(Object.keys(ageGroup).includes(name) && {
+              ageGroup: {
+                ...prevState.ageGroup,
+                [name]: value
+              }
+            })
+          }
+
+          const hasLessonSize = Object.values(currentState.lessonSize).some(lesson => lesson);
+          const hasAgeGroup = Object.values(currentState.ageGroup).some(age => age);
+
+          if (hasLessonSize && hasAgeGroup) {
+            setEnableContinue(prevState => ({
+              ...prevState,
+              jobPreferences: true
+            }));
+          } else {
+            setEnableContinue(prevState => ({
+              ...prevState,
+              jobPreferences: false
+            }));
+          }
+          return currentState;
+        });
+      }
+
+      if (confirmSelectedPreferences(name, 'rates')) {
+        setRates((prevState) => {
+          const currentState = {
+            ...prevState,
+            [name]: value
+          }
+
+          setEnableContinue(prevState => ({
+            ...prevState,
+            rates: Object.values(currentState).every(rate => rate > 0)
+          }));
+          return currentState;
+        });
+      }
+
+      if (confirmSelectedPreferences(name, 'placeForLessons')) {
+        setPlaceForLesson(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+
+        setEnableContinue(prevState => ({
+          ...prevState,
+          placeForLessons: true
+        }))
+      }
+
+      if (confirmSelectedPreferences(name, 'availability')) {
+        setAvailability(prevState => {
+          const currentAvailibility = {
+            ...prevState,
+            [name]: value
+          }
+          setEnableContinue(prevState => ({
+            ...prevState,
+            availability: Object.values(currentAvailibility).some(availability => availability)
+          }));
+          return currentAvailibility
+        });
+      }
+
+      if (confirmSelectedPreferences(name, 'qualifications')) {
+        setQualification(prevState => {
+          const currentQualifications = {
+            ...prevState,
+            [name]: value
+          }
+
+          setEnableContinue(prevState => ({
+            ...prevState,
+            qualifications: Object.values(currentQualifications).some(qualification => qualification)
+          }));
+          return currentQualifications
+        });
+      }
+      if (name === 'studioAddress') {
+        setStudioAddress(value);
+      }
+      if (name === 'distance') {
+        setTravelDistance(value)
+      }
+    },
+    []
+  );
+
+  const handleNext = useCallback(
+    () => {
+      const jobPreferences: InstructorType = {
+        rates,
+        lessonSize: sizeAgePreference.lessonSize,
+        ageGroup: sizeAgePreference.ageGroup,
+        placeForLessons,
+        availability,
+        ...(studioAddress && {
+          studioAddress
+        }),
+        ...(travelDistance && {
+          travelDistance
+        }),
+        qualifications,
+        instruments: instruments.instruments,
+        languages: languages.languages,
+      };
+
+      if (steps.length < 7) {
+        setStep(prevState => {
+          const updatedSteps = [
+            ...prevState,
+            steps[steps.length - 1] + 1
+          ];
+          return updatedSteps;
+        });
+        setCurrentStep(prevState => prevState + 1);
+      } else {
+        if (validateAllSelectedFields(
+          availability,
+          rates,
+          qualifications,
+          placeForLessons,
+          sizeAgePreference,
+          instruments,
+          languages
+        )) {
+          let profile = Object.keys(jobPreferences).map((preference) => {
+            return {
+              [preference]: user.profile[preference]
+            }
+          }) as { [x: string]: any };
+          profile = profile.reduce((prev, current) => {
+            return {
+              ...prev,
+              [Object.keys(current)[0]]: current[Object.keys(current)[0]]
+            }
+          }, {});
+          delete profile.studioAddress;
+          delete profile.travelDistance;
+
+          if (JSON.stringify(profile) !== JSON.stringify(jobPreferences)) {
+            buildJobPreferencesAction(jobPreferences);
+          } else {
+            Router.push(Routes.BuildProfile + ProfileBuilderConstants
+              .ProfileBuilderStepper.StepsPaths.Education
+            );
+          }
+        } else {
+          setAllFieldsFilledError("All fields must be filled");
+        }
+      }
+    },
+    [
+      steps,
+      JSON.stringify(availability),
+      JSON.stringify(rates),
+      JSON.stringify(qualifications),
+      JSON.stringify(placeForLessons),
+      JSON.stringify(sizeAgePreference),
+      JSON.stringify(instruments.instruments),
+      JSON.stringify(languages.languages),
+      studioAddress,
+      travelDistance,
+      buildJobPreferencesError
+    ]
+  );
+
+  useEffect(() => {
+    const jobPreferences: InstructorType = {
+      rates,
+      lessonSize: sizeAgePreference.lessonSize,
+      ageGroup: sizeAgePreference.ageGroup,
+      placeForLessons,
+      availability,
+      ...(studioAddress && {
+        studioAddress
+      }),
+      ...(travelDistance && {
+        travelDistance
+      }),
+      qualifications,
+      instruments: instruments.instruments,
+      languages: languages.languages,
+    };
+    const modifiedInstructor = {
+      ...instructor
+    }
+    if (!modifiedInstructor.studioAddress) {
+      delete modifiedInstructor.studioAddress;
+    }
+
+    if (!modifiedInstructor.travelDistance) {
+      delete modifiedInstructor.travelDistance;
+    }
+    delete modifiedInstructor.backgroundCheckResults;
+    delete modifiedInstructor.userId;
+    if (buildJobPreferencesError) {
+      setSnackbarOpen(true);
+      setSnackBarMessage(buildJobPreferencesError);
+    }
+
+    if (
+      Object.keys(jobPreferences).length === Object.keys(modifiedInstructor).length &&
+      (JSON.stringify(jobPreferences) !== JSON.stringify(modifiedInstructor))
+    ) {
+      Router.push(Routes.BuildProfile + ProfileBuilderConstants
+        .ProfileBuilderStepper.StepsPaths.Education
+      );
+    }
+  }, [
+    JSON.stringify(instructor),
+    buildJobPreferencesError
+  ]);
+
+  const handleExit = useCallback(
+    () => {
+      const allSelected = confirmSomeSelectedFields(
+        availability,
+        rates,
+        qualifications,
+        placeForLessons,
+        sizeAgePreference,
+        instruments,
+        languages
+      );
+      if (allSelected) {
+        setExitFormOpen(true);
+      } else {
+        Router.push(Routes.Dashboard);
+      }
+    },
+    [
+      JSON.stringify(availability),
+      JSON.stringify(rates),
+      JSON.stringify(qualifications),
+      JSON.stringify(placeForLessons),
+      JSON.stringify(sizeAgePreference),
+      instruments.instruments,
+      languages.languages,
+      studioAddress,
+      travelDistance,
+    ]
+  )
+
+  const validateAllSelectedFields = (
+    availability,
+    rates,
+    qualifications,
+    placeForLessons,
+    sizeAgePreference,
+    instruments,
+    languages
+  ) => {
+    return fieldsInputCheck(
+      availability,
+      rates,
+      qualifications,
+      placeForLessons,
+      sizeAgePreference,
+      instruments,
+      languages
+    ).every((selected) => selected === true);
+  }
+
+  const fieldsInputCheck = (
+    availability,
+    rates,
+    qualifications,
+    placeForLessons,
+    sizeAgePreference,
+    instruments,
+    languages
+  ) => {
+    const availabilityIsSelected = Object.values(availability).some((available) => available === true);
+    const allRatesAreSelected = Object.values(rates).every((rate) => {
+      return rate > 0
+    });
+    const qualificationIsSelected = Object.values(qualifications).some((qualification) => qualification === true);
+    const placeIsSelected = Object.values(placeForLessons).some((place) => place === true);
+    const lessonSizeIsSelected = Object.values(sizeAgePreference.lessonSize).some((size) => size === true);
+    const ageGroupIsSelected = Object.values(sizeAgePreference.ageGroup).some((age) => age === true);
+    const instrumentIsSelected = instruments.instruments.length > 0;
+    const languageIsSelected = languages.languages.length > 0;
+    return [
+      availabilityIsSelected,
+      allRatesAreSelected,
+      qualificationIsSelected,
+      placeIsSelected,
+      lessonSizeIsSelected,
+      ageGroupIsSelected,
+      instrumentIsSelected,
+      languageIsSelected
+    ];
+  }
+
+  const confirmSomeSelectedFields = (
+    availability,
+    rates,
+    qualifications,
+    placeForLessons,
+    sizeAgePreference,
+    instruments,
+    languages
+  ) => {
+    return fieldsInputCheck(
+      availability,
+      rates,
+      qualifications,
+      placeForLessons,
+      sizeAgePreference,
+      instruments,
+      languages
+    ).some((selected) => selected === true);
+  }
+
+  return (
+    <div>
+      {isFetchingUser ?
+        <div className="nabi-text-center">
           <CircularProgress />
         </div> :
         <div>
-          <div className="nabi-margin-bottom-large">
-            <Instruments
-              instruments={this.state.instruments.length > 0 ? this.state.instruments : undefined}
-              instrument={this.state.instrument}
-              skillLevel={this.state.skillLevel}
-              handleChange={this.handleChange}
-              addInstrument={this.addInstrument}
-              deleteInstrument={this.deleteInstrument}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <JobPreferences
-              handleChange={this.handleChange}
-              oneStudent={this.state.oneStudent}
-              smallGroups={this.state.smallGroups}
-              largeGroups={this.state.largeGroups}
-              children={this.state.children}
-              teens={this.state.teens}
-              adults={this.state.adults}
-              seniors={this.state.seniors}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <Rates
-              handleChange={this.handleChange}
-              mins30={this.state.mins30}
-              mins45={this.state.mins45}
-              mins60={this.state.mins60}
-              mins90={this.state.mins90}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <PlaceForLessonsForm
-              handleChange={this.handleChange}
-              home={this.state.home}
-              studio={this.state.studio}
-              online={this.state.online}
-              distance={this.state.distance}
-              studioAddress={this.state.studioAddress}
-              studioAddressError={this.state.fields.studioAddress.error}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <Availability
-              renderCheckbox={this.renderAvailabilityCheckbox}
-              handleChange={this.handleChange}
-            />
-          </div>
-          <div className="nabi-margin-bottom-large">
-            <Qualification
-              handleChange={this.handleChange}
-              certifiedTeacher={this.state.certifiedTeacher}
-              musicTherapy={this.state.musicTherapy}
-              musicProduction={this.state.musicProduction}
-              earTraining={this.state.earTraining}
-              conducting={this.state.conducting}
-              virtuosoRecognition={this.state.virtuosoRecognition}
-              performance={this.state.performance}
-              musicTheory={this.state.musicTheory}
-              youngChildrenExperience={this.state.youngChildrenExperience}
-              repertoireSelection={this.state.repertoireSelection}
-            />
-          </div>
+          {steps.includes(1) && (
+            <div className="nabi-margin-bottom-large">
+              <Instruments
+                instruments={instruments.instruments.length > 0 ? instruments.instruments : undefined}
+                instrument={instruments.instrument}
+                skillLevel={instruments.skillLevel}
+                handleChange={handleChange}
+                addInstrument={addInstrument}
+                deleteInstrument={deleteInstrument}
+              />
+            </div>
+          )}
+          {steps.includes(2) && (
+            <div className="nabi-margin-bottom-large">
+              <JobPreferences
+                handleChange={handleChange}
+                oneStudent={sizeAgePreference.lessonSize.oneStudent}
+                smallGroups={sizeAgePreference.lessonSize.smallGroups}
+                largeGroups={sizeAgePreference.lessonSize.largeGroups}
+                children={sizeAgePreference.ageGroup.children}
+                teens={sizeAgePreference.ageGroup.teens}
+                adults={sizeAgePreference.ageGroup.adults}
+                seniors={sizeAgePreference.ageGroup.seniors}
+              />
+            </div>
+          )}
 
-          <Languages
-            languages={this.state.languages}
-            handleChangeLanguage={this.handleChange}
-            addLanguage={this.addLanguage}
-            language={this.state.language}
-            deleteLanguage={this.deleteLanguage}
-          />
+          {steps.includes(3) && (
+            <div className="nabi-margin-bottom-large">
+              <Rates
+                handleChange={handleChange}
+                mins30={rates.mins30}
+                mins45={rates.mins45}
+                mins60={rates.mins60}
+                mins90={rates.mins90}
+              />
+            </div>
+          )}
+
+          {steps.includes(4) && (
+            <div className="nabi-margin-bottom-large">
+              <PlaceForLessonsForm
+                handleChange={handleChange}
+                home={placeForLessons.home}
+                studio={placeForLessons.studio}
+                online={placeForLessons.online}
+                distance={travelDistance}
+                studioAddress={studioAddress}
+                studioAddressError={fields.studioAddress.error}
+              />
+            </div>
+          )}
+
+          {steps.includes(5) && (
+            <div className="nabi-margin-bottom-large">
+              <Availability
+                renderCheckbox={renderAvailabilityCheckbox}
+                handleChange={handleChange}
+              />
+            </div>
+          )}
+
+          {steps.includes(6) && (
+            <div className="nabi-margin-bottom-large">
+              <Qualification
+                handleChange={handleChange}
+                certifiedTeacher={qualifications.certifiedTeacher}
+                musicTherapy={qualifications.musicTherapy}
+                musicProduction={qualifications.musicProduction}
+                earTraining={qualifications.earTraining}
+                conducting={qualifications.conducting}
+                virtuosoRecognition={qualifications.virtuosoRecognition}
+                performance={qualifications.performance}
+                musicTheory={qualifications.musicTheory}
+                youngChildrenExperience={qualifications.youngChildrenExperience}
+                repertoireSelection={qualifications.repertoireSelection}
+              />
+            </div>
+          )}
+
+          {steps.includes(7) && (
+            <Languages
+              languages={languages.languages}
+              handleChangeLanguage={handleChange}
+              addLanguage={addLanguage}
+              language={languages.language}
+              deleteLanguage={deleteLanguage}
+            />
+          )}
         </div>}
-        <StepperButtons
-          // nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
-          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Profile}
-          handleNext={this.handleNext}
-          icon={<ArrowForward />}
-          isRequesting={this.props.isRequesting || this.props.isFetchingUser}
-          errors={this.props.buildJobPreferencesError}
-        />
-      </div>
-    );
-  }
+      <StepperButtons
+        backPath={Routes.BuildProfile + ProfileBuilderConstants
+          .ProfileBuilderStepper.StepsPaths.Profile
+        }
+        handleNext={handleNext}
+        icon={<ArrowForward />}
+        isNextDisabled={!enableContinue[jobPreferences[currentStep]] ? true : false}
+        isRequesting={isRequesting || isFetchingUser}
+        errors={allFieldsFilledError}
+        handleExit={handleExit}
+      />
+      <SnackBar
+        isOpen={showSnackbar}
+        message={snackbarMessage}
+        handleClose={closeSnackbar}
+        variant="error"
+      />
+      <ConfirmExit
+        isFormDialogOpen={exitFormIsOpen}
+        handleProceed={handleProceed}
+        closeHandler={closeExitForm}
+      />
+    </div>
+  )
 }
-
-const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
-  const {
-    actions: {
-      buildJobPreferences: {
-        isRequesting,
-        error: buildJobPreferencesError
-      },
-    },
-  } = state.instructor;
-
-  return {
-    user: state.user.user,
-    isRequesting,
-    buildJobPreferencesError,
-    isFetchingUser: state.user.actions.fetchUser.isRequesting
-  };
-};
-
-function mapDispatchToProps(
-  dispatch: Dispatch<Action | ThunkAction<{}, {}, {}>>,
-  _ownProps: OwnProps
-): DispatchProps {
-  return {
-    buildJobPreferences: (instructor: InstructorType) =>
-      dispatch(buildJobPreferences(instructor)),
-    fetchUser:() => dispatch(fetchUser())
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(JobPreferencesStep);

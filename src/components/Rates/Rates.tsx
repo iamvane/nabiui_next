@@ -6,7 +6,7 @@ import {
   ListItemSecondaryAction,
   ListItemText,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 

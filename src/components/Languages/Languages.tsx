@@ -4,14 +4,9 @@ import {
   Button,
   FormControl,
   Grid,
-  IconButton,
-  ListItemSecondaryAction,
-  ListItemText,
-  ListItem,
   Select,
   Typography
 } from '@material-ui/core';
-import Done from '@material-ui/icons/Done';
 import Add from '@material-ui/icons/Add';
 
 import { languages } from '../../../assets/data/languages';
@@ -50,19 +45,6 @@ export const Languages: React.StatelessComponent<Props> = props => {
         <Typography className="nabi-margin-bottom-xsmall">
           {LanguageComponent.Text.SelectWhatLanguage}
         </Typography>
-
-        <Grid container={true} spacing={2}>
-          <Grid item={true} md={3} xs={12}>
-            <ListItem>
-              <ListItemText primary={LanguageComponent.Text.English} />
-                <ListItemSecondaryAction>
-                  <IconButton color="primary" disabled={true}>
-                    <Done />
-                  </IconButton>
-                </ListItemSecondaryAction>
-            </ListItem>
-          </Grid>
-        </Grid>
 
         {selectedLenguages}
 

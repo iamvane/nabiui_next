@@ -153,7 +153,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
                     {props.buttonText}
                     <span className="nabi-margin-left-xsmall nabi-display-flex">{props.icon}</span>
                   </Button>
-              )
+            )
           }
         </div>
       </div>

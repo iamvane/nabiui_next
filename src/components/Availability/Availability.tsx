@@ -7,7 +7,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Typography
+  Typography,
 } from '@material-ui/core';
 
 import { AvailabilityComponent } from '../Availability/constants';

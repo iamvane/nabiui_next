@@ -52,6 +52,10 @@ const Instruments: React.StatelessComponent<Props> = props => {
     );
   });
 
+  const {
+    instrument,
+    skillLevel
+  } = props;
   return (
     <div className="nabi-instruments">
       <SectionTitle text={InstrumentsComponent.Text.Instruments} />
@@ -103,6 +107,7 @@ const Instruments: React.StatelessComponent<Props> = props => {
             color="primary"
             variant="contained"
             className="nabi-text-uppercase nabi-margin-top-xsmall"
+            disabled={skillLevel && instrument ? false : true}
             onClick={props.addInstrument}
           >
             <Add className="nabi-margin-right-xsmall" />
@@ -113,5 +118,4 @@ const Instruments: React.StatelessComponent<Props> = props => {
     </div>
   );
 };
-
 export default Instruments;

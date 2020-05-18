@@ -4,7 +4,7 @@ import {
   Checkbox,
   FormGroup,
   FormControlLabel,
-  Typography
+  Typography,
 } from '@material-ui/core';
 
 import SectionTitle from '../common/SectionTitle';
@@ -44,6 +44,7 @@ const JobPreferences: React.StatelessComponent<Props> = props => {
 
   const JobPreferencesFieldsFirstHalf = JobPreferencesFields.slice(0, 3);
   const JobPreferencesFieldsSecondHalf = JobPreferencesFields.slice(3);
+
   return (
     <div>
       <SectionTitle text={JobPreferencesComponent.Text.JobPreferences} />
