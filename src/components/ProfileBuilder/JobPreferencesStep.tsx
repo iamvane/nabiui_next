@@ -791,7 +791,6 @@ export const JobPreferencesStep = () => {
           )}
         </div>}
       <StepperButtons
-        // nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
         backPath={Routes.BuildProfile + ProfileBuilderConstants
           .ProfileBuilderStepper.StepsPaths.Profile
         }
@@ -801,7 +800,6 @@ export const JobPreferencesStep = () => {
         isRequesting={isRequesting || isFetchingUser}
         errors={allFieldsFilledError}
         handleExit={handleExit}
-      // continue={state.continue}
       />
       <SnackBar
         isOpen={showSnackbar}
