@@ -35,6 +35,7 @@ import {
 } from './ProfileStepValidator';
 import  { ValidatorState as ProfileStepValidatorState } from '../../../utils/Validator';
 import { ProfileType } from './models';
+import VideoProfileUploader from './VideoProfileUploader';
 
 interface StateProps {
   user: UserType;
@@ -229,12 +230,8 @@ export class ProfileStep extends React.Component<Props, State> {
     const clearError = () => this.setState({ errorMessage: '' });
     return (
       <div>
-        <div className="nabi-margin-bottom-small nabi-text-center">
-          <Typography className="nabi-text-mediumbold nabi-margin-bottom-xsmall nabi-display-inline-block">
-            {this.props.user.displayName}
-          </Typography>
-        </div>
-        <div className="nabi-margin-bottom-large">
+        <VideoProfileUploader />
+        <div className="nabi-margin-bottom-large nabi-margin-top-large">
           <Bio
             user={this.props.user}
             handleChange={this.handleChange}

@@ -172,3 +172,7 @@ export const enableContinueBtn = {
   qualifications: false,
   languages: false
 }
+export namespace VideoProfileUploaderComponent {
+  export const videoDurationError = 'Your profile video should be between 20 and 60 seconds.';
+  export const invalidFile = 'Upload a video file.'
+}
