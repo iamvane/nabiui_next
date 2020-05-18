@@ -220,7 +220,6 @@ export const JobPreferencesStep = () => {
     );
   }
 
-
   const dispatch = useDispatch();
   const fetchUserAction = bindActionCreators(fetchUser, dispatch);
   const buildJobPreferencesAction = bindActionCreators(buildJobPreferences, dispatch);
@@ -456,8 +455,6 @@ export const JobPreferencesStep = () => {
           }));
           return currentQualifications
         });
-        // check if at least one field is selected
-        // ProfileBuilderConstants.availability
       }
       if (name === 'studioAddress') {
         setStudioAddress(value);
