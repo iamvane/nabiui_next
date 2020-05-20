@@ -314,3 +314,10 @@ export namespace RequestCardComponent {
     Pass = 'Pass'
   }
 }
+
+export const enableContinueBtn = {
+  none: true,
+  requestDetail: false,
+  studentDetail: false,
+  requestMessage: false
+}

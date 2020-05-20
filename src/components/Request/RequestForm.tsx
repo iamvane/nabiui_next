@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {
-  Button,
   FormControl,
   Grid,
   Input,
@@ -9,11 +8,7 @@ import {
   Select,
   TextField,
   Typography,
-  CircularProgress
 } from '@material-ui/core';
-import Save from '@material-ui/icons/Save';
-import Add from '@material-ui/icons/Add';
-import Close from '@material-ui/icons/Close';
 
 import SectionTitle from '../common/SectionTitle';
 import DistanceSelect from '../common/DistanceSelect';
@@ -33,21 +28,19 @@ interface Props extends
   RequestType,
   StudentType {
   handleChange: (event: React.FormEvent<{}>) => void;
-  handleBlur: (event: React.FormEvent<{}>) => void;
-  handleSubmit: (event: React.FormEvent<{}>) => void;
-  handleEditSubmit: (event: React.FormEvent<{}>) => void;
-  handleCancel: () => void;
   role: string;
   addStudent: (event: React.FormEvent<{}>) => void;
   deleteStudent: (instrument: string) => void;
   isEditing: boolean;
   isCreatingRequest: boolean;
   isEditingRequest: boolean;
-  allFieldsFilled: boolean;
+  steps?: number[];
+  enableAddStudentBtn?: boolean;
+  enableAddRequestBtn?: boolean;
 }
 
 const RequestForm: React.StatelessComponent<Props> = props => {
-  const { handleChange, handleSubmit, handleEditSubmit } = props;
+  const { handleChange } = props;
 
   const skillLevelItems: any = [];
   for (const [key, value] of Object.entries(skillLevelOptions)) {
@@ -78,46 +71,34 @@ const RequestForm: React.StatelessComponent<Props> = props => {
         age={props.age}
         skillLevel={props.skillLevel}
         handleChange={props.handleChange}
-        handleBlur={props.handleBlur}
         addStudent={props.addStudent}
         deleteStudent={props.deleteStudent}
+        enableAddStudentBtn={props.enableAddStudentBtn}
       />
     </div>
   );
 
-  const editSubmitButton: JSX.Element = (
-    <Button
-      color="primary"
-      variant="contained"
-      className="nabi-margin-top-small nabi-text-uppercase"
-      onClick={handleEditSubmit}
-      type="submit"
-      disabled={!props.allFieldsFilled ? true : false}
-    >
-      {props.isEditingRequest ? <CircularProgress color="inherit" size={25} /> :
-        <React.Fragment>
-          <Save className="nabi-margin-right-xsmall" />
-          <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.EditSubmit}</span>
-        </React.Fragment>}
-    </Button>
-  );
+  const renderRequestMessage = (
+    <React.Fragment>
+      <SectionTitle text={RequestFormComponent.Labels.RequestMessage} />
+      <Typography>
+        {RequestFormComponent.requestMessageDescription}
+      </Typography>
 
-  const addSubmitButton: JSX.Element = (
-    <Button
-      color="primary"
-      variant="contained"
-      className="nabi-margin-top-small nabi-text-uppercase"
-      onClick={handleSubmit}
-      type="submit"
-      disabled={!props.allFieldsFilled ? true : false}
-    >
-      {props.isCreatingRequest ? <CircularProgress color="inherit" size={25} /> :
-        <React.Fragment>
-          <Add className="nabi-margin-right-xsmall" />
-          <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.AddSubmit}</span>
-        </React.Fragment>}
-    </Button>
-  );
+      <TextField
+        id={RequestFormComponent.Ids.RequestMessage}
+        margin="normal"
+        name={RequestFormComponent.FieldNames.RequestMessage}
+        placeholder={RequestFormComponent.Placeholders.RequestMessage}
+        required={true}
+        multiline={true}
+        fullWidth={true}
+        rows={6}
+        onChange={handleChange}
+        value={props.requestMessage}
+      />
+    </React.Fragment>
+  )
 
   return (
     <form
@@ -125,159 +106,129 @@ const RequestForm: React.StatelessComponent<Props> = props => {
       noValidate={true}
       autoComplete="off"
     >
-      <SectionTitle text={RequestFormComponent.title} />
-
-      <Typography>
-        {RequestFormComponent.Labels.RequestTitle}
-      </Typography>
-
-      <Grid item={true} md={7}>
-        <TextField
-          fullWidth={true}
-          id={RequestFormComponent.Ids.RequestTitle}
-          margin="normal"
-          name={RequestFormComponent.FieldNames.RequestTitle}
-          required={true}
-          onChange={handleChange}
-          onBlur={props.handleBlur}
-          value={props.requestTitle}
-        />
-      </Grid>
-
-      <ListItem>
-        <Typography className="list-text">
-          {RequestFormComponent.Labels.Instrument}
-        </Typography>
-
-        <FormControl className="nabi-instruments-select">
-          <Select
-            native={true}
-            input={<Input id={RequestFormComponent.Ids.Instrument} name={RequestFormComponent.FieldNames.Instrument} />}
-            value={props.instrument}
-            onChange={handleChange}
-            onBlur={props.handleBlur}
-          >
-            <option value="" disabled={true}>{RequestFormComponent.Placeholders.Instrument}</option>
-            {instrumentSelectItems}
-          </Select>
-        </FormControl>
-      </ListItem>
-
-      {(props.role === Role.student || props.role !== Role.parent) && (
-        <ListItem>
-          <Typography className="list-text">
-            {RequestFormComponent.Labels.SkillLevel}
+      {props.steps.includes(1) && (
+        <React.Fragment>
+          <SectionTitle text={RequestFormComponent.title} />
+          <Typography>
+            {RequestFormComponent.Labels.RequestTitle}
           </Typography>
 
-          <FormControl className="nabi-instruments-select">
-            <Select
-              native={true}
-              input={
-                <Input
-                  id={RequestFormComponent.Ids.SkillLevel}
-                  name={RequestFormComponent.FieldNames.SkillLevel}
-                />}
-              value={props.skillLevel}
+          <Grid item={true} md={7}>
+            <TextField
+              fullWidth={true}
+              id={RequestFormComponent.Ids.RequestTitle}
+              margin="normal"
+              name={RequestFormComponent.FieldNames.RequestTitle}
+              required={true}
               onChange={handleChange}
-            >
-              <option value="" disabled={true}>{RequestFormComponent.Placeholders.SkillLevel}</option>
-              {skillLevelItems}
-            </Select>
-          </FormControl>
-        </ListItem>
-      )}
-
-      <ListItem>
-        <Typography className="list-text">
-          {RequestFormComponent.Labels.PlaceForLessons}
-        </Typography>
-
-        <FormControl className="nabi-instruments-select">
-          <Select
-            native={true}
-            input={
-              <Input
-                id={RequestFormComponent.Ids.PlaceForLessons}
-                name={RequestFormComponent.FieldNames.PlaceForLessons}
-              />}
-            value={props.placeForLessons}
-            onBlur={props.handleBlur}
-            onChange={handleChange}
-          >
-            <option value="" disabled={true}>{RequestFormComponent.Placeholders.PlaceForLesson}</option>
-            {placeForLessonItems}
-          </Select>
-        </FormControl>
-      </ListItem>
-
-      {props.placeForLessons === placeForLessonsOptions.Studio.name &&
-        <ListItem>
-          <Grid item={true} xs={12} md={6}>
-            <DistanceSelect
-              handleChange={handleChange}
-              distance={props.distance}
+              value={props.requestTitle}
             />
           </Grid>
-        </ListItem>
-      }
 
-      <ListItem>
-        <Typography className="list-text">
-          {RequestFormComponent.Labels.LessonDuration}
-        </Typography>
+          <ListItem>
+            <Typography className="list-text">
+              {RequestFormComponent.Labels.Instrument}
+            </Typography>
 
-        <FormControl className="nabi-instruments-select">
-          <Select
-            native={true}
-            input={
-              <Input
-                id={RequestFormComponent.Ids.LessonDuration}
-                name={RequestFormComponent.FieldNames.LessonDuration}
-              />}
-            value={props.lessonDuration}
-            onChange={handleChange}
-            onBlur={props.handleBlur}
-          >
-            <option value="" disabled={true}>{RequestFormComponent.Placeholders.LessonDuration}</option>
-            {lessonDurationItems}
-          </Select>
-        </FormControl>
-      </ListItem>
+            <FormControl className="nabi-instruments-select">
+              <Select
+                native={true}
+                input={<Input id={RequestFormComponent.Ids.Instrument} name={RequestFormComponent.FieldNames.Instrument} />}
+                value={props.instrument}
+                onChange={handleChange}
+              >
+                <option value="" disabled={true}>{RequestFormComponent.Placeholders.Instrument}</option>
+                {instrumentSelectItems}
+              </Select>
+            </FormControl>
+          </ListItem>
+
+          {(props.role === Role.student || props.role !== Role.parent) && (
+            <ListItem>
+              <Typography className="list-text">
+                {RequestFormComponent.Labels.SkillLevel}
+              </Typography>
+
+              <FormControl className="nabi-instruments-select">
+                <Select
+                  native={true}
+                  input={
+                    <Input
+                      id={RequestFormComponent.Ids.SkillLevel}
+                      name={RequestFormComponent.FieldNames.SkillLevel}
+                    />}
+                  value={props.skillLevel}
+                  onChange={handleChange}
+                >
+                  <option value="" disabled={true}>{RequestFormComponent.Placeholders.SkillLevel}</option>
+                  {skillLevelItems}
+                </Select>
+              </FormControl>
+            </ListItem>
+          )}
+
+          <ListItem>
+            <Typography className="list-text">
+              {RequestFormComponent.Labels.PlaceForLessons}
+            </Typography>
+
+            <FormControl className="nabi-instruments-select">
+              <Select
+                native={true}
+                input={
+                  <Input
+                    id={RequestFormComponent.Ids.PlaceForLessons}
+                    name={RequestFormComponent.FieldNames.PlaceForLessons}
+                  />}
+                value={props.placeForLessons}
+                onChange={handleChange}
+              >
+                <option value="" disabled={true}>{RequestFormComponent.Placeholders.PlaceForLesson}</option>
+                {placeForLessonItems}
+              </Select>
+            </FormControl>
+          </ListItem>
+
+          {props.placeForLessons === placeForLessonsOptions.Studio.name &&
+            <ListItem>
+              <Grid item={true} xs={12} md={6}>
+                <DistanceSelect
+                  handleChange={handleChange}
+                  distance={props.distance}
+                />
+              </Grid>
+            </ListItem>
+          }
+
+          <ListItem>
+            <Typography className="list-text">
+              {RequestFormComponent.Labels.LessonDuration}
+            </Typography>
+
+            <FormControl className="nabi-instruments-select">
+              <Select
+                native={true}
+                input={
+                  <Input
+                    id={RequestFormComponent.Ids.LessonDuration}
+                    name={RequestFormComponent.FieldNames.LessonDuration}
+                  />}
+                value={props.lessonDuration}
+                onChange={handleChange}
+              >
+                <option value="" disabled={true}>{RequestFormComponent.Placeholders.LessonDuration}</option>
+                {lessonDurationItems}
+              </Select>
+            </FormControl>
+          </ListItem>
+        </React.Fragment>
+      )}
 
       <div className="nabi-margin-top-medium">
-        {props.role === Role.parent && renderStudentSection}
-
-        <SectionTitle text={RequestFormComponent.Labels.RequestMessage} />
-
-        <Typography>
-          {RequestFormComponent.requestMessageDescription}
-        </Typography>
-
-        <TextField
-          id={RequestFormComponent.Ids.RequestMessage}
-          margin="normal"
-          name={RequestFormComponent.FieldNames.RequestMessage}
-          placeholder={RequestFormComponent.Placeholders.RequestMessage}
-          required={true}
-          multiline={true}
-          fullWidth={true}
-          rows={6}
-          onChange={handleChange}
-          onBlur={props.handleBlur}
-          value={props.requestMessage}
-        />
+        {props.steps.includes(2) && (props.role === Role.parent) && renderStudentSection}
+        {props.steps.includes(2) && (props.role === Role.student) && renderRequestMessage}
+        {props.steps.includes(3) && (props.role === Role.parent) && renderRequestMessage}
       </div>
-
-      {props.isEditing ? editSubmitButton : addSubmitButton}
-      <Button
-        color="default"
-        variant="contained"
-        className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-xsmall"
-        onClick={props.handleCancel}
-      >
-        <Close className="nabi-margin-right-xsmall" />
-        <span className="nabi-margin-left-xsmall">{RequestFormComponent.ButtonText.Cancel}</span>
-      </Button>
     </form>
   );
 };

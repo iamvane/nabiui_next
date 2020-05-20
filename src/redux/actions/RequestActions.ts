@@ -96,10 +96,7 @@ export const editRequestAsync = (id: number, data: RequestType): ThunkAction<Pro
 
     dispatch(withDataAction(RequestActions.EDIT_REQUEST_SUCCESS, response.data));
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(withErrorAction(RequestActions.EDIT_REQUEST_FAILURE, errorMessage));
   }
 };
