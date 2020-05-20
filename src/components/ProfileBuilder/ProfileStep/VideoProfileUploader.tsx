@@ -16,7 +16,6 @@ const VideoProfileUploader = (props: Props) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setError('');
-    const resultEl = document.getElementById("meta");
     const file = event.target.files[0];
     const videoEl = document.createElement("video");
     videoEl.src = window.URL.createObjectURL(file);
@@ -27,19 +26,13 @@ const VideoProfileUploader = (props: Props) => {
 
     videoEl.onloadedmetadata = event => {
       window.URL.revokeObjectURL(videoEl.src);
-      console.log(window.URL.revokeObjectURL(videoEl.src))
-
-      const { name, type } = file;
-      const { videoWidth, videoHeight, duration } = videoEl;
 
       if (videoEl.duration < 20 || videoEl.duration > 60) {
         setError(VideoProfileUploaderComponent.videoDurationError);
         return;
       }
 
-      setVideo(videoEl.src)
-      console.log(videoEl.src);
-      console.log(file)
+      setVideo(file)
     }
   };
 
@@ -49,7 +42,7 @@ const VideoProfileUploader = (props: Props) => {
       <p>Introduce yourself to parents and students with a 30-60 seconds video</p>
       <Input
         id="standard-adornment-weight"
-        value={""}
+        // value={video}
         onChange={handleChange}
         startAdornment={
           <InputAdornment position="start">
@@ -67,11 +60,6 @@ const VideoProfileUploader = (props: Props) => {
         type="file"
       />
       { error && <Typography className="nabi-margin-top-xsmall" color="error">{error}</Typography> }
-      {video &&
-        <video id="test_video_player">
-          <source src={video} type="video/mp4" />
-        </video>
-      }
     </>
   );
 };
