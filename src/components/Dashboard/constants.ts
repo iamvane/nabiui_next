@@ -31,7 +31,8 @@ export namespace InstructorDashboardComponent {
     'employment',
     'education',
     'qualifications',
-    'music'
+    'music',
+    'video'
   ];
 
   export const missingFieldsDisplay = {
@@ -69,6 +70,10 @@ export namespace InstructorDashboardComponent {
     },
     music: {
       label: 'Music',
+      url: '/profile'
+    },
+    video: {
+      label: 'Video Profile',
       url: '/profile'
     },
     instruments: {
