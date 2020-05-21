@@ -587,3 +587,25 @@ export const gradeLesson = (gradeData: GradeData): ThunkAction<Promise<void>, {}
     dispatch(withErrorAction(InstructorActions.GRADE_LESSON_FAILURE, errorMessage));
   }
 };
+
+export const uploadVideoProfile = (
+  value: string
+): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
+  dispatch(requestAction(InstructorActions.UPLOAD_VIDEO_PROFILE));
+  try {
+    const url = ApiEndpoints.uploadVideoProfile;
+    const requestBody = new FormData();
+    requestBody.append("video", value);
+
+    const response = await axios.post(url, requestBody, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    dispatch(withDataAction(InstructorActions.UPLOAD_VIDEO_PROFILE_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === "string") {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(InstructorActions.UPLOAD_VIDEO_PROFILE_FAILURE, errorMessage));
+  }
+};

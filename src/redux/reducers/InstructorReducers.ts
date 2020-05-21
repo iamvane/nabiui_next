@@ -933,6 +933,47 @@ export default function instructorReducer(
           }
         };
 
+      case InstructorActions.UPLOAD_VIDEO_PROFILE:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            uploadVideoProfile: {
+              ...state.actions.uploadVideoProfile,
+              isRequesting: true
+            }
+          }
+        };
+
+      case InstructorActions.UPLOAD_VIDEO_PROFILE_SUCCESS:
+        const { data: uploadVideoProfileMessage } = action;
+
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            uploadVideoProfile: {
+              isRequesting: false,
+              error: "",
+              message: uploadVideoProfileMessage.message
+            }
+          }
+        };
+
+      case InstructorActions.UPLOAD_VIDEO_PROFILE_FAILURE:
+        const { error: uploadVideoProfileError } = <APIActions.WithError<string>>action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            uploadVideoProfile: {
+              isRequesting: false,
+              error: uploadVideoProfileError,
+              message: ""
+            }
+          }
+        };
+
     default:
       return state;
   }

@@ -1,13 +1,43 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import {
+  Action,
+  Dispatch
+} from 'redux';
+import {
+  Button,
+  IconButton,
   Input,
   InputAdornment,
-  Typography
+  Typography,
+  CircularProgress
 } from '@material-ui/core';
+import dynamic from "next/dynamic";
+const Done = dynamic(() => import('@material-ui/icons/Done'), {
+  ssr: false,
+});
 
+import { uploadVideoProfile } from '../../../redux/actions/InstructorActions';
+import { StoreState } from '../../../redux/reducers/store';
+import SectionTitle from '../../common/SectionTitle';
 import { VideoProfileUploaderComponent } from '../constants';
 
-interface Props {}
+interface DispatchProps {
+  uploadVideoProfile: (value: string) => void;
+}
+
+interface OwnProps {}
+
+interface StateProps {
+  isUploadingVideoProfile: boolean;
+  uploadError: string;
+  message: string;
+}
+
+interface Props extends
+  OwnProps,
+  DispatchProps,
+  StateProps {}
 
 const VideoProfileUploader = (props: Props) => {
   const videoProfileIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/video-profile.png';
@@ -36,32 +66,83 @@ const VideoProfileUploader = (props: Props) => {
     }
   };
 
+  const uploadVideoProfile = (e) => {
+    e.preventDefault();
+    props.uploadVideoProfile(video);
+  }
+
   return (
     <>
-      <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-margin-top-small">Upload Video Profile</p>
-      <p>Introduce yourself to parents and students with a 30-60 seconds video</p>
-      <Input
-        id="standard-adornment-weight"
-        // value={video}
-        onChange={handleChange}
-        startAdornment={
-          <InputAdornment position="start">
-            <img
-              src={videoProfileIcon}
-              className="nabi-custom-button-icon lazyload nabi-margin-left-small"
-              alt="upload-video-profile"
-            />
-          </InputAdornment>
-        }
-        aria-describedby="standard-weight-helper-text"
-        inputProps={{
-          'aria-label': 'weight',
-        }}
-        type="file"
-      />
-      { error && <Typography className="nabi-margin-top-xsmall" color="error">{error}</Typography> }
+      <SectionTitle text={VideoProfileUploaderComponent.sectionTitle} />
+      <Typography className="nabi-margin-bottom-small">{VideoProfileUploaderComponent.description}</Typography>
+      {props.isUploadingVideoProfile ? <CircularProgress /> :
+        props.message ?
+        <>
+        <IconButton color="primary" disabled={true}>
+          <Done />
+        </IconButton>
+        <Typography className="nabi-display-inline-block nabi-margin-left-xsmall" color="primary">Video added successfully</Typography>
+        </>
+       :
+      <>
+        <Input
+          id="standard-adornment-weight"
+          onChange={handleChange}
+          startAdornment={
+            <InputAdornment position="start">
+              <img
+                src={videoProfileIcon}
+                className="nabi-custom-button-icon lazyload nabi-margin-left-small"
+                alt="upload-video-profile"
+              />
+            </InputAdornment>
+          }
+          aria-describedby="standard-weight-helper-text"
+          inputProps={{
+            'aria-label': 'weight',
+          }}
+          type="file"
+        />
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={uploadVideoProfile}
+          className="nabi-text-uppercase nabi-display-block nabi-margin-top-xsmall"
+          disabled={!!error || !video || !!props.uploadError}
+        >
+          {VideoProfileUploaderComponent.buttonText}
+        </Button>
+        {error && <Typography className="nabi-margin-top-xsmall" color="error">{error}</Typography> }
+        {props.uploadError && <Typography className="nabi-margin-top-xsmall" color="error">{props.uploadError}</Typography> }
+      </>
+      }
     </>
   );
 };
 
-export default VideoProfileUploader;
+function mapStateToProps(state: StoreState): StateProps {
+  const {
+    actions: {
+      uploadVideoProfile: {
+        isRequesting: isUploadingVideoProfile,
+        error: uploadError,
+        message
+      }
+    },
+  } = state.instructor;
+
+  return {
+    isUploadingVideoProfile,
+    uploadError,
+    message
+  };
+}
+
+const mapDispatchToProps = (
+  dispatch: Dispatch<Action>,
+  _ownProps: OwnProps
+): DispatchProps => ({
+  uploadVideoProfile: (value: string) => dispatch(uploadVideoProfile(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideoProfileUploader);

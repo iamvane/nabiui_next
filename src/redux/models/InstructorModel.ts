@@ -103,6 +103,7 @@ export interface InstructorState {
     fetchBackgroundCheckStatus: ActionStatus;
     submitApplication: ActionStatusWithMessage;
     gradeLesson: ActionStatusWithMessage;
+    uploadVideoProfile: ActionStatusWithMessage;
   };
 }
 
@@ -212,6 +213,11 @@ export const defaultInstructorState: InstructorState = {
       isRequesting: false,
       error: '',
       message: ''
+    },
+    uploadVideoProfile: {
+      isRequesting: false,
+      error: "",
+      message: ""
     }
   }
 };
