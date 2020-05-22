@@ -85,9 +85,10 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
             className="international-phone-input nabi-margin-top-xsmall"
             name={PhoneValidationFormComponent.FieldNames.PhoneNumber}
             placeholder={PhoneValidationFormComponent.Placeholders.PhoneNumber}
-            value={props.phoneNumber || props.user.phone.phoneNumber}
+            value={props.phoneNumber}
             onChange={props.handleNumberChange}
             required={true}
+            defaultCountry="US"
           />
           {props.errors.phoneNumber && <FormHelperText error={true}>{props.errors.phoneNumber}</FormHelperText>}
         </Grid>
