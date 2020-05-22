@@ -83,7 +83,9 @@ export class PhoneValidation extends React.Component<Props, State> {
   public handleNumberChange = (value: string): void => {
     this.setState({
       ...this.state,
-      phoneNumber: value
+      ...(Boolean(value) && {
+        phoneNumber: value
+      })
     });
   }
 
