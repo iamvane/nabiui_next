@@ -216,7 +216,10 @@ export default function instructorReducer(
       };
 
     case InstructorActions.ADD_EDUCATION_SUCCESS:
-      const { data: message } = <APIActions.WithData<string>>action;
+      const { data: {
+        message
+      }
+    } = <APIActions.WithData<any>>action;
       return {
         ...state,
         actions: {
@@ -259,7 +262,11 @@ export default function instructorReducer(
       };
 
     case InstructorActions.EDIT_EDUCATION_SUCCESS:
-      const { data: editEducationMessage } = <APIActions.WithData<string>>(
+      const {
+        data: {
+        message: editEducationMessage
+      } 
+    } = <APIActions.WithData<any>>(
         action
       );
       return {
@@ -306,7 +313,11 @@ export default function instructorReducer(
       };
 
     case InstructorActions.DELETE_EDUCATION_SUCCESS:
-      const { data: deleteEducationMessage } = <APIActions.WithData<string>>(
+      const { 
+        data: {
+        message: deleteEducationMessage
+      }
+    } = <APIActions.WithData<any>>(
         action
       );
       return {
@@ -400,7 +411,11 @@ export default function instructorReducer(
       };
 
     case InstructorActions.ADD_EMPLOYMENT_SUCCESS:
-      const { data: addEmploymentMessage } = <APIActions.WithData<string>>(
+      const {
+        data: {
+        message: addEmploymentMessage
+      }
+    } = <APIActions.WithData<any>>(
         action
       );
       return {
@@ -447,7 +462,11 @@ export default function instructorReducer(
       };
 
     case InstructorActions.EDIT_EMPLOYMENT_SUCCESS:
-      const { data: editEmploymentMessage } = <APIActions.WithData<string>>(
+      const {
+        data: {
+        message: editEmploymentMessage
+      }
+    } = <APIActions.WithData<any>>(
         action
       );
       return {
@@ -494,7 +513,11 @@ export default function instructorReducer(
       };
 
     case InstructorActions.DELETE_EMPLOYMENT_SUCCESS:
-      const { data: deleteEmploymentMessage } = <APIActions.WithData<string>>(
+      const {
+        data: {
+        message: deleteEmploymentMessage
+      }
+    } = <APIActions.WithData<any>>(
         action
       );
       return {

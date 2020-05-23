@@ -18,7 +18,7 @@ import { EducationFormComponent, degreeOptions } from './constants';
 
 interface Props extends EducationType {
   handleChange: (event: React.FormEvent<{}>) => void;
-  handleOnBlur: (event: React.FormEvent<{}>) => void;
+  handleOnBlur?: (event: React.FormEvent<{}>) => void;
   handleSave: (event: React.FormEvent<{}>) => void;
   handleCancel: () => void;
   allFieldsFilled: boolean;

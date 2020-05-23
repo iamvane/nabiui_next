@@ -155,10 +155,7 @@ export const addEducation = (
       withDataAction(InstructorActions.ADD_EDUCATION_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.ADD_EDUCATION_FAILURE, errorMessage)
     );
@@ -213,10 +210,7 @@ export const editEducation = (
       withDataAction(InstructorActions.EDIT_EDUCATION_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.EDIT_EDUCATION_FAILURE, errorMessage)
     );
@@ -244,10 +238,7 @@ export const deleteEducation = (
       withDataAction(InstructorActions.DELETE_EDUCATION_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.DELETE_EDUCATION_FAILURE, errorMessage)
     );
@@ -275,10 +266,7 @@ export const addEmployment = (
       withDataAction(InstructorActions.ADD_EMPLOYMENT_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.ADD_EMPLOYMENT_FAILURE, errorMessage)
     );
@@ -336,10 +324,7 @@ export const editEmployment = (
       withDataAction(InstructorActions.EDIT_EMPLOYMENT_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.EDIT_EMPLOYMENT_FAILURE, errorMessage)
     );
@@ -367,10 +352,7 @@ export const deleteEmployment = (
       withDataAction(InstructorActions.DELETE_EMPLOYMENT_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.DELETE_EMPLOYMENT_FAILURE, errorMessage)
     );
