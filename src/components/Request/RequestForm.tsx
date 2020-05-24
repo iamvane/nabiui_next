@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import moment from 'moment';
+
 import {
   FormControl,
   Grid,
@@ -18,6 +20,10 @@ import { skillLevelOptions } from '../Instruments/constants';
 import { placeForLessonsOptions } from '../PlaceForLessons/constants';
 import { lessonDurationOptions } from '../Rates/constants';
 import { RequestFormComponent } from './constants';
+import LessonTime from '../ScheduleLessons/LessonTime';
+import LessonDate from '../ScheduleLessons/LessonDate';
+import Timezone from '../ScheduleLessons/TimeZone';
+import { ScheduleLessonsComponent } from '../ScheduleLessons/constants';
 import Students from './Students';
 import {
   RequestType,
@@ -37,6 +43,11 @@ interface Props extends
   steps?: number[];
   enableAddStudentBtn?: boolean;
   enableAddRequestBtn?: boolean;
+  lessonDate?: string;
+  lessonTime?: string;
+  timezone?: string;
+  handleBirthdayChange?: (date: moment.Moment) => void;
+  lessonDateError?: string;
 }
 
 const RequestForm: React.StatelessComponent<Props> = props => {
@@ -78,6 +89,33 @@ const RequestForm: React.StatelessComponent<Props> = props => {
     </div>
   );
 
+  const renderTrialSchedule = (
+    <>
+      <SectionTitle text={ScheduleLessonsComponent.title} />
+      <ListItem>
+        <LessonDate
+          lessonDate={props.lessonDate}
+          handleBirthdayChange={props.handleBirthdayChange}
+          errors={props.lessonDateError}
+        />
+      </ListItem>
+      
+      <ListItem>
+        <LessonTime
+          lessonTime={props.lessonTime}
+          handleChange={props.handleChange}
+        />
+      </ListItem>
+
+      <ListItem>
+        <Timezone
+          timezone={props.timezone}
+          handleChange={props.handleChange}
+        />
+      </ListItem>
+    </>
+  )
+
   const renderRequestMessage = (
     <React.Fragment>
       <SectionTitle text={RequestFormComponent.Labels.RequestMessage} />
@@ -106,7 +144,8 @@ const RequestForm: React.StatelessComponent<Props> = props => {
       noValidate={true}
       autoComplete="off"
     >
-      {props.steps.includes(1) && (
+      {props.steps.includes(1) && renderTrialSchedule}
+      {props.steps.includes(2) && (
         <React.Fragment>
           <SectionTitle text={RequestFormComponent.title} />
           <Typography>
@@ -225,9 +264,9 @@ const RequestForm: React.StatelessComponent<Props> = props => {
       )}
 
       <div className="nabi-margin-top-medium">
-        {props.steps.includes(2) && (props.role === Role.parent) && renderStudentSection}
-        {props.steps.includes(2) && (props.role === Role.student) && renderRequestMessage}
-        {props.steps.includes(3) && (props.role === Role.parent) && renderRequestMessage}
+        {props.steps.includes(3) && (props.role === Role.parent) && renderStudentSection}
+        {props.steps.includes(3) && (props.role === Role.student) && renderRequestMessage}
+        {props.steps.includes(4) && (props.role === Role.parent) && renderRequestMessage}
       </div>
     </form>
   );

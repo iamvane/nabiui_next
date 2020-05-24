@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from "next/router";
+import moment from 'moment';
 import {
   bindActionCreators,
 } from 'redux';
@@ -39,6 +40,8 @@ import {
   RequestCreateSuccessMessage,
   enableContinueBtn
 } from './constants';
+import { ScheduleLessonsComponent } from '../ScheduleLessons/constants';
+import { timeSelect } from '../../../assets/data/time';
 
 export const Request = () => {
   const [requestId, setRequestId] = useState(0);
@@ -63,13 +66,21 @@ export const Request = () => {
   const [enableAddStudentBtn, setEnableAddStudentBtn] = useState(false);
   const [enableAddRequestBtn, setAddRequestEnabled] = useState(false);
   const [exitFormIsOpen, setExitFormOpen] = useState(false);
+  const [lessonDateError, setLessonDateError] = useState('');
   const [allFieldsFilledError, setAllFieldsFilledError] = useState('');
   const [requestInfo, setRequestInfo] = useState([
     'none',
+    'scheduleTrial',
     'requestDetail',
     'studentDetail',
     'requestMessage'
   ]);
+
+  const [lessonDate, setLessonDate] = useState('');
+  const [lessonTime, setLessonTime] = useState('');
+  const [timezone, setTimezone] = useState('');
+  // const [errors, setErrors] = useState({} as ScheduleLessonsComponent.FormErrors);
+  // const [scheduleLessons, setScheduleLessons] = useState(false);
 
   const closeSnackbar = () => showSnackbar(false);
   const closeExitForm = () => setExitFormOpen(false);
@@ -78,6 +89,7 @@ export const Request = () => {
     setExitFormOpen(false);
     setCurrentStep(0);
     setStep([0]);
+    resetRequestState();
   }
 
   const dispatch = useDispatch();
@@ -98,6 +110,9 @@ export const Request = () => {
     setStudentAge(0);
     setRequestMessage('');
     setTravelDistance('');
+    setLessonTime('');
+    setLessonDate('');
+    setTimezone('');
   }
 
   const resetStudentState = () => {
@@ -288,7 +303,7 @@ export const Request = () => {
       showRequestForm(true);
       setStep(prevState => ([
         ...prevState,
-        1, 2, 3
+        1, 2, 3, 4
       ]));
     },
     [
@@ -322,6 +337,12 @@ export const Request = () => {
       const target = event.currentTarget;
       let value = target.value as any;
       let name = target.name;
+      if (name === 'timezone') {
+        setTimezone(value);
+      }
+      if (name === 'time') {
+        setLessonTime(value);
+      }
       if (name === 'requestTitle') {
         setTitle(value);
       }
@@ -354,6 +375,35 @@ export const Request = () => {
     },
     []
   );
+
+  const handleBirthdayChange = (date: moment.Moment): void => {
+    const trialDay = moment().add({
+      days: 2
+    }).toDate();
+
+    if (date.toDate() < trialDay) {
+      setLessonDateError('Trial day must not be less than 2 days from now')
+    } else {
+      setLessonDate(String(date));
+    }
+  };
+
+  useEffect(() => {
+    const allTrialScheduleFieldsFilled = [
+      timezone,
+      lessonDate,
+      lessonTime
+    ].every((field) => field.length);
+
+    setEnableContinue(prevState => ({
+      ...prevState,
+      scheduleTrial: allTrialScheduleFieldsFilled
+    }));
+  }, [
+    timezone,
+    lessonDate,
+    lessonTime
+  ]);
 
   useEffect(() => {
     const allRequestDetailFieldsFilled = [
@@ -413,8 +463,16 @@ export const Request = () => {
     lessonDuration,
     students,
     requestMessage,
-    studentSkillLevel
+    studentSkillLevel,
+    timezone,
+    lessonDate,
+    lessonTime
   ) => {
+    const allTrialScheduleFieldsFilled = [
+      timeSelect,
+      lessonDate,
+      lessonTime
+    ].every(field => field.length);
     const allRequestDetailFieldsFilled = role === Role.parent ? [
       instrument,
       title,
@@ -433,10 +491,12 @@ export const Request = () => {
     return role === Role.parent ? [
       allRequestDetailFieldsFilled,
       hasStudent,
-      requestMessageIsFilled
+      requestMessageIsFilled,
+      allTrialScheduleFieldsFilled
     ].every(value => value) : [
       allRequestDetailFieldsFilled,
-      requestMessageIsFilled
+      requestMessageIsFilled,
+      allTrialScheduleFieldsFilled
     ].every(value => value);
   }
 
@@ -450,7 +510,15 @@ export const Request = () => {
     studentSkillLevel,
     studentAge,
     requestMessage,
+    timezone,
+    lessonDate,
+    lessonTime
   ) => {
+    const allTrialScheduleFieldsFilled = [
+      timezone,
+      lessonDate,
+      lessonTime
+    ].some(field => field.length);
     const allRequestDetailFieldsFilled = [
       instrument,
       title,
@@ -476,7 +544,8 @@ export const Request = () => {
       allRequestDetailFieldsFilled,
       hasStudent,
       requestMessageIsFilled,
-      allStudentDetailFieldsFilled
+      allStudentDetailFieldsFilled,
+      allTrialScheduleFieldsFilled
     ].some(value => value);
   }
 
@@ -488,7 +557,10 @@ export const Request = () => {
       lessonDuration,
       students,
       requestMessage,
-      studentSkillLevel
+      studentSkillLevel,
+      timezone,
+      lessonDate,
+      lessonTime
     );
 
     setAddRequestEnabled(allFieldsSelected);
@@ -498,12 +570,18 @@ export const Request = () => {
     placeForLessons,
     lessonDuration,
     students,
-    requestMessage
-  ])
+    requestMessage,
+    timezone,
+    lessonDate,
+    lessonTime
+  ]);
 
   const handleNext = useCallback(
     () => {
       const requestDetails = {
+        timezone,
+        lessonDate,
+        lessonTime,
         students,
         instrument,
         lessonDuration,
@@ -516,7 +594,7 @@ export const Request = () => {
         })
       } as any
 
-      const numberOfSteps = role === Role.parent ? 4 : 3;
+      const numberOfSteps = role === Role.parent ? 5 : 4;
       if (currentStep === 0) {
         Router.push(Routes.Dashboard);
       } else if (steps.length < numberOfSteps) {
@@ -536,7 +614,10 @@ export const Request = () => {
           lessonDuration,
           students,
           requestMessage,
-          studentSkillLevel
+          studentSkillLevel,
+          timezone,
+          lessonDate,
+          lessonTime
         );
         if (role === Role.student) {
           delete requestDetails.students;
@@ -604,7 +685,10 @@ export const Request = () => {
         studentName,
         studentAge,
         studentSkillLevel,
-        requestMessage
+        requestMessage,
+        timezone,
+        lessonDate,
+        lessonTime
       );
 
       if (requestFormIsOpen) {
@@ -629,7 +713,10 @@ export const Request = () => {
       studentName,
       studentSkillLevel,
       studentAge,
-      requestMessage
+      requestMessage,
+      timezone,
+      lessonDate,
+      lessonTime
     ]
   );
 
@@ -664,6 +751,11 @@ export const Request = () => {
       distance={travelDistance}
       enableAddStudentBtn={enableAddStudentBtn}
       enableAddRequestBtn={enableAddRequestBtn}
+      timezone={timezone}
+      lessonDate={lessonDate}
+      lessonTime={lessonTime}
+      handleBirthdayChange={handleBirthdayChange}
+      lessonDateError={lessonDateError}
     />
   );
 

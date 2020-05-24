@@ -319,5 +319,6 @@ export const enableContinueBtn = {
   none: true,
   requestDetail: false,
   studentDetail: false,
-  requestMessage: false
+  requestMessage: false,
+  scheduleTrial: false
 }
