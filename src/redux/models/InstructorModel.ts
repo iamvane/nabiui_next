@@ -14,6 +14,7 @@ import { QualificationsType } from "../../components/Qualifications/model";
 export interface InstructorType {
   userId?: number;
   bioTitle?: string;
+  video?: string;
   bioDescription?: string;
   music?: string[];
   id?: number;
@@ -56,6 +57,7 @@ export interface Instructor {
   avatar?: string | null;
   bioDescription?: string | null;
   bioTitle?: string | null;
+  video?: string;
   displayName?: string;
   id?: number;
   instruments?: InstrumentsType[];

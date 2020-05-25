@@ -1,6 +1,6 @@
 import { AvailabilityType } from '../Availability/model';
 
-export interface Application {
+export interface ApplicationType {
   applicationId: number;
   instructorId: number;
   applicationMessage: string;
@@ -12,12 +12,13 @@ export interface Application {
   yearsOfExperience: number;
   age: number;
   backgroundCheckStatus: string;
+  video: string;
 
 }
 export interface ApplicationListType {
   id: number;
   requestTitle: string;
   dateCreated: string;
-  applications: Application[];
+  applications: ApplicationType[];
   freeTrial: boolean;
 }

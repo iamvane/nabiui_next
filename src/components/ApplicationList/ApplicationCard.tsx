@@ -15,6 +15,8 @@ const Star = dynamic(() => import('@material-ui/icons/Star'), {
   ssr: false,
 });
 
+import '../../../assets/scss/ApplicationCard.scss';
+
 import { Rates } from '../../redux/models/InstructorModel';
 import { Routes } from '../common/constants/Routes';
 import SectionTitle from '../common/SectionTitle';
@@ -22,11 +24,12 @@ import AvailabilityTab from '../Availability/AvailabilityTab';
 import { InstructorCardComponent } from '../Instructors/constants';
 import { BackgroundCheckStatus } from '../ProfileBuilder/constants';
 import { ProfileHeaderComponent } from '../Profile/constants';
+import VideoProfile from '../VideoProfile/VideoProfile';
 import { ApplicationCardComponent } from './constants';
-import { Application } from './model';
+import { ApplicationType } from './model';
 
 interface Props {
-  application: Application;
+  application: ApplicationType;
   isTrial: boolean;
 }
 
@@ -43,8 +46,10 @@ const displayRatingStars = (reviewsNumber: number) => {
 };
 
 const ApplicationCard: React.StatelessComponent<Props> = props => {
+  const [displayVideo, setDisplayVideo] =  React.useState(false);
   const BackgroundCheckIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg';
-  const AvatarStyles = { width: '120px', height: '120px'};
+  const playVideo = 'https://nabimusic.s3.us-east-2.amazonaws.com/play-video_1.png';
+
   const {
     instructorId,
     applicationMessage,
@@ -57,6 +62,7 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
     reviews,
     yearsOfExperience,
     backgroundCheckStatus,
+    video
   } = props.application;
 
   // const navigateToProfile = () => {
@@ -66,7 +72,10 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
     <div className="nabi-section nabi-padding-top-medium nabi-padding-bottom-medium nabi-background-white nabi-margin-bottom-small nabi-position-relative item-card">
       <Grid container={true} spacing={3}>
         <Grid item={true} xs={12} md={3} className="nabi-text-center">
-          <Avatar src={avatar} style={AvatarStyles} className="nabi-margin-center" />
+          <div className="play-video-wrapper">
+            <Avatar src={avatar} className="nabi-margin-center play-video-avatar" />
+            {video && <img src={playVideo} className="play-video-icon" onClick={() => setDisplayVideo(true)} />}
+          </div>
           <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
             {displayName}
           </Typography>
@@ -132,6 +141,12 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
             </a>
           </Link>
         </Grid>
+        {video &&
+          <VideoProfile
+            isDialogOpen={displayVideo}
+            closeHandler={() => setDisplayVideo(false)}
+            video={video}
+          />}
       </Grid>
     </div>
   );

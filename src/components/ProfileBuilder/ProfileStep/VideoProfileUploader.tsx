@@ -32,6 +32,7 @@ interface StateProps {
   isUploadingVideoProfile: boolean;
   uploadError: string;
   message: string;
+  video: string;
 }
 
 interface Props extends
@@ -75,13 +76,21 @@ const VideoProfileUploader = (props: Props) => {
     <>
       <SectionTitle text={VideoProfileUploaderComponent.sectionTitle} />
       <Typography className="nabi-margin-bottom-small">{VideoProfileUploaderComponent.description}</Typography>
+      {props.video || !props.message &&
+        <>
+          <IconButton color="primary" disabled={true}>
+          <Done />
+          </IconButton>
+          <Typography className="nabi-display-inline-block nabi-margin-left-xsmall" color="primary">You currently have a video profile.</Typography>
+        </>
+      }
       {props.isUploadingVideoProfile ? <CircularProgress /> :
         props.message ?
         <>
-        <IconButton color="primary" disabled={true}>
-          <Done />
-        </IconButton>
-        <Typography className="nabi-display-inline-block nabi-margin-left-xsmall" color="primary">Video added successfully</Typography>
+          <IconButton color="primary" disabled={true}>
+            <Done />
+          </IconButton>
+          <Typography className="nabi-display-inline-block nabi-margin-left-xsmall" color="primary">Video added successfully.</Typography>
         </>
        :
       <>
@@ -122,6 +131,9 @@ const VideoProfileUploader = (props: Props) => {
 
 function mapStateToProps(state: StoreState): StateProps {
   const {
+    instructor: {
+      video
+    },
     actions: {
       uploadVideoProfile: {
         isRequesting: isUploadingVideoProfile,
@@ -134,7 +146,8 @@ function mapStateToProps(state: StoreState): StateProps {
   return {
     isUploadingVideoProfile,
     uploadError,
-    message
+    message,
+    video
   };
 }
 

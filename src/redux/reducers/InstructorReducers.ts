@@ -78,7 +78,8 @@ export default function instructorReducer(
           ...state.instructor,
           bioTitle: profile.bioTitle,
           bioDescription: profile.bioDescription,
-          music: profile.music
+          music: profile.music,
+          video: profile.video
         },
         actions: {
           ...state.actions,
