@@ -5,11 +5,8 @@ import {
 } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
+import Router from "next/router";
 
-import {
-  Grid,
-  Typography
-} from '@material-ui/core';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 
 import { StoreState } from '../../../redux/reducers/store';
@@ -61,6 +58,7 @@ interface State extends
   typeOfEmbedCode: MusicTypes;
   errorMessage: string;
   showMusicForm: boolean;
+  redirect: boolean;
   [x: string]: any;
 }
 
@@ -84,6 +82,7 @@ export class ProfileStep extends React.Component<Props, State> {
       errorMessage: '',
       showMusicForm: false,
       formErrors: {},
+      redirect: false
     };
   }
 
@@ -216,14 +215,16 @@ export class ProfileStep extends React.Component<Props, State> {
     }
   }
 
-  public handleNext = () => {
+  public handleNext = async () => {
     const profile = {
       bioTitle: this.state.bioTitle,
       bioDescription: this.state.bioDescription,
       music: this.state.music
     };
-    this.props.buildProfile(profile);
-    this.props.fetchProfile();
+    this.setState({
+      redirect: true
+    });
+    await this.props.buildProfile(profile);
   }
 
   public render(): JSX.Element {
@@ -264,6 +265,7 @@ export class ProfileStep extends React.Component<Props, State> {
           handleNext={this.handleNext}
           icon={<ArrowForward />}
         />
+        {this.state.redirect && Router.push(Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.JobPreferences)}
       </div>
     );
   }

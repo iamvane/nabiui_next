@@ -56,7 +56,7 @@ interface Props extends
 const VideoProfileUploader = (props: Props) => {
   const videoProfileIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/video-profile.png';
   const [error, setError] = React.useState("");
-  const [video, setVideo] = React.useState(undefined);
+  const [showUploader, setShowUploader] = React.useState(true);
   const [displayVideo, setDisplayVideo] =  React.useState(false);
   const [snackbar, setSnackbar] =  React.useState(false);
   const [snackbarMessage, setSnackbarMessage] =  React.useState("");
@@ -85,15 +85,15 @@ const VideoProfileUploader = (props: Props) => {
       return setError(VideoProfileUploaderComponent.invalidFile);
     }
 
-    videoEl.onloadedmetadata = () => {
+    videoEl.onloadedmetadata = async () => {
       window.URL.revokeObjectURL(videoEl.src);
 
       if (videoEl.duration < 20 || videoEl.duration > 60) {
         setError(VideoProfileUploaderComponent.videoDurationError);
         return;
       }
-      props.signFile(props.userId, name, type, file);
-      setVideo(file)
+      await props.signFile(props.userId, name, type, file);
+      setShowUploader(false);
     }
   };
 
@@ -111,43 +111,51 @@ const VideoProfileUploader = (props: Props) => {
       }
 
       {(props.isUploadingVideoProfile || props.isSigning) ? <CircularProgress /> :
-      <>
-        <Input
-          id="standard-adornment-weight"
-          onChange={handleChange}
-          startAdornment={
-            <InputAdornment position="start">
-              <img
-                src={videoProfileIcon}
-                className="nabi-custom-button-icon lazyload nabi-margin-left-small"
-                alt="upload-video-profile"
-              />
-            </InputAdornment>
-          }
-          aria-describedby="standard-weight-helper-text"
-          inputProps={{
-            'aria-label': 'weight',
-          }}
-          type="file"
-        />
-
-        <VideoProfile
-          isDialogOpen={displayVideo}
-          closeHandler={() => setDisplayVideo(false)}
-          video={props.video}
-        />
-
-        {error && <Typography className="nabi-margin-top-xsmall" color="error">{error}</Typography> }
-        {props.uploadError && <Typography className="nabi-margin-top-xsmall" color="error">{props.uploadError}</Typography> }
-        {props.signingError && <Typography className="nabi-margin-top-xsmall" color="error">{props.signingError}</Typography> }
-        <SnackBar
-          isOpen={snackbar}
-          message={snackbarMessage}
-          handleClose={() => setSnackbar(false)}
-          variant="success"
-        />
-      </>
+        showUploader ?
+        <>
+          <Input
+            id="standard-adornment-weight"
+            onChange={handleChange}
+            startAdornment={
+              <InputAdornment position="start">
+                <img
+                  src={videoProfileIcon}
+                  className="nabi-custom-button-icon lazyload nabi-margin-left-small"
+                  alt="upload-video-profile"
+                />
+              </InputAdornment>
+            }
+            aria-describedby="standard-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+            }}
+            type="file"
+          />
+        </>
+        :
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => setShowUploader(true)}
+        >
+          {VideoProfileUploaderComponent.changeFile}
+        </Button>
       }
+      <VideoProfile
+        isDialogOpen={displayVideo}
+        closeHandler={() => setDisplayVideo(false)}
+        video={props.video}
+      />
+
+      {error && <Typography className="nabi-margin-top-xsmall" color="error">{error}</Typography> }
+      {props.uploadError && <Typography className="nabi-margin-top-xsmall" color="error">{props.uploadError}</Typography> }
+      {props.signingError && <Typography className="nabi-margin-top-xsmall" color="error">{props.signingError}</Typography> }
+      <SnackBar
+        isOpen={snackbar}
+        message={snackbarMessage}
+        handleClose={() => setSnackbar(false)}
+        variant="success"
+      />
     </>
   );
 };

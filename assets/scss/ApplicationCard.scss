@@ -14,7 +14,7 @@
 
 .play-video-icon {
   position: absolute;
-  top: 28px;
+  top: 37px;
   left: 38%;
   width: 64px;
   cursor: pointer;
@@ -22,13 +22,7 @@
 
 @media only screen and (min-width: 375px) {
   .play-video-icon {
-    left: 40%;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .play-video-icon {
-    left: 44%;
+    left: 28%;
   }
 }
 
@@ -38,7 +32,7 @@
   }
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1200px) {
   .play-video-icon {
     left: 34%;
   }

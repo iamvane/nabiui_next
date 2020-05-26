@@ -146,7 +146,8 @@ const ApplicationCard: React.StatelessComponent<Props> = props => {
             isDialogOpen={displayVideo}
             closeHandler={() => setDisplayVideo(false)}
             video={video}
-          />}
+          />
+        }
       </Grid>
     </div>
   );
