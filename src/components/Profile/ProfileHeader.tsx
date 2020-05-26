@@ -84,7 +84,6 @@ export const ProfileHeader = (props: Props) => {
     return instrumentItems && instrumentItems.slice(0, 2);
   };
 
-
   return (
     <Grid container={true}>
       <Grid item={true} md={3} xs={12} className="nabi-text-center nabi-margin-bottom-xsmall">
