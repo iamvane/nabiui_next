@@ -172,3 +172,11 @@ export const enableContinueBtn = {
   qualifications: false,
   languages: false
 }
+export namespace VideoProfileUploaderComponent {
+  export const sectionTitle = 'Upload Video Profile';
+  export const description = 'Introduce yourself to parents and students with a 30-60 seconds video.';
+  export const videoDurationError = 'Your profile video should be between 20 and 60 seconds.';
+  export const invalidFile = 'Upload a video file.'
+  export const buttonText = 'Upload Video';
+  export const changeFile = 'Upload a different file';
+}

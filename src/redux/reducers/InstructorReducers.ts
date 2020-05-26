@@ -78,7 +78,8 @@ export default function instructorReducer(
           ...state.instructor,
           bioTitle: profile.bioTitle,
           bioDescription: profile.bioDescription,
-          music: profile.music
+          music: profile.music,
+          video: profile.video
         },
         actions: {
           ...state.actions,
@@ -929,6 +930,92 @@ export default function instructorReducer(
             gradeLesson: {
               ...state.actions.gradeLesson,
               message: undefined
+            }
+          }
+        };
+
+      case InstructorActions.SIGN_FILE:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            signFile: {
+              ...state.actions.signFile,
+              isRequesting: true
+            }
+          }
+        };
+
+      case InstructorActions.SIGN_FILE_SUCCESS:
+        const { data: signFileData } = action;
+
+        return {
+          ...state,
+          instructor: {
+            ...state.instructor,
+            signedFile: signFileData.url
+          },
+          actions: {
+            ...state.actions,
+            signFile: {
+              isRequesting: false,
+              error: "",
+              message: "Video uploaded successfully."
+            }
+          }
+        };
+
+      case InstructorActions.SIGN_FILE_FAILURE:
+        const { error: signFileError } = <APIActions.WithError<string>>action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            signFile: {
+              isRequesting: false,
+              error: signFileError,
+              message: ""
+            }
+          }
+        };
+
+      case InstructorActions.UPLOAD_VIDEO_PROFILE:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            uploadVideoProfile: {
+              ...state.actions.uploadVideoProfile,
+              isRequesting: true
+            }
+          }
+        };
+
+      case InstructorActions.UPLOAD_VIDEO_PROFILE_SUCCESS:
+        const { data: uploadVideoProfileMessage } = action;
+
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            uploadVideoProfile: {
+              isRequesting: false,
+              error: "",
+              message: uploadVideoProfileMessage.message
+            }
+          }
+        };
+
+      case InstructorActions.UPLOAD_VIDEO_PROFILE_FAILURE:
+        const { error: uploadVideoProfileError } = <APIActions.WithError<string>>action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            uploadVideoProfile: {
+              isRequesting: false,
+              error: uploadVideoProfileError,
+              message: ""
             }
           }
         };

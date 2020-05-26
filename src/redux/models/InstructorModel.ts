@@ -14,6 +14,7 @@ import { QualificationsType } from "../../components/Qualifications/model";
 export interface InstructorType {
   userId?: number;
   bioTitle?: string;
+  video?: string;
   bioDescription?: string;
   music?: string[];
   id?: number;
@@ -45,6 +46,7 @@ export interface InstructorType {
     result: string;
     createdAt: string;
   };
+  signedFile?: string;
 }
 
 export interface Rates {
@@ -56,6 +58,7 @@ export interface Instructor {
   avatar?: string | null;
   bioDescription?: string | null;
   bioTitle?: string | null;
+  video?: string;
   displayName?: string;
   id?: number;
   instruments?: InstrumentsType[];
@@ -75,8 +78,7 @@ export interface Instructor {
     studio?: boolean;
     online?: boolean;
     home?: boolean;
-  }
-
+  };
 }
 
 export interface InstructorState {
@@ -103,6 +105,8 @@ export interface InstructorState {
     fetchBackgroundCheckStatus: ActionStatus;
     submitApplication: ActionStatusWithMessage;
     gradeLesson: ActionStatusWithMessage;
+    signFile: ActionStatusWithMessage;
+    uploadVideoProfile: ActionStatusWithMessage;
   };
 }
 
@@ -212,6 +216,16 @@ export const defaultInstructorState: InstructorState = {
       isRequesting: false,
       error: '',
       message: ''
+    },
+    signFile: {
+      isRequesting: false,
+      error: "",
+      message: ""
+    },
+    uploadVideoProfile: {
+      isRequesting: false,
+      error: "",
+      message: ""
     }
   }
 };

@@ -21,7 +21,7 @@ import { StoreState } from '../../redux/reducers/store';
 import { setPathname } from '../../redux/actions/UserActions';
 import { fetchApplicationList } from '../../redux/actions/RequestActions';
 import {
-  Application,
+  ApplicationType,
   ApplicationListType
 } from './model';
 import { ApplicationListComponent } from './constants';
@@ -87,7 +87,7 @@ export const ApplicationList = (props: Props) => {
         >
           {props.applicationList.applications.length} result(s)
         </Typography>
-        {props.applicationList.applications.map((item: Application, i: number) =>
+        {props.applicationList.applications.map((item: ApplicationType, i: number) =>
           <ApplicationCard key={i} application={item} isTrial={props.applicationList.freeTrial} />
         )}
       </React.Fragment>}

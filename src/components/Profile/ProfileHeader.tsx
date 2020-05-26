@@ -6,11 +6,14 @@ import {
   IconButton,
   Typography
 } from '@material-ui/core';
-
+import dynamic from "next/dynamic";
+const Star = dynamic(() => import('@material-ui/icons/Star'), {
+  ssr: false,
+});
 import '../../../assets/scss/ProfileHeader.scss';
 import { BackgroundCheckStatus } from '../ProfileBuilder/constants';
 import { ProfileHeaderComponent } from './constants';
-import { Star } from '@material-ui/icons';
+import VideoProfile from '../VideoProfile/VideoProfile';
 
 interface Props {
   instructor: any;
@@ -21,6 +24,7 @@ interface Props {
  */
 export const ProfileHeader = (props: Props) => {
   const [viewMore, setViewMore] = React.useState(false);
+  const [displayVideo, setDisplayVideo] =  React.useState(false);
 
   const toggleViewMore = () => {
     setViewMore(prevOpen => !prevOpen);
@@ -28,6 +32,8 @@ export const ProfileHeader = (props: Props) => {
 
   const defaultAvatar = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-default-avatar.png';
   const BackgroundCheckIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg';
+  const playVideo = 'https://nabimusic.s3.us-east-2.amazonaws.com/play-video_1.png';
+
   const {
     bioTitle,
     avatar,
@@ -39,7 +45,8 @@ export const ProfileHeader = (props: Props) => {
     memberSince,
     backgroundCheckStatus,
     lessonsTaught,
-    instruments
+    instruments,
+    video
   } = props.instructor;
 
   const displayRatingStars = (reviewsNumber: number) => {
@@ -90,7 +97,10 @@ export const ProfileHeader = (props: Props) => {
         </div>
         <div>
           <div className="nabi-display-inline-block">
-            <Avatar alt={displayName} src={avatar ? avatar : defaultAvatar} className="profile-avatar"/>
+            <div className="play-video-wrapper">
+              <Avatar alt={displayName} src={avatar ? avatar : defaultAvatar} className="profile-avatar"/>
+              {video && <img src={playVideo} className="play-video-icon" onClick={() => setDisplayVideo(true)} />}
+            </div>
             {/*tslint:disable-next-line:max-line-length*/}
             {/* <AvatarUploader originalImage={avatarImage} imageChanged={(avatarImg: string) => { props.changeAvatar(avatarImg); }} /> */}
           </div>
@@ -204,6 +214,13 @@ export const ProfileHeader = (props: Props) => {
           </IconButton>
           <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">Background Check</Typography>
         </Grid>
+      }
+      {video &&
+        <VideoProfile
+          isDialogOpen={displayVideo}
+          closeHandler={() => setDisplayVideo(false)}
+          video={video}
+        />
       }
     </Grid>
   );

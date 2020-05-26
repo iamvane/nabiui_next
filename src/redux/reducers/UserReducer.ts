@@ -186,6 +186,7 @@ export default function usersReducer(
         ...state,
         user: {
           ...state.user,
+          id: user.id,
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,

@@ -20,7 +20,6 @@ import { getCookie } from '../../utils/cookies';
 import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
 import { InstructorType } from '../../redux/models/InstructorModel';
-import { changeAvatar } from '../../redux/actions/UserActions';
 import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';
 import { Routes } from '../common/constants/Routes';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
@@ -41,7 +40,6 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  changeAvatar: (id: string, avatar: string) => void;
   updateInstructor: (instructor: InstructorType) => void;
   fetchInstructor: (id: number) => void;
 }
@@ -186,7 +184,6 @@ function mapDispatchToProps(
   _ownProps: OwnProps
 ): DispatchProps {
   return {
-    changeAvatar: (id: string, avatar: string) => dispatch(changeAvatar(id, avatar)),
     updateInstructor: (instructor: InstructorType) => dispatch(updateInstructor(instructor)),
     fetchInstructor: (id: number) => dispatch(fetchInstructor(id))
   };

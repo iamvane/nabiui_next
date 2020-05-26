@@ -77,7 +77,7 @@ export const RequestView = (props: Props) => {
     }
     if (props.submitApplicationError) {
       setShowSnackbar(true);
-      setSnackbarMessage('There was an error processing your request.')
+      setSnackbarMessage(props.submitApplicationError)
     }
     /* tslint:disable */
   },[props.submitApplicationMessage, props.submitApplicationError]);
