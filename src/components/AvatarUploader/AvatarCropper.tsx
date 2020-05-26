@@ -144,6 +144,11 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
           + crpBgd + '\')');
       });
     }
+    if (this.props.originalImage !== prevProps.originalImage) {
+      this.setState({
+        baseImage: this.props.originalImage
+      });
+    }
   }
 
   imageOnClick = (e: any) => {
