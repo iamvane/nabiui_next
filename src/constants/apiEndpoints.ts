@@ -36,5 +36,6 @@ export namespace ApiEndpoints {
   export const offers = "/v1/offers-active/";
   export const gradeLesson = "/v1/grade-lesson/";
   export const scheduleLessons = "/v1/lessons/";
+  export const signFile = "/v1/sign-file/";
   export const uploadVideoProfile = 'v1/upload-video-profile/';
 }

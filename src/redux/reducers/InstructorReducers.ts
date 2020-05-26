@@ -934,6 +934,51 @@ export default function instructorReducer(
           }
         };
 
+      case InstructorActions.SIGN_FILE:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            signFile: {
+              ...state.actions.signFile,
+              isRequesting: true
+            }
+          }
+        };
+
+      case InstructorActions.SIGN_FILE_SUCCESS:
+        const { data: signFileData } = action;
+
+        return {
+          ...state,
+          instructor: {
+            ...state.instructor,
+            signedFile: signFileData.url
+          },
+          actions: {
+            ...state.actions,
+            signFile: {
+              isRequesting: false,
+              error: "",
+              message: "Video uploaded successfully."
+            }
+          }
+        };
+
+      case InstructorActions.SIGN_FILE_FAILURE:
+        const { error: signFileError } = <APIActions.WithError<string>>action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            signFile: {
+              isRequesting: false,
+              error: signFileError,
+              message: ""
+            }
+          }
+        };
+
       case InstructorActions.UPLOAD_VIDEO_PROFILE:
         return {
           ...state,

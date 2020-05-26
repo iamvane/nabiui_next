@@ -19,7 +19,7 @@ import { requestAction, withDataAction, withErrorAction } from "./actions";
 import { UserActions } from "./UserActionTypes";
 
 interface ChangeAvatar extends Action {
-  id: string;
+  id: number;
   avatar: string;
 }
 
@@ -133,10 +133,10 @@ export const fetchUser = (): ThunkAction<Promise<void>, {}, {}> => async (
 /**
  * Action creator to change avatar
  */
-export function changeAvatar(id: string, avatar: string): ChangeAvatar {
+export function changeAvatar(id: number, avatar: string): ChangeAvatar {
   return {
-    id: id,
-    avatar: avatar,
+    id,
+    avatar,
     type: UserActions.CHANGE_AVATAR
   };
 }

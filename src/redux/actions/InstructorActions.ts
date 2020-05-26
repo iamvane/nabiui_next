@@ -588,14 +588,63 @@ export const gradeLesson = (gradeData: GradeData): ThunkAction<Promise<void>, {}
   }
 };
 
+export const signFile = (
+  userId: number,
+  fileName: string,
+  fileType: string,
+  file: File
+): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
+  dispatch(requestAction(InstructorActions.SIGN_FILE));
+  try {
+    const url = ApiEndpoints.signFile;
+    const requestBody = {
+      user_id: userId,
+      file_name: fileName,
+      file_type: fileType
+    };
+
+    const response = await axios.post(
+      url,
+      requestBody,
+      { headers: { Authorization: `Bearer ${authToken}` }
+    });
+
+  const requestBodyForm = new FormData();
+
+  for (let key in response.data.data.fields) {
+
+    requestBodyForm.append(key, response.data.data.fields[key]);
+  }
+  requestBodyForm.append('file', file);
+
+  const response2 = await axios.post(
+    response.data.data.url,
+    requestBodyForm,
+    {
+      headers:
+        authToken && { 'Access-Control-Allow-Origin': 'http://localhost:3000' },
+    }
+  );
+
+  dispatch(withDataAction(InstructorActions.SIGN_FILE_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === "string") {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(InstructorActions.SIGN_FILE_FAILURE, errorMessage));
+  }
+};
+
 export const uploadVideoProfile = (
   value: string
 ): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
   dispatch(requestAction(InstructorActions.UPLOAD_VIDEO_PROFILE));
   try {
     const url = ApiEndpoints.uploadVideoProfile;
-    const requestBody = new FormData();
-    requestBody.append("video", value);
+    const requestBody = {
+      video: value
+    };
 
     const response = await axios.post(url, requestBody, {
       headers: { Authorization: `Bearer ${authToken}` }

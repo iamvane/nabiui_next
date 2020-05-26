@@ -17,7 +17,7 @@ import { getCookie } from "../../utils/cookies";
 import { InstructorType } from "./InstructorModel";
 
 export interface UserType extends AccountInfoType, RegistrationType {
-  id?: string;
+  id?: number;
   displayName?: string;
   zipCode?: string;
   avatar?: string;
@@ -92,7 +92,7 @@ export interface UserState {
 export const defaultUsersState: UserState = {
   // TODO: users should default to an empty object
   user: {
-    id: "",
+    id: 0,
     email: "",
     password: "",
     role: "",

@@ -34,7 +34,7 @@ import { checkErrors } from "../../utils/checkErrors";
 interface DispatchProps {
   fetchUser: () => void;
   updateUser: (user: Partial<AccountInfoType>) => void;
-  changeAvatar: (id: string, avatar: string) => void;
+  changeAvatar: (id: number, avatar: string) => void;
 }
 
 interface OwnProps {
@@ -312,7 +312,7 @@ const mapDispatchToProps = (
 ): DispatchProps => ({
   fetchUser: () => dispatch(fetchUser()),
   updateUser: (user: AccountInfoType) => dispatch(updateUser(user)),
-  changeAvatar: (id: string, avatar: string) => dispatch(changeAvatar(id, avatar)),
+  changeAvatar: (id: number, avatar: string) => dispatch(changeAvatar(id, avatar)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo);

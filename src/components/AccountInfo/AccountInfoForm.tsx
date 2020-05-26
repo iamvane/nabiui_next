@@ -1,19 +1,14 @@
 import * as React from 'react';
-import moment from 'moment';
 
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
-  Grid,
   FormControl,
   FormControlLabel,
   FormHelperText,
   FormLabel,
   Radio,
   RadioGroup,
-  TextField,
-  Typography
 } from '@material-ui/core';
 
 import { LocationField } from "../Instructors/LocationField";
@@ -37,7 +32,7 @@ interface Props {
   getLatLng: (lat: string, lng: string) => void;
   handleLocationChange: (location: string) => void;
   location: string;
-  changeAvatar: (id: string, avatar: string) => void;
+  changeAvatar: (id: number, avatar: string) => void;
   showSections: string[];
   getLocationError: (error: string) => void;
 }
@@ -61,7 +56,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
             <AvatarUploader
               originalImage={props.user.avatar ? props.user.avatar : undefined}
               imageChanged={(avatar: string) => {
-                props.changeAvatar(props.user.id || '', avatar);
+                props.changeAvatar(props.user.id || 0, avatar);
               }}
             />
           </div>

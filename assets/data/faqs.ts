@@ -58,7 +58,7 @@ export const parentStudentFaqs: FAQItem[] = [
   },
   {
     question: 'Does Nabi have a rewards/referral program?',
-    answer: 'Yes. For every student you invite, you get $5 in cash when they purchase their first lesson package. For every instructor you invite, you get $5 when they succesfully teach a lesson.'
+    answer: 'Yes. For every student you invite, you get $5 in cash when they purchase their first lesson package. For every instructor you invite, you get $5 when they successfully teach a lesson.'
   },
   {
     question: 'What instruments can I learn with Nabi?',

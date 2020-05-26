@@ -46,6 +46,7 @@ export interface InstructorType {
     result: string;
     createdAt: string;
   };
+  signedFile?: string;
 }
 
 export interface Rates {
@@ -77,8 +78,7 @@ export interface Instructor {
     studio?: boolean;
     online?: boolean;
     home?: boolean;
-  }
-
+  };
 }
 
 export interface InstructorState {
@@ -105,6 +105,7 @@ export interface InstructorState {
     fetchBackgroundCheckStatus: ActionStatus;
     submitApplication: ActionStatusWithMessage;
     gradeLesson: ActionStatusWithMessage;
+    signFile: ActionStatusWithMessage;
     uploadVideoProfile: ActionStatusWithMessage;
   };
 }
@@ -215,6 +216,11 @@ export const defaultInstructorState: InstructorState = {
       isRequesting: false,
       error: '',
       message: ''
+    },
+    signFile: {
+      isRequesting: false,
+      error: "",
+      message: ""
     },
     uploadVideoProfile: {
       isRequesting: false,
