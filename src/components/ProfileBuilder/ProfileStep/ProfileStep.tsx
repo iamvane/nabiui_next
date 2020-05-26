@@ -221,10 +221,10 @@ export class ProfileStep extends React.Component<Props, State> {
       bioDescription: this.state.bioDescription,
       music: this.state.music
     };
+    await this.props.buildProfile(profile);
     this.setState({
       redirect: true
     });
-    await this.props.buildProfile(profile);
   }
 
   public render(): JSX.Element {
