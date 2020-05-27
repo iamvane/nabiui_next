@@ -30,6 +30,11 @@ import {
   StudentType
 } from './models';
 
+interface Timezones {
+  name: string;
+  offset: string;
+  [x: string]: string;
+}
 interface Props extends
   RequestType,
   StudentType {
@@ -48,6 +53,7 @@ interface Props extends
   timezone?: string;
   handleBirthdayChange?: (date: moment.Moment) => void;
   lessonDateError?: string;
+  timezones?: Timezones[];
 }
 
 const RequestForm: React.StatelessComponent<Props> = props => {
@@ -111,6 +117,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
         <Timezone
           timezone={props.timezone}
           handleChange={props.handleChange}
+          timezones={props.timezones}
         />
       </ListItem>
     </>

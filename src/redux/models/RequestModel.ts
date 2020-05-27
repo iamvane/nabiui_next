@@ -17,6 +17,9 @@ export interface RequestType {
   placeForLessons: string;
   travelDistance?: string;
   students?: StudentType[];
+  date?: string;
+  time?: string;
+  timezone?: string;
   [x: string]: any;
 }
 

@@ -244,7 +244,10 @@ export namespace RequestAddedComponent {
     LessonDuration = 'Lesson duration:',
     StudentDetails = 'Student details:',
     SkillLevel = 'Skill level:',
-    Message = 'Message:'
+    Message = 'Message:',
+    Date = 'Lesson Date',
+    Time = 'Lesson Time',
+    Timezone = 'Timezone'
   }
 }
 

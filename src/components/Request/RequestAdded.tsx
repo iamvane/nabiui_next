@@ -109,6 +109,36 @@ const RequestAdded: React.StatelessComponent<Props> = props => {
       </Typography>
 
       <Typography>
+        <mark>
+          <span className="nabi-color-nabi">
+            {RequestAddedComponent.Labels.Date}
+            {' '}
+          </span>
+          {props.date}
+        </mark>
+      </Typography>
+
+      <Typography>
+        <mark>
+          <span className="nabi-color-nabi">
+            {RequestAddedComponent.Labels.Time}
+            {' '}
+          </span>
+          {props.time}
+        </mark>
+      </Typography>
+
+      <Typography>
+        <mark>
+          <span className="nabi-color-nabi">
+            {RequestAddedComponent.Labels.Timezone}
+            {' '}
+          </span>
+          {props.timezone}
+        </mark>
+      </Typography>
+
+      <Typography>
         <span className="nabi-color-nabi">{RequestAddedComponent.Labels.StudentDetails}</span>
       </Typography>
       {renderStudentDetails}

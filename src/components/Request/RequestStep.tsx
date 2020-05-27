@@ -21,6 +21,9 @@ import {
   deleteRequestAsnyc,
   editRequestAsync
 } from '../../redux/actions/RequestActions';
+import {
+  fetchTimezones
+} from '../../redux/actions/TimezonesActions';
 import { fetchUser } from '../../redux/actions/UserActions';
 import { Role } from '../Auth/Registration/constants';
 import SectionTitle from '../common/SectionTitle';
@@ -40,7 +43,6 @@ import {
   RequestCreateSuccessMessage,
   enableContinueBtn
 } from './constants';
-import { ScheduleLessonsComponent } from '../ScheduleLessons/constants';
 import { timeSelect } from '../../../assets/data/time';
 
 export const Request = () => {
@@ -79,8 +81,7 @@ export const Request = () => {
   const [lessonDate, setLessonDate] = useState('');
   const [lessonTime, setLessonTime] = useState('');
   const [timezone, setTimezone] = useState('');
-  // const [errors, setErrors] = useState({} as ScheduleLessonsComponent.FormErrors);
-  // const [scheduleLessons, setScheduleLessons] = useState(false);
+  const [timezones, setTimezones] = useState([]);
 
   const closeSnackbar = () => showSnackbar(false);
   const closeExitForm = () => setExitFormOpen(false);
@@ -93,6 +94,7 @@ export const Request = () => {
   }
 
   const dispatch = useDispatch();
+  const fetchTimezonesAction = bindActionCreators(fetchTimezones, dispatch);
   const fetchUserAction = bindActionCreators(fetchUser, dispatch);
   const fetchRequestsAction = bindActionCreators(fetchRequests, dispatch);
   const createRequestAction = bindActionCreators(createRequest, dispatch);
@@ -122,6 +124,7 @@ export const Request = () => {
   }
 
   let {
+    requestTimezones,
     userId,
     role,
     requests,
@@ -133,7 +136,9 @@ export const Request = () => {
     editRequestMessage,
     deleteRequestMessage,
     createRequestError,
-    editRequestError
+    editRequestError,
+    isFetchingTimezones,
+    fetchTimezonesError
   } = useSelector((state: StoreState) => {
     const {
       user: {
@@ -142,6 +147,15 @@ export const Request = () => {
           firstName,
           id,
           birthday
+        }
+      },
+      timezones: {
+        timezones: requestTimezones,
+        actions: {
+          fetchTimezones: {
+            isRequesting: isFetchingTimezones,
+            error: fetchTimezonesError,
+          }
         }
       },
       requests: {
@@ -171,6 +185,7 @@ export const Request = () => {
     return {
       userId: id || '',
       role: role || '',
+      requestTimezones,
       firstName: firstName,
       birthday: birthday,
       requests: requests,
@@ -182,12 +197,15 @@ export const Request = () => {
       editRequestMessage,
       deleteRequestMessage,
       createRequestError,
-      editRequestError
+      editRequestError,
+      isFetchingTimezones,
+      fetchTimezonesError
     };
   });
 
   useEffect(() => {
     fetchRequestsAction();
+    fetchTimezonesAction();
     if (requests.length) {
       setStudentRequests(requests);
       showRequestForm(false);
@@ -196,7 +214,17 @@ export const Request = () => {
     }
   },
     [
-      JSON.stringify(requests)
+      JSON.stringify(requests),
+      JSON.stringify(requestTimezones)
+    ]);
+
+  useEffect(() => {
+    if (requestTimezones.length) {
+      setTimezones(requestTimezones)
+    }
+  },
+    [
+      JSON.stringify(requestTimezones)
     ]);
 
   useEffect(() => {
@@ -289,6 +317,9 @@ export const Request = () => {
       const editRequest = studentRequests.find(request =>
         request.id === requestId
       );
+      setTimezone(editRequest.timezone || '');
+      setLessonDate(editRequest.date || '');
+      setLessonTime(editRequest.time || '');
       setRequestId(editRequest.id);
       setInstrument(editRequest.instrument);
       setPlaceForLessons(editRequest.placeForLessons);
@@ -384,7 +415,8 @@ export const Request = () => {
     if (date.toDate() < trialDay) {
       setLessonDateError('Trial day must not be less than 2 days from now')
     } else {
-      setLessonDate(String(date));
+      setLessonDate(date.format("YYYY-MM-DD"));
+      setLessonDateError('');
     }
   };
 
@@ -580,8 +612,8 @@ export const Request = () => {
     () => {
       const requestDetails = {
         timezone,
-        lessonDate,
-        lessonTime,
+        date: lessonDate,
+        time: lessonTime,
         students,
         instrument,
         lessonDuration,
@@ -756,6 +788,7 @@ export const Request = () => {
       lessonTime={lessonTime}
       handleBirthdayChange={handleBirthdayChange}
       lessonDateError={lessonDateError}
+      timezones={timezones}
     />
   );
 
@@ -771,6 +804,9 @@ export const Request = () => {
         requestTitle={request.requestTitle}
         requestMessage={request.requestMessage}
         skillLevel={request.skillLevel}
+        time={request.time || ''}
+        date={request.date || ''}
+        timezone={request.timezone || ''}
         students={request.studentDetails}
         deleteRequest={(requestId: number) => deleteRequest(requestId)}
         editRequest={(requestId: number) => editRequest(requestId)}
