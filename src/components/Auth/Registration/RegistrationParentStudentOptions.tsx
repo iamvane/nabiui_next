@@ -29,7 +29,7 @@ const RegistrationParentStudentOptions: React.StatelessComponent<Props> = props 
             <Button
               color="primary"
               variant="contained"
-              className="nabi-responsive-button nabi-text-uppercase nabi-margin-right-xsmall"
+              className="nabi-responsive-button nabi-text-uppercase nabi-margin-right-xsmall nabi-margin-bottom-xsmall"
             >
               {RegistrationParentstudentOptionsComponent.parent}
             </Button>
@@ -40,7 +40,7 @@ const RegistrationParentStudentOptions: React.StatelessComponent<Props> = props 
             <Button
               color="primary"
               variant="contained"
-              className="nabi-responsive-button nabi-text-uppercase"
+              className="nabi-responsive-button nabi-text-uppercase nabi-margin-bottom-xsmall"
             >
               {RegistrationParentstudentOptionsComponent.student}
             </Button>
