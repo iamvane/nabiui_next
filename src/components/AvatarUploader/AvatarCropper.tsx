@@ -116,7 +116,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
         uploadedAvatarStatus: this.props.uploadError ? true : false
       });
     }
-    if (this.props.isRequestingAvatar !== prevProps.isRequestingAvatar  && this.props.message) {
+    if ((this.props.isRequestingAvatar !== prevProps.isRequestingAvatar) && this.props.message) {
       await this.props.fetchUser();
       this.setState({
         uploadedAvatarStatus: this.props.message ? true : false

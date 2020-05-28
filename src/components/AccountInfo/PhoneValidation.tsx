@@ -174,6 +174,7 @@ export class PhoneValidation extends React.Component<Props, State> {
             errors: {...this.state.errors, [AccountInfoComponent.FieldKey.Token]: this.props.errorVerifyToken}
           });
         } else {
+          await this.props.fetchUser();
           this.setState({ isPhoneVerified: true });
         }
     }
