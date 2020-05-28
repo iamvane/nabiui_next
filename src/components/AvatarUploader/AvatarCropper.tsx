@@ -12,13 +12,12 @@ import {
   CircularProgress
 } from '@material-ui/core';
 
-import { uploadAvatar } from '../../redux/actions/UserActions';
+import { fetchUser, uploadAvatar } from '../../redux/actions/UserActions';
 import { StoreState } from '../../redux/reducers/store';
 import  '../../../node_modules/cropperjs/dist/cropper.min.css';
 import blur from '../../utils/AvatarBlur';
 import SnackBar from '../common/SnackBar';
 import { AvatarCropperComponent } from './constants';
-import { UserType } from '../../redux/models/UserModel';
 
 interface State {
   isLoading: boolean;
@@ -31,22 +30,18 @@ interface State {
 
 interface DispatchProps {
   uploadAvatar: (value: string) => void;
-}
-
-interface OwnProps {
-  originalImage?: string;
-  imageChanged?(avatar: string): void;
+  fetchUser: () => void;
 }
 
 interface StateProps {
-  user: UserType;
+  avatar: string;
   isRequestingAvatar: boolean;
   uploadError: string;
   message: string;
+  isRequestingFetch: boolean;
 }
 
 interface Props extends
-  OwnProps,
   DispatchProps,
   StateProps { }
 
@@ -69,7 +64,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
       isCropping: false,
       showError: false,
       uploadedAvatarStatus: false,
-      baseImage: props.originalImage || defaultAvatar,
+      baseImage: props.avatar || defaultAvatar,
       file: null
     };
   }
@@ -109,13 +104,20 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
+  async componentDidUpdate(prevProps: Props) {
+    if (this.state.uploadedAvatarStatus === true) {
+      this.setState({
+        uploadedAvatarStatus: false
+      });
+    }
+
     if (this.props.uploadError !== prevProps.uploadError) {
       this.setState({
         uploadedAvatarStatus: this.props.uploadError ? true : false
       });
     }
-    if (this.props.message !== prevProps.message) {
+    if (this.props.isRequestingAvatar !== prevProps.isRequestingAvatar  && this.props.message) {
+      await this.props.fetchUser();
       this.setState({
         uploadedAvatarStatus: this.props.message ? true : false
       });
@@ -144,9 +146,9 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
           + crpBgd + '\')');
       });
     }
-    if (this.props.originalImage !== prevProps.originalImage) {
+    if (this.props.avatar !== prevProps.avatar) {
       this.setState({
-        baseImage: this.props.originalImage
+        baseImage: this.props.avatar
       });
     }
   }
@@ -156,7 +158,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
     e.stopPropagation();
   }
 
-  handleCrop = (e: any) => {
+  handleCrop = async(e) => {
     e.preventDefault();
     e.stopPropagation();
     let newBase64 = this.cropperInstance.getCroppedCanvas(
@@ -173,10 +175,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
       this.cropperInstance.destroy();
       this.cropperInstance = null;
       this.setState({isCropping: false, baseImage: newBase64});
-      if (this.props.imageChanged) {
-        this.props.imageChanged(newBase64);
-        this.props.uploadAvatar(this.state.file);
-      }
+      await this.props.uploadAvatar(this.state.file);
     }
     // Get new ImageCropped value;
   }
@@ -244,7 +243,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
         />
         <label className="nabi-cursor-pointer nabi-text-center" htmlFor={AvatarCropperComponent.inputId}>
           {
-            this.props.isRequestingAvatar ?
+            this.props.isRequestingAvatar || this.props.isRequestingFetch ?
             <CircularProgress /> :
             <img ref={(e) => { this.imageHolder = e; }} src={currentLogo} style={imgStyle} />
           }
@@ -258,7 +257,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
         />
         <SnackBar
           isOpen={this.state.uploadedAvatarStatus}
-          message={this.props.uploadError ? 'Image could not be uploaded' : 'Image successfully uploaded'}
+          message={this.props.uploadError ? 'Image could not be uploaded' : 'Image successfully uploaded.'}
           handleClose={handleClose}
           variant={this.props.uploadError ? 'error' : 'success'}
         />
@@ -269,29 +268,36 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
 
 function mapStateToProps(state: StoreState): StateProps {
   const {
-    user,
+    user: {
+      avatar
+    },
     actions: {
       uploadAvatar: {
         isRequesting: isRequestingAvatar,
         error: uploadError,
         message
-      }
+      },
+      fetchUser: {
+        isRequesting: isRequestingFetch,
+      },
     },
   } = state.user;
 
   return {
-    user,
+    avatar,
     isRequestingAvatar,
     uploadError,
-    message
+    message,
+    isRequestingFetch
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>,
-  _ownProps: OwnProps
+  _ownProps: {}
 ): DispatchProps => ({
   uploadAvatar: (value: string) => dispatch(uploadAvatar(value)),
+  fetchUser: () => dispatch(fetchUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AvatarCropper);

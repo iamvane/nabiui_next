@@ -437,10 +437,6 @@ export default function usersReducer(
 
       return {
         ...state,
-        user: {
-          ...state.user,
-          isPhoneVerified: true
-        },
         actions: {
           ...state.actions,
           uploadAvatar: {

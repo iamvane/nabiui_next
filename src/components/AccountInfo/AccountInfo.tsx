@@ -19,7 +19,6 @@ import { StoreState } from '../../redux/reducers/store';
 import {
   fetchUser,
   updateUser,
-  changeAvatar
 } from '../../redux/actions/UserActions';
 import { UserType } from '../../redux/models/UserModel';
 import { Routes } from '../common/constants/Routes';
@@ -34,7 +33,6 @@ import { checkErrors } from "../../utils/checkErrors";
 interface DispatchProps {
   fetchUser: () => void;
   updateUser: (user: Partial<AccountInfoType>) => void;
-  changeAvatar: (id: number, avatar: string) => void;
 }
 
 interface OwnProps {
@@ -81,7 +79,9 @@ interface Props extends
           location: props.user.location
         })
       }
+    },[props.user.gender, props.user.location]);
 
+    React.useEffect(() => {
       // if user data exists show all fields
       if (props.user.gender && props.user.avatar && props.user.location && props.user.isPhoneVerified) {
         setShowSections(['showAll'])
@@ -259,7 +259,6 @@ interface Props extends
           getLocationError={getLocationError}
           handleLocationChange={handleLocationChange}
           location={accountInfo.location || ''}
-          changeAvatar={props.changeAvatar}
           showSections={showSections}
         />
         {performRedirect && Router.push(props.redirectUrl)}
@@ -311,8 +310,7 @@ const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
   fetchUser: () => dispatch(fetchUser()),
-  updateUser: (user: AccountInfoType) => dispatch(updateUser(user)),
-  changeAvatar: (id: number, avatar: string) => dispatch(changeAvatar(id, avatar)),
+  updateUser: (user: AccountInfoType) => dispatch(updateUser(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo);
