@@ -32,7 +32,6 @@ interface Props {
   getLatLng: (lat: string, lng: string) => void;
   handleLocationChange: (location: string) => void;
   location: string;
-  changeAvatar: (id: number, avatar: string) => void;
   showSections: string[];
   getLocationError: (error: string) => void;
 }
@@ -53,12 +52,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
             <div className="nabi-margin-bottom-small">
               <SectionTitle text={AccountInfoComponent.SectionTitles.Avatar} />
             </div>
-            <AvatarUploader
-              originalImage={props.user.avatar ? props.user.avatar : undefined}
-              imageChanged={(avatar: string) => {
-                props.changeAvatar(props.user.id || 0, avatar);
-              }}
-            />
+            <AvatarUploader />
           </div>
 
         <div className={(props.showSections.includes('gender') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}>
