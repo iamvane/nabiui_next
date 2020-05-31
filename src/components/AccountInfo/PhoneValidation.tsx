@@ -20,7 +20,6 @@ import { AccountInfoComponent, PhoneValidationComponent } from './constants';
 import { VerificationChannel } from './models';
 
 interface DispatchProps {
-  fetchUser: () => void;
   requestToken: (phoneNumber: string, channel: VerificationChannel) => void;
   verifyToken: (phoneNumber: string, token: string) => void;
   resetRequestTokenMessage: () => void;
@@ -33,7 +32,8 @@ interface StateProps {
   errorVerifyToken: string;
   requestTokenMessage: string;
   verifyTokenMessage: string;
-  user: UserType;
+  phoneNumber: string;
+  isPhoneVerified: boolean;
 }
 
 interface OwnProps {
@@ -73,9 +73,14 @@ export class PhoneValidation extends React.Component<Props, State> {
   }
 
   public componentDidMount() {
-    if (this.props.user && this.props.user.phoneNumber) {
+    if (this.props.phoneNumber) {
       this.setState({
-        phoneNumber: this.props.user.phoneNumber
+        phoneNumber: this.props.phoneNumber
+      })
+    }
+    if (this.props.isPhoneVerified) {
+      this.setState({
+        isPhoneVerified: this.props.isPhoneVerified
       })
     }
   }
@@ -101,6 +106,17 @@ export class PhoneValidation extends React.Component<Props, State> {
   }
 
   public componentDidUpdate(prevProps: Props): void {
+    if ((prevProps.phoneNumber !== this.props.phoneNumber) && this.props.phoneNumber) {
+      this.setState({
+        phoneNumber: this.props.phoneNumber
+      })
+    }
+    if ((prevProps.isPhoneVerified !== this.props.isPhoneVerified) && this.props.isPhoneVerified) {
+      this.setState({
+        isPhoneVerified: this.props.isPhoneVerified
+      })
+    }
+
     if ((prevProps.requestTokenMessage !== this.props.requestTokenMessage) && this.props.requestTokenMessage) {
       this.setState({
         showSnackbar: true,
@@ -174,7 +190,6 @@ export class PhoneValidation extends React.Component<Props, State> {
             errors: {...this.state.errors, [AccountInfoComponent.FieldKey.Token]: this.props.errorVerifyToken}
           });
         } else {
-          await this.props.fetchUser();
           this.setState({ isPhoneVerified: true });
         }
     }
@@ -186,7 +201,6 @@ export class PhoneValidation extends React.Component<Props, State> {
     return (
       <div>
         <PhoneValidationForm
-          user={this.props.user}
           phoneNumber={this.state.phoneNumber}
           isPhoneSet={this.state.isPhoneSet}
           handleChange={this.handleChange}
@@ -216,7 +230,10 @@ export class PhoneValidation extends React.Component<Props, State> {
 
 const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
   const {
-    user,
+    user: {
+      phoneNumber,
+      isPhoneVerified
+    },
     actions: {
       requestToken: {
         isRequesting: isRequestingToken,
@@ -232,20 +249,20 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
   } = state.user;
 
   return {
-    user,
+    phoneNumber,
+    isPhoneVerified,
     isRequestingToken,
     isVerifyingToken,
     errorRequestToken,
     errorVerifyToken,
     requestTokenMessage,
-    verifyTokenMessage
+    verifyTokenMessage,
   };
 };
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchUser: () => dispatch(fetchUser()),
   requestToken: (phoneNumber: string, channel: VerificationChannel) =>
     dispatch(requestToken(phoneNumber, channel)),
   verifyToken: (phoneNumber: string, token: string) =>

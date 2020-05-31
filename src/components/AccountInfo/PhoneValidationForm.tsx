@@ -55,7 +55,6 @@ const tokenFormat = (props: any) => {
 };
 
 interface OwnProps {
-  user: UserType;
   phoneNumber: string;
   handleChange: (event: React.FormEvent<{}>) => void;
   handleNumberChange: (value:string) => void;
@@ -85,7 +84,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
             className="international-phone-input nabi-margin-top-xsmall"
             name={PhoneValidationFormComponent.FieldNames.PhoneNumber}
             placeholder={PhoneValidationFormComponent.Placeholders.PhoneNumber}
-            value={props.phoneNumber || props.user.phone.phoneNumber}
+            value={props.phoneNumber}
             onChange={props.handleNumberChange}
             required={true}
             defaultCountry="US"
@@ -183,15 +182,15 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
   );
 
   const renderVerificationSucessful = (): JSX.Element => (
-    <PhoneNumberAdded phoneNumber={props.user.phoneNumber} />
+    <PhoneNumberAdded phoneNumber={props.phoneNumber} />
   );
 
   return (
     <Grid item={true}>
       <SectionTitle text={PhoneValidationFormComponent.sectionTitle} />
       {
-        (props.phoneNumber || props.user.phoneNumber) &&
-        (props.isPhoneVerified || props.user.isPhoneVerified) ? renderVerificationSucessful() :
+        (props.phoneNumber) &&
+        (props.isPhoneVerified) ? renderVerificationSucessful() :
         (props.isPhoneSet ? renderEnterToken() :
           renderEnterPhoneNumber())
       }

@@ -25,10 +25,6 @@ export interface UserType extends AccountInfoType, RegistrationType {
   city?: string;
   country?: string;
   confirmNoMiddleName?: boolean;
-  phone: {
-    phoneNumber: string;
-    isVerified: boolean;
-  };
   referralToken: string;
   [key: string]: any;
   profile?: InstructorType | StudentDetailsType | ParentProfileType;

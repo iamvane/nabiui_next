@@ -305,7 +305,8 @@ export default function usersReducer(
       return {
         ...state,
         user: {
-          ...state.user
+          ...state.user,
+          phoneNumber: requestTokenData.phoneNumber
         },
         actions: {
           ...state.actions,
@@ -356,20 +357,21 @@ export default function usersReducer(
       };
 
     case UserActions.VERIFY_TOKEN_SUCCESS:
-      const { data: verifyTokenMessage } = action;
+      const { data: verifyTokenData } = action;
 
       return {
         ...state,
         user: {
           ...state.user,
-          isPhoneVerified: true
+          isPhoneVerified: true,
+          phoneNumber: verifyTokenData.phoneNumber
         },
         actions: {
           ...state.actions,
           verifyToken: {
             isRequesting: false,
             error: "",
-            message: verifyTokenMessage.message
+            message: verifyTokenData.message
           }
         }
       };

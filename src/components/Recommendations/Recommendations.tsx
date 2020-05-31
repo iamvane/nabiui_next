@@ -84,11 +84,18 @@ export class Recommendations extends React.Component<Props, State> {
     await this.props.fetchReferences();
   }
 
+  public componentDidUpdate(prevProps: Props): void {
+    if ((prevProps.references !== this.props.references) && this.props.references) {
+      this.setState({
+        emails: this.props.references
+      })
+    }
+  }
+
   public addEmail = async (): Promise<void> => {
     if (this.state.email) {
       await this.props.requestReference(this.state.email);
       this.resetState();
-      await this.props.fetchReferences();
     }
   }
 
