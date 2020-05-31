@@ -12,7 +12,7 @@ import {
   CircularProgress
 } from '@material-ui/core';
 
-import { fetchUser, uploadAvatar } from '../../redux/actions/UserActions';
+import { uploadAvatar } from '../../redux/actions/UserActions';
 import { StoreState } from '../../redux/reducers/store';
 import  '../../../node_modules/cropperjs/dist/cropper.min.css';
 import blur from '../../utils/AvatarBlur';
@@ -30,7 +30,6 @@ interface State {
 
 interface DispatchProps {
   uploadAvatar: (value: string) => void;
-  fetchUser: () => void;
 }
 
 interface StateProps {
@@ -38,7 +37,6 @@ interface StateProps {
   isRequestingAvatar: boolean;
   uploadError: string;
   message: string;
-  isRequestingFetch: boolean;
 }
 
 interface Props extends
@@ -64,7 +62,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
       isCropping: false,
       showError: false,
       uploadedAvatarStatus: false,
-      baseImage: props.avatar || defaultAvatar,
+      baseImage: this.props.avatar || defaultAvatar,
       file: null
     };
   }
@@ -116,12 +114,14 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
         uploadedAvatarStatus: this.props.uploadError ? true : false
       });
     }
-    if ((this.props.message !== prevProps.message) && this.props.message) {
-      await this.props.fetchUser();
+
+    if ((this.props.avatar !== prevProps.avatar) && this.props.avatar) {
       this.setState({
+        baseImage: this.props.avatar,
         uploadedAvatarStatus: true
       });
     }
+
     if (this.state.isCropping) {
       this.cropperInstance = new Cropper(
         this.imageHolder,
@@ -144,11 +144,6 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
           'min-width:150px;'
           + ' min-height:150px;background-size: cover; background-image: url(\''
           + crpBgd + '\')');
-      });
-    }
-    if (this.props.avatar !== prevProps.avatar) {
-      this.setState({
-        baseImage: this.props.avatar
       });
     }
   }
@@ -243,7 +238,7 @@ class AvatarCropper extends React.Component<PropsWithStyles, State> {
         />
         <label className="nabi-cursor-pointer nabi-text-center" htmlFor={AvatarCropperComponent.inputId}>
           {
-            this.props.isRequestingAvatar || this.props.isRequestingFetch ?
+            this.props.isRequestingAvatar ?
             <CircularProgress /> :
             <img ref={(e) => { this.imageHolder = e; }} src={currentLogo} style={imgStyle} />
           }
@@ -277,9 +272,6 @@ function mapStateToProps(state: StoreState): StateProps {
         error: uploadError,
         message
       },
-      fetchUser: {
-        isRequesting: isRequestingFetch,
-      },
     },
   } = state.user;
 
@@ -287,8 +279,7 @@ function mapStateToProps(state: StoreState): StateProps {
     avatar,
     isRequestingAvatar,
     uploadError,
-    message,
-    isRequestingFetch
+    message
   };
 }
 
@@ -296,8 +287,7 @@ const mapDispatchToProps = (
   dispatch: Dispatch<Action>,
   _ownProps: {}
 ): DispatchProps => ({
-  uploadAvatar: (value: string) => dispatch(uploadAvatar(value)),
-  fetchUser: () => dispatch(fetchUser())
+  uploadAvatar: (value: string) => dispatch(uploadAvatar(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AvatarCropper);
