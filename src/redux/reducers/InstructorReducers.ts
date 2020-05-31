@@ -676,15 +676,19 @@ export default function instructorReducer(
         }
       };
     case InstructorActions.REQUEST_REFERENCE_SUCCESS:
+      const {data: referencesData} = action;
       return {
         ...state,
+        instructor: {
+          references: referencesData.emails
+        },
         actions: {
           ...state.actions,
           requestReference: {
             ...state.actions.requestReference,
             isRequesting: false,
             error: "",
-            message: action.data.message
+            message: referencesData.message
           }
         }
       };
