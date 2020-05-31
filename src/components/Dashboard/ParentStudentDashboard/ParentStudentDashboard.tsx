@@ -52,7 +52,7 @@ export const ParentStudentDashboard = (props: Props) => {
                       </Grid>
                       <Grid item={true} xs={6}>
                         <Typography>
-                          {booking.students.map((student) => <span>
+                          {booking.students && booking.students.map((student) => <span>
                             {`${student.name} ${student.age} ${booking.students[booking.students.length - 1] ? '' : ', '}`}</span>
                           )}
                         </Typography>
@@ -78,7 +78,7 @@ export const ParentStudentDashboard = (props: Props) => {
                     </Grid>
                   </Grid>
                 </Grid>
-                {i !== props.dashboard.bookings.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
+                {props.dashboard.bookings && (i !== props.dashboard.bookings.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />)}
               </React.Fragment>
             ))}
           </div>

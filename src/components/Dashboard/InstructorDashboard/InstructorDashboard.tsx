@@ -99,7 +99,7 @@ export const InstructorDashboard = (props: Props) => {
           </div>
           <div className="nabi-margin-top-medium">
             <SectionTitle text={constants.myStudentsSectionTitle} />
-            {props.dashboard.lessons.length > 0 ?
+            {props.dashboard.lessons && props.dashboard.lessons.length > 0 ?
               displayLessons()
               :
               <React.Fragment>

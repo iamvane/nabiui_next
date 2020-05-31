@@ -435,16 +435,20 @@ export default function usersReducer(
       };
 
     case UserActions.UPLOAD_AVATAR_SUCCESS:
-      const { data: uploadAvatarMessage } = action;
+      const { data: uploadAvatarData } = action;
 
       return {
         ...state,
+        user: {
+          ...state.user,
+          avatar: uploadAvatarData.avatar
+        },
         actions: {
           ...state.actions,
           uploadAvatar: {
             isRequesting: false,
             error: "",
-            message: uploadAvatarMessage.message
+            message: uploadAvatarData.message
           }
         }
       };
