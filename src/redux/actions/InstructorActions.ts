@@ -151,6 +151,7 @@ export const addEducation = (
         headers: {'Authorization': `Bearer ${authToken}`}
       },
     );
+
     dispatch(
       withDataAction(InstructorActions.ADD_EDUCATION_SUCCESS, response.data)
     );
@@ -205,7 +206,6 @@ export const editEducation = (
         headers: { Authorization: `Bearer ${authToken}` }
       }
     );
-
     dispatch(
       withDataAction(InstructorActions.EDIT_EDUCATION_SUCCESS, response.data)
     );

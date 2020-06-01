@@ -67,11 +67,11 @@ const Education = () => {
   const handleCancel = () => {
     resetEducationState();
     toggleEducationForm();
+    setIsEditing(false);
   }
 
   const deleteEducationAsync = (educationId: number): void => {
     deleteEducationAction(educationId);
-    fetchEducationAction();
   }
 
   let {
@@ -84,8 +84,6 @@ const Education = () => {
     fetchEducationError,
     editEducationError,
     deleteEducationError,
-    editEducationMessage,
-    deleteEducationMessage
   } = useSelector((state: StoreState) => {
     const {
       instructor: {
@@ -103,12 +101,10 @@ const Education = () => {
         editEducation: {
           isRequesting: isEditEducationRequesting,
           error: editEducationError,
-          message: editEducationMessage
         },
         deleteEducation: {
           isRequesting: isDeleteEducationRequesting,
           error: deleteEducationError,
-          message: deleteEducationMessage
         }
       }
     } = state.instructor;
@@ -123,19 +119,21 @@ const Education = () => {
       editEducationError,
       deleteEducationError,
       instructorEducation: instructorEducation || [],
-      editEducationMessage,
-      deleteEducationMessage
     };
   });
 
   useEffect(() => {
-    fetchEducationAction();
+    if (!instructorEducation.length) {
+      fetchEducationAction();
+    }
     if (instructorEducation.length) {
       setEducation(instructorEducation);
       showEducationForm(false);
+      setIsEditing(false);
     } else {
       setEducation([]);
       showEducationForm(false);
+      setIsEditing(false);
     }
   },
     [
@@ -147,6 +145,7 @@ const Education = () => {
     if (instructorEducation.length > education.length) {
       setEducation(instructorEducation);
       showEducationForm(false);
+      setIsEditing(false);
     }
   },
     [
@@ -164,17 +163,6 @@ const Education = () => {
       addEducationError
     ]);
 
-  useEffect(() => {
-    fetchEducationAction();
-    if (editEducationMessage) {
-      setSnackbarMessage(editEducationMessage);
-      setSnackbarMessageType('success');
-      showSnackbar(true);
-    }
-  },
-    [
-      editEducationMessage
-    ]);
 
   useEffect(() => {
     if (editEducationError) {
@@ -187,20 +175,7 @@ const Education = () => {
       editEducationError
     ]);
 
-
   useEffect(() => {
-    fetchEducationAction();
-    if (deleteEducationMessage) {
-      setSnackbarMessage(deleteEducationMessage);
-      showSnackbar(true);
-    }
-  },
-    [
-      deleteEducationMessage
-    ]);
-
-  useEffect(() => {
-    fetchEducationAction();
     if (deleteEducationError) {
       setSnackbarMessage(deleteEducationError);
       setSnackbarMessageType('error');
@@ -300,6 +275,7 @@ const Education = () => {
         schoolLocation
       };
 
+      console.log('is editing', true);
       if (isEditing) {
         education.id = educationId;
         editEducationAction(education);
@@ -308,7 +284,6 @@ const Education = () => {
       }
       resetEducationState();
       toggleEducationForm();
-      fetchEducationAction();
     },
     [
       school,

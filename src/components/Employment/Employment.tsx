@@ -74,11 +74,11 @@ const Employment = () => {
   const handleCancel = () => {
     resetEmploymentState();
     toggleEmploymentForm();
+    setIsEditing(false);
   }
 
   const deleteEmploymentAsync = (employmentId: number): void => {
     deleteEmploymentAction(employmentId);
-    fetchEmploymentAction();
   }
 
   let {
@@ -91,8 +91,6 @@ const Employment = () => {
     fetchEmploymentError,
     editEmploymentError,
     deleteEmploymentError,
-    editEmploymentMessage,
-    deleteEmploymentMessage
   } = useSelector((state: StoreState) => {
     const {
       instructor: {
@@ -110,12 +108,10 @@ const Employment = () => {
         editEmployment: {
           isRequesting: isEditEmploymentRequesting,
           error: editEmploymentError,
-          message: editEmploymentMessage
         },
         deleteEmployment: {
           isRequesting: isDeleteEmploymentRequesting,
           error: deleteEmploymentError,
-          message: deleteEmploymentMessage
         }
       }
     } = state.instructor;
@@ -130,20 +126,22 @@ const Employment = () => {
       addEmploymentError,
       editEmploymentError,
       deleteEmploymentError,
-      editEmploymentMessage,
-      deleteEmploymentMessage,
       instructorEmployment: instructorEmployment || []
     };
   });
 
   useEffect(() => {
-    fetchEmploymentAction();
+    if (!instructorEmployment.length) {
+      fetchEmploymentAction();
+    }
     if (instructorEmployment.length) {
       setEmployment(instructorEmployment);
       showEmploymentForm(false);
+      setIsEditing(false);
     } else {
       setEmployment([]);
       showEmploymentForm(false);
+      setIsEditing(false);
     }
   },
     [
@@ -151,10 +149,10 @@ const Employment = () => {
     ]);
 
     useEffect(() => {
-      fetchEmploymentAction();
       if (instructorEmployment.length > employment.length) {
         setEmployment(instructorEmployment);
         showEmploymentForm(false);
+        setIsEditing(false);
       }
     },
       [
@@ -162,7 +160,6 @@ const Employment = () => {
       ]);
 
   useEffect(() => {
-    fetchEmploymentAction();
     if (addEmploymentError) {
       setSnackbarMessage(addEmploymentError);
       setSnackbarMessageType('error');
@@ -172,20 +169,9 @@ const Employment = () => {
     [
       addEmploymentError
     ]);
-  useEffect(() => {
-    fetchEmploymentAction();
-    if (editEmploymentMessage) {
-      setSnackbarMessage(editEmploymentMessage);
-      setSnackbarMessageType('success');
-      showSnackbar(true);
-    }
-  },
-    [
-      editEmploymentMessage
-    ]);
+  
 
   useEffect(() => {
-    fetchEmploymentAction();
     if (editEmploymentError) {
       setSnackbarMessage(editEmploymentError);
       setSnackbarMessageType('error');
@@ -197,19 +183,6 @@ const Employment = () => {
     ]);
 
   useEffect(() => {
-    fetchEmploymentAction();
-    if (deleteEmploymentMessage) {
-      setSnackbarMessage(deleteEmploymentMessage);
-      setSnackbarMessageType('success');
-      showSnackbar(true);
-    }
-  },
-    [
-      deleteEmploymentMessage
-    ]);
-
-  useEffect(() => {
-    fetchEmploymentAction();
     if (deleteEmploymentError) {
       setSnackbarMessage(deleteEmploymentError);
       setSnackbarMessageType('error');
@@ -349,7 +322,6 @@ const Employment = () => {
       }
       resetEmploymentState();
       toggleEmploymentForm();
-      fetchEmploymentAction();
     },
     [
       employer,
