@@ -60,6 +60,7 @@ export const RequestView = (props: Props) => {
   const [message, setMessage] = React.useState('');
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarMessage, setSnackbarMessage] = React.useState('');
+  const [allFieldsFilled, setAllFieldsFilled] = React.useState(false);
 
   const router = useRouter();
   const id = Number(router.query.id);
@@ -93,6 +94,18 @@ export const RequestView = (props: Props) => {
       setMessage(value)
     }
   }
+
+  React.useEffect(() => {
+    const confirmAllFieldsFilled = [
+      rate,
+      message
+    ].every(value => value.length > 0);
+
+    setAllFieldsFilled(confirmAllFieldsFilled);
+  }, [
+    rate,
+    message
+  ])
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     if (event) {
@@ -236,6 +249,7 @@ export const RequestView = (props: Props) => {
                   message={message}
                   rate={rate}
                   handleSubmit={handleSubmit}
+                  allFieldsFilled={allFieldsFilled}
                 />
               }
             </div>

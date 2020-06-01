@@ -18,6 +18,7 @@ interface Props {
   message: string
   rate: string;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  allFieldsFilled?: boolean;
 }
 
 function NumberFormatCustom(props: any) {
@@ -116,6 +117,7 @@ const ApplicationForm = (props:Props) => {
             color="primary"
             variant="contained"
             className="nabi-margin-top-small"
+            disabled={props.allFieldsFilled ? false : true}
           >
             {RequestViewComponent.sendApplication}
           </Button>
