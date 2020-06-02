@@ -133,8 +133,6 @@ export const Request = () => {
     isCreatingRequest,
     isEditingRequest,
     isDeletingRequest,
-    editRequestMessage,
-    deleteRequestMessage,
     createRequestError,
     editRequestError,
     isFetchingTimezones,
@@ -171,12 +169,10 @@ export const Request = () => {
           },
           editRequest: {
             isRequesting: isEditingRequest,
-            message: editRequestMessage,
             error: editRequestError
           },
           deleteRequest: {
             isRequesting: isDeletingRequest,
-            message: deleteRequestMessage,
             error: deleteRequestError
           }
         }
@@ -194,8 +190,6 @@ export const Request = () => {
       isCreatingRequest,
       isEditingRequest,
       isDeletingRequest,
-      editRequestMessage,
-      deleteRequestMessage,
       createRequestError,
       editRequestError,
       isFetchingTimezones,
@@ -204,13 +198,18 @@ export const Request = () => {
   });
 
   useEffect(() => {
-    fetchRequestsAction();
-    fetchTimezonesAction();
+    if (!timezones.length) {
+      fetchTimezonesAction();
+    }
+    if (!requests.length) {
+      fetchRequestsAction();
+    }
     if (requests.length) {
       setStudentRequests(requests);
       showRequestForm(false);
       setCurrentStep(0);
       setStep([0]);
+      setIsEditing(false);
     }
   },
     [
@@ -234,25 +233,17 @@ export const Request = () => {
   ]);
 
   useEffect(() => {
-    if (editRequestMessage) {
-      showSnackbar(true);
-      setSnackbarMessage(RequestCreateSuccessMessage.editedRequest);
-      fetchRequestsAction();
+    if (requests.length > studentRequests.length) {
+      setStudentRequests(requests);
+      showRequestForm(false);
+      setCurrentStep(0);
+      setStep([0]);
+      setIsEditing(false);
     }
-  }, [
-    isEditingRequest,
-    editRequestMessage,
-  ]);
-
-  useEffect(() => {
-    if (deleteRequestMessage) {
-      showSnackbar(true);
-      setSnackbarMessage(RequestCreateSuccessMessage.deletedRequest);
-    }
-  }, [
-    isDeletingRequest,
-    deleteRequestMessage
-  ]);
+  },
+    [
+      JSON.stringify(requests)
+    ]);
 
   useEffect(() => {
     if (createRequestError) {
@@ -303,14 +294,6 @@ export const Request = () => {
   const deleteRequest = (requestId: number): void => {
     deleteRequestAction(requestId);
   }
-
-  useEffect(() => {
-    if (deleteRequestMessage) {
-      fetchRequestsAction();
-    }
-  }, [
-    deleteRequestMessage
-  ]);
 
   const editRequest = useCallback(
     (requestId: number): void => {
@@ -659,7 +642,6 @@ export const Request = () => {
             editRequestAction(requestId, requestDetails);
           } else {
             createRequestAction(requestDetails);
-            fetchRequestsAction();
           }
         } else {
           setAllFieldsFilledError("All fields must be filled");
