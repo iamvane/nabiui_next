@@ -13,7 +13,7 @@ import {
 import { ScheduleLessonsComponent } from './constants';
 
 interface OwnProps {
-  handleBirthdayChange: (date: moment.Moment) => void;
+  handleDateChange: (date: moment.Moment) => void;
   errors?: string;
   lessonDate: string;
 }
@@ -21,7 +21,7 @@ interface OwnProps {
 const LessonDate = (props: OwnProps) => {
   const {
     errors,
-    handleBirthdayChange,
+    handleDateChange,
     lessonDate
   } = props;
   return (
@@ -32,7 +32,7 @@ const LessonDate = (props: OwnProps) => {
         </FormLabel>
         <DatePicker
           selected={lessonDate ? moment(new Date(lessonDate)) : moment(Date.now())}
-          onChange={handleBirthdayChange}
+          onChange={handleDateChange}
           peekNextMonth={true}
           showMonthDropdown={true}
           showYearDropdown={true}

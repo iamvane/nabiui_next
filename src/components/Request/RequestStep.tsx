@@ -390,13 +390,11 @@ export const Request = () => {
     []
   );
 
-  const handleBirthdayChange = (date: moment.Moment): void => {
-    const trialDay = moment().add({
-      days: 2
-    }).toDate();
+  const handleDateChange = (date: moment.Moment): void => {
+    const today = moment().toDate();
 
-    if (date.toDate() < trialDay) {
-      setLessonDateError('Trial day must not be less than 2 days from now')
+    if (date.toDate() < today) {
+      setLessonDateError('Selected day not valid')
     } else {
       setLessonDate(date.format("YYYY-MM-DD"));
       setLessonDateError('');
@@ -768,7 +766,7 @@ export const Request = () => {
       timezone={timezone}
       lessonDate={lessonDate}
       lessonTime={lessonTime}
-      handleBirthdayChange={handleBirthdayChange}
+      handleDateChange={handleDateChange}
       lessonDateError={lessonDateError}
       timezones={timezones}
     />

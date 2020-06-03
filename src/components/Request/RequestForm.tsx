@@ -51,7 +51,7 @@ interface Props extends
   lessonDate?: string;
   lessonTime?: string;
   timezone?: string;
-  handleBirthdayChange?: (date: moment.Moment) => void;
+  handleDateChange?: (date: moment.Moment) => void;
   lessonDateError?: string;
   timezones?: Timezones[];
 }
@@ -101,7 +101,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
       <ListItem>
         <LessonDate
           lessonDate={props.lessonDate}
-          handleBirthdayChange={props.handleBirthdayChange}
+          handleDateChange={props.handleDateChange}
           errors={props.lessonDateError}
         />
       </ListItem>

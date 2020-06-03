@@ -10,7 +10,6 @@ const Done = dynamic(() => import('@material-ui/icons/Done'), {
 });
 
 import { ScheduleLessonsComponent } from './constants';
-// {name: "America/Denver", offset: "-0600"}
 
 interface Timezone {
   name: string;
