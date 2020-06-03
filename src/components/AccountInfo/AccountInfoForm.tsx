@@ -16,7 +16,6 @@ import SectionTitle from '../common/SectionTitle';
 import { UserType } from '../../redux/models/UserModel';
 import AvatarUploader from '../AvatarUploader/AvatarUploader';
 import PhoneValidation from './PhoneValidation';
-import Location from './Location';
 import { AccountInfoComponent } from './constants';
 import {
   AccountInfoType,

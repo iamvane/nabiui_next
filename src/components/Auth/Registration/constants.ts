@@ -22,12 +22,17 @@ export namespace RegistrationFormComponent {
     FirstName = 'firstName',
     LastName = 'lastName',
     Reference = 'reference',
-    OtherText = 'otherText'
+    OtherText = 'otherText',
+    Gender = 'gender',
+    PhoneNumber = 'phoneNumber'
   }
 
   export enum Labels {
     ProspectiveStudent = 'Student',
     ParentGuardian = 'Parent or guardian',
+    Gender = 'Gender',
+    Female = 'Female',
+    Male = 'Male',
   }
 
   export enum Placeholders {
@@ -35,7 +40,9 @@ export namespace RegistrationFormComponent {
     Password = 'Password',
     FirstName = 'First Name',
     LastName = 'Last Name',
-    Reference = 'How did you hear about us?'
+    Reference = 'How did you hear about us?',
+    Gender = 'Gender',
+    PhoneNumber = 'Phone number'
   }
 
   export enum FieldNames {
@@ -46,7 +53,9 @@ export namespace RegistrationFormComponent {
     LastName = 'lastName',
     Reference = 'reference',
     AgreeWithTerms = 'agreeWithTerms',
-    OtherText = 'otherText'
+    OtherText = 'otherText',
+    Gender = 'gender',
+    PhoneNumber = 'phoneNumber'
   }
 
   export enum Ids {
@@ -55,7 +64,9 @@ export namespace RegistrationFormComponent {
     Password = 'password',
     FirstName = 'firstName',
     LastName = 'lastName',
-    OtherText = 'otherText'
+    OtherText = 'otherText',
+    Gender = 'gender',
+    PhoneNumber = 'phoneNumber'
   }
 
   export enum RegisterText {
@@ -70,7 +81,9 @@ export namespace RegistrationFormComponent {
     Email = 'Invalid email. Enter a valid email address.',
     Password = 'Invalid password. Must contain at least 5 characters, a letter and a number.',
     Reference = 'Select an option.',
-    OtherText = 'Enter a value.'
+    OtherText = 'Enter a value.',
+    Gender = 'Select gender.',
+    PhoneNumber = 'Enter phone number.'
   }
 
   export const referenceOptions = [
@@ -93,6 +106,10 @@ export namespace RegistrationFormComponent {
     {
       label: 'LinkedIn',
       value: 'linkedIn'
+    },
+    {
+      label: 'Mommy Nearest',
+      value: 'mommynearest'
     },
     {
       label: 'Nabi Music Blog',

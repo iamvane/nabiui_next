@@ -6,6 +6,9 @@ const reactStringReplace = require('react-string-replace');
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+
 import {
   Button,
   Checkbox,
@@ -13,19 +16,26 @@ import {
   FormControl,
   FormControlLabel,
   FormHelperText,
+  FormLabel,
   Grid,
   Input,
+  Radio,
+  RadioGroup,
   Select,
   TextField,
   Typography
 } from '@material-ui/core';
 
+import '../../../../assets/scss/PhoneValidationForm.scss';
+
 import { selectOptions } from '../../../utils/formUtils';
 import SectionTitle from '../../common/SectionTitle';
+import { LocationField } from "../../Instructors/LocationField";
 import {
   Role,
   RegistrationFormComponent
 } from './constants';
+import { Gender } from '../../AccountInfo/models';
 import { Routes } from '../../common/constants/Routes';
 
 interface Props {
@@ -41,8 +51,14 @@ interface Props {
   agreeWithTerms: boolean;
   firstName: string;
   lastName: string;
+  gender: string;
   reference: string;
   otherText?: string;
+  getLatLng: (lat: string, lng: string) => void;
+  handleLocationChange: (location: string) => void;
+  location: string;
+  getLocationError: (error: string) => void;
+  phoneNumber: string;
 }
 
 /**
@@ -144,6 +160,60 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
         />
       </FormControl>
 
+      <div className="nabi-padding-left-small nabi-margin-top-xsmall">
+        <FormControl required={true} error={!!props.formErrors.gender}>
+          <FormLabel className="nabi-margin-bottom-xsmall nabi-text-uppercase">
+            {RegistrationFormComponent.Labels.Gender}
+          </FormLabel>
+
+          <RadioGroup
+            row={true}
+            name={RegistrationFormComponent.FieldNames.Gender}
+            onChange={props.handleChange}
+            value={(props.gender && props.gender)}
+          >
+            <FormControlLabel
+              control={<Radio />}
+              label={RegistrationFormComponent.Labels.Female}
+              value={Gender.female}
+            />
+
+            <FormControlLabel
+              control={<Radio />}
+              label={RegistrationFormComponent.Labels.Male}
+              value={Gender.male}
+            />
+          </RadioGroup>
+
+          <FormHelperText>{props.formErrors.gender}</FormHelperText>
+        </FormControl>
+      </div>
+      <Grid item={true} xs={12} md={6}>
+        <FormControl fullWidth={false}>
+          <PhoneInput
+            id="country-code-select"
+            className="international-phone-input nabi-margin-top-xsmall"
+            name={RegistrationFormComponent.FieldNames.PhoneNumber}
+            placeholder={RegistrationFormComponent.Placeholders.PhoneNumber}
+            value={props.phoneNumber}
+            onChange={props.handleChange}
+            required={true}
+            defaultCountry="US"
+          />
+        </FormControl>
+        {props.formErrors.phoneNumber && <FormHelperText error={true}>{props.formErrors.phoneNumber}</FormHelperText>}
+      </Grid>
+
+      <Grid item={true} xs={12} md={4}>
+        <FormControl fullWidth={false}>
+          <LocationField
+            getLatLng={props.getLatLng}
+            address={props.location}
+            getLocation={props.handleLocationChange}
+            getLocationError={props.getLocationError}
+          />
+        </FormControl>
+      </Grid>
       <FormControl
         fullWidth={true}
         className="nabi-margin-top-small"
