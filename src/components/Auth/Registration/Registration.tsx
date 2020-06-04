@@ -273,9 +273,7 @@ export const Registration = (props: Props) => {
 
   const handleNumberChange = (value: string): void => {
     setPhoneNumber(
-      Boolean(value) && {
-        phoneNumber: value
-      })
+      Boolean(value) &&  value
     );
   }
 

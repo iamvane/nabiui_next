@@ -59,6 +59,7 @@ interface Props {
   location: string;
   getLocationError: (error: string) => void;
   phoneNumber: string;
+  handleNumberChange: (value: string) => void;
 }
 
 /**
@@ -196,7 +197,7 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
             name={RegistrationFormComponent.FieldNames.PhoneNumber}
             placeholder={RegistrationFormComponent.Placeholders.PhoneNumber}
             value={props.phoneNumber}
-            onChange={props.handleChange}
+            onChange={props.handleNumberChange}
             required={true}
             defaultCountry="US"
           />
