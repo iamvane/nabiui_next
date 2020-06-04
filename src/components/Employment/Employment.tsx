@@ -1,20 +1,21 @@
-import * as React from 'react';
+import React from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  Action,
-  Dispatch
+  bindActionCreators,
 } from 'redux';
-import { connect } from 'react-redux';
 
 import {
   Button,
   CircularProgress,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import ArrowForward from '@material-ui/icons/ArrowForward';
-
 import Add from '@material-ui/icons/Add';
 
 import { StoreState } from '../../redux/reducers/store';
+import SnackBar from '../common/SnackBar';
+
 import {
   fetchEmployment,
   addEmployment,
@@ -30,354 +31,399 @@ import { EmploymentType } from './model';
 import EmploymentForm from './EmploymentForm';
 import EmploymentAdded from './EmploymentAdded';
 
-interface DispatchProps {
-  fetchEmployment: () => void;
-  addEmployment: (employment: EmploymentType) => void;
-  editEmployment: (employment: Partial<EmploymentType>) => void;
-  deleteEmployment: (id: number) => void;
-}
+const Employment = () => {
+  const [employmentId, setEmploymentId] = useState(undefined);
+  const [employer, setEmployer] = useState('');
+  const [jobTitle, setJobTitle] = useState('');
+  const [jobLocation, setJobLocation] = useState('');
+  const [fromMonth, setFromMonth] = useState('');
+  const [fromYear, setFromYear] = useState('');
+  const [toMonth, setToMonth] = useState('');
+  const [toYear, setToYear] = useState('');
+  const [stillWorkHere, setStillWorkHere] = useState(false);
+  const [employment, setEmployment] = useState([]);
+  const [employmentFormIsOpen, showEmploymentForm] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+  const [snackbarIsOpen, showSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessageType, setSnackbarMessageType] = useState('success');
 
-interface StateProps {
-  employment: EmploymentType[];
-  isFetchEmploymentRequesting: boolean;
-  isAddEmploymentRequesting: boolean;
-  isDeleteEmploymentRequesting: boolean;
-  isEditEmploymentRequesting: boolean;
-  fetchEmploymentError: string;
-  addEmploymentError: string;
-  editEmploymentError: string;
-  deleteEmploymentError: string;
-}
+  const closeSnackbar = () => showSnackbar(false);
 
-interface Props extends
-  DispatchProps,
-  StateProps { }
+  const dispatch = useDispatch();
+  const fetchEmploymentAction = bindActionCreators(fetchEmployment, dispatch);
+  const addEmploymentAction = bindActionCreators(addEmployment, dispatch);
+  const editEmploymentAction = bindActionCreators(editEmployment, dispatch);
+  const deleteEmploymentAction = bindActionCreators(deleteEmployment, dispatch);
 
-interface State extends EmploymentType {
-  employment?: EmploymentType[];
-  showEmploymentForm: boolean;
-  isEditing: boolean;
-  allFieldsFilled: boolean;
-  validationFields: string[];
-  [x: string]: any;
-}
-
-/**
- * Employment: Third step of the Profile Builder
- */
-export class Employment extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      id: 0,
-      employer: '',
-      jobTitle: '',
-      jobLocation: '',
-      fromMonth: '',
-      fromYear: '',
-      toMonth: '',
-      toYear: '',
-      showEmploymentForm: false,
-      isEditing: false,
-      allFieldsFilled: false,
-      validationFields: [
-        'employer',
-        'jobTitle',
-        'jobLocation',
-        'fromMonth',
-        'fromYear',
-        'toMonth',
-        'toYear',
-      ]
-    };
+  const resetEmploymentState = () => {
+    setEmployer('');
+    setJobTitle('');
+    setJobLocation('');
+    setFromMonth('');
+    setFromYear('');
+    setToMonth('');
+    setToYear('');
+    setStillWorkHere(false);
+  }
+  const toggleEmploymentForm = () => {
+    showEmploymentForm(!employmentFormIsOpen);
   }
 
-  public handleChange = (event: React.SyntheticEvent<HTMLInputElement>): void => {
-    const target = event.currentTarget;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    this.setState({ ...this.state, [name]: value }, () => {
-      this.confirmAllFieldsAreFilled();
-    });
+  const handleCancel = () => {
+    resetEmploymentState();
+    toggleEmploymentForm();
+    setIsEditing(false);
   }
 
-  public async componentDidMount(): Promise<void>  {
-    await this.props.fetchEmployment();
-    this.setEmployment();
+  const deleteEmploymentAsync = (employmentId: number): void => {
+    deleteEmploymentAction(employmentId);
   }
 
-  public setEmployment(): void {
-    this.setState({
-      employment: this.props.employment
-    });
-  }
-
-  public handleSave = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
-    if (event) {
-      event.preventDefault();
-    }
-
-    const employment: EmploymentType = {
-      employer: this.state.employer,
-      jobTitle: this.state.jobTitle,
-      jobLocation: this.state.jobLocation,
-      fromMonth: this.state.fromMonth,
-      fromYear: this.state.fromYear,
-    };
-
-    if (this.state.stillWorkHere) {
-      employment.stillWorkHere = this.state.stillWorkHere;
-    } else {
-      employment.toMonth = this.state.toMonth;
-      employment.toYear = this.state.toYear;
-    }
-
-    // handle save when editing an exisitng employment
-    if (this.state.isEditing) {
-      employment.id = this.state.id;
-      await this.props.editEmployment(employment);
-      // handle save when adding a new education
-    } else {
-      await this.props.addEmployment(employment);
-    }
-    this.resetState();
-    this.toggleEmploymentForm();
-    await this.props.fetchEmployment();
-    this.setEmployment();
-  }
-
-  public resetState(): void {
-    this.setState({
-      employer: '',
-      jobTitle: '',
-      jobLocation: '',
-      fromMonth: '',
-      fromYear: '',
-      toMonth: '',
-      toYear: '',
-      stillWorkHere: false,
-      isEditing: false,
-      allFieldsFilled: false,
-      validationFields: [
-        'employer',
-        'jobTitle',
-        'jobLocation',
-        'fromMonth',
-        'fromYear',
-        'toMonth',
-        'toYear',
-      ]
-    });
-  }
-
-  public deleteEmployment = async (employmentId: number): Promise<void> => {
-    await this.props.deleteEmployment(employmentId);
-    await this.props.fetchEmployment();
-  }
-
-  public editEmployment(employmentId: number): void {
-    const employmentToEdit = this.state.employment && this.state.employment.filter(employment =>
-      employment.id === employmentId
-    );
-    if (employmentToEdit) {
-      this.setState({
-        isEditing: true,
-        id: employmentToEdit[0].id,
-        employer: employmentToEdit[0].employer,
-        jobTitle: employmentToEdit[0].jobTitle,
-        jobLocation: employmentToEdit[0].jobLocation,
-        fromMonth: employmentToEdit[0].fromMonth,
-        fromYear: employmentToEdit[0].fromYear,
-        toMonth: employmentToEdit[0].stillWorkHere === false ? employmentToEdit[0].toMonth : '',
-        toYear: employmentToEdit[0].stillWorkHere === false ? employmentToEdit[0].toYear : '',
-        stillWorkHere: employmentToEdit[0].stillWorkHere
-        // tslint:disable-next-line
-      }, () => {
-        this.toggleEmploymentForm();
-      });
-    }
-  }
-
-  public toggleEmploymentForm = () => this.setState(prevState => ({
-    showEmploymentForm: !prevState.showEmploymentForm
-  }))
-
-  public handleOnBlur = (event: React.SyntheticEvent<HTMLInputElement>): void => {
-    const target = event.currentTarget;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    this.setState({ ...this.state, [name]: value }, () => {
-      this.confirmAllFieldsAreFilled();
-    });
-  }
-
-  public confirmAllFieldsAreFilled = () => {
-    const validationFields = this.state.stillWorkHere
-      ? this.state.validationFields.slice(0, 5).concat(['stillWorkHere'])
-      : [ 'employer',
-        'jobTitle',
-        'jobLocation',
-        'fromMonth',
-        'fromYear',
-        'toMonth',
-        'toYear'];
-    this.setState({
-      validationFields
-    },            () => {
-      const employmentFieldsFromState = Object.keys(this.state).map((field) => {
-        if (this.state.validationFields.includes(field)) {
-          return {
-            [field]: this.state[field]
-          };
+  let {
+    instructorEmployment,
+    isAddEmploymentRequesting,
+    isDeleteEmploymentRequesting,
+    isEditEmploymentRequesting,
+    isFetchEmploymentRequesting,
+    addEmploymentError,
+    fetchEmploymentError,
+    editEmploymentError,
+    deleteEmploymentError,
+  } = useSelector((state: StoreState) => {
+    const {
+      instructor: {
+        employment: instructorEmployment
+      },
+      actions: {
+        fetchEmployment: {
+          isRequesting: isFetchEmploymentRequesting,
+          error: fetchEmploymentError
+        },
+        addEmployment: {
+          isRequesting: isAddEmploymentRequesting,
+          error: addEmploymentError
+        },
+        editEmployment: {
+          isRequesting: isEditEmploymentRequesting,
+          error: editEmploymentError,
+        },
+        deleteEmployment: {
+          isRequesting: isDeleteEmploymentRequesting,
+          error: deleteEmploymentError,
         }
-        return null;
-      }).filter((employmentField) => employmentField !== null) as { [x: string]: any }[];
-      const allFieldsFilled = employmentFieldsFromState.every((field) => {
-        const fieldValue = field[Object.keys(field)[0]];
-        if (typeof fieldValue === 'string') {
-          return fieldValue.length !== 0;
-        }
-        return fieldValue !== false;
-      });
-      this.setState({
-        ...this.state,
-        allFieldsFilled
-      });
+      }
+    } = state.instructor;
+
+    return {
+      employment: state.instructor.instructor.employment || [],
+      isFetchEmploymentRequesting,
+      isAddEmploymentRequesting,
+      isDeleteEmploymentRequesting,
+      isEditEmploymentRequesting,
+      fetchEmploymentError,
+      addEmploymentError,
+      editEmploymentError,
+      deleteEmploymentError,
+      instructorEmployment: instructorEmployment || []
+    };
+  });
+
+  useEffect(() => {
+    if (!instructorEmployment.length) {
+      fetchEmploymentAction();
+    }
+    if (instructorEmployment.length) {
+      setEmployment(instructorEmployment);
+      showEmploymentForm(false);
+      setIsEditing(false);
+    } else {
+      setEmployment([]);
+      showEmploymentForm(false);
+      setIsEditing(false);
+    }
+  },
+    [
+      JSON.stringify(instructorEmployment)
+    ]);
+
+    useEffect(() => {
+      if (instructorEmployment.length > employment.length) {
+        setEmployment(instructorEmployment);
+        showEmploymentForm(false);
+        setIsEditing(false);
+      }
+    },
+      [
+        JSON.stringify(instructorEmployment)
+      ]);
+
+  useEffect(() => {
+    if (addEmploymentError) {
+      setSnackbarMessage(addEmploymentError);
+      setSnackbarMessageType('error');
+      showSnackbar(true);
+      setIsEditing(false);
+    }
+  },
+    [
+      addEmploymentError
+    ]);
+  
+
+  useEffect(() => {
+    if (editEmploymentError) {
+      setSnackbarMessage(editEmploymentError);
+      setSnackbarMessageType('error');
+      showSnackbar(true);
+      setIsEditing(false);
+    }
+  },
+    [
+      editEmploymentError
+    ]);
+
+  useEffect(() => {
+    if (deleteEmploymentError) {
+      setSnackbarMessage(deleteEmploymentError);
+      setSnackbarMessageType('error');
+      showSnackbar(true);
+      setIsEditing(false);
+    }
+  },
+    [
+      deleteEmploymentError
+    ]);
+
+  const handleChange = useCallback(
+    (event: React.FormEvent<HTMLInputElement>): void => {
+      const target = event.currentTarget;
+      const value = target.type === 'checkbox' ? target.checked : target.value as any;
+      const name = target.name;
+
+      if (name === 'employer') {
+        setEmployer(value);
+      }
+      if (name === 'jobTitle') {
+        setJobTitle(value);
+      }
+      if (name === 'jobLocation') {
+        setJobLocation(value);
+      }
+      if (name === 'fromMonth') {
+        setFromMonth(value);
+      }
+      if (name === 'toMonth') {
+        setToMonth(value);
+      }
+      if (name === 'fromYear') {
+        setFromYear(value);
+      }
+      if (name === 'toYear') {
+        setToYear(value);
+      }
+      if (name === 'stillWorkHere') {
+        setStillWorkHere(value);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    const selectedFields = stillWorkHere ? [
+      employer,
+      jobTitle,
+      jobLocation,
+      fromMonth,
+      fromYear,
+    ] : [
+        employer,
+        jobTitle,
+        jobLocation,
+        fromMonth,
+        toMonth,
+        fromYear,
+        toYear
+      ]
+    const allFieldsFilled = selectedFields.every((field) => {
+      if (typeof field === 'number') {
+        return field > 0;
+      }
+      return field.length;
     });
-  }
+    setAllFieldsFilled(allFieldsFilled);
+  }, [
+    employer,
+    jobTitle,
+    jobLocation,
+    fromMonth,
+    toMonth,
+    fromYear,
+    toYear,
+    stillWorkHere
+  ]);
 
-  public handleCancel = (): void => {
-    this.resetState();
-    this.toggleEmploymentForm();
-  }
+  const editEmploymentForm = useCallback(
+    (employmentId: number) => {
+      const employmentToEdit = instructorEmployment.length && instructorEmployment.find(employment =>
+        employment.id === employmentId
+      );
+      if (employmentToEdit) {
+        setIsEditing(true);
+        setEmploymentId(employmentToEdit.id);
+        setEmployer(employmentToEdit.employer);
+        setJobTitle(employmentToEdit.jobTitle);
+        setJobLocation(employmentToEdit.jobLocation);
+        setFromYear(employmentToEdit.fromYear);
+        setFromMonth(employmentToEdit.fromMonth);
+        setToYear(!employmentToEdit.stillWorkHere ? employmentToEdit.toYear : '');
+        setToMonth(!employmentToEdit.stillWorkHere ? employmentToEdit.toMonth : '');
+        setStillWorkHere(employmentToEdit.stillWorkHere ? employmentToEdit.stillWorkHere : false);
 
-  public renderEmploymentForm = (): JSX.Element => (
-    <div>
-      <Typography className="nabi-margin-top-xsmall nabi-text-uppercase" variant="body2">
-        {EmploymentComponent.Text.AddEmployment}
-      </Typography>
-      <EmploymentForm
-        handleChange={this.handleChange}
-        handleOnBlur={this.handleOnBlur}
-        handleSave={this.handleSave}
-        employer={this.state.employer}
-        jobTitle={this.state.jobTitle}
-        jobLocation={this.state.jobLocation}
-        fromMonth={this.state.fromMonth}
-        fromYear={this.state.fromYear}
-        toMonth={this.state.toMonth}
-        toYear={this.state.toYear}
-        stillWorkHere={this.state.stillWorkHere}
-        isEditing={this.state.isEditing}
-        handleCancel={this.handleCancel}
-        allFieldsFilled={this.state.allFieldsFilled}
-      />
-    </div>
-  )
+        showEmploymentForm(true);
+      }
+    },
+    [
+      employmentFormIsOpen,
+      isEditing,
+      employer,
+      jobTitle,
+      jobLocation,
+      fromMonth,
+      fromYear,
+      toMonth,
+      toYear,
+      employmentId,
+      JSON.stringify(instructorEmployment),
+      employment
+    ]
+  );
 
-  public render(): JSX.Element {
-    const requesting = this.props.isAddEmploymentRequesting || this.props.isEditEmploymentRequesting ||
-      this.props.isFetchEmploymentRequesting || this.props.isDeleteEmploymentRequesting;
+  const handleSave = useCallback(
+    () => {
+      const employment: EmploymentType = {
+        employer,
+        jobTitle,
+        fromMonth,
+        jobLocation,
+        fromYear,
+        ...(stillWorkHere && {
+          stillWorkHere
+        }),
+        ...(!stillWorkHere && {
+          toMonth,
+          toYear
+        })
+      };
 
-    const employmentAdded = this.props.employment.map((employment, i) => (
-      <li className="nabi-list" key={i}>
-        <EmploymentAdded
-          id={employment.id}
-          gridWidth={6}
-          employer={employment.employer}
-          jobTitle={employment.jobTitle}
-          jobLocation={employment.jobLocation}
-          fromMonth={employment.fromMonth}
-          fromYear={employment.fromYear}
-          toMonth={employment.toMonth}
-          toYear={employment.toYear}
-          stillWorkHere={this.state.stillWorkHere}
-          deleteEmployment={(employmentId: number) => this.deleteEmployment(employmentId)}
-          editEmployment={(employmentId: number) => this.editEmployment(employmentId)}
-        />
-      </li>
-    ));
+      if (isEditing) {
+        employment.id = employmentId;
+        editEmploymentAction(employment);
+      } else {
+        addEmploymentAction(employment);
+      }
+      resetEmploymentState();
+      toggleEmploymentForm();
+    },
+    [
+      employer,
+      jobTitle,
+      fromMonth,
+      toMonth,
+      jobLocation,
+      employmentId,
+      fromYear,
+      toYear,
+      stillWorkHere
+    ]
+  );
+
+  const requesting = isAddEmploymentRequesting || isEditEmploymentRequesting ||
+    isFetchEmploymentRequesting || isDeleteEmploymentRequesting;
+
+  const renderEmploymentForm = (): JSX.Element => {
     return (
       <div>
-        {requesting ?
-          <div className="nabi-text-center">
-            <CircularProgress />
-          </div> :
-          (!this.state.showEmploymentForm ?
-            <div>
-              <SectionTitle text={EmploymentComponent.Text.YourEmployment} />
-              <Typography className="nabi-margin-top-xsmall">
-                {EmploymentComponent.Text.ListYourPastExperience}
-              </Typography>
-              <ul>
-                {employmentAdded}
-              </ul>
-              <div className="nabi-margin-top-medium">
-                <Button color="primary" variant="contained" onClick={this.toggleEmploymentForm}>
-                  <Add className="nabi-margin-right-xsmall" />
-                  {EmploymentComponent.Text.AddEmployment}
-                </Button>
-              </div>
-            </div>
-            : this.renderEmploymentForm())
-        }
-        <StepperButtons
-          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.References}
-          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
-          icon={<ArrowForward />}
+        <Typography className="nabi-margin-top-xsmall nabi-text-uppercase" variant="body2">
+          {EmploymentComponent.Text.AddEmployment}
+        </Typography>
+        <EmploymentForm
+          handleChange={handleChange}
+          handleSave={handleSave}
+          employer={employer}
+          jobTitle={jobTitle}
+          jobLocation={jobLocation}
+          fromMonth={fromMonth}
+          fromYear={fromYear}
+          toMonth={toMonth}
+          toYear={toYear}
+          stillWorkHere={stillWorkHere}
+          isEditing={isEditing}
+          handleCancel={handleCancel}
+          allFieldsFilled={allFieldsFilled}
         />
       </div>
     );
   }
+
+  const employmentAdded = employment.map((employment, i) => (
+    <li className="nabi-list" key={i}>
+      <EmploymentAdded
+        id={employment.id}
+        gridWidth={6}
+        employer={employment.employer}
+        jobTitle={employment.jobTitle}
+        jobLocation={employment.jobLocation}
+        fromMonth={employment.fromMonth}
+        fromYear={employment.fromYear}
+        toMonth={employment.toMonth}
+        toYear={employment.toYear}
+        stillWorkHere={stillWorkHere}
+        deleteEmployment={(employmentId: number) => deleteEmploymentAsync(employmentId)}
+        editEmployment={(employmentId: number) => editEmploymentForm(employmentId)}
+      />
+    </li>
+  ));
+
+  return (
+    <div>
+      {requesting ?
+        <div className="nabi-text-center">
+          <CircularProgress />
+        </div> :
+        (!employmentFormIsOpen ?
+          <div>
+            <SectionTitle text={EmploymentComponent.Text.YourEmployment} />
+            <Typography className="nabi-margin-top-xsmall">
+              {EmploymentComponent.Text.ListYourPastExperience}
+            </Typography>
+            <ul>
+              {employmentAdded}
+            </ul>
+            <div className="nabi-margin-top-medium">
+              <Button color="primary" variant="contained" onClick={toggleEmploymentForm}>
+                <Add className="nabi-margin-right-xsmall" />
+                {EmploymentComponent.Text.AddEmployment}
+              </Button>
+            </div>
+          </div>
+          : renderEmploymentForm())
+      }
+      <StepperButtons
+        nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.References}
+        backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Education}
+        icon={<ArrowForward />}
+      />
+      <SnackBar
+        isOpen={snackbarIsOpen}
+        message={snackbarMessage}
+        handleClose={closeSnackbar}
+        variant={snackbarMessageType}
+        hideIcon={true}
+      />
+    </div>
+  );
 }
 
-const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
-  const {
-    actions: {
-      fetchEmployment: {
-        isRequesting: isFetchEmploymentRequesting,
-        error: fetchEmploymentError
-      },
-      addEmployment: {
-        isRequesting: isAddEmploymentRequesting,
-        error: addEmploymentError
-      },
-      editEmployment: {
-        isRequesting: isEditEmploymentRequesting,
-        error: editEmploymentError
-      },
-      deleteEmployment: {
-        isRequesting: isDeleteEmploymentRequesting,
-        error: deleteEmploymentError
-      }
-    }
-  } = state.instructor;
-
-  return {
-    employment: state.instructor.instructor.employment || [],
-    isFetchEmploymentRequesting,
-    isAddEmploymentRequesting,
-    isDeleteEmploymentRequesting,
-    isEditEmploymentRequesting,
-    fetchEmploymentError,
-    addEmploymentError,
-    editEmploymentError,
-    deleteEmploymentError
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: Dispatch<Action>,
-  _ownProps: {}
-): DispatchProps => {
-  return {
-    fetchEmployment: () => dispatch(fetchEmployment()),
-    addEmployment: (employment: EmploymentType) => dispatch(addEmployment(employment)),
-    editEmployment: (employment: Partial<EmploymentType>) =>
-      dispatch(editEmployment(employment)),
-    deleteEmployment: (id: number) => dispatch(deleteEmployment(id))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Employment);
+export default Employment;

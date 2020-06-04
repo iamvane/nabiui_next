@@ -217,16 +217,22 @@ export default function instructorReducer(
       };
 
     case InstructorActions.ADD_EDUCATION_SUCCESS:
-      const { data: message } = <APIActions.WithData<string>>action;
+      const { data: addedEducation } = <APIActions.WithData<any>>action;
       return {
         ...state,
+        instructor: {
+          ...state.instructor,
+          education: [
+            ...state.instructor.education,
+            addedEducation
+          ]
+        },
         actions: {
           ...state.actions,
           addEducation: {
             ...state.actions.addEducation,
             isRequesting: false,
-            error: "",
-            message: message
+            error: ""
           }
         }
       };
@@ -260,18 +266,31 @@ export default function instructorReducer(
       };
 
     case InstructorActions.EDIT_EDUCATION_SUCCESS:
-      const { data: editEducationMessage } = <APIActions.WithData<string>>(
+      const {
+        data: editEducation 
+    } = <APIActions.WithData<any>>(
         action
       );
+      const updatedEducation = state.instructor.education.map((education) => {
+        if (education.id === editEducation.id) {
+          return {
+            ...editEducation
+          }
+        }
+        return education;
+      });
       return {
         ...state,
+        instructor: {
+          ...state.instructor,
+          education: updatedEducation
+        },
         actions: {
           ...state.actions,
           editEducation: {
             ...state.actions.editEducation,
             isRequesting: false,
             error: "",
-            message: editEducationMessage
           }
         }
       };
@@ -307,18 +326,26 @@ export default function instructorReducer(
       };
 
     case InstructorActions.DELETE_EDUCATION_SUCCESS:
-      const { data: deleteEducationMessage } = <APIActions.WithData<string>>(
+      const { 
+        data: deleteEducation
+    } = <APIActions.WithData<any>>(
         action
       );
+      const deletedEducation = state.instructor.education.filter((education) => {
+        return education.id !== deleteEducation.id;
+      })
       return {
         ...state,
+        instructor: {
+          ...state.instructor,
+          education: deletedEducation
+        },
         actions: {
           ...state.actions,
           deleteEducation: {
             ...state.actions.deleteEducation,
             isRequesting: false,
             error: "",
-            message: deleteEducationMessage
           }
         }
       };
@@ -401,18 +428,26 @@ export default function instructorReducer(
       };
 
     case InstructorActions.ADD_EMPLOYMENT_SUCCESS:
-      const { data: addEmploymentMessage } = <APIActions.WithData<string>>(
+      const {
+        data: addEmployment
+    } = <APIActions.WithData<any>>(
         action
       );
       return {
         ...state,
+        instructor: {
+          ...state.instructor,
+          employment: [
+            ...state.instructor.employment,
+            addEmployment
+          ]
+        },
         actions: {
           ...state.actions,
           addEmployment: {
             ...state.actions.addEmployment,
             isRequesting: false,
             error: "",
-            message: addEmploymentMessage
           }
         }
       };
@@ -448,18 +483,31 @@ export default function instructorReducer(
       };
 
     case InstructorActions.EDIT_EMPLOYMENT_SUCCESS:
-      const { data: editEmploymentMessage } = <APIActions.WithData<string>>(
+      const {
+        data: editEmployment
+    } = <APIActions.WithData<any>>(
         action
       );
+      const updatedEmployment = state.instructor.employment.map((employment) => {
+        if (employment.id === editEmployment.id) {
+          return {
+            ...editEmployment
+          }
+        }
+        return employment;
+      });
       return {
         ...state,
+        instructor: {
+          ...state.instructor,
+          employment: updatedEmployment
+        },
         actions: {
           ...state.actions,
           editEmployment: {
             ...state.actions.editEmployment,
             isRequesting: false,
             error: "",
-            message: editEmploymentMessage
           }
         }
       };
@@ -495,18 +543,26 @@ export default function instructorReducer(
       };
 
     case InstructorActions.DELETE_EMPLOYMENT_SUCCESS:
-      const { data: deleteEmploymentMessage } = <APIActions.WithData<string>>(
+      const {
+        data: deleteEmployment
+    } = <APIActions.WithData<any>>(
         action
       );
+      const deletedEmployment = state.instructor.employment.filter((employment) => {
+        return employment.id !== deleteEmployment.id;
+      })
       return {
         ...state,
+        instructor: {
+          ...state.instructor,
+          employment: deletedEmployment
+        },
         actions: {
           ...state.actions,
           deleteEmployment: {
             ...state.actions.deleteEmployment,
             isRequesting: false,
             error: "",
-            message: deleteEmploymentMessage
           }
         }
       };
