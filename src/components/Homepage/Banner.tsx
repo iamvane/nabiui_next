@@ -25,7 +25,7 @@ export const Banner = (props: Props) => {
           <ClaimDiscountBanner referralInfo={props.referralInfo} />
         ) : (
           <>
-            <h1 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-white nabi-margin-bottom-xsmall nabi-text-center nabi-text-shadow">
+            <h1 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-white nabi-margin-bottom-xsmall nabi-text-center">
               {BannerComponent.text}
             </h1>
             <Grid item={true} xs={12} md={8} className="nabi-margin-center">
