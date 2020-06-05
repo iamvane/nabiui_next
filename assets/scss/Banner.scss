@@ -7,9 +7,6 @@
 	background-position: center;
 }
 
-#banner h1 {
-	text-shadow: 0.5;
-}
 #banner .container {
 	padding-left: 25px;
 	padding-right: 25px;
@@ -32,7 +29,7 @@
 }
 
 .nabi-text-shadow {
-  text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.17);
+  text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media only screen and (min-width: 375px) {
