@@ -102,10 +102,10 @@ const RequestForm: React.StatelessComponent<Props> = props => {
         <LessonDate
           lessonDate={props.lessonDate}
           handleDateChange={props.handleDateChange}
-          errors={props.lessonDateError}
+          error={props.lessonDateError}
         />
       </ListItem>
-      
+
       <ListItem>
         <LessonTime
           lessonTime={props.lessonTime}

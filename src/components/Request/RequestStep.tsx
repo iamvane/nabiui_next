@@ -394,9 +394,9 @@ export const Request = () => {
     const today = moment().toDate();
 
     if (date.toDate() < today) {
-      setLessonDateError('Selected day not valid')
+      setLessonDateError('We all wish we could go back in time.')
     } else {
-      setLessonDate(date.format("YYYY-MM-DD"));
+      setLessonDate(String(date));
       setLessonDateError('');
     }
   };
@@ -593,7 +593,7 @@ export const Request = () => {
     () => {
       const requestDetails = {
         timezone,
-        date: lessonDate,
+        date: moment(lessonDate).format("YYYY-MM-DD"),
         time: lessonTime,
         students,
         instrument,
