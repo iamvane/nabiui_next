@@ -11,6 +11,7 @@ import { NavigationComponent } from './constants';
 const logo = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png";
 const referAfriendImg = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/icono-de-regalo.jpg";
 
+
 // const Notifications = dynamic(() => import('@material-ui/icons/Notifications'), {
 //   ssr: false,
 // });
