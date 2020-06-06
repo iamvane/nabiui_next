@@ -11,7 +11,8 @@ import {
   IconButton,
   MenuList,
   MenuItem,
-  Typography
+  Typography,
+  CircularProgress
 } from '@material-ui/core';
 
 import { Role } from '../../constants/Roles';
@@ -26,6 +27,8 @@ const Power = dynamic(() => import('@material-ui/icons/Power'), {
   ssr: false,
 });
 
+const logo = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png";
+
 // const Notifications = dynamic(() => import('@material-ui/icons/Notifications'), {
 //   ssr: false,
 // });
@@ -33,6 +36,8 @@ const Power = dynamic(() => import('@material-ui/icons/Power'), {
 interface Props {
   instructorId?: number;
   role?: string;
+  handleUserLogout?: () => void;
+  isRequesting?: boolean;
 }
 
 const NavigationMobile: React.StatelessComponent<Props> = props => {
@@ -51,6 +56,9 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
       <Drawer
         open={isMobileMenuOpen}
         onClose={toggleMobileMenu}
+        classes={{
+          paper: "nabi-mobile-width"
+        }}
       >
         <MenuList
           className="nabi-padding-right-small nabi-padding-left-small"
@@ -59,13 +67,28 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
           onClick={toggleMobileMenu}
           onKeyDown={toggleMobileMenu}
         >
-          <MenuItem>
-            <Typography>
+          <MenuItem
+            classes={{
+              root: "nabi-mobile-item"
+            }}
+          >
+            <div className="nabi-mobile-drawer-header-container">
               <Link href={Routes.Dashboard}>
-                <a>{NavigationComponent.NavigationLabels.Home}</a>
+                <a className="nabi-mobile-drawer-image-link">
+                  <>
+                    <img className="nabi-text-center nabi-mobile-drawer-image" alt="logo" src={logo} />
+                    <p
+                      id="nabi-logo-text"
+                      className="nabi-text-center nabi-font-montserrat nabi-text-extrabold"
+                    >
+                      {NavigationComponent.nabiMusic}
+                    </p>
+                  </>
+                </a>
               </Link>
-            </Typography>
+            </div>
           </MenuItem>
+          <Divider />
           {props.role === Role.instructor ?
             <React.Fragment>
          
@@ -110,10 +133,48 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
             </MenuItem>
           </React.Fragment> :
           <React.Fragment>
-            <MenuItem>
+            <MenuItem
+              classes={{
+                root: "nabi-mobile-item"
+              }}
+            >
               <Typography>
                 <Link href={Routes.BuildRequest + '/request'}>
-                  <a>{NavigationComponent.NavigationLabels.RequestInstructor}</a>
+                  <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.Calendar}</a>
+                </Link>
+              </Typography>
+            </MenuItem>
+            <MenuItem
+              classes={{
+                root: "nabi-mobile-item"
+              }}
+            >
+              <Typography>
+                <Link href={Routes.BuildRequest + '/request'}>
+                  <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.ViewApplications}</a>
+                </Link>
+              </Typography>
+            </MenuItem>
+            <MenuItem
+              classes={{
+                root: "nabi-mobile-item"
+              }}
+            >
+              <Typography>
+                <Link href={Routes.BuildRequest + '/request'}>
+                  <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.RequestInstructor}</a>
+                </Link>
+              </Typography>
+            </MenuItem>
+
+            <MenuItem
+              classes={{
+                root: "nabi-mobile-item"
+              }}
+            >
+              <Typography>
+                <Link href={Routes.BuildRequest + '/request'}>
+                  <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.ReferAFriend}</a>
                 </Link>
               </Typography>
             </MenuItem>
@@ -127,7 +188,6 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
                 </Link>
               </Typography>
             </MenuItem> */}
-          <Divider />
           {/* <MenuItem>
             <Typography>
               <Link href={Routes.Settings}>
@@ -135,10 +195,40 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
               </Link>
             </Typography>
           </MenuItem> */}
-          <MenuItem>
-            <Typography>
+          <Divider />
+          <MenuItem
+            classes={{
+              root: "nabi-mobile-item"
+            }}
+          >
+            <Typography
+            >
               <Link href={Routes.FAQInstructors}>
-                <a>{NavigationComponent.NavigationLabels.Help}</a>
+                <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.Setting}</a>
+              </Link>
+            </Typography>
+          </MenuItem>
+          <MenuItem
+            classes={{
+              root: "nabi-mobile-item"
+            }}
+          >
+            <Typography
+            >
+              <Link href={Routes.FAQInstructors}>
+                <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.SendNabiFeedback}</a>
+              </Link>
+            </Typography>
+          </MenuItem>
+          <MenuItem
+            classes={{
+              root: "nabi-mobile-item"
+            }}
+          >
+            <Typography
+            >
+              <Link href={Routes.FAQInstructors}>
+                <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.Help}</a>
               </Link>
             </Typography>
           </MenuItem>
@@ -152,6 +242,19 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
             <span className="nabi-margin-left-xsmall">{NavigationComponent.logOut}</span>
           </Button> */}
         </MenuList>
+        <div className="nabi-mobile-logout-button-wrapper">
+          <Button
+            variant="contained"
+            className="nabi-responsive-button"
+            onClick={props.handleUserLogout}
+          >
+            {props.isRequesting ? (
+              <CircularProgress color="inherit" size={25} />
+            ) : (
+              NavigationComponent.logOut
+            )}
+          </Button>
+        </div>
       </Drawer>
       <Typography
         color="primary"

@@ -116,6 +116,46 @@ p.nabi-color-orange {
 	cursor: pointer !important;
 }
 
+/*MOBILE WIDTH*/
+
+@media only screen and (max-width: 768px) {
+	.nabi-mobile-width {
+		width: 80%;
+	}
+}
+
+/*MOBILE*/
+.nabi-mobile-drawer-header-container {
+	width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nabi-mobile-drawer-image-link {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nabi-mobile-drawer-image{
+	width: 50px;
+}
+
+.nabi-mobile-item {
+	padding: 10px 25px 10px 25px !important;
+}
+
+.nabi-mobile-typography {
+	color: #717a8a !important;
+	font-weight: 500;
+}
+
+.nabi-mobile-logout-button-wrapper {
+	position: absolute;
+    bottom: 30px;
+    left: 120px;
+}
+
 /*DISPLAY*/
 .nabi-display-block {
   display: block !important;
