@@ -11,9 +11,15 @@ export namespace NavigationComponent {
     Settings = 'User Settings',
     Help = 'Help',
     Referrals = 'Referrals',
-    RequestInstructor = 'Request Instructor'
+    RequestInstructor = 'Request Instructor',
+    ViewApplications = 'View Applications',
+    Calendar = 'Calendar',
+    ReferAFriend = 'Refer a friend',
+    SendNabiFeedback = 'Send Nabi Feedback',
+    Setting = 'Settings'
   }
 
   export const menuText = 'Menu';
   export const logOut = 'Log Out';
+  export const nabiMusic = 'Nabi Music';
 }
