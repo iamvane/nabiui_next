@@ -8,6 +8,8 @@ import {
 import { CollapsibleSidebar } from '../CollapsibleSidbar/CollapsibleSidbar';
 import { NavigationComponent } from './constants';
 
+const logo = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png";
+
 // const Notifications = dynamic(() => import('@material-ui/icons/Notifications'), {
 //   ssr: false,
 // });
