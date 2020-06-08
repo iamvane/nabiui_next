@@ -315,10 +315,13 @@ export const Request = () => {
       setIsEditing(true);
 
       showRequestForm(true);
+      const numberOfSteps = role === Role.parent ? 4 : 3;
+      const currentSteps = role === Role.parent ? [0, 1, 2, 3, 4] : [ 0, 1, 2, 3 ];
       setStep(prevState => ([
         ...prevState,
-        1, 2, 3, 4
+        ...currentSteps
       ]));
+      setCurrentStep(numberOfSteps);
     },
     [
       requestId,
@@ -637,6 +640,9 @@ export const Request = () => {
         }
         if (allFieldsSelected) {
           if (isEditing) {
+            delete requestDetails.timezone;
+            delete requestDetails.date;
+            delete requestDetails.time;
             editRequestAction(requestId, requestDetails);
           } else {
             createRequestAction(requestDetails);
@@ -677,6 +683,7 @@ export const Request = () => {
       if (role === Role.student) {
         setRequestInfo([
           'none',
+          'scheduleTrial',
           'requestDetail',
           'requestMessage'
         ])
@@ -793,6 +800,7 @@ export const Request = () => {
       />
     </li>
   ));
+
   return (
     <div>
       {!requestFormIsOpen ?
