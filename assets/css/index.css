@@ -173,6 +173,10 @@ p.nabi-color-orange {
 	left: 20px;
 }
 
+.nabi-mobile-icon-large {
+	width: 40px;
+}
+
 /*DISPLAY*/
 .nabi-display-block {
   display: block !important;
