@@ -28,6 +28,7 @@ const Power = dynamic(() => import('@material-ui/icons/Power'), {
 });
 
 const logo = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png";
+const referAfriendImg = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/icono-de-regalo.jpg";
 
 // const Notifications = dynamic(() => import('@material-ui/icons/Notifications'), {
 //   ssr: false,
@@ -172,6 +173,7 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
                 root: "nabi-mobile-item"
               }}
             >
+              <img src={referAfriendImg} className="nabi-mobile-icon-large" alt="location-icon" />
               <Typography>
                 <Link href={Routes.BuildRequest + '/request'}>
                   <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.ReferAFriend}</a>
