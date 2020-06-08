@@ -244,7 +244,10 @@ export namespace RequestAddedComponent {
     LessonDuration = 'Lesson duration:',
     StudentDetails = 'Student details:',
     SkillLevel = 'Skill level:',
-    Message = 'Message:'
+    Message = 'Message:',
+    Date = 'Lesson Date',
+    Time = 'Lesson Time',
+    Timezone = 'Timezone'
   }
 }
 
@@ -319,5 +322,6 @@ export const enableContinueBtn = {
   none: true,
   requestDetail: false,
   studentDetail: false,
-  requestMessage: false
+  requestMessage: false,
+  scheduleTrial: false
 }
