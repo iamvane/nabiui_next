@@ -157,6 +157,13 @@ export const Header = (props: HeaderProps) => {
         ) : (
           ""
         )}
+        <div className="nabi-deskop-menu-icon hide-on-mobile">
+          <Menu onClick={toggleDrawerMenu} color="primary" />
+          <DrawerMenu
+            isOpen={isDrawerMenuOpen}
+            closeMenu={toggleDrawerMenu}
+          />
+        </div>
         <div
           className={`nabi-logo-anchor ${
             token ? "nabi-margin-top-medium-sm" : ""
