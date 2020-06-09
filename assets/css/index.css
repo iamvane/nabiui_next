@@ -151,9 +151,8 @@ p.nabi-color-orange {
 }
 
 .nabi-mobile-logout-button-wrapper {
-	position: absolute;
-    bottom: 30px;
-    left: 120px;
+	display: flex;
+    justify-content: center;
 }
 
 .nabi-mobile-icon-large {
