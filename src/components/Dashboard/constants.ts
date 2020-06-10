@@ -24,6 +24,7 @@ export namespace InstructorDashboardComponent {
     'bioTitle',
     'bioDescription',
     'instruments',
+    'languages',
     'lessonSize',
     'ageGroup',
     'rates',
@@ -32,7 +33,8 @@ export namespace InstructorDashboardComponent {
     'education',
     'qualifications',
     'music',
-    'video'
+    'video',
+    'yearsOfExperience'
   ];
 
   export const missingFieldsDisplay = {
@@ -72,6 +74,10 @@ export namespace InstructorDashboardComponent {
       label: 'Music',
       url: '/profile'
     },
+    yearsOfExperience: {
+      label: 'Years of experience',
+      url: '/profile'
+    },
     video: {
       label: 'Video Profile',
       url: '/profile'
@@ -100,6 +106,10 @@ export namespace InstructorDashboardComponent {
       label: 'Qualifications',
       url: '/job-preferences'
     },
+    languages: {
+      label: 'Language(s)',
+      url: '/job-preferences'
+    },
     education: {
       label: 'Education',
       url: '/education'
@@ -111,7 +121,7 @@ export namespace InstructorDashboardComponent {
     references: {
       label: 'References',
       url: '/references'
-    }
+    },
   }
   export const backgroundCheckSectionTitle = 'Background Check Status';
   export const backgroundCheckStatusText = 'Background Check Status:';
