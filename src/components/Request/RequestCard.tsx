@@ -45,9 +45,11 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     applied,
     displayName,
     role,
-    distance,
+    // distance,
     skillLevel,
-    elapsedTime
+    timezone,
+    date,
+    time
   } = props.request;
 
   const studentInfo = studentDetails.length > 0 &&
@@ -155,6 +157,42 @@ const RequestCard: React.StatelessComponent<Props> = props => {
                   </ul>
                 }
                 </>
+              }
+              {date &&
+              <>
+                <br />
+                <Typography
+                  color="primary"
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  {RequestCardComponent.Text.Date}
+                </Typography>
+                <Typography className="nabi-display-inline-block">{date}</Typography>
+              </>
+              }
+               {time &&
+              <>
+                <br />
+                <Typography
+                  color="primary"
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  {RequestCardComponent.Text.Time}
+                </Typography>
+                <Typography className="nabi-display-inline-block">{time}</Typography>
+              </>
+              }
+               {timezone &&
+              <>
+                <br />
+                <Typography
+                  color="primary"
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  {RequestCardComponent.Text.Timezone}
+                </Typography>
+                <Typography className="nabi-display-inline-block">{timezone}</Typography>
+              </>
               }
 
           </div>

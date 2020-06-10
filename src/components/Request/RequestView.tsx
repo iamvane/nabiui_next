@@ -218,14 +218,51 @@ export const RequestView = (props: Props) => {
                   <Typography className="nabi-display-inline-block">
                     {props.request.skillLevel}
                   </Typography>
-                  <Typography color="primary">
-                    {RequestViewComponent.Labels.StudentDetais}
-                  </Typography>
-                    {props.request.studentDetails && props.request.studentDetails.map((student: any, i: number) => (
-                      <Typography key={i}>
-                        - {student.name}, {" "} {student.age} {" "} yrs old
+                  {props.request.studentDetails.length > 0 &&
+                    <>
+                      <Typography color="primary">
+                        {RequestViewComponent.Labels.StudentDetais}
                       </Typography>
-                    ))
+                        {props.request.studentDetails && props.request.studentDetails.map((student: any, i: number) => (
+                          <Typography key={i}>
+                            - {student.name}, {" "} {student.age} {" "} yrs old
+                          </Typography>
+                        ))
+                      }
+                    </>
+                  }
+                  {props.request.date &&
+                    <>
+                     <br />
+                      <Typography color="primary" className="nabi-display-inline-block nabi-margin-right-xsmall">
+                        {RequestViewComponent.Labels.Date}
+                      </Typography>
+                      <Typography className="nabi-display-inline-block">
+                        {props.request.date}
+                      </Typography>
+                   </>
+                  }
+                  {props.request.time &&
+                    <>
+                      <br />
+                      <Typography color="primary" className="nabi-display-inline-block nabi-margin-right-xsmall">
+                        {RequestViewComponent.Labels.Time}
+                      </Typography>
+                      <Typography className="nabi-display-inline-block">
+                        {props.request.time}
+                      </Typography>
+                   </>
+                  }
+                  {props.request.timezone &&
+                    <>
+                      <br />
+                      <Typography color="primary" className="nabi-display-inline-block nabi-margin-right-xsmall">
+                        {RequestViewComponent.Labels.Timezone}
+                      </Typography>
+                      <Typography className="nabi-display-inline-block">
+                        {props.request.timezone}
+                      </Typography>
+                   </>
                   }
                 </Grid>
                 <Grid item={true} xs={12} md={7} className="nabi-margin-center">

@@ -194,7 +194,7 @@ export namespace RequestFormComponent {
     StudentSkillLevel = '{studentPlaceholder}‘s skill level',
     PlaceForLessons = 'Teaching location',
     RequestTitle= 'Add a title (ex: Piano teacher needed)',
-    RequestMessage = 'Request message'
+    RequestMessage = 'Request message',
   }
 
   export enum Placeholders {
@@ -280,7 +280,10 @@ export namespace RequestViewComponent {
     StudentDetais = 'Student details:',
     LessonDuration = 'Lesson duration:',
     Message = 'Message:',
-    SkillLevel = 'Skill level:'
+    SkillLevel = 'Skill level:',
+    Date = 'Lesson date:',
+    Time = 'Lesson time:',
+    Timezone = 'Timezone:'
   }
 
   export enum FieldNames {
@@ -314,7 +317,10 @@ export namespace RequestCardComponent {
     SendApplication = 'Send Application',
     ViewApplication = 'View Application',
     Applications = 'applications',
-    Pass = 'Pass'
+    Pass = 'Pass',
+    Date= "Lesson Date",
+    Time = 'Lesson Time',
+    Timezone = 'Timezone'
   }
 }
 
