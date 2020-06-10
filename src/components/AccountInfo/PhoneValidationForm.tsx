@@ -11,7 +11,6 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
-// import Close from '@material-ui/icons/Close';
 import '../../../assets/scss/PhoneValidationForm.scss';
 import dynamic from "next/dynamic";
 const Close = dynamic(() => import('@material-ui/icons/Close'), {
@@ -26,7 +25,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import SectionTitle from '../common/SectionTitle';
 import PhoneNumberAdded from '../AccountInfo/PhoneNumberAdded';
-import { UserType } from '../../redux/models/UserModel';
+
 import {
     PhoneValidationFormComponent,
     AccountInfoComponent
