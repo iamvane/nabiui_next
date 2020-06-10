@@ -314,7 +314,10 @@ export namespace RequestCardComponent {
     SendApplication = 'Send Application',
     ViewApplication = 'View Application',
     Applications = 'applications',
-    Pass = 'Pass'
+    Pass = 'Pass',
+    Date= "Lesson Date",
+    Time = 'Lesson Time',
+    Timezone = 'Timezone'
   }
 }
 

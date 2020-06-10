@@ -41,6 +41,9 @@ export interface Request {
   studentDetails: StudentType[];
   avatar: string;
   location: string;
+  timezone: string;
+  date: string;
+  time: string;
 }
 
 export interface RequestState extends BookLessonsData {
