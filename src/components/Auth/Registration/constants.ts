@@ -24,7 +24,8 @@ export namespace RegistrationFormComponent {
     Reference = 'reference',
     OtherText = 'otherText',
     Gender = 'gender',
-    PhoneNumber = 'phoneNumber'
+    PhoneNumber = 'phoneNumber',
+    Location = 'location'
   }
 
   export enum Labels {
@@ -83,7 +84,8 @@ export namespace RegistrationFormComponent {
     Reference = 'Select an option.',
     OtherText = 'Enter a value.',
     Gender = 'Select gender.',
-    PhoneNumber = 'Enter phone number.'
+    PhoneNumber = 'Enter phone number.',
+    Location = 'Enter valid location.'
   }
 
   export const referenceOptions = [

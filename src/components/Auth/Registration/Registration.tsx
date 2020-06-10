@@ -32,6 +32,8 @@ export interface RegistrationErrors {
   [RegistrationFormComponent.FieldKey.Password]?: string;
   [RegistrationFormComponent.FieldKey.Reference]?: string;
   [RegistrationFormComponent.FieldKey.OtherText]?: string;
+  [RegistrationFormComponent.FieldKey.Location]?: string;
+  [RegistrationFormComponent.FieldKey.PhoneNumber]?: string;
 }
 
 interface StateProps {
@@ -141,6 +143,12 @@ export const Registration = (props: Props) => {
     if (props.invitationToken) {
       userValues.referringCode = props.invitationToken;
     }
+    if (props.role === Role.parent || props.role === Role.student) {
+      userValues.location = location;
+      userValues.lat = latLng.lat;
+      userValues.lng = latLng.lng;
+      userValues.phoneNumber = phoneNumber;
+    }
     await props.createUser(userValues);
     setIsAttemptToRegister(true);
   };
@@ -201,7 +209,9 @@ export const Registration = (props: Props) => {
       firstName: "",
       lastName: "",
       reference: "",
-      otherText: ""
+      otherText: "",
+      location: "",
+      phoneNumber: ""
     };
 
     // Validate first name
@@ -257,7 +267,19 @@ export const Registration = (props: Props) => {
 
     // Validate birthday
     displayAgeDisclaimer();
+
+     // Validate location
+    if (!location || !latLng.lat || !latLng.lng) {
+      formErrors[FieldKey.Location] = RegistrationFormComponent.ErrorMessages.Location;
+    }
+
+     // Validate phoneNumber
+     if (!phoneNumber) {
+      formErrors[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
+    }
+
     return setFormErrors(formErrors);
+
   };
 
   const handleSubmit = (
@@ -337,6 +359,7 @@ export const Registration = (props: Props) => {
           handleLocationChange={handleLocationChange}
           location={location || ''}
           gender={gender}
+          handleNumberChange={handleNumberChange}
           phoneNumber={phoneNumber}
         />
       </div>

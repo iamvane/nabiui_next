@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import { withRouter, NextRouter } from 'next/router';
 import { WithRouterProps } from 'next/dist/client/with-router';
+import Head from 'next/head';
 
 import {
     createUser,
@@ -11,6 +12,7 @@ import { StoreState } from '../src/redux/reducers/store';
 import { RegistrationType } from '../src/components/Auth/Registration/models';
 import Registration from '../src/components/Auth/Registration/Registration';
 import { Role } from '../src/constants/Roles';
+import { pageTitlesAndDescriptions } from '../src/components/common/constants/TitlesAndDescriptions';
 
 interface StateProps {
   invitationToken: string;
@@ -29,7 +31,14 @@ interface Props extends
 
 const RegistrationPage = (props: Props) => {
   return (
-    <Registration role={Role.instructor} { ...props} />
+    <>
+      <Head>
+        <title>{pageTitlesAndDescriptions.registrationInstructor.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.registrationInstructor.description}></meta>
+      </Head>
+      <Registration role={Role.instructor} { ...props} />
+    </>
+
   )
 }
 
