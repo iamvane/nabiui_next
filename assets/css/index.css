@@ -155,6 +155,13 @@ p.nabi-color-orange {
     justify-content: center;
 }
 
+.nabi-mobile-button-wrapper {
+	display: flex;
+    justify-content: center;
+	padding: 10px;
+    height: 40px;
+}
+
 .nabi-mobile-icon-large {
 	width: 40px;
 }
@@ -162,7 +169,8 @@ p.nabi-color-orange {
 /* DESKTOP MENU*/
 .nabi-deskop-menu-icon {
 	position: absolute;
-    top: 35px;
+	top: 35px;
+	left: 20px;
 }
 
 /*DISPLAY*/
@@ -637,8 +645,8 @@ li.nabi-list-style-position-inside {
 
 .nabi-header-button {
 	position: absolute !important;
-	top: 9% !important;
-	right: 20px !important;
+    top: 30px;
+    right: 20px !important;
 }
 
 .nabi-responsive-image {

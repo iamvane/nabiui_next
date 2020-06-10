@@ -23,6 +23,7 @@ import {
   signUp,
   ClaimYour
 } from "./constants";
+import { CollapsibleSidebar } from "../CollapsibleSidbar/CollapsibleSidbar";
 import { DrawerMenu } from "./DrawerMenu";
 import { InstructorMenu } from "./InstructorMenu";
 import { StudentParentMenu } from "./StudentParentMenu";
@@ -70,6 +71,11 @@ export const Header = (props: HeaderProps) => {
     setIsDraweMenuOpen(prevOpen => !prevOpen);
   };
 
+  const handleUserLogout = async () => {
+    await props.logOutUser();
+    Router.push(Routes.HomePage);
+  };
+
   const { error } = useSelector(
     (state: StoreState) => state.user.actions.fetchReferralInfo
   );
@@ -112,11 +118,14 @@ export const Header = (props: HeaderProps) => {
       <div className="nabi-header-container nabi-position-relative">
         {(menuWhitelist as string[]).includes(props.router.route) || error ? (
           <React.Fragment>
-            <div className="nabi-header-menu hide-on-desktop">
+            <div className="nabi-header-menu">
               <Menu onClick={toggleDrawerMenu} color="primary" />
-              <DrawerMenu
+              <CollapsibleSidebar
+                isRequesting={props.isRequesting}
                 isOpen={isDrawerMenuOpen}
-                closeMenu={toggleDrawerMenu}
+                handleUserLogout={handleUserLogout}
+                toggleMenu={toggleDrawerMenu}
+                role={props.user.role}
               />
             </div>
             <div className="nabi-header-menu hide-on-mobile">
@@ -157,11 +166,14 @@ export const Header = (props: HeaderProps) => {
         ) : (
           ""
         )}
-        <div className="nabi-deskop-menu-icon hide-on-mobile">
+        <div className="nabi-deskop-menu-icon">
           <Menu onClick={toggleDrawerMenu} color="primary" />
-          <DrawerMenu
+          <CollapsibleSidebar
+            isRequesting={props.isRequesting}
             isOpen={isDrawerMenuOpen}
-            closeMenu={toggleDrawerMenu}
+            handleUserLogout={handleUserLogout}
+            toggleMenu={toggleDrawerMenu}
+            role={props.user.role}
           />
         </div>
         <div
