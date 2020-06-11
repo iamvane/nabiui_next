@@ -21,11 +21,12 @@ const logo = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.pn
 const StudentMenuItems = () => {
   const items = [
     NavigationComponent.NavigationLabels.Calendar,
-    NavigationComponent.NavigationLabels.Jobs,
+    NavigationComponent.NavigationLabels.ViewApplications,
+    NavigationComponent.NavigationLabels.RequestInstructor,
     NavigationComponent.NavigationLabels.ReferAFriend
   ];
 
-  return items.map((item, index) => {
+  const studentItems = items.map((item, index) => {
     return (
       <MenuItem
         classes={{
@@ -43,17 +44,22 @@ const StudentMenuItems = () => {
         </Typography>
       </MenuItem>
     )
-  })
+  });
+  return (
+    <>
+      {studentItems}
+    </>
+  )
 }
 
-const InstructorMenuItems = () => {
+const InstructorMenuItems = ({ currentRoute }) => {
   const items = [
     NavigationComponent.NavigationLabels.Calendar,
-    NavigationComponent.NavigationLabels.Studio,
+    currentRoute === Routes.Dashboard ? NavigationComponent.NavigationLabels.Studio : NavigationComponent.NavigationLabels.Jobs,
     NavigationComponent.NavigationLabels.ReferAFriend
   ];
 
-  return items.map((item, index) => {
+  const instructorItems = items.map((item, index) => {
     return (
       <MenuItem
         classes={{
@@ -72,6 +78,11 @@ const InstructorMenuItems = () => {
       </MenuItem>
     )
   })
+  return (
+    <>
+      {instructorItems}
+    </>
+  )
 }
 
 const GoToStudioButton = () => {
@@ -88,7 +99,7 @@ const GoToStudioButton = () => {
   )
 }
 
-const FindStudentButton = () => {
+const FindJobsButton = () => {
   return (
     <div className="nabi-mobile-button-wrapper">
       <Button
@@ -96,7 +107,7 @@ const FindStudentButton = () => {
         variant="contained"
         className="nabi-responsive-button"
       >
-        {NavigationComponent.NavigationLabels.FindStudents}
+        {NavigationComponent.NavigationLabels.FindJobs}
       </Button>
     </div>
   )
@@ -108,6 +119,7 @@ interface Props {
   isOpen?: boolean;
   handleUserLogout?: () => void;
   isRequesting?: boolean;
+  currentRoute: string;
 }
 
 export const CollapsibleSidebar = (props: Props) => {
@@ -149,20 +161,21 @@ export const CollapsibleSidebar = (props: Props) => {
         </MenuItem>
         <Divider />
         {props.role && (
-          <React.Fragment>
-            {props.role === (Role.student || Role.parent) && (
-              <React.Fragment>
-                <GoToStudioButton />
-                {StudentMenuItems()}
-              </React.Fragment>
+          <>
+            {(props.role === Role.student || props.role === Role.parent) && (
+              <>
+                <StudentMenuItems />
+              </>
             )}
+
             {props.role === Role.instructor && (
-              <React.Fragment>
-                <FindStudentButton />
-                {InstructorMenuItems()}
-              </React.Fragment>
+              <>
+                { (Routes.Requests === props.currentRoute) && <GoToStudioButton />}
+                { (Routes.Dashboard === props.currentRoute) &&  <FindJobsButton />}
+                <InstructorMenuItems currentRoute={props.currentRoute} />
+              </>
             )}
-          </React.Fragment>
+          </>
         )
         }
         {/* <MenuItem>

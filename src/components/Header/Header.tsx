@@ -113,19 +113,22 @@ export const Header = (props: HeaderProps) => {
     Routes.HomePage
   ];
 
+  const menuDisplayPages = [
+    Routes.Dashboard,
+    Routes.ApplicationList,
+    Routes.BookLessons,
+    Routes.Requests
+  ] as string[]
   return (
     <header>
       <div className="nabi-header-container nabi-position-relative">
         {(menuWhitelist as string[]).includes(props.router.route) || error ? (
           <React.Fragment>
-            <div className="nabi-header-menu">
+            <div className="nabi-header-menu hide-on-desktop">
               <Menu onClick={toggleDrawerMenu} color="primary" />
-              <CollapsibleSidebar
-                isRequesting={props.isRequesting}
+              <DrawerMenu
                 isOpen={isDrawerMenuOpen}
-                handleUserLogout={handleUserLogout}
-                toggleMenu={toggleDrawerMenu}
-                role={props.user.role}
+                closeMenu={toggleDrawerMenu}
               />
             </div>
             <div className="nabi-header-menu hide-on-mobile">
@@ -166,16 +169,19 @@ export const Header = (props: HeaderProps) => {
         ) : (
           ""
         )}
-        <div className="nabi-deskop-menu-icon">
-          <Menu onClick={toggleDrawerMenu} color="primary" />
-          <CollapsibleSidebar
-            isRequesting={props.isRequesting}
-            isOpen={isDrawerMenuOpen}
-            handleUserLogout={handleUserLogout}
-            toggleMenu={toggleDrawerMenu}
-            role={props.user.role}
-          />
-        </div>
+        { (props.token && menuDisplayPages.includes(props.router.route)) && (
+          <div className="nabi-deskop-menu-icon">
+            <Menu onClick={toggleDrawerMenu} color="primary" />
+            <CollapsibleSidebar
+              isRequesting={props.isRequesting}
+              isOpen={isDrawerMenuOpen}
+              handleUserLogout={handleUserLogout}
+              toggleMenu={toggleDrawerMenu}
+              role={props.user.role}
+              currentRoute={props.router.route}
+            />
+          </div>
+        )}
         <div
           className={`nabi-logo-anchor ${
             token ? "nabi-margin-top-medium-sm" : ""
