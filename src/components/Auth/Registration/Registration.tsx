@@ -268,14 +268,16 @@ export const Registration = (props: Props) => {
     // Validate birthday
     displayAgeDisclaimer();
 
-     // Validate location
-    if (!location || !latLng.lat || !latLng.lng) {
-      formErrors[FieldKey.Location] = RegistrationFormComponent.ErrorMessages.Location;
-    }
+    if (props.role !== Role.instructor) {
+      // Validate location
+      if (!location || !latLng.lat || !latLng.lng) {
+        formErrors[FieldKey.Location] = RegistrationFormComponent.ErrorMessages.Location;
+      }
 
-     // Validate phoneNumber
-     if (!phoneNumber) {
-      formErrors[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
+      // Validate phoneNumber
+      if (!phoneNumber) {
+        formErrors[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
+      }
     }
 
     return setFormErrors(formErrors);
