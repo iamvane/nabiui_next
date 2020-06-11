@@ -55,5 +55,9 @@ export namespace PreLaunchStudentDetailsComponent {
   export const buttonText = 'Continue';
   export const addChildButton = 'Add Child';
   export const removeChildButton = 'Remove Child';
+}
 
+export namespace ValidatePhoneComponent {
+  export const pageTitle = 'Validate Phone';
+  export const nextButton = 'Next';
 }

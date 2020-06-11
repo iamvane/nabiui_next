@@ -118,7 +118,8 @@ export class PhoneValidation extends React.Component<Props, State> {
     if ((prevProps.requestTokenMessage !== this.props.requestTokenMessage) && this.props.requestTokenMessage) {
       this.setState({
         showSnackbar: true,
-        snackbarMessage: this.props.requestTokenMessage
+        snackbarMessage: this.props.requestTokenMessage,
+        isPhoneSet: true
       });
     }
 
