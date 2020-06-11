@@ -218,7 +218,7 @@ export const RequestView = (props: Props) => {
                   <Typography className="nabi-display-inline-block">
                     {props.request.skillLevel}
                   </Typography>
-                  {props.request.studentDetails.length > 0 &&
+                  {props.request.studentDetails && props.request.studentDetails.length > 0 &&
                     <>
                       <Typography color="primary">
                         {RequestViewComponent.Labels.StudentDetais}
