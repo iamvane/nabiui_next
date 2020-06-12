@@ -114,7 +114,7 @@ export const GradeLesson = (props: Props) => {
       date: moment(date).format("YYYY-MM-DD"),
       grade,
       comment,
-      bookingId: getCookie('lessonBookingId')
+      lessonId: getCookie('lessonId')
     }
     await props.gradeLesson(gradeData);
   }
@@ -138,17 +138,6 @@ export const GradeLesson = (props: Props) => {
           <SectionTitle text={constants.instrumentSection} />
           <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
           <form noValidate={true} autoComplete="off" onSubmit={gradeLesson}>
-            <SectionTitle text={constants.dateOfLessonSection} />
-            <FormControl fullWidth={false} required={true} className="nabi-margin-bottom-small">
-              <DatePicker
-                selected={date && moment(date)}
-                onChange={handleDateChange}
-                peekNextMonth={true}
-                showMonthDropdown={true}
-                showYearDropdown={true}
-                dropdownMode="select"
-              />
-            </FormControl>
             <SectionTitle text={constants.gradeSection} />
             <Rating
               name={constants.FieldNames.Grade}
