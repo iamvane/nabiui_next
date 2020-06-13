@@ -8,7 +8,6 @@ import Head from 'next/head';
 
 import { Action, Dispatch } from "redux";
 
-import useScript from '../../../hooks/useScript';
 import { checkErrors } from "../../../utils/checkErrors";
 import { StoreState } from "../../../redux/reducers/store";
 import { createUser } from "../../../redux/actions/UserActions";
