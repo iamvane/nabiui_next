@@ -14,6 +14,7 @@ export interface LessonType {
   studentName?: string;
   students?: StudentType[];
   age?: number;
+  lastLessonId: number;
 }
 
 export interface Booking {

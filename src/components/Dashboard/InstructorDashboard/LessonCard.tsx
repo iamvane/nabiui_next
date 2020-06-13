@@ -27,7 +27,7 @@ const LessonCard: React.StatelessComponent<Props> = props => {
     } else {
       setCookie("lessonStudentName", props.lesson.studentName);
     }
-    setCookie("lessonBookingId", props.lesson.bookingId);
+    setCookie("lessonId", props.lesson.lastLessonId);
     setCookie("lessonInstrument", props.lesson.instrument);
 
     Router.push(Routes.GradeLesson);
