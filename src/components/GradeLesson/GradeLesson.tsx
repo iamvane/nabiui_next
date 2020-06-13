@@ -4,16 +4,13 @@ import {
   Action,
   Dispatch
 } from 'redux';
-import moment from 'moment';
 import { RouteComponentProps } from 'react-router';
 import Router from "next/router";
 import Head from 'next/head';
-import DatePicker from 'react-datepicker';
 
 import {
   Button,
   CircularProgress,
-  FormControl,
   Grid,
   TextField,
   Typography
@@ -56,7 +53,6 @@ interface Props extends
   DispatchProps {}
 
 export const GradeLesson = (props: Props) => {
-  const [date, setDate] = React.useState(moment(Date.now()));
   const [grade, setGrade] = React.useState(0);
   const [comment, setComment] = React.useState("");
   const [snackbarMessage, setSnackbarMessage] = React.useState('');
@@ -101,17 +97,12 @@ export const GradeLesson = (props: Props) => {
     }
   }
 
-  const handleDateChange = (date: moment.Moment): void => {
-    setDate(date);
-  };
-
   const gradeLesson  = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
 
     const gradeData: GradeData = {
-      date: moment(date).format("YYYY-MM-DD"),
       grade,
       comment,
       lessonId: getCookie('lessonId')
@@ -161,7 +152,7 @@ export const GradeLesson = (props: Props) => {
             <Button
               variant="contained"
               color="primary"
-              disabled={!grade || !comment || !date}
+              disabled={!grade || !comment}
               type="submit"
             >
               {constants.button}
