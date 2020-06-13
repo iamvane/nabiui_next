@@ -98,6 +98,7 @@ export class LocationField extends React.Component<Props, State> {
           value={this.state.location}
           onChange={this.handleLocationChange}
           onSelect={this.handleLocationSelect}
+          googleCallbackName="loadGoogleMaps"
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className="nabi-full-width">
