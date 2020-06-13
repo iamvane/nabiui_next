@@ -91,7 +91,7 @@ export const ListTemplate: React.StatelessComponent<Props> = (props) => {
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md">
       <Head>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+        <script async={true} defer={true} src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places&callback=loadGoogleMaps"></script>
       </Head>
       <PageTitle pageTitle={props.pageTitle} />
       <Grid container={true} spacing={0}>

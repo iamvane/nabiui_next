@@ -32,7 +32,6 @@ import {
   Role,
   RegistrationFormComponent
 } from './constants';
-import { Gender } from '../../AccountInfo/models';
 import { Routes } from '../../common/constants/Routes';
 
 interface Props {
@@ -48,7 +47,6 @@ interface Props {
   agreeWithTerms: boolean;
   firstName: string;
   lastName: string;
-  gender: string;
   reference: string;
   otherText?: string;
   getLatLng: (lat: string, lng: string) => void;

@@ -8,6 +8,7 @@ import Head from 'next/head';
 
 import { Action, Dispatch } from "redux";
 
+import useScript from '../../../hooks/useScript';
 import { checkErrors } from "../../../utils/checkErrors";
 import { StoreState } from "../../../redux/reducers/store";
 import { createUser } from "../../../redux/actions/UserActions";
@@ -75,7 +76,6 @@ export const Registration = (props: Props) => {
   const [isUnderage, setIsUnderAge] = React.useState(false);
   const [location, setLocation] = React.useState('');
   const [phoneNumber, setPhoneNumber] = React.useState('');
-  const [gender, setGender] = React.useState('');
   const [latLng, setLatLng] = React.useState({} as {lat: string, lng: string});
   const [reference, setReference] = React.useState("");
   const [otherText, setOtherText] = React.useState("");
@@ -336,7 +336,7 @@ export const Registration = (props: Props) => {
       <Head>
         <title>{docTitle}</title>
         <meta name="description" content={docDescription}></meta>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+        <script async={true} defer={true} src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places&callback=loadGoogleMaps"></script>
       </Head>
       <PageTitle pageTitle={RegistrationComponent.pageTitle} />
 
@@ -360,7 +360,6 @@ export const Registration = (props: Props) => {
           getLocationError={getLocationError}
           handleLocationChange={handleLocationChange}
           location={location || ''}
-          gender={gender}
           handleNumberChange={handleNumberChange}
           phoneNumber={phoneNumber}
         />
