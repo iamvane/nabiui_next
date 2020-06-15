@@ -23,6 +23,7 @@ import {
   signUp,
   ClaimYour
 } from "./constants";
+import { CollapsibleSidebar } from "../CollapsibleSidbar/CollapsibleSidbar";
 import { DrawerMenu } from "./DrawerMenu";
 import { InstructorMenu } from "./InstructorMenu";
 import { StudentParentMenu } from "./StudentParentMenu";
@@ -70,6 +71,12 @@ export const Header = (props: HeaderProps) => {
     setIsDraweMenuOpen(prevOpen => !prevOpen);
   };
 
+  const handleUserLogout = async () => {
+    await props.logOutUser();
+    Router.push(Routes.HomePage);
+    toggleDrawerMenu();
+  };
+
   const { error } = useSelector(
     (state: StoreState) => state.user.actions.fetchReferralInfo
   );
@@ -107,6 +114,12 @@ export const Header = (props: HeaderProps) => {
     Routes.HomePage
   ];
 
+  const menuDisplayPages = [
+    Routes.Dashboard,
+    Routes.ApplicationList,
+    Routes.BookLessons,
+    Routes.Requests
+  ] as string[]
   return (
     <header>
       <div className="nabi-header-container nabi-position-relative">
@@ -156,6 +169,19 @@ export const Header = (props: HeaderProps) => {
           </React.Fragment>
         ) : (
           ""
+        )}
+        { (props.token && menuDisplayPages.includes(props.router.route)) && (
+          <div className="nabi-deskop-menu-icon">
+            <Menu onClick={toggleDrawerMenu} color="primary" />
+            <CollapsibleSidebar
+              isRequesting={props.isRequesting}
+              isOpen={isDrawerMenuOpen}
+              handleUserLogout={handleUserLogout}
+              toggleMenu={toggleDrawerMenu}
+              role={props.user.role}
+              currentRoute={props.router.route}
+            />
+          </div>
         )}
         <div
           className={`nabi-logo-anchor ${

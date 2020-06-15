@@ -21,6 +21,7 @@ interface Props {
 }
 
 export const ParentStudentDashboard = (props: Props) => {
+  console.log('student dashboard');
   return (
     <React.Fragment>
       {props.dashboard &&

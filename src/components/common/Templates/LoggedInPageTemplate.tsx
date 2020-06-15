@@ -9,6 +9,8 @@ interface Props {
   pageTitle?: string;
   instructorId?: number;
   role?: string;
+  isRequesting?: boolean;
+  handleUserLogout?: () => void;
 }
 
 export const LoggedInPageTemplate: React.StatelessComponent<Props> = (props) => {
@@ -16,7 +18,12 @@ export const LoggedInPageTemplate: React.StatelessComponent<Props> = (props) => 
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md">
       {props.pageTitle && <PageTitle pageTitle={props.pageTitle} />}
       <Grid container={true} spacing={1}>
-        <NavigationContainer role={props.role} instructorId={props.instructorId} />
+        <NavigationContainer
+          role={props.role}
+          instructorId={props.instructorId}
+          isRequesting={props.isRequesting}
+          handleUserLogout={props.handleUserLogout}
+        />
         {/* <NavigationContainer /> */}
         <Grid item={true} xs={12} md={4}>
           <div className="nabi-section-widest nabi-background-white">

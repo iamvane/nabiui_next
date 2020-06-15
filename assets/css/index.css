@@ -116,6 +116,73 @@ p.nabi-color-orange {
 	cursor: pointer !important;
 }
 
+/*MOBILE WIDTH*/
+
+@media only screen and (max-width: 768px) {
+	.nabi-mobile-width {
+		width: 80%;
+	}
+}
+
+/*MOBILE*/
+.nabi-mobile-drawer-header-container {
+	width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nabi-mobile-drawer-image-link {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nabi-mobile-drawer-image{
+	width: 50px;
+}
+
+.nabi-mobile-item {
+	padding: 10px 25px 10px 25px !important;
+}
+
+.nabi-mobile-typography {
+	color: #717a8a !important;
+	font-weight: 500;
+}
+
+.nabi-mobile-logout-button-wrapper {
+	display: flex;
+    justify-content: center;
+}
+
+.nabi-mobile-button-wrapper {
+	display: flex;
+    justify-content: center;
+	padding: 10px;
+    height: 40px;
+}
+
+.nabi-mobile-icon-large {
+	width: 40px;
+}
+
+/* DESKTOP MENU*/
+.nabi-deskop-menu-icon {
+	position: absolute;
+	top: 35px;
+	left: 20px;
+}
+
+.nabi-mobile-icon-large {
+	width: 40px;
+}
+
+/* DESKTOP MENU*/
+.nabi-deskop-menu-icon {
+	position: absolute;
+    top: 35px;
+}
+
 /*DISPLAY*/
 .nabi-display-block {
   display: block !important;
@@ -588,8 +655,8 @@ li.nabi-list-style-position-inside {
 
 .nabi-header-button {
 	position: absolute !important;
-	top: 9% !important;
-	right: 20px !important;
+    top: 30px;
+    right: 20px !important;
 }
 
 .nabi-responsive-image {
