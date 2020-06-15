@@ -32,7 +32,6 @@ export interface RegistrationErrors {
   [RegistrationFormComponent.FieldKey.Password]?: string;
   [RegistrationFormComponent.FieldKey.Reference]?: string;
   [RegistrationFormComponent.FieldKey.OtherText]?: string;
-  [RegistrationFormComponent.FieldKey.Location]?: string;
   [RegistrationFormComponent.FieldKey.PhoneNumber]?: string;
 }
 
@@ -73,9 +72,7 @@ export const Registration = (props: Props) => {
   const [birthday, setBirthday] = React.useState("");
   const [openModal, toggleModal] = React.useState(false);
   const [isUnderage, setIsUnderAge] = React.useState(false);
-  const [location, setLocation] = React.useState('');
   const [phoneNumber, setPhoneNumber] = React.useState('');
-  const [latLng, setLatLng] = React.useState({} as {lat: string, lng: string});
   const [reference, setReference] = React.useState("");
   const [otherText, setOtherText] = React.useState("");
   const [agreeWithTerms, setAgreeWithTerms] = React.useState(false);
@@ -143,9 +140,6 @@ export const Registration = (props: Props) => {
       userValues.referringCode = props.invitationToken;
     }
     if (props.role === Role.parent || props.role === Role.student) {
-      userValues.location = location;
-      userValues.lat = latLng.lat;
-      userValues.lng = latLng.lng;
       userValues.phoneNumber = phoneNumber;
     }
     await props.createUser(userValues);
@@ -209,7 +203,6 @@ export const Registration = (props: Props) => {
       lastName: "",
       reference: "",
       otherText: "",
-      location: "",
       phoneNumber: ""
     };
 
@@ -268,11 +261,6 @@ export const Registration = (props: Props) => {
     displayAgeDisclaimer();
 
     if (props.role !== Role.instructor) {
-      // Validate location
-      if (!location || !latLng.lat || !latLng.lng) {
-        formErrors[FieldKey.Location] = RegistrationFormComponent.ErrorMessages.Location;
-      }
-
       // Validate phoneNumber
       if (!phoneNumber) {
         formErrors[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
@@ -300,29 +288,6 @@ export const Registration = (props: Props) => {
     );
   }
 
-  const handleLocationChange = (location: string) => {
-    setLocation(location);
-    // clear location errors
-    setFormErrors({
-      ...formErrors,
-      location: ''
-    })
-  }
-
-  const getLatLng = (lat: string, lng: string) => {
-    setLatLng({
-      lat,
-      lng
-    })
-  };
-
-  const getLocationError = (error: string) => {
-    setFormErrors({
-      ...formErrors,
-      location: error
-    })
-  }
-
   const closeModal = () => toggleModal(false);
 
   const docTitle = props.role === Role.instructor ? pageTitlesAndDescriptions.registrationInstructor.title :
@@ -335,7 +300,6 @@ export const Registration = (props: Props) => {
       <Head>
         <title>{docTitle}</title>
         <meta name="description" content={docDescription}></meta>
-        <script async={true} defer={true} src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places&callback=loadGoogleMaps"></script>
       </Head>
       <PageTitle pageTitle={RegistrationComponent.pageTitle} />
 
@@ -355,10 +319,6 @@ export const Registration = (props: Props) => {
           agreeWithTerms={agreeWithTerms}
           reference={reference}
           otherText={otherText}
-          getLatLng={getLatLng}
-          getLocationError={getLocationError}
-          handleLocationChange={handleLocationChange}
-          location={location || ''}
           handleNumberChange={handleNumberChange}
           phoneNumber={phoneNumber}
         />

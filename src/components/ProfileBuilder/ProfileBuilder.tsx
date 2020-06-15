@@ -63,7 +63,7 @@ export const ProfileBuilder = (props: Props) => {
       <Head>
         <title>{pageTitlesAndDescriptions.buildProfile.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.buildProfile.description}></meta>
-        <script async={true} defer={true} src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places&callback=loadGoogleMaps"></script>
+        <script async={true} defer={true} src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
       </Head>
       <CommonStepper
         steps={ProfileBuilderStepper.steps}

@@ -27,7 +27,6 @@ import '../../../../assets/scss/PhoneValidationForm.scss';
 
 import { selectOptions } from '../../../utils/formUtils';
 import SectionTitle from '../../common/SectionTitle';
-import { LocationField } from "../../Instructors/LocationField";
 import {
   Role,
   RegistrationFormComponent
@@ -49,10 +48,6 @@ interface Props {
   lastName: string;
   reference: string;
   otherText?: string;
-  getLatLng: (lat: string, lng: string) => void;
-  handleLocationChange: (location: string) => void;
-  location: string;
-  getLocationError: (error: string) => void;
   phoneNumber: string;
   handleNumberChange: (value: string) => void;
 }
@@ -172,17 +167,6 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
             />
           </FormControl>
           {props.formErrors.phoneNumber && <FormHelperText error={true}>{props.formErrors.phoneNumber}</FormHelperText>}
-        </Grid>
-
-        <Grid item={true} xs={12} md={8}>
-          <FormControl fullWidth={false}>
-            <LocationField
-              getLatLng={props.getLatLng}
-              address={props.location}
-              getLocation={props.handleLocationChange}
-              getLocationError={props.getLocationError}
-            />
-          </FormControl>
         </Grid>
       </>
       }
