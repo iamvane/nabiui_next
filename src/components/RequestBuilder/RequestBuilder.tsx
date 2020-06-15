@@ -62,7 +62,7 @@ export class RequestBuilder extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <Head>
-          <script async={true} defer={true} src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
         </Head>
         <CommonStepper
           steps={RequestBuilderStepper.steps}
