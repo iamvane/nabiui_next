@@ -2,7 +2,7 @@ export namespace NavigationComponent {
   export enum NavigationLabels {
     Help = 'Help',
     Referrals = 'Referrals',
-    RequestInstructor = 'Request Instructor',
+    RequestInstructor = 'My Requests',
     ViewApplications = 'View Applications',
     Calendar = 'Calendar',
     ReferAFriend = 'Refer a friend',

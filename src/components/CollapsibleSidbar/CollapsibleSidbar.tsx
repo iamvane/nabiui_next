@@ -20,10 +20,26 @@ const logo = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.pn
 
 const StudentMenuItems = () => {
   const items = [
-    NavigationComponent.NavigationLabels.Calendar,
-    NavigationComponent.NavigationLabels.ViewApplications,
-    NavigationComponent.NavigationLabels.RequestInstructor,
-    NavigationComponent.NavigationLabels.ReferAFriend
+    // {
+    //   label: NavigationComponent.NavigationLabels.Calendar,
+    //   url: ''
+    // },
+    // {
+    //   label: NavigationComponent.NavigationLabels.ViewApplications,
+    //   url: ''
+    // },
+    {
+      label: NavigationComponent.NavigationLabels.Studio,
+      url: Routes.Dashboard
+    },
+    {
+      label: NavigationComponent.NavigationLabels.RequestInstructor,
+      url: Routes.BuildRequest + Routes.Request
+    },
+    // {
+    //   label: NavigationComponent.NavigationLabels.ReferAFriend,
+    //   url: ''
+    // }
   ];
 
   const studentItems = items.map((item, index) => {
@@ -34,12 +50,12 @@ const StudentMenuItems = () => {
         }}
         key={`${item}-${index}`}
       >
-        {item === NavigationComponent.NavigationLabels.ReferAFriend && (
+        {item.label === NavigationComponent.NavigationLabels.ReferAFriend && (
           <img src={referAfriendImg} className="nabi-mobile-icon-large" alt="location-icon" />
         )}
         <Typography>
-          <Link href={Routes.BuildRequest + '/request'}>
-            <a className="nabi-mobile-typography">{item}</a>
+          <Link href={item.url}>
+            <a className="nabi-mobile-typography">{item.label}</a>
           </Link>
         </Typography>
       </MenuItem>
@@ -54,9 +70,12 @@ const StudentMenuItems = () => {
 
 const InstructorMenuItems = ({ currentRoute }) => {
   const items = [
-    NavigationComponent.NavigationLabels.Calendar,
-    currentRoute === Routes.Dashboard ? NavigationComponent.NavigationLabels.Studio : NavigationComponent.NavigationLabels.Jobs,
-    NavigationComponent.NavigationLabels.ReferAFriend
+    // NavigationComponent.NavigationLabels.Calendar,
+    {
+      label: currentRoute === Routes.Dashboard ? NavigationComponent.NavigationLabels.Jobs : NavigationComponent.NavigationLabels.Studio,
+      url:  currentRoute === Routes.Dashboard ? Routes.Requests : Routes.Dashboard
+    }
+    // NavigationComponent.NavigationLabels.ReferAFriend
   ];
 
   const instructorItems = items.map((item, index) => {
@@ -67,12 +86,12 @@ const InstructorMenuItems = ({ currentRoute }) => {
         }}
         key={`${item}-${index}`}
       >
-        {item === NavigationComponent.NavigationLabels.ReferAFriend && (
+        {item.label === NavigationComponent.NavigationLabels.ReferAFriend && (
           <img src={referAfriendImg} className="nabi-mobile-icon-large" alt="location-icon" />
         )}
         <Typography>
-          <Link href={Routes.BuildRequest + '/request'}>
-            <a className="nabi-mobile-typography">{item}</a>
+          <Link href={item.url}>
+            <a className="nabi-mobile-typography">{item.label}</a>
           </Link>
         </Typography>
       </MenuItem>
@@ -88,13 +107,17 @@ const InstructorMenuItems = ({ currentRoute }) => {
 const GoToStudioButton = () => {
   return (
     <div className="nabi-mobile-button-wrapper">
-      <Button
-        color="primary"
-        variant="contained"
-        className="nabi-responsive-button"
-      >
-        {NavigationComponent.NavigationLabels.GoToStudio}
-      </Button>
+      <Link href={Routes.Dashboard}>
+        <a>
+          <Button
+            color="primary"
+            variant="contained"
+            className="nabi-responsive-button"
+          >
+            {NavigationComponent.NavigationLabels.GoToStudio}
+          </Button>
+        </a>
+      </Link>
     </div>
   )
 }
@@ -102,13 +125,17 @@ const GoToStudioButton = () => {
 const FindJobsButton = () => {
   return (
     <div className="nabi-mobile-button-wrapper">
-      <Button
-        color="primary"
-        variant="contained"
-        className="nabi-responsive-button"
-      >
-        {NavigationComponent.NavigationLabels.FindJobs}
-      </Button>
+      <Link href={Routes.Requests}>
+        <a>
+          <Button
+            color="primary"
+            variant="contained"
+            className="nabi-responsive-button"
+          >
+            {NavigationComponent.NavigationLabels.FindJobs}
+          </Button>
+        </a>
+      </Link>
     </div>
   )
 }
@@ -198,7 +225,7 @@ export const CollapsibleSidebar = (props: Props) => {
             root: "nabi-mobile-item"
           }}
         >
-          <Typography
+          {/* <Typography
           >
             <Link href={Routes.FAQInstructors}>
               <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.Setting}</a>
@@ -221,10 +248,9 @@ export const CollapsibleSidebar = (props: Props) => {
           classes={{
             root: "nabi-mobile-item"
           }}
-        >
-          <Typography
-          >
-            <Link href={Routes.FAQInstructors}>
+        > */}
+          <Typography>
+            <Link href={Routes.ContactUs}>
               <a className="nabi-mobile-typography">{NavigationComponent.NavigationLabels.Help}</a>
             </Link>
           </Typography>

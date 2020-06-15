@@ -74,6 +74,7 @@ export const Header = (props: HeaderProps) => {
   const handleUserLogout = async () => {
     await props.logOutUser();
     Router.push(Routes.HomePage);
+    toggleDrawerMenu();
   };
 
   const { error } = useSelector(
