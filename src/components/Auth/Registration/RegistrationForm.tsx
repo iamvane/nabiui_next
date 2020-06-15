@@ -169,37 +169,37 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
           {props.formErrors.phoneNumber && <FormHelperText error={true}>{props.formErrors.phoneNumber}</FormHelperText>}
         </Grid>
       </>
-      }
-      <FormControl
-        fullWidth={true}
-        className="nabi-margin-top-small"
-        error={!!formErrors.reference}
+    }
+    <FormControl
+      fullWidth={true}
+      className="nabi-margin-top-small"
+      error={!!formErrors.reference}
+    >
+      <Select
+        native={true}
+        value={props.reference}
+        onChange={props.handleChange}
+        input={<Input name={RegistrationFormComponent.FieldNames.Reference} />}
       >
-        <Select
-          native={true}
-          value={props.reference}
-          onChange={props.handleChange}
-          input={<Input name={RegistrationFormComponent.FieldNames.Reference} />}
-        >
-          <option value="" disabled={true}>
-            {RegistrationFormComponent.Placeholders.Reference}
-          </option>
-          {selectOptions(RegistrationFormComponent.referenceOptions)}
-        </Select>
-        <FormHelperText>{formErrors.reference}</FormHelperText>
-      </FormControl>
-      {props.reference === 'other' &&
-        <TextField
-            fullWidth={true}
-            id={RegistrationFormComponent.Ids.OtherText}
-            name={RegistrationFormComponent.FieldNames.OtherText}
-            onChange={handleChange}
-            placeholder={RegistrationFormComponent.Placeholders.Reference}
-            required={true}
-            value={props.otherText}
-            error={!!formErrors.otherText}
-            helperText={formErrors.otherText}
-          />
+        <option value="" disabled={true}>
+          {RegistrationFormComponent.Placeholders.Reference}
+        </option>
+        {selectOptions(RegistrationFormComponent.referenceOptions)}
+      </Select>
+      <FormHelperText>{formErrors.reference}</FormHelperText>
+    </FormControl>
+    {props.reference === 'other' &&
+      <TextField
+          fullWidth={true}
+          id={RegistrationFormComponent.Ids.OtherText}
+          name={RegistrationFormComponent.FieldNames.OtherText}
+          onChange={handleChange}
+          placeholder={RegistrationFormComponent.Placeholders.Reference}
+          required={true}
+          value={props.otherText}
+          error={!!formErrors.otherText}
+          helperText={formErrors.otherText}
+        />
       }
 
       <div className="nabi-margin-top-small nabi-margin-left-xsmall">

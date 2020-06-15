@@ -222,7 +222,7 @@ export const requestToken = (
       ApiEndpoints.phoneVerificationToken,
       data,
       {
-        headers: { Authorization: `Bearer ${authToken}` }
+        headers: { Authorization: `Bearer ${authToken || getCookie("token")}` }
       }
     );
 

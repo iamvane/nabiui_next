@@ -79,7 +79,7 @@ export namespace PhoneValidationFormComponent {
 
   export enum Placeholders {
     PhoneNumber = 'Phone Number',
-    PhoneToken = 'Verification Token'
+    PhoneToken = 'Enter Code'
   }
 
   export enum Buttons {

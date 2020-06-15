@@ -81,6 +81,11 @@ export class PhoneValidation extends React.Component<Props, State> {
         isPhoneVerified: this.props.isPhoneVerified
       })
     }
+    if (this.props.requestTokenMessage) {
+      this.setState({
+        isPhoneSet: true
+      })
+    }
   }
 
   public handleNumberChange = (value: string): void => {
@@ -138,10 +143,10 @@ export class PhoneValidation extends React.Component<Props, State> {
   }
 
   public resendCode = () => {
-    this.setState(prevState => ({
-      isPhoneSet: !prevState.isPhoneSet,
+    this.setState({
+      isPhoneSet: false,
       token: ''
-    }));
+    });
     this.props.resetRequestTokenMessage();
   }
 

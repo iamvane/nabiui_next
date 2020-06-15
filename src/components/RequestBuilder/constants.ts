@@ -61,3 +61,21 @@ export namespace ValidatePhoneComponent {
   export const pageTitle = 'Validate Phone';
   export const nextButton = 'Next';
 }
+
+export namespace LessonDetailsComponent {
+  export const pageTitle = 'Lesson Details';
+  export const nextButton = 'Next';
+
+  export enum FieldNames {
+    NumberOfChildren = 'numberOfChildren',
+    Email = 'email',
+    Password = 'password',
+    FirstName = 'firstName',
+    LastName = 'lastName',
+    Reference = 'reference',
+    AgreeWithTerms = 'agreeWithTerms',
+    OtherText = 'otherText',
+    Gender = 'gender',
+    PhoneNumber = 'phoneNumber'
+  }
+}

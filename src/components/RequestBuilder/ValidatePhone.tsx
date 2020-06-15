@@ -54,8 +54,14 @@ export const ValidatePhone = (props: Props) => {
       await props.fetchUser();
     };
     fetchData();
+  },[]);
+
+  React.useEffect(() => {
     if (props.user.phoneNumber && !props.user.isPhoneVerified) {
-      props.requestToken(props.user.phoneNumber, VerificationChannel.Text);
+      const requestToken = async () => {
+        await props.requestToken(props.user.phoneNumber, VerificationChannel.Text);
+      };
+      requestToken();
     }
   },[props.user.phoneNumber, props.user.isPhoneVerified]);
 
@@ -67,12 +73,12 @@ export const ValidatePhone = (props: Props) => {
       </div>
       {props.user.isPhoneVerified &&
         <div className="nabi-text-right">
-          <Link href={Routes.BuildProfile + Routes.SpecifyGender}>
+          <Link href={Routes.BuildRequest + Routes.LessonDetails}>
             <Button
-                color="primary"
-                className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
-                variant="contained"
-              >
+              color="primary"
+              className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
+              variant="contained"
+            >
               {ValidatePhoneComponent.nextButton}
             </Button>
           </Link>

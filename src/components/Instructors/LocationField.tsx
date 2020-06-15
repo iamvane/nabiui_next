@@ -118,7 +118,7 @@ export class LocationField extends React.Component<Props, State> {
                   }
                 })}
               />
-              <div className="filter-autocomplete-suggestion-list nabi-position-absolute">
+              <div className="nabi-z-index-1 nabi-position-absolute">
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
                   const className = suggestion.active
