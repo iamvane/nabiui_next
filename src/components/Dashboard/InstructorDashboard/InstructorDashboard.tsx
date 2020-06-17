@@ -121,26 +121,6 @@ export const InstructorDashboard = (props: Props) => {
 
         </div>
       }
-
-      {props.dashboard && props.dashboard.requests.length > 0 &&
-        <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-medium">
-          <SectionTitle
-            text={constants.applyToJobs}
-            cta={
-              <Link href={Routes.Requests}>
-                <a>
-                  <Typography color="primary">{constants.viewAll}</Typography>
-                </a>
-              </Link>}
-          />
-          {props.dashboard.requests.map((request, i) => (
-            <React.Fragment key={i}>
-              <RequestCard request={request} isLoggedIn={true} inDashboard={true} />
-              {i !== props.dashboard.requests.length - 1 && <Divider className="nabi-margin-bottom-xsmall" />}
-            </React.Fragment>
-          ))}
-        </div>
-      }
     </React.Fragment>
   );
 }
