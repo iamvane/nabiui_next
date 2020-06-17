@@ -63,7 +63,7 @@ export namespace ValidatePhoneComponent {
 }
 
 export namespace LessonDetailsComponent {
-  export const pageTitle = 'Lesson Details';
+  export const pageTitle = 'Who Is Learning?';
   export const nextButton = 'Next';
 
   export enum FieldNames {
@@ -77,5 +77,70 @@ export namespace LessonDetailsComponent {
     OtherText = 'otherText',
     Gender = 'gender',
     PhoneNumber = 'phoneNumber'
+  }
+}
+
+export namespace ChildFormComponent {
+  export const instrumentChips = [
+    {
+      label: 'Guitar',
+      value: 'guitar'
+    },
+    {
+      label: 'Piano',
+      value: 'piano'
+    },
+    {
+      label: 'Ukulele',
+      value: 'ukulele'
+    },
+    {
+      label: 'Violin',
+      value: 'violin'
+    },
+    {
+      label: 'Singing',
+      value: 'singing'
+    },
+    {
+      label: 'Other',
+      value: 'other'
+    }
+  ];
+
+  export const levelChips = [
+    {
+      label: 'Beginner',
+      value: 'beginner'
+    },
+    {
+      label: 'Intermediate',
+      value: 'intermediate'
+    },
+    {
+      label: 'Advanced',
+      value: 'advanced'
+    }
+  ];
+
+  export enum FieldNames {
+    Name = 'name',
+    Dob = 'dob',
+    instrument = 'instrument',
+    level = 'level'
+  }
+  export enum Ids {
+    Name = 'name',
+    Dob = 'dob',
+    instrument = 'instrument',
+    level = 'level'
+  }
+  export enum Placeholders {
+    Name = 'Name'
+  }
+  export enum Labels {
+    Dob = 'Date of birth',
+    instrument = 'Instrument',
+    level = 'Level'
   }
 }

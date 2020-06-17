@@ -16,6 +16,7 @@ import {
   FormControlLabel,
   FormHelperText,
   Grid,
+  Icon,
   Input,
   Select,
   TextField,
@@ -33,7 +34,7 @@ import PageTitle from '../common/PageTitle';
 import { VerificationChannel } from '../AccountInfo/models';
 import { Routes } from '../common/constants/Routes';
 import { LessonDetailsComponent } from './constants';
-
+import ChildForm from './ChildForm';
 interface DispatchProps {
   fetchUser: () => void;
   requestToken: (phoneNumber: string, channel: VerificationChannel) => void;
@@ -61,6 +62,7 @@ interface Props extends
 
 export const LessonDetails = (props: Props) => {
   const [numberOfChildren, setNumberOfChildren] = React.useState('');
+  const [showForm, setShowForm] = React.useState(true);
 
   React.useEffect(() => {
     //get user
@@ -115,10 +117,21 @@ export const LessonDetails = (props: Props) => {
   );
 
   return (
-    <div className="nabi-container">
+    <div className="nabi-container nabi-margin-bottom-medium">
       <PageTitle pageTitle={LessonDetailsComponent.pageTitle} />
       <div className="nabi-section nabi-background-white">
-      <FormControl
+        {!showForm ?
+          <Button
+            // variant="contained"
+            color="primary"
+            // className={classes.button}
+            onClick={()  => setShowForm(true)}
+            startIcon={<Icon color="primary">add_circle</Icon>}
+          >
+            Add Child
+          </Button> :
+        <ChildForm closeForm={() => setShowForm(false)}/>}
+      {/* <FormControl
         fullWidth={true}
         className="nabi-margin-top-small"
         // error={!!formErrors.reference}
@@ -145,10 +158,10 @@ export const LessonDetails = (props: Props) => {
             4
           </option>
         </Select>
-        {/* <FormHelperText>{formErrors.reference}</FormHelperText> */}
-      </FormControl>
+        {/* <FormHelperText>{formErrors.reference}</FormHelperText>
+      </FormControl> */}
       </div>
-      <div className="nabi-text-right">
+      {/* <div className="nabi-text-right">
         <Link href={Routes.BuildRequest + Routes.LessonDetails}>
           <Button
             color="primary"
@@ -158,7 +171,7 @@ export const LessonDetails = (props: Props) => {
             {LessonDetailsComponent.nextButton}
           </Button>
         </Link>
-      </div>
+      </div> */}
     </div>
   )
 }
