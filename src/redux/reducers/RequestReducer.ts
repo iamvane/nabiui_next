@@ -156,16 +156,24 @@ export default function requestsReducer(
       };
 
     case RequestActions.EDIT_REQUEST_SUCCESS:
-      const { data: editRequestMessage } = <APIActions.WithData<string>>action;
+      const { data: editRequest } = <APIActions.WithData<any>>action;
+      const updatedRequest = state.requests.map((request) => {
+        if (request.id === editRequest.id) {
+          return {
+            ...editRequest
+          }
+        }
+        return request;
+      });
       return {
         ...state,
+        requests: updatedRequest,
         actions: {
           ...state.actions,
           editRequest: {
             ...state.actions.editRequest,
             isRequesting: false,
             error: "",
-            message: editRequestMessage
           }
         }
       };
@@ -198,18 +206,21 @@ export default function requestsReducer(
       };
 
     case RequestActions.DELETE_REQUEST_SUCCESS:
-      const { data: deleteRequestMessage } = <APIActions.WithData<string>>(
+      const { data: deleteRequest } = <APIActions.WithData<any>>(
         action
       );
+      const deletedRequest = state.requests.filter((request) => {
+        return request.id !== deleteRequest.id;
+      });
       return {
         ...state,
+        requests: deletedRequest,
         actions: {
           ...state.actions,
           deleteRequest: {
             ...state.actions.deleteRequest,
             isRequesting: false,
             error: "",
-            message: deleteRequestMessage
           }
         }
       };

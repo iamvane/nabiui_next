@@ -17,6 +17,9 @@ export interface RequestType {
   placeForLessons: string;
   travelDistance?: string;
   students?: StudentType[];
+  date?: string;
+  time?: string;
+  timezone?: string;
   [x: string]: any;
 }
 
@@ -38,6 +41,9 @@ export interface Request {
   studentDetails: StudentType[];
   avatar: string;
   location: string;
+  timezone: string;
+  date: string;
+  time: string;
 }
 
 export interface RequestState extends BookLessonsData {

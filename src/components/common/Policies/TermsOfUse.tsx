@@ -10,7 +10,7 @@ import { Typography } from '@material-ui/core';
 export const TermsOfUse: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
-    <div className="nabi-container">
+    <div className="nabi-section nabi-container nabi-background-white nabi-margin-bottom-medium">
       <Head>
         <title>{pageTitlesAndDescriptions.termsOfUse.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.termsOfUse.description}></meta>

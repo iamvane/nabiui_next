@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  Action,
-  Dispatch
+  bindActionCreators,
 } from 'redux';
-import { connect } from 'react-redux';
 
 import {
   Button,
@@ -19,329 +19,374 @@ import {
   addEducation,
   editEducation,
   deleteEducation
- } from '../../redux/actions/InstructorActions';
+} from '../../redux/actions/InstructorActions';
 import { Routes } from '../common/constants/Routes';
 import { ProfileBuilderStepper } from '../ProfileBuilder/constants';
 import { StepperButtons } from '../CommonStepper/StepperButtons';
 import SectionTitle from '../common/SectionTitle';
+import SnackBar from '../common/SnackBar';
 import EducationForm from './EducationForm';
 import EducationAdded from './EducationAdded';
 import { EducationType } from './model';
 import { EducationComponent } from './constants';
 
-interface DispatchProps {
-  fetchEducation: () => void;
-  addEducation: (education: EducationType) => void;
-  editEducation: (education: Partial<EducationType>) => void;
-  deleteEducation: (id: number) => void;
-}
+const Education = () => {
+  const [educationId, setEducationId] = useState(undefined);
+  const [school, setSchool] = useState('');
+  const [graduationYear, setGraduationYear] = useState('');
+  const [schoolLocation, setSchoolLocation] = useState('');
+  const [degreeType, setDegreeType] = useState('');
+  const [fieldOfStudy, setFieldOfStudy] = useState('');
+  const [educationFormIsOpen, showEducationForm] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+  const [education, setEducation] = useState([]);
+  const [snackbarIsOpen, showSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessageType, setSnackbarMessageType] = useState('success');
 
-interface StateProps {
-  education: EducationType[];
+  const closeSnackbar = () => showSnackbar(false);
 
-  isFetchEducationRequesting: boolean;
-  isAddEducationRequesting: boolean;
-  isDeleteEducationRequesting: boolean;
-  isEditEducationRequesting: boolean;
-  fetchEducationError: string;
-  addEducationError: string;
-  editEducationError: string;
-  deleteEducationError: string;
-}
+  const dispatch = useDispatch();
+  const fetchEducationAction = bindActionCreators(fetchEducation, dispatch);
+  const addEducationAction = bindActionCreators(addEducation, dispatch);
+  const editEducationAction = bindActionCreators(editEducation, dispatch);
+  const deleteEducationAction = bindActionCreators(deleteEducation, dispatch);
 
-interface Props extends
-  DispatchProps,
-  StateProps {}
-
-interface State extends
-EducationType {
-  education?: EducationType[];
-  showEducationForm: boolean;
-  isEditing: boolean;
-  allFieldsFilled: boolean;
-  [x: string]: any;
-}
-
-/**
- * Education: Third step of the Profile Builder
- */
-export class Education extends React.Component<Props, State > {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      id: undefined,
-      school: '',
-      graduationYear: '',
-      schoolLocation: '',
-      degreeType: '',
-      fieldOfStudy: '',
-      showEducationForm: false,
-      isEditing: false,
-      allFieldsFilled: false
-    };
+  const resetEducationState = () => {
+    setSchool('');
+    setGraduationYear('');
+    setSchoolLocation('');
+    setDegreeType('');
+    setFieldOfStudy('');
+  }
+  const toggleEducationForm = () => {
+    showEducationForm(!educationFormIsOpen);
   }
 
-  public async componentDidMount(): Promise<void> {
-    await this.props.fetchEducation();
-    this.setEducation();
+  const handleCancel = () => {
+    resetEducationState();
+    toggleEducationForm();
+    setIsEditing(false);
   }
 
-  public handleChange = (event: React.SyntheticEvent<HTMLInputElement>): void => {
-
-    const target = event.currentTarget;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({ ...this.state, [name]: value }, () => {
-      this.setState({
-        ...this.state, allFieldsFilled: this.confirmAllFieldsAreFilled(this.state)
-      });
-    });
+  const deleteEducationAsync = (educationId: number): void => {
+    deleteEducationAction(educationId);
   }
 
-  public handleOnBlur = (event: React.SyntheticEvent<HTMLInputElement>): void => {
-    const target = event.currentTarget;
-    const value = target.value;
-    const name = target.name;
-    this.setState({ ...this.state, [name]: value }, () => {
-      this.setState({
-        ...this.state, allFieldsFilled: this.confirmAllFieldsAreFilled(this.state)
-      });
-    });
-  }
-
-  public confirmAllFieldsAreFilled = (educationState: State) => {
-    const educationFields = [
-      'school',
-      'graduationYear',
-      'fieldOfStudy',
-      'degreeType',
-      'schoolLocation'
-    ];
-    const educationFieldsFromState = Object.keys(educationState).map((field) => {
-      if (educationFields.includes(field)) {
-        return {
-          [field]: educationState[field]
-        };
+  let {
+    instructorEducation,
+    isAddEducationRequesting,
+    isDeleteEducationRequesting,
+    isEditEducationRequesting,
+    isFetchEducationRequesting,
+    addEducationError,
+    fetchEducationError,
+    editEducationError,
+    deleteEducationError,
+  } = useSelector((state: StoreState) => {
+    const {
+      instructor: {
+        education: instructorEducation
+      },
+      actions: {
+        fetchEducation: {
+          isRequesting: isFetchEducationRequesting,
+          error: fetchEducationError
+        },
+        addEducation: {
+          isRequesting: isAddEducationRequesting,
+          error: addEducationError
+        },
+        editEducation: {
+          isRequesting: isEditEducationRequesting,
+          error: editEducationError,
+        },
+        deleteEducation: {
+          isRequesting: isDeleteEducationRequesting,
+          error: deleteEducationError,
+        }
       }
-      return null;
-    }).filter((educationField) => educationField !== null) as { [x: string]: string }[];
+    } = state.instructor;
 
-    return educationFieldsFromState.every((field) => {
-      return field[Object.keys(field)[0]].length !== 0;
-    });
-  }
-
-  public handleSave = async (event: React.SyntheticEvent<HTMLInputElement>): Promise<void> => {
-    if (event) {
-      event.preventDefault();
-    }
-    const education: EducationType = {
-      school: this.state.school,
-      graduationYear: this.state.graduationYear,
-      degreeType: this.state.degreeType,
-      fieldOfStudy: this.state.fieldOfStudy,
-      schoolLocation: this.state.schoolLocation
+    return {
+      isFetchEducationRequesting,
+      isAddEducationRequesting,
+      isDeleteEducationRequesting,
+      isEditEducationRequesting,
+      fetchEducationError,
+      addEducationError,
+      editEducationError,
+      deleteEducationError,
+      instructorEducation: instructorEducation || [],
     };
+  });
 
-    // // handle save when editing an exisitng education
-    if (this.state.isEditing) {
-      education.id = this.state.id;
-      await this.props.editEducation(education);
+  useEffect(() => {
+    if (!instructorEducation.length) {
+      fetchEducationAction();
+    }
+    if (instructorEducation.length) {
+      setEducation(instructorEducation);
+      showEducationForm(false);
+      setIsEditing(false);
     } else {
-      await this.props.addEducation(education);
+      setEducation([]);
+      showEducationForm(false);
+      setIsEditing(false);
     }
-    this.resetState();
-    this.toggleEducationForm();
-    await this.props.fetchEducation();
-    this.setEducation();
-  }
+  },
+    [
+      JSON.stringify(instructorEducation)
+    ]);
 
-  public resetState(): void {
-    this.setState({
-      id: undefined,
-      school: '',
-      graduationYear: '',
-      degreeType: '',
-      fieldOfStudy: '',
-      schoolLocation: '',
-      isEditing: false
-    });
-  }
 
-  public setEducation(): void {
-    this.setState({
-      education: this.props.education
-    });
-  }
-
-  public deleteEducation = async (educationId: number): Promise<void> => {
-    await this.props.deleteEducation(educationId);
-    await this.props.fetchEducation();
-  }
-
-  public editEducation = (educationId: number): void => {
-    const educationToEdit = this.state.education && this.state.education.filter(education =>
-      education.id === educationId
-    );
-
-    if (educationToEdit) {
-      this.setState({
-        isEditing: true,
-        id: educationToEdit[0].id,
-        school: educationToEdit[0].school,
-        graduationYear: educationToEdit[0].graduationYear,
-        schoolLocation: educationToEdit[0].schoolLocation,
-        degreeType: educationToEdit[0].degreeType,
-        fieldOfStudy: educationToEdit[0].fieldOfStudy,
-        // tslint:disable-next-line
-      }, () => {
-        this.setState ({ showEducationForm: true });
-      });
+  useEffect(() => {
+    if (instructorEducation.length > education.length) {
+      setEducation(instructorEducation);
+      showEducationForm(false);
+      setIsEditing(false);
     }
-  }
+  },
+    [
+      JSON.stringify(instructorEducation)
+    ]);
 
-  public toggleEducationForm = () => this.setState(prevState => ({
-    showEducationForm: !prevState.showEducationForm
-  }))
+  useEffect(() => {
+    if (addEducationError) {
+      setSnackbarMessage(addEducationError);
+      setSnackbarMessageType('error');
+      showSnackbar(true);
+      setIsEditing(false);
+    }
+  },
+    [
+      addEducationError
+    ]);
 
-  public handleCancel = (): void => {
-    this.resetState();
-    this.toggleEducationForm();
-  }
 
-  public renderEducationForm = (): JSX.Element => (
-    <div>
-      <Typography className="nabi-margin-top-xsmall nabi-text-uppercase" variant="body2">
-        {EducationComponent.Text.AddEducation}
-      </Typography>
-      <EducationForm
-        handleChange={this.handleChange}
-        handleOnBlur={this.handleOnBlur}
-        handleSave={this.handleSave}
-        school={this.state.school}
-        graduationYear={this.state.graduationYear}
-        degreeType={this.state.degreeType}
-        fieldOfStudy={this.state.fieldOfStudy}
-        schoolLocation={this.state.schoolLocation}
-        handleCancel={this.handleCancel}
-        isEditing={this.state.isEditing}
-        allFieldsFilled={this.state.allFieldsFilled}
-      />
-    </div>
-  )
+  useEffect(() => {
+    if (editEducationError) {
+      setSnackbarMessage(editEducationError);
+      setSnackbarMessageType('error');
+      showSnackbar(true);
+      setIsEditing(false);
+    }
+  },
+    [
+      editEducationError
+    ]);
 
-  public render(): JSX.Element {
-    const requesting = this.props.isAddEducationRequesting || this.props.isEditEducationRequesting ||
-      this.props.isFetchEducationRequesting || this.props.isDeleteEducationRequesting;
+  useEffect(() => {
+    if (deleteEducationError) {
+      setSnackbarMessage(deleteEducationError);
+      setSnackbarMessageType('error');
+      showSnackbar(true);
+      setIsEditing(false);
+    }
+  },
+    [
+      deleteEducationError
+    ]);
 
-    const educationArray = this.props.education;
-    const educationAdded = educationArray.map((education, i) => (
-      <li className="nabi-list" key={i}>
-        <EducationAdded
-          id={education.id}
-          gridWidth={6}
-          school={education.school}
-          graduationYear={education.graduationYear}
-          schoolLocation={education.schoolLocation}
-          degreeType={education.degreeType}
-          fieldOfStudy={education.fieldOfStudy}
-          deleteEducation={(educationId: number) => this.deleteEducation(educationId)}
-          editEducation={(educationId: number) => this.editEducation(educationId)}
-        />
-      </li>
-    ));
+
+  const handleChange = useCallback(
+    (event: React.FormEvent<HTMLInputElement>): void => {
+      const target = event.currentTarget;
+      let value = target.value as any;
+      let name = target.name;
+
+      if (name === 'school') {
+        setSchool(value);
+      }
+      if (name === 'graduationYear') {
+        setGraduationYear(value);
+      }
+      if (name === 'schoolLocation') {
+        setSchoolLocation(value);
+      }
+      if (name === 'degreeType') {
+        setDegreeType(value);
+      }
+      if (name === 'fieldOfStudy') {
+        setFieldOfStudy(value);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    const allFieldsFilled = [
+      school,
+      graduationYear,
+      schoolLocation,
+      degreeType,
+      fieldOfStudy
+    ].every((field) => {
+      if (typeof field === 'number') {
+        return field > 0;
+      }
+      return field.length;
+    });
+
+    setAllFieldsFilled(allFieldsFilled);
+  }, [
+    school,
+    graduationYear,
+    schoolLocation,
+    degreeType,
+    fieldOfStudy
+  ]);
+
+  const editEducationForm = useCallback(
+    (educationId: number) => {
+      const educationToEdit = instructorEducation.length && instructorEducation.find(education =>
+        education.id === educationId
+      );
+      if (educationToEdit) {
+        setIsEditing(true);
+        setEducationId(educationToEdit.id);
+        setSchool(educationToEdit.school);
+        setGraduationYear(educationToEdit.graduationYear);
+        setSchoolLocation(educationToEdit.schoolLocation);
+        setDegreeType(educationToEdit.degreeType);
+        setFieldOfStudy(educationToEdit.fieldOfStudy);
+
+        showEducationForm(true);
+      }
+    },
+    [
+      educationFormIsOpen,
+      isEditing,
+      school,
+      graduationYear,
+      schoolLocation,
+      degreeType,
+      fieldOfStudy,
+      educationId,
+      JSON.stringify(instructorEducation)
+    ]
+  );
+
+  const handleSave = useCallback(
+    () => {
+      const education: EducationType = {
+        school,
+        graduationYear,
+        degreeType,
+        fieldOfStudy,
+        schoolLocation
+      };
+
+      console.log('is editing', true);
+      if (isEditing) {
+        education.id = educationId;
+        editEducationAction(education);
+      } else {
+        addEducationAction(education);
+      }
+      resetEducationState();
+      toggleEducationForm();
+    },
+    [
+      school,
+      graduationYear,
+      degreeType,
+      fieldOfStudy,
+      schoolLocation,
+      educationId
+    ]
+  );
+
+  const requesting = isAddEducationRequesting || isEditEducationRequesting ||
+    isFetchEducationRequesting || isDeleteEducationRequesting;
+
+  const renderEducationForm = (): JSX.Element => {
     return (
       <div>
-        {requesting ?
-          <div className="nabi-text-center">
-            <CircularProgress />
-          </div> :
-          (!this.state.showEducationForm ?
-            <div>
-              <SectionTitle text={EducationComponent.Text.YourEducation} />
-              <Typography className="nabi-margin-top-xsmall">
-                {EducationComponent.Text.TellStudentsAbout}
-              </Typography>
-              <ul>
-                {educationAdded}
-              </ul>
-              <div className="nabi-margin-top-medium">
-                <Button
-                  color="primary"
-                  variant="contained"
-                  onClick={this.toggleEducationForm}
-                >
-                  <Add className="nabi-margin-right-xsmall" />
-                  {EducationComponent.Text.AddEducation}
-                </Button>
-              </div>
-            </div>
-          : this.renderEducationForm())
-        }
-        <StepperButtons
-          nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Employment}
-          backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.JobPreferences}
-          icon={<ArrowForward />}
-          errors={
-            this.props.fetchEducationError ||
-            this.props.addEducationError ||
-            this.props.editEducationError ||
-            this.props.deleteEducationError
-          }
+        <Typography className="nabi-margin-top-xsmall nabi-text-uppercase" variant="body2">
+          {EducationComponent.Text.AddEducation}
+        </Typography>
+        <EducationForm
+          handleChange={handleChange}
+          handleSave={handleSave}
+          school={school}
+          graduationYear={graduationYear}
+          degreeType={degreeType}
+          fieldOfStudy={fieldOfStudy}
+          schoolLocation={schoolLocation}
+          handleCancel={handleCancel}
+          isEditing={isEditing}
+          allFieldsFilled={allFieldsFilled}
         />
       </div>
     );
   }
+
+  const educationAdded = education.map((education, i) => (
+    <li className="nabi-list" key={i}>
+      <EducationAdded
+        id={education.id}
+        gridWidth={6}
+        school={education.school}
+        graduationYear={education.graduationYear}
+        schoolLocation={education.schoolLocation}
+        degreeType={education.degreeType}
+        fieldOfStudy={education.fieldOfStudy}
+        deleteEducation={(educationId: number) => deleteEducationAsync(educationId)}
+        editEducation={(educationId: number) => editEducationForm(educationId)}
+      />
+    </li>
+  ));
+
+  return (
+    <div>
+      {requesting ?
+        <div className="nabi-text-center">
+          <CircularProgress />
+        </div> :
+        (!educationFormIsOpen ?
+          <div>
+            <SectionTitle text={EducationComponent.Text.YourEducation} />
+            <Typography className="nabi-margin-top-xsmall">
+              {EducationComponent.Text.TellStudentsAbout}
+            </Typography>
+            <ul>
+              {educationAdded}
+            </ul>
+            <div className="nabi-margin-top-medium">
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={toggleEducationForm}
+              >
+                <Add className="nabi-margin-right-xsmall" />
+                {EducationComponent.Text.AddEducation}
+              </Button>
+            </div>
+          </div>
+          : renderEducationForm())
+      }
+      <StepperButtons
+        nextPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.Employment}
+        backPath={Routes.BuildProfile + ProfileBuilderStepper.StepsPaths.JobPreferences}
+        icon={<ArrowForward />}
+        errors={
+          fetchEducationError ||
+          addEducationError ||
+          editEducationError ||
+          deleteEducationError
+        }
+      />
+      <SnackBar
+        isOpen={snackbarIsOpen}
+        message={snackbarMessage}
+        handleClose={closeSnackbar}
+        variant={snackbarMessageType}
+        hideIcon={true}
+      />
+    </div>
+  );
 }
 
-const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
-  const {
-    actions: {
-      fetchEducation: {
-        isRequesting: isFetchEducationRequesting,
-        error: fetchEducationError
-      },
-      addEducation: {
-        isRequesting: isAddEducationRequesting,
-        error: addEducationError
-      },
-      editEducation: {
-        isRequesting: isEditEducationRequesting,
-        error: editEducationError
-      },
-      deleteEducation: {
-        isRequesting: isDeleteEducationRequesting,
-        error: deleteEducationError
-      }
-    }
-  } = state.instructor;
-
-  return {
-    education: state.instructor.instructor.education || [],
-    isFetchEducationRequesting,
-    isAddEducationRequesting,
-    isDeleteEducationRequesting,
-    isEditEducationRequesting,
-    fetchEducationError,
-    addEducationError,
-    editEducationError,
-    deleteEducationError
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: Dispatch<Action>,
-  _ownProps: {}
-): DispatchProps => {
-  return {
-    fetchEducation: () => dispatch(fetchEducation()),
-    addEducation: (education: EducationType) => dispatch(addEducation(education)),
-    editEducation: (education: Partial<EducationType>) =>
-      dispatch(editEducation(education)),
-    deleteEducation: (id: number) => dispatch(deleteEducation(id))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Education);
+export default Education;

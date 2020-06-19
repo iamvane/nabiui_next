@@ -151,14 +151,12 @@ export const addEducation = (
         headers: {'Authorization': `Bearer ${authToken}`}
       },
     );
+
     dispatch(
       withDataAction(InstructorActions.ADD_EDUCATION_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.ADD_EDUCATION_FAILURE, errorMessage)
     );
@@ -208,15 +206,11 @@ export const editEducation = (
         headers: { Authorization: `Bearer ${authToken}` }
       }
     );
-
     dispatch(
       withDataAction(InstructorActions.EDIT_EDUCATION_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.EDIT_EDUCATION_FAILURE, errorMessage)
     );
@@ -244,10 +238,7 @@ export const deleteEducation = (
       withDataAction(InstructorActions.DELETE_EDUCATION_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.DELETE_EDUCATION_FAILURE, errorMessage)
     );
@@ -275,10 +266,7 @@ export const addEmployment = (
       withDataAction(InstructorActions.ADD_EMPLOYMENT_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.ADD_EMPLOYMENT_FAILURE, errorMessage)
     );
@@ -336,10 +324,7 @@ export const editEmployment = (
       withDataAction(InstructorActions.EDIT_EMPLOYMENT_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.EDIT_EMPLOYMENT_FAILURE, errorMessage)
     );
@@ -367,10 +352,7 @@ export const deleteEmployment = (
       withDataAction(InstructorActions.DELETE_EMPLOYMENT_SUCCESS, response.data)
     );
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
-    }
-
+    const errorMessage = getError(e);
     dispatch(
       withErrorAction(InstructorActions.DELETE_EMPLOYMENT_FAILURE, errorMessage)
     );
@@ -573,9 +555,13 @@ export const gradeLesson = (gradeData: GradeData): ThunkAction<Promise<void>, {}
 ) => {
   dispatch(requestAction(InstructorActions.GRADE_LESSON));
   try {
-    const response = await axios.post(
-      ApiEndpoints.gradeLesson,
-      {...gradeData},
+    const requestPayload = {
+      grade: gradeData.grade,
+      comment: gradeData.comment
+    };
+    const response = await axios.put(
+      ApiEndpoints.gradeLesson + gradeData.lessonId + '/',
+      requestPayload,
       { headers:
         authToken && { 'Authorization': `Bearer ${authToken}` },
       });

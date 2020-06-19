@@ -15,5 +15,5 @@ export namespace ListTemplateComponent {
     Instruments = 'instruments'
   }
 
-  export const locationPlaceholder = 'Enter home address';
+  export const locationPlaceholder = 'Zip Code';
 }

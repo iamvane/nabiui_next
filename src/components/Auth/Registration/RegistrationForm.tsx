@@ -6,6 +6,9 @@ const reactStringReplace = require('react-string-replace');
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+
 import {
   Button,
   Checkbox,
@@ -19,6 +22,8 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
+
+import '../../../../assets/scss/PhoneValidationForm.scss';
 
 import { selectOptions } from '../../../utils/formUtils';
 import SectionTitle from '../../common/SectionTitle';
@@ -43,6 +48,8 @@ interface Props {
   lastName: string;
   reference: string;
   otherText?: string;
+  phoneNumber: string;
+  handleNumberChange: (value: string) => void;
 }
 
 /**
@@ -144,6 +151,25 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
         />
       </FormControl>
 
+    {props.selectedRole !== Role.instructor &&
+      <>
+        <Grid item={true} xs={12} md={8}>
+          <FormControl fullWidth={false}>
+            <PhoneInput
+              id="country-code-select"
+              className="international-phone-input nabi-margin-top-xsmall"
+              name={RegistrationFormComponent.FieldNames.PhoneNumber}
+              placeholder={RegistrationFormComponent.Placeholders.PhoneNumber}
+              value={props.phoneNumber}
+              onChange={props.handleNumberChange}
+              required={true}
+              defaultCountry="US"
+            />
+          </FormControl>
+          {props.formErrors.phoneNumber && <FormHelperText error={true}>{props.formErrors.phoneNumber}</FormHelperText>}
+        </Grid>
+      </>
+      }
       <FormControl
         fullWidth={true}
         className="nabi-margin-top-small"

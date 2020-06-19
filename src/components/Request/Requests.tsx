@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Request } from '../../redux/models/RequestModel';
-import { UserType } from '../../redux/models/UserModel';
 import RequestCard from './RequestCard';
 
 interface Props {

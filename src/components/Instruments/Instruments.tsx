@@ -97,7 +97,7 @@ const Instruments: React.StatelessComponent<Props> = props => {
             >
               <option value="" disabled={true}>
                 {InstrumentsComponent.DisabledPlaceholders.SelectLevel}
-              </option>}
+              </option>
               {selectSkillLevelOptions}
             </Select>
           </FormControl >

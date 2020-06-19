@@ -20,7 +20,6 @@ const FreeLesson = () => {
       <Grid
         className="nabi-container nabi-padding-top-medium nabi-padding-bottom-medium nabi-text-center"
         container={true}
-        spacing={4}
       >
         <Grid item={true} xs={12} md={4} className="nabi-margin-bottom-xsmall nabi-text-right-md nabi-color-white">
           <img

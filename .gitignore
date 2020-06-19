@@ -3,5 +3,5 @@ node_modules
 *.lognode_modules/
 .next/
 package-lock.json
-/public/*.js
-/public/*.js.map
+public/*.js
+public/*.js.map

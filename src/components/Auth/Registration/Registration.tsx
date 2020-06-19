@@ -32,6 +32,7 @@ export interface RegistrationErrors {
   [RegistrationFormComponent.FieldKey.Password]?: string;
   [RegistrationFormComponent.FieldKey.Reference]?: string;
   [RegistrationFormComponent.FieldKey.OtherText]?: string;
+  [RegistrationFormComponent.FieldKey.PhoneNumber]?: string;
 }
 
 interface StateProps {
@@ -71,6 +72,7 @@ export const Registration = (props: Props) => {
   const [birthday, setBirthday] = React.useState("");
   const [openModal, toggleModal] = React.useState(false);
   const [isUnderage, setIsUnderAge] = React.useState(false);
+  const [phoneNumber, setPhoneNumber] = React.useState('');
   const [reference, setReference] = React.useState("");
   const [otherText, setOtherText] = React.useState("");
   const [agreeWithTerms, setAgreeWithTerms] = React.useState(false);
@@ -137,6 +139,9 @@ export const Registration = (props: Props) => {
     if (props.invitationToken) {
       userValues.referringCode = props.invitationToken;
     }
+    if (props.role === Role.parent || props.role === Role.student) {
+      userValues.phoneNumber = phoneNumber;
+    }
     await props.createUser(userValues);
     setIsAttemptToRegister(true);
   };
@@ -197,7 +202,8 @@ export const Registration = (props: Props) => {
       firstName: "",
       lastName: "",
       reference: "",
-      otherText: ""
+      otherText: "",
+      phoneNumber: ""
     };
 
     // Validate first name
@@ -253,7 +259,16 @@ export const Registration = (props: Props) => {
 
     // Validate birthday
     displayAgeDisclaimer();
+
+    if (props.role !== Role.instructor) {
+      // Validate phoneNumber
+      if (!phoneNumber) {
+        formErrors[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
+      }
+    }
+
     return setFormErrors(formErrors);
+
   };
 
   const handleSubmit = (
@@ -266,6 +281,12 @@ export const Registration = (props: Props) => {
     validate();
     setRegistration(true);
   };
+
+  const handleNumberChange = (value: string): void => {
+    setPhoneNumber(
+      Boolean(value) &&  value
+    );
+  }
 
   const closeModal = () => toggleModal(false);
 
@@ -298,6 +319,8 @@ export const Registration = (props: Props) => {
           agreeWithTerms={agreeWithTerms}
           reference={reference}
           otherText={otherText}
+          handleNumberChange={handleNumberChange}
+          phoneNumber={phoneNumber}
         />
       </div>
 

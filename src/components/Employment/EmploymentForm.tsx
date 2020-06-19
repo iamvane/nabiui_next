@@ -22,7 +22,7 @@ import { YearsList } from '../../utils/YearsList';
 
 interface Props extends EmploymentType {
   handleChange: (event: React.FormEvent<{}>) => void;
-  handleOnBlur: (event: React.FormEvent<{}>) => void;
+  handleOnBlur?: (event: React.FormEvent<{}>) => void;
   handleSave: (event: React.FormEvent<{}>) => void;
   handleCancel: () => void;
   isEditing: boolean;

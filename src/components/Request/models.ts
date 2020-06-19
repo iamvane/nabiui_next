@@ -18,6 +18,9 @@ export interface  RequestType {
   createdAt?: string;
   students: StudentType[];
   distance?: string;
+  time?: string;
+  date?: string;
+  timezone?: string;
 }
 
 export type IState = RequestType[];

@@ -8,7 +8,7 @@ import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
 export const InstructorPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
-    <div className="nabi-container">
+    <div className="nabi-section nabi-container nabi-background-white nabi-margin-bottom-medium">
       <Head>
         <title>{pageTitlesAndDescriptions.instructorPolicy.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.instructorPolicy.description}></meta>
@@ -83,6 +83,10 @@ export const InstructorPolicy: React.StatelessComponent<{}> = props => {
         <li>
           You will observe all anti-harassment and non-discrimination laws in the performance of your services.
         </li>
+        <br />
+        <h5>Scheduling polciy:</h5>
+        <span>Students and/or parents must reschedule a class at least 12 hours in advance of the scheduled class to avoid mising a class. A missed class cannot be refunded.</span>
+        <br />
         <br />
         <li>
           For your reference, <Link href={Routes.StudentPolicy}>here are our Student and Parent guidelines</Link> that students and parents are required to follow.

@@ -10,7 +10,7 @@ import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
 export const PrivacyPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
-    <div className="nabi-container">
+    <div className="nabi-section nabi-container nabi-background-white nabi-margin-bottom-medium">
       <Head>
         <title>{pageTitlesAndDescriptions.privacyPolicy.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.privacyPolicy.description}></meta>

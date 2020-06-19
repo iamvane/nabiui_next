@@ -8,7 +8,7 @@ import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
 export const StudentPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
   return (
-    <div className="nabi-container">
+    <div className="nabi-section nabi-container nabi-background-white nabi-margin-bottom-medium">
        <Head>
         <title>{pageTitlesAndDescriptions.studentPolicy.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.studentPolicy.description}></meta>
@@ -32,7 +32,11 @@ export const StudentPolicy: React.StatelessComponent<{}> = props => {
           Work directly with Nabi Music to change Instructors
         </li>
       </ul>
-      For your reference, <Link href={Routes.InstructorPolicy}>here are the Instructors guidelines</Link> that your instructors are required to follow.
+      <h5>Scheduling polciy:</h5>
+        You must reschedule a class at least 12 hours in advance of the scheduled class to avoid mising a class. A missed class cannot be refunded.
+        <br />
+        <br />
+        For your reference, <Link href={Routes.InstructorPolicy}><a>here are the Instructors guidelines</a></Link> that your instructors are required to follow.
 
     </div>
   )

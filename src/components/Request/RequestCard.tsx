@@ -45,9 +45,11 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     applied,
     displayName,
     role,
-    distance,
+    // distance,
     skillLevel,
-    elapsedTime
+    timezone,
+    date,
+    time
   } = props.request;
 
   const studentInfo = studentDetails.length > 0 &&
@@ -100,14 +102,14 @@ const RequestCard: React.StatelessComponent<Props> = props => {
           <Typography color="primary" className="nabi-text-semibold">
             {RoleLabels[role]}
           </Typography>
-          <Typography>
+          {/* <Typography>
             {distance && (typeof distance === 'string' ? distance : String(distance.toFixed(1))) + ' mi away'}
-          </Typography>
+          </Typography> */}
         </Grid>
         <Grid item={true} xs={12} md={6}>
-            <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-top-zero nabi-text-center nabi-margin-bottom-xsmall nabi-text-left-md">
-              {requestTitle}
-            </p>
+          <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-top-zero nabi-text-center nabi-margin-bottom-xsmall nabi-text-left-md">
+            {requestTitle}
+          </p>
           <Typography>
             {requestMessage}
           </Typography>
@@ -136,22 +138,62 @@ const RequestCard: React.StatelessComponent<Props> = props => {
             </Typography>
             <Typography className="nabi-display-inline-block">{lessonDuration}</Typography>
              <br />
-            <Typography
-              color="primary"
-              className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
-            >
-              {RequestCardComponent.Text.StudentDetails}
-            </Typography>
-            {
-              role === Role.student &&
-              <Typography className="nabi-display-inline-block">{studentInfo}</Typography>
-            }
-            {
-              role === Role.parent &&
-              <ul className="nabi-margin-top-xsmall">
-                {studentsDetails}
-              </ul>
-            }
+             {(studentInfo || studentDetails) &&
+              <>
+                <Typography
+                  color="primary"
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  {RequestCardComponent.Text.StudentDetails}
+                </Typography>
+                {
+                  role === Role.student &&
+                  <Typography className="nabi-display-inline-block">{studentInfo}</Typography>
+                }
+                {
+                  role === Role.parent &&
+                  <ul className="nabi-margin-top-xsmall">
+                    {studentsDetails}
+                  </ul>
+                }
+                </>
+              }
+              {date &&
+              <>
+                <br />
+                <Typography
+                  color="primary"
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  {RequestCardComponent.Text.Date}
+                </Typography>
+                <Typography className="nabi-display-inline-block">{date}</Typography>
+              </>
+              }
+               {time &&
+              <>
+                <br />
+                <Typography
+                  color="primary"
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  {RequestCardComponent.Text.Time}
+                </Typography>
+                <Typography className="nabi-display-inline-block">{time}</Typography>
+              </>
+              }
+               {timezone &&
+              <>
+                <br />
+                <Typography
+                  color="primary"
+                  className="nabi-text-mediumbold nabi-margin-right-xsmall nabi-display-inline-block"
+                >
+                  {RequestCardComponent.Text.Timezone}
+                </Typography>
+                <Typography className="nabi-display-inline-block">{timezone}</Typography>
+              </>
+              }
 
           </div>
         </Grid>
