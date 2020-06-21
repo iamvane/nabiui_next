@@ -43,7 +43,7 @@ export const Footer = () => {
     const privateRoutes: string[] = [
       Routes.BuildProfile,
       Routes.BuildRequest,
-      Routes.Dashboard,
+      Routes.InstructorDashboard,
       Routes.Requests,
       Routes.AccountRecovery,
       Routes.Login,

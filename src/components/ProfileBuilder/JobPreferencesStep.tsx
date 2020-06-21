@@ -606,7 +606,7 @@ export const JobPreferencesStep = () => {
       if (allSelected) {
         setExitFormOpen(true);
       } else {
-        Router.push(Routes.Dashboard);
+        Router.push(Routes.InstructorDashboard);
       }
     },
     [

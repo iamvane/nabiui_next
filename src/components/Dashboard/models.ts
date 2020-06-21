@@ -39,11 +39,19 @@ export interface MyRequestType {
   createdAt: string;
 }
 
+export interface NextLesson {
+  date: string;
+  time: string;
+  timezone: string;
+  student_details: StudentType[];
+}
+
 export interface InstructorDashboardType {
   complete?: boolean;
   missingFields?: string[]
   backgroundCheckStatus: string;
   lessons: LessonType[];
+  nextLesson: NextLesson;
   requests: Request[];
 }
 

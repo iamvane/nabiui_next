@@ -49,7 +49,11 @@ export const Homepage = (props: Props) => {
     if (referralInfo.openModal) {
       setOpenModal(true);
     }
-    if (props.token) {
+    if (props.token && props.user.role === 'instructor') {
+      Router.push(Routes.InstructorDashboard);
+    }
+
+    if (props.token && props.user.role !== 'instructor') {
       Router.push(Routes.Dashboard);
     }
 

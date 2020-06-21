@@ -72,8 +72,8 @@ const InstructorMenuItems = ({ currentRoute }) => {
   const items = [
     // NavigationComponent.NavigationLabels.Calendar,
     {
-      label: currentRoute === Routes.Dashboard ? NavigationComponent.NavigationLabels.Jobs : NavigationComponent.NavigationLabels.Studio,
-      url:  currentRoute === Routes.Dashboard ? Routes.Requests : Routes.Dashboard
+      label: currentRoute === Routes.InstructorDashboard ? NavigationComponent.NavigationLabels.Jobs : NavigationComponent.NavigationLabels.Studio,
+      url:  currentRoute === Routes.InstructorDashboard ? Routes.Requests : Routes.InstructorDashboard
     }
     // NavigationComponent.NavigationLabels.ReferAFriend
   ];
@@ -146,7 +146,7 @@ interface Props {
   isOpen?: boolean;
   handleUserLogout?: () => void;
   isRequesting?: boolean;
-  currentRoute: string;
+  currentRoute?: string;
 }
 
 export const CollapsibleSidebar = (props: Props) => {
@@ -198,7 +198,7 @@ export const CollapsibleSidebar = (props: Props) => {
             {props.role === Role.instructor && (
               <>
                 { (Routes.Requests === props.currentRoute) && <GoToStudioButton />}
-                { (Routes.Dashboard === props.currentRoute) &&  <FindJobsButton />}
+                { (Routes.InstructorDashboard === props.currentRoute) &&  <FindJobsButton />}
                 <InstructorMenuItems currentRoute={props.currentRoute} />
               </>
             )}

@@ -1,125 +1,201 @@
 import * as React from 'react';
 import Link from 'next/link';
-const reactStringReplace = require('react-string-replace');
+
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  bindActionCreators
+} from 'redux';
+import { RouteComponentProps } from 'react-router';
+import Router from 'next/router';
+import Head from 'next/head';
+
+import { CircularProgress } from '@material-ui/core';
+
+import { StoreState } from '../../../redux/reducers/store';
+import {
+  fetchUser,
+  fetchDashboard,
+  logOutUser
+} from '../../../redux/actions/UserActions';
+import { page } from '../../../utils/analytics';
+import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
+import { Role } from '../../Auth/Registration/constants';
+import PrivateRoute from '../../Auth/PrivateRoutes';
 
 import {
-  Button,
-  Divider,
-  Typography,
+  Grid
 } from '@material-ui/core';
-import Warning from '@material-ui/icons/Warning';
-import Check from '@material-ui/icons/Check';
 
 import { UserType } from '../../../redux/models/UserModel';
 import { Routes } from '../../common/constants/Routes';
-import SectionTitle from '../../common/SectionTitle';
-import { BackgroundCheckStatus } from '../../ProfileBuilder/constants';
-import { InstructorDashboardComponent as constants }  from '../constants';
+import PageTitle from '../../common/PageTitle';
+import NavigationContainer from '../../Navigation/NavigationContainer';
+import { InstructorDashboardComponent } from '../constants';
 import {
-  LessonType,
-  InstructorDashboardType
+  InstructorDashboardType,
+  NextLesson
 } from '../models';
-import LessonCard from './LessonCard';
 
-interface Props {
+interface StateProps {
   user: UserType;
+  isRequesting: boolean;
+  firstName: string;
+  token: string;
   dashboard: InstructorDashboardType;
+  isFetchingDashboard: boolean;
+  errorFetchingDashboard: string;
+  isLoggingOutUser: boolean;
 }
 
+interface DispatchProps {
+  fetchUser: () => void;
+  logOutUser: () => void;
+  fetchDashboard: (role: Role) => void;
+  setPathname: (pathname: string) => void;
+}
+
+interface OwnProps {
+}
+
+interface Props extends
+  OwnProps,
+  RouteComponentProps<{}>,
+  StateProps,
+  DispatchProps { }
+
 export const InstructorDashboard = (props: Props) => {
-  const displayMissingFields = () => (
-    props.dashboard.missingFields.map((item, i) => (
-      <Typography key={i}>
-        - Add {" "}
-        <Link href={Routes.BuildProfile + constants.missingFieldsDisplay[item].url}>
-          <a>{constants.missingFieldsDisplay[item].label}</a>
-        </Link>
-      </Typography>
-    ))
+  const dispatch = useDispatch();
+  const fetchUserAction = bindActionCreators(fetchUser, dispatch);
+  const fetchDashboardAction = bindActionCreators(fetchDashboard, dispatch);
+  const logOutUserAction = bindActionCreators(logOutUser, dispatch);
+  let {
+    isFetchingDashboard,
+    isLoggingOutUser,
+    errorFetchingDashboard,
+    user,
+    firstName,
+    isRequesting,
+    token,
+    dashboard
+  } = useSelector((state: StoreState) => {
+    const {
+      actions: {
+        logOutUser: {
+          isRequesting: isLoggingOutUser,
+          error: logOutError,
+          message
+        },
+        fetchUser: {
+          isRequesting,
+        },
+        fetchDashboard: {
+          isRequesting: isFetchingDashboard,
+          error: errorFetchingDashboard
+        }
+      }
+    } = state.user;
+
+    return {
+      isFetchingDashboard,
+      errorFetchingDashboard,
+      user: state.user.user,
+      firstName: state.user.user.firstName,
+      isRequesting,
+      isLoggingOutUser,
+      token: state.user.token,
+      dashboard: state.user.user.dashboard as InstructorDashboardType
+    };
+  });
+
+  React.useEffect(() => {
+    fetchUserAction();
+  }, [JSON.stringify(user)]);
+
+  React.useEffect(() => {
+    if (user.role && !user.dashboard) {
+      fetchDashboardAction(Role[user.role]);
+    }
+  }, [JSON.stringify(user)]);
+
+  React.useEffect(() => {
+    let userId
+    if (user.email) {
+      userId = user.email
+    } else {
+      userId = 'anonymous'
+    }
+    const analiticsProps = {
+      userId,
+      properties: {
+        referrer: document.referrer
+      }
+    };
+    page('Dashboard', analiticsProps);
+  }, [JSON.stringify(user)]);
+
+  const handleUserLogout = React.useCallback(() => {
+    logOutUserAction();
+  }, []);
+
+  React.useEffect(() => {
+    if (!token && isLoggingOutUser) {
+      Router.push(Routes.HomePage);
+    }
+  }, [token, isLoggingOutUser])
+
+  let pageTitle = InstructorDashboardComponent.pageTitle.replace(
+    InstructorDashboardComponent.studioNamePlaceholder,
+    user.firstName
   );
 
-  const displayLessons = () => (
-    props.dashboard.lessons.map((lesson: LessonType, i) => (
-      <React.Fragment key={i}>
-        <LessonCard lesson={lesson} />
-        {i !== props.dashboard.lessons.length - 1 && <Divider className="nabi-margin-bottom-xsmall nabi-margin-top-small" />}
-      </React.Fragment>
-    ))
-  );
+  pageTitle = pageTitle.replace('Family', '');
 
   return (
     <React.Fragment>
-      {props.dashboard &&
-        <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small nabi-padding-bottom-large">
-          <SectionTitle text={constants.profileStatusSectionTitle} />
-          <Typography className="nabi-text-mediumbold nabi-display-inline nabi-margin-right-xsmall">{constants.profileStatusText}</Typography>
-          {props.dashboard.complete ?
-            <React.Fragment>
-              <Typography className="nabi-display-inline nabi-text-uppercase nabi-margin-right-xsmall">{constants.profileStatusLabels.complete}</Typography>
-              <Check className="nabi-position-absolute" color="primary" />
-              {props.dashboard.missingFields &&  props.dashboard.missingFields.length > 0 ?
-              <div className="nabi-margin-top-medium">
-                <SectionTitle text={constants.profileRecommendationsSectionTitle} />
-                {displayMissingFields()}
-              </div>
-              : '' }
-            </React.Fragment>
-            :
-            <React.Fragment>
-              <Typography className="nabi-display-inline nabi-text-uppercase nabi-margin-right-xsmall">{constants.profileStatusLabels.incomplete}</Typography>
-              <Warning className="nabi-position-absolute" color="error" />
-              <Typography>{constants.incompleteText}</Typography>
-              {props.dashboard.missingFields.length > 0 && displayMissingFields()}
-            </React.Fragment>
-          }
-
-          <div className="nabi-margin-top-medium">
-            <SectionTitle text={constants.backgroundCheckSectionTitle} />
-            <Typography className="nabi-text-mediumbold nabi-display-inline nabi-margin-right-xsmall">{constants.backgroundCheckStatusText}</Typography>
-            {props.dashboard.backgroundCheckStatus === BackgroundCheckStatus.verified ?
-              <React.Fragment>
-                <Typography className="nabi-display-inline nabi-text-uppercase nabi-margin-right-xsmall">{constants.backgroundCheckStatusLabels.verified}</Typography>
-                <Check className="nabi-position-absolute" color="primary" />
-              </React.Fragment>
-              :
-              <React.Fragment>
-                <Typography className="nabi-display-inline nabi-text-uppercase nabi-margin-right-xsmall">{constants.backgroundCheckStatusLabels.notVerified}</Typography>
-                <Warning className="nabi-position-absolute" color="error" />
-                <Typography className="nabi-margin-top-xsmall">
-                {reactStringReplace(
-                  constants.backgroundCheckCTA.text,
-                  constants.backgroundCheckCTA.textPlaceholder,
-                  (i: string) => <Link href={Routes.BuildProfile + constants.backgroundCheckCTA.url} key={i}><a>{constants.backgroundCheckCTA.backgroundCheckText}</a></Link>
-                )}
-              </Typography>
-              </React.Fragment>
-              }
+      <Head>
+        <title>{pageTitlesAndDescriptions.dashboard.title}</title>
+        <meta name="description" content={pageTitlesAndDescriptions.dashboard.description}></meta>
+      </Head>
+      {
+        isRequesting && (
+          <div className="nabi-text-center">
+            <CircularProgress />
           </div>
-          <div className="nabi-margin-top-medium">
-            <SectionTitle text={constants.myStudentsSectionTitle} />
-            {props.dashboard.lessons && props.dashboard.lessons.length > 0 ?
-              displayLessons()
-              :
-              <React.Fragment>
-                <Typography className="nabi-margin-bottom-xsmall">{constants.noStundetsText}</Typography>
-                <Link href={Routes.Requests}>
-                  <a>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      className="nabi-responsive-button"
-                    >
-                      {constants.findJobsButton}
-                    </Button>
-                  </a>
-                </Link>
-              </React.Fragment>
-            }
+        )
+      }
+      {
+        dashboard && (
+          <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md">
+            <PageTitle pageTitle={pageTitle} />
+            <Grid container={true} spacing={4}>
+              <NavigationContainer
+                role={user.role}
+                instructorId={user.instructorId}
+                isRequesting={isRequesting}
+                handleUserLogout={handleUserLogout}
+                lessons={dashboard.lessons}
+                nextLesson={user.role === Role.instructor && dashboard
+                  && dashboard.nextLesson
+                  && Object.entries(dashboard.nextLesson).length ?
+                  dashboard.nextLesson : {} as NextLesson
+                }
+              />
+              {/* <NavigationContainer /> */}
+              {/* <Grid item={true} xs={12} md={4}>
+            <div className="nabi-section-widest nabi-background-white">
+              {sidebarContent}
+            </div>
+          </Grid>
+          <Grid item={true} xs={12} md={8}>
+            {mainContent}
+          </Grid> */}
+            </Grid>
           </div>
-
-        </div>
+        )
       }
     </React.Fragment>
   );
 }
-export default InstructorDashboard;
+
+export default PrivateRoute(InstructorDashboard, 'Private', ['Instructor']);
+

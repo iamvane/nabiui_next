@@ -1,8 +1,11 @@
 export namespace DashboardComponent {
-  export const pageTitle = 'Dashboard';
+  export const pageTitle = '{studioName}\'s Family Studio';
+  export const studioNamePlaceholder = '{studioName}';
 }
 
 export namespace InstructorDashboardComponent {
+  export const pageTitle = '{studioName} Studio';
+  export const studioNamePlaceholder = '{studioName}';
   export const profileStatusSectionTitle = 'Profile Status';
   export const profileStatusText = 'Profile Status:';
   export const profileStatusLabels = {

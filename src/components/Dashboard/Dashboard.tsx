@@ -31,14 +31,14 @@ import {
   DashboardComponent,
   PreLaunchInstructorDashboardComponent as constants
 } from './constants';
-import { InstructorDashboardType, ParentStudentDashboardType } from './models';
+import { InstructorDashboardType, ParentStudentDashboardType, LessonType, NextLesson } from './models';
 
 interface StateProps {
   user: UserType;
   isRequesting: boolean;
   firstName: string;
   token: string;
-  dashboard: InstructorDashboardType | ParentStudentDashboardType;
+  dashboard: InstructorDashboardType & ParentStudentDashboardType;
   isFetchingDashboard: boolean;
   errorFetchingDashboard: string;
   isLoggingOutUser: boolean;
@@ -106,12 +106,20 @@ export const Dashboard = (props: Props) => {
           mainContent={
             props.user.role &&
               (props.user.role === Role.instructor ?
-                <InstructorDashboard user={props.user} dashboard={props.dashboard as InstructorDashboardType} /> : 
+                <InstructorDashboard user={props.user} dashboard={props.dashboard as InstructorDashboardType} /> :
                 <ParentStudentDashboard
                   role={props.user.role}
-                  dashboard={props.dashboard as ParentStudentDashboardType}
+                  dashboard={props.dashboard  as ParentStudentDashboardType}
                 />)
           }
+          firstName={props.user.firstName}
+          lessons={(props.user.role === Role.instructor && props.dashboard && props.dashboard.lessons.length) ? props.dashboard.lessons : []}
+          nextLesson={props.user.role === Role.instructor && props.dashboard
+            && props.dashboard.nextLesson
+            && Object.entries(props.dashboard.nextLesson).length ?
+            props.dashboard.nextLesson : {} as NextLesson
+          }
+          titlePlaceholder={DashboardComponent.studioNamePlaceholder}
           pageTitle={DashboardComponent.pageTitle}
           instructorId={props.user.instructorId}
           role={props.user.role}
@@ -149,7 +157,7 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     isRequesting,
     isLoggingOutUser,
     token: state.user.token,
-    dashboard: state.user.user.dashboard as InstructorDashboardType | ParentStudentDashboardType
+    dashboard: state.user.user.dashboard as InstructorDashboardType & ParentStudentDashboardType
   };
 }
 

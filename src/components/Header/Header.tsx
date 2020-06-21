@@ -115,6 +115,7 @@ export const Header = (props: HeaderProps) => {
   ];
 
   const menuDisplayPages = [
+    Routes.InstructorDashboard,
     Routes.Dashboard,
     Routes.ApplicationList,
     Routes.BookLessons,
@@ -270,7 +271,7 @@ export const Header = (props: HeaderProps) => {
         ) : (
           ""
         )}
-        {props.router.route === Routes.Dashboard && (
+        {[Routes.InstructorDashboard as string, Routes.Dashboard as string].includes(props.router.route) && (
           <div className="nabi-header-button">
             <Button
               color="primary"

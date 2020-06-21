@@ -70,7 +70,9 @@ mark {
 .nabi-border-radius {
 	border-radius: 17px;
 }
-
+.nabi-border-radius-sm {
+	border-radius: 10px;
+}
 /*COLOR*/
 .nabi-color-white,
 p.nabi-color-white {
@@ -298,6 +300,51 @@ li.nabi-list-style-position-inside {
 	text-decoration: line-through !important;
 }
 
+/*WIDTH*/
+.nabi-width-40 {
+	width: 40% !important;
+}
+.nabi-width-50 {
+	width: 47% !important;
+}
+.nabi-width-100 {
+	width: 100% !important;
+}
+
+.nabi-width-80 {
+	width: 80% !important;
+}
+
+/*BACKGROUND*/
+.nabi-bg-color {
+	background-color: #fff !important;
+}
+
+/*FLEX*/
+.nabi-flex {
+	display: flex !important;
+}
+.nabi-flex-col {
+	flex-direction: column !important;
+}
+.nabi-flex-align-items-center {
+	align-items: center !important;
+}
+.nabi-flex-justify-content-center {
+	justify-content: center !important;
+}
+.nabi-flex-space-between {
+	display: flex !important;
+	justify-content: space-between !important;
+}
+.nabi-flex-space-evenly {
+	justify-content: space-evenly !important;
+}
+
+.nabi-flex-space-around {
+	justify-content: space-around !important;
+}
+
 /*MARGIN*/
 .nabi-margin-remove {
 	margin: 0px !important;
@@ -396,6 +443,10 @@ li.nabi-list-style-position-inside {
 }
 
 .nabi-margin-left-xsmall {
+	margin-left: 10px !important;
+}
+
+.nabi-margin-left-xxsmall {
 	margin-left: 5px !important;
 }
 
@@ -420,11 +471,11 @@ li.nabi-list-style-position-inside {
 	padding: 0px !important;
 }
 .nabi-padding-small {
-	padding: 20px
+	padding: 20px !important;
 }
 
-.nabi-padding-small {
-	padding: 20px
+.nabi-padding-xxsmall {
+	padding: 5px !important;
 }
 
 .nabi-padding-medium {
@@ -509,6 +560,12 @@ li.nabi-list-style-position-inside {
 
 .nabi-padding-left-zero {
 	padding-left: 0px !important;
+}
+.nabi-padding-left-xxsmall {
+	padding-left: 5px;
+}
+.nabi-padding-right-xxsmall {
+	padding-right: 5px;
 }
 
 .nabi-padding-left-xsmall {
@@ -603,19 +660,30 @@ li.nabi-list-style-position-inside {
 }
 
 .nabi-margin-0 {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .nabi-margin-bottom-0 {
   margin-bottom: 0;
 }
 
+/*TEXT*/
 .nabi-text-color-red {
   color: #fb7e6a !important;
 }
 
 .nabi-text-size-medium {
   font-size: 25px;
+}
+.nabi-text-small-medium {
+	font-size: 14px !important;
+}
+.nabi-text-size-small {
+	font-size: 12px !important;
+}
+
+.nabi-text-size-xsmall {
+	font-size: 11px !important;
 }
 
 .nabi-welcome-message-gift-img {
@@ -945,6 +1013,24 @@ li.nabi-list-style-position-inside {
 .buy-more-lessons-you-get-text {
 	position: absolute;
 	margin-top: 45px !important;
+}
+
+.nabi-studio-card-sm {
+	background-color: #fff !important;
+	height: 50px !important;
+	padding: 5px !important
+}
+
+.nabi-studio-card {
+	background-color: #fff !important;
+    height: 130px !important;
+    padding: 25px !important;
+}
+
+.nabi-studio-card-mobile {
+	background-color: #fff !important;
+    height: 100px !important;
+    padding: 5px !important;
 }
 
 .item-card {

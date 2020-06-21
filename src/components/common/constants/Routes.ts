@@ -32,6 +32,7 @@ export enum Routes {
   MyInstructors = '/my-instructors',
   Help = '/help',
   Instructors = '/instructors',
+  InstructorDashboard = '/instructor-dashboard',
   BookLessons = '/book-lessons',
   LessonPackages = '/lesson-packages',
   HowItWorksInstructors = '/how-it-works-instructors',

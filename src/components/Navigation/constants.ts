@@ -20,7 +20,9 @@ export namespace NavigationComponent {
     FindStudents = 'Find Students',
     GoToStudio = 'Go To Studio',
     Studio = 'Studio',
-    Jobs = 'Jobs'
+    Jobs = 'Jobs',
+    ConnectWithNewStudents = 'Connect with new Students',
+    GradeLesson = 'Grade Lesson'
   }
 
   export const menuText = 'Menu';
