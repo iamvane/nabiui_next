@@ -5,7 +5,6 @@ const reactStringReplace = require('react-string-replace');
 import {
   Button,
   Divider,
-  Grid,
   Typography,
 } from '@material-ui/core';
 import Warning from '@material-ui/icons/Warning';
@@ -15,7 +14,6 @@ import { UserType } from '../../../redux/models/UserModel';
 import { Routes } from '../../common/constants/Routes';
 import SectionTitle from '../../common/SectionTitle';
 import { BackgroundCheckStatus } from '../../ProfileBuilder/constants';
-import RequestCard from '../../Request/RequestCard';
 import { InstructorDashboardComponent as constants }  from '../constants';
 import {
   LessonType,
