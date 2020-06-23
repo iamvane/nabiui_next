@@ -22,22 +22,32 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
+import FaceIcon from '@material-ui/icons/Face';
+import Delete from '@material-ui/icons/Delete';
 
 import {
   fetchUser,
   requestToken
 } from '../../redux/actions/UserActions';
+import {
+  createStudent,
+  fetchStudents,
+  deleteStudent
+} from '../../redux/actions/RequestActions';
 import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
 import PhoneValidation from '../AccountInfo/PhoneValidation';
 import PageTitle from '../common/PageTitle';
 import { VerificationChannel } from '../AccountInfo/models';
 import { Routes } from '../common/constants/Routes';
+import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 import { LessonDetailsComponent } from './constants';
 import ChildForm from './ChildForm';
+
 interface DispatchProps {
-  fetchUser: () => void;
-  requestToken: (phoneNumber: string, channel: VerificationChannel) => void;
+  createStudent: (student: StudentDetailsType) => void;
+  fetchStudents: () => void;
+  deleteStudent: (id: number) => void;
 }
 
 interface OwnProps {
@@ -45,11 +55,13 @@ interface OwnProps {
 }
 
 interface StateProps {
-  user: UserType;
-  isRequestingFetch: boolean;
-  isRequestingUpdate: boolean;
-  errorUpdate: string;
-  updateAvatarMessage: string;
+  isFetchingStudents: boolean;
+  isAddingStudent: boolean;
+  isDeletingStudent: boolean;
+  fetchError: string;
+  deleteError: string;
+  addError: string;
+  students: StudentDetailsType[];
 }
 
 interface Props extends
@@ -61,66 +73,56 @@ interface Props extends
 
 
 export const LessonDetails = (props: Props) => {
-  const [numberOfChildren, setNumberOfChildren] = React.useState('');
-  const [showForm, setShowForm] = React.useState(true);
-
+  const [showForm, setShowForm] = React.useState(false);
+  const [students, setStudents] = React.useState([] as StudentDetailsType[]);
   React.useEffect(() => {
-    //get user
+    //get students
     const fetchData = async () => {
-      await props.fetchUser();
+      await props.fetchStudents();
     };
     fetchData();
+
   },[]);
 
   React.useEffect(() => {
-    if (props.user.phoneNumber && !props.user.isPhoneVerified) {
-      const requestToken = async () => {
-        await props.requestToken(props.user.phoneNumber, VerificationChannel.Text);
-      };
-      requestToken();
+    if (props.students.length > 0) {
+      setStudents(props.students)
     }
-  },[props.user.phoneNumber, props.user.isPhoneVerified]);
+  },[props.students])
 
-  const handleChange = React.useCallback(
-    (event: React.FormEvent<HTMLInputElement>): void => {
-      const target = event.currentTarget;
-      const value = target.value;
-      const name = target.name;
-
-      switch (name) {
-        case LessonDetailsComponent.FieldNames.NumberOfChildren:
-          setNumberOfChildren(value);
-          break;
-        // case RegistrationFormComponent.FieldNames.LastName:
-        //   setLastName(value);
-        //   break;
-        // case RegistrationFormComponent.FieldNames.Email:
-        //   setEmail(value);
-        //   break;
-        // case RegistrationFormComponent.FieldNames.Password:
-        //   setPassword(value);
-        //   break;
-        // case RegistrationFormComponent.FieldNames.Reference:
-        //   setReference(value);
-        //   break;
-        // case RegistrationFormComponent.FieldNames.OtherText:
-        //   setOtherText(value);
-        //   break;
-        // case RegistrationFormComponent.FieldNames.AgreeWithTerms:
-        //   setAgreeWithTerms(target.checked);
-        //   break;
-        default:
-          return;
-        }
-      },
-    []
-  );
+  const addStudent = async (student) => {
+    await props.createStudent(student);
+  }
 
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
       <PageTitle pageTitle={LessonDetailsComponent.pageTitle} />
       <div className="nabi-section nabi-background-white">
+        {(students.length > 0) ?
+          students.map((item, i) => (
+            <Grid item={true} xs={12} md={6} className="nabi-border-radius nabi-padding-xsmall nabi-background-nabi nabi-margin-bottom-small" key={i}>
+              <Grid container={true}>
+                <Grid item={true} xs={1}>
+                  <FaceIcon style={{ color: '#ffffff' }} className="nabi-margin-left-xsmall" />
+                </Grid>
+                <Grid item={true} xs={10} >
+                  <Typography className="nabi-color-white nabi-margin-top-xsmall">{`${item.name} (${item.instrument})`}</Typography>
+                </Grid>
+                <Grid item={true} xs={1}>
+                  <Delete
+                  style={{ color: '#ffffff' }}
+                  className="nabi-float-right nabi-cursor-pointer"
+                  onClick={() => props.deleteStudent(item.id)}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+          ))
+        :''
+      }
         {!showForm ?
+          props.isAddingStudent ?
+          <CircularProgress /> :
           <Button
             // variant="contained"
             color="primary"
@@ -130,84 +132,53 @@ export const LessonDetails = (props: Props) => {
           >
             Add Child
           </Button> :
-        <ChildForm closeForm={() => setShowForm(false)}/>}
-      {/* <FormControl
-        fullWidth={true}
-        className="nabi-margin-top-small"
-        // error={!!formErrors.reference}
-      >
-        <Select
-          native={true}
-          value={numberOfChildren}
-          onChange={() => handleChange}
-          input={<Input name={LessonDetailsComponent.FieldNames.NumberOfChildren} />}
-        >
-          <option value="" disabled={true}>
-            How many children are learning?
-          </option>
-          <option value="1">
-            1
-          </option>
-          <option value="2">
-            2
-          </option>
-          <option value="3">
-            3
-          </option>
-          <option value="4">
-            4
-          </option>
-        </Select>
-        {/* <FormHelperText>{formErrors.reference}</FormHelperText>
-      </FormControl> */}
+        <ChildForm closeForm={() => setShowForm(false)} addChild={addStudent} />}
       </div>
-      {/* <div className="nabi-text-right">
-        <Link href={Routes.BuildRequest + Routes.LessonDetails}>
-          <Button
-            color="primary"
-            className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
-            variant="contained"
-          >
-            {LessonDetailsComponent.nextButton}
-          </Button>
-        </Link>
-      </div> */}
+      <div className="nabi-text-right">
+        <Button color="primary" variant="contained" className="nabi-margin-top-small">
+          Next
+        </Button>
+      </div>
     </div>
   )
 }
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
-    user,
+    students,
     actions: {
-      fetchUser: {
-        isRequesting: isRequestingFetch,
+      fetchStudents: {
+        isRequesting: isFetchingStudents,
+        error: fetchError
       },
-      updateUser: {
-        isRequesting: isRequestingUpdate,
-        error: errorUpdate
+      createStudent: {
+        isRequesting: isAddingStudent,
+        error: addError
       },
-      uploadAvatar: {
-        message: updateAvatarMessage
+      deleteStudent: {
+        isRequesting: isDeletingStudent,
+        error: deleteError
       }
     },
-  } = state.user;
+  } = state.requests;
 
   return {
-    user,
-    isRequestingFetch,
-    isRequestingUpdate,
-    errorUpdate,
-    updateAvatarMessage
+    isFetchingStudents,
+    fetchError,
+    isAddingStudent,
+    addError,
+    isDeletingStudent,
+    deleteError,
+    students
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchUser: () => dispatch(fetchUser()),
-  requestToken: (phoneNumber: string, channel: VerificationChannel) =>
-    dispatch(requestToken(phoneNumber, channel)),
+  createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
+  fetchStudents: () => dispatch(fetchStudents()),
+  deleteStudent: (id: number) => dispatch(deleteStudent(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LessonDetails);

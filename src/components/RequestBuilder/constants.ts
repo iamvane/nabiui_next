@@ -102,10 +102,10 @@ export namespace ChildFormComponent {
       label: 'Singing',
       value: 'singing'
     },
-    {
-      label: 'Other',
-      value: 'other'
-    }
+    // {
+    //   label: 'Other',
+    //   value: 'other'
+    // }
   ];
 
   export const levelChips = [
@@ -126,21 +126,45 @@ export namespace ChildFormComponent {
   export enum FieldNames {
     Name = 'name',
     Dob = 'dob',
-    instrument = 'instrument',
-    level = 'level'
+    Instrument = 'instrument',
   }
+
+  export enum FieldKey {
+    Name = 'name',
+    Dob = 'dob',
+    Instrument = 'instrument',
+    Level = 'level'
+  }
+
   export enum Ids {
     Name = 'name',
     Dob = 'dob',
-    instrument = 'instrument',
-    level = 'level'
+    Instrument = 'instrument',
+    Level = 'level'
   }
   export enum Placeholders {
-    Name = 'Name'
+    Name = 'Name',
+    Instrument = 'Other'
   }
   export enum Labels {
     Dob = 'Date of birth',
-    instrument = 'Instrument',
-    level = 'Level'
+    Instrument = 'Instrument',
+    Level = 'Level'
+  }
+
+  export interface ChildFormErrors {
+    name?: string;
+    dob?: string;
+    instrument?: string;
+    level?: string
+  }
+
+  export const defaultErrors: ChildFormErrors = {}
+
+  export const childFormErrorMessages = {
+    name: 'Enter student\'s name.',
+    dob: 'Enter date of birth.',
+    instrument: 'Select instrument.',
+    level: 'Select level.'
   }
 }

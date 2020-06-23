@@ -1,11 +1,6 @@
 import * as React from 'react';
-import Router from "next/router";
-import Link from 'next/link';
-import { connect } from 'react-redux';
 import moment from 'moment';
 import {
-  Action,
-  Dispatch
 } from 'redux';
 import * as _ from "lodash";
 import DatePicker from 'react-datepicker';
@@ -14,10 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {
   Button,
   Chip,
-  Checkbox,
-  CircularProgress,
   FormControl,
-  FormControlLabel,
   FormHelperText,
   Grid,
   Icon,
@@ -26,78 +18,111 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
-
 import '../../../assets/scss/ChildForm.scss';
+import { instruments } from '../../../assets/data/instruments';
+import { checkErrors } from "../../utils/checkErrors";
+import { ChildFormComponent } from './constants';
+import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 
-import {
-  fetchUser,
-  requestToken
-} from '../../redux/actions/UserActions';
-import { UserType } from '../../redux/models/UserModel';
-import { StoreState } from '../../redux/reducers/store';
-import PhoneValidation from '../AccountInfo/PhoneValidation';
-import PageTitle from '../common/PageTitle';
-import { VerificationChannel } from '../AccountInfo/models';
-import { Routes } from '../common/constants/Routes';
-import { LessonDetailsComponent, ChildFormComponent } from './constants';
-import { RequestFormComponent } from '../Request/constants';
-
-interface DispatchProps {
-  fetchUser: () => void;
-  requestToken: (phoneNumber: string, channel: VerificationChannel) => void;
-}
-
-interface OwnProps {
+interface Props {
   closeForm: () => void;
+  addChild: (student: StudentDetailsType) => void;
 }
-
-interface StateProps {
-  user: UserType;
-  isRequestingFetch: boolean;
-  isRequestingUpdate: boolean;
-  errorUpdate: string;
-  updateAvatarMessage: string;
-}
-
-interface Props extends
-  DispatchProps,
-  StateProps {}
-
 
 export const ChildForm = (props: Props) => {
   const [name, setName] = React.useState('');
   const [dob, setDob] = React.useState('');
   const [instrument, setInstrument] = React.useState('');
+  const [instrumentSelect, setInstrumentSelect] = React.useState('');
   const [level, setLevel] = React.useState('');
+  const [formErrors, setFormErrors] = React.useState(ChildFormComponent.defaultErrors);
+  const [addChild, setAddChild] = React.useState(false);
+
+  const instrumentSelectItems = instruments.map(instrument => {
+    return (
+      <option key={instrument.value} value={instrument.value}>{instrument.name}</option>
+    );
+  });
 
   React.useEffect(() => {
-    //get user
-    const fetchData = async () => {
-      await props.fetchUser();
-    };
-    fetchData();
-  },[]);
+    const isError = checkErrors(Object.values(formErrors));
+    if (addChild && !isError) {
+      // pass dob when api is ready and remove this
+      const age = moment().diff(dob, 'years', false);
 
-  React.useEffect(() => {
-    if (props.user.phoneNumber && !props.user.isPhoneVerified) {
-      const requestToken = async () => {
-        await props.requestToken(props.user.phoneNumber, VerificationChannel.Text);
-      };
-      requestToken();
+      const childToAdd = {
+        name,
+        instrument: instrument || instrumentSelect,
+        skillLevel: level,
+        age: age,
+        lessonPlace: 'online',
+        lessonDuration: '30 mins'
+      }
+      props.addChild(childToAdd);
+      props.closeForm();
     }
-  },[props.user.phoneNumber, props.user.isPhoneVerified]);
+  }, [addChild]);
 
   const handleChange = (event) : void => {
     const target = event.currentTarget;
     const value = target.value;
     const name = target.name;
 
-    setName(value);
+    if (name === 'name') {
+      return setName(value);
+    }
+    if (name === 'instrument') {
+      setInstrument('');
+      setInstrumentSelect(value);
+    }
   }
 
   const handleBirthdayChange = (date: moment.Moment): void => {
     setDob(String(date));
   };
+
+  const validate = () => {
+    const { FieldKey } = ChildFormComponent;
+    const formErrorsObject: ChildFormComponent.ChildFormErrors = {};
+
+    // validate name
+    if (!name) {
+      formErrorsObject[FieldKey.Name] = ChildFormComponent.childFormErrorMessages.name
+    }
+
+    // validate dob
+    if (!dob) {
+      formErrorsObject[FieldKey.Dob] = ChildFormComponent.childFormErrorMessages.dob
+    }
+
+    // validate instrument
+    if (!instrument && !instrumentSelect) {
+      formErrorsObject[FieldKey.Instrument] = ChildFormComponent.childFormErrorMessages.instrument
+    }
+
+    // validate level
+    if (!level) {
+      formErrorsObject[FieldKey.Level] = ChildFormComponent.childFormErrorMessages.level
+    }
+
+    return setFormErrors(formErrorsObject);
+  }
+
+  const handleSubmit = (event): void => {
+    if (event) {
+      event.preventDefault();
+    }
+
+    validate();
+    setAddChild(true);
+  };
+
+  const handleSetInstrument = (value: string) => {
+    if (instrumentSelect) {
+      setInstrumentSelect('');
+    }
+    setInstrument(value)
+  }
 
   return (
     <form>
@@ -113,11 +138,13 @@ export const ChildForm = (props: Props) => {
               fullWidth={true}
               onChange={handleChange}
               value={name}
+              error={!!formErrors.name}
+              helperText={formErrors.name}
             />
           </Grid>
 
           <Grid item={true} xs={12}>
-            <Typography color="primary" className="nabi-margin-top-small">
+            <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
               {ChildFormComponent.Labels.Dob}
             </Typography>
 
@@ -130,16 +157,18 @@ export const ChildForm = (props: Props) => {
                 showYearDropdown={true}
                 dropdownMode="select"
               />
+              {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
             </FormControl>
           </Grid>
-          <Typography color="primary" className="nabi-margin-top-small">Instrument</Typography>
+          <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
           <Grid item={true} xs={12}>
             <Grid container={true} spacing={1}>
               {ChildFormComponent.instrumentChips.map((item) => {
                 return <Grid item={true} xs={6} md={4} key={item.value}>
                   <Chip
                     className="nabi-full-width"
-                    onClick={() => setInstrument(item.value)}
+                    onClick={() => handleSetInstrument(item.value)
+                    }
                     color={item.value === instrument ? "primary" : 'default'}
                     // icon={icon}
                     label={item.label}
@@ -148,9 +177,24 @@ export const ChildForm = (props: Props) => {
                   />
                 </Grid>
               })}
+              <Grid item={true} xs={6} md={4}>
+                <FormControl fullWidth={true} className="nabi-margin-remove">
+                  <Select
+                    native={true}
+                    input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
+                    value={instrumentSelect}
+                    onChange={handleChange}
+                    className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
+                  >
+                    <option value="" disabled={true}>{ChildFormComponent.Placeholders.Instrument}</option>
+                    {instrumentSelectItems}
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
+            {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
           </Grid>
-          <Typography color="primary" className="nabi-margin-top-small">Level</Typography>
+          <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
           <Grid container={true} spacing={1}>
               {ChildFormComponent.levelChips.map((item) => {
                 return <Grid item={true} xs={4} key={item.value}>
@@ -166,11 +210,13 @@ export const ChildForm = (props: Props) => {
                 </Grid>
               })}
             </Grid>
+          {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
         </Grid>
           <Button
             color="primary"
             className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
             variant="contained"
+            onClick={handleSubmit}
           >
             Save
           </Button>
@@ -180,38 +226,4 @@ export const ChildForm = (props: Props) => {
   )
 }
 
-function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
-  const {
-    user,
-    actions: {
-      fetchUser: {
-        isRequesting: isRequestingFetch,
-      },
-      updateUser: {
-        isRequesting: isRequestingUpdate,
-        error: errorUpdate
-      },
-      uploadAvatar: {
-        message: updateAvatarMessage
-      }
-    },
-  } = state.user;
-
-  return {
-    user,
-    isRequestingFetch,
-    isRequestingUpdate,
-    errorUpdate,
-    updateAvatarMessage
-  };
-}
-
-const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
-): DispatchProps => ({
-  fetchUser: () => dispatch(fetchUser()),
-  requestToken: (phoneNumber: string, channel: VerificationChannel) =>
-    dispatch(requestToken(phoneNumber, channel)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChildForm);
+export default ChildForm;
