@@ -43,7 +43,7 @@ const LessonCard: React.StatelessComponent<Props> = props => {
           color="primary"
           className="nabi-responsive-button"
           onClick={gradeLesson}
-          disabled={!props.lesson.lessonsRemaining}
+          disabled={!props.lesson.lessonsRemaining || (props.lesson.lastLessonId === null)}
         >
           {constants.gradeLessonButton}
         </Button>

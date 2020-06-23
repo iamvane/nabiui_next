@@ -147,6 +147,7 @@ export const GradeLesson = (props: Props) => {
                 fullWidth={true}
                 rows={6}
                 value={comment}
+                placeholder="Tell them how they did during the lesson, what they should practice for next lesson, or any other tip that will help them improve."
               />
             </Grid>
             <Button
