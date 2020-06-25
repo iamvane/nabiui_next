@@ -100,7 +100,7 @@ export const ParentStudentDashboard = (props: Props) => {
       <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small">
         <SectionTitle text={constants.addRequestSectionTitle} />
         <Typography>
-          {(props.dashboard &&& props.dashboard.bookings) && props.dashboard.bookings.length > 0 || props.dashboard.requests.length > 0 ?
+          {(props.dashboard && props.dashboard.bookings) && props.dashboard.bookings.length > 0 || props.dashboard.requests.length > 0 ?
             constants.addRequestText.withBookingDescription :
             constants.addRequestText.withoutBookingDescription}
           </Typography>
