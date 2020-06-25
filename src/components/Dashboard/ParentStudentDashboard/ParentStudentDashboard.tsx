@@ -23,8 +23,8 @@ interface Props {
 export const ParentStudentDashboard = (props: Props) => {
   return (
     <React.Fragment>
-      {props.dashboard &&
-       props.dashboard.bookings && props.dashboard.bookings.length > 0  &&
+      {(props.dashboard && props.dashboard.bookings) &&
+        props.dashboard.bookings.length > 0 &&
           <div className="nabi-section-widest nabi-background-white nabi-margin-bottom-small">
             <SectionTitle text={constants.studentSectionTitle} />
             {props.dashboard.bookings.map((booking, i) => (
