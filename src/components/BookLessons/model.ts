@@ -22,6 +22,7 @@ export interface BookLessonsData {
 	total?: number;
 	freeTrial?: boolean;
 	virtuosoDiscount?: number;
+	discounts?: number;
 }
 
 export enum LessonStatusType {

@@ -315,6 +315,20 @@ export const BookLessons = (props: Props) => {
                     </Grid>
                   </React.Fragment>
                 }
+                {props.discounts &&
+                  <React.Fragment>
+                    <Grid item={true} xs={7} md={3}>
+                    <Typography className="nabi-text-mediumbold">
+                        {BookLessonsComponent.BookingSummary.Discounts}
+                      </Typography>
+                    </Grid>
+                    <Grid item={true} xs={5} md={7}>
+                      <Typography className="nabi-text-mediumbold">
+                        {String(props.discounts.toFixed(0))}{CommonConstants.percentage}
+                      </Typography>
+                    </Grid>
+                  </React.Fragment>
+                }
                 <Grid item={true} xs={7} md={3}>
                   <Typography color="primary" className="nabi-text-mediumbold nabi-text-uppercase">
                     {BookLessonsComponent.BookingSummary.Total}
@@ -363,6 +377,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     total,
     freeTrial,
     virtuosoDiscount,
+    discounts,
     bookingId,
     actions: {
       bookLessons: {
@@ -407,7 +422,8 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     scheduleLessonsRequesting,
     scheduleLessonsError,
     scheduleLessonsMessage,
-    bookingId
+    bookingId,
+    discounts
   }
 };
 

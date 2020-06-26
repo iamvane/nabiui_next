@@ -59,7 +59,8 @@ export namespace BookLessonsComponent {
     ProcessingFee = 'Processing Fee',
     Total = 'Total:',
     SubTotal = 'Sub Total',
-    VirtuosoDiscount = 'Virtuoso Discount'
+    VirtuosoDiscount = 'Virtuoso Discount',
+    Discounts = 'Discount'
   }
 }
 

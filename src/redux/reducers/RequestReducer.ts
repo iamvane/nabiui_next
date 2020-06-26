@@ -491,6 +491,7 @@ export default function requestsReducer(
         total: chooseLessonsData.total,
         freeTrial: chooseLessonsData.freeTrial,
         virtuosoDiscount: chooseLessonsData.virtuosoDiscount,
+        discounts: chooseLessonsData.discounts,
         actions: {
           ...state.actions,
           chooseLessonsPackage: {
