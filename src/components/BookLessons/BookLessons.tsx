@@ -29,6 +29,9 @@ import {
   chooseLessonPackage,
   scheduleLessons
 } from "../../redux/actions/RequestActions";
+import {
+  fetchTimezones
+} from '../../redux/actions/TimezonesActions';
 import { CommonConstants } from '../common/constants/common';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import SnackBar from '../common/SnackBar';
@@ -57,6 +60,7 @@ interface StateProps extends BookLessonsData {
   scheduleLessonsError: string;
   scheduleLessonsMessage: string;
   bookingId: number;
+  timezones: object[];
 }
 
 interface DispatchProps {
@@ -64,6 +68,7 @@ interface DispatchProps {
   fetchBookLessonsData: (id: number) => void;
   chooseLessonPackage: (packageName: string, applicationId: number) => void;
   scheduleLessons: (data: Partial<LessonType>) => void;
+  fetchTimezones: () => void;
 }
 
 interface OwnProps { }
@@ -90,6 +95,7 @@ export const BookLessons = (props: Props) => {
     const fetchData = async () => {
       if (applicationId) {
         await props.fetchBookLessonsData(applicationId);
+        await props.fetchTimezones();
       }
     };
     fetchData();
@@ -148,7 +154,7 @@ export const BookLessons = (props: Props) => {
       <PageTitle pageTitle={props.freeTrial ? BookLessonsComponent.pageTitleTrial : BookLessonsComponent.pageTitle} />
       <div className="nabi-section nabi-background-white">
         {props.bookLessonsMessage ?
-          <ScheduleLessons scheduleLessons={scheduleLessons} bookingId={props.bookingId} />
+          <ScheduleLessons scheduleLessons={scheduleLessons} bookingId={props.bookingId} timezones={props.timezones} />
           :
           <React.Fragment>
             {props.freeTrial ?
@@ -401,10 +407,14 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     }
   } = state.requests;
 
+  const {
+    timezones
+  } = state.timezones;
+
   return {
     bookLessonsRequesting,
     bookLessonsError,
-    bookLessonsMessage,
+    bookLessonsMessage: 'foo',
     bookLessonsDataRequesting,
     bookLessonsDataError,
     clientSecret,
@@ -423,7 +433,8 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     scheduleLessonsError,
     scheduleLessonsMessage,
     bookingId,
-    discounts
+    discounts,
+    timezones
   }
 };
 
@@ -433,7 +444,8 @@ const mapDispatchToProps = (
   bookLessons: (data: BookLessonsPayload) => dispatch(bookLessons(data)),
   fetchBookLessonsData: (id: number) => dispatch(fetchBookLessonsData(id)),
   chooseLessonPackage: (packageName: string, applicationId: number) => dispatch(chooseLessonPackage(packageName, applicationId)),
-  scheduleLessons: (data: Partial<LessonType>) => dispatch(scheduleLessons(data))
+  scheduleLessons: (data: Partial<LessonType>) => dispatch(scheduleLessons(data)),
+  fetchTimezones: () => dispatch(fetchTimezones())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookLessons);
