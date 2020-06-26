@@ -205,7 +205,7 @@ export const fetchBookLessonsData = (id: number): ThunkAction<Promise<void>, {},
 ) => {
   dispatch(requestAction(RequestActions.FETCH_BOOK_LESSONS_DATA));
   try {
-    const response = await axios.get(`${ApiEndpoints.bookLessonsData}${id}`, {
+    const response = await axios.get(`${ApiEndpoints.bookLessonsData}${id}/`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
     dispatch(withDataAction(RequestActions.FETCH_BOOK_LESSONS_DATA_SUCCESS, response.data));
