@@ -414,7 +414,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
   return {
     bookLessonsRequesting,
     bookLessonsError,
-    bookLessonsMessage: 'foo',
+    bookLessonsMessage,
     bookLessonsDataRequesting,
     bookLessonsDataError,
     clientSecret,
