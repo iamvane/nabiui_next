@@ -34,15 +34,17 @@ import {
   fetchStudents,
   deleteStudent
 } from '../../redux/actions/RequestActions';
+import { getCookie } from '../../utils/cookies';
 import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
 import PhoneValidation from '../AccountInfo/PhoneValidation';
 import PageTitle from '../common/PageTitle';
 import { VerificationChannel } from '../AccountInfo/models';
 import { Routes } from '../common/constants/Routes';
+import { Role } from '../../constants/Roles';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 import { LessonDetailsComponent } from './constants';
-import ChildForm from './ChildForm';
+import StudentForm from './StudentForm';
 
 interface DispatchProps {
   createStudent: (student: StudentDetailsType) => void;
@@ -75,6 +77,10 @@ interface Props extends
 export const LessonDetails = (props: Props) => {
   const [showForm, setShowForm] = React.useState(false);
   const [students, setStudents] = React.useState([] as StudentDetailsType[]);
+  const [lessonDate, setLessonDate] = React.useState('');
+  const [lessonTime, setLessonTime] = React.useState('');
+  const [timezone, setTimezone] = React.useState('');
+  
   React.useEffect(() => {
     //get students
     const fetchData = async () => {
@@ -94,9 +100,20 @@ export const LessonDetails = (props: Props) => {
     await props.createStudent(student);
   }
 
+  const deleteStudent = async (id) => {
+    await props.deleteStudent(id);
+  }
+
+  const role = getCookie('role');
+
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
-      <PageTitle pageTitle={LessonDetailsComponent.pageTitle} />
+      <PageTitle
+        pageTitle={role === Role.parent ?
+          LessonDetailsComponent.pageTitleParent :
+          LessonDetailsComponent.pageTitleStudent
+        }
+      />
       <div className="nabi-section nabi-background-white">
         {(students.length > 0) ?
           students.map((item, i) => (
@@ -112,7 +129,7 @@ export const LessonDetails = (props: Props) => {
                   <Delete
                   style={{ color: '#ffffff' }}
                   className="nabi-float-right nabi-cursor-pointer"
-                  onClick={() => props.deleteStudent(item.id)}
+                  onClick={() => deleteStudent(item.id)}
                   />
                 </Grid>
               </Grid>
@@ -120,25 +137,30 @@ export const LessonDetails = (props: Props) => {
           ))
         :''
       }
-        {!showForm ?
+      {role === Role.parent &&
+        (!showForm ?
           props.isAddingStudent ?
           <CircularProgress /> :
           <Button
-            // variant="contained"
             color="primary"
-            // className={classes.button}
             onClick={()  => setShowForm(true)}
             startIcon={<Icon color="primary">add_circle</Icon>}
           >
             Add Child
           </Button> :
-        <ChildForm closeForm={() => setShowForm(false)} addChild={addStudent} />}
+        <StudentForm closeForm={() => setShowForm(false)} addChild={addStudent} role={role} />
+        )}
+      {
+        role === Role.student && <StudentForm closeForm={() => setShowForm(false)} addChild={addStudent} role={role} />
+      }
       </div>
-      <div className="nabi-text-right">
-        <Button color="primary" variant="contained" className="nabi-margin-top-small">
-          Next
-        </Button>
-      </div>
+      {role === Role.student || (role === Role.parent && students.length > 0) &&
+        <div className="nabi-text-right">
+          <Button color="primary" variant="contained" className="nabi-margin-top-small">
+            Next
+          </Button>
+        </div>
+      }
     </div>
   )
 }

@@ -63,7 +63,8 @@ export namespace ValidatePhoneComponent {
 }
 
 export namespace LessonDetailsComponent {
-  export const pageTitle = 'Who Is Learning?';
+  export const pageTitleParent = 'Who Is Learning?';
+  export const pageTitleStudent = 'Lesson Details';
   export const nextButton = 'Next';
 
   export enum FieldNames {
@@ -166,5 +167,17 @@ export namespace ChildFormComponent {
     dob: 'Enter date of birth.',
     instrument: 'Select instrument.',
     level: 'Select level.'
+  }
+}
+
+export namespace ScheduleTrialFormComponent {
+  export const pageTitle = 'Schedule Trial';
+  export const pageTitleParent = 'Schedule {studentReplace} Trial';
+  export const studentPlaceholder = '{studentReplace}';
+
+  export interface ScheduleTrialErrors {
+    lessonDate: string;
+    lessonTime: string;
+    timezone: string;
   }
 }

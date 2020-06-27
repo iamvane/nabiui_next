@@ -21,15 +21,17 @@ import {
 import '../../../assets/scss/ChildForm.scss';
 import { instruments } from '../../../assets/data/instruments';
 import { checkErrors } from "../../utils/checkErrors";
+import { Role } from '../../constants/Roles';
 import { ChildFormComponent } from './constants';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 
 interface Props {
   closeForm: () => void;
   addChild: (student: StudentDetailsType) => void;
+  role: string;
 }
 
-export const ChildForm = (props: Props) => {
+export const StudentForm = (props: Props) => {
   const [name, setName] = React.useState('');
   const [dob, setDob] = React.useState('');
   const [instrument, setInstrument] = React.useState('');
@@ -85,14 +87,16 @@ export const ChildForm = (props: Props) => {
     const { FieldKey } = ChildFormComponent;
     const formErrorsObject: ChildFormComponent.ChildFormErrors = {};
 
-    // validate name
-    if (!name) {
-      formErrorsObject[FieldKey.Name] = ChildFormComponent.childFormErrorMessages.name
-    }
+    if (props.role == Role.parent) {
+      // validate name
+      if (!name) {
+        formErrorsObject[FieldKey.Name] = ChildFormComponent.childFormErrorMessages.name
+      }
 
-    // validate dob
-    if (!dob) {
-      formErrorsObject[FieldKey.Dob] = ChildFormComponent.childFormErrorMessages.dob
+      // validate dob
+      if (!dob) {
+        formErrorsObject[FieldKey.Dob] = ChildFormComponent.childFormErrorMessages.dob
+      }
     }
 
     // validate instrument
@@ -129,37 +133,41 @@ export const ChildForm = (props: Props) => {
     <Grid spacing={1} container={true}>
       <Grid item={true} md={6} xs={12}>
         <Grid spacing={1} container={true}>
-          <Grid item={true} xs={12}>
-            <TextField
-              id={ChildFormComponent.Ids.Name}
-              name={ChildFormComponent.FieldNames.Name}
-              placeholder={ChildFormComponent.Placeholders.Name}
-              required={true}
-              fullWidth={true}
-              onChange={handleChange}
-              value={name}
-              error={!!formErrors.name}
-              helperText={formErrors.name}
-            />
-          </Grid>
+          {props.role === Role.parent &&
+            <>
+              <Grid item={true} xs={12}>
+                <TextField
+                  id={ChildFormComponent.Ids.Name}
+                  name={ChildFormComponent.FieldNames.Name}
+                  placeholder={ChildFormComponent.Placeholders.Name}
+                  required={true}
+                  fullWidth={true}
+                  onChange={handleChange}
+                  value={name}
+                  error={!!formErrors.name}
+                  helperText={formErrors.name}
+                />
+              </Grid>
 
-          <Grid item={true} xs={12}>
-            <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
-              {ChildFormComponent.Labels.Dob}
-            </Typography>
+              <Grid item={true} xs={12}>
+                <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
+                  {ChildFormComponent.Labels.Dob}
+                </Typography>
 
-            <FormControl fullWidth={false} required={true}>
-              <DatePicker
-                selected={dob ? moment(new Date(dob)) : moment(Date.now())}
-                onChange={handleBirthdayChange}
-                peekNextMonth={true}
-                showMonthDropdown={true}
-                showYearDropdown={true}
-                dropdownMode="select"
-              />
-              {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
-            </FormControl>
-          </Grid>
+                <FormControl fullWidth={false} required={true}>
+                  <DatePicker
+                    selected={dob ? moment(new Date(dob)) : moment(Date.now())}
+                    onChange={handleBirthdayChange}
+                    peekNextMonth={true}
+                    showMonthDropdown={true}
+                    showYearDropdown={true}
+                    dropdownMode="select"
+                  />
+                  {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
+                </FormControl>
+              </Grid>
+            </>
+          }
           <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
           <Grid item={true} xs={12}>
             <Grid container={true} spacing={1}>
@@ -226,4 +234,4 @@ export const ChildForm = (props: Props) => {
   )
 }
 
-export default ChildForm;
+export default StudentForm;
