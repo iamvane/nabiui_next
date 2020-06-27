@@ -14,7 +14,6 @@ interface Props {
   errors: ScheduleTrialFormComponent.ScheduleTrialErrors;
 }
 
-
 export const ScheduleLessonForm = (props: Props) => {
   return (
     <div>

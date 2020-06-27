@@ -45,6 +45,7 @@ import { Role } from '../../constants/Roles';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 import { LessonDetailsComponent } from './constants';
 import StudentForm from './StudentForm';
+import ScheduleLessonForm from './ScheduleLessonForm';
 
 interface DispatchProps {
   createStudent: (student: StudentDetailsType) => void;
@@ -80,7 +81,7 @@ export const LessonDetails = (props: Props) => {
   const [lessonDate, setLessonDate] = React.useState('');
   const [lessonTime, setLessonTime] = React.useState('');
   const [timezone, setTimezone] = React.useState('');
-  
+
   React.useEffect(() => {
     //get students
     const fetchData = async () => {
@@ -161,6 +162,8 @@ export const LessonDetails = (props: Props) => {
           </Button>
         </div>
       }
+      {/* <ScheduleLessonForm 
+      /> */}
     </div>
   )
 }
