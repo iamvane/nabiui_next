@@ -1,17 +1,19 @@
+import moment from 'moment';
 import { ListItem } from '@material-ui/core';
-import { ScheduleTrialFormComponent } from './constants';
+import { Timezone } from '../../redux/models/TimeZonesModel';
 import LessonTime from '../ScheduleLessons/LessonTime';
 import LessonDate from '../ScheduleLessons/LessonDate';
-import Timezone from '../ScheduleLessons/TimeZone';
+import TimezoneSelect from '../ScheduleLessons/TimeZone';
+import { ScheduleTrialFormComponent } from './constants';
 
 interface Props {
   lessonDate: string;
   lessonTime: string;
   timezone: string;
-  timezones: [];
-  handleChange: () => void;
-  handleDateChange: () => void;
-  errors: ScheduleTrialFormComponent.ScheduleTrialErrors;
+  timezones: Timezone[];
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleDateChange: (date: moment.Moment) => void;
+  errors: ScheduleTrialFormComponent.FormErrors;
 }
 
 export const ScheduleLessonForm = (props: Props) => {
@@ -21,7 +23,7 @@ export const ScheduleLessonForm = (props: Props) => {
         <LessonDate
           lessonDate={props.lessonDate}
           handleDateChange={props.handleDateChange}
-          error={props.errors.lessonDate}
+          error={props.errors.date}
         />
       </ListItem>
 
@@ -29,12 +31,12 @@ export const ScheduleLessonForm = (props: Props) => {
         <LessonTime
           lessonTime={props.lessonTime}
           handleChange={props.handleChange}
-          error={props.errors.lessonTime}
+          error={props.errors.time}
         />
       </ListItem>
 
       <ListItem>
-        <Timezone
+        <TimezoneSelect
           timezone={props.timezone}
           handleChange={props.handleChange}
           timezones={props.timezones}

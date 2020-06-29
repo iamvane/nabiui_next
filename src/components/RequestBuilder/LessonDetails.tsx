@@ -34,8 +34,10 @@ import {
   fetchStudents,
   deleteStudent
 } from '../../redux/actions/RequestActions';
+import { fetchTimezones } from '../../redux/actions/TimezonesActions';
 import { getCookie } from '../../utils/cookies';
 import { UserType } from '../../redux/models/UserModel';
+import { Timezone } from '../../redux/models/TimeZonesModel';
 import { StoreState } from '../../redux/reducers/store';
 import PhoneValidation from '../AccountInfo/PhoneValidation';
 import PageTitle from '../common/PageTitle';
@@ -43,7 +45,10 @@ import { VerificationChannel } from '../AccountInfo/models';
 import { Routes } from '../common/constants/Routes';
 import { Role } from '../../constants/Roles';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
-import { LessonDetailsComponent } from './constants';
+import {
+  LessonDetailsComponent,
+  ScheduleTrialFormComponent
+} from './constants';
 import StudentForm from './StudentForm';
 import ScheduleLessonForm from './ScheduleLessonForm';
 
@@ -51,6 +56,7 @@ interface DispatchProps {
   createStudent: (student: StudentDetailsType) => void;
   fetchStudents: () => void;
   deleteStudent: (id: number) => void;
+  fetchTimezones: () => void;
 }
 
 interface OwnProps {
@@ -65,6 +71,7 @@ interface StateProps {
   deleteError: string;
   addError: string;
   students: StudentDetailsType[];
+  timezones: Timezone[];
 }
 
 interface Props extends
@@ -81,6 +88,7 @@ export const LessonDetails = (props: Props) => {
   const [lessonDate, setLessonDate] = React.useState('');
   const [lessonTime, setLessonTime] = React.useState('');
   const [timezone, setTimezone] = React.useState('');
+  const [scheduleErrors, setScheduleErrors] = React.useState({} as ScheduleTrialFormComponent.FormErrors)
 
   React.useEffect(() => {
     //get students
@@ -96,6 +104,57 @@ export const LessonDetails = (props: Props) => {
       setStudents(props.students)
     }
   },[props.students])
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.currentTarget;
+    const value = target.value;
+    const name = target.name;
+
+    if (name === ScheduleTrialFormComponent.FieldNames.LessonTime) {
+      setLessonTime(value);
+      setScheduleErrors({
+        ...scheduleErrors,
+        time: ''
+      });
+    } else if (name === ScheduleTrialFormComponent.FieldNames.UserTimezone) {
+      setTimezone(value);
+      setScheduleErrors({
+        ...scheduleErrors,
+        timezone: ''
+      });
+    }
+  }
+
+  const handleLessonDateChange = (date: moment.Moment): void => {
+    setLessonDate(String(date));
+  };
+
+  const validate = () => {
+    const { FieldKey } = ScheduleTrialFormComponent
+
+    const formErrors: ScheduleTrialFormComponent.FormErrors = {
+      date: "",
+      time: "",
+      timezone: ""
+    };
+
+    // Validate date
+    if (!lessonDate) {
+      formErrors[FieldKey.LessonDate] = ScheduleTrialFormComponent.ErrorMessages.LessonDate;
+    }
+
+    // Validate time
+    if (!lessonTime) {
+      formErrors[FieldKey.LessonTime] = ScheduleTrialFormComponent.ErrorMessages.LessonTime;
+    }
+
+    // Validate timezone
+    if (!timezone) {
+      formErrors[FieldKey.UserTimezone] =
+      ScheduleTrialFormComponent.ErrorMessages.UserTimezone;
+    }
+    return formErrors;
+  };
 
   const addStudent = async (student) => {
     await props.createStudent(student);
@@ -162,8 +221,15 @@ export const LessonDetails = (props: Props) => {
           </Button>
         </div>
       }
-      {/* <ScheduleLessonForm 
-      /> */}
+      <ScheduleLessonForm
+        lessonDate={lessonDate}
+        lessonTime={lessonTime}
+        timezone={timezone}
+        timezones={props.timezones}
+        handleChange={handleChange}
+        handleDateChange={handleLessonDateChange}
+        errors={scheduleErrors}
+      />
     </div>
   )
 }
@@ -187,6 +253,9 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     },
   } = state.requests;
 
+  const {
+    timezones
+  } = state.timezones;
   return {
     isFetchingStudents,
     fetchError,
@@ -194,7 +263,8 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     addError,
     isDeletingStudent,
     deleteError,
-    students
+    students,
+    timezones
   };
 }
 
@@ -203,7 +273,8 @@ const mapDispatchToProps = (
 ): DispatchProps => ({
   createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
   fetchStudents: () => dispatch(fetchStudents()),
-  deleteStudent: (id: number) => dispatch(deleteStudent(id))
+  deleteStudent: (id: number) => dispatch(deleteStudent(id)),
+  fetchTimezones: () => dispatch(fetchTimezones())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LessonDetails);

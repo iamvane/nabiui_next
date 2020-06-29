@@ -23,7 +23,7 @@ interface OwnProps {
   timezones?: Timezone[];
 }
 
-const TimeZone = (props: OwnProps) => {
+const TimezoneSelect = (props: OwnProps) => {
   const {
     error,
     timezone,
@@ -59,4 +59,4 @@ const TimeZone = (props: OwnProps) => {
   )
 }
 
-export default TimeZone;
+export default TimezoneSelect;

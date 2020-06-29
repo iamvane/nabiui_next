@@ -175,9 +175,39 @@ export namespace ScheduleTrialFormComponent {
   export const pageTitleParent = 'Schedule {studentReplace} Trial';
   export const studentPlaceholder = '{studentReplace}';
 
-  export interface ScheduleTrialErrors {
-    lessonDate: string;
-    lessonTime: string;
-    timezone: string;
+  export enum Placeholders {
+    LessonDate = 'Lesson date',
+    LessonTime = 'Lesson time',
+    UserTimezone = 'Timezone',
+  }
+
+  export enum FieldNames {
+    LessonDate = 'date',
+    LessonTime = 'time',
+    UserTimezone = 'timezone',
+  }
+
+  export enum FieldKey {
+    LessonDate = 'date',
+    LessonTime = 'time',
+    UserTimezone = 'timezone',
+  }
+
+  export enum Ids {
+    LessonDate = 'date',
+    LessonTime = 'time',
+    UserTimezone = 'timezone',
+  }
+
+  export interface FormErrors {
+    [FieldKey.LessonDate]?: string;
+    [FieldKey.LessonTime]?: string;
+    [FieldKey.UserTimezone]?: string;
+  }
+
+  export enum ErrorMessages {
+    LessonDate = 'Enter lesson date.',
+    LessonTime = 'Enter lesson time.',
+    UserTimezone = 'Select timezone.',
   }
 }

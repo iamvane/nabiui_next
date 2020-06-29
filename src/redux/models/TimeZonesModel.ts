@@ -1,7 +1,13 @@
 import { ActionStatus } from "./models";
 
+export interface Timezone {
+  name: string;
+  offset: string;
+  [x: string]: string;
+}
+
 export interface TimezonesState {
-  timezones?: object[];
+  timezones?: Timezone[];
   actions: {
     fetchTimezones: ActionStatus;
   };
