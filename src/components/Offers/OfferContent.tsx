@@ -25,7 +25,6 @@ const OfferContent = (props: Props) => {
           <div className="special-offer">
             <Typography className="nabi-color-white nabi-text-semibold">
               {content}.{" "}
-              {"Expires 06/28/20 at 11:59pm."}
               {/* {OfferContentComponent.expire
                 .replace(OfferContentComponent.daysPlaceholder, daysValue)
                 .replace(OfferContentComponent.hoursPlaceholder, hours)
