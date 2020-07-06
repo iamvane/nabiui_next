@@ -5,6 +5,7 @@ import {
 import * as _ from "lodash";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Router from "next/router";
 
 import {
   Button,
@@ -12,7 +13,6 @@ import {
   FormControl,
   FormHelperText,
   Grid,
-  Icon,
   Input,
   Select,
   TextField,
@@ -24,9 +24,9 @@ import { checkErrors } from "../../utils/checkErrors";
 import { Role } from '../../constants/Roles';
 import { ChildFormComponent } from './constants';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
+import { Routes } from '../common/constants/Routes';
 
 interface Props {
-  closeForm: () => void;
   addChild: (student: StudentDetailsType) => void;
   role: string;
 }
@@ -61,7 +61,6 @@ export const StudentForm = (props: Props) => {
         lessonDuration: '30 mins'
       }
       props.addChild(childToAdd);
-      props.closeForm();
     }
   }, [addChild]);
 
@@ -118,7 +117,8 @@ export const StudentForm = (props: Props) => {
     }
 
     validate();
-    setAddChild(true);
+    Router.push(Routes.ScheduleTrial + Routes.ChooseInstructor)
+    // setAddChild(true);
   };
 
   const handleSetInstrument = (value: string) => {
@@ -131,10 +131,10 @@ export const StudentForm = (props: Props) => {
   return (
     <form>
     <Grid spacing={1} container={true}>
-      <Grid item={true} md={6} xs={12}>
+      <Grid item={true} xs={12}>
         <Grid spacing={1} container={true}>
           {props.role === Role.parent &&
-            <>
+            <Grid spacing={1} container={true}>
               <Grid item={true} xs={12}>
                 <TextField
                   id={ChildFormComponent.Ids.Name}
@@ -166,7 +166,7 @@ export const StudentForm = (props: Props) => {
                   {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
                 </FormControl>
               </Grid>
-            </>
+            </Grid>
           }
           <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
           <Grid item={true} xs={12}>
@@ -220,14 +220,16 @@ export const StudentForm = (props: Props) => {
             </Grid>
           {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
         </Grid>
-          <Button
-            color="primary"
-            className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
-            variant="contained"
-            onClick={handleSubmit}
-          >
-            Save
-          </Button>
+          <div className="nabi-text-right">
+            <Button
+              color="primary"
+              className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+              variant="contained"
+              onClick={handleSubmit}
+            >
+              Next
+            </Button>
+          </div>
         </Grid>
       </Grid>
     </form>

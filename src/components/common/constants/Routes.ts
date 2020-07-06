@@ -46,9 +46,11 @@ export enum Routes {
   Referrals = '/referrals',
   RegistrationLanding = '/registration-landing',
   ScheduleTrial = '/schedule-trial',
+  ScheduleLesson = '/schedule-lesson',
   ValidatePhone = '/validate-phone',
   SpecifyGender = '/specify-gender',
-  LessonDetails = '/lesson-details'
+  LessonDetails = '/lesson-details',
+  ChooseInstructor = '/choose-instructor'
 }
 
 export enum SocialLinks {
