@@ -6,8 +6,8 @@ export namespace FooterComponent {
   export const vettingProcess = 'How We Screen Instructors';
 
   export const helpSection = 'Need Help?';
-  export const faqsParents = 'Parents & Students FAQ\s';
-  export const faqsInstructors = 'Instructors FAQ\s';
+  export const faqsParents = 'Parents & Students FAQ\'s';
+  export const faqsInstructors = 'Instructors FAQ\'s';
   export const ContactUs = 'Contact Us';
 
   export const aboutSection = 'About Nabi';

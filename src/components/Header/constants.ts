@@ -23,7 +23,7 @@ export const studentParentMenuLabels = {
 
 export const instructorMenuLabels  = {
   howItWorks: 'How It Works',
-  faqs: 'FAQ\s',
+  faqs: 'FAQ\'s',
   features: 'Features',
   start: 'Start Teaching'
 };

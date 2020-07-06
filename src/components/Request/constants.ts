@@ -178,7 +178,7 @@ export namespace RequestFormComponent {
   export const studentPlaceholder = '{studentPlaceholder}';
 
   /* tslint:disable-next-line */
-  export const studentDescription = 'You can add a single student for indivudial lessons, or multiple students for group lessons.'
+  export const studentDescription = 'You can add a single student for individual lessons, or multiple students for group lessons.'
 
   export enum ButtonText {
     AddAnotherRequest = 'Add Another Request',

@@ -178,10 +178,7 @@ export const StudentForm = (props: Props) => {
                     onClick={() => handleSetInstrument(item.value)
                     }
                     color={item.value === instrument ? "primary" : 'default'}
-                    // icon={icon}
                     label={item.label}
-                    // onDelete={data.label === 'React' ? undefined : handleDelete(data)}
-                    // className={classes.chip}
                   />
                 </Grid>
               })}
@@ -210,10 +207,7 @@ export const StudentForm = (props: Props) => {
                     className="nabi-full-width level-chips"
                     onClick={() => setLevel(item.value)}
                     color={item.value === level ? "primary" : 'default'}
-                    // icon={icon}
                     label={item.label}
-                    // onDelete={data.label === 'React' ? undefined : handleDelete(data)}
-                    // className={classes.chip}
                   />
                 </Grid>
               })}
