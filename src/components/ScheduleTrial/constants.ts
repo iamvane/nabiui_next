@@ -188,3 +188,163 @@ export const instructorsDummuyData = [
     bioTitle: 'Learn piano with the best, me!'
   }
 ];
+
+
+export const instructorAvailabilityDummyData = {
+  timezone: 'Eastern Time (US & Canada)',
+  days: [
+    {
+      name: 'mon',
+      number: '06',
+      availability: {
+        am: {
+          '8:00': true,
+          '9:00': true,
+          '9:30': true,
+        },
+        pm: {
+          '2:00': true,
+          '5:00': true
+        }
+      }
+    },
+    {
+      name: 'tue',
+      number: '07',
+      availability: {
+        am: {
+          '8:00': true,
+          '9:00': true,
+          '9:30': true,
+        },
+        pm: {
+          '2:00': true,
+          '5:00': true
+        }
+      }
+    },
+    {
+      name: 'wed',
+      number: '08',
+      availability: {
+        am: {
+          '8:00': true,
+          '9:00': true,
+          '9:30': true,
+        },
+        pm: {
+          '2:00': true,
+          '5:00': true
+        }
+      }
+    },
+    {
+      name: 'thu',
+      number: '09',
+      availability: {
+        am: {
+          '8:00': true,
+          '9:00': true,
+          '9:30': true,
+        },
+        pm: {
+          '2:00': true,
+          '5:00': true
+        }
+      }
+    },
+    {
+      name: 'fri',
+      number: '10',
+      availability: {
+        am: {
+          '8:00': true,
+          '9:00': true,
+          '9:30': true,
+        },
+        pm: {
+          '2:00': true,
+          '5:00': true
+        }
+      }
+    },
+    {
+      name: 'sat',
+      number: '11',
+      availability: {
+        am: {
+          '8:00': true,
+          '9:00': true,
+          '9:30': true,
+        },
+        pm: {
+          '2:00': true,
+          '5:00': true
+        }
+      }
+    },
+    {
+      name: 'sun',
+      number: '12',
+      availability: {
+        am: {
+          '8:00': true,
+          '9:00': true,
+          '9:30': true,
+        },
+        pm: {
+          '2:00': true,
+          '5:00': true
+        }
+      }
+    }
+  ]
+};
+
+export const parentsStudentboardDummyData = {
+  students: [
+    {
+      id: 0,
+      name: 'Zoe',
+      nextLesson: {
+        date: '',
+        time: '',
+        instructor: '',
+        zoomLink: ''
+      },
+      instrument: '',
+      lessons: [
+        {
+          id: 0,
+          date: '06/24/20 @ 5pm',
+          status: 'scheduled',
+          instructor: 'Bryan P.',
+          instructorId: 243,
+          grade: 3,
+          gradeComment: ''
+
+        },
+        {
+          id: 0,
+          date: '06/24/20 @ 5pm',
+          status: 'scheduled',
+          instructor: 'Bryan P.',
+          instructorId: 243,
+          grade: 3,
+          gradeComment: ''
+
+        },
+        {
+          id: 0,
+          date: '06/24/20 @ 5pm',
+          status: 'scheduled',
+          instructor: 'Bryan P.',
+          instructorId: 243,
+          grade: 3,
+          gradeComment: ''
+
+        }
+      ]
+    },
+  ]
+};

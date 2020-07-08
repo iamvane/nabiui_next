@@ -128,12 +128,13 @@ export const LessonDetails = (props: Props) => {
       <Grid
         item={true}
         xs={12}
-        md={8} className="nabi-section nabi-background-white nabi-margin-center">
-      {
-        props.isAddingStudent ?
-        <CircularProgress /> :
-        <StudentForm addChild={addStudent} role={role} />
-      }
+        md={8} className="nabi-section nabi-background-white nabi-margin-center"
+      >
+        {
+          props.isAddingStudent ?
+          <CircularProgress /> :
+          <StudentForm addChild={addStudent} role={role} />
+        }
       </Grid>
     </div>
   )

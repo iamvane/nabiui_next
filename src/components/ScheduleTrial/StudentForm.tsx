@@ -130,8 +130,7 @@ export const StudentForm = (props: Props) => {
 
   return (
     <form>
-    <Grid spacing={1} container={true}>
-      <Grid item={true} xs={12}>
+    {/* <Grid spacing={1} container={true}> */}
         <Grid spacing={1} container={true}>
           {props.role === Role.parent &&
             <Grid spacing={1} container={true}>
@@ -172,7 +171,7 @@ export const StudentForm = (props: Props) => {
           <Grid item={true} xs={12}>
             <Grid container={true} spacing={1}>
               {ChildFormComponent.instrumentChips.map((item) => {
-                return <Grid item={true} xs={6} md={4} key={item.value}>
+                return <Grid item={true} xs={6} md={12} key={item.value}>
                   <Chip
                     className="nabi-full-width"
                     onClick={() => handleSetInstrument(item.value)
@@ -224,8 +223,7 @@ export const StudentForm = (props: Props) => {
               Next
             </Button>
           </div>
-        </Grid>
-      </Grid>
+      {/* </Grid> */}
     </form>
   )
 }
