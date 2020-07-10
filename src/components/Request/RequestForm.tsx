@@ -93,7 +93,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
 
   const renderTrialSchedule = (
     <>
-      <SectionTitle text={ScheduleLessonsComponent.title} />
+      {/* <SectionTitle text={ScheduleLessonsComponent.title} /> */}
       <ListItem>
         <LessonDate
           lessonDate={props.lessonDate}
