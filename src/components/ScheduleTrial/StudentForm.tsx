@@ -67,8 +67,10 @@ export const StudentForm = (props: Props) => {
         };
       }
 
-      Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial);
       setCookie('studentName', name);
+      setCookie('instrumentName', instrument || instrumentSelect);
+
+      Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial);
       // props.addChild(childToAdd);
     }
   }, [addChild]);

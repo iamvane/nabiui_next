@@ -49,7 +49,6 @@ interface Props extends
     redirectUrl: string;
   }
 
-
 export const ValidatePhone = (props: Props) => {
   React.useEffect(() => {
     //get user

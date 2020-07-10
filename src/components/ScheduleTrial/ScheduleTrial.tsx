@@ -54,26 +54,6 @@ interface Props extends
 
 
 export const ScheduleTrial = (props: Props) => {
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const target = event.currentTarget;
-  //   const value = target.value;
-  //   const name = target.name;
-
-  //   if (name === ScheduleTrialFormComponent.FieldNames.LessonTime) {
-  //     setLessonTime(value);
-  //     setScheduleErrors({
-  //       ...scheduleErrors,
-  //       time: ''
-  //     });
-  //   } else if (name === ScheduleTrialFormComponent.FieldNames.UserTimezone) {
-  //     setTimezone(value);
-  //     setScheduleErrors({
-  //       ...scheduleErrors,
-  //       timezone: ''
-  //     });
-  //   }
-  // }
-
   const role = getCookie('role');
 
   return (

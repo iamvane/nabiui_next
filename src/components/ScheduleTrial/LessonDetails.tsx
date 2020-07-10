@@ -51,12 +51,10 @@ interface Props extends
     redirectUrl: string;
   }
 
-
 export const LessonDetails = (props: Props) => {
   const addStudent = async (student) => {
     await props.createStudent(student);
   }
-
 
   const role = getCookie('role');
 

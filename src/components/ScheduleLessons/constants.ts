@@ -175,9 +175,9 @@ export namespace BookingDetailsComponent {
   export const date = '{dateRepalce} @ {timeReplace}';
   export const datePlaceholder = '{dateRepalce}';
   export const timePlaceholder = '{timeReplace}';
-  export const parentMessage = '{studentName}\' Lesson is Scheduled!';
+  export const parentMessage = '{studentName}\' Lesson is Scheduled';
   export const studentNamePlaceholder = '{studentName}';
-  export const studentMessage = 'Your Lesson is Scheduled!';
+  export const studentMessage = 'Your Lesson is Scheduled';
   export const lessonDuration = '30 mins';
   export const instructorDetails = 'Instructor details provided upon confirmation.'
   export const addChildButton = 'Add Another Child';

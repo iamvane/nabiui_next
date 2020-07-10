@@ -23,7 +23,6 @@ interface Props extends
     handleContinue: (id: number) => void;
   }
 
-
 const displayRatingStars = (reviewsNumber: number) => {
   let ratingStars: JSX.Element[] = [];
   for (let i = 0; i < 5; i++) {

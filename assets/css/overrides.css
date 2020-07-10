@@ -82,10 +82,6 @@
   box-shadow: none !important;
 }
 
-/* .MuiTab-root {
-  border: 1px solid #ebeef1 !important;
-} */
-
 .MuiTab-root.Mui-selected {
   color: #06c3e1;
 }

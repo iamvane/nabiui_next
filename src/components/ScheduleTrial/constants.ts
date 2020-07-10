@@ -195,7 +195,6 @@ export const instructorsDummuyData = [
   }
 ];
 
-
 export const instructorAvailabilityDummyData = {
   timezone: 'Eastern Time (US & Canada)',
   days: [

@@ -103,46 +103,4 @@ export const ChooseInstructor = (props: Props) => {
   )
 }
 
-{/* function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
-  const {
-    students,
-    actions: {
-      fetchStudents: {
-        isRequesting: isFetchingStudents,
-        error: fetchError
-      },
-      createStudent: {
-        isRequesting: isAddingStudent,
-        error: addError
-      },
-      deleteStudent: {
-        isRequesting: isDeletingStudent,
-        error: deleteError
-      }
-    },
-  } = state.requests;
-
-  const {
-    timezones
-  } = state.timezones;
-  return {
-    isFetchingStudents,
-    fetchError,
-    isAddingStudent,
-    addError,
-    isDeletingStudent,
-    deleteError,
-    students,
-    timezones
-  };
-} */}
-
-{/* const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
-): DispatchProps => ({
-  createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
-  fetchTimezones: () => dispatch(fetchTimezones())
-}); */}
-
-{/* export default connect(mapStateToProps, mapDispatchToProps)(LessonDetails); */}
 export default ChooseInstructor;

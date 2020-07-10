@@ -87,10 +87,7 @@ function a11yProps(index: any) {
 export const ScheduleLessons = (props: Props) => {
   const [lessonDate, setLessonDate] = React.useState(moment().add(1, 'days').format("YYYY-MM-DD"));
   const [lessonTime, setLessonTime] = React.useState('');
-  // const [timezone, setTimezone] = React.useState('');
   const [weekday, setWeekday] = React.useState(0);
-
-  // const role = getCookie('role');
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     if (event) event.preventDefault();
@@ -166,7 +163,7 @@ export const ScheduleLessons = (props: Props) => {
     if (event) {
       event.preventDefault();
     }
-    // alert('Your lesson was scheduled! for ' + lessonDate + ' @ ' + lessonTime)
+
     setCookie('lessonDate', lessonDate);
     setCookie('lessonTime', lessonTime);
     Router.push(Routes.ScheduleTrial + Routes.TrialConfirmation);

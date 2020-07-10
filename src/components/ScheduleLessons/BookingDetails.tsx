@@ -9,7 +9,9 @@ import {
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import Schedule from '@material-ui/icons/Schedule';
 import Face from '@material-ui/icons/Face';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
+import { instruments } from '../../../assets/data/instruments';
 import { getCookie } from "../../utils/cookies";
 import PageTitle from '../common/PageTitle';
 import { Routes } from '../common/constants/Routes';
@@ -29,6 +31,7 @@ export const BookingDetails = (props: Props) => {
 
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
   const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mA");
+  const instrumentDisplay = instruments.find(t => t.value === getCookie('instrumentName'));
 
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
@@ -49,19 +52,27 @@ export const BookingDetails = (props: Props) => {
         </p>
         <div>
           <DateRangeIcon className="text-aligned-icon" color="primary" />
-          <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
+          <Typography className="nabi-display-inline nabi-margin-left-xsmall">
             {lessonDate} @ {lessonTime}
           </Typography>
         </div>
         <div>
           <Schedule className="text-aligned-icon" color="primary" />
-          <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
+          <Typography className="nabi-display-inline nabi-margin-left-xsmall">
             {BookingDetailsComponent.lessonDuration}
           </Typography>
         </div>
+        {instrumentDisplay && instrumentDisplay.name ?
+          <div>
+            <MusicNoteIcon className="text-aligned-icon" color="primary" />
+            <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+              {instrumentDisplay.name}
+            </Typography>
+          </div>
+        : ''}
         <div>
           <Face className="text-aligned-icon" color="primary" />
-          <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
+          <Typography className="nabi-display-inline nabi-margin-left-xsmall">
             {BookingDetailsComponent.instructorDetails}
           </Typography>
         </div>
