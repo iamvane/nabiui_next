@@ -10,14 +10,14 @@ import { ScheduleLessonsComponent } from './constants';
 
 interface OwnProps {
   handleChange: (event: React.FormEvent<{}>) => void;
-  errors?: ScheduleLessonsComponent.FormErrors;
+  error?: string;
   lessonTime: string;
 }
 
 const LessonTime = (props: OwnProps) => {
   const {
     handleChange,
-    errors,
+    error,
     lessonTime
   } = props;
   return (

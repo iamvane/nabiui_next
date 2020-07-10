@@ -14,6 +14,51 @@ export default function requestsReducer(
   action: AnyAction
 ): RequestState {
   switch (action.type) {
+    case RequestActions.CREATE_STUDENT:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          createStudent: {
+            ...state.actions.createStudent,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.CREATE_STUDENT_SUCCESS:
+      const { data: createStudent } = <APIActions.WithData<Partial<RequestType>>>action;
+      return {
+        ...state,
+        students: [
+          ...state.students,
+          createStudent
+        ],
+        actions: {
+          ...state.actions,
+          createStudent: {
+            ...state.actions.createStudent,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.CREATE_STUDENT_FAILURE:
+      const { error: createStudentError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          createStudent: {
+            isRequesting: false,
+            error: createStudentError
+          }
+        }
+      };
+
     case RequestActions.CREATE_REQUEST:
       return {
         ...state,
@@ -552,6 +597,93 @@ export default function requestsReducer(
             isRequesting: false,
             error: scheduleLessonsError,
             message: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_STUDENTS:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchStudents: {
+            ...state.actions.fetchStudents,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.FETCH_STUDENTS_SUCCESS:
+      const { data: studentsData } = action;
+      return {
+        ...state,
+        students: studentsData,
+        actions: {
+          ...state.actions,
+          fetchStudents: {
+            ...state.actions.fetchStudents,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_STUDENTS_FAILURE:
+      const { error: fetchStudentsError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchStudents: {
+            isRequesting: false,
+            error: fetchStudentsError
+          }
+        }
+      };
+
+    case RequestActions.DELETE_STUDENT:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          deleteStudent: {
+            ...state.actions.deleteStudent,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.DELETE_STUDENT_SUCCESS:
+      const { data: studentDeleteData } = action;
+      const deletedStudent = state.students.filter((student) => {
+        return student.id !== studentDeleteData.id;
+      })
+      return {
+        ...state,
+        students: deletedStudent,
+        actions: {
+          ...state.actions,
+          deleteStudent: {
+            ...state.actions.deleteStudent,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.DELETE_STUDENT_FAILURE:
+      const { error: deleteStudentError } = <APIActions.WithError<string>>(
+        action
+      );
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          deleteStudent: {
+            isRequesting: false,
+            error: deleteStudentError
           }
         }
       };

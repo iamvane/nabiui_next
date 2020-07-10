@@ -51,7 +51,6 @@ interface Props extends
   DispatchProps,
   StateProps,
   OwnProps {
-    hasImageUploader?: boolean;
     redirectUrl: string;
   }
 

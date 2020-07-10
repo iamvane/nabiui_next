@@ -55,5 +55,4 @@ export namespace PreLaunchStudentDetailsComponent {
   export const buttonText = 'Continue';
   export const addChildButton = 'Add Child';
   export const removeChildButton = 'Remove Child';
-
 }

@@ -198,11 +198,11 @@ export namespace InstructorCardComponent {
 
   export enum Text {
     Age =  'Age',
-    StartAt = 'Start At',
+    StartAt = 'Rate per lesson',
     ViewMore = '...View More',
     ViewLess = 'View Less',
     LessonRatePlaceholder = '{LessonRate}',
-    LessonRate = '{LessonRate}/lesson',
+    LessonRate = '${LessonRate}',
     LastLogin = 'Last Login:',
     LessonsTaught = 'Lessons Taught:',
     MemberSince = 'Member Since:',

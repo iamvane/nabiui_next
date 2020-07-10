@@ -146,7 +146,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
   const renderEnterToken = (): JSX.Element => (
     <div>
       <Grid container={true} spacing={0}>
-        <Grid item={true} xs={7} md={!props.isEditing ? 4 : 5} className="nabi-margin-right-xsmall-md">
+        <Grid item={true} xs={12} md={!props.isEditing ? 4 : 5} className="nabi-margin-right-xsmall-md">
           <TextField
             fullWidth={true}
             margin="normal"

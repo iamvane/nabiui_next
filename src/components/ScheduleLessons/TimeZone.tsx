@@ -18,14 +18,14 @@ interface Timezone {
 }
 interface OwnProps {
   handleChange: (event: React.FormEvent<{}>) => void;
-  errors?: ScheduleLessonsComponent.FormErrors;
+  error?: string;
   timezone: string;
   timezones?: Timezone[];
 }
 
-const TimeZone = (props: OwnProps) => {
+const TimezoneSelect = (props: OwnProps) => {
   const {
-    errors,
+    error,
     timezone,
     handleChange,
     timezones
@@ -59,4 +59,4 @@ const TimeZone = (props: OwnProps) => {
   )
 }
 
-export default TimeZone;
+export default TimezoneSelect;
