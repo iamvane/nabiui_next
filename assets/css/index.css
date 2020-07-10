@@ -917,6 +917,12 @@ li.nabi-list-style-position-inside {
 	z-index: 1;
 }
 
+.text-aligned-icon {
+	position: relative;
+  left: 0px;
+  top: 6px;
+}
+
 /* iPhones(landscape) ----------- */
 @media only screen and (min-width: 375px) {
 	/*Rates*/

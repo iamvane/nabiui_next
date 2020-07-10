@@ -19,6 +19,8 @@ import {
   Typography
 } from '@material-ui/core';
 import '../../../assets/scss/ChildForm.scss';
+
+import { setCookie } from "../../utils/cookies";
 import { instruments } from '../../../assets/data/instruments';
 import { checkErrors } from "../../utils/checkErrors";
 import { Role } from '../../constants/Roles';
@@ -52,17 +54,29 @@ export const StudentForm = (props: Props) => {
       // pass dob when api is ready and remove this
       const age = moment().diff(dob, 'years', false);
 
-      const childToAdd = {
-        name,
+      let childToAdd: StudentDetailsType = {
         instrument: instrument || instrumentSelect,
         skillLevel: level,
-        age: age,
-        lessonPlace: 'online',
-        lessonDuration: '30 mins'
+      };
+
+      if (props.role === Role.parent) {
+        childToAdd = {
+          ...childToAdd,
+          name,
+          age
+        };
       }
-      props.addChild(childToAdd);
+
+      Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial);
+      setCookie('studentName', name);
+      // props.addChild(childToAdd);
     }
   }, [addChild]);
+
+
+  // React.useEffect(() => {
+  //   Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
+  // }, [props.]);
 
   const handleChange = (event) : void => {
     const target = event.currentTarget;
@@ -117,8 +131,7 @@ export const StudentForm = (props: Props) => {
     }
 
     validate();
-    Router.push(Routes.ScheduleTrial + Routes.ChooseInstructor)
-    // setAddChild(true);
+    setAddChild(true);
   };
 
   const handleSetInstrument = (value: string) => {
@@ -130,100 +143,94 @@ export const StudentForm = (props: Props) => {
 
   return (
     <form>
-    {/* <Grid spacing={1} container={true}> */}
+      {props.role === Role.parent &&
         <Grid spacing={1} container={true}>
-          {props.role === Role.parent &&
-            <Grid spacing={1} container={true}>
-              <Grid item={true} xs={12}>
-                <TextField
-                  id={ChildFormComponent.Ids.Name}
-                  name={ChildFormComponent.FieldNames.Name}
-                  placeholder={ChildFormComponent.Placeholders.Name}
-                  required={true}
-                  fullWidth={true}
-                  onChange={handleChange}
-                  value={name}
-                  error={!!formErrors.name}
-                  helperText={formErrors.name}
-                />
-              </Grid>
-
-              <Grid item={true} xs={12}>
-                <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
-                  {ChildFormComponent.Labels.Dob}
-                </Typography>
-
-                <FormControl fullWidth={false} required={true}>
-                  <DatePicker
-                    selected={dob ? moment(new Date(dob)) : moment(Date.now())}
-                    onChange={handleBirthdayChange}
-                    peekNextMonth={true}
-                    showMonthDropdown={true}
-                    showYearDropdown={true}
-                    dropdownMode="select"
-                  />
-                  {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
-                </FormControl>
-              </Grid>
-            </Grid>
-          }
-          <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
           <Grid item={true} xs={12}>
-            <Grid container={true} spacing={1}>
-              {ChildFormComponent.instrumentChips.map((item) => {
-                return <Grid item={true} xs={6} md={12} key={item.value}>
-                  <Chip
-                    className="nabi-full-width"
-                    onClick={() => handleSetInstrument(item.value)
-                    }
-                    color={item.value === instrument ? "primary" : 'default'}
-                    label={item.label}
-                  />
-                </Grid>
-              })}
-              <Grid item={true} xs={6} md={4}>
-                <FormControl fullWidth={true} className="nabi-margin-remove">
-                  <Select
-                    native={true}
-                    input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
-                    value={instrumentSelect}
-                    onChange={handleChange}
-                    className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
-                  >
-                    <option value="" disabled={true}>{ChildFormComponent.Placeholders.Instrument}</option>
-                    {instrumentSelectItems}
-                  </Select>
-                </FormControl>
-              </Grid>
-            </Grid>
-            {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
+            <TextField
+              id={ChildFormComponent.Ids.Name}
+              name={ChildFormComponent.FieldNames.Name}
+              placeholder={ChildFormComponent.Placeholders.Name}
+              required={true}
+              fullWidth={true}
+              onChange={handleChange}
+              value={name}
+              error={!!formErrors.name}
+              helperText={formErrors.name}
+            />
           </Grid>
-          <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
-          <Grid container={true} spacing={1}>
-              {ChildFormComponent.levelChips.map((item) => {
-                return <Grid item={true} xs={4} key={item.value}>
-                  <Chip
-                    className="nabi-full-width level-chips"
-                    onClick={() => setLevel(item.value)}
-                    color={item.value === level ? "primary" : 'default'}
-                    label={item.label}
-                  />
-                </Grid>
-              })}
-            </Grid>
-          {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
+
+          <Grid item={true} xs={12}>
+            <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
+              {ChildFormComponent.Labels.Dob}
+            </Typography>
+
+            <FormControl fullWidth={false} required={true}>
+              <DatePicker
+                selected={dob ? moment(new Date(dob)) : moment(Date.now())}
+                onChange={handleBirthdayChange}
+                peekNextMonth={true}
+                showMonthDropdown={true}
+                showYearDropdown={true}
+                dropdownMode="select"
+              />
+              {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
+            </FormControl>
+          </Grid>
         </Grid>
-          <div className="nabi-text-right">
-            <Button
-              color="primary"
-              className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
-              variant="contained"
-              onClick={handleSubmit}
+      }
+      <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
+      <Grid container={true} spacing={1}>
+        {ChildFormComponent.instrumentChips.map((item) => {
+          return <Grid item={true} xs={6} md={4} key={item.value}>
+            <Chip
+              className="nabi-full-width"
+              onClick={() => handleSetInstrument(item.value)
+              }
+              color={item.value === instrument ? "primary" : 'default'}
+              label={item.label}
+            />
+          </Grid>
+        })}
+        <Grid item={true} xs={6} md={4}>
+          <FormControl fullWidth={true} className="nabi-margin-remove">
+            <Select
+              native={true}
+              input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
+              value={instrumentSelect}
+              onChange={handleChange}
+              className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
             >
-              Next
-            </Button>
-          </div>
-      {/* </Grid> */}
+              <option value="" disabled={true}>{ChildFormComponent.Placeholders.Instrument}</option>
+              {instrumentSelectItems}
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
+      {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
+      <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
+      <Grid container={true} spacing={1}>
+        {ChildFormComponent.levelChips.map((item) => (
+          <Grid item={true} xs={4} key={item.value}>
+            <Chip
+              className="nabi-full-width level-chips"
+              onClick={() => setLevel(item.value)}
+              color={item.value === level ? "primary" : 'default'}
+              label={item.label}
+            />
+          </Grid>
+        ))}
+      </Grid>
+      {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
+      <div className="nabi-text-right">
+        <Button
+          color="primary"
+          className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+          variant="contained"
+          onClick={handleSubmit}
+        >
+          Next
+        </Button>
+      </div>
     </form>
   )
 }

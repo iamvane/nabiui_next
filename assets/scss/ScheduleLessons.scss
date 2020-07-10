@@ -1,0 +1,11 @@
+.time-slots-wrapper {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+@media (min-width: 960px) {
+  .time-slots-wrapper {
+    height: auto;
+    overflow-y: none;
+  }
+}

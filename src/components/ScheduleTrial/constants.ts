@@ -107,9 +107,9 @@ export namespace ChildFormComponent {
   }
 }
 
-export namespace ScheduleTrialFormComponent {
+export namespace ScheduleTrialComponent {
   export const pageTitle = 'Schedule Trial';
-  export const pageTitleParent = 'Schedule {studentReplace} Trial';
+  export const pageTitleParent = 'Schedule {studentReplace}\' Trial';
   export const studentPlaceholder = '{studentReplace}';
 
   export enum Placeholders {
@@ -151,6 +151,12 @@ export namespace ScheduleTrialFormComponent {
 
 export namespace ChooseInstructorComponent {
   export const pageTitle = 'Choose Instructor';
+}
+
+export namespace TrialConfirmationComponent {
+  export const parentMessage = '{studentName} Trial is Scheduled!';
+  export const studentNamePlaceholder = '{studentName}';
+  export const studentMessage = 'Your Trial is Scheduled!';
 }
 
 export const instructorsDummuyData = [

@@ -9,3 +9,10 @@ export interface InstructorCardType {
   avatar: string;
   bioTitle: string;
 }
+
+export interface StudentDetailsType {
+  name?: string;
+  dob?: number;
+  skillLevel: string;
+  instrument: string;
+}

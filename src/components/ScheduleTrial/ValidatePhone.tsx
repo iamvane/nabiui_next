@@ -8,7 +8,10 @@ import {
 } from 'redux';
 import * as _ from "lodash";
 
-import { Button } from '@material-ui/core';
+import {
+  Button,
+  Grid
+} from '@material-ui/core';
 
 import {
   fetchUser,
@@ -67,23 +70,29 @@ export const ValidatePhone = (props: Props) => {
 
   return (
     <div className="nabi-container">
-       <PageTitle pageTitle={ValidatePhoneComponent.pageTitle} />
-      <div className="nabi-section nabi-background-white">
-        <PhoneValidation error="" />
-      </div>
-      {props.user.isPhoneVerified &&
-        <div className="nabi-text-right">
-          <Link href={Routes.BuildRequest + Routes.LessonDetails}>
-            <Button
-              color="primary"
-              className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
-              variant="contained"
-            >
-              {ValidatePhoneComponent.nextButton}
-            </Button>
-          </Link>
+      <PageTitle pageTitle={ValidatePhoneComponent.pageTitle} />
+      <Grid
+        item={true}
+        xs={12}
+        md={8} className="nabi-margin-center"
+      >
+        <div className="nabi-section nabi-background-white">
+          <PhoneValidation error="" />
         </div>
-      }
+        {props.user.isPhoneVerified &&
+          <div className="nabi-text-right">
+            <Link href={Routes.ScheduleTrial + Routes.LessonDetails}>
+              <Button
+                color="primary"
+                className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
+                variant="contained"
+              >
+                {ValidatePhoneComponent.nextButton}
+              </Button>
+            </Link>
+          </div>
+        }
+      </Grid>
     </div>
   )
 }

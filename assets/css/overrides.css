@@ -82,9 +82,9 @@
   box-shadow: none !important;
 }
 
-.MuiTab-root {
+/* .MuiTab-root {
   border: 1px solid #ebeef1 !important;
-}
+} */
 
 .MuiTab-root.Mui-selected {
   color: #06c3e1;
@@ -92,6 +92,12 @@
 
 .MuiTabs-indicator {
   background-color: #06c3e1 !important;
+}
+
+.MuiTabs-root {
+  overflow: hidden;
+  background-color: #f3f6f9;
+  border-bottom: 1px solid #ebeef1 !important;
 }
 
 .MuiTab-root {
@@ -111,7 +117,7 @@
 
 .MuiChip-root {
   color: #717a8a !important;
-  padding: 26px 18px !important;
+  padding: 26px 0px !important;
   background: #f3f6f9 !important;
   border-radius: 4px !important;
   font-size: 0.875rem !important;

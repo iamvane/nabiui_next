@@ -21,8 +21,9 @@ import { Role } from '../../constants/Roles';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 import {
   LessonDetailsComponent,
+  ScheduleTrialComponent
 } from './constants';
-import StudentForm from './StudentForm';
+import ScheduleLessons from '../ScheduleLessons/ScheduleLessons';
 
 interface DispatchProps {
   createStudent: (student: StudentDetailsType) => void;
@@ -52,32 +53,46 @@ interface Props extends
   }
 
 
-export const LessonDetails = (props: Props) => {
-  const addStudent = async (student) => {
-    await props.createStudent(student);
-  }
+export const ScheduleTrial = (props: Props) => {
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const target = event.currentTarget;
+  //   const value = target.value;
+  //   const name = target.name;
 
+  //   if (name === ScheduleTrialFormComponent.FieldNames.LessonTime) {
+  //     setLessonTime(value);
+  //     setScheduleErrors({
+  //       ...scheduleErrors,
+  //       time: ''
+  //     });
+  //   } else if (name === ScheduleTrialFormComponent.FieldNames.UserTimezone) {
+  //     setTimezone(value);
+  //     setScheduleErrors({
+  //       ...scheduleErrors,
+  //       timezone: ''
+  //     });
+  //   }
+  // }
 
   const role = getCookie('role');
 
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
       <PageTitle
-        pageTitle={role === Role.parent ?
-          LessonDetailsComponent.pageTitleParent :
-          LessonDetailsComponent.pageTitleStudent
-        }
+        pageTitle={
+          role === Role.parent ?
+          ScheduleTrialComponent.pageTitleParent.replace(
+            ScheduleTrialComponent.studentPlaceholder,
+            getCookie('studentName')
+          ) :
+          ScheduleTrialComponent.pageTitle}
       />
       <Grid
         item={true}
         xs={12}
         md={8} className="nabi-section nabi-background-white nabi-margin-center"
       >
-        {
-          props.isAddingStudent ?
-          <CircularProgress /> :
-          <StudentForm addChild={addStudent} role={role} />
-        }
+        <ScheduleLessons nextPath="" />
       </Grid>
     </div>
   )
@@ -124,4 +139,4 @@ const mapDispatchToProps = (
   fetchTimezones: () => dispatch(fetchTimezones())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LessonDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(ScheduleTrial);

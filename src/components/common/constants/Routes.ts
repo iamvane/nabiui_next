@@ -50,7 +50,9 @@ export enum Routes {
   ValidatePhone = '/validate-phone',
   SpecifyGender = '/specify-gender',
   LessonDetails = '/lesson-details',
-  ChooseInstructor = '/choose-instructor'
+  ChooseInstructor = '/choose-instructor',
+  TrialConfirmation = '/trial-confirmation',
+  WelcomeToNabi = '/welcome-to-nabi'
 }
 
 export enum SocialLinks {

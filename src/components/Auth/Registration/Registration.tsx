@@ -11,6 +11,7 @@ import { Action, Dispatch } from "redux";
 import { checkErrors } from "../../../utils/checkErrors";
 import { StoreState } from "../../../redux/reducers/store";
 import { createUser } from "../../../redux/actions/UserActions";
+import { setCookie } from "../../../utils/cookies";
 import PageTitle from "../../common/PageTitle";
 import { Routes } from "../../common/constants/Routes";
 import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
@@ -142,6 +143,12 @@ export const Registration = (props: Props) => {
     if (props.role === Role.parent || props.role === Role.student) {
       userValues.phoneNumber = phoneNumber;
     }
+
+    if (props.role === Role.student) {
+      setCookie('studentName', firstName);
+    }
+    setCookie("role", props.role);
+
     await props.createUser(userValues);
     setIsAttemptToRegister(true);
   };
