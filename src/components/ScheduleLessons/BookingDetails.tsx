@@ -29,6 +29,8 @@ export const BookingDetails = (props: Props) => {
     return Router.push(Routes.ScheduleTrial + Routes.LessonDetails);
   }
 
+  const role = getCookie('role');
+
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
   const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mA");
   const instrumentDisplay = instruments.find(t => t.value === getCookie('instrumentName'));
@@ -42,7 +44,7 @@ export const BookingDetails = (props: Props) => {
         md={8} className="nabi-section nabi-background-white nabi-margin-center"
       >
         <p className="nabi-color-nabi nabi-text-center nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-xsmall">
-          {props.headingMessage ? props.headingMessage : getCookie('role') === Role.parent ?
+          {props.headingMessage ? props.headingMessage : role === Role.parent ?
             BookingDetailsComponent.parentMessage.replace(
               BookingDetailsComponent.studentNamePlaceholder,
               getCookie('studentName')
@@ -77,11 +79,11 @@ export const BookingDetails = (props: Props) => {
           </Typography>
         </div>
         <div className="nabi-text-right nabi-margin-top-large">
-          {props.headingMessage &&
+          {props.headingMessage && role === Role.parent ?
             <Button color="primary" className="nabi-margin-right-xsmall" onClick={addAnotherChild}>
               {BookingDetailsComponent.addChildButton}
             </Button>
-          }
+          :''}
           <Button color="primary" variant="contained" onClick={props.handleContinue}>
             {BookingDetailsComponent.continueButton}
           </Button>

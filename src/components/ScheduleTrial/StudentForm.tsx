@@ -146,6 +146,7 @@ export const StudentForm = (props: Props) => {
   return (
     <form>
       {props.role === Role.parent &&
+      <div>
         <Grid spacing={1} container={true}>
           <Grid item={true} xs={12}>
             <TextField
@@ -179,6 +180,7 @@ export const StudentForm = (props: Props) => {
             </FormControl>
           </Grid>
         </Grid>
+      </div>
       }
       <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
       <Grid container={true} spacing={1}>

@@ -61,8 +61,8 @@ export const LessonDetails = (props: Props) => {
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
       <PageTitle
-        pageTitle={role === Role.parent ?
-          LessonDetailsComponent.pageTitleParent :
+        pageTitle={
+          role === Role.parent ? LessonDetailsComponent.pageTitleParent :
           LessonDetailsComponent.pageTitleStudent
         }
       />
@@ -71,11 +71,13 @@ export const LessonDetails = (props: Props) => {
         xs={12}
         md={8} className="nabi-section nabi-background-white nabi-margin-center"
       >
-        {
-          props.isAddingStudent ?
-          <CircularProgress /> :
-          <StudentForm addChild={addStudent} role={role} />
-        }
+        <div>
+          {
+            props.isAddingStudent ?
+            <CircularProgress /> :
+            <StudentForm addChild={addStudent} role={role} />
+          }
+        </div>
       </Grid>
     </div>
   )
