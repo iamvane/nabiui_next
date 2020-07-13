@@ -11,10 +11,13 @@ import Menu from "@material-ui/icons/Menu";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import "../../../assets/scss/Header.scss";
+import { getCookie } from "../../utils/cookies";
 import { StoreState } from "../../redux/reducers/store";
 import { UserType } from "../../redux/models/UserModel";
 import { logOutUser } from "../../redux/actions/UserActions";
+import { Role } from '../../constants/Roles';
 import { Routes } from "../common/constants/Routes";
+
 import {
   nabiMusic,
   logIn,
@@ -118,8 +121,12 @@ export const Header = (props: HeaderProps) => {
     Routes.Dashboard,
     Routes.ApplicationList,
     Routes.BookLessons,
-    Routes.Requests
-  ] as string[]
+    Routes.Requests,
+    Routes.InstructorStudio
+  ] as string[];
+
+  const role = getCookie('role');
+
   return (
     <header>
       <div className="nabi-header-container nabi-position-relative">
@@ -178,7 +185,6 @@ export const Header = (props: HeaderProps) => {
               isOpen={isDrawerMenuOpen}
               handleUserLogout={handleUserLogout}
               toggleMenu={toggleDrawerMenu}
-              role={props.user.role}
               currentRoute={props.router.route}
             />
           </div>
@@ -188,7 +194,9 @@ export const Header = (props: HeaderProps) => {
             token ? "nabi-margin-top-medium-sm" : ""
           }`}
         >
-          <Link href={props.token ? Routes.Dashboard : Routes.HomePage}>
+          <Link href={props.token ?
+            (role === Role.instructor ?
+            Routes.InstructorStudio : Routes.HomePage) : Routes.HomePage}>
             <a>
               <>
                 <img className="nabi-text-center" alt="logo" src={logo} />

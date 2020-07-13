@@ -11,6 +11,7 @@ import {
   CircularProgress
 } from '@material-ui/core';
 
+import { getCookie } from "../../utils/cookies";
 import { Role } from '../../constants/Roles';
 import { Routes } from '../common/constants/Routes';
 import { NavigationComponent } from './constants';
@@ -72,8 +73,8 @@ const InstructorMenuItems = ({ currentRoute }) => {
   const items = [
     // NavigationComponent.NavigationLabels.Calendar,
     {
-      label: currentRoute === Routes.Dashboard ? NavigationComponent.NavigationLabels.Jobs : NavigationComponent.NavigationLabels.Studio,
-      url:  currentRoute === Routes.Dashboard ? Routes.Requests : Routes.Dashboard
+      label: currentRoute === Routes.InstructorStudio ? NavigationComponent.NavigationLabels.Jobs : NavigationComponent.NavigationLabels.Studio,
+      url:  currentRoute === Routes.InstructorStudio ? Routes.Requests : Routes.InstructorStudio
     }
     // NavigationComponent.NavigationLabels.ReferAFriend
   ];
@@ -107,7 +108,7 @@ const InstructorMenuItems = ({ currentRoute }) => {
 const GoToStudioButton = () => {
   return (
     <div className="nabi-mobile-button-wrapper">
-      <Link href={Routes.Dashboard}>
+      <Link href={Routes.InstructorStudio}>
         <a>
           <Button
             color="primary"
@@ -141,7 +142,6 @@ const FindJobsButton = () => {
 }
 
 interface Props {
-  role?: string;
   toggleMenu?: () => void;
   isOpen?: boolean;
   handleUserLogout?: () => void;
@@ -150,6 +150,8 @@ interface Props {
 }
 
 export const CollapsibleSidebar = (props: Props) => {
+  const role = getCookie('role');
+
   return (
     <Drawer
       open={props.isOpen}
@@ -171,7 +173,7 @@ export const CollapsibleSidebar = (props: Props) => {
           }}
         >
           <div className="nabi-mobile-drawer-header-container">
-            <Link href={Routes.Dashboard}>
+            <Link href={role === Role.instructor ? Routes.InstructorStudio : Routes.Dashboard}>
               <a className="nabi-mobile-drawer-image-link">
                 <>
                   <img className="nabi-text-center nabi-mobile-drawer-image" alt="logo" src={logo} />
@@ -187,18 +189,18 @@ export const CollapsibleSidebar = (props: Props) => {
           </div>
         </MenuItem>
         <Divider />
-        {props.role && (
+        {role && (
           <>
-            {(props.role === Role.student || props.role === Role.parent) && (
+            {(role === Role.student || role === Role.parent) && (
               <>
                 <StudentMenuItems />
               </>
             )}
 
-            {props.role === Role.instructor && (
+            {role === Role.instructor && (
               <>
                 { (Routes.Requests === props.currentRoute) && <GoToStudioButton />}
-                { (Routes.Dashboard === props.currentRoute) &&  <FindJobsButton />}
+                { (Routes.InstructorStudio === props.currentRoute) &&  <FindJobsButton />}
                 <InstructorMenuItems currentRoute={props.currentRoute} />
               </>
             )}
@@ -219,7 +221,7 @@ export const CollapsibleSidebar = (props: Props) => {
               </Link>
             </Typography>
           </MenuItem> */}
-        <Divider />
+        {/* <Divider /> */}
         <MenuItem
           classes={{
             root: "nabi-mobile-item"

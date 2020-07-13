@@ -125,6 +125,11 @@ p.nabi-color-orange {
 }
 
 /*MOBILE*/
+
+header {
+  background: #ffffff;
+}
+
 .nabi-mobile-drawer-header-container {
 	width: 100%;
     display: flex;

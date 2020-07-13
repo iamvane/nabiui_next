@@ -29,6 +29,7 @@ export default function usersReducer(
     case UserActions.CREATE_USER_SUCCESS:
       setCookie("token", action.data.token.access);
       setCookie("role", action.data.role);
+      setCookie("firstName", action.data.firstName);
       const { data: userDetails } = action;
       return {
         ...state,
@@ -182,6 +183,7 @@ export default function usersReducer(
       const { data: user } = action;
       const lastNameInitial = user.lastName.charAt(0).toUpperCase();
       setCookie("role", user.role);
+      setCookie("firstName", user.firstName);
       return {
         ...state,
         user: {
