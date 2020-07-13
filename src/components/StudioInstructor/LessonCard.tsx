@@ -17,6 +17,7 @@ import { setCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import { LessonCardComponent }  from './constants';
 import { LessonType } from '../Dashboard/models';
+import '../../../assets/scss/LessonCard.scss';
 
 interface Props {
   lesson: LessonType;
@@ -53,9 +54,9 @@ const LessonCard: React.StatelessComponent<Props> = props => {
   return (
     <Grid container={true} className="nabi-background-white nabi-border-radius nabi-padding-small">
       <Grid item={true} xs={2}>
-        <Avatar src={displayAvatar()} />
+        <Avatar className="lesson-card-avatar" src={displayAvatar()} />
       </Grid>
-      <Grid item={true} xs={4}>
+      <Grid item={true} xs={6} md={4}>
         <Grid container={true}>
           {props.lesson.parent ?
             <Grid xs={12} item={true}>
@@ -95,7 +96,7 @@ const LessonCard: React.StatelessComponent<Props> = props => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item={true} xs={6}>
+      <Grid item={true} xs={4} md={6} className="nabi-text-center">
         <Button
           variant="contained"
           color="primary"
