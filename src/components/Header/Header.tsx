@@ -185,7 +185,6 @@ export const Header = (props: HeaderProps) => {
               isOpen={isDrawerMenuOpen}
               handleUserLogout={handleUserLogout}
               toggleMenu={toggleDrawerMenu}
-              role={props.user.role}
               currentRoute={props.router.route}
             />
           </div>

@@ -142,7 +142,6 @@ const FindJobsButton = () => {
 }
 
 interface Props {
-  role?: string;
   toggleMenu?: () => void;
   isOpen?: boolean;
   handleUserLogout?: () => void;
@@ -192,7 +191,7 @@ export const CollapsibleSidebar = (props: Props) => {
         <Divider />
         {role && (
           <>
-            {(role === Role.student || props.role === Role.parent) && (
+            {(role === Role.student || role === Role.parent) && (
               <>
                 <StudentMenuItems />
               </>
