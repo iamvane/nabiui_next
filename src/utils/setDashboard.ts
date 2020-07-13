@@ -12,7 +12,8 @@ export const setDashboard = (data) => {
       missingFields: data.apiResponse.missingFields,
       backgroundCheckStatus: data.apiResponse.backgroundCheckStatus,
       lessons: data.apiResponse.lessons,
-      requests: data.apiResponse.requests
+      requests: data.apiResponse.requests,
+      nextLesson: data.apiResponse.nextLesson
     };
   }
   return (dashboard as ParentStudentDashboardType) =  {

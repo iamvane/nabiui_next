@@ -32,7 +32,7 @@ export const BookingDetails = (props: Props) => {
   const role = getCookie('role');
 
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
-  const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mA");
+  const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mmA");
   const instrumentDisplay = instruments.find(t => t.value === getCookie('instrumentName'));
 
   return (

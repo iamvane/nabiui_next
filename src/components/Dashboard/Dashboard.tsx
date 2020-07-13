@@ -25,7 +25,6 @@ import { Routes } from '../common/constants/Routes';
 import { Role } from '../Auth/Registration/constants';
 import InviteFriends from '../InviteFriends/InviteFriends';
 import PrivateRoute from '../Auth/PrivateRoutes';
-import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
 import ParentStudentDashboard from './ParentStudentDashboard/ParentStudentDashboard';
 import {
   DashboardComponent,
@@ -104,13 +103,10 @@ export const Dashboard = (props: Props) => {
             <InviteFriends />
           }
           mainContent={
-            props.user.role &&
-              (props.user.role === Role.instructor ?
-                <InstructorDashboard user={props.user} dashboard={props.dashboard as InstructorDashboardType} /> : 
-                <ParentStudentDashboard
-                  role={props.user.role}
-                  dashboard={props.dashboard as ParentStudentDashboardType}
-                />)
+            <ParentStudentDashboard
+              role={props.user.role}
+              dashboard={props.dashboard as ParentStudentDashboardType}
+            />
           }
           pageTitle={DashboardComponent.pageTitle}
           instructorId={props.user.instructorId}
