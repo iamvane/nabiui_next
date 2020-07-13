@@ -38,6 +38,7 @@ const NavigationMobile: React.StatelessComponent<Props> = props => {
         isOpen={isMobileMenuOpen}
         handleUserLogout={props.handleUserLogout}
         toggleMenu={toggleMobileMenu}
+        currentRoute=""
       />
       <Typography
         color="primary"
