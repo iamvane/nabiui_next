@@ -5,6 +5,15 @@ interface StudentType {
   age: number;
 }
 
+export interface NextLessonType {
+  id: number;
+  date: string;
+  time: string;
+  timezone: string;
+  student_details: StudentType;
+  instructor: string;
+}
+
 export interface LessonType {
   bookingId: number;
   instrument: string;
@@ -45,6 +54,7 @@ export interface InstructorDashboardType {
   backgroundCheckStatus: string;
   lessons: LessonType[];
   requests: Request[];
+  nextLesson: NextLessonType;
 }
 
 export interface ParentStudentDashboardType {

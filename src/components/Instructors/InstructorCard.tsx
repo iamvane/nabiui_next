@@ -103,11 +103,6 @@ const InstructorCard: React.StatelessComponent<Props> = props => {
   };
   return (
     <div onClick={navigateToProfile} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative nabi-cursor-pointer item-card">
-      {/* <div style={{right: '20px'}} className="nabi-float-right nabi-position-absolute">
-        <IconButton color={favorite ? 'primary' : 'secondary'}>
-          <Icon>favorite</Icon>
-        </IconButton>
-      </div> */}
       <Grid container={true} spacing={3}>
         <Grid item={true} xs={12} md={3} className="nabi-text-center">
           <Avatar

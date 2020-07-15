@@ -6,6 +6,7 @@ import {
 import { StudentType } from '../../components/Request/models';
 import { ApplicationListType } from '../../components/ApplicationList/model';
 import { BookLessonsData } from '../../components/BookLessons/model';
+import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
 
 export interface RequestType {
   id: number;
@@ -51,7 +52,9 @@ export interface RequestState extends BookLessonsData {
   requestsList: ListResource<Request>;
   requests: RequestType[];
   applicationList: ApplicationListType;
+  students: StudentDetailsType[]
   actions: {
+    createStudent: ActionStatus;
     createRequest: ActionStatus;
     fetchRequests: ActionStatus;
     fetchRequest: ActionStatus;
@@ -64,6 +67,8 @@ export interface RequestState extends BookLessonsData {
     fetchBookLessonsData: ActionStatus;
     chooseLessonsPackage: ActionStatus;
     scheduleLessons: ActionStatusWithMessage;
+    fetchStudents: ActionStatus;
+    deleteStudent: ActionStatus;
   };
   bookingId: number;
 }
@@ -81,6 +86,7 @@ export const defaultRequestState: RequestState = {
       { age: 0, name: '', skillLevel: '' }
     ]
   },
+  students: [],
   requests: [],
   requestsList: {
     count: 0,
@@ -97,6 +103,10 @@ export const defaultRequestState: RequestState = {
   },
   bookingId: 0,
   actions: {
+    createStudent: {
+      isRequesting: false,
+      error: ''
+    },
     createRequest: {
       isRequesting: false,
       error: '',
@@ -148,6 +158,14 @@ export const defaultRequestState: RequestState = {
       isRequesting: false,
       error: '',
       message: ''
+    },
+    fetchStudents: {
+      isRequesting: false,
+      error: '',
+    },
+    deleteStudent: {
+      isRequesting: false,
+      error: '',
     }
   }
 };

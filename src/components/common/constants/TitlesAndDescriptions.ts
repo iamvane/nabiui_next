@@ -28,11 +28,11 @@ export const pageTitlesAndDescriptions = {
     description: 'For students and parents, manage your lessons. For instructors, manage your students.'
   },
   faqInstructors: {
-    title: 'FAQs Instructors | Teaching music with Nabi Music',
+    title: 'FAQ\'s Instructors | Teaching music with Nabi Music',
     description: 'Find out why you should teach with Nabi Music.'
   },
   faqParentsStudents: {
-    title: 'FAQs Parents & Students | Learning music',
+    title: 'FAQ\'s Parents & Students | Learning music',
     description: 'Find out why you should learn musical instruments with Nabi Music.'
   },
   forgotPassword: {

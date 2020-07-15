@@ -75,6 +75,33 @@ export const fetchStudents = (): ThunkAction<Promise<void>, {}, {}> => async (
   }
 };
 
+
+export const createStudent = (
+  student: Partial<StudentDetailsType>
+): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>,
+  getState
+) => {
+  dispatch(requestAction(ParentActions.CREATE_STUDENT));
+  try {
+    const response = await axios.put(
+      `${ApiEndpoints.students}/`,
+      student,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+
+    dispatch(withDataAction(ParentActions.CREATE_STUDENT_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(ParentActions.CREATE_STUDENT_FAILURE, errorMessage));
+  }
+};
+
 /**
  * Action cretator to edit a student object
  */

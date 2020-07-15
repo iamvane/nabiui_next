@@ -28,6 +28,7 @@ import PrivateRoute from '../../Auth/PrivateRoutes';
 import { LoginType } from './model';
 import LoginForm from './LoginForm';
 import { LoginFormComponent } from './constants';
+import { Role } from '../Registration/constants';
 
 interface State extends LoginType {
   showSnackbar: boolean;
@@ -88,7 +89,13 @@ const Login = (props: Props) => {
         await props.fetchUser(props.token);
       };
       fetchUser();
-      props.user.email && Router.push(Routes.Dashboard);
+      if (props.user.email) {
+        if (props.user.role === Role.instructor) {
+          Router.push(Routes.InstructorStudio);
+        } else {
+          Router.push(Routes.Dashboard);
+        }
+      }
     }
   }, [props.loginError, props.token, props.passwordSetMessage, login, props.user.email]);
 

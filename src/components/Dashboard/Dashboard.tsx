@@ -15,7 +15,8 @@ import { UserType } from '../../redux/models/UserModel';
 import {
   fetchUser,
   fetchDashboard,
-  setPathname
+  setPathname,
+  logOutUser
 } from '../../redux/actions/UserActions';
 import { page } from '../../utils/analytics';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
@@ -24,7 +25,6 @@ import { Routes } from '../common/constants/Routes';
 import { Role } from '../Auth/Registration/constants';
 import InviteFriends from '../InviteFriends/InviteFriends';
 import PrivateRoute from '../Auth/PrivateRoutes';
-import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
 import ParentStudentDashboard from './ParentStudentDashboard/ParentStudentDashboard';
 import {
   DashboardComponent,
@@ -40,10 +40,12 @@ interface StateProps {
   dashboard: InstructorDashboardType | ParentStudentDashboardType;
   isFetchingDashboard: boolean;
   errorFetchingDashboard: string;
+  isLoggingOutUser: boolean;
 }
 
 interface DispatchProps {
   fetchUser: () => void;
+  logOutUser: () => void;
   fetchDashboard: (role: Role) => void;
   setPathname: (pathname: string) => void;
 }
@@ -80,6 +82,11 @@ export const Dashboard = (props: Props) => {
     page('Dashboard', analiticsProps);
   },[props.token, props.user.role]);
 
+  const handleUserLogout = async () => {
+    await props.logOutUser();
+    Router.push(Routes.HomePage);
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -96,14 +103,16 @@ export const Dashboard = (props: Props) => {
             <InviteFriends />
           }
           mainContent={
-            props.user.role &&
-              (props.user.role === Role.instructor ?
-                <InstructorDashboard user={props.user} dashboard={props.dashboard as InstructorDashboardType} /> : 
-                <ParentStudentDashboard role={props.user.role} dashboard={props.dashboard as ParentStudentDashboardType} />)
+            <ParentStudentDashboard
+              role={props.user.role}
+              dashboard={props.dashboard as ParentStudentDashboardType}
+            />
           }
           pageTitle={DashboardComponent.pageTitle}
           instructorId={props.user.instructorId}
           role={props.user.role}
+          isRequesting={props.isLoggingOutUser}
+          handleUserLogout={handleUserLogout}
         />
       </React.Fragment>}
     </React.Fragment>
@@ -113,6 +122,11 @@ export const Dashboard = (props: Props) => {
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
     actions: {
+      logOutUser: {
+        isRequesting: isLoggingOutUser,
+        error: logOutError,
+        message
+      },
       fetchUser: {
         isRequesting,
       },
@@ -129,6 +143,7 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     user: state.user.user,
     firstName: state.user.user.firstName,
     isRequesting,
+    isLoggingOutUser,
     token: state.user.token,
     dashboard: state.user.user.dashboard as InstructorDashboardType | ParentStudentDashboardType
   };
@@ -139,7 +154,8 @@ const mapDispatchToProps = (
 ): DispatchProps => ({
   fetchUser: () => dispatch(fetchUser()),
   fetchDashboard: (role: Role) => dispatch(fetchDashboard(role)),
-  setPathname: (pathname: string) => dispatch(setPathname(pathname))
+  setPathname: (pathname: string) => dispatch(setPathname(pathname)),
+  logOutUser: () => dispatch(logOutUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(Dashboard, 'Private', ['Student', 'Parent', 'Instructor']));

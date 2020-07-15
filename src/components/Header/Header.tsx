@@ -11,10 +11,13 @@ import Menu from "@material-ui/icons/Menu";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import "../../../assets/scss/Header.scss";
+import { getCookie } from "../../utils/cookies";
 import { StoreState } from "../../redux/reducers/store";
 import { UserType } from "../../redux/models/UserModel";
 import { logOutUser } from "../../redux/actions/UserActions";
+import { Role } from '../../constants/Roles';
 import { Routes } from "../common/constants/Routes";
+
 import {
   nabiMusic,
   logIn,
@@ -23,6 +26,7 @@ import {
   signUp,
   ClaimYour
 } from "./constants";
+import { CollapsibleSidebar } from "../CollapsibleSidbar/CollapsibleSidbar";
 import { DrawerMenu } from "./DrawerMenu";
 import { InstructorMenu } from "./InstructorMenu";
 import { StudentParentMenu } from "./StudentParentMenu";
@@ -70,6 +74,12 @@ export const Header = (props: HeaderProps) => {
     setIsDraweMenuOpen(prevOpen => !prevOpen);
   };
 
+  const handleUserLogout = async () => {
+    await props.logOutUser();
+    Router.push(Routes.HomePage);
+    toggleDrawerMenu();
+  };
+
   const { error } = useSelector(
     (state: StoreState) => state.user.actions.fetchReferralInfo
   );
@@ -106,6 +116,16 @@ export const Header = (props: HeaderProps) => {
     Routes.VetInstructor,
     Routes.HomePage
   ];
+
+  const menuDisplayPages = [
+    Routes.Dashboard,
+    Routes.ApplicationList,
+    Routes.BookLessons,
+    Routes.Requests,
+    Routes.InstructorStudio
+  ] as string[];
+
+  const role = getCookie('role');
 
   return (
     <header>
@@ -157,12 +177,26 @@ export const Header = (props: HeaderProps) => {
         ) : (
           ""
         )}
+        { (props.token && menuDisplayPages.includes(props.router.route)) && (
+          <div className="nabi-deskop-menu-icon">
+            <Menu onClick={toggleDrawerMenu} color="primary" />
+            <CollapsibleSidebar
+              isRequesting={props.isRequesting}
+              isOpen={isDrawerMenuOpen}
+              handleUserLogout={handleUserLogout}
+              toggleMenu={toggleDrawerMenu}
+              currentRoute={props.router.route}
+            />
+          </div>
+        )}
         <div
           className={`nabi-logo-anchor ${
             token ? "nabi-margin-top-medium-sm" : ""
           }`}
         >
-          <Link href={props.token ? Routes.Dashboard : Routes.HomePage}>
+          <Link href={props.token ?
+            (role === Role.instructor ?
+            Routes.InstructorStudio : Routes.HomePage) : Routes.HomePage}>
             <a>
               <>
                 <img className="nabi-text-center" alt="logo" src={logo} />

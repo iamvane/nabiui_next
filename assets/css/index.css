@@ -116,6 +116,78 @@ p.nabi-color-orange {
 	cursor: pointer !important;
 }
 
+/*MOBILE WIDTH*/
+
+@media only screen and (max-width: 768px) {
+	.nabi-mobile-width {
+		width: 80%;
+	}
+}
+
+/*MOBILE*/
+
+header {
+  background: #ffffff;
+}
+
+.nabi-mobile-drawer-header-container {
+	width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nabi-mobile-drawer-image-link {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nabi-mobile-drawer-image{
+	width: 50px;
+}
+
+.nabi-mobile-item {
+	padding: 10px 25px 10px 25px !important;
+}
+
+.nabi-mobile-typography {
+	color: #717a8a !important;
+	font-weight: 500;
+}
+
+.nabi-mobile-logout-button-wrapper {
+	display: flex;
+    justify-content: center;
+}
+
+.nabi-mobile-button-wrapper {
+	display: flex;
+    justify-content: center;
+	padding: 10px;
+    height: 40px;
+}
+
+.nabi-mobile-icon-large {
+	width: 40px;
+}
+
+/* DESKTOP MENU*/
+.nabi-deskop-menu-icon {
+	position: absolute;
+	top: 35px;
+	left: 20px;
+}
+
+.nabi-mobile-icon-large {
+	width: 40px;
+}
+
+/* DESKTOP MENU*/
+.nabi-deskop-menu-icon {
+	position: absolute;
+    top: 35px;
+}
+
 /*DISPLAY*/
 .nabi-display-block {
   display: block !important;
@@ -352,8 +424,8 @@ li.nabi-list-style-position-inside {
 .nabi-padding-remove {
 	padding: 0px !important;
 }
-.nabi-padding-small {
-	padding: 20px
+.nabi-padding-xsmall {
+	padding: 10px
 }
 
 .nabi-padding-small {
@@ -588,8 +660,8 @@ li.nabi-list-style-position-inside {
 
 .nabi-header-button {
 	position: absolute !important;
-	top: 9% !important;
-	right: 20px !important;
+    top: 30px;
+    right: 20px !important;
 }
 
 .nabi-responsive-image {
@@ -913,132 +985,14 @@ li.nabi-list-style-position-inside {
 	height: 18px !important;
 }
 
-.completed-button {
-	background-image: linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
-	background-image: -o-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
-	background-image: -moz-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
-	background-image: -webkit-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
-	background-image: -ms-linear-gradient(to left , #06C3E1 50%, #0695B3 51%);
+.nabi-z-index-1 {
+	z-index: 1;
 }
 
-.completed-button-0 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(1, #0695B3),
-		color-stop(1, #0695B3)
-	);
-}
-
-.completed-button-9 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.09, #06C3E1),
-		color-stop(0.09, #0695B3)
-	);
-}
-
-.completed-button-18 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.18, #06C3E1),
-		color-stop(0.18, #0695B3)
-	);
-}
-
-.completed-button-27 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.27, #06C3E1),
-		color-stop(0.27, #0695B3)
-	);
-}
-
-.completed-button-36 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.36, #06C3E1),
-		color-stop(0.36, #0695B3)
-	);
-}
-
-.completed-button-45 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.45, #06C3E1),
-		color-stop(0.45, #0695B3)
-	);
-}
-
-.completed-button-56 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.56, #06C3E1),
-		color-stop(0.56, #0695B3)
-	);
-}
-
-.completed-button-64 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.64, #06C3E1),
-		color-stop(0.64, #0695B3)
-	);
-}
-
-.completed-button-73 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.73, #06C3E1),
-		color-stop(0.73, #0695B3)
-	);
-}
-
-.completed-button-82 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.82, #06C3E1),
-		color-stop(0.82, #0695B3)
-	);
-}
-
-.completed-button-91 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(0.91, #06C3E1),
-		color-stop(0.91, #0695B3)
-	);
-}
-
-.completed-button-100 {
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		right bottom,
-		color-stop(100, #06C3E1),
-		color-stop(100, #0695B3)
-	);
+.text-aligned-icon {
+	position: relative;
+  left: 0px;
+  top: 6px;
 }
 
 /* iPhones(landscape) ----------- */

@@ -11,6 +11,7 @@ import { Action, Dispatch } from "redux";
 import { checkErrors } from "../../../utils/checkErrors";
 import { StoreState } from "../../../redux/reducers/store";
 import { createUser } from "../../../redux/actions/UserActions";
+import { setCookie } from "../../../utils/cookies";
 import PageTitle from "../../common/PageTitle";
 import { Routes } from "../../common/constants/Routes";
 import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
@@ -113,7 +114,7 @@ export const Registration = (props: Props) => {
 
       props.role === Role.instructor
         ? Router.push(Routes.BuildProfile + Routes.AccountInfo)
-        : Router.push(Routes.BuildRequest + Routes.AccountInfo);
+        : Router.push(Routes.ScheduleTrial + Routes.ValidatePhone);
     }
   }, [
     registration,
@@ -142,6 +143,12 @@ export const Registration = (props: Props) => {
     if (props.role === Role.parent || props.role === Role.student) {
       userValues.phoneNumber = phoneNumber;
     }
+
+    if (props.role === Role.student) {
+      setCookie('studentName', firstName);
+    }
+    setCookie("role", props.role);
+
     await props.createUser(userValues);
     setIsAttemptToRegister(true);
   };
@@ -196,7 +203,7 @@ export const Registration = (props: Props) => {
   const validate = () => {
     const { FieldKey } = RegistrationFormComponent;
 
-    const formErrors: RegistrationErrors = {
+    const formErrorsObject: RegistrationErrors = {
       email: "",
       password: "",
       firstName: "",
@@ -208,17 +215,17 @@ export const Registration = (props: Props) => {
 
     // Validate first name
     if (!firstName) {
-      formErrors[FieldKey.FirstName] = RegistrationFormComponent.ErrorMessages.FirstName;
+      formErrorsObject[FieldKey.FirstName] = RegistrationFormComponent.ErrorMessages.FirstName;
     }
 
     // Validate first name
     if (!lastName) {
-      formErrors[FieldKey.LastName] = RegistrationFormComponent.ErrorMessages.LastName;
+      formErrorsObject[FieldKey.LastName] = RegistrationFormComponent.ErrorMessages.LastName;
     }
 
     // Validate email
     if (!email) {
-      formErrors[FieldKey.Email] =
+      formErrorsObject[FieldKey.Email] =
         RegistrationFormComponent.ErrorMessages.Email;
     } else if (email) {
       if (
@@ -228,33 +235,33 @@ export const Registration = (props: Props) => {
         ) ||
         /^\s*$/.test(email)
       ) {
-        formErrors[FieldKey.Email] =
+        formErrorsObject[FieldKey.Email] =
           RegistrationFormComponent.ErrorMessages.Email;
       }
     }
 
     // Validate password
     if (!password) {
-      formErrors[FieldKey.Password] =
+      formErrorsObject[FieldKey.Password] =
         RegistrationFormComponent.ErrorMessages.Password;
     } else if (password) {
       if (
         !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W\-_]{5,}$/.test(password) ||
         /^\s*$/.test(password)
       ) {
-        formErrors[FieldKey.Password] =
+        formErrorsObject[FieldKey.Password] =
           RegistrationFormComponent.ErrorMessages.Password;
       }
     }
 
     // Validate reference
     if (!reference) {
-      formErrors[FieldKey.Reference] = RegistrationFormComponent.ErrorMessages.Reference;
+      formErrorsObject[FieldKey.Reference] = RegistrationFormComponent.ErrorMessages.Reference;
     }
 
      // Validate otherText
      if (reference === 'other' && !otherText) {
-      formErrors[FieldKey.OtherText] = RegistrationFormComponent.ErrorMessages.OtherText;
+      formErrorsObject[FieldKey.OtherText] = RegistrationFormComponent.ErrorMessages.OtherText;
     }
 
     // Validate birthday
@@ -263,11 +270,11 @@ export const Registration = (props: Props) => {
     if (props.role !== Role.instructor) {
       // Validate phoneNumber
       if (!phoneNumber) {
-        formErrors[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
+        formErrorsObject[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
       }
     }
 
-    return setFormErrors(formErrors);
+    return setFormErrors(formErrorsObject);
 
   };
 

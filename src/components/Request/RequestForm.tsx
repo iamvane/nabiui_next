@@ -22,19 +22,15 @@ import { lessonDurationOptions } from '../Rates/constants';
 import { RequestFormComponent } from './constants';
 import LessonTime from '../ScheduleLessons/LessonTime';
 import LessonDate from '../ScheduleLessons/LessonDate';
-import Timezone from '../ScheduleLessons/TimeZone';
+import TimezoneSelect from '../ScheduleLessons/TimeZone';
 import { ScheduleLessonsComponent } from '../ScheduleLessons/constants';
 import Students from './Students';
+import { Timezone } from '../../redux/models/TimeZonesModel';
 import {
   RequestType,
   StudentType
 } from './models';
 
-interface Timezones {
-  name: string;
-  offset: string;
-  [x: string]: string;
-}
 interface Props extends
   RequestType,
   StudentType {
@@ -53,7 +49,7 @@ interface Props extends
   timezone?: string;
   handleDateChange?: (date: moment.Moment) => void;
   lessonDateError?: string;
-  timezones?: Timezones[];
+  timezones?: Timezone[];
 }
 
 const RequestForm: React.StatelessComponent<Props> = props => {
@@ -97,7 +93,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
 
   const renderTrialSchedule = (
     <>
-      <SectionTitle text={ScheduleLessonsComponent.title} />
+      {/* <SectionTitle text={ScheduleLessonsComponent.title} /> */}
       <ListItem>
         <LessonDate
           lessonDate={props.lessonDate}
@@ -114,7 +110,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
       </ListItem>
 
       <ListItem>
-        <Timezone
+        <TimezoneSelect
           timezone={props.timezone}
           handleChange={props.handleChange}
           timezones={props.timezones}

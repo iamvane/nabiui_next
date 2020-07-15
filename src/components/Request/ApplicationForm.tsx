@@ -11,6 +11,7 @@ import {
 import SectionTitle from '../common/SectionTitle';
 import { RequestViewComponent } from './constants';
 import { RatesComponent } from '../Rates/constants';
+import { hasEmail, hasPhonenumber } from '../../utils/validators';
 
 interface Props {
   request: any;
@@ -44,6 +45,19 @@ function NumberFormatCustom(props: any) {
 }
 
 const ApplicationForm = (props:Props) => {
+
+  const [email, setEmail] = React.useState(false);
+  const [phonenumber, setPhonenumber] = React.useState(false);
+
+  React.useEffect(() => {
+    setEmail(hasEmail(props.message.split(' ')));
+    setPhonenumber(hasPhonenumber(props.message.split(' ')));
+  }, [
+    email,
+    phonenumber,
+    props.message
+  ]);
+
   const instructorGain: number =
     isNaN(Number(props.rate) - (Number(props.rate) * .25))
     ? 0
@@ -106,6 +120,8 @@ const ApplicationForm = (props:Props) => {
           multiline={true}
           onChange={props.handleChange}
           value={props.message}
+          error={email || phonenumber}
+          helperText={email || phonenumber ? 'You can\'t share your email or phone number' : ''}
           id={RequestViewComponent.Ids.Message}
           name={RequestViewComponent.FieldNames.Message}
           fullWidth={true}

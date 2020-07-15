@@ -82,16 +82,18 @@
   box-shadow: none !important;
 }
 
-.MuiTab-root {
-  border: 1px solid #ebeef1 !important;
-}
-
 .MuiTab-root.Mui-selected {
   color: #06c3e1;
 }
 
 .MuiTabs-indicator {
   background-color: #06c3e1 !important;
+}
+
+.MuiTabs-root {
+  overflow: hidden;
+  background-color: #f3f6f9;
+  border-bottom: 1px solid #ebeef1 !important;
 }
 
 .MuiTab-root {
@@ -107,4 +109,23 @@
 
 .MuiRadio-root.Mui-checked {
   color: #06c3e1 !important;
+}
+
+.MuiChip-root {
+  color: #717a8a !important;
+  padding: 26px 0px !important;
+  background: #f3f6f9 !important;
+  border-radius: 4px !important;
+  font-size: 0.875rem !important;
+  border: 2px solid #ebeef1 !important;
+}
+
+.MuiChip-colorPrimary {
+  color: #fff !important;
+  background-color: #06c3e1 !important;
+}
+
+.MuiChip-label {
+  font-size: 1rem !important;
+  font-family: 'Montserrat', sans-serif !important;
 }

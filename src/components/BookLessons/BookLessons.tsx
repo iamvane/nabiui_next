@@ -29,6 +29,9 @@ import {
   chooseLessonPackage,
   scheduleLessons
 } from "../../redux/actions/RequestActions";
+import {
+  fetchTimezones
+} from '../../redux/actions/TimezonesActions';
 import { CommonConstants } from '../common/constants/common';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import SnackBar from '../common/SnackBar';
@@ -57,6 +60,7 @@ interface StateProps extends BookLessonsData {
   scheduleLessonsError: string;
   scheduleLessonsMessage: string;
   bookingId: number;
+  timezones: object[];
 }
 
 interface DispatchProps {
@@ -64,6 +68,7 @@ interface DispatchProps {
   fetchBookLessonsData: (id: number) => void;
   chooseLessonPackage: (packageName: string, applicationId: number) => void;
   scheduleLessons: (data: Partial<LessonType>) => void;
+  fetchTimezones: () => void;
 }
 
 interface OwnProps { }
@@ -90,6 +95,7 @@ export const BookLessons = (props: Props) => {
     const fetchData = async () => {
       if (applicationId) {
         await props.fetchBookLessonsData(applicationId);
+        await props.fetchTimezones();
       }
     };
     fetchData();
@@ -148,7 +154,7 @@ export const BookLessons = (props: Props) => {
       <PageTitle pageTitle={props.freeTrial ? BookLessonsComponent.pageTitleTrial : BookLessonsComponent.pageTitle} />
       <div className="nabi-section nabi-background-white">
         {props.bookLessonsMessage ?
-          <ScheduleLessons scheduleLessons={scheduleLessons} bookingId={props.bookingId} />
+          <ScheduleLessons scheduleLessons={scheduleLessons} bookingId={props.bookingId} timezones={props.timezones} />
           :
           <React.Fragment>
             {props.freeTrial ?
@@ -315,6 +321,20 @@ export const BookLessons = (props: Props) => {
                     </Grid>
                   </React.Fragment>
                 }
+                {props.discounts &&
+                  <React.Fragment>
+                    <Grid item={true} xs={7} md={3}>
+                    <Typography className="nabi-text-mediumbold">
+                        {BookLessonsComponent.BookingSummary.Discounts}
+                      </Typography>
+                    </Grid>
+                    <Grid item={true} xs={5} md={7}>
+                      <Typography className="nabi-text-mediumbold">
+                        {String(props.discounts.toFixed(0))}{CommonConstants.percentage}
+                      </Typography>
+                    </Grid>
+                  </React.Fragment>
+                }
                 <Grid item={true} xs={7} md={3}>
                   <Typography color="primary" className="nabi-text-mediumbold nabi-text-uppercase">
                     {BookLessonsComponent.BookingSummary.Total}
@@ -363,6 +383,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     total,
     freeTrial,
     virtuosoDiscount,
+    discounts,
     bookingId,
     actions: {
       bookLessons: {
@@ -386,6 +407,10 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     }
   } = state.requests;
 
+  const {
+    timezones
+  } = state.timezones;
+
   return {
     bookLessonsRequesting,
     bookLessonsError,
@@ -407,7 +432,9 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     scheduleLessonsRequesting,
     scheduleLessonsError,
     scheduleLessonsMessage,
-    bookingId
+    bookingId,
+    discounts,
+    timezones
   }
 };
 
@@ -417,7 +444,8 @@ const mapDispatchToProps = (
   bookLessons: (data: BookLessonsPayload) => dispatch(bookLessons(data)),
   fetchBookLessonsData: (id: number) => dispatch(fetchBookLessonsData(id)),
   chooseLessonPackage: (packageName: string, applicationId: number) => dispatch(chooseLessonPackage(packageName, applicationId)),
-  scheduleLessons: (data: Partial<LessonType>) => dispatch(scheduleLessons(data))
+  scheduleLessons: (data: Partial<LessonType>) => dispatch(scheduleLessons(data)),
+  fetchTimezones: () => dispatch(fetchTimezones())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookLessons);

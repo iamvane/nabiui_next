@@ -9,9 +9,11 @@ import { getCookie } from '../../utils/cookies';
 import { RequestType } from '../models/RequestModel';
 import {
   BookLessonsPayload,
-  LessonType
+  LessonType,
 } from '../../components/BookLessons/model';
+import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
 import { RequestActions } from './RequestActionTypes';
+
 import {
   requestAction,
   withDataAction,
@@ -205,7 +207,7 @@ export const fetchBookLessonsData = (id: number): ThunkAction<Promise<void>, {},
 ) => {
   dispatch(requestAction(RequestActions.FETCH_BOOK_LESSONS_DATA));
   try {
-    const response = await axios.get(`${ApiEndpoints.bookLessonsData}${id}`, {
+    const response = await axios.get(`${ApiEndpoints.bookLessonsData}${id}/`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
     dispatch(withDataAction(RequestActions.FETCH_BOOK_LESSONS_DATA_SUCCESS, response.data));
@@ -258,5 +260,71 @@ export const scheduleLessons = (data: Partial<LessonType>): ThunkAction<Promise<
     }
 
     dispatch(withErrorAction(RequestActions.SHCEDULE_LESSONS_FAILURE, errorMessage));
+  }
+};
+
+export const createStudent = (
+  student: Partial<StudentDetailsType>
+): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.CREATE_STUDENT));
+  try {
+    const response = await axios.post(
+      `${ApiEndpoints.students}`,
+      student,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+
+    dispatch(withDataAction(RequestActions.CREATE_STUDENT_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.CREATE_STUDENT_FAILURE, errorMessage));
+  }
+};
+
+export const fetchStudents = (): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.FETCH_STUDENTS));
+  try {
+    const response = await axios.get(
+      `${ApiEndpoints.students}`,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+
+    dispatch(withDataAction(RequestActions.FETCH_STUDENTS_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.FETCH_STUDENTS_FAILURE, errorMessage));
+  }
+};
+
+export const deleteStudent = (id: number): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.DELETE_STUDENT));
+  try {
+    const response = await axios.delete(`${ApiEndpoints.students}${id}/`, {
+      headers: { 'Authorization': `Bearer ${authToken}` }
+    });
+
+    dispatch(withDataAction(RequestActions.DELETE_STUDENT_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.DELETE_STUDENT_FAILURE, errorMessage));
   }
 };
