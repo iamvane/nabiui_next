@@ -96,7 +96,7 @@ const Login = (props: Props) => {
         if (props.user.role === Role.instructor) {
           Router.push(Routes.InstructorStudio);
         } else {
-          Router.push(Routes.Dashboard);
+          Router.push(Routes.ParentStudio);
         }
       }
     }

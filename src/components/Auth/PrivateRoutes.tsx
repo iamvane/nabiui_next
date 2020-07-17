@@ -11,13 +11,13 @@ const redirectBasedOnRole = {
   },
   parent(res) {
     res.writeHead(302, {
-      Location: Routes.Dashboard,
+      Location: Routes.ParentStudio,
     });
     res.end();
   },
   student(res) {
     res.writeHead(302, {
-      Location: Routes.Dashboard,
+      Location: Routes.ParentStudio,
     });
     res.end();
   }

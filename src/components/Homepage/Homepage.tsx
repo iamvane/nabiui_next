@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { StoreState } from "../../redux/reducers/store";
 import { page } from "../../utils/analytics";
 import { UserType } from "../../redux/models/UserModel";
+import { getCookie } from "../../utils/cookies";
 import { Routes } from "../common/constants/Routes";
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import Banner from "./Banner";
@@ -17,6 +18,7 @@ import { useRouter } from "next/router";
 import ReferralModal from "../Referral/ReferralModal";
 import PrivateRoute from '../Auth/PrivateRoutes';
 import { fetchReferralInfo } from "../../redux/actions/UserActions";
+import { Role } from '../Auth/Registration/constants';
 
 /**
  * Homepage component
@@ -50,7 +52,8 @@ export const Homepage = (props: Props) => {
       setOpenModal(true);
     }
     if (props.token) {
-      Router.push(Routes.Dashboard);
+      const role = getCookie('role');
+      Router.push(role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio);
     }
 
     if (query.token) {

@@ -53,7 +53,8 @@ export enum Routes {
   ChooseInstructor = '/choose-instructor',
   TrialConfirmation = '/trial-confirmation',
   WelcomeToNabi = '/welcome-to-nabi',
-  InstructorStudio = '/studio-instructor'
+  InstructorStudio = '/studio-instructor',
+  ParentStudio = '/studio'
 }
 
 export enum SocialLinks {

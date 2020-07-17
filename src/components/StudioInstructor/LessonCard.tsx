@@ -12,6 +12,7 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import StarIcon from '@material-ui/icons/Star';
+import FaceIcon from '@material-ui/icons/Face';
 
 import { setCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
@@ -57,35 +58,42 @@ const LessonCard: React.StatelessComponent<Props> = props => {
         <Avatar className="lesson-card-avatar" src={displayAvatar()} />
       </Grid>
       <Grid item={true} xs={6} md={4}>
-        <Grid container={true}>
-          {props.lesson.parent ?
+        {props.lesson.parent ?
+          <Grid container={true}>
             <Grid xs={12} item={true}>
               <Typography color="primary"><span className="nabi-text-mediumbold nabi-display-block">{props.lesson.parent}</span></Typography>
             </Grid>
-          :''}
-           <br />
-           <Grid xs={12} item={true}>
-            <ChildCareIcon className="text-aligned-icon" />
-            <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-              {props.lesson.students.map((student, i) =>
-               <span key={i}>{`${student.name}`}</span>
-              )}
-            </Typography>
+            <Grid xs={12} item={true}>
+              <ChildCareIcon className="text-aligned-icon" />
+              <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+                {props.lesson.students.map((student, i) =>
+                <span key={i}>{`${student.name}`}</span>
+                )}
+              </Typography>
+            </Grid>
+            <Grid xs={12} item={true}>
+              <HourglassEmptyIcon className="text-aligned-icon" />
+              <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+                {props.lesson.students.map((student, i) =>
+                  <span key={i}>{`${student.age} y/o`}</span>
+                )}
+              </Typography>
+            </Grid>
+          </Grid> : 
+          <Grid container={true}>
+            <Grid xs={12} item={true}>
+              <Typography color="primary" className="nabi-display-block"><span className="nabi-text-mediumbold nabi-display-block">{props.lesson.studentName}</span></Typography>
+            </Grid>
+            <Grid xs={12} item={true}>
+              <FaceIcon className="text-aligned-icon" />
+              <Typography className="nabi-display-inline nabi-margin-left-xsmall">Student</Typography>
+            </Grid>
+            <Grid xs={12} item={true}>
+              <HourglassEmptyIcon className="text-aligned-icon" />
+              <Typography className="nabi-display-inline nabi-margin-left-xsmall">{props.lesson.age} y/o</Typography>
+            </Grid>
           </Grid>
-          <Grid xs={12} item={true}>
-            <HourglassEmptyIcon className="text-aligned-icon" />
-            <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-              {props.lesson.students.map((student, i) =>
-                <span key={i}>{`${student.age} y/o`}</span>
-            )}
-            </Typography>
-          </Grid>
-          {/* <Grid xs={12} item={true}>
-            <Typography className="nabi-display-block">{props.lesson.studentName}</Typography>
-          </Grid>
-          <Grid xs={12} item={true}>
-            <Typography className="nabi-display-block">{props.lesson.age}</Typography>
-          </Grid> */}
+          }
           <Grid xs={12} item={true}>
             <MusicNoteIcon className="text-aligned-icon" />
             <Typography className="nabi-display-inline nabi-margin-left-xsmall">{props.lesson.instrument}</Typography>
@@ -94,7 +102,6 @@ const LessonCard: React.StatelessComponent<Props> = props => {
             <ShowChartIcon className="text-aligned-icon" />
             <Typography className="nabi-display-inline nabi-margin-left-xsmall">{props.lesson.skillLevel}</Typography>
           </Grid>
-        </Grid>
       </Grid>
       <Grid item={true} xs={4} md={6} className="nabi-text-center">
         <Button

@@ -18,6 +18,7 @@ export const setDashboard = (data) => {
   }
   return (dashboard as ParentStudentDashboardType) =  {
     bookings: data.apiResponse.bookings,
-    requests: data.apiResponse.requests
+    requests: data.apiResponse.requests,
+    nextLesson: data.apiResponse.nextLesson
   };
 };

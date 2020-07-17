@@ -21,6 +21,7 @@ import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
 import { InstructorType } from '../../redux/models/InstructorModel';
 import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';
+import { Role } from '../Auth/Registration/constants';
 import { Routes } from '../common/constants/Routes';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import PageTitle from '../common/PageTitle';
@@ -101,6 +102,7 @@ export const Profile = (props: Props) =>  {
   }
 
   const pathname = getCookie('pathname');
+  const role = getCookie('role');
 
   return (
     <div className="nabi-container">
@@ -110,7 +112,7 @@ export const Profile = (props: Props) =>  {
       </Head>
       <PageTitle pageTitle={ProfileComponent.pageTitle} />
         <Breadcrumbs aria-label="breadcrumb">
-          <Link  href={Routes.Dashboard}>
+          <Link  href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
             <a>{ProfileComponent.breadcrumbLabels.home}</a>
           </Link>
           {pathname && pathname.includes('application') &&

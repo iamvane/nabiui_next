@@ -60,4 +60,5 @@ export interface InstructorDashboardType {
 export interface ParentStudentDashboardType {
   bookings: Booking[];
   requests: MyRequestType[];
+  nextLesson: NextLessonType;
 }
