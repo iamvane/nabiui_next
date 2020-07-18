@@ -79,7 +79,8 @@ export default function instructorReducer(
           bioTitle: profile.bioTitle,
           bioDescription: profile.bioDescription,
           music: profile.music,
-          video: profile.video
+          video: profile.video,
+          yearsOfExperience: profile.yearsOfExperience
         },
         actions: {
           ...state.actions,
@@ -267,7 +268,7 @@ export default function instructorReducer(
 
     case InstructorActions.EDIT_EDUCATION_SUCCESS:
       const {
-        data: editEducation 
+        data: editEducation
     } = <APIActions.WithData<any>>(
         action
       );
@@ -326,7 +327,7 @@ export default function instructorReducer(
       };
 
     case InstructorActions.DELETE_EDUCATION_SUCCESS:
-      const { 
+      const {
         data: deleteEducation
     } = <APIActions.WithData<any>>(
         action

@@ -95,13 +95,22 @@ export class ProfileStep extends React.Component<Props, State> {
     if (this.props.instructor.music && prevProps.instructor.music !== this.props.instructor.music) {
       this.setState({ music: this.props.instructor.music });
     }
+    if (this.props.instructor.yearsOfExperience && prevProps.instructor.yearsOfExperience !== this.props.instructor.yearsOfExperience) {
+      this.setState({ yearsOfExperience: String(this.props.instructor.yearsOfExperience) })
+    }
+    if (this.props.instructor.bioDescription && prevProps.instructor.bioDescription !== this.props.instructor.bioDescription) {
+      this.setState({ bioDescription: this.props.instructor.bioDescription })
+    }
+    if (this.props.instructor.bioTitle && prevProps.instructor.bioTitle !== this.props.instructor.bioTitle) {
+      this.setState({ bioTitle: this.props.instructor.bioTitle })
+    }
   }
 
   public handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const target = event.currentTarget;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    const bioFields = ['bioDescription', 'bioTitle'];
+    const bioFields = ['bioDescription', 'bioTitle', 'yearsOfExperience'];
     this.setState({ ...this.state, [name]: value }, () => {
       bioFields.forEach((field) => {
         if (this.state[field]) {
@@ -115,7 +124,7 @@ export class ProfileStep extends React.Component<Props, State> {
     const target = event.currentTarget;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    const bioFields = ['bioDescription', 'bioTitle'];
+    const bioFields = ['bioDescription', 'bioTitle', 'yearsOfExperience'];
     this.setState({ ...this.state, [name]: value }, () => {
       bioFields.forEach((field) => {
         if (this.state[field]) {
@@ -219,6 +228,7 @@ export class ProfileStep extends React.Component<Props, State> {
     const profile = {
       bioTitle: this.state.bioTitle,
       bioDescription: this.state.bioDescription,
+      yearsOfExperience: Number(this.state.yearsOfExperience),
       music: this.state.music
     };
     await this.props.buildProfile(profile);
@@ -241,6 +251,8 @@ export class ProfileStep extends React.Component<Props, State> {
             bioTitleError={this.state.fields.bioTitle.error}
             bioTitle={this.state.bioTitle || this.props.instructor.bioTitle}
             bioDescription={this.state.bioDescription || this.props.instructor.bioDescription}
+            yearsOfExperience={this.state.yearsOfExperience || this.props.instructor.yearsOfExperience}
+            yearsOfExperienceError={this.state.fields.yearsOfExperience.error}
           />
         </div>
         <div className="nabi-margin-bottom-large">

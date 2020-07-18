@@ -6,6 +6,7 @@ let ProfileStepValidator = new ValidatorFactory();
 ProfileStepValidator.registerField('bioDescription');
 ProfileStepValidator.registerField('bioTitle');
 ProfileStepValidator.registerField('studioAddress');
+ProfileStepValidator.registerField('yearsOfExperience');
 
 export const fields = ProfileStepValidator.getFieldState();
 ProfileStepValidator.registerFieldValidator('bioTitle', (value: string) => {
@@ -23,6 +24,12 @@ ProfileStepValidator.registerFieldValidator('bioDescription', (value: string) =>
 ProfileStepValidator.registerFieldValidator('bioDescription', (value: string) => {
   return (value.length > 1000 )
     ? 'Invalid. Must contain maximum 1000 characters.'
+    : '';
+});
+
+ProfileStepValidator.registerFieldValidator('yearsOfExperience', (value: string) => {
+  return (isNaN(Number(value)))
+    ? 'Invalid. Must be a number.'
     : '';
 });
 

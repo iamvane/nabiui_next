@@ -2,6 +2,7 @@
 export interface ProfileType {
   bioTitle?: string;
   bioDescription?: string;
+  yearsOfExperience?: string | number;
   music?: string[];
 }
 
