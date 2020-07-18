@@ -45,8 +45,8 @@ export const howItWorksInstructor = [
   },
   {
     stepTitle: '3. Start teaching',
-    stepDescription: 'Parents and students review you application, they purchase a lesson package with you and you start teaching.',
-    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/three-start-teaching-music-instructor.jpg'
+    stepDescription: 'You will get matched with students for a trial lesson. After the trial, students have the option to purchase a lesson package with you.',
+    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/learn-music-with-nabi.jpg'
   }
 ]
 
