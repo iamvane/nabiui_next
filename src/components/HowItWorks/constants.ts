@@ -45,7 +45,7 @@ export const howItWorksInstructor = [
   },
   {
     stepTitle: '3. Start teaching',
-    stepDescription: 'You will get matched with a student for a trial lesson. After the trial, the student has the option to purchase a lesson package with you.',
+    stepDescription: 'You will get matched with students for a trial lesson. After the trial, students have the option to purchase a lesson package with you.',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/learn-music-with-nabi.jpg'
   }
 ]
