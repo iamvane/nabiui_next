@@ -8,5 +8,21 @@ export namespace ParentStudioComponent {
   export const timePlaceholder = '{timeReplace}';
   export const instructorPlaceholder = '{instructorRepalce}';
   export const noNextLesson = 'No upcoming lessons';
+  export const studentDescription = '{nameReplace} {instrumentReplace} Lessons'
+  export const instrumentPlaceholder = '{instrumentReplace}';
+  export const buyMoreLessonsButton = 'Buy More Lessons';
+  export const reschedule = 'Reschedule';
+  export const noActions = 'No Actions';
+}
 
+export enum LessonStatuses {
+  scheduled = 'scheduled',
+  missed = 'missed',
+  complete = 'complete'
+}
+
+export enum LessonStatusLabels {
+  scheduled = 'Scheduled',
+  missed = 'Missed',
+  complete = 'Complete'
 }

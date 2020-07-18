@@ -3,14 +3,20 @@
 }
 .studio-tabs .MuiTabs-root{
   background: #06c3e1 !important;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 17px;
 }
 
-.studio-tabs  .MuiTab-root.Mui-selected {
+.studio-tabs .MuiTab-root,
+.studio-tabs .MuiTab-root.Mui-selected {
   color: #ffffff !important;
 }
 
 .studio-tabs .MuiTabs-indicator {
   background-color: #ffffff !important;
+}
+
+#lessons-table .MuiTableCell-root {
+  padding: 17px 4px;
+
 }

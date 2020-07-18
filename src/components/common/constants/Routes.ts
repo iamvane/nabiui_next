@@ -14,7 +14,7 @@ export enum Routes {
   Request = '/request',
   RequestId = '/request/:id',
   Login = '/login',
-  Profile = '/profile/:instructorId',
+  Profile = '/profile',
   AccountRecovery = '/account-recovery',
   ForgotPassword = '/forgot-password',
   TermsOfUse = '/terms-of-use',
