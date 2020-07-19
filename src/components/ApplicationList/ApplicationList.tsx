@@ -70,7 +70,7 @@ export const ApplicationList = (props: Props) => {
       {props.isRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
       <React.Fragment>
         <Breadcrumbs aria-label="breadcrumb">
-          <Link  href={Routes.Dashboard}>
+          <Link  href="">
             <a>{ApplicationListComponent.breadcrumbLabels.home}</a>
           </Link>
           <Typography> {ApplicationListComponent.breadcrumbLabels.applications}</Typography>
