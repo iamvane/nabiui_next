@@ -10,6 +10,7 @@ import moment from 'moment';
 import {
   AppBar,
   Button,
+  CircularProgress,
   Grid,
   Tabs,
   Tab,
@@ -256,23 +257,26 @@ export const StudioParent = (props: Props) => {
             ParentStudioComponent.namePlaceholder,
             getCookie('firstName'))
         } />
-      <Grid container={true} spacing={0}>
-        {props.dashboard && props.dashboard.students.length > 0 ?
-          <>
-            {props.dashboard && props.dashboard.students.length > 1 ?
-              <AppBar position="static" className="studio-tabs">
-                <Tabs value={student} onChange={handleTabChange} aria-label="availability">
-                  {getStudentsTab().map((item, i) => (
-                    <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
-                  ))}
-                </Tabs>
-              </AppBar>
-            : ''}
-            {displayTabContent()}
-          </>
-          : displayEmptyContent()
-        }
-      </Grid>
+      {props.isFetchingDashboard ?
+        <CircularProgress /> :
+        <Grid container={true} spacing={0}>
+          {props.dashboard && props.dashboard.students.length > 0 ?
+            <>
+              {props.dashboard && props.dashboard.students.length > 1 ?
+                <AppBar position="static" className="studio-tabs">
+                  <Tabs value={student} onChange={handleTabChange} aria-label="availability">
+                    {getStudentsTab().map((item, i) => (
+                      <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
+                    ))}
+                  </Tabs>
+                </AppBar>
+              : ''}
+              {displayTabContent()}
+            </>
+            : displayEmptyContent()
+          }
+        </Grid>
+      }
     </div>
   );
 }

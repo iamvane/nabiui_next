@@ -96,12 +96,6 @@
   border-bottom: 1px solid #ebeef1 !important;
 }
 
-.MuiTab-root {
-  width: 14.3% !important;
-  max-width: 14.3% !important;
-  min-width: 14.3% !important;
-}
-
 .MuiRadio-root {
   background: none !important;
   color: #06c3e1 !important;
