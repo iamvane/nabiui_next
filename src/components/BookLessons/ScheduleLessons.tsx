@@ -184,9 +184,9 @@ export const ScheduleLessons = (props: Props) => {
           <Done />
         </IconButton>
         <Typography className="nabi-margin-left-xsmall nabi-display-inline">{props.scheduleLessonsMessage}</Typography>
-        <Link href={Routes.Dashboard}>
+        <Link href={Routes.ParentStudio}>
           <Button className="nabi-margin-top-small nabi-display-block" variant="contained" color="primary">
-            {ScheduleLessonsComponent.goToDashboardButton}
+            {ScheduleLessonsComponent.goToStudio}
           </Button>
         </Link>
       </div>

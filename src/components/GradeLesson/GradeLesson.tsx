@@ -65,7 +65,7 @@ export const GradeLesson = (props: Props) => {
       setSnackbarMessage('Your grade was submitted successfully.')
       setShowSnackbar(true);
       displayCircularProgress(true);
-      delayedRedirect(2000).then(() => Router.push(Routes.Dashboard));
+      delayedRedirect(2000).then(() => Router.push(Routes.InstructorStudio));
     }
     if (props.error) {
       setShowSnackbar(true);

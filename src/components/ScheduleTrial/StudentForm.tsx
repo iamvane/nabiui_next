@@ -146,7 +146,7 @@ export const StudentForm = (props: Props) => {
   return (
     <form>
       {props.role === Role.parent &&
-      <div>
+      <Grid item={true} xs={12}>
         <Grid spacing={1} container={true}>
           <Grid item={true} xs={12}>
             <TextField
@@ -180,49 +180,57 @@ export const StudentForm = (props: Props) => {
             </FormControl>
           </Grid>
         </Grid>
-      </div>
+      </Grid>
       }
-      <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
-      <Grid container={true} spacing={1}>
-        {ChildFormComponent.instrumentChips.map((item) => {
-          return <Grid item={true} xs={6} md={4} key={item.value}>
-            <Chip
-              className="nabi-full-width"
-              onClick={() => handleSetInstrument(item.value)
-              }
-              color={item.value === instrument ? "primary" : 'default'}
-              label={item.label}
-            />
+      <Grid item={true} xs={12}>
+        <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
+      </Grid>
+      <Grid item={true} xs={12}>
+        <Grid container={true} spacing={1}>
+          {ChildFormComponent.instrumentChips.map((item) => {
+            return <Grid item={true} xs={6} md={4} key={item.value}>
+              <Chip
+                className="nabi-full-width"
+                onClick={() => handleSetInstrument(item.value)
+                }
+                color={item.value === instrument ? "primary" : 'default'}
+                label={item.label}
+              />
+            </Grid>
+          })}
+          <Grid item={true} xs={6} md={4}>
+            <FormControl fullWidth={true} className="nabi-margin-remove">
+              <Select
+                native={true}
+                input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
+                value={instrumentSelect}
+                onChange={handleChange}
+                className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
+              >
+                <option value="" disabled={true}>{ChildFormComponent.Placeholders.Instrument}</option>
+                {instrumentSelectItems}
+              </Select>
+            </FormControl>
           </Grid>
-        })}
-        <Grid item={true} xs={6} md={4}>
-          <FormControl fullWidth={true} className="nabi-margin-remove">
-            <Select
-              native={true}
-              input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
-              value={instrumentSelect}
-              onChange={handleChange}
-              className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
-            >
-              <option value="" disabled={true}>{ChildFormComponent.Placeholders.Instrument}</option>
-              {instrumentSelectItems}
-            </Select>
-          </FormControl>
         </Grid>
       </Grid>
-      {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
-      <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
-      <Grid container={true} spacing={1}>
-        {ChildFormComponent.levelChips.map((item) => (
-          <Grid item={true} xs={4} key={item.value}>
-            <Chip
-              className="nabi-full-width level-chips"
-              onClick={() => setLevel(item.value)}
-              color={item.value === level ? "primary" : 'default'}
-              label={item.label}
-            />
-          </Grid>
-        ))}
+      <Grid item={true} xs={12}>
+        {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
+        <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
+      </Grid>
+      <Grid item={true} xs={12}>
+        <Grid container={true} spacing={1}>
+          {ChildFormComponent.levelChips.map((item) => (
+            <Grid item={true} xs={4} key={item.value}>
+              <Chip
+                className="nabi-full-width level-chips"
+                onClick={() => setLevel(item.value)}
+                color={item.value === level ? "primary" : 'default'}
+                label={item.label}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
       {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
       <div className="nabi-text-right">

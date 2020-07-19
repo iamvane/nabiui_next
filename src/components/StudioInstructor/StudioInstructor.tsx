@@ -152,4 +152,4 @@ const mapDispatchToProps = (
   fetchDashboard: (role: Role) => dispatch(fetchDashboard(role)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(StudioInstructor, 'Private', ['Student', 'Parent', 'Instructor']));
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(StudioInstructor, 'Private', ['Instructor']));

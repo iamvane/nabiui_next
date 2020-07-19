@@ -206,7 +206,7 @@ export const ReuqestsList = (props: Props) => {
         breadcrumbs={
           <div className="nabi-margin-bottom-xsmall">
             <Breadcrumbs aria-label="breadcrumb">
-              <Link href={props.isLoggedIn ? Routes.Dashboard : Routes.HomePage}>
+              <Link href={props.isLoggedIn ? Routes.InstructorStudio : Routes.HomePage}>
                 <a>{RequestsListComponent.breadcrumbLabels.home}</a>
               </Link>
               <Typography> {RequestsListComponent.breadcrumbLabels.requests}</Typography>

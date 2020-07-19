@@ -118,11 +118,11 @@ export const Header = (props: HeaderProps) => {
   ];
 
   const menuDisplayPages = [
-    Routes.Dashboard,
     Routes.ApplicationList,
     Routes.BookLessons,
     Routes.Requests,
-    Routes.InstructorStudio
+    Routes.InstructorStudio,
+    Routes.ParentStudio
   ] as string[];
 
   const role = getCookie('role');
@@ -278,7 +278,7 @@ export const Header = (props: HeaderProps) => {
         ) : (
           ""
         )}
-        {props.router.route === Routes.Dashboard && (
+        {/* {props.router.route === Routes.Dashboard && (
           <div className="nabi-header-button">
             <Button
               color="primary"
@@ -293,7 +293,7 @@ export const Header = (props: HeaderProps) => {
               )}
             </Button>
           </div>
-        )}
+        )} */}
       </div>
     </header>
   );

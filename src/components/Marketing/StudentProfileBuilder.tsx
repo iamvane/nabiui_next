@@ -25,7 +25,7 @@ const StudentProfileBuilder: React.StatelessComponent<Props> = props => {
         target: '#hubspotProfileBuilder'
       });
     } else {
-      Router.push(Routes.Dashboard)
+      Router.push(Routes.ParentStudio)
     }
   }, [hbspt]);
 
