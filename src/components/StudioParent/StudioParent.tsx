@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
+import Router from "next/router";
 import { connect } from 'react-redux';
 import {
   Action,
@@ -25,7 +26,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import { instrumentDisplay } from '../../utils/displayInstrument';
 import { StoreState } from '../../redux/reducers/store';
 import { fetchDashboard } from '../../redux/actions/UserActions';
-import { getCookie } from "../../utils/cookies";
+import { getCookie, setCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
 import { Role } from '../Auth/Registration/constants';
@@ -52,93 +53,6 @@ interface Props extends
   OwnProps,
   StateProps,
   DispatchProps {}
-
-export const parentsStudentboardDummyData = {
-  students: [
-  //   {
-  //     id: 0,
-  //     name: 'Zoe',
-  //     nextLesson: {
-  //       id: 1,
-  //       date: '2020-04-03',
-  //       time: '16:00',
-  //       instructor: 'Bryan P.',
-  //       zoomLink: ''
-  //     },
-  //     instrument: 'piano',
-  //     lessons: [
-  //       {
-  //         id: 0,
-  //         date: '06/24/20 @ 5pm',
-  //         status: 'scheduled',
-  //         instructor: 'Bryan P.',
-  //         instructorId: 243,
-  //         grade: 2,
-  //         gradeComment: ''
-  //       },
-  //       {
-  //         id: 0,
-  //         date: '06/24/20 @ 5pm',
-  //         status: 'scheduled',
-  //         instructor: 'Bryan P.',
-  //         instructorId: 243,
-  //         grade: 1,
-  //         gradeComment: ''
-  //       },
-  //       {
-  //         id: 0,
-  //         date: '06/24/20 @ 5pm',
-  //         status: 'complete',
-  //         instructor: 'Bryan P.',
-  //         instructorId: 243,
-  //         grade: 3,
-  //         gradeComment: ''
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     id: 0,
-  //     name: 'Ezme',
-  //     nextLesson: {
-  //       id: 15,
-  //       date: '2020-11-24',
-  //       time: '13:00',
-  //       instructor: 'Matt M.',
-  //       zoomLink: ''
-  //     },
-  //     instrument: 'guitar-acoustic',
-  //     lessons: [
-        // {
-        //   id: 0,
-        //   date: '06/24/20 @ 5pm',
-        //   status: 'scheduled',
-        //   instructor: 'Bryan P.',
-        //   instructorId: 243,
-        //   grade: 0,
-        //   gradeComment: ''
-        // },
-        // {
-        //   id: 0,
-        //   date: '06/24/20 @ 5pm',
-        //   status: 'complete',
-        //   instructor: 'Bryan P.',
-        //   instructorId: 243,
-        //   grade: 3,
-        //   gradeComment: 'Amazing work!'
-        // },
-        // {
-        //   id: 0,
-        //   date: '06/24/20 @ 5pm',
-        //   status: 'missed',
-        //   instructor: 'Bryan P.',
-        //   instructorId: 243,
-        //   grade: 0,
-        //   gradeComment: ''
-        // }
-    //   ]
-    // }
-  ]
-};
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -183,7 +97,7 @@ export const StudioParent = (props: Props) => {
 
   const getStudentsTab = (): string[] => {
     let studentsArray = [];
-    parentsStudentboardDummyData.students.map(student => studentsArray.push(student.name))
+    props.dashboard.students.map(student => studentsArray.push(student.name))
 
     return studentsArray;
   }
@@ -204,11 +118,23 @@ export const StudioParent = (props: Props) => {
     return gradeStars;
   };
 
-  const displayTabContent = () => {
-    // if (parentsStudentboardDummyData.students.length < 1) {
-    //   return ''
-    // }
+  const displayEmptyContent = () => (
+    <Grid item={true} xs={12} md={8} className="nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-top-small nabi-margin-center nabi-text-center">
+      <Typography>{ParentStudioComponent.noStudentsDescription}</Typography>
+      <Link href={Routes.ScheduleTrial + Routes.LessonDetails}>
+        <Button variant="contained" color="primary" className="nabi-margin-top-small">{ParentStudioComponent.scheduleTrialButton}</Button>
+      </Link>
+    </Grid>
+  )
 
+  const rescheduleTrial = (studentName, lessonId) => {
+    setCookie('lessonId', lessonId);
+    setCookie('studentName', studentName);
+
+    Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
+  }
+
+  const displayTabContent = () => {
     const headCells = [
       { id: 'date', numeric: false, disablePadding: true, label: 'Date/Time' },
       { id: 'status', numeric: true, disablePadding: false, label: 'Status' },
@@ -221,12 +147,7 @@ export const StudioParent = (props: Props) => {
       return { date, status, instructor, instructorId, grade, id };
     }
 
-    return parentsStudentboardDummyData.students.length < 1 ?
-      <div className="nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-top-small">
-        <span>Schedule Trial</span>
-      </div>
-      :
-      parentsStudentboardDummyData.students.map((item, i) => {
+    return props.dashboard.students.map((item, i) => {
       const rows = item.lessons.map(item => (
         createData(item.date, item.status, item.instructor, item.instructorId, item.grade, item.id)
       ));
@@ -264,18 +185,22 @@ export const StudioParent = (props: Props) => {
                 </p>
               </Grid>
               <Grid item={true} xs={12} md={6} className="nabi-text-right-md">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className="nabi-margin-top-small-md"
-                >
-                  {ParentStudioComponent.buyMoreLessonsButton}
-                </Button>
+                <Link href={item.lessons.length < 1 ? Routes.ScheduleTrial + Routes.LessonDetails : Routes.BookLessons}>
+                  <a>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className="nabi-margin-top-small-md"
+                    >
+                      {item.lessons.length < 1 ? ParentStudioComponent.scheduleTrialButton : ParentStudioComponent.buyMoreLessonsButton}
+                    </Button>
+                  </a>
+                </Link>
               </Grid>
             </Grid>
             <TableContainer className="nabi-margin-top-small nabi-margin-bottom-small">
               {item.lessons.length < 1 ?
-              <span>No lessons</span> :
+              <span>{ParentStudioComponent.noLessons}</span> :
                 <Table id="lessons-table" aria-label="lesson table">
                   <TableHead>
                     <TableRow>
@@ -299,7 +224,12 @@ export const StudioParent = (props: Props) => {
                         <TableCell><Link href={`${Routes.Profile}/${row.instructorId}`}><a>{row.instructor}</a></Link></TableCell>
                         <TableCell>{displayGradeStars(row.grade)}</TableCell>
                         <TableCell>{row.status === 'scheduled' ?
-                          <Button variant="contained" color="primary" className="nabi-responsive-button">
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            className="nabi-responsive-button"
+                            onClick={() => rescheduleTrial(item.name, row.id)}
+                          >
                             {ParentStudioComponent.reschedule}
                           </Button> :
                           ParentStudioComponent.noActions}
@@ -322,19 +252,26 @@ export const StudioParent = (props: Props) => {
         ParentStudioComponent.pageTitleParent.replace(
           ParentStudioComponent.namePlaceholder,
           getCookie('firstName')) :
-          ParentStudioComponent.pageTitlrStudent.replace(
+          ParentStudioComponent.pageTitleStudent.replace(
             ParentStudioComponent.namePlaceholder,
             getCookie('firstName'))
         } />
       <Grid container={true} spacing={0}>
-        <AppBar position="static" className="studio-tabs">
-          <Tabs value={student} onChange={handleTabChange} aria-label="availability">
-            {getStudentsTab().map((item, i) => (
-              <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
-            ))}
-          </Tabs>
-        </AppBar>
-        {displayTabContent()}
+        {props.dashboard && props.dashboard.students.length > 0 ?
+          <>
+            {props.dashboard && props.dashboard.students.length > 1 ?
+              <AppBar position="static" className="studio-tabs">
+                <Tabs value={student} onChange={handleTabChange} aria-label="availability">
+                  {getStudentsTab().map((item, i) => (
+                    <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
+                  ))}
+                </Tabs>
+              </AppBar>
+            : ''}
+            {displayTabContent()}
+          </>
+          : displayEmptyContent()
+        }
       </Grid>
     </div>
   );

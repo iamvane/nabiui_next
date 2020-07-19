@@ -16,9 +16,9 @@ interface Props {
 
 export const LessonStatus = (props: Props) => {
   const statusIcons = {
-      scheduled: <CalendarTodayIcon className="text-aligned-icon scheduled-status" />,
-      missed: <CancelIcon className="text-aligned-icon missed-status" />,
-      complete: <CheckCircleIcon className="text-aligned-icon complete-status" />
+    scheduled: <CalendarTodayIcon className="text-aligned-icon scheduled-status" />,
+    missed: <CancelIcon className="text-aligned-icon missed-status" />,
+    complete: <CheckCircleIcon className="text-aligned-icon complete-status" />
   }
 
   const statusStyles = {

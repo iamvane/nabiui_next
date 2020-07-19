@@ -33,10 +33,10 @@ const StudentMenuItems = () => {
       label: NavigationComponent.NavigationLabels.Studio,
       url: Routes.ParentStudio
     },
-    {
-      label: NavigationComponent.NavigationLabels.RequestInstructor,
-      url: Routes.BuildRequest + Routes.Request
-    },
+    // {
+    //   label: NavigationComponent.NavigationLabels.RequestInstructor,
+    //   url: Routes.BuildRequest + Routes.Request
+    // },
     // {
     //   label: NavigationComponent.NavigationLabels.ReferAFriend,
     //   url: ''

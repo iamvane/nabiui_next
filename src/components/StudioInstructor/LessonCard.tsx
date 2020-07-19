@@ -66,20 +66,27 @@ const LessonCard: React.StatelessComponent<Props> = props => {
             <Grid xs={12} item={true}>
               <ChildCareIcon className="text-aligned-icon" />
               <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-                {props.lesson.students.map((student, i) =>
-                <span key={i}>{`${student.name}`}</span>
-                )}
+                {props.lesson.students.length > 0 ?
+                  props.lesson.students.map((student, i) =>
+                    <span key={i}>{`${student.name}`}</span>
+                  )
+                :
+                  <span>No Data</span>
+                }
               </Typography>
             </Grid>
             <Grid xs={12} item={true}>
               <HourglassEmptyIcon className="text-aligned-icon" />
               <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-                {props.lesson.students.map((student, i) =>
+                {props.lesson.students.length > 0 ?
+                  props.lesson.students.map((student, i) =>
                   <span key={i}>{`${student.age} y/o`}</span>
-                )}
+                ) :
+                <span>No Data</span>
+                }
               </Typography>
             </Grid>
-          </Grid> : 
+          </Grid> :
           <Grid container={true}>
             <Grid xs={12} item={true}>
               <Typography color="primary" className="nabi-display-block"><span className="nabi-text-mediumbold nabi-display-block">{props.lesson.studentName}</span></Typography>

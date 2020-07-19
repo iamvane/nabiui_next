@@ -23,7 +23,6 @@ export enum Routes {
   StudentPolicy = '/student-policy',
   ContactUs = '/contact-us',
   AccountInfo = '/account-info',
-  Dashboard = '/dashboard',
   Applications = '/applications',
   Messages = '/messages',
   Lessons = '/lessons',

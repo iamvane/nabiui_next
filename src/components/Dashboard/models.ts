@@ -10,7 +10,7 @@ export interface NextLessonType {
   date: string;
   time: string;
   timezone: string;
-  student_details: StudentType;
+  studentDetails: StudentType;
   instructor: string;
 }
 
@@ -57,8 +57,25 @@ export interface InstructorDashboardType {
   nextLesson: NextLessonType;
 }
 
-export interface ParentStudentDashboardType {
-  bookings: Booking[];
-  requests: MyRequestType[];
+export interface StudentLessonType {
+  id: number;
+  date: string;
+  timezone: string;
+  instructor: string;
+  instructorId: number;
+  status: string;
+  grade: number;
+  gradeComment: string;
+}
+
+export interface StudentDetailsType {
+  id: number;
+  name: string;
+  instrument: string;
   nextLesson: NextLessonType;
+  lessons: StudentLessonType[];
+}
+
+export interface ParentStudentDashboardType {
+  students: StudentDetailsType[];
 }

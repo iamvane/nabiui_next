@@ -3,10 +3,13 @@ import {
   InstructorDashboardType,
   ParentStudentDashboardType
 } from '../components/Dashboard/models';
+import { getCookie } from './cookies';
+
+const role = getCookie('role');
 
 export const setDashboard = (data) => {
   let dashboard;
-  if (data.role === Role.instructor) {
+  if (role === Role.instructor) {
     return (dashboard as InstructorDashboardType) = {
       complete: data.apiResponse.complete,
       missingFields: data.apiResponse.missingFields,
@@ -17,8 +20,6 @@ export const setDashboard = (data) => {
     };
   }
   return (dashboard as ParentStudentDashboardType) =  {
-    bookings: data.apiResponse.bookings,
-    requests: data.apiResponse.requests,
-    nextLesson: data.apiResponse.nextLesson
+    students: data.apiResponse.students,
   };
 };
