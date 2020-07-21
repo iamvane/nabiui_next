@@ -14,7 +14,7 @@ import {
   createStudent,
   fetchStudents
 } from '../../redux/actions/RequestActions';
-import { getCookie, setCookie } from '../../utils/cookies';
+import { getCookie, setCookie, removeCookie } from '../../utils/cookies';
 import { Timezone } from '../../redux/models/TimeZonesModel';
 import { StoreState } from '../../redux/reducers/store';
 import PageTitle from '../common/PageTitle';
@@ -73,6 +73,7 @@ export const LessonDetails = (props: Props) => {
 
     if (addStudent) {
       setCookie("studentId", props.student.studentId);
+      removeCookie("lessonId");
       Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial);
     }
   }, [addStudent, props.addError]);

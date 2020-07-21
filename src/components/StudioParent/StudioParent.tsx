@@ -27,7 +27,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import { instrumentDisplay } from '../../utils/displayInstrument';
 import { StoreState } from '../../redux/reducers/store';
 import { fetchDashboard } from '../../redux/actions/UserActions';
-import { getCookie, setCookie } from "../../utils/cookies";
+import { getCookie, setCookie, removeCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
 import { Role } from '../Auth/Registration/constants';
@@ -138,6 +138,7 @@ export const StudioParent = (props: Props) => {
   const scheduleTrial = (studentName, studentId) => {
     setCookie('studentId', studentId);
     setCookie('studentName', studentName);
+    removeCookie('lessonId');
 
     Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
   }
