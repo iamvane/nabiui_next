@@ -132,7 +132,7 @@ export const StudioParent = (props: Props) => {
     setCookie('lessonId', lessonId);
     setCookie('studentName', studentName);
 
-    Router.push(Routes.ScheduleLesson)
+    Router.push(Routes.ScheduleLesson);
   }
 
   const scheduleTrial = (studentName, studentId) => {

@@ -37,9 +37,9 @@ interface DispatchProps {
 }
 
 interface OwnProps {
-  nextPath: string;
+  nextPath?: string;
   pageTitle?: string;
-  isTrial: boolean;
+  isTrial?: boolean;
 }
 
 interface StateProps {
