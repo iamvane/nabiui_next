@@ -37,7 +37,7 @@ export const BookingDetails = (props: Props) => {
 
   const handleNext = () => {
     if (props.handleContinue) {
-      return props.handleContinue;
+      return props.handleContinue();
     }
     return Router.push(Routes.ParentStudio);
   }
