@@ -5,7 +5,6 @@ import {
 import * as _ from "lodash";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import Router from "next/router";
 
 import {
   Button,
@@ -26,7 +25,6 @@ import { checkErrors } from "../../utils/checkErrors";
 import { Role } from '../../constants/Roles';
 import { ChildFormComponent } from './constants';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
-import { Routes } from '../common/constants/Routes';
 
 interface Props {
   addChild: (student: StudentDetailsType) => void;
@@ -70,8 +68,7 @@ export const StudentForm = (props: Props) => {
       setCookie('studentName', name);
       setCookie('instrumentName', instrument || instrumentSelect);
 
-      Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial);
-      // props.addChild(childToAdd);
+      props.addChild(childToAdd);
     }
   }, [addChild]);
 

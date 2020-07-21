@@ -18,40 +18,35 @@ import {
 } from '@material-ui/core';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import '../../../assets/scss/ScheduleLessons.scss';
-import {
-  createStudent,
-} from '../../redux/actions/RequestActions';
-import { setCookie } from "../../utils/cookies";
-import { fetchTimezones } from '../../redux/actions/TimezonesActions';
-import { getCookie } from '../../utils/cookies';
+import { scheduleLesson } from '../../redux/actions/RequestActions';
+import { getCookie, setCookie, } from "../../utils/cookies";
 import { Timezone } from '../../redux/models/TimeZonesModel';
 import { StoreState } from '../../redux/reducers/store';
 import PageTitle from '../common/PageTitle';
+import SnackBar from '../common/SnackBar';
 import { Role } from '../../constants/Roles';
 import { Routes } from '../common/constants/Routes';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
+import { LessonType } from '../BookLessons/model';
 import {
   ScheduleLessonsComponent,
 } from './constants';
 
 interface DispatchProps {
-  createStudent: (student: StudentDetailsType) => void;
-  fetchTimezones: () => void;
+  scheduleLesson: (lessonDetails: Partial<LessonType>, lessonId: number) => void;
 }
 
 interface OwnProps {
   nextPath: string;
+  pageTitle?: string;
+  isTrial: boolean;
 }
 
 interface StateProps {
-  isFetchingStudents: boolean;
-  isAddingStudent: boolean;
-  isDeletingStudent: boolean;
-  fetchError: string;
-  deleteError: string;
-  addError: string;
-  students: StudentDetailsType[];
-  timezones: Timezone[];
+  isScheduling: boolean;
+  error: string;
+  userTimezone: string;
+  message: string;
 }
 
 interface Props extends
@@ -59,7 +54,6 @@ interface Props extends
   StateProps,
   OwnProps {
   }
-
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -88,6 +82,19 @@ export const ScheduleLessons = (props: Props) => {
   const [lessonDate, setLessonDate] = React.useState(moment().add(1, 'days').format("YYYY-MM-DD"));
   const [lessonTime, setLessonTime] = React.useState('');
   const [weekday, setWeekday] = React.useState(0);
+  const [scheduleLesson, setScheduleLesson] = React.useState(false);
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
+
+  React.useEffect(() => {
+    if (props.error) {
+      return setShowSnackbar(true);
+    }
+
+    if (scheduleLesson) {
+      const nextRoute = props.nextPath || Routes.BookingDetails;
+      Router.push(nextRoute);
+    }
+  }, [scheduleLesson, props.error]);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     if (event) event.preventDefault();
@@ -159,49 +166,88 @@ export const ScheduleLessons = (props: Props) => {
     ))
   )
 
-  const handleSubmit = (event): void => {
+  const handleSubmit = async (event: React.FormEvent<{}>): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
 
     setCookie('lessonDate', lessonDate);
     setCookie('lessonTime', lessonTime);
-    Router.push(Routes.ScheduleTrial + Routes.TrialConfirmation);
-    // validate();
-    // setAddChild(true);
+
+    const lesson: LessonType = {
+      date: lessonDate,
+      time: lessonTime
+    }
+
+    let lessonId;
+
+    if (props.isTrial) {
+      const studentId = getCookie('studentId');
+      lesson.studentId = studentId;
+    } else {
+      lessonId = getCookie('lessonId');
+    }
+
+    await props.scheduleLesson(lesson, lessonId)
+    setScheduleLesson(true);
   };
 
+  const role = getCookie('role');
+
   return (
-    <>
-      <div className="nabi-text-center nabi-margin-bottom-small">
-        <DateRangeIcon className="text-aligned-icon" color="primary" />
-        <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
-          <span className="nabi-color-nabi">{displayWeek()}</span>
-        </Typography>
-        <Typography className="nabi-margin-top-small">
-          <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
-        </Typography>
-      </div>
-      <AppBar position="static">
-        <Tabs value={weekday} onChange={handleChange} aria-label="availability">
-          {getWeekDays().map((item, i) => (
-            <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
-          ))}
-        </Tabs>
-      </AppBar>
-      {displayTabContent()}
-      <div className="nabi-text-right">
-        <Button
-          color="primary"
-          className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
-          variant="contained"
-          onClick={handleSubmit}
-          disabled={!lessonDate || !lessonTime}
-        >
-          Next
-        </Button>
-      </div>
-    </>
+    <div className="nabi-container nabi-margin-bottom-medium">
+      <PageTitle
+        pageTitle={props.pageTitle ? props.pageTitle :
+          role === Role.parent ?
+          ScheduleLessonsComponent.pageTitleParent.replace(
+            ScheduleLessonsComponent.studentPlaceholder,
+            getCookie('studentName')
+          ) :
+          ScheduleLessonsComponent.pageTitle}
+      />
+      <Grid
+        item={true}
+        xs={12}
+        md={8} className="nabi-section nabi-background-white nabi-margin-center"
+      >
+        <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
+          <div className="nabi-text-center nabi-margin-bottom-small">
+            <DateRangeIcon className="text-aligned-icon" color="primary" />
+            <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
+              <span className="nabi-color-nabi">{displayWeek()}</span>
+            </Typography>
+            <Typography className="nabi-margin-top-small">
+              <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
+            </Typography>
+          </div>
+          <AppBar position="static">
+            <Tabs value={weekday} onChange={handleChange} aria-label="availability">
+              {getWeekDays().map((item, i) => (
+                <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
+              ))}
+            </Tabs>
+          </AppBar>
+          {displayTabContent()}
+          <div className="nabi-text-right">
+            <Button
+              color="primary"
+              className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+              variant="contained"
+              type="submit"
+              disabled={!lessonDate || !lessonTime}
+            >
+              Next
+            </Button>
+          </div>
+        </form>
+      </Grid>
+      <SnackBar
+        isOpen={showSnackbar}
+        message={props.error}
+        handleClose={() => setShowSnackbar(false)}
+        variant="error"
+      />
+    </div>
   )
 }
 
@@ -209,41 +255,26 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
     students,
     actions: {
-      fetchStudents: {
-        isRequesting: isFetchingStudents,
-        error: fetchError
+      scheduleLessons: {
+        isRequesting: isScheduling,
+        error,
+        message
       },
-      createStudent: {
-        isRequesting: isAddingStudent,
-        error: addError
-      },
-      deleteStudent: {
-        isRequesting: isDeletingStudent,
-        error: deleteError
-      }
     },
   } = state.requests;
 
-  const {
-    timezones
-  } = state.timezones;
   return {
-    isFetchingStudents,
-    fetchError,
-    isAddingStudent,
-    addError,
-    isDeletingStudent,
-    deleteError,
-    students,
-    timezones
+    isScheduling,
+    error,
+    message,
+    userTimezone: '',
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
-  fetchTimezones: () => dispatch(fetchTimezones())
+  scheduleLesson: (lesson: Partial<LessonType>, lessonId) => dispatch(scheduleLesson(lesson, lessonId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleLessons);

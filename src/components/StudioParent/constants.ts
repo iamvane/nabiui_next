@@ -18,16 +18,21 @@ export namespace ParentStudioComponent {
   export const scheduleTrialButton = 'Schedule Trial';
 
   export const noLessons = 'No lessons';
+  export const unassigned = 'Unassigned';
+
+  export const ungraded = 'No grade';
 }
 
 export enum LessonStatuses {
   scheduled = 'scheduled',
   missed = 'missed',
-  complete = 'complete'
+  complete = 'complete',
+  pending = 'pending'
 }
 
 export enum LessonStatusLabels {
   scheduled = 'Scheduled',
   missed = 'Missed',
-  complete = 'Complete'
+  complete = 'Complete',
+  pending = 'Pending'
 }
