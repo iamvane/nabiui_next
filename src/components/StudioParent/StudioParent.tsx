@@ -135,9 +135,10 @@ export const StudioParent = (props: Props) => {
     Router.push(Routes.ScheduleLesson);
   }
 
-  const scheduleTrial = (studentName, studentId) => {
+  const scheduleTrial = (studentName, studentId, instument) => {
     setCookie('studentId', studentId);
     setCookie('studentName', studentName);
+    setCookie('instrumentName', instument);
     removeCookie('lessonId');
 
     Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
@@ -211,7 +212,7 @@ export const StudioParent = (props: Props) => {
                     className="nabi-margin-top-small-md"
                     onClick={
                       item.lessons.length < 1 ?
-                      () => scheduleTrial(item.name, item.id) :
+                      () => scheduleTrial(item.name, item.id, item.instrument) :
                       () => buyMoreLessons(item.id)
                     }
                   >
