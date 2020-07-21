@@ -248,7 +248,7 @@ export const scheduleLesson = (data: Partial<LessonType>): ThunkAction<Promise<v
   try {
     let response;
     const lessonId = getCookie("lessonId");
-    if (lessonId !== undefined) {
+    if (lessonId && lessonId !== undefined) {
       response = await axios.put(
         ApiEndpoints.scheduleLesson + lessonId + '/',
         data,
