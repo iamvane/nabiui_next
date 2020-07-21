@@ -25,7 +25,6 @@ export const LessonStatus = (props: Props) => {
     scheduled: 'scheduled-status',
     missed: 'missed-status',
     complete: 'complete-status',
-    pending: 'pending-status'
   }
 
   return (

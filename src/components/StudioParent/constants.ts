@@ -26,13 +26,11 @@ export namespace ParentStudioComponent {
 export enum LessonStatuses {
   scheduled = 'scheduled',
   missed = 'missed',
-  complete = 'complete',
-  pending = 'pending'
+  complete = 'complete'
 }
 
 export enum LessonStatusLabels {
   scheduled = 'Scheduled',
   missed = 'Missed',
-  complete = 'Complete',
-  pending = 'Pending'
+  complete = 'Complete'
 }
