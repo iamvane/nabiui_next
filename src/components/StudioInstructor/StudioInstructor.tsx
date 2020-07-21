@@ -75,12 +75,13 @@ export const StudioInstructor = (props: Props) => {
     </Grid>
   );
 
+  const firstName = getCookie('firstName');
+
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
-      <PageTitle pageTitle={InstructorStudioComponent.pageTitle.replace(
+      <PageTitle pageTitle={firstName ? InstructorStudioComponent.pageTitle.replace(
         InstructorStudioComponent.namePlaceholder,
-        getCookie('firstName')
-      )} />
+        getCookie('firstName')) : InstructorStudioComponent.pageTitleNoName} />
       {props.isFetchingDashboard ?
         <CircularProgress /> :
         <>

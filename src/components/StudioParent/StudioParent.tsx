@@ -274,16 +274,30 @@ export const StudioParent = (props: Props) => {
     })
   }
 
+  const pageTitle = () => {
+    const firstName = getCookie('firstName');
+    if (firstName) {
+      if (role === Role.parent) {
+        return ParentStudioComponent.pageTitleParent.replace(
+          ParentStudioComponent.namePlaceholder,
+          firstName)
+      } else {
+        return ParentStudioComponent.pageTitleStudent.replace(
+          ParentStudioComponent.namePlaceholder,
+          firstName)
+      }
+    } else {
+      if (role === Role.parent) {
+        return ParentStudioComponent.pageTitleParentNoName
+      } else {
+        return ParentStudioComponent.pageTitleStudentNoName
+      }
+    }
+  }
+
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
-      <PageTitle pageTitle={role === Role.parent ?
-        ParentStudioComponent.pageTitleParent.replace(
-          ParentStudioComponent.namePlaceholder,
-          getCookie('firstName')) :
-          ParentStudioComponent.pageTitleStudent.replace(
-            ParentStudioComponent.namePlaceholder,
-            getCookie('firstName'))
-        } />
+      <PageTitle pageTitle={pageTitle()} />
       {props.isFetchingDashboard ?
         <CircularProgress /> :
         <Grid container={true} spacing={0}>

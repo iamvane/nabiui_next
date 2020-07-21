@@ -3,6 +3,9 @@ export namespace ParentStudioComponent {
   export const pageTitleStudent = '{nameReplace}\'s Studio';
   export const namePlaceholder = '{nameReplace}';
 
+  export const pageTitleParentNoName = 'Family Studio';
+  export const pageTitleStudentNoName = 'Studio';
+
   export const nextLesson = 'Next Lesson: {dateReplace} @ {timeReplace} ({timezoneReplace}) with {instructorRepalce}';
   export const unassignedInstructor = 'Unassigned Instructor'
   export const datePlaceholder = '{dateReplace}';

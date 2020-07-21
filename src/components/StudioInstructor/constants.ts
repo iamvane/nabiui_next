@@ -1,6 +1,7 @@
 export namespace InstructorStudioComponent {
   export const pageTitle = '{nameReplace}\'s Studio';
   export const namePlaceholder = '{nameReplace}';
+  export const pageTitleNoName = 'Studio';
   export const nextLesson = 'Next Lesson: {dateReplace} @ {timeReplace}';
   export const datePlaceholder = '{dateReplace}';
   export const timePlaceholder = '{timeReplace}';
