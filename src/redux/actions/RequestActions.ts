@@ -241,13 +241,23 @@ export const chooseLessonPackage = (packageName: string, applicationId: number):
   }
 };
 
-export const scheduleLessons = (data: Partial<LessonType>): ThunkAction<Promise<void>, {}, {}> => async (
+export const scheduleLesson = (data: Partial<LessonType>, lessonId: number): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.SCHEDULE_LESSONS));
   try {
-    const response = await axios.post(
-      ApiEndpoints.scheduleLessons,
+    let response;
+    if (lessonId !== undefined) {
+      response = await axios.put(
+        ApiEndpoints.scheduleLesson + lessonId + '/',
+        data,
+        {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        }
+      );
+    }
+    response = await axios.post(
+      ApiEndpoints.scheduleLesson,
       data,
       {
         headers: { 'Authorization': `Bearer ${authToken}` }

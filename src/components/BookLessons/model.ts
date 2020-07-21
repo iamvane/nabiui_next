@@ -32,10 +32,9 @@ export enum LessonStatusType {
 }
 
 export interface LessonType {
-	bookingId: number;
-	date: string;
-	time: string;
-	timezone: string;
+	studentId?: number;
+	date?: string;
+	time?: string;
 	status?: LessonStatusType;
 	grade?: number;
 	comment?: string;

@@ -128,11 +128,24 @@ export const StudioParent = (props: Props) => {
     </Grid>
   )
 
-  const rescheduleTrial = (studentName, lessonId) => {
+  const rescheduleLesson = (studentName, lessonId) => {
     setCookie('lessonId', lessonId);
     setCookie('studentName', studentName);
 
+    Router.push(Routes.ScheduleLesson)
+  }
+
+  const scheduleTrial = (studentName, studentId) => {
+    setCookie('studentId', studentId);
+    setCookie('studentName', studentName);
+
     Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
+  }
+
+  const buyMoreLessons = (studentId) => {
+    setCookie("studentId", studentId);
+
+    return Router.push(Routes.BookLessons + '/' + studentId);
   }
 
   const displayTabContent = () => {
@@ -175,7 +188,7 @@ export const StudioParent = (props: Props) => {
           </div>
           <div className="nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-top-small">
             <Grid container={true}>
-              <Grid item={true} xs={12} md={6}>
+              <Grid item={true} xs={12} md={8}>
                 <p className="nabi-color-nabi nabi-jennasue-title nabi-margin-bottom-zero nabi-margin-top-zero">
                   {ParentStudioComponent.studentDescription.replace(
                     ParentStudioComponent.namePlaceholder,
@@ -185,19 +198,23 @@ export const StudioParent = (props: Props) => {
                     )}
                 </p>
               </Grid>
-              <Grid item={true} xs={12} md={6} className="nabi-text-right-md">
-                <Link href={item.lessons.length < 1 ? Routes.ScheduleTrial + Routes.LessonDetails : Routes.BookLessons}>
-                  <a>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      className="nabi-margin-top-small-md"
-                    >
-                      {item.lessons.length < 1 ? ParentStudioComponent.scheduleTrialButton : ParentStudioComponent.buyMoreLessonsButton}
-                    </Button>
-                  </a>
-                </Link>
-              </Grid>
+              {//buy more lessons is temporarily disabled
+              item.lessons.length < 1 &&
+                <Grid item={true} xs={12} md={4} className="nabi-text-right-md">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className="nabi-margin-top-small-md"
+                    onClick={
+                      item.lessons.length < 1 ?
+                      () => scheduleTrial(item.name, item.id) :
+                      () => buyMoreLessons(item.id)
+                    }
+                  >
+                    {item.lessons.length < 1 ? ParentStudioComponent.scheduleTrialButton : ParentStudioComponent.buyMoreLessonsButton}
+                  </Button>
+                </Grid>
+            }
             </Grid>
             <TableContainer className="nabi-margin-top-small nabi-margin-bottom-small">
               {item.lessons.length < 1 ?
@@ -222,14 +239,19 @@ export const StudioParent = (props: Props) => {
                           {row.date}
                         </TableCell>
                         <TableCell>{lessonStatus(row.status)}</TableCell>
-                        <TableCell><Link href={`${Routes.Profile}/${row.instructorId}`}><a>{row.instructor}</a></Link></TableCell>
-                        <TableCell>{displayGradeStars(row.grade)}</TableCell>
+                        <TableCell>
+                          {row.instructor ?
+                            <Link href={`${Routes.Profile}/${row.instructorId}`}><a>{row.instructor}</a></Link> :
+                            ParentStudioComponent.unassigned
+                          }
+                        </TableCell>
+                        <TableCell>{row.grade ? displayGradeStars(row.grade) : ParentStudioComponent.ungraded}</TableCell>
                         <TableCell>{row.status === 'scheduled' ?
                           <Button
                             variant="contained"
                             color="primary"
                             className="nabi-responsive-button"
-                            onClick={() => rescheduleTrial(item.name, row.id)}
+                            onClick={() => rescheduleLesson(item.name, row.id)}
                           >
                             {ParentStudioComponent.reschedule}
                           </Button> :

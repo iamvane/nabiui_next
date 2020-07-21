@@ -18,6 +18,9 @@ export namespace ParentStudioComponent {
   export const scheduleTrialButton = 'Schedule Trial';
 
   export const noLessons = 'No lessons';
+  export const unassigned = 'Unassigned';
+
+  export const ungraded = 'No grade';
 }
 
 export enum LessonStatuses {

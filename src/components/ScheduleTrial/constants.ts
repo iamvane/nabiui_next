@@ -26,7 +26,7 @@ export namespace ChildFormComponent {
   export const instrumentChips = [
     {
       label: 'Guitar',
-      value: 'guitar'
+      value: 'guitar-acoustic'
     },
     {
       label: 'Piano',
@@ -303,53 +303,5 @@ export const instructorAvailabilityDummyData = {
         }
       }
     }
-  ]
-};
-
-export const parentsStudentboardDummyData = {
-  students: [
-    {
-      id: 0,
-      name: 'Zoe',
-      nextLesson: {
-        date: '',
-        time: '',
-        instructor: '',
-        zoomLink: ''
-      },
-      instrument: '',
-      lessons: [
-        {
-          id: 0,
-          date: '06/24/20 @ 5pm',
-          status: 'scheduled',
-          instructor: 'Bryan P.',
-          instructorId: 243,
-          grade: 3,
-          gradeComment: ''
-
-        },
-        {
-          id: 0,
-          date: '06/24/20 @ 5pm',
-          status: 'scheduled',
-          instructor: 'Bryan P.',
-          instructorId: 243,
-          grade: 3,
-          gradeComment: ''
-
-        },
-        {
-          id: 0,
-          date: '06/24/20 @ 5pm',
-          status: 'scheduled',
-          instructor: 'Bryan P.',
-          instructorId: 243,
-          grade: 3,
-          gradeComment: ''
-
-        }
-      ]
-    },
   ]
 };

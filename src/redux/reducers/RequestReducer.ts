@@ -1,5 +1,6 @@
 import { AnyAction } from "redux";
 
+import { setCookie } from "../../utils/cookies";
 import { APIActions } from "../models/models";
 import {
   defaultRequestState,
@@ -17,23 +18,23 @@ export default function requestsReducer(
     case RequestActions.CREATE_STUDENT:
       return {
         ...state,
+        student: {},
         actions: {
           ...state.actions,
           createStudent: {
             ...state.actions.createStudent,
-            isRequesting: true
+            isRequesting: true,
+            error: ""
           }
         }
       };
 
     case RequestActions.CREATE_STUDENT_SUCCESS:
       const { data: createStudent } = <APIActions.WithData<Partial<RequestType>>>action;
+      setCookie("lessonId", createStudent.lessonId)
       return {
         ...state,
-        students: [
-          ...state.students,
-          createStudent
-        ],
+        student: createStudent,
         actions: {
           ...state.actions,
           createStudent: {
@@ -50,6 +51,7 @@ export default function requestsReducer(
       );
       return {
         ...state,
+        student: {},
         actions: {
           ...state.actions,
           createStudent: {
