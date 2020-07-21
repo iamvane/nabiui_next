@@ -179,8 +179,11 @@ export const StudioParent = (props: Props) => {
                   ParentStudioComponent.timePlaceholder,
                   moment(item.nextLesson.time, "h:mm").format("h:mmA")
                 ).replace(
+                  ParentStudioComponent.timezonePlaceholder,
+                  item.nextLesson.timezone
+                ).replace(
                   ParentStudioComponent.instructorPlaceholder,
-                  item.nextLesson.instructor
+                  item.nextLesson.instructor || ParentStudioComponent.unassignedInstructor
                 )}
               </Typography>
               :

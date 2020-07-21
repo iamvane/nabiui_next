@@ -3,9 +3,11 @@ export namespace ParentStudioComponent {
   export const pageTitleStudent = '{nameReplace}\'s Studio';
   export const namePlaceholder = '{nameReplace}';
 
-  export const nextLesson = 'Next Lesson: {dateReplace} @ {timeReplace} with {instructorRepalce}';
+  export const nextLesson = 'Next Lesson: {dateReplace} @ {timeReplace} ({timezoneReplace}) with {instructorRepalce}';
+  export const unassignedInstructor = 'Unassigned Instructor'
   export const datePlaceholder = '{dateReplace}';
   export const timePlaceholder = '{timeReplace}';
+  export const timezonePlaceholder = '{timezoneReplace}';
   export const instructorPlaceholder = '{instructorRepalce}';
   export const noNextLesson = 'No upcoming lessons';
   export const studentDescription = '{nameReplace}\'s {instrumentReplace} Lessons'

@@ -33,7 +33,7 @@ import {
 } from './constants';
 
 interface DispatchProps {
-  scheduleLesson: (lessonDetails: Partial<LessonType>, lessonId: number) => void;
+  scheduleLesson: (lessonDetails: Partial<LessonType>) => void;
 }
 
 interface OwnProps {
@@ -184,11 +184,9 @@ export const ScheduleLessons = (props: Props) => {
     if (props.isTrial) {
       const studentId = getCookie('studentId');
       lesson.studentId = studentId;
-    } else {
-      lessonId = getCookie('lessonId');
     }
 
-    await props.scheduleLesson(lesson, lessonId)
+    await props.scheduleLesson(lesson)
     setScheduleLesson(true);
   };
 
@@ -274,7 +272,7 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  scheduleLesson: (lesson: Partial<LessonType>, lessonId) => dispatch(scheduleLesson(lesson, lessonId))
+  scheduleLesson: (lesson: Partial<LessonType>) => dispatch(scheduleLesson(lesson))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleLessons);

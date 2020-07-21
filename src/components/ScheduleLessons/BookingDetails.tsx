@@ -21,7 +21,7 @@ import { BookingDetailsComponent } from './constants';
 
 interface Props {
   headingMessage?: string;
-  handleContinue: () => void;
+  handleContinue?: () => void;
 }
 
 export const BookingDetails = (props: Props) => {
@@ -34,6 +34,14 @@ export const BookingDetails = (props: Props) => {
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
   const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mmA");
   const instrumentDisplay = instruments.find(t => t.value === getCookie('instrumentName'));
+
+  const handleNext = () => {
+    if (props.handleContinue) {
+      alert('it has continue')
+      return props.handleContinue;
+    }
+    return Router.push(Routes.ParentStudio);
+  }
 
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
@@ -84,7 +92,7 @@ export const BookingDetails = (props: Props) => {
               {BookingDetailsComponent.addChildButton}
             </Button>
           :''}
-          <Button color="primary" variant="contained" onClick={props.handleContinue}>
+          <Button color="primary" variant="contained" onClick={() => handleNext()}>
             {BookingDetailsComponent.continueButton}
           </Button>
         </div>
