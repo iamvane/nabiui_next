@@ -18,6 +18,7 @@ interface Props {
   handleSubmit: (event: React.FormEvent<{}>) => void;
   apiError: string;
   isRequesting: boolean;
+  isDisabled?: boolean;
 }
 
 const LoginForm: React.StatelessComponent<Props> = props => {
@@ -53,7 +54,13 @@ const LoginForm: React.StatelessComponent<Props> = props => {
           {props.apiError}
         </Typography>
 
-        <Button color="primary" variant="contained" type="submit" className="nabi-text-uppercase">
+        <Button
+          color="primary"
+          variant="contained"
+          type="submit"
+          className="nabi-text-uppercase"
+          disabled={props.isDisabled}
+        >
           {LoginFormComponent.Text.Login}
         </Button>
       </div>

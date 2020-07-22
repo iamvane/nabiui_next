@@ -69,7 +69,7 @@ const PlaceForLessonsForm: React.StatelessComponent<Props> = props => {
       <FormGroup className="nabi-margin-left-small">
         {placeForLessonsItems}
       </FormGroup>
-      {(studioAddressTextfield || distanceField) && 
+      {(studioAddressTextfield || distanceField) &&
         <Grid item={true} className="nabi-margin-top-small" xs={12} md={6}>
           {distanceField}
           {studioAddressTextfield}

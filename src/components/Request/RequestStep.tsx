@@ -612,7 +612,7 @@ export const Request = () => {
 
       const numberOfSteps = role === Role.parent ? 5 : 4;
       if (currentStep === 0) {
-        Router.push(Routes.Dashboard);
+        Router.push("");
       } else if (steps.length < numberOfSteps) {
         setStep(prevState => {
           const updatedSteps = [
@@ -719,7 +719,7 @@ export const Request = () => {
           setCurrentStep(0);
         }
       } else {
-        Router.push(Routes.Dashboard);
+        Router.push("");
       }
     },
     [

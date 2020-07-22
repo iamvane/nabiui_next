@@ -6,6 +6,7 @@ export interface StudentDetailsType {
   skillLevel?: string;
   lessonPlace?: string;
   lessonDuration?: string;
+  studentId?: number;
 }
 
 export interface ParentProfileType {

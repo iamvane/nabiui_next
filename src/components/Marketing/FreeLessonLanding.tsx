@@ -33,7 +33,7 @@ const FreeLessonLanding: React.StatelessComponent<Props> = props => {
         target: '#hubspotFreeMusicLesson'
       });
     } else {
-      Router.push(Routes.Dashboard)
+      Router.push(Routes.ParentStudio)
     }
   }, [hbspt]);
 

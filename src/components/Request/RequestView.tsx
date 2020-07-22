@@ -149,7 +149,7 @@ export const RequestView = (props: Props) => {
       <PageTitle pageTitle={pageTitle} />
       <div className="nabi-margin-bottom-xsmall">
         <Breadcrumbs aria-label="breadcrumb">
-          <Link href={Routes.Dashboard}>
+          <Link href={Routes.InstructorStudio}>
             <a>{RequestViewComponent.breadcrumbLabels.home}</a>
           </Link>
           <Link href={Routes.Requests}>

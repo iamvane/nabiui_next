@@ -13,7 +13,9 @@ import {
   CircularProgress,
   Grid,
   TextField,
-  Typography
+  Typography,
+  Checkbox,
+  FormGroup
 } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 
@@ -50,11 +52,12 @@ interface Props extends
   OwnProps,
   RouteComponentProps<{}>,
   StateProps,
-  DispatchProps {}
+  DispatchProps { }
 
 export const GradeLesson = (props: Props) => {
   const [grade, setGrade] = React.useState(0);
   const [comment, setComment] = React.useState("");
+  const [status, setLessonStatus] = React.useState("");
   const [snackbarMessage, setSnackbarMessage] = React.useState('');
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [circularProgress, displayCircularProgress] = React.useState(false);
@@ -65,14 +68,14 @@ export const GradeLesson = (props: Props) => {
       setSnackbarMessage('Your grade was submitted successfully.')
       setShowSnackbar(true);
       displayCircularProgress(true);
-      delayedRedirect(2000).then(() => Router.push(Routes.Dashboard));
+      delayedRedirect(2000).then(() => Router.push(Routes.InstructorStudio));
     }
     if (props.error) {
       setShowSnackbar(true);
       setSnackbarMessage('There was an error processing your request.')
     }
     /* tslint:disable */
-  },[props.message, props.error]);
+  }, [props.message, props.error]);
 
   function delayedRedirect(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -80,7 +83,7 @@ export const GradeLesson = (props: Props) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.currentTarget;
-    const value = target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value as any;
     const name = target.name;
 
     switch (name) {
@@ -92,23 +95,40 @@ export const GradeLesson = (props: Props) => {
         setComment(value);
         break;
 
+      case constants.FieldNames.Status:
+        setLessonStatus(value ? 'missed' : '');
+        break;
+
       default:
         return;
     }
   }
 
-  const gradeLesson  = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const submitLessonGrade = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     if (event) {
       event.preventDefault();
     }
 
     const gradeData: GradeData = {
-      grade,
-      comment,
+      ...(status !== 'missed' && {
+        comment,
+        grade
+      }),
+      status,
       lessonId: getCookie('lessonId')
     }
+
     await props.gradeLesson(gradeData);
   }
+
+  const disable = React.useCallback(
+    () => {
+      if (status === 'missed') {
+        return !status;
+      }
+
+      return !grade || !comment;
+    }, [status, comment, grade])
 
   return (
     <div className="nabi-container">
@@ -122,50 +142,67 @@ export const GradeLesson = (props: Props) => {
           <div className="nabi-text-center">
             <CircularProgress />
           </div>
-        :
-        <React.Fragment>
-          <SectionTitle text={constants.studentNameSection} />
-          <Typography className="nabi-margin-bottom-small">{getCookie('lessonStudentName')}</Typography>
-          <SectionTitle text={constants.instrumentSection} />
-          <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
-          <form noValidate={true} autoComplete="off" onSubmit={gradeLesson}>
-            <SectionTitle text={constants.gradeSection} />
-            <Rating
-              name={constants.FieldNames.Grade}
-              max={3}
-              className="nabi-margin-bottom-small"
-              value={grade}
-              onChange={handleChange}
-            />
-            <SectionTitle text={constants.commentsSection} />
-            <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
-              <TextField
-                name={constants.FieldNames.Comment}
-                margin="normal"
-                onChange={handleChange}
-                multiline={true}
-                fullWidth={true}
-                rows={6}
-                value={comment}
-                placeholder="Tell them how they did during the lesson, what they should practice for next lesson, or any other tip that will help them improve."
-              />
-            </Grid>
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={!grade || !comment}
-              type="submit"
-            >
-              {constants.button}
-            </Button>
-          </form>
-        </React.Fragment>}
+          :
+          <React.Fragment>
+            <SectionTitle text={constants.studentNameSection} />
+            <Typography className="nabi-margin-bottom-small">{getCookie('lessonStudentName')}</Typography>
+            <SectionTitle text={constants.instrumentSection} />
+            <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
+            <form noValidate={true} autoComplete="off" onSubmit={submitLessonGrade}>
+              <SectionTitle text={constants.missedLesson} />
+              <Typography className="nabi-margin-top-xsmall nabi-margin-bottom-xsmall">
+                {constants.missedLessonDescription}
+              </Typography>
+              <FormGroup>
+                <Checkbox
+                  name={constants.FieldNames.Status}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+
+              {status !== 'missed' && (
+                <>
+                  <SectionTitle text={constants.gradeSection} />
+                  <Rating
+                    name={constants.FieldNames.Grade}
+                    max={3}
+                    className="nabi-margin-bottom-small"
+                    value={grade}
+                    onChange={handleChange}
+                  />
+                  <SectionTitle text={constants.commentsSection} />
+                  <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
+                    <TextField
+                      name={constants.FieldNames.Comment}
+                      margin="normal"
+                      onChange={handleChange}
+                      multiline={true}
+                      fullWidth={true}
+                      rows={6}
+                      value={comment}
+                      placeholder="Tell them how they did during the lesson, what they should practice for next lesson, or any other tip that will help them improve."
+                    />
+                  </Grid>
+                </>
+              )}
+              <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={disable()}
+                  type="submit"
+                >
+                  {constants.button}
+                </Button>
+              </Grid>
+            </form>
+          </React.Fragment>}
       </div>
       <SnackBar
         isOpen={showSnackbar}
         message={snackbarMessage}
         handleClose={() => setShowSnackbar(false)}
-        variant={props.error ? "error" : "success" }
+        variant={props.error ? "error" : "success"}
       />
     </div>
   );

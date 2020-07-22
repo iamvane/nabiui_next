@@ -10,20 +10,20 @@ export const ctaButton = 'Checkout This How It Works';
 
 export const howItWorksParentStudent = [
   {
-    stepTitle: '1. Post a request',
-    stepDescription: 'Post a request specifying the student’s age, level, instrument, and teaching location.',
-    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/one-post-a-request-music-lessons.jpg'
+    stepTitle: '1. Schedule your trial',
+    stepDescription: 'Select the date and time for your trial lesson.',
+    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/schedule-trial-lesson.jpg'
   },
   {
-    stepTitle: '2. Review applications',
-    stepDescription: 'Review applications from {linkReplace} near you. See their profiles, rates, music and more.',
+    stepTitle: '2. Meet instructor',
+    stepDescription: 'Take your first lesson. Tell your instructor about your goals.',
     linkText: 'instructors',
     linkUrl: '/instructors',
-    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/two-review-applicants.jpg'
+    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/learn-music-with-nabi.jpg'
   },
   {
-    stepTitle: '3. Book lessons',
-    stepDescription: 'Once you find the {linkReplace} you like, book lessons and start learning.',
+    stepTitle: '3. Continue learning',
+    stepDescription: 'Select a lesson package, get inspired and keep learning.',
     linkText: 'instructor',
     linkUrl: '/instructors',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/three-book-lessons.jpg'
@@ -45,8 +45,8 @@ export const howItWorksInstructor = [
   },
   {
     stepTitle: '3. Start teaching',
-    stepDescription: 'Parents and students review you application, they purchase a lesson package with you and you start teaching.',
-    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/three-start-teaching-music-instructor.jpg'
+    stepDescription: 'You will get matched with students for a trial lesson. After the trial, students have the option to purchase a lesson package with you.',
+    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/learn-music-with-nabi.jpg'
   }
 ]
 

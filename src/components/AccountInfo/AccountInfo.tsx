@@ -15,6 +15,7 @@ const ArrowForward = dynamic(() => import('@material-ui/icons/ArrowForward'), {
   ssr: false,
 });
 
+import { getCookie } from "../../utils/cookies";
 import { StoreState } from '../../redux/reducers/store';
 import {
   fetchUser,
@@ -193,7 +194,7 @@ interface Props extends
 
   const handleExit = () => {
     if (showSections.includes('showAll') && _.isEqual(currentState, storeState)) {
-      return Router.push(Routes.Dashboard);
+      return Router.push(Routes.InstructorStudio);
     }
     setDisplayExitModal(true)
   }
@@ -241,6 +242,8 @@ interface Props extends
     }
   }
 
+  const role = getCookie('role');
+
   return (
     props.isRequestingFetch || props.isRequestingUpdate ? (
       <div className="nabi-text-center">
@@ -272,7 +275,7 @@ interface Props extends
         <ConfirmExit
           isFormDialogOpen={displayExitModal}
           closeHandler={() => setDisplayExitModal(false)}
-          handleProceed={() => Router.push(Routes.Dashboard)}
+          handleProceed={() => Router.push(Routes.InstructorStudio)}
         />
       </div>
     )
