@@ -97,6 +97,12 @@ export const StudioInstructor = (props: Props) => {
                     ).replace(
                       InstructorStudioComponent.timePlaceholder,
                       moment(props.dashboard.nextLesson.time, "h:mm").format("h:mmA")
+                    ).replace(
+                      InstructorStudioComponent.timezonePlaceholder,
+                      props.dashboard.nextLesson.timezone
+                    ).replace(
+                      InstructorStudioComponent.namePlaceholder,
+                      props.dashboard.nextLesson.studentDetails[0].name
                     )}
                   </Typography>
                   :

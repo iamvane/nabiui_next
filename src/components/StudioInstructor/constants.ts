@@ -2,7 +2,8 @@ export namespace InstructorStudioComponent {
   export const pageTitle = '{nameReplace}\'s Studio';
   export const namePlaceholder = '{nameReplace}';
   export const pageTitleNoName = 'Studio';
-  export const nextLesson = 'Next Lesson: {dateReplace} @ {timeReplace}';
+  export const nextLesson = 'Next Lesson: {dateReplace} @ {timeReplace} ({timezoneReplace}) with {nameReplace}';
+  export const timezonePlaceholder = '{timezoneReplace}';
   export const datePlaceholder = '{dateReplace}';
   export const timePlaceholder = '{timeReplace}';
   export const noNextLesson = 'No upcoming lessons';
