@@ -51,18 +51,6 @@ const Rates: React.StatelessComponent<Props> = props => {
     {
       name: 'mins30',
       listText: LessonDuration.thirtyMins,
-    },
-    {
-      name: 'mins45',
-      listText: LessonDuration.fortyFiveMins
-    },
-    {
-      name: 'mins60',
-      listText: LessonDuration.sixtyMins,
-    },
-    {
-      name: 'mins90',
-      listText: LessonDuration.ninetyMins,
     }
   ];
 

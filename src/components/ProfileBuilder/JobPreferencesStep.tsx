@@ -405,12 +405,15 @@ export const JobPreferencesStep = () => {
         setRates((prevState) => {
           const currentState = {
             ...prevState,
-            [name]: value
+            mins30: value,
+            mins45: 0,
+            mins60: 0,
+            mins90: 0
           }
 
           setEnableContinue(prevState => ({
             ...prevState,
-            rates: Object.values(currentState).every(rate => rate > 0)
+            rates: currentState.mins30 > 0
           }));
           return currentState;
         });
@@ -504,6 +507,7 @@ export const JobPreferencesStep = () => {
           instruments,
           languages
         )) {
+
           let profile = Object.keys(jobPreferences).map((preference) => {
             return {
               [preference]: user.profile[preference]
@@ -652,9 +656,7 @@ export const JobPreferencesStep = () => {
     languages
   ) => {
     const availabilityIsSelected = Object.values(availability).some((available) => available === true);
-    const allRatesAreSelected = Object.values(rates).every((rate) => {
-      return rate > 0
-    });
+    const allRatesAreSelected = rates.mins30 > 0;
     const qualificationIsSelected = Object.values(qualifications).some((qualification) => qualification === true);
     const placeIsSelected = Object.values(placeForLessons).some((place) => place === true);
     const lessonSizeIsSelected = Object.values(sizeAgePreference.lessonSize).some((size) => size === true);
@@ -732,9 +734,6 @@ export const JobPreferencesStep = () => {
               <Rates
                 handleChange={handleChange}
                 mins30={rates.mins30}
-                mins45={rates.mins45}
-                mins60={rates.mins60}
-                mins90={rates.mins90}
               />
             </div>
           )}
