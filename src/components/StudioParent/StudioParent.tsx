@@ -301,9 +301,9 @@ export const StudioParent = (props: Props) => {
       {props.isFetchingDashboard ?
         <CircularProgress /> :
         <Grid container={true} spacing={0}>
-          {props.dashboard && props.dashboard.students.length > 0 ?
+          {props.dashboard && props.dashboard.students && props.dashboard.students.length > 0 ?
             <>
-              {props.dashboard && props.dashboard.students.length > 1 ?
+              {props.dashboard && props.dashboard.students && props.dashboard.students.length > 1 ?
                 <AppBar position="static" className="studio-tabs">
                   <Tabs value={student} onChange={handleTabChange} aria-label="availability">
                     {getStudentsTab().map((item, i) => (
