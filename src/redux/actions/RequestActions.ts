@@ -241,19 +241,31 @@ export const chooseLessonPackage = (packageName: string, applicationId: number):
   }
 };
 
-export const scheduleLessons = (data: Partial<LessonType>): ThunkAction<Promise<void>, {}, {}> => async (
+export const scheduleLesson = (data: Partial<LessonType>): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(RequestActions.SCHEDULE_LESSONS));
   try {
-    const response = await axios.post(
-      ApiEndpoints.scheduleLessons,
-      data,
-      {
-        headers: { 'Authorization': `Bearer ${authToken}` }
-      }
-    );
-    dispatch(withDataAction(RequestActions.SCHEDULE_LESSONS_SUCCESS, response.data));
+    let response;
+    const lessonId = getCookie("lessonId");
+    if (lessonId && lessonId !== undefined) {
+      response = await axios.put(
+        ApiEndpoints.scheduleLesson + lessonId + '/',
+        data,
+        {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        }
+      );
+    } else {
+      response = await axios.post(
+        ApiEndpoints.scheduleLesson,
+        data,
+        {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        }
+      );
+      dispatch(withDataAction(RequestActions.SCHEDULE_LESSONS_SUCCESS, response.data));
+    }
   } catch (e) {
     if (getError(e) && typeof getError(e) === 'string') {
       errorMessage = getError(e);

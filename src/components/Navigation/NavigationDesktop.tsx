@@ -51,7 +51,7 @@ const NavigationDesktop = (props: Props) => {
         <ul className="main-navigation nabi-text-decoration-underline-hover">
           <li>
             <Typography className="nabi-margin-top-small">
-              <Link href={Routes.Dashboard}>
+              <Link href={""}>
                 <a>{NavigationComponent.NavigationLabels.Home}</a>
               </Link>
             </Typography>

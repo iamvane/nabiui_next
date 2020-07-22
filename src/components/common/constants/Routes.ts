@@ -14,7 +14,7 @@ export enum Routes {
   Request = '/request',
   RequestId = '/request/:id',
   Login = '/login',
-  Profile = '/profile/:instructorId',
+  Profile = '/profile',
   AccountRecovery = '/account-recovery',
   ForgotPassword = '/forgot-password',
   TermsOfUse = '/terms-of-use',
@@ -23,7 +23,6 @@ export enum Routes {
   StudentPolicy = '/student-policy',
   ContactUs = '/contact-us',
   AccountInfo = '/account-info',
-  Dashboard = '/dashboard',
   Applications = '/applications',
   Messages = '/messages',
   Lessons = '/lessons',
@@ -53,7 +52,9 @@ export enum Routes {
   ChooseInstructor = '/choose-instructor',
   TrialConfirmation = '/trial-confirmation',
   WelcomeToNabi = '/welcome-to-nabi',
-  InstructorStudio = '/studio-instructor'
+  InstructorStudio = '/studio-instructor',
+  ParentStudio = '/studio',
+  BookingDetails = '/booking-details'
 }
 
 export enum SocialLinks {

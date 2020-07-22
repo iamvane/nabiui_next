@@ -262,7 +262,7 @@ export const InstructorsList = (props: Props) => {
         breadcrumbs={
           <div className="nabi-margin-bottom-xsmall">
             <Breadcrumbs aria-label="breadcrumb">
-              <Link href={props.email ? Routes.Dashboard : Routes.HomePage}>
+              <Link href={props.email ? Routes.ParentStudio : Routes.HomePage}>
                 <a>{InstructorsComponent.breadcrumbLabels.home}</a>
               </Link>
               <Typography> {InstructorsComponent.breadcrumbLabels.requests}</Typography>

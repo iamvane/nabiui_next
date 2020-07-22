@@ -52,7 +52,8 @@ export interface RequestState extends BookLessonsData {
   requestsList: ListResource<Request>;
   requests: RequestType[];
   applicationList: ApplicationListType;
-  students: StudentDetailsType[]
+  students: StudentDetailsType[];
+  student: StudentDetailsType;
   actions: {
     createStudent: ActionStatus;
     createRequest: ActionStatus;
@@ -86,6 +87,7 @@ export const defaultRequestState: RequestState = {
       { age: 0, name: '', skillLevel: '' }
     ]
   },
+  student: {},
   students: [],
   requests: [],
   requestsList: {

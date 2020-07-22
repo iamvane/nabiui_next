@@ -4,6 +4,7 @@ import {
   Action,
   Dispatch
 } from 'redux';
+import Router from "next/router";
 
 import {
   CircularProgress,
@@ -11,12 +12,14 @@ import {
 } from '@material-ui/core';
 import {
   createStudent,
+  fetchStudents
 } from '../../redux/actions/RequestActions';
-import { fetchTimezones } from '../../redux/actions/TimezonesActions';
-import { getCookie } from '../../utils/cookies';
+import { getCookie, setCookie, removeCookie } from '../../utils/cookies';
 import { Timezone } from '../../redux/models/TimeZonesModel';
 import { StoreState } from '../../redux/reducers/store';
 import PageTitle from '../common/PageTitle';
+import SnackBar from '../common/SnackBar';
+import { Routes } from '../common/constants/Routes';
 import { Role } from '../../constants/Roles';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 import {
@@ -26,7 +29,7 @@ import StudentForm from './StudentForm';
 
 interface DispatchProps {
   createStudent: (student: StudentDetailsType) => void;
-  fetchTimezones: () => void;
+  fetchStudents: () => void;
 }
 
 interface OwnProps {
@@ -42,6 +45,7 @@ interface StateProps {
   addError: string;
   students: StudentDetailsType[];
   timezones: Timezone[];
+  student: StudentDetailsType;
 }
 
 interface Props extends
@@ -52,9 +56,27 @@ interface Props extends
   }
 
 export const LessonDetails = (props: Props) => {
-  const addStudent = async (student) => {
+  const [addStudent, setAddStudent] = React.useState(false);
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
+
+  const createStudent = async (student) => {
     await props.createStudent(student);
+
+    setAddStudent(true);
   }
+
+
+  React.useEffect(() => {
+    if (props.addError) {
+      return setShowSnackbar(true);
+    }
+
+    if (addStudent) {
+      setCookie("studentId", props.student.studentId);
+      removeCookie("lessonId");
+      Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial);
+    }
+  }, [addStudent, props.addError]);
 
   const role = getCookie('role');
 
@@ -71,14 +93,18 @@ export const LessonDetails = (props: Props) => {
         xs={12}
         md={8} className="nabi-section nabi-background-white nabi-margin-center"
       >
-        <div>
-          {
-            props.isAddingStudent ?
-            <CircularProgress /> :
-            <StudentForm addChild={addStudent} role={role} />
-          }
-        </div>
+        {
+          props.isAddingStudent ?
+          <CircularProgress /> :
+          <StudentForm addChild={createStudent} role={role} />
+        }
       </Grid>
+      <SnackBar
+        isOpen={showSnackbar}
+        message={props.addError}
+        handleClose={() => setShowSnackbar(false)}
+        variant="error"
+      />
     </div>
   )
 }
@@ -86,6 +112,7 @@ export const LessonDetails = (props: Props) => {
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
     students,
+    student,
     actions: {
       fetchStudents: {
         isRequesting: isFetchingStudents,
@@ -113,7 +140,8 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     isDeletingStudent,
     deleteError,
     students,
-    timezones
+    timezones,
+    student
   };
 }
 
@@ -121,7 +149,7 @@ const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
   createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
-  fetchTimezones: () => dispatch(fetchTimezones())
+  fetchStudents: () => dispatch(fetchStudents())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LessonDetails);

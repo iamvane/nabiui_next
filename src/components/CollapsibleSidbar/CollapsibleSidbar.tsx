@@ -31,12 +31,12 @@ const StudentMenuItems = () => {
     // },
     {
       label: NavigationComponent.NavigationLabels.Studio,
-      url: Routes.Dashboard
+      url: Routes.ParentStudio
     },
-    {
-      label: NavigationComponent.NavigationLabels.RequestInstructor,
-      url: Routes.BuildRequest + Routes.Request
-    },
+    // {
+    //   label: NavigationComponent.NavigationLabels.RequestInstructor,
+    //   url: Routes.BuildRequest + Routes.Request
+    // },
     // {
     //   label: NavigationComponent.NavigationLabels.ReferAFriend,
     //   url: ''
@@ -173,7 +173,7 @@ export const CollapsibleSidebar = (props: Props) => {
           }}
         >
           <div className="nabi-mobile-drawer-header-container">
-            <Link href={role === Role.instructor ? Routes.InstructorStudio : Routes.Dashboard}>
+            <Link href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
               <a className="nabi-mobile-drawer-image-link">
                 <>
                   <img className="nabi-text-center nabi-mobile-drawer-image" alt="logo" src={logo} />

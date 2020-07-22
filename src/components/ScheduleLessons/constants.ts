@@ -1,4 +1,8 @@
 export namespace ScheduleLessonsComponent {
+  export const pageTitle = 'Schedule Lesson';
+  export const pageTitleParent = 'Schedule {studentReplace}\' Lesson';
+  export const studentPlaceholder = '{studentReplace}';
+
   export const description = 'Set the date and time for your next lesson.'
   export const scheduleLessonButton = 'Schedule Lesson';
   export const goToDashboardButton = "Go To Dashboard";

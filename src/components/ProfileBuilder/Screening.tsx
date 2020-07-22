@@ -107,7 +107,7 @@ export const Screening = (props: Props) => {
           </React.Fragment>
         }
       <StepperButtons
-        nextPath={Routes.Dashboard}
+        nextPath={Routes.InstructorStudio}
         backPath={Routes.BuildProfile+ ProfileBuilderStepper.StepsPaths.References}
       />
     </div>

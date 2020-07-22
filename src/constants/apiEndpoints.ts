@@ -37,6 +37,6 @@ export namespace ApiEndpoints {
   export const signFile = "/v1/sign-file/";
   export const uploadVideoProfile = 'v1/upload-video-profile/';
   export const gradeLesson = "/v1/lessons/"
-  export const scheduleLessons = "/v1/lessons/"
+  export const scheduleLesson = "/v1/lessons/"
   export const timezone = "/v1/timezones/"
 }

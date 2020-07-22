@@ -32,7 +32,7 @@ export const WelcomeToNabi = () => {
         </Typography>
         <img src={image} className="welcome-img" />
         <div>
-          <Link href={role === Role.instructor ? Routes.Dashboard : Routes.Dashboard}>
+          <Link href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
             <Button color="primary" variant="contained" className="nabi-margin-top-small">
               {WelcomeToNabiComponent.buttonText}
             </Button>

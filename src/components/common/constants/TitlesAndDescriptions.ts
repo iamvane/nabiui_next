@@ -109,7 +109,7 @@ export const pageTitlesAndDescriptions = {
   },
   vettingProcess: {
     title: 'How We Vet Our Music Instructors | Child Safety',
-    description: 'Background and criminal check, video interview, phone verification, reference check and more!'
+    description: 'Background and criminal check, phone verification, reference check and more!'
   },
   studentProfileBuilder: {
     title: 'Complete Your Profile To Meet Your Instructor',

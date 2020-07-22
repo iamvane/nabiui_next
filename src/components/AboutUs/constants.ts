@@ -46,5 +46,5 @@ export const team: Teammate[] = [
 export const titleAbout = 'About Nabi Music';
 export const ourMission = 'Our mission is to make music education easily accessible and bring encouragement to every young musician.';
 export const titleWhatWeDo = 'What We Do';
-export const whatWeDo = 'Nabi Music is an innovative music learning experience for children that allows parents to connect with qualified instructors nearby and provides unique features that motivate parents’ involvement in their children musical path.'
+export const whatWeDo = 'Nabi Music is an innovative music learning experience for children. Nabi allows parents to connect with qualified instructors worldwide and provides unique features that motivate parents’ involvement in their children musical path.'
 export const titleTeam = 'The Team';

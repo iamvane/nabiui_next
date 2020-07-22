@@ -3,7 +3,7 @@ export const description = 'Nabi Music is an innovative music learning experienc
 export const features = [
   {
     title: 'Pre-Screening',
-    description: 'Our screening process involves: video interview, reference check, background and criminal record check, and phone verification.',
+    description: 'Our screening process involves: reference check, background and criminal record check, and phone verification.',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/pre-sreening.jpeg',
     alt: 'nabi-pre-screening'
   },
@@ -15,7 +15,7 @@ export const features = [
   },
   {
     title: 'Free Trial Lesson',
-    description: 'All of our lesson packages include a FREE trial lesson. If you are not satisfied after the first lesson you’ll get a full refund.',
+    description: 'The first lesson is free. No fees or credit card required up front. Just schedule your trial and start learning.',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/free-trial.jpeg',
     alt: 'nabi-trial-lesson'
   },
@@ -27,7 +27,7 @@ export const features = [
   },
   {
     title: 'Convenience',
-    description: 'Take lessons in the comfort of your home, at the instructor’s studio or online. We made it easy and convenient.',
+    description: 'With online learning you can safely take lessons in the comfort of your home. We made it easy, safe and convenient.',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/convinience.jpeg',
     alt: 'nabi-convinience'
   },

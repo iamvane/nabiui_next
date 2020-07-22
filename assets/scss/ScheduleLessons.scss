@@ -3,6 +3,12 @@
   overflow-y: scroll;
 }
 
+.MuiTab-root {
+  width: 14.3% !important;
+  max-width: 14.3% !important;
+  min-width: 14.3% !important;
+}
+
 @media (min-width: 960px) {
   .time-slots-wrapper {
     height: auto;

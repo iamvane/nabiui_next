@@ -29,6 +29,7 @@ import { LoginType } from './model';
 import LoginForm from './LoginForm';
 import { LoginFormComponent } from './constants';
 import { Role } from '../Registration/constants';
+import { validateEmail } from '../../../utils/formValidation';
 
 interface State extends LoginType {
   showSnackbar: boolean;
@@ -62,6 +63,8 @@ const Login = (props: Props) => {
   const [password, setPassword] = React.useState('');
   const [displaySnackBar, setDisplaySnackBar] = React.useState(false);
   const [login, setLogin ] = React.useState(false);
+  const [validEmail, confirmValidEmail] = React.useState(false);
+  const [validPassword, confirmValidPassword] = React.useState(false);
 
   React.useEffect(() => {
     if (props.passwordSetMessage && !login) {
@@ -93,7 +96,7 @@ const Login = (props: Props) => {
         if (props.user.role === Role.instructor) {
           Router.push(Routes.InstructorStudio);
         } else {
-          Router.push(Routes.Dashboard);
+          Router.push(Routes.ParentStudio);
         }
       }
     }
@@ -105,8 +108,10 @@ const Login = (props: Props) => {
     const name = target.name;
 
     if (name === LoginFormComponent.FieldNames.Email) {
+      confirmValidEmail(validateEmail(value))
       setEmail(value);
     } else if (name === LoginFormComponent.FieldNames.Password) {
+      confirmValidPassword(Boolean(value));
       setPassword(value);
     }
   }
@@ -136,6 +141,7 @@ const Login = (props: Props) => {
             handleSubmit={handleSubmit}
             apiError={props.loginError}
             isRequesting={props.isRequesting || props.isRequestingUser}
+            isDisabled={validEmail && validPassword ? false : true}
           />
         </div>
       </Grid>

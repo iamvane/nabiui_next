@@ -114,7 +114,7 @@ export const StepperButtons: React.StatelessComponent<Props> = (props: Props): J
               {CommonStepperButtons.Exit}
             </Button>
           :
-          <Link href={Routes.Dashboard}>
+          <Link href={Routes.InstructorStudio}>
             <a>
               <Button
                 variant="contained"

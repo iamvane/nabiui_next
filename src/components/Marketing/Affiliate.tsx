@@ -25,7 +25,7 @@ const Affiliate: React.StatelessComponent<Props> = props => {
         target: '#hubspotAffiliate'
       });
     } else {
-      Router.push(Routes.Dashboard)
+      Router.push("")
     }
   }, [hbspt]);
 
