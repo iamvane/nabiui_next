@@ -21,6 +21,7 @@ import { PlaceForLessons } from '../PlaceForLessons/constants';
 import { instruments } from '../../../assets/data/instruments';
 import { SkillLevel } from '../Instruments/constants';
 import { RequestCardComponent } from './constants';
+import { LessonCardComponent }  from '../StudioInstructor/constants';
 
 interface Props {
   request: Request;
@@ -79,6 +80,17 @@ const RequestCard: React.StatelessComponent<Props> = props => {
     return end.to(moment(createdAt));
   };
 
+  const displayAvatar = () => {
+    const findIndex = LessonCardComponent.avatarInstrumentImages.map(
+      (o) => o.instrument).indexOf(instrument);
+
+      if (findIndex < 0) {
+        return LessonCardComponent.avatarInstrumentImages[7].image;
+      } else {
+        return LessonCardComponent.avatarInstrumentImages[findIndex].image;
+      }
+  };
+
   return (
     <div
       onClick={navigateToRequest}
@@ -95,7 +107,7 @@ const RequestCard: React.StatelessComponent<Props> = props => {
       </div>
       <Grid container={true} spacing={3}>
         <Grid item={true} xs={12} md={3} className="nabi-text-center">
-          <Avatar src={avatar} style={AvatarStyles} className="nabi-margin-center" />
+          <Avatar src={displayAvatar()} style={AvatarStyles} className="nabi-margin-center" />
           <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
             {displayName}
           </Typography>
