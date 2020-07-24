@@ -15,7 +15,7 @@ import {
   TextField,
   Typography,
   Checkbox,
-  FormGroup
+  FormControlLabel,
 } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 
@@ -117,7 +117,6 @@ export const GradeLesson = (props: Props) => {
       status,
       lessonId: getCookie('lessonId')
     }
-
     await props.gradeLesson(gradeData);
   }
 
@@ -128,7 +127,8 @@ export const GradeLesson = (props: Props) => {
       }
 
       return !grade || !comment;
-    }, [status, comment, grade])
+    }, [status, comment, grade]
+  );
 
   return (
     <div className="nabi-container">
@@ -150,15 +150,18 @@ export const GradeLesson = (props: Props) => {
             <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
             <form noValidate={true} autoComplete="off" onSubmit={submitLessonGrade}>
               <SectionTitle text={constants.missedLesson} />
-              <Typography className="nabi-margin-top-xsmall nabi-margin-bottom-xsmall">
-                {constants.missedLessonDescription}
-              </Typography>
-              <FormGroup>
-                <Checkbox
-                  name={constants.FieldNames.Status}
-                  onChange={handleChange}
-                />
-              </FormGroup>
+              <FormControlLabel
+                className="nabi-margin-bottom-xsmall nabi-margin-left-zero"
+                control={
+                  <Checkbox
+
+                    name={constants.FieldNames.Status}
+                    onChange={handleChange}
+                    size="medium"
+                  />
+                }
+                label={constants.missedLessonDescription}
+              />
 
               {status !== 'missed' && (
                 <>
@@ -185,7 +188,7 @@ export const GradeLesson = (props: Props) => {
                   </Grid>
                 </>
               )}
-              <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
+              <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small nabi-margin-top-small">
                 <Button
                   variant="contained"
                   color="primary"

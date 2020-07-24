@@ -556,8 +556,11 @@ export const gradeLesson = (gradeData: GradeData): ThunkAction<Promise<void>, {}
   dispatch(requestAction(InstructorActions.GRADE_LESSON));
   try {
     const requestPayload = {
-      grade: gradeData.grade,
-      comment: gradeData.comment
+      ...(gradeData.status !== 'missed' && {
+        comment: gradeData.comment,
+        grade: gradeData.grade
+      }),
+      status: gradeData.status,
     };
     const response = await axios.put(
       ApiEndpoints.gradeLesson + gradeData.lessonId + '/',
