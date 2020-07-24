@@ -167,7 +167,6 @@ export const enableContinueBtn = {
   instruments: false,
   jobPreferences: false,
   rates: false,
-  placeForLessons:false,
   availability: false,
   qualifications: false,
   languages: false

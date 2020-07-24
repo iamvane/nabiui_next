@@ -25,7 +25,7 @@ interface Props extends RatesType {
 }
 
 function NumberFormatCustom(props: any) {
-  const { inputRef, onChange, name,  ...other } = props;
+  const { inputRef, onChange, name, ...other } = props;
 
   return (
     <NumberFormat
@@ -58,12 +58,12 @@ const Rates: React.StatelessComponent<Props> = props => {
 
     const instructorGain: number =
       isNaN((props as any)[list.name] - ((props as any)[list.name] * .25))
-      ? 0
-      : (props as any)[list.name] - ((props as any)[list.name] * .25);
+        ? 0
+        : (props as any)[list.name] - ((props as any)[list.name] * .25);
     return (
-      <Grid key={i} container={true}>
-        <Grid item={true} xs={12} md={6}>
-          <ListItem className="nabi-margin-bottom-small">
+      <Grid key={i} container={true} alignItems="center">
+        <Grid item={true} xs={12} md={6} direction="column" justify="center">
+          <ListItem>
             <ListItemText
               primary={
                 RatesComponent.ratesList.replace(
@@ -72,7 +72,7 @@ const Rates: React.StatelessComponent<Props> = props => {
                 )
               }
             />
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction className="nabi-display-flex nabi-flex-align-center">
               <AttachMoney color="primary" />
               <TextField
                 id={list.name}
@@ -90,7 +90,7 @@ const Rates: React.StatelessComponent<Props> = props => {
           </ListItem>
         </Grid>
         <Grid item={true} xs={12} md={6}>
-          {instructorGain !== 0  &&
+          {instructorGain !== 0 &&
             <Typography
               color="secondary"
               className="nabi-margin-left-small nabi-color-orange"
