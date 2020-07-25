@@ -72,16 +72,16 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
   );
 
   const renderToFields = (): JSX.Element => (
-    <Grid container={true} spacing={8}>
+    <>
       <Grid item={true} md={4} xs={12} sm={6}>
         <FormControl fullWidth={true}>
           <Select
             native={true}
             input={
-            <Input
-              id={EmploymentFormComponent.Ids.ToMonth}
-              name={EmploymentFormComponent.FieldNames.ToMonth}
-            />
+              <Input
+                id={EmploymentFormComponent.Ids.ToMonth}
+                name={EmploymentFormComponent.FieldNames.ToMonth}
+              />
             }
             value={props.toMonth}
             onChange={props.handleChange}
@@ -99,10 +99,10 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
           <Select
             native={true}
             input={
-            <Input
-              id={EmploymentFormComponent.Ids.ToYear}
-              name={EmploymentFormComponent.FieldNames.ToYear}
-            />
+              <Input
+                id={EmploymentFormComponent.Ids.ToYear}
+                name={EmploymentFormComponent.FieldNames.ToYear}
+              />
             }
             value={props.toYear}
             onChange={props.handleChange}
@@ -115,7 +115,7 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
           </Select>
         </FormControl>
       </Grid>
-    </Grid>
+    </>
   );
 
   const renderPresent = (): JSX.Element => (
@@ -168,49 +168,47 @@ const EmploymentForm: React.StatelessComponent<Props> = props => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container={true} spacing={8}>
-        <Grid item={true} md={4} xs={12} sm={6}>
-          <FormControl fullWidth={true}>
-            <Select
-              native={true}
-              input={
-                <Input
-                  id={EmploymentFormComponent.Ids.FromMonth}
-                  name={EmploymentFormComponent.FieldNames.FromMonth}
-                />
-              }
-              value={props.fromMonth}
-              onChange={props.handleChange}
-              onBlur={props.handleOnBlur}
-            >
-              <option value="" disabled={true}>
-                {EmploymentFormComponent.DisabledPlaceholders.SelectMonth}
-              </option>
-              {monthSelectItems}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item={true} md={3} xs={12} sm={4}>
-          <FormControl fullWidth={true}>
-            <Select
-              native={true}
-              input={
-                <Input
-                  id={EmploymentFormComponent.Ids.FromYear}
-                  name={EmploymentFormComponent.FieldNames.FromYear}
-                />
-              }
-              value={props.fromYear}
-              onChange={props.handleChange}
-              onBlur={props.handleOnBlur}
-            >
-              <option value="" disabled={true}>
-                {EmploymentFormComponent.DisabledPlaceholders.SelectYear}
-              </option>
-              {yearsItems}
-            </Select>
-          </FormControl>
-        </Grid>
+      <Grid item={true} md={4} xs={12} sm={6}>
+        <FormControl fullWidth={true}>
+          <Select
+            native={true}
+            input={
+              <Input
+                id={EmploymentFormComponent.Ids.FromMonth}
+                name={EmploymentFormComponent.FieldNames.FromMonth}
+              />
+            }
+            value={props.fromMonth}
+            onChange={props.handleChange}
+            onBlur={props.handleOnBlur}
+          >
+            <option value="" disabled={true}>
+              {EmploymentFormComponent.DisabledPlaceholders.SelectMonth}
+            </option>
+            {monthSelectItems}
+          </Select>
+        </FormControl>
+      </Grid>
+      <Grid item={true} md={3} xs={12} sm={4}>
+        <FormControl fullWidth={true}>
+          <Select
+            native={true}
+            input={
+              <Input
+                id={EmploymentFormComponent.Ids.FromYear}
+                name={EmploymentFormComponent.FieldNames.FromYear}
+              />
+            }
+            value={props.fromYear}
+            onChange={props.handleChange}
+            onBlur={props.handleOnBlur}
+          >
+            <option value="" disabled={true}>
+              {EmploymentFormComponent.DisabledPlaceholders.SelectYear}
+            </option>
+            {yearsItems}
+          </Select>
+        </FormControl>
       </Grid>
       <Typography className="nabi-margin-top-xsmall">
         {EmploymentFormComponent.Text.To}
