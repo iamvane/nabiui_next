@@ -47,7 +47,7 @@ export const JobPreferencesOptions = {
 export namespace JobPreferencesComponent {
   export enum Text {
     JobPreferences = 'Job preferences',
-    SpecifyWhatAge = 'Specify what age group are you comfortable working with (select all that apply)',
+    SpecifyWhatAge = 'Specify what age group you are comfortable working with (select all that apply)',
     SpecifyHowMany = 'Specify how many students you are comfortable teaching at the same time (select all that apply)'
   }
 }

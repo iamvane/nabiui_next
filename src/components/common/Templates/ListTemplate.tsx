@@ -55,7 +55,6 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
   };
 
   const { hasCallToAction, results } = props;
-
   const SearchSection = (): JSX.Element => {
     return (
       <div className="nabi-section-widest nabi-background-nabi nabi-margin-bottom-small">
@@ -118,8 +117,8 @@ export const ListTemplate: React.StatelessComponent<Props> = props => {
               </div>
             </Grid>
             <Grid item={true} xs={12}>
-              {results === 0 ? (
-                <div className="nabi-section-widest nabi-background-white nabi-text-center nabi-margin-top-small">
+              {results === 0  ? (
+                <div className="nabi-section-widest nabi-background-white nabi-text-center nabi-margin-top-small nabi-margin-bottom-medium">
                   <Typography>
                     No results. Contact us if you need help.
                   </Typography>

@@ -16,7 +16,7 @@ export const howItWorksParentStudent = [
   },
   {
     stepTitle: '2. Meet instructor',
-    stepDescription: 'Take your first lesson. Tell your instructor about your goals.',
+    stepDescription: 'Take your first lesson and share your goals with your instructor.',
     linkText: 'instructors',
     linkUrl: '/instructors',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/learn-music-with-nabi.jpg'
@@ -33,7 +33,7 @@ export const howItWorksParentStudent = [
 export const howItWorksInstructor = [
   {
     stepTitle: '1. Build your profile',
-    stepDescription: 'Tell students who you are. Specify your rates, instruments, teaching location, availability and more.',
+    stepDescription: 'Tell students who you are by sharing your experience, bio and qualifications. Build a profile that stands out.',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/build-your-profile-music-instructor.jpg'
   },
   {
