@@ -203,23 +203,20 @@ export const StudioParent = (props: Props) => {
                     )}
                 </p>
               </Grid>
-              {//buy more lessons is temporarily disabled
-              item.lessons.length < 1 &&
-                <Grid item={true} xs={12} md={4} className="nabi-text-right-md">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className="nabi-margin-top-small-md"
-                    onClick={
-                      item.lessons.length < 1 ?
-                      () => scheduleTrial(item.name, item.id, item.instrument) :
-                      () => buyMoreLessons(item.id)
-                    }
-                  >
-                    {item.lessons.length < 1 ? ParentStudioComponent.scheduleTrialButton : ParentStudioComponent.buyMoreLessonsButton}
-                  </Button>
-                </Grid>
-            }
+              <Grid item={true} xs={12} md={4} className="nabi-text-right-md">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="nabi-margin-top-small-md"
+                  onClick={
+                    item.lessons.length < 1 ?
+                    () => scheduleTrial(item.name, item.id, item.instrument) :
+                    () => buyMoreLessons(item.id)
+                  }
+                >
+                  {item.lessons.length < 1 ? ParentStudioComponent.scheduleTrialButton : ParentStudioComponent.buyMoreLessonsButton}
+                </Button>
+              </Grid>
             </Grid>
             <TableContainer className="nabi-margin-top-small nabi-margin-bottom-small">
               {item.lessons.length < 1 ?
