@@ -7,6 +7,8 @@ import { UserActions } from "../actions/UserActionTypes";
 import { APIActions } from "../models/models";
 import { setDashboard } from "../../utils/setDashboard";
 import { setProfile } from "./utils";
+import { identify } from "../../utils/analytics";
+
 import _ from "lodash";
 
 export default function usersReducer(
@@ -32,6 +34,12 @@ export default function usersReducer(
       setCookie("role", userDetails.role);
       setCookie("firstName", userDetails.firstName);
       setCookie("userEmail", userDetails.email);
+
+      identify(userDetails.id, {
+        name: userDetails.firstName + userDetails.lastName,
+        email: userDetails.email,
+      });
+
       return {
         ...state,
         user: {
@@ -186,6 +194,12 @@ export default function usersReducer(
       setCookie("role", user.role);
       setCookie("firstName", user.firstName);
       setCookie("userEmail", user.email);
+
+      identify(user.id, {
+        name: user.firstName + user.lastName,
+        email: user.email,
+      });
+
       return {
         ...state,
         user: {
