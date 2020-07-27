@@ -148,6 +148,7 @@ export const Registration = (props: Props) => {
       setCookie('studentName', firstName);
     }
     setCookie("role", props.role);
+    setCookie("userEmail", email.toLocaleLowerCase());
 
     await props.createUser(userValues);
     setIsAttemptToRegister(true);

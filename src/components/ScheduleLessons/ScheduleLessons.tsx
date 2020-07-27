@@ -20,17 +20,14 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import '../../../assets/scss/ScheduleLessons.scss';
 import { scheduleLesson } from '../../redux/actions/RequestActions';
 import { getCookie, setCookie, } from "../../utils/cookies";
-import { Timezone } from '../../redux/models/TimeZonesModel';
+import { track } from '../../utils/analytics';
 import { StoreState } from '../../redux/reducers/store';
 import PageTitle from '../common/PageTitle';
 import SnackBar from '../common/SnackBar';
 import { Role } from '../../constants/Roles';
 import { Routes } from '../common/constants/Routes';
-import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 import { LessonType } from '../BookLessons/model';
-import {
-  ScheduleLessonsComponent,
-} from './constants';
+import { ScheduleLessonsComponent } from './constants';
 
 interface DispatchProps {
   scheduleLesson: (lessonDetails: Partial<LessonType>) => void;
@@ -91,6 +88,15 @@ export const ScheduleLessons = (props: Props) => {
     }
 
     if (scheduleLesson) {
+      const userEmail = getCookie('userEmail');
+      const analiticsProps = {
+        userId: userEmail,
+        properties: {
+          referrer: document.referrer
+        }
+      };
+      track('Trial Started', analiticsProps);
+
       const nextRoute = props.nextPath || Routes.BookingDetails;
       Router.push(nextRoute);
     }
@@ -178,8 +184,6 @@ export const ScheduleLessons = (props: Props) => {
       date: lessonDate,
       time: lessonTime
     }
-
-    let lessonId;
 
     if (props.isTrial) {
       const studentId = getCookie('studentId');
