@@ -28,7 +28,7 @@ interface Props {
 export const FAQs = (props: Props) => {
   const [expanded, setExpanded] = React.useState<string | false>('');
   const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, newExpanded: boolean) => {
-      setExpanded(newExpanded ? panel : false);
+    setExpanded(newExpanded ? panel : false);
   };
 
   const items: FAQItem[] = props.role === Role.instructor ? instructorFaqs : parentStudentFaqs;
@@ -37,9 +37,30 @@ export const FAQs = (props: Props) => {
   const ctaLink = props.role === Role.instructor ? Routes.FAQParents : Routes.FAQInstructors;
   const docTitle = props.role === Role.instructor ? pageTitlesAndDescriptions.faqInstructors.title :
     pageTitlesAndDescriptions.faqParentsStudents.title;
-  const docDescription =  props.role === Role.instructor ? pageTitlesAndDescriptions.faqInstructors.description :
+  const docDescription = props.role === Role.instructor ? pageTitlesAndDescriptions.faqInstructors.description :
     pageTitlesAndDescriptions.faqParentsStudents.description;
 
+  const checkAbsoulteUrl = (url: string) => {
+    return url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+  }
+
+  const replaceMultipleLinkTexts = (
+    linkTexts: string[], linkUrls: string[], replacementTexts: string[], answer: string
+  ) => {
+    let replacedText = answer;
+    for (let text = 0; text < replacementTexts.length; text += 1) {
+      const isAbsoluteUrl = checkAbsoulteUrl(linkUrls[text]);
+      replacedText = reactStringReplace(
+        replacedText,
+        replacementTexts[text],
+        (i: number) => (
+          isAbsoluteUrl ? <a key={i} href={linkUrls[text]} target={'_blank'} rel="noreferrer">{linkTexts[text]}</a> :
+          <Link key={i} href={linkUrls[text]}><a target={'_blank'} rel="noreferrer">{linkTexts[text]}</a></Link>
+        )
+      );
+    }
+    return replacedText;
+  }
   return (
     <React.Fragment>
       <Head>
@@ -57,17 +78,22 @@ export const FAQs = (props: Props) => {
                     <Typography>{item.question}</Typography>
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
-                  <Typography>
-                    {
-                      item.linkText ?
-                        reactStringReplace(
-                          item.answer,
-                          linkReplace,
-                          (i: number) => (
-                            <Link key={i} href={item.linkUrl}><a target={item.targetBlank && '_blank'} rel="noreferrer">{item.linkText}</a></Link>
-                          )
-                        ):
-                        item.answer
+                    <Typography>
+                      {
+                        item.linkText ?
+                          reactStringReplace(
+                            item.answer,
+                            linkReplace,
+                            (i: number) => {
+                              const isAbsoluteUrl = checkAbsoulteUrl(item.linkUrl);
+                              const link = !isAbsoluteUrl ? <Link key={i} href={item.linkUrl}><a target={item.targetBlank && '_blank'} rel="noreferrer">{item.linkText}</a></Link> :
+                              <a key={i} href={item.linkUrl} target={item.targetBlank && '_blank'} rel="noreferrer">{item.linkText}</a>
+                              return link;
+                            }
+                          ) :
+                          item.linkTexts ?
+                          replaceMultipleLinkTexts(item.linkTexts, item.linkUrls, item.replacementTexts, item.answer) :
+                          item.answer
                       }
                     </Typography>
                   </ExpansionPanelDetails>
@@ -79,5 +105,5 @@ export const FAQs = (props: Props) => {
       </div>
       <PageBannerCta description={ctaText} url={ctaLink} buttonText={constants.ctaButton} />
     </React.Fragment>
- )
+  )
 }
