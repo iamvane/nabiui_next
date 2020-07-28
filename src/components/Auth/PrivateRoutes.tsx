@@ -37,7 +37,7 @@ export default (ChildComponent, permission = 'Public', roles = [], custom?) => c
 
     if (res) {
       if (token) {
-        if (permission === 'Public') {
+        if (permission === 'Public' && role && !hasRole) {
           redirectBasedOnRole[role](res)
         }
         if (permission === 'Private' && role && !hasRole) {
