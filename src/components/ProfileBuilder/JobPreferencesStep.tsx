@@ -71,6 +71,7 @@ export const JobPreferencesStep = () => {
   const [exitFormIsOpen, setExitFormOpen] = useState(false);
   const [allFieldsFilledError, setAllFieldsFilledError] = useState('');
 
+  const [userProfile, setUserProfile] = useState({});
   const closeSnackbar = () => setSnackbarOpen(false);
   const closeExitForm = () => setExitFormOpen(false);
   const handleProceed = () => {
@@ -225,6 +226,7 @@ export const JobPreferencesStep = () => {
 
   useEffect(() => {
     fetchUserAction();
+
   }, [JSON.stringify(user)]);
 
   useEffect(() => {
@@ -307,7 +309,6 @@ export const JobPreferencesStep = () => {
         setLanguages(prevState => ({
           ...prevState,
           languages: [
-            ...prevState.languages,
             ...profile.languages
           ]
         }));
@@ -508,10 +509,6 @@ export const JobPreferencesStep = () => {
           });
           if (!equal) {
             buildJobPreferencesAction(jobPreferences);
-          } else {
-            Router.push(Routes.BuildProfile + ProfileBuilderConstants
-              .ProfileBuilderStepper.StepsPaths.Education
-            );
           }
         } else {
           setAllFieldsFilledError("All fields must be filled");
@@ -533,38 +530,26 @@ export const JobPreferencesStep = () => {
   );
 
   useEffect(() => {
-    const jobPreferences: InstructorType = {
-      rates,
-      lessonSize: sizeAgePreference.lessonSize,
-      ageGroup: sizeAgePreference.ageGroup,
-      availability,
-      qualifications,
-      instruments: instruments.instruments,
-      languages: languages.languages,
-    };
-    const modifiedInstructor = {
-      ...instructor
-    }
+    if (user.profile) {
+      if (!Object.entries(userProfile).length) {
+        setUserProfile(user.profile);
+      }
+      const equal = Object.keys(instructor).every((p) => {
+        return JSON.stringify(instructor[p]) === JSON.stringify(userProfile[p]);
+      });
 
-    delete modifiedInstructor.backgroundCheckResults;
-    delete modifiedInstructor.userId;
+      if (Object.entries(userProfile).length && !equal) {
+        Router.push(Routes.BuildProfile + ProfileBuilderConstants
+          .ProfileBuilderStepper.StepsPaths.Education
+        );
+        setUserProfile(user.profile);
+      }
+    }
     if (buildJobPreferencesError) {
       setSnackbarOpen(true);
       setSnackBarMessage(buildJobPreferencesError);
     }
-
-    if (
-      Object.keys(jobPreferences).length === Object.keys(modifiedInstructor).length &&
-      (JSON.stringify(jobPreferences) !== JSON.stringify(modifiedInstructor))
-    ) {
-      Router.push(Routes.BuildProfile + ProfileBuilderConstants
-        .ProfileBuilderStepper.StepsPaths.Education
-      );
-    }
-  }, [
-    JSON.stringify(instructor),
-    buildJobPreferencesError
-  ]);
+  }, [JSON.stringify(user.profile), JSON.stringify(instructor), buildJobPreferencesError]);
 
   const handleExit = useCallback(
     () => {
