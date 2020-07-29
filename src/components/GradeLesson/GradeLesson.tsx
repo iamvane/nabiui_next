@@ -114,8 +114,9 @@ export const GradeLesson = (props: Props) => {
         comment,
         grade
       }),
-      status,
-      lessonId: getCookie('lessonId')
+      ...(status === 'missed' && {
+        status
+      })
     }
     await props.gradeLesson(gradeData);
   }
