@@ -509,6 +509,10 @@ export const JobPreferencesStep = () => {
           });
           if (!equal) {
             buildJobPreferencesAction(jobPreferences);
+          } else {
+            Router.push(Routes.BuildProfile + ProfileBuilderConstants
+              .ProfileBuilderStepper.StepsPaths.Education
+            );
           }
         } else {
           setAllFieldsFilledError("All fields must be filled");
