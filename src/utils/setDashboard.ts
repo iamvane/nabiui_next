@@ -11,6 +11,7 @@ export const setDashboard = (data) => {
   let dashboard;
   if (role === Role.instructor) {
     return (dashboard as InstructorDashboardType) = {
+      id: data.id,
       complete: data.complete,
       missingFields: data.missingFields,
       backgroundCheckStatus: data.backgroundCheckStatus,
