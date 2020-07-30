@@ -15,10 +15,9 @@ import {
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import { StoreState } from '../../redux/reducers/store';
 import { fetchDashboard } from '../../redux/actions/UserActions';
-import { getCookie } from "../../utils/cookies";
+import { getCookie, setCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
-import { Role } from '../Auth/Registration/constants';
 import PrivateRoute from '../Auth/PrivateRoutes';
 import { InstructorStudioComponent }  from './constants';
 import {
@@ -51,6 +50,12 @@ export const StudioInstructor = (props: Props) => {
     }
     fetchData();
   },[]);
+
+  React.useEffect(() => {
+    if (props.dashboard && props.dashboard.id) {
+      setCookie("instructorId", props.dashboard.id)
+    }
+  },[props.dashboard]);
 
   const displayLessons = () => (
     props.dashboard && props.dashboard.lessons && props.dashboard.lessons.length > 0 ?

@@ -49,6 +49,7 @@ export interface MyRequestType {
 }
 
 export interface InstructorDashboardType {
+  id: number;
   complete?: boolean;
   missingFields?: string[]
   backgroundCheckStatus: string;

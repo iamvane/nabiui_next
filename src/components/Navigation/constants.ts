@@ -20,7 +20,9 @@ export namespace NavigationComponent {
     FindStudents = 'Find Students',
     GoToStudio = 'Go To Studio',
     Studio = 'Studio',
-    Jobs = 'Jobs'
+    Jobs = 'Jobs',
+    ViewProfile = 'View Profile',
+    EditProfile = 'Edit Profile'
   }
 
   export const menuText = 'Menu';

@@ -70,11 +70,20 @@ const StudentMenuItems = () => {
 }
 
 const InstructorMenuItems = ({ currentRoute }) => {
+  const instructorId = getCookie("instructorId");
   const items = [
     // NavigationComponent.NavigationLabels.Calendar,
     {
       label: currentRoute === Routes.InstructorStudio ? NavigationComponent.NavigationLabels.Jobs : NavigationComponent.NavigationLabels.Studio,
       url:  currentRoute === Routes.InstructorStudio ? Routes.Requests : Routes.InstructorStudio
+    },
+    {
+      label: NavigationComponent.NavigationLabels.ViewProfile,
+      url:  Routes.Profile + "/" + instructorId
+    },
+    {
+      label: NavigationComponent.NavigationLabels.EditProfile,
+      url:  Routes.BuildProfile + "/profile"
     }
     // NavigationComponent.NavigationLabels.ReferAFriend
   ];
