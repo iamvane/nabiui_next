@@ -45,7 +45,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  fetchDashboard: (role: Role) => void;
+  fetchDashboard: () => void;
 }
 
 interface OwnProps {}
@@ -83,7 +83,7 @@ export const StudioParent = (props: Props) => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      await props.fetchDashboard(Role.instructor);
+      await props.fetchDashboard();
     }
     fetchData();
   },[]);
@@ -339,7 +339,7 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  fetchDashboard: (role: Role) => dispatch(fetchDashboard(role)),
+  fetchDashboard: () => dispatch(fetchDashboard()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(StudioParent, 'Private', ['Student', 'Parent']));

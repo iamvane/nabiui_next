@@ -11,15 +11,15 @@ export const setDashboard = (data) => {
   let dashboard;
   if (role === Role.instructor) {
     return (dashboard as InstructorDashboardType) = {
-      complete: data.apiResponse.complete,
-      missingFields: data.apiResponse.missingFields,
-      backgroundCheckStatus: data.apiResponse.backgroundCheckStatus,
-      lessons: data.apiResponse.lessons,
-      requests: data.apiResponse.requests,
-      nextLesson: data.apiResponse.nextLesson
+      complete: data.complete,
+      missingFields: data.missingFields,
+      backgroundCheckStatus: data.backgroundCheckStatus,
+      lessons: data.lessons,
+      requests: data.requests,
+      nextLesson: data.nextLesson
     };
   }
   return (dashboard as ParentStudentDashboardType) =  {
-    students: data.apiResponse.students,
+    students: data.students,
   };
 };
