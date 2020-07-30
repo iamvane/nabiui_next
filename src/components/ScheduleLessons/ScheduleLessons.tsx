@@ -121,14 +121,13 @@ export const ScheduleLessons = (props: Props) => {
     const date = moment();
     const dow = date.day();
     const currentIndex = dow;
-    const tomorrow  = moment().add(1,'days').format('DD');
 
     let daysArray = ScheduleLessonsComponent.weekdaysLabels.slice(currentIndex);
     daysArray = daysArray.concat(ScheduleLessonsComponent.weekdaysLabels.slice(0, currentIndex));
 
     let numbersArray = [];
     for (let i = 0; i < 7; i++) {
-      numbersArray.push(("0" + String(Number(tomorrow) + i)).slice(-2));
+      numbersArray.push(moment().add((i + 1), 'days').format('DD'));
     }
 
     daysArray.forEach((name, index) => daysArray[index] = `${name} ${numbersArray[index]}`);
