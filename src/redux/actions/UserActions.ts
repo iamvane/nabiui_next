@@ -416,20 +416,14 @@ export const fetchReferralInfo = (
   }
 };
 
-export const fetchDashboard = (
-  role: Role
-): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
+export const fetchDashboard = (): ThunkAction<Promise<void>, {}, {}> => async (dispatch: Dispatch<{}>) => {
   dispatch(requestAction(UserActions.FETCH_DASHBOARD));
   try {
     const response = await axios.get(ApiEndpoints.dashboard, {
       headers: { Authorization: `Bearer ${getCookie("token")}` }
     });
 
-    const data = {
-      apiResponse: response.data,
-      role
-    };
-    dispatch(withDataAction(UserActions.FETCH_DASHBOARD_SUCCESS, data));
+    dispatch(withDataAction(UserActions.FETCH_DASHBOARD_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === "string") {
       errorMessage = getError(e, "email");

@@ -83,7 +83,7 @@ export const StudioParent = (props: Props) => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      await props.fetchDashboard(Role.instructor);
+      await props.fetchDashboard(Role.parent);
     }
     fetchData();
   },[]);
