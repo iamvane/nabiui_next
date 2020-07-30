@@ -23,6 +23,7 @@ class NabiDocument extends Document {
   }
 
   render() {
+    console.log(process.env.NODE_ENV)
     const prod = process.env.NODE_ENV == "production";
     /* tslint:disable */
     const segmentScript = prod
