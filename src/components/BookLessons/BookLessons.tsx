@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Router from "next/router";
 import {
   Action,
   Dispatch
@@ -36,6 +37,7 @@ import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescript
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
 import SectionTitle from '../common/SectionTitle';
+import { Routes } from '../common/constants/Routes';
 import { BookLessonsComponent } from './constants';
 import {
   BookLessonPackages,
@@ -99,6 +101,7 @@ export const BookLessons = (props: Props) => {
     if (props.bookLessonsError) {
       setShowSnackbar(true);
       setSnackbarMessage(props.bookLessonsError)
+      Router.push(Routes.ParentStudio)
     }
     /* tslint:disable */
   },[
