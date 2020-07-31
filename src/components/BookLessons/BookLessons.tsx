@@ -60,7 +60,7 @@ interface StateProps extends BookLessonsData {
 interface DispatchProps {
   bookLessons: (data: BookLessonsPayload) => void;
   fetchBookLessonsData: (id: number) => void;
-  chooseLessonPackage: (packageName: string, applicationId: number) => void;
+  chooseLessonPackage: (packageName: string, studentId: number) => void;
   fetchTimezones: () => void;
 }
 
@@ -82,12 +82,12 @@ export const BookLessons = (props: Props) => {
   });
 
   const router = useRouter();
-  const applicationId = Number(router.query.id);
+  const studentId = Number(router.query.id);
 
   React.useEffect(() => {
     const fetchData = async () => {
-      if (applicationId) {
-        await props.fetchBookLessonsData(applicationId);
+      if (studentId) {
+        await props.fetchBookLessonsData(studentId);
         await props.fetchTimezones();
       }
     };
@@ -108,14 +108,14 @@ export const BookLessons = (props: Props) => {
   ]);
 
   const selectLessonPackage = async (bookLessonPackages: BookLessonPackages) => {
-    await props.chooseLessonPackage(bookLessonPackages.value, applicationId);
+    await props.chooseLessonPackage(bookLessonPackages.value, studentId);
     setLessonPckage(bookLessonPackages)
   }
 
   const submitPayment = async (stripeToken: string) => {
     const params: BookLessonsPayload = {
       package: lessonPackage.value,
-      applicationId,
+      studentId,
       paymentMethodCode: stripeToken
     }
 
@@ -411,7 +411,7 @@ const mapDispatchToProps = (
 ): DispatchProps => ({
   bookLessons: (data: BookLessonsPayload) => dispatch(bookLessons(data)),
   fetchBookLessonsData: (id: number) => dispatch(fetchBookLessonsData(id)),
-  chooseLessonPackage: (packageName: string, applicationId: number) => dispatch(chooseLessonPackage(packageName, applicationId)),
+  chooseLessonPackage: (packageName: string, studentId: number) => dispatch(chooseLessonPackage(packageName, studentId)),
   fetchTimezones: () => dispatch(fetchTimezones())
 });
 

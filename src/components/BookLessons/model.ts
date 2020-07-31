@@ -5,7 +5,7 @@ export interface BookLessonPackages {
 }
 
 export interface BookLessonsPayload {
-	applicationId: number;
+	studentId: number;
 	package: string;
 	paymentMethodId?: number;
 	paymentMethodCode?: string;
