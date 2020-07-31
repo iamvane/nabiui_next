@@ -2,7 +2,8 @@ import React from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('pk_live_w3eJuwclLTq3awfhENpZwqpx002APtyTMh');
+const stripePublicKey = process.env.NODE_ENV === 'production' ? process.env.REACT_STRIPE_KEY : 'pk_test_0bqLmpsvPKYaGFgPeTrmsh3s00hMjjwCJm'
+const stripePromise = loadStripe(stripePublicKey);
 
 const StripeElementsWrapper: React.FunctionComponent = ({
   children,

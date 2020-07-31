@@ -9,9 +9,6 @@ module.exports = withPWA(withSourceMaps(withCSS(withSass(withFonts({
   pwa: {
     dest: 'public'
   },
-  env: {
-    STRIPE_SECRET_KEY: "sk_test_LE4KxozC6O8d3krb3FEjbBp00erufO2Bm",
-  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.(ttf|woff|woff2)$/,
@@ -19,7 +16,7 @@ module.exports = withPWA(withSourceMaps(withCSS(withSass(withFonts({
         loader: 'url-loader',
       }
     });
-    config.plugins.push(new webpack.EnvironmentPlugin(['REACT_APP_API_URL']));
+    config.plugins.push(new webpack.EnvironmentPlugin(['REACT_APP_API_URL', 'REACT_STRIPE_KEY']));
     return config;
   }
 })))));
