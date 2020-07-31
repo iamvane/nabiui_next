@@ -555,13 +555,10 @@ export const gradeLesson = (gradeData: GradeData): ThunkAction<Promise<void>, {}
 ) => {
   dispatch(requestAction(InstructorActions.GRADE_LESSON));
   try {
-    const requestPayload = {
-      grade: gradeData.grade,
-      comment: gradeData.comment
-    };
+    const lessonId = getCookie('lessonId');
     const response = await axios.put(
-      ApiEndpoints.gradeLesson + gradeData.lessonId + '/',
-      requestPayload,
+      ApiEndpoints.gradeLesson + lessonId + '/',
+      gradeData,
       { headers:
         authToken && { 'Authorization': `Bearer ${authToken}` },
       });
