@@ -209,6 +209,10 @@ header {
   display: flex !important;
 }
 
+.nabi-flex-align-center {
+  align-items: center;
+}
+
 /*FLOAT*/
 .nabi-float-right {
 	float: right !important;

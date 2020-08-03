@@ -31,8 +31,8 @@ export const lessonDurationOptions = {
 
 export namespace RatesComponent {
   export enum Text {
-    RatesForLessons = 'Rates for lessons',
-    SpecifyYourPreferred = 'Specify your preferred hourly rate'
+    RatesForLessons = 'Lesson Rate',
+    SpecifyYourPreferred = 'Specify your rate'
   }
   export const instructorGain = 'You get ${gainReplace}';
   export const gainPlaceholder = '{gainReplace}';

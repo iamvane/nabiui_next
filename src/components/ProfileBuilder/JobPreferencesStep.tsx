@@ -40,7 +40,6 @@ export const JobPreferencesStep = () => {
     'instruments',
     'jobPreferences',
     'rates',
-    'placeForLessons',
     'availability',
     'qualifications',
     'languages'
@@ -58,7 +57,6 @@ export const JobPreferencesStep = () => {
   const [availability, setAvailability] = useState(ProfileBuilderConstants.availability);
   const [rates, setRates] = useState(ProfileBuilderConstants.rates);
   const [qualifications, setQualification] = useState(ProfileBuilderConstants.qualifications);
-  const [placeForLessons, setPlaceForLesson] = useState(ProfileBuilderConstants.placeForLessons);
   const [sizeAgePreference, setSizeAgePreference] = useState(ProfileBuilderConstants.sizeAgePreferences);
   const [studioAddress, setStudioAddress] = useState("");
   const [travelDistance, setTravelDistance] = useState("");
@@ -73,6 +71,7 @@ export const JobPreferencesStep = () => {
   const [exitFormIsOpen, setExitFormOpen] = useState(false);
   const [allFieldsFilledError, setAllFieldsFilledError] = useState('');
 
+  const [userProfile, setUserProfile] = useState({});
   const closeSnackbar = () => setSnackbarOpen(false);
   const closeExitForm = () => setExitFormOpen(false);
   const handleProceed = () => {
@@ -227,6 +226,7 @@ export const JobPreferencesStep = () => {
 
   useEffect(() => {
     fetchUserAction();
+
   }, [JSON.stringify(user)]);
 
   useEffect(() => {
@@ -240,10 +240,10 @@ export const JobPreferencesStep = () => {
       }
 
       if (hasSomeJobPreferences) {
-        setCurrentStep(6);
+        setCurrentStep(5);
         setStep(prevState => ([
           ...prevState,
-          2, 3, 4, 5, 6, 7
+          2, 3, 4, 5, 6
         ]));
         setEnableContinue(prevState => ({
           ...prevState,
@@ -252,7 +252,6 @@ export const JobPreferencesStep = () => {
           qualifications: true,
           rates: true,
           availability: true,
-          placeForLessons: true,
           languages: true
         }));
       }
@@ -284,13 +283,6 @@ export const JobPreferencesStep = () => {
         }))
       }
 
-      if (profile.placeForLessons) {
-        setPlaceForLesson(prevState => ({
-          ...prevState,
-          ...profile.placeForLessons
-        }));
-      }
-
       if (profile.travelDistance) {
         setTravelDistance(profile.travelDistance);
       }
@@ -317,7 +309,6 @@ export const JobPreferencesStep = () => {
         setLanguages(prevState => ({
           ...prevState,
           languages: [
-            ...prevState.languages,
             ...profile.languages
           ]
         }));
@@ -405,27 +396,18 @@ export const JobPreferencesStep = () => {
         setRates((prevState) => {
           const currentState = {
             ...prevState,
-            [name]: value
+            mins30: value,
+            mins45: 0,
+            mins60: 0,
+            mins90: 0
           }
 
           setEnableContinue(prevState => ({
             ...prevState,
-            rates: Object.values(currentState).every(rate => rate > 0)
+            rates: currentState.mins30 > 0
           }));
           return currentState;
         });
-      }
-
-      if (confirmSelectedPreferences(name, 'placeForLessons')) {
-        setPlaceForLesson(prevState => ({
-          ...prevState,
-          [name]: value
-        }));
-
-        setEnableContinue(prevState => ({
-          ...prevState,
-          placeForLessons: true
-        }))
       }
 
       if (confirmSelectedPreferences(name, 'availability')) {
@@ -472,7 +454,11 @@ export const JobPreferencesStep = () => {
         rates,
         lessonSize: sizeAgePreference.lessonSize,
         ageGroup: sizeAgePreference.ageGroup,
-        placeForLessons,
+        placeForLessons: {
+          home: false,
+          studio: false,
+          online: true,
+        },
         availability,
         ...(studioAddress && {
           studioAddress
@@ -485,7 +471,7 @@ export const JobPreferencesStep = () => {
         languages: languages.languages,
       };
 
-      if (steps.length < 7) {
+      if (steps.length < 6) {
         setStep(prevState => {
           const updatedSteps = [
             ...prevState,
@@ -499,11 +485,11 @@ export const JobPreferencesStep = () => {
           availability,
           rates,
           qualifications,
-          placeForLessons,
           sizeAgePreference,
           instruments,
           languages
         )) {
+
           let profile = Object.keys(jobPreferences).map((preference) => {
             return {
               [preference]: user.profile[preference]
@@ -518,7 +504,10 @@ export const JobPreferencesStep = () => {
           delete profile.studioAddress;
           delete profile.travelDistance;
 
-          if (JSON.stringify(profile) !== JSON.stringify(jobPreferences)) {
+          const equal = Object.keys(profile).every((p) => {
+            return JSON.stringify(profile[p]) === JSON.stringify(jobPreferences[p]);
+          });
+          if (!equal) {
             buildJobPreferencesAction(jobPreferences);
           } else {
             Router.push(Routes.BuildProfile + ProfileBuilderConstants
@@ -535,7 +524,6 @@ export const JobPreferencesStep = () => {
       JSON.stringify(availability),
       JSON.stringify(rates),
       JSON.stringify(qualifications),
-      JSON.stringify(placeForLessons),
       JSON.stringify(sizeAgePreference),
       JSON.stringify(instruments.instruments),
       JSON.stringify(languages.languages),
@@ -546,51 +534,26 @@ export const JobPreferencesStep = () => {
   );
 
   useEffect(() => {
-    const jobPreferences: InstructorType = {
-      rates,
-      lessonSize: sizeAgePreference.lessonSize,
-      ageGroup: sizeAgePreference.ageGroup,
-      placeForLessons,
-      availability,
-      ...(studioAddress && {
-        studioAddress
-      }),
-      ...(travelDistance && {
-        travelDistance
-      }),
-      qualifications,
-      instruments: instruments.instruments,
-      languages: languages.languages,
-    };
-    const modifiedInstructor = {
-      ...instructor
-    }
-    if (!modifiedInstructor.studioAddress) {
-      delete modifiedInstructor.studioAddress;
-    }
+    if (user.profile) {
+      if (!Object.entries(userProfile).length) {
+        setUserProfile(user.profile);
+      }
+      const equal = Object.keys(instructor).every((p) => {
+        return JSON.stringify(instructor[p]) === JSON.stringify(userProfile[p]);
+      });
 
-    if (!modifiedInstructor.travelDistance) {
-      delete modifiedInstructor.travelDistance;
+      if (Object.entries(userProfile).length && !equal) {
+        Router.push(Routes.BuildProfile + ProfileBuilderConstants
+          .ProfileBuilderStepper.StepsPaths.Education
+        );
+        setUserProfile(user.profile);
+      }
     }
-    delete modifiedInstructor.backgroundCheckResults;
-    delete modifiedInstructor.userId;
     if (buildJobPreferencesError) {
       setSnackbarOpen(true);
       setSnackBarMessage(buildJobPreferencesError);
     }
-
-    if (
-      Object.keys(jobPreferences).length === Object.keys(modifiedInstructor).length &&
-      (JSON.stringify(jobPreferences) !== JSON.stringify(modifiedInstructor))
-    ) {
-      Router.push(Routes.BuildProfile + ProfileBuilderConstants
-        .ProfileBuilderStepper.StepsPaths.Education
-      );
-    }
-  }, [
-    JSON.stringify(instructor),
-    buildJobPreferencesError
-  ]);
+  }, [JSON.stringify(user.profile), JSON.stringify(instructor), buildJobPreferencesError]);
 
   const handleExit = useCallback(
     () => {
@@ -598,7 +561,6 @@ export const JobPreferencesStep = () => {
         availability,
         rates,
         qualifications,
-        placeForLessons,
         sizeAgePreference,
         instruments,
         languages
@@ -613,7 +575,6 @@ export const JobPreferencesStep = () => {
       JSON.stringify(availability),
       JSON.stringify(rates),
       JSON.stringify(qualifications),
-      JSON.stringify(placeForLessons),
       JSON.stringify(sizeAgePreference),
       instruments.instruments,
       languages.languages,
@@ -626,7 +587,6 @@ export const JobPreferencesStep = () => {
     availability,
     rates,
     qualifications,
-    placeForLessons,
     sizeAgePreference,
     instruments,
     languages
@@ -635,7 +595,6 @@ export const JobPreferencesStep = () => {
       availability,
       rates,
       qualifications,
-      placeForLessons,
       sizeAgePreference,
       instruments,
       languages
@@ -646,17 +605,13 @@ export const JobPreferencesStep = () => {
     availability,
     rates,
     qualifications,
-    placeForLessons,
     sizeAgePreference,
     instruments,
     languages
   ) => {
     const availabilityIsSelected = Object.values(availability).some((available) => available === true);
-    const allRatesAreSelected = Object.values(rates).every((rate) => {
-      return rate > 0
-    });
+    const allRatesAreSelected = rates.mins30 > 0;
     const qualificationIsSelected = Object.values(qualifications).some((qualification) => qualification === true);
-    const placeIsSelected = Object.values(placeForLessons).some((place) => place === true);
     const lessonSizeIsSelected = Object.values(sizeAgePreference.lessonSize).some((size) => size === true);
     const ageGroupIsSelected = Object.values(sizeAgePreference.ageGroup).some((age) => age === true);
     const instrumentIsSelected = instruments.instruments.length > 0;
@@ -665,7 +620,6 @@ export const JobPreferencesStep = () => {
       availabilityIsSelected,
       allRatesAreSelected,
       qualificationIsSelected,
-      placeIsSelected,
       lessonSizeIsSelected,
       ageGroupIsSelected,
       instrumentIsSelected,
@@ -677,7 +631,6 @@ export const JobPreferencesStep = () => {
     availability,
     rates,
     qualifications,
-    placeForLessons,
     sizeAgePreference,
     instruments,
     languages
@@ -686,7 +639,6 @@ export const JobPreferencesStep = () => {
       availability,
       rates,
       qualifications,
-      placeForLessons,
       sizeAgePreference,
       instruments,
       languages
@@ -732,28 +684,11 @@ export const JobPreferencesStep = () => {
               <Rates
                 handleChange={handleChange}
                 mins30={rates.mins30}
-                mins45={rates.mins45}
-                mins60={rates.mins60}
-                mins90={rates.mins90}
               />
             </div>
           )}
 
           {steps.includes(4) && (
-            <div className="nabi-margin-bottom-large">
-              <PlaceForLessonsForm
-                handleChange={handleChange}
-                home={placeForLessons.home}
-                studio={placeForLessons.studio}
-                online={placeForLessons.online}
-                distance={travelDistance}
-                studioAddress={studioAddress}
-                studioAddressError={fields.studioAddress.error}
-              />
-            </div>
-          )}
-
-          {steps.includes(5) && (
             <div className="nabi-margin-bottom-large">
               <Availability
                 renderCheckbox={renderAvailabilityCheckbox}
@@ -762,7 +697,7 @@ export const JobPreferencesStep = () => {
             </div>
           )}
 
-          {steps.includes(6) && (
+          {steps.includes(5) && (
             <div className="nabi-margin-bottom-large">
               <Qualification
                 handleChange={handleChange}
@@ -780,7 +715,7 @@ export const JobPreferencesStep = () => {
             </div>
           )}
 
-          {steps.includes(7) && (
+          {steps.includes(6) && (
             <Languages
               languages={languages.languages}
               handleChangeLanguage={handleChange}

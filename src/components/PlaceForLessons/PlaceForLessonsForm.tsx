@@ -4,8 +4,6 @@ import {
   Checkbox,
   FormGroup,
   FormControlLabel,
-  Grid,
-  TextField,
   Typography
 } from '@material-ui/core';
 
@@ -38,19 +36,6 @@ const PlaceForLessonsForm: React.StatelessComponent<Props> = props => {
       />
     );
   }
-  const studioAddressTextfield = props.studio && !props.isFilter && (
-    <TextField
-      fullWidth={true}
-      name="studioAddress"
-      onChange={props.handleChange}
-      required={true}
-      className="nabi-margin-top-xsmall"
-      placeholder="Enter your studio address"
-      error={!!props.studioAddressError}
-      helperText={props.studioAddressError || ''}
-      value={props.studioAddress}
-    />
-  );
 
   const distanceField = props.home && !props.isFilter && (
     <DistanceSelect
@@ -69,12 +54,6 @@ const PlaceForLessonsForm: React.StatelessComponent<Props> = props => {
       <FormGroup className="nabi-margin-left-small">
         {placeForLessonsItems}
       </FormGroup>
-      {(studioAddressTextfield || distanceField) && 
-        <Grid item={true} className="nabi-margin-top-small" xs={12} md={6}>
-          {distanceField}
-          {studioAddressTextfield}
-        </Grid>
-      }
     </div>
   );
 };

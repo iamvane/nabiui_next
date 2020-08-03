@@ -20,14 +20,6 @@ export interface PlaceForLessonsOptions {
 }
 
 export const placeForLessonsOptions = {
-  Home: <PlaceForLessonsOptions> {
-    label: PlaceForLessons.home,
-    name: 'home'
-  },
-  Studio: <PlaceForLessonsOptions> {
-    label: PlaceForLessons.studio,
-    name: 'studio'
-  },
   Online: <PlaceForLessonsOptions> {
     label: PlaceForLessons.online,
     name: 'online'
