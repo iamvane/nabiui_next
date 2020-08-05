@@ -143,7 +143,7 @@ export const instructorFaqs: FAQItem[] = [
     question: 'I am interested in teaching music',
     answer: 'To find students, you must complete the {linkReplace}.',
     linkText: 'Instructor Registration',
-    linkUrl: '/registration'
+    linkUrl: '/registration-instructor'
   },
   {
     question: 'I am a current instructor at Nabi and I would like to know when I’ll be getting students?',
