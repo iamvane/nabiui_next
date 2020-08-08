@@ -314,7 +314,7 @@ export const BookLessons = (props: Props) => {
         </div>
       }
 
-      <Grid item={true} xs={12} md={6}>
+      <Grid item={true} xs={12}>
         <StripeElementsWrapper>
           <StripePaymentForm
             submitPayment={submitPayment}
