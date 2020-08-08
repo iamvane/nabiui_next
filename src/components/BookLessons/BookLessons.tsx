@@ -188,7 +188,6 @@ export const BookLessons = (props: Props) => {
         </Grid>
         <SectionTitle text={String(BookLessonsComponent.buyLessons)} />
           <RadioGroup
-            // name={lessonPackageItem.value}
             value={lessonPackage}
             onChange={(e) => selectLessonPackage(e)}
           >
@@ -349,27 +348,6 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     discounts,
     bookingId,
     instructor,
-    // {
-    //   "lessonRate": 10,
-    //   "lessonsPrice": 40,
-    //   "processingFee": 1.46,
-    //   "subTotal": 41.46,
-    //   "total": 41.46,
-    //   "paymentMethods": [],
-    //   "clientSecret": "seti_1HDvLpDzPkkZe0Mk1HECcHCN_secret_HnWOLlTqCUtKZVF2TQChXBkmD8mUhkC",
-    //   "instructor": {
-    //     "avatar": "https://nabimusic-staging.s3.us-east-2.amazonaws.com/media/avatars/vane.charles24%40gmail.com/default-piano.jpg",
-    //     "reviews": {
-    //       "rate": "4.00",
-    //       "quantity": 2
-    //     },
-    //     "backgroundCheckStatus": "NOT_VERIFIED",
-    //     "display_name": "Nabi I.",
-    //     "rate": 10,
-    //     "yearsOfExperience": 5,
-    //     "age": 30
-    //   }
-    // }
     actions: {
       bookLessons: {
         isRequesting: bookLessonsRequesting,
