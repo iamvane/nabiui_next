@@ -2,6 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import Router from "next/router";
 import { connect } from 'react-redux';
+import * as _ from "lodash";
 import {
   Action,
   Dispatch
@@ -164,7 +165,22 @@ export const StudioParent = (props: Props) => {
     }
 
     return props.dashboard.students.map((item, i) => {
-      const rows = item.lessons.map(item => (
+      // order lessons by date
+      function compare(a, b) {
+        const dateA = a.date;
+        const dateB = b.date;
+        let comparison = 0;
+        if (dateA > dateB) {
+          comparison = 1;
+        } else if (dateA < dateB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+
+      let sortedArray = item.lessons.sort(compare);
+
+      const rows = sortedArray.map(item => (
         createData(item.date, item.status, item.instructor, item.instructorId, item.grade, item.id)
       ));
 

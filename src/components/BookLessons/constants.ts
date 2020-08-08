@@ -1,7 +1,7 @@
 import { BookLessonPackages } from './model';
 
 export namespace BookLessonsComponent {
-  export const pageTitle = 'Book Lessons';
+  export const pageTitle = 'Keep Learning';
   export const pageTitleTrial = 'Book Trial';
   export const trialHeading = 'Start Your Free Trial';
   export const bookingConfirmation = 'Thank you for your booking!';
@@ -11,21 +11,27 @@ export namespace BookLessonsComponent {
 
   export const bookLessonPackages: BookLessonPackages[] = [
     {
-      name: 'The Artist',
+      name: 'The Artist - 4 lessons',
       lessonNumber: 4,
       value: 'artist'
     },
     {
-      name: 'The Maestro',
+      name: 'The Maestro - 8 lessons',
       lessonNumber: 8,
       value: 'maestro'
     },
     {
-      name: 'The Virtuoso',
+      name: 'The Virtuoso - 12 lessons (5% discount)',
       lessonNumber: 12,
       value: 'virtuoso'
     }
   ];
+
+  export const lessonNumber = {
+    artist: 4,
+    maestro: 8,
+    virtuoso: 12
+  };
 
   export const cardTextColors = ['nabi-color-yellow', 'nabi-color-orange', 'nabi-color-nabi'];
   export const cardBackgroundColors = ['nabi-background-yellow', 'nabi-background-orange', 'nabi-background-nabi'];
@@ -39,7 +45,7 @@ export namespace BookLessonsComponent {
   export const savingsPlaceholer = '{totalSavings}';
 
   export const lessonCostPlaceholer = '{lessonCost}';
-  export const lessonCost = '${lessonCost}/each';
+  export const lessonCost = '${lessonCost}/lesson';
 
   export const tooltipText = 'This is a one-time fee charged by Nabi Music';
 
