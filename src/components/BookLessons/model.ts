@@ -23,6 +23,18 @@ export interface BookLessonsData {
 	freeTrial?: boolean;
 	virtuosoDiscount?: number;
 	discounts?: number;
+	instructor: {
+		avatar: string;
+		reviews: {
+			rate: string;
+			quantity: number
+		},
+		backgroundCheckStatus: string;
+		display_name: string;
+		rate: number;
+		yearsOfExperience: number,
+		age: number;
+	}
 }
 
 export enum LessonStatusType {

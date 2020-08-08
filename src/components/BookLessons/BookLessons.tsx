@@ -11,12 +11,13 @@ import Head from 'next/head';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
-  Card,
+  Avatar,
   CircularProgress,
   Divider,
   FormControlLabel,
   Grid,
   Icon,
+  IconButton,
   Radio,
   RadioGroup,
   Typography,
@@ -29,9 +30,6 @@ import {
   fetchBookLessonsData,
   chooseLessonPackage,
 } from "../../redux/actions/RequestActions";
-import {
-  fetchTimezones
-} from '../../redux/actions/TimezonesActions';
 import { CommonConstants } from '../common/constants/common';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import SnackBar from '../common/SnackBar';
@@ -40,12 +38,14 @@ import SectionTitle from '../common/SectionTitle';
 import { Routes } from '../common/constants/Routes';
 import { BookLessonsComponent } from './constants';
 import {
-  BookLessonPackages,
   BookLessonsPayload,
   BookLessonsData,
 } from './model';
 import StripeElementsWrapper from "../PaymentForm/StripeElementsWrapper";
 import StripePaymentForm from "../PaymentForm/StripePaymentForm";
+import { BackgroundCheckStatus } from "../ProfileBuilder/constants";
+import { displayRatings } from '../../utils/displayRatings';
+import { ProfileHeaderComponent } from "../Profile/constants";
 
 interface StateProps extends BookLessonsData {
   bookLessonsRequesting: boolean;
@@ -56,14 +56,12 @@ interface StateProps extends BookLessonsData {
   chooseLessonPackageRequesting: boolean;
   chooseLessonPackageError: string;
   bookingId: number;
-  timezones: object[];
 }
 
 interface DispatchProps {
   bookLessons: (data: BookLessonsPayload) => void;
   fetchBookLessonsData: (id: number) => void;
   chooseLessonPackage: (packageName: string, studentId: number) => void;
-  fetchTimezones: () => void;
 }
 
 interface OwnProps { }
@@ -74,14 +72,12 @@ interface Props extends
   DispatchProps { }
 
 export const BookLessons = (props: Props) => {
+  const AvatarStyles = { width: "120px", height: "120px" };
+
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarMessage, setSnackbarMessage] = React.useState('');
-  const [lessonPackage, setLessonPckage] =
-  React.useState({
-    name: BookLessonsComponent.bookLessonPackages[0].name,
-    lessonNumber: BookLessonsComponent.bookLessonPackages[0].lessonNumber,
-    value: BookLessonsComponent.bookLessonPackages[0].value
-  });
+  const [lessonPackage, setLessonPackage] = React.useState(BookLessonsComponent.bookLessonPackages[0].value);
+  const [lessonNumber, setLessonNumber] = React.useState(BookLessonsComponent.lessonNumber.artist);
 
   const router = useRouter();
   const studentId = Number(router.query.id);
@@ -90,18 +86,17 @@ export const BookLessons = (props: Props) => {
     const fetchData = async () => {
       if (studentId) {
         await props.fetchBookLessonsData(studentId);
-        await props.fetchTimezones();
       }
     };
     fetchData();
     if (props.bookLessonsMessage) {
       setShowSnackbar(true);
       setSnackbarMessage(props.bookLessonsMessage)
+      Router.push(Routes.ParentStudio)
     }
     if (props.bookLessonsError) {
       setShowSnackbar(true);
       setSnackbarMessage(props.bookLessonsError)
-      Router.push(Routes.ParentStudio)
     }
     /* tslint:disable */
   },[
@@ -110,14 +105,17 @@ export const BookLessons = (props: Props) => {
     props.chooseLessonPackageError,
   ]);
 
-  const selectLessonPackage = async (bookLessonPackages: BookLessonPackages) => {
-    await props.chooseLessonPackage(bookLessonPackages.value, studentId);
-    setLessonPckage(bookLessonPackages)
+  const selectLessonPackage = async (e: any) => {
+    if (e && e.currentTarget !== null) {
+      setLessonPackage(e.currentTarget.value);
+      setLessonNumber(BookLessonsComponent.lessonNumber[e.currentTarget.value]);
+      await props.chooseLessonPackage(e.currentTarget.value, studentId);
+    }
   }
 
   const submitPayment = async (stripeToken: string) => {
     const params: BookLessonsPayload = {
-      package: lessonPackage.value,
+      package: lessonPackage,
       studentId,
       paymentMethodCode: stripeToken
     }
@@ -129,6 +127,8 @@ export const BookLessons = (props: Props) => {
     await props.bookLessons(params);
   }
 
+  const BackgroundCheckIcon =
+  "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg";
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
       <Head>
@@ -137,94 +137,77 @@ export const BookLessons = (props: Props) => {
         <script src="https://js.stripe.com/v3/"></script>
       </Head>
       <PageTitle pageTitle={props.freeTrial ? BookLessonsComponent.pageTitleTrial : BookLessonsComponent.pageTitle} />
-      <div className="nabi-section nabi-background-white">
-        {props.freeTrial ?
-        <React.Fragment>
-          <h1 className="nabi-jennasue-title nabi-color-nabi nabi-text-normalbold">{BookLessonsComponent.trialHeading}</h1>
-          <Typography className="nabi-margin-bottom-small">{BookLessonsComponent.trialDescription}</Typography>
-        </React.Fragment>
-        :
-        <React.Fragment>
-          <Typography color="primary" className="nabi-text-center nabi-margin-bottom-medium nabi-text-uppercase">
-            {BookLessonsComponent.buyLessons}
+
+      <Grid
+        item={true}
+        xs={12}
+        md={8} className="nabi-section nabi-background-white nabi-margin-center"
+      >
+
+<       Grid item={true} xs={12} className="nabi-text-center nabi-margin-bottom-small">
+          <Avatar
+            src={props.instructor && props.instructor.avatar}
+            style={AvatarStyles}
+            className="nabi-margin-center nabi-margin-bottom-small"
+          />
+          <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
+            {props.instructor && props.instructor.display_name}
           </Typography>
-        <div>
-        <Grid container={true} direction="row" alignItems="center" spacing={1}>
-          {BookLessonsComponent.bookLessonPackages.map((lessonPackageItem, i) => {
-            return (
-              <Grid item={true} xs={12} md={4} key={lessonPackageItem.name}>
-                <RadioGroup
-                  name={lessonPackageItem.value}
-                  value={lessonPackage.value}
-                  onChange={() => selectLessonPackage(lessonPackageItem)}
-                >
-                  <FormControlLabel
-                    className="nabi-margin-right-zero nabi-margin-left-zero"
-                    value={lessonPackageItem.value}
-                    control={<Radio />}
-                    labelPlacement="top"
-                    label={
-                      <div>
-                        <Typography
-                          color={lessonPackage.value === lessonPackageItem.value && BookLessonsComponent.cardTextColors[i] === 'nabi-color-nabi' ? 'primary' : undefined}
-                          // tslint:disable-next-line:max-line-length
-                          className={`${lessonPackage.name === lessonPackageItem.name ? BookLessonsComponent.cardTextColors[i]: ''} nabi-text-center nabi-font-medium nabi-text-uppercase nabi-margin-bottom-small nabi-text-mediumbold`}
-                        >
-                          {lessonPackageItem.name}
-                        </Typography>
-                        <Grid
-                          item={true}
-                          xs={8}
-                          md={12}
-                          className="nabi-margin-center nabi-margin-bottom-xsmall"
-                        >
-                        {/* tslint:disable-next-line:max-line-length */}
-                        <Card className={`${lessonPackage.name === lessonPackageItem.name ? BookLessonsComponent.cardBackgroundColors[i] : 'nabi-background-disabled'} nabi-text-center nabi-book-lessons-card`}>
-                          <p className="nabi-font-medium nabi-text-uppercase nabi-color-white nabi-margin-top-zero nabi-margin-bottom-zero">
-                            {lessonPackageItem.lessonNumber} {BookLessonsComponent.lessons}
-                          </p>
-                          <p className="nabi-font-medium nabi-text-uppercase nabi-color-white nabi-margin-top-xsmall nabi-margin-bottom-zero">
-                            {BookLessonsComponent.lessonCost.replace(
-                              BookLessonsComponent.lessonCostPlaceholer,
-                              String(props.lessonRate)
-                            )}
-                          </p>
-                          <Typography
-                            className="nabi-color-white nabi-margin-top-xsmall"
-                          >
-                            {BookLessonsComponent.includes}
-                          </Typography>
-                          <Typography
-                            className="nabi-color-white nabi-font-small nabi-margin-top-xsmall"
-                          >
-                            {lessonPackageItem.lessonNumber} {BookLessonsComponent.lessons}
-                          </Typography>
-                          {i === 2 &&
-                            <Typography
-                              className="nabi-color-white nabi-font-small nabi-margin-top-xsmall"
-                            >
-                              {BookLessonsComponent.fivePercentOff}
-                            </Typography>
-                          }
-                          <Divider className="nabi-margin-top-xsmall" />
-                          <p
-                            className="nabi-color-white nabi-font-large nabi-margin-top-small nabi-next-mediumbold nabi-margin-bottom-small"
-                          >
-                            {BookLessonsComponent.packageCost.replace(
-                              BookLessonsComponent.packageCostPlaceholer,
-                              String(lessonPackageItem.lessonNumber * props.lessonRate)
-                            )}
-                          </p>
-                          </Card>
-                        </Grid>
-                      </div>
-                    }
-                  />
-                </RadioGroup>
-              </Grid>
-            )})}
+          <div className="nabi-cursor-pointer nabi-color-nabi">
+            {displayRatings(Number(props.instructor && props.instructor.rate && props.instructor.reviews.rate))}
+          </div>
+          <Typography className="nabi-text-uppercase">
+            {props.instructor && props.instructor.yearsOfExperience} {ProfileHeaderComponent.Text.YearExperiece} | {props.instructor && props.instructor.age}{" "}
+            {ProfileHeaderComponent.Text.YearOld}
+          </Typography>
+          {props.instructor && props.instructor.backgroundCheckStatus === BackgroundCheckStatus.verified && (
+            <Grid item={true} xs={12} className="nabi-margin-top-xsmall">
+              <IconButton
+                color="secondary"
+                className="nabi-display-inline-block"
+              >
+                <img
+                  src={BackgroundCheckIcon}
+                  className="nabi-custom-button-icon"
+                  alt="background-check"
+                />
+              </IconButton>
+              <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">
+                Background Check
+              </Typography>
+            </Grid>
+          )}
+          <Typography className="nabi-text-semibold nabi-font-large">
+            <span className="nabi-font-large">
+              {BookLessonsComponent.lessonCost.replace(
+                BookLessonsComponent.lessonCostPlaceholer,
+                String(props.instructor && props.instructor.rate)
+              )}
+            </span>
+          </Typography>
         </Grid>
-        </div>
+        <SectionTitle text={String(BookLessonsComponent.buyLessons)} />
+          <RadioGroup
+            value={lessonPackage}
+            onChange={(e) => selectLessonPackage(e)}
+          >
+            <FormControlLabel
+              control={<Radio />}
+              label={BookLessonsComponent.bookLessonPackages[0].name}
+              value={BookLessonsComponent.bookLessonPackages[0].value}
+              />
+            <FormControlLabel
+              control={<Radio />}
+              label={BookLessonsComponent.bookLessonPackages[1].name}
+              value={BookLessonsComponent.bookLessonPackages[1].value}
+              />
+              <FormControlLabel
+              control={<Radio />}
+              label={BookLessonsComponent.bookLessonPackages[2].name}
+              value={BookLessonsComponent.bookLessonPackages[2].value}
+              />
+          </RadioGroup>
+
         {props.bookLessonsDataRequesting || props.chooseLessonPackageRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
         <div className="nabi-margin-top-medium nabi-margin-bottom-small">
           <SectionTitle text={String(BookLessonsComponent.BookingSummary.SectionTitle)} />
@@ -234,7 +217,7 @@ export const BookLessons = (props: Props) => {
                 <span className="nabi-text-mediumbold nabi-margin-right-xsmall">{BookLessonsComponent.lessons}</span>
                 {BookLessonsComponent.BookingSummary.LessonCalculation.replace(
                   BookLessonsComponent.BookingSummary.NumberOfLessonsPlaceholder,
-                  String(lessonPackage.lessonNumber)
+                  String(lessonNumber)
                 ).replace(
                   BookLessonsComponent.BookingSummary.LessonPricePlaceholder,
                   String(props.lessonRate)
@@ -329,8 +312,8 @@ export const BookLessons = (props: Props) => {
           </Grid>
         </div>
       }
-      </React.Fragment>}
-      <Grid item={true} xs={12} md={6}>
+
+      <Grid item={true} xs={12}>
         <StripeElementsWrapper>
           <StripePaymentForm
             submitPayment={submitPayment}
@@ -339,7 +322,7 @@ export const BookLessons = (props: Props) => {
           />
         </StripeElementsWrapper>
       </Grid>
-      </div>
+</Grid>
       <SnackBar
         isOpen={showSnackbar}
         message={snackbarMessage}
@@ -364,6 +347,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     virtuosoDiscount,
     discounts,
     bookingId,
+    instructor,
     actions: {
       bookLessons: {
         isRequesting: bookLessonsRequesting,
@@ -405,7 +389,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     virtuosoDiscount,
     bookingId,
     discounts,
-    timezones
+    instructor
   }
 };
 
@@ -415,7 +399,6 @@ const mapDispatchToProps = (
   bookLessons: (data: BookLessonsPayload) => dispatch(bookLessons(data)),
   fetchBookLessonsData: (id: number) => dispatch(fetchBookLessonsData(id)),
   chooseLessonPackage: (packageName: string, studentId: number) => dispatch(chooseLessonPackage(packageName, studentId)),
-  fetchTimezones: () => dispatch(fetchTimezones())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookLessons);

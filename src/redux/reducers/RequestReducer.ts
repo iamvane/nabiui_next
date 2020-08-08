@@ -486,6 +486,7 @@ export default function requestsReducer(
         subTotal: bookingData.subTotal,
         total: bookingData.total,
         freeTrial: bookingData.freeTrial,
+        instructor: bookingData.instructor,
         actions: {
           ...state.actions,
           fetchBookLessonsData: {
