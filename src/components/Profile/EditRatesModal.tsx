@@ -41,9 +41,9 @@ const EditRatesModal: React.StatelessComponent<Props> = props => {
           <Rates
             handleChange={props.handleChange}
             mins30={props.mins30}
-            mins45={props.mins45}
-            mins60={props.mins60}
-            mins90={props.mins90}
+            mins45={props.mins30}
+            mins60={props.mins30}
+            mins90={props.mins30}
           />
         </DialogContent>
         <DialogActions>
