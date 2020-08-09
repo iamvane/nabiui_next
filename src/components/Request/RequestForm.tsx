@@ -231,7 +231,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
             </FormControl>
           </ListItem>
 
-          {props.placeForLessons === placeForLessonsOptions.Studio.name &&
+          {/* {props.placeForLessons === placeForLessonsOptions.Studio.name &&
             <ListItem>
               <Grid item={true} xs={12} md={6}>
                 <DistanceSelect
@@ -240,7 +240,7 @@ const RequestForm: React.StatelessComponent<Props> = props => {
                 />
               </Grid>
             </ListItem>
-          }
+          } */}
 
           <ListItem>
             <Typography className="list-text">
