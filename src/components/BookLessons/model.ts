@@ -32,7 +32,7 @@ export interface BookLessonsData {
 		backgroundCheckStatus: string;
 		display_name: string;
 		rate: number;
-		yearsOfExperience: number,
+		yearsOfExperience: number;
 		age: number;
 	}
 }

@@ -87,6 +87,19 @@ export const defaultRequestState: RequestState = {
       { age: 0, name: '', skillLevel: '' }
     ]
   },
+  instructor: {
+    avatar: "",
+		reviews: {
+			rate: "",
+			quantity: 0,
+		},
+		backgroundCheckStatus: "",
+		display_name: "",
+		rate: 0,
+		yearsOfExperience: 0,
+		age: 0
+
+  },
   student: {},
   students: [],
   requests: [],
