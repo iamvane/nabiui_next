@@ -132,7 +132,8 @@ export default function instructorReducer(
           qualifications: jobPreferences.additionalQualifications,
           languages: jobPreferences.languages,
           studioAddress: jobPreferences.studioAddress,
-          travelDistance: jobPreferences.travelDistance
+          travelDistance: jobPreferences.travelDistance,
+          zoomLink: jobPreferences.zoomLink
         },
         actions: {
           ...state.actions,

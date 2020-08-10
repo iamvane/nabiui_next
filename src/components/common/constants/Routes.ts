@@ -54,6 +54,7 @@ export enum Routes {
   TrialConfirmation = '/trial-confirmation',
   WelcomeToNabi = '/welcome-to-nabi',
   InstructorStudio = '/studio-instructor',
+  InstructorZoomSetup = '/studio-instructor/zoom-setup',
   ParentStudio = '/studio',
   BookingDetails = '/booking-details'
 }

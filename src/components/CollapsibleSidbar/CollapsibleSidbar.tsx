@@ -209,7 +209,7 @@ export const CollapsibleSidebar = (props: Props) => {
             {role === Role.instructor && (
               <>
                 { (Routes.Requests === props.currentRoute) && <GoToStudioButton />}
-                { (Routes.InstructorStudio === props.currentRoute) &&  <FindJobsButton />}
+                { (Routes.Requests !== props.currentRoute) &&  <FindJobsButton />}
                 <InstructorMenuItems currentRoute={props.currentRoute} />
               </>
             )}

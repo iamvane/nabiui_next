@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
 import { connect } from 'react-redux';
 import {
   Action,
@@ -19,12 +20,13 @@ import { getCookie, setCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
 import PrivateRoute from '../Auth/PrivateRoutes';
-import { InstructorStudioComponent }  from './constants';
+import { InstructorStudioComponent, MissingFields }  from './constants';
 import {
   LessonType,
   InstructorDashboardType
 } from '../Dashboard/models';
 import LessonCard from './LessonCard';
+import { ZoomMissingLink } from "./ZoomLinkMissing";
 
 interface StateProps {
   dashboard: InstructorDashboardType;
@@ -44,16 +46,19 @@ interface Props extends
   DispatchProps {}
 
 export const StudioInstructor = (props: Props) => {
+  const [dialogIsOpen, setDialogIsOpen] = React.useState(false);
   React.useEffect(() => {
     const fetchData = async () => {
       await props.fetchDashboard();
     }
     fetchData();
   },[]);
-
   React.useEffect(() => {
     if (props.dashboard && props.dashboard.id) {
-      setCookie("instructorId", props.dashboard.id)
+      setCookie("instructorId", props.dashboard.id);
+      if (props.dashboard.missingFields.includes(MissingFields.ZoomLink)) {
+        setDialogIsOpen(true);
+      }
     }
   },[props.dashboard]);
 
@@ -85,8 +90,8 @@ export const StudioInstructor = (props: Props) => {
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
       <PageTitle pageTitle={firstName ? InstructorStudioComponent.pageTitle.replace(
-        InstructorStudioComponent.namePlaceholder,
-        getCookie('firstName')) : InstructorStudioComponent.pageTitleNoName} />
+          InstructorStudioComponent.namePlaceholder,
+          getCookie('firstName')) : InstructorStudioComponent.pageTitleNoName} />
       {props.isFetchingDashboard ?
         <CircularProgress /> :
         <>
@@ -118,6 +123,12 @@ export const StudioInstructor = (props: Props) => {
           <Grid container={true} spacing={1}>
             {displayLessons()}
           </Grid>
+          <ZoomMissingLink
+            isOpen={dialogIsOpen}
+            handleRedirect={() => {
+              Router.push(Routes.InstructorZoomSetup);
+            }}
+          />
         </>
       }
     </div>

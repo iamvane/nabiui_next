@@ -122,6 +122,7 @@ export const Header = (props: HeaderProps) => {
     Routes.BookLessons,
     Routes.Requests,
     Routes.InstructorStudio,
+    Routes.InstructorZoomSetup,
     Routes.ParentStudio
   ] as string[];
 
