@@ -98,12 +98,7 @@ export const placeForLessons = {
   online: false,
 }
 
-export const sizeAgePreferences = {
-  lessonSize: {
-    oneStudent: false,
-    smallGroups: false,
-    largeGroups: false,
-  },
+export const agePreferences = {
   ageGroup: {
     children: false,
     teens: false,

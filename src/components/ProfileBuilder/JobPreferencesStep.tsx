@@ -57,7 +57,7 @@ export const JobPreferencesStep = () => {
   const [availability, setAvailability] = useState(ProfileBuilderConstants.availability);
   const [rates, setRates] = useState(ProfileBuilderConstants.rates);
   const [qualifications, setQualification] = useState(ProfileBuilderConstants.qualifications);
-  const [sizeAgePreference, setSizeAgePreference] = useState(ProfileBuilderConstants.sizeAgePreferences);
+  const [agePreference, setagePreference] = useState(ProfileBuilderConstants.agePreferences);
   const [studioAddress, setStudioAddress] = useState("");
   const [travelDistance, setTravelDistance] = useState("");
 
@@ -105,10 +105,9 @@ export const JobPreferencesStep = () => {
   });
 
   const confirmSelectedPreferences = (name: string, preference: string) => {
-    if (preference === 'sizeAgePreference') {
-      const lessonSizes = Object.keys(ProfileBuilderConstants.sizeAgePreferences.lessonSize);
-      const ageGroup = Object.keys(ProfileBuilderConstants.sizeAgePreferences.ageGroup);
-      return lessonSizes.concat(ageGroup).includes(name);
+    if (preference === 'agePreference') {
+      const ageGroup = Object.keys(ProfileBuilderConstants.agePreferences.ageGroup);
+      return ageGroup.includes(name);
     }
     return Object.keys(ProfileBuilderConstants[preference]).includes(name);
   }
@@ -262,13 +261,9 @@ export const JobPreferencesStep = () => {
         }));
       }
 
-      if (profile.lessonSize && profile.ageGroup) {
-        setSizeAgePreference(prevState => ({
+      if (profile.ageGroup) {
+        setagePreference(prevState => ({
           ...prevState,
-          lessonSize: {
-            ...prevState.lessonSize,
-            ...profile.lessonSize
-          },
           ageGroup: {
             ...prevState.ageGroup,
             ...profile.ageGroup
@@ -319,7 +314,6 @@ export const JobPreferencesStep = () => {
   const confirmSomeProfileDetails = (profile) => {
     const details = [
       'instrument',
-      'lessonSize',
       'ageGroup',
       'rates',
       'availability',
@@ -354,18 +348,11 @@ export const JobPreferencesStep = () => {
           [name]: value
         }))
       }
-      if (confirmSelectedPreferences(name, 'sizeAgePreference')) {
-        const lessonSize = sizeAgePreference.lessonSize;
-        const ageGroup = sizeAgePreference.ageGroup;
-        setSizeAgePreference(prevState => {
+      if (confirmSelectedPreferences(name, 'agePreference')) {
+        const ageGroup = agePreference.ageGroup;
+        setagePreference(prevState => {
           const currentState = {
             ...prevState,
-            ...(Object.keys(lessonSize).includes(name) && {
-              lessonSize: {
-                ...prevState.lessonSize,
-                [name]: value
-              }
-            }),
             ...(Object.keys(ageGroup).includes(name) && {
               ageGroup: {
                 ...prevState.ageGroup,
@@ -374,10 +361,9 @@ export const JobPreferencesStep = () => {
             })
           }
 
-          const hasLessonSize = Object.values(currentState.lessonSize).some(lesson => lesson);
           const hasAgeGroup = Object.values(currentState.ageGroup).some(age => age);
 
-          if (hasLessonSize && hasAgeGroup) {
+          if (hasAgeGroup) {
             setEnableContinue(prevState => ({
               ...prevState,
               jobPreferences: true
@@ -452,8 +438,7 @@ export const JobPreferencesStep = () => {
     () => {
       const jobPreferences: InstructorType = {
         rates,
-        lessonSize: sizeAgePreference.lessonSize,
-        ageGroup: sizeAgePreference.ageGroup,
+        ageGroup: agePreference.ageGroup,
         placeForLessons: {
           home: false,
           studio: false,
@@ -485,7 +470,7 @@ export const JobPreferencesStep = () => {
           availability,
           rates,
           qualifications,
-          sizeAgePreference,
+          agePreference,
           instruments,
           languages
         )) {
@@ -524,7 +509,7 @@ export const JobPreferencesStep = () => {
       JSON.stringify(availability),
       JSON.stringify(rates),
       JSON.stringify(qualifications),
-      JSON.stringify(sizeAgePreference),
+      JSON.stringify(agePreference),
       JSON.stringify(instruments.instruments),
       JSON.stringify(languages.languages),
       studioAddress,
@@ -561,7 +546,7 @@ export const JobPreferencesStep = () => {
         availability,
         rates,
         qualifications,
-        sizeAgePreference,
+        agePreference,
         instruments,
         languages
       );
@@ -575,7 +560,7 @@ export const JobPreferencesStep = () => {
       JSON.stringify(availability),
       JSON.stringify(rates),
       JSON.stringify(qualifications),
-      JSON.stringify(sizeAgePreference),
+      JSON.stringify(agePreference),
       instruments.instruments,
       languages.languages,
       studioAddress,
@@ -587,7 +572,7 @@ export const JobPreferencesStep = () => {
     availability,
     rates,
     qualifications,
-    sizeAgePreference,
+    agePreference,
     instruments,
     languages
   ) => {
@@ -595,7 +580,7 @@ export const JobPreferencesStep = () => {
       availability,
       rates,
       qualifications,
-      sizeAgePreference,
+      agePreference,
       instruments,
       languages
     ).every((selected) => selected === true);
@@ -605,22 +590,20 @@ export const JobPreferencesStep = () => {
     availability,
     rates,
     qualifications,
-    sizeAgePreference,
+    agePreference,
     instruments,
     languages
   ) => {
     const availabilityIsSelected = Object.values(availability).some((available) => available === true);
     const allRatesAreSelected = rates.mins30 > 0;
     const qualificationIsSelected = Object.values(qualifications).some((qualification) => qualification === true);
-    const lessonSizeIsSelected = Object.values(sizeAgePreference.lessonSize).some((size) => size === true);
-    const ageGroupIsSelected = Object.values(sizeAgePreference.ageGroup).some((age) => age === true);
+    const ageGroupIsSelected = Object.values(agePreference.ageGroup).some((age) => age === true);
     const instrumentIsSelected = instruments.instruments.length > 0;
     const languageIsSelected = languages.languages.length > 0;
     return [
       availabilityIsSelected,
       allRatesAreSelected,
       qualificationIsSelected,
-      lessonSizeIsSelected,
       ageGroupIsSelected,
       instrumentIsSelected,
       languageIsSelected
@@ -631,7 +614,7 @@ export const JobPreferencesStep = () => {
     availability,
     rates,
     qualifications,
-    sizeAgePreference,
+    agePreference,
     instruments,
     languages
   ) => {
@@ -639,7 +622,7 @@ export const JobPreferencesStep = () => {
       availability,
       rates,
       qualifications,
-      sizeAgePreference,
+      agePreference,
       instruments,
       languages
     ).some((selected) => selected === true);
@@ -668,13 +651,10 @@ export const JobPreferencesStep = () => {
             <div className="nabi-margin-bottom-large">
               <JobPreferences
                 handleChange={handleChange}
-                oneStudent={sizeAgePreference.lessonSize.oneStudent}
-                smallGroups={sizeAgePreference.lessonSize.smallGroups}
-                largeGroups={sizeAgePreference.lessonSize.largeGroups}
-                children={sizeAgePreference.ageGroup.children}
-                teens={sizeAgePreference.ageGroup.teens}
-                adults={sizeAgePreference.ageGroup.adults}
-                seniors={sizeAgePreference.ageGroup.seniors}
+                children={agePreference.ageGroup.children}
+                teens={agePreference.ageGroup.teens}
+                adults={agePreference.ageGroup.adults}
+                seniors={agePreference.ageGroup.seniors}
               />
             </div>
           )}

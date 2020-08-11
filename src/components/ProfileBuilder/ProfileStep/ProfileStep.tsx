@@ -241,7 +241,6 @@ export class ProfileStep extends React.Component<Props, State> {
     const clearError = () => this.setState({ errorMessage: '' });
     return (
       <div>
-        <VideoProfileUploader />
         <div className="nabi-margin-bottom-large nabi-margin-top-large">
           <Bio
             user={this.props.user}
