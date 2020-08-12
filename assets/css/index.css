@@ -869,7 +869,6 @@ li.nabi-list-style-position-inside {
 
 /*Reviews*/
 #reviews-wrapper {
-	height: 350px;
 	overflow-y: scroll;
 }
 
