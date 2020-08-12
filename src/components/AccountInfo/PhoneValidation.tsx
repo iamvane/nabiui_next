@@ -111,17 +111,20 @@ export class PhoneValidation extends React.Component<Props, State> {
   public componentDidUpdate(prevProps: Props): void {
     if ((prevProps.phoneNumber !== this.props.phoneNumber) && this.props.phoneNumber) {
       this.setState({
+        ...this.state,
         phoneNumber: this.props.phoneNumber
       })
     }
     if ((prevProps.isPhoneVerified !== this.props.isPhoneVerified) && this.props.isPhoneVerified) {
       this.setState({
+        ...this.state,
         isPhoneVerified: this.props.isPhoneVerified
       })
     }
 
     if ((prevProps.requestTokenMessage !== this.props.requestTokenMessage) && this.props.requestTokenMessage) {
       this.setState({
+        ...this.state,
         showSnackbar: true,
         snackbarMessage: this.props.requestTokenMessage,
         isPhoneSet: true
@@ -130,6 +133,7 @@ export class PhoneValidation extends React.Component<Props, State> {
 
     if ((prevProps.verifyTokenMessage !== this.props.verifyTokenMessage) && this.props.verifyTokenMessage) {
       this.setState({
+        ...this.state,
         showSnackbar: true,
         snackbarMessage: this.props.verifyTokenMessage
       });
@@ -137,7 +141,14 @@ export class PhoneValidation extends React.Component<Props, State> {
 
     if ((prevProps.errorVerifyToken !== this.props.errorVerifyToken) && this.props.errorVerifyToken) {
       this.setState({
+        ...this.state,
         errors: {...this.state.errors, [AccountInfoComponent.FieldKey.Token]: this.props.errorVerifyToken}
+      });
+    }
+    if (!this.state.isPhoneSet && this.props.requestTokenMessage) {
+      this.setState({
+        ...this.state,
+        isPhoneSet: true
       });
     }
   }
