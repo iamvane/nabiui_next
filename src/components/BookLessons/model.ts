@@ -26,7 +26,7 @@ export interface BookLessonsData {
 	instructor: {
 		avatar: string;
 		reviews: {
-			rate: string;
+			rating: string;
 			quantity: number
 		},
 		backgroundCheckStatus: string;

@@ -90,7 +90,7 @@ export const defaultRequestState: RequestState = {
   instructor: {
     avatar: "",
 		reviews: {
-			rate: "",
+			rating: "",
 			quantity: 0,
 		},
 		backgroundCheckStatus: "",

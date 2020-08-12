@@ -153,8 +153,8 @@ export const BookLessons = (props: Props) => {
           <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
             {props.instructor && props.instructor.display_name}
           </Typography>
-          <div className="nabi-cursor-pointer nabi-color-nabi">
-            {displayRatings(Number(props.instructor && props.instructor.rate && props.instructor.reviews.rate))}
+          <div>
+            {displayRatings(Number(props.instructor && props.instructor.reviews && props.instructor.reviews.rating))}
           </div>
           <Typography className="nabi-text-uppercase">
             {props.instructor && props.instructor.yearsOfExperience} {ProfileHeaderComponent.Text.YearExperiece} | {props.instructor && props.instructor.age}{" "}
