@@ -14,18 +14,6 @@ export interface JobPreferencesOptions {
 }
 
 export const JobPreferencesOptions = {
-  OneStudent: <JobPreferencesOptions> {
-    label: JobPreferences.oneStudent,
-    name: 'oneStudent'
-  },
-  SmallGroups: <JobPreferencesOptions> {
-    label: JobPreferences.smallGroups,
-    name: 'smallGroups'
-  },
-  LargeGroups: <JobPreferencesOptions> {
-    label: JobPreferences.largeGroups,
-    name: 'largeGroups'
-  },
   Children: <JobPreferencesOptions> {
     label: JobPreferences.children,
     name: 'children'
@@ -46,7 +34,7 @@ export const JobPreferencesOptions = {
 
 export namespace JobPreferencesComponent {
   export enum Text {
-    JobPreferences = 'Job preferences',
+    StudentAge = 'Student Age',
     SpecifyWhatAge = 'Specify what age group you are comfortable working with (select all that apply)',
     SpecifyHowMany = 'Specify how many students you are comfortable teaching at the same time (select all that apply)'
   }
