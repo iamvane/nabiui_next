@@ -46,7 +46,9 @@ export const ProfileHeader = (props: Props) => {
     backgroundCheckStatus,
     lessonsTaught,
     instruments,
-    video
+    video,
+    ratings,
+    count
   } = props.instructor;
 
   const displayRatingStars = (reviewsNumber: number) => {
@@ -114,8 +116,8 @@ export const ProfileHeader = (props: Props) => {
           </Typography>
         </div>
         <div className="nabi-cursor-pointer nabi-color-nabi">
-          {displayRatingStars(reviews)}
-          <span className="nabi-color-nabi">{reviews}</span>
+          {displayRatingStars(ratings)}
+          <span className="nabi-color-nabi">({count ? count : 0})</span>
         </div>
         <Typography className="nabi-text-uppercase">
           {yearsOfExperience} {ProfileHeaderComponent.Text.YearExperiece} | {age} {ProfileHeaderComponent.Text.YearOld}
@@ -148,16 +150,7 @@ export const ProfileHeader = (props: Props) => {
                 {ProfileHeaderComponent.Text.LessonsRates}
               </Typography>
               <Typography className="nabi-display-inline-block">
-                <mark>
-                  {ProfileHeaderComponent.rates.ThirtyMinsRate}
-                  <span className="nabi-margin-left-xsmall">${formattedRates.mins30}</span><br/>
-                  {ProfileHeaderComponent.rates.FortyFiveMinsRate}
-                  <span className="nabi-margin-left-xsmall">${formattedRates.mins45}</span><br/>
-                  {ProfileHeaderComponent.rates.SixtyMinsRate}
-                  <span className="nabi-margin-left-xsmall">${formattedRates.mins60}</span><br/>
-                  {ProfileHeaderComponent.rates.NinetyMinsRate}
-                  <span className="nabi-margin-left-xsmall">${formattedRates.mins90}</span><br/>
-                </mark>
+                  <span>${formattedRates.mins30}</span><br/>
               </Typography>
             </div>
           </Grid>

@@ -20,7 +20,7 @@ export namespace ProfileHeaderComponent {
     Save = 'Save',
     Cancel = 'Cancel',
     YearExperiece = 'Yrs exp',
-    LessonsRates = 'Lesson Rates',
+    LessonsRates = 'Rate',
     MemberSince = 'Member Since',
     ViewLess = 'View Less',
     ViewMore = '...View More',
