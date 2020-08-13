@@ -9,7 +9,7 @@ import SectionTitle from '../common/SectionTitle';
 import EducationAdded from '../Education/EducationAdded';
 import { Qualifications } from '../Qualifications/constants';
 import EmploymentAdded from '../Employment/EmploymentAdded';
-// import Reviews from '../Reviews/Reviews';
+import Reviews from '../Reviews/Reviews';
 import MusicAdded from '../Music/MusicAdded';
 import { ProfileContentComponent } from './constants';
 
@@ -59,17 +59,17 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
     </li>
   ));
 
-  // const reviews = props.reviews.map((review, i) => (
-  //     <Reviews
-  //       key={i}
-  //       id={review.id}
-  //       name={review.name}
-  //       avatarImage={review.avatarImage}
-  //       rating={review.rating}
-  //       comment={review.comment}
-  //       date={review.date}
-  //     />
-  // ));
+  const reviews = props.instructor.reviews && props.instructor.reviews.map((review, i) => (
+      <Reviews
+        key={i}
+        id={review.id}
+        name={review.displayName}
+        avatarImage={review.avatarImage}
+        rating={review.rating}
+        comment={review.comment}
+        date={review.date}
+      />
+  ));
   const firstName = props.instructor.displayName ? props.instructor.displayName.split(' ')[0] : '';
   const music = props.instructor.music && props.instructor.music.map((item, i) => (
     <MusicAdded
@@ -121,12 +121,16 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
         <Typography className="nabi-margin-bottom-medium">{qualifications.join(', ')}</Typography> :
         <Typography className="nabi-margin-bottom-medium">{ProfileContentComponent.Text.noContent}</Typography>
       }
-      {/* <SectionTitle text={ProfileContentComponent.Text.Reviews} /> */}
-      {/* <div id="reviews-wrapper" className="nabi-padding-right-small nabi-padding-left-xsmall">
+      <SectionTitle text={ProfileContentComponent.Text.Reviews} />
+      <div id="reviews-wrapper" className="nabi-padding-right-small">
         <div id="reviews">
-          {reviews}
+          {
+            props.instructor.reviews && props.instructor.reviews.length ?
+            reviews :
+            <Typography className="nabi-margin-bottom-medium">{ProfileContentComponent.Text.noContent}</Typography>
+          }
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
