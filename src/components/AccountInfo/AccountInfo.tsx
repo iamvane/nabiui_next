@@ -83,22 +83,22 @@ interface Props extends
 
     React.useEffect(() => {
       // if user data exists show all fields
-      if (props.user.gender && props.user.avatar && props.user.location && props.user.isPhoneVerified) {
+      if (props.user.gender && props.user.avatar && props.user.location) {
         setShowSections(['showAll'])
       }
       // updates active section when avatar is chanegd
-      if (props.updateAvatarMessage || props.user.avatar || props.user.isPhoneVerified) {
+      if (props.updateAvatarMessage || props.user.avatar) {
         setDisableContinue(false);
       }
 
-    },[props.updateAvatarMessage, props.user.gender, props.user.avatar, props.user.location, props.user.isPhoneVerified]);
+    },[props.updateAvatarMessage, props.user.gender, props.user.avatar, props.user.location]);
 
     // if phone is already verified disable continue button
     React.useEffect(() => {
-      if (props.user.isPhoneVerified && showSections.includes('phone') && !showSections.includes('showAll') && !showSections.includes('location')) {
+      if (props.user.phoneNumber && showSections.includes('phone') && !showSections.includes('showAll') && !showSections.includes('location')) {
         setDisableContinue(false);
       }
-    },[showSections, props.user.isPhoneVerified]);
+    },[showSections, props.user.phoneNumber]);
 
     // checks for updateUser state to make api call
     React.useEffect(() => {
@@ -137,7 +137,7 @@ interface Props extends
     }
 
     // Validate phone number
-    if (!props.user.isPhoneVerified) {
+    if (!props.user.phoneNumber) {
       formErrors[FieldKey.PhoneNumber] = errorMessages.PhoneNumberNotVerified;
     }
 
@@ -262,6 +262,7 @@ interface Props extends
           handleLocationChange={handleLocationChange}
           location={accountInfo.location || ''}
           showSections={showSections}
+          enableContinue={() => setDisableContinue(false)}
         />
         {performRedirect && Router.push(props.redirectUrl)}
         <StepperButtons

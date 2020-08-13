@@ -33,6 +33,7 @@ interface Props {
   location: string;
   showSections: string[];
   getLocationError: (error: string) => void;
+  enableContinue: () => void;
 }
 
 const AccountInfoForm: React.StatelessComponent <Props> = props => {
@@ -87,7 +88,7 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
       </div>
 
       <div className={`nabi-margin-top-large ${(props.showSections.includes('phone') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}`}>
-        <PhoneValidation error={props.errors.phoneNumber} />
+        <PhoneValidation error={props.errors.phoneNumber} enableContinue={props.enableContinue} />
       </div>
 
       <div className={`nabi-margin-top-large ${(props.showSections.includes('location') || props.showSections.includes('showAll')) ? 'nabi-display-block' : 'nabi-display-none'}`}>

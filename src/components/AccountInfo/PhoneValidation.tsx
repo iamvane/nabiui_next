@@ -38,6 +38,7 @@ interface OwnProps {
   toggleChangePhoneNumber?: () => void;
   isEditing?: boolean;
   error?: string;
+  enableContinue: () => void;
 }
 
 interface Props extends
@@ -162,6 +163,8 @@ export class PhoneValidation extends React.Component<Props, State> {
   }
 
   public sendVerificationToken = async () => {
+    console.log("yes")
+    this.props.enableContinue();
     const { errorMessages, FieldKey } = AccountInfoComponent;
 
     if ((document.querySelector("select[name='phoneNumberCountry']") as any).value === 'ZZ') {
@@ -186,6 +189,8 @@ export class PhoneValidation extends React.Component<Props, State> {
 
     this.setState(prevState => ({
       isPhoneSet: !prevState.isPhoneSet,
+      isPhoneVerified: true,
+      
       errors: {...this.state.errors, [FieldKey.Token]: ''},
     }));
   }
