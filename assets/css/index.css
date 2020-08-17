@@ -213,6 +213,18 @@ header {
   align-items: center;
 }
 
+.nabi-flex-justify-center {
+  justify-content: center;
+}
+
+.nabi-flex-justify-end {
+  justify-content: flex-end;
+}
+
+.nabi-flex-wrap {
+  flex-wrap: wrap;
+}
+
 /*FLOAT*/
 .nabi-float-right {
 	float: right !important;

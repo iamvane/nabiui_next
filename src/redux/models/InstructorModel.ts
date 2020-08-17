@@ -47,6 +47,7 @@ export interface InstructorType {
     createdAt: string;
   };
   signedFile?: string;
+  zoomLink?: string;
 }
 
 export interface Rates {

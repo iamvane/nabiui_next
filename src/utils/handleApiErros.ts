@@ -1,6 +1,13 @@
-export const getError = (e: any, type?: string): string => {
+export const getError = (e: any, type?: string | string[]): string => {
   if (e.response && e.response.data) {
     const {data} = e.response;
+    if (type && Array.isArray(type)) {
+      const errorType = type.find((errorType) => {
+        return data.errors[errorType];
+      });
+
+      return data.errors[errorType][0];
+    }
     if (data.message) {
       return data.message;
     }
@@ -12,7 +19,7 @@ export const getError = (e: any, type?: string): string => {
       return data['non_field_errors'][0];
     } else if (data.error) {
       if (type) {
-        return data.error[type][0];
+        return data.error[type as string][0];
       }
     }
   }

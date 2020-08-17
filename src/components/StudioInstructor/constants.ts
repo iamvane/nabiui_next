@@ -58,3 +58,44 @@ export namespace LessonCardComponent {
     }
   ];
 }
+
+export enum MissingFields {
+  Location = 'location',
+  Avatar = 'avatar',
+  Video = 'video',
+  References = 'references',
+  IsPhoneVerified = 'isPhoneVerified',
+  BioTitle = 'bioTitle',
+  BioDescription = 'bioDescription',
+  Employment = 'employment',
+  Education = 'education',
+  Music = 'music',
+  YearsOfExperience = 'yearsOfExperience',
+  ZoomLink = 'zoomLink'
+}
+
+export enum ZoomMissingLinkDialog {
+  Title = 'missing zoom link',
+  Content = 'You must setup your Zoom Personal Meeting ID to find students',
+  Cancel = 'Cancel',
+  Continue = 'Continue'
+}
+
+export enum ZoomMissingLinkSetup {
+  Title = 'ZOOM LINK SETUP',
+  ZoomId = 'Add Zoom Personal Meeting ID',
+  Cancel = 'Cancel',
+  Save = 'Save',
+  AlreadyHaveZoomAccount = 'If you already have a Zoom account, login to your Zoom account and go over step 2 and 3.',
+  HowToGetZoomLink = 'HOW TO GET MY ZOOM LINK',
+  SignupZoom = '{number} {textReplace} for a Zoom Account.',
+  SignupUrl = 'https://zoom.us/signup',
+  PastePersonalId = '{number} Paste your {textReplace} on the field above and save.',
+  GoToZoomProfile = '{number} Go to {firstBoldText} and copy your {secondBoldText}',
+  zoomLinkInputName = 'zoomLink'
+}
+
+export const textReplace = '{textReplace}';
+export const firstBoldText = '{firstBoldText}';
+export const secondBoldText = '{secondBoldText}';
+export const number = '{number}';

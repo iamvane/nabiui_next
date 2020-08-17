@@ -87,10 +87,9 @@ export const buildProfile = (
     );
     dispatch(withDataAction(InstructorActions.BUILD_PROFILE_SUCCESS, data));
   } catch (e) {
-    if (getError(e) && typeof getError(e) === "string") {
-      errorMessage = getError(e);
+    if (getError(e, ['zoom_link']) && typeof getError(e, ['zoom_link']) === "string") {
+      errorMessage = getError(e, ['zoom_link']);
     }
-
     dispatch(
       withErrorAction(InstructorActions.BUILD_PROFILE_FAILURE, errorMessage)
     );
