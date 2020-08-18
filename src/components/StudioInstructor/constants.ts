@@ -1,3 +1,7 @@
+import {
+  InstructorDashboardType,
+} from '../Dashboard/models';
+
 export namespace InstructorStudioComponent {
   export const pageTitle = '{nameReplace}\'s Studio';
   export const namePlaceholder = '{nameReplace}';
@@ -99,3 +103,49 @@ export const textReplace = '{textReplace}';
 export const firstBoldText = '{firstBoldText}';
 export const secondBoldText = '{secondBoldText}';
 export const number = '{number}';
+export const initialInstructorDashboard = {
+  id: 0,
+  complete: false,
+  missingFields: [],
+  backgroundCheckStatus: "",
+  lessons: [{
+    bookingId: 0,
+    instrument: "",
+    skillLevel: "",
+    lessonsRemaining: 0,
+    lastLessonId: 0
+  }],
+  requests: [{
+    id: 0,
+    displayName: "",
+    distance: 0,
+    instrument: "",
+    lessonDuration: "",
+    requestTitle: "",
+    requestMessage: "",
+    placeForLessons: "",
+    skillLevel: "",
+    role: "",
+    applicationsReceived: 0,
+    studentDetails: [{
+      name: "",
+      age: 0
+    }],
+    avatar: "",
+    location: "",
+    timezone: "",
+    date: "",
+    time: "",
+  }],
+  nextLesson: {
+    id: 0,
+    date: "",
+    time: "",
+    timezone: "",
+    studentDetails: {
+      name: "",
+      age: 0
+    },
+    instructor: ""
+  }
+} as InstructorDashboardType;

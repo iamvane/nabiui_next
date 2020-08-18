@@ -205,12 +205,16 @@ header {
   display: none !important;
 }
 
+.nabi-flex-column {
+  flex-direction: column !important;
+}
+
 .nabi-display-flex {
   display: flex !important;
 }
 
 .nabi-flex-align-center {
-  align-items: center;
+  align-items: center !important;
 }
 
 .nabi-flex-justify-center {
