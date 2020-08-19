@@ -5,9 +5,12 @@ const webpack = require('webpack');
 const withSourceMaps = require('@zeit/next-source-maps');
 const withPWA = require('next-pwa');
 
+const runtimeCaching = require('next-pwa/cache')
+
 module.exports = withPWA(withSourceMaps(withCSS(withSass(withFonts({
   pwa: {
-    dest: 'public'
+    dest: 'public',
+    runtimeCaching
   },
   webpack(config, options) {
     config.module.rules.push({
