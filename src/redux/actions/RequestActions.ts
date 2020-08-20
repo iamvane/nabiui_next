@@ -219,6 +219,38 @@ export const fetchBookLessonsData = (id: number): ThunkAction<Promise<void>, {},
   }
 };
 
+export const fetchStudentsBookingData = (email: string): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.FETCH_STUDENTS_BOOKING_DATA));
+  try {
+    const response = await axios.get(`${ApiEndpoints.studentsBookingData}${email}/`);
+    dispatch(withDataAction(RequestActions.FETCH_STUDENTS_BOOKING_DATA_SUCCESS, response.data));
+  } catch (e) {
+
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.FETCH_STUDENTS_BOOKING_DATA_FAILURE, errorMessage));
+  }
+};
+
+export const fetchStudentsBookingLessonsData = (id: number, email: string): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.FETCH_STUDENTS_BOOKING_LESSONS_DATA));
+  try {
+    const response = await axios.get(`${ApiEndpoints.studentsBookingData}${email}/${id}/`);
+    dispatch(withDataAction(RequestActions.FETCH_STUDENTS_BOOKING_LESSONS_DATA_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+    dispatch(withErrorAction(RequestActions.FETCH_STUDENTS_BOOKING_LESSONS_DATA_FAILURE, errorMessage));
+  }
+};
+
 export const chooseLessonPackage = (packageName: string, applicationId: number): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
 ) => {

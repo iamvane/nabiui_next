@@ -498,9 +498,7 @@ export default function requestsReducer(
       };
 
     case RequestActions.FETCH_BOOK_LESSONS_DATA_FAILURE:
-      const { error: fetchBookLessonsDataError } = <
-        APIActions.WithError<string>
-      >action;
+      const { error: fetchBookLessonsDataError } = <APIActions.WithError<string>>action;
       return {
         ...state,
         actions: {
@@ -512,6 +510,95 @@ export default function requestsReducer(
         }
       };
 
+    case RequestActions.FETCH_STUDENTS_BOOKING_DATA:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchStudentsBookingData: {
+            ...state.actions.fetchStudentsBookingData,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.FETCH_STUDENTS_BOOKING_DATA_SUCCESS:
+      const { data: studentBookingData } = action;
+      const students = Array.isArray(studentBookingData) ? studentBookingData : [studentBookingData];
+      return {
+        ...state,
+        students,
+        actions: {
+          ...state.actions,
+          fetchStudentsBookingData: {
+            ...state.actions.fetchStudentsBookingData,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_STUDENTS_BOOKING_DATA_FAILURE:
+      const { error: fetchStudentBookingDataError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchStudentsBookingData: {
+            isRequesting: false,
+            error: fetchStudentBookingDataError
+          }
+        }
+      };
+
+      case RequestActions.FETCH_STUDENTS_BOOKING_LESSONS_DATA:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchStudentsBookingLessonsData: {
+            ...state.actions.fetchStudentsBookingLessonsData,
+            isRequesting: true
+          }
+        }
+      };
+
+    case RequestActions.FETCH_STUDENTS_BOOKING_LESSONS_DATA_SUCCESS:
+      const { data: studentsBookingLessonData } = action;
+      return {
+        ...state,
+        clientSecret: studentsBookingLessonData.clientSecret,
+        lessonRate: studentsBookingLessonData.lessonRate,
+        lessonsPrice: studentsBookingLessonData.lessonsPrice,
+        paymentMethods: studentsBookingLessonData.paymentMethods,
+        placementFee: studentsBookingLessonData.placementFee,
+        processingFee: studentsBookingLessonData.processingFee,
+        subTotal: studentsBookingLessonData.subTotal,
+        total: studentsBookingLessonData.total,
+        freeTrial: studentsBookingLessonData.freeTrial,
+        instructor: studentsBookingLessonData.instructor,
+        actions: {
+          ...state.actions,
+          fetchStudentsBookingLessonsData: {
+            ...state.actions.fetchStudentsBookingLessonsData,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_STUDENTS_BOOKING_LESSONS_DATA_FAILURE:
+      const { error: fetchStudentBookLessonsDataError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          fetchStudentsBookingLessonsData: {
+            isRequesting: false,
+            error: fetchStudentBookLessonsDataError
+          }
+        }
+      };
 
     case RequestActions.CHOOSE_LESSON_PACKAGE:
       return {

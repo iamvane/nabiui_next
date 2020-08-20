@@ -28,6 +28,7 @@ import { StoreState } from '../../redux/reducers/store';
 import {
   bookLessons,
   fetchBookLessonsData,
+  fetchStudentsBookingLessonsData,
   chooseLessonPackage,
 } from "../../redux/actions/RequestActions";
 import { CommonConstants } from '../common/constants/common';
@@ -61,10 +62,13 @@ interface StateProps extends BookLessonsData {
 interface DispatchProps {
   bookLessons: (data: BookLessonsPayload) => void;
   fetchBookLessonsData: (id: number) => void;
+  fetchStudentsBookingLessonsData: (id: number, email: string) => void;
   chooseLessonPackage: (packageName: string, studentId: number) => void;
 }
 
-interface OwnProps { }
+interface OwnProps {
+  name?: string;
+}
 
 interface Props extends
   OwnProps,
@@ -81,11 +85,15 @@ export const BookLessons = (props: Props) => {
 
   const router = useRouter();
   const studentId = Number(router.query.id);
+  const email = router.query.email as string;
 
   React.useEffect(() => {
     const fetchData = async () => {
-      if (studentId) {
+      if (studentId && props.name === 'book-lessons') {
         await props.fetchBookLessonsData(studentId);
+      }
+      if (props.name === 'select-child') {
+        await props.fetchStudentsBookingLessonsData(studentId, email);
       }
     };
     fetchData();
@@ -333,6 +341,10 @@ export const BookLessons = (props: Props) => {
   );
 }
 
+BookLessons.defaultProps = {
+  name: 'book-lessons'
+}
+
 const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => {
   const {
     clientSecret,
@@ -399,6 +411,7 @@ const mapDispatchToProps = (
   bookLessons: (data: BookLessonsPayload) => dispatch(bookLessons(data)),
   fetchBookLessonsData: (id: number) => dispatch(fetchBookLessonsData(id)),
   chooseLessonPackage: (packageName: string, studentId: number) => dispatch(chooseLessonPackage(packageName, studentId)),
+  fetchStudentsBookingLessonsData: (id: number, email: string) => dispatch(fetchStudentsBookingLessonsData(id, email))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookLessons);

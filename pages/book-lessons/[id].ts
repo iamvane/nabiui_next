@@ -1,2 +1,4 @@
 import BookLessons from '../../src/components/BookLessons/BookLessons';
-export default BookLessons;
+import { WithBookLessons } from '../../src/components/BookLessons/withBookLesson';
+
+export default WithBookLessons(BookLessons, 'book-lessons');

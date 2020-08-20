@@ -29,6 +29,7 @@ export namespace ApiEndpoints {
   export const applicationList = "/v1/application-list/";
   export const bookLessons = "/v1/confirm-booking/";
   export const bookLessonsData = "/v1/booking-data/";
+  export const studentsBookingData = "/v1/get-booking-data/"
   export const fetchMoreInstructor = "v1/instructors/?page=";
   export const fetchReferralInfo = "/v1/referral-info/";
   export const fetchMoreRequests = "/v1/lesson-request-list/?page=";
