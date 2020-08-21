@@ -118,6 +118,9 @@ p.nabi-color-orange {
 .nabi-font-size-small {
 	font-size: 12px !important;
 }
+.nabi-font-xsmall {
+	font-size: 10px !important;
+ }
 
 .nabi-font-small {
    font-size: 13px !important;

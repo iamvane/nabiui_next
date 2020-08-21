@@ -15,6 +15,10 @@ import { theme } from "../theme/theme";
 import { ErrorBoundary } from "../src/components/ErrorBoundary";
 require("../src/utils/axiosClient");
 import 'lazysizes';
+import firebase from "../src/utils/firebase";
+
+firebase;
+console.log(firebase.app().name); 
 
 Sentry.init({
   dsn: "https://bbb8a78b6945414fa1a9b3d32f16a5b6@sentry.io/1774691"
