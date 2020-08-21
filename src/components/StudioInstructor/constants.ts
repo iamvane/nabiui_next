@@ -149,3 +149,14 @@ export const initialInstructorDashboard = {
     instructor: ""
   }
 } as InstructorDashboardType;
+
+
+export enum RateInstructorComponent {
+  PageTitle = 'Rate your instructor',
+  Title = 'How was your trial lesson?',
+  RatingHeader = 'Rating',
+  RatingDescription = 'Specify the grade',
+  Comment = 'Comment',
+  SubmitReview = 'Submit Review',
+  ReviewPlaceholder = 'Share your experience: how was the instructor and the lesson? Did you or your child enjoy it?'
+}

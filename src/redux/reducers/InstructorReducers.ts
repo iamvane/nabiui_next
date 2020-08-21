@@ -1082,6 +1082,47 @@ export default function instructorReducer(
           }
         };
 
+      case InstructorActions.REVIEW_INSTRUCTOR:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            rateInstructor: {
+              ...state.actions.rateInstructor,
+              isRequesting: true
+            }
+          }
+        };
+
+      case InstructorActions.REVIEW_INSTRUCTOR_SUCCESS:
+        const { data: rateInstructorMessage } = action;
+
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            rateInstructor: {
+              isRequesting: false,
+              error: "",
+              message: rateInstructorMessage.message
+            }
+          }
+        };
+
+      case InstructorActions.REVIEW_INSTRUCTOR_FAILURE:
+        const { error: rateInstructorError } = <APIActions.WithError<string>>action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            rateInstructor: {
+              isRequesting: false,
+              error: rateInstructorError,
+              message: ""
+            }
+          }
+        };
+
     default:
       return state;
   }

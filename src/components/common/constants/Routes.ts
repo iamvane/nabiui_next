@@ -55,6 +55,7 @@ export enum Routes {
   WelcomeToNabi = '/welcome-to-nabi',
   InstructorStudio = '/studio-instructor',
   InstructorZoomSetup = '/studio-instructor/zoom-setup',
+  RateInstructor = '/rate-instructor',
   ParentStudio = '/studio',
   BookingDetails = '/booking-details'
 }
