@@ -116,6 +116,13 @@ p.nabi-color-orange {
 	cursor: pointer !important;
 }
 
+.nabi-calendar-cell:hover {
+  background-color: #06c3e1 !important;
+}
+.nabi-calendar-cell-bg-color {
+  background-color: #06c3e1 !important;
+}
+
 /*MOBILE WIDTH*/
 
 @media only screen and (max-width: 768px) {
@@ -468,6 +475,10 @@ li.nabi-list-style-position-inside {
   padding-top: 0px !important;
 }
 
+.nabi-padding-right-zero {
+  padding-right: 0 !important;
+}
+
 .nabi-padding-top-xsmall {
 	padding-top: 10px !important;
 }
@@ -641,6 +652,10 @@ li.nabi-list-style-position-inside {
 
 .nabi-text-size-medium {
   font-size: 25px;
+}
+
+.nabi-text-size-small {
+  font-size: 10px !important;
 }
 
 .nabi-welcome-message-gift-img {
@@ -1072,7 +1087,12 @@ li.nabi-list-style-position-inside {
 
 	.nabi-logo-anchor img {
 		width: 60px;
-	}
+  }
+
+  /*Border*/
+  .nabi-border-none {
+    border: none !important;
+  }
 
 	#nabi-logo-text {
 		font-size: 19px;
