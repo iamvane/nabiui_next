@@ -3,7 +3,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
   Typography,
@@ -14,11 +13,19 @@ import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 
 import PageTitle from '../common/PageTitle';
+import '../../../assets/scss/Calendar.scss';
+
+
+import { ScheduleLessonsComponent } from './constants';
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-export const Calendar = () => {
+interface CalendarProps {
+  closeCalendar ?: () => void;
+  handleCalendarDate ?: (date: string) => void;
+}
+export const Calendar = (props: CalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
@@ -49,15 +56,52 @@ export const Calendar = () => {
       }
     }
 
+    const isValidDate = (day) => {
+      const year = new Date().getFullYear();
+      const month = new Date().getMonth();
+      if (!day) return false;
+      if (currentYear < year) return false;
+      if (currentYear > year) return true;
+      if (currentMonth < month) return false;
+      if (currentMonth > month) return true;
+      if (currentMonth === month && Number(day) < dayOfTheMonth) return false;
+      return true;
+    }
     return calendar.map((week, index) => {
-      return (<TableRow key={`week-${index}`} className="nabi-border-none">
+      return (<TableRow key={`week-${index}`} className="nabi-calendar-table-row">
         {
           week.map((day, index) => {
             return (
               <TableCell
-                className={`nabi-padding-left-zero nabi-padding-right-zero nabi-padding-top-small nabi-padding-bottom-small nabi-cursor-pointer nabi-calendar-cell ${Number(day) === dayOfTheMonth ? 'nabi-calendar-cell-bg-color' : ''}`}
+                className={`
+                  nabi-padding-left-zero nabi-padding-right-zero
+                  nabi-padding-top-small nabi-padding-bottom-small
+                  ${isValidDate(day) ? 'nabi-calendar-table-cell cursor-pointer' : 'nabi-calendar-table-cell bg_color-gray'}
+                  ${new Date().getMonth() === currentMonth && Number(day) === dayOfTheMonth ? 'color-white' : ''}
+                `}
                 align="center"
                 size="small" key={`day-${index}`}
+                onClick={() => {
+                  let selectedDay;
+                  let selectedMonth;
+                  if (day.length === 1) {
+                    selectedDay = [`0${day}`]
+                  } else {
+                    selectedDay = day;
+                  }
+
+                  if (String(currentMonth + 1).length === 1) {
+                    selectedMonth = [`0${currentMonth + 1}`]
+                  } else {
+                    selectedMonth = currentMonth + 1;
+                  }
+
+                  const lessonDate = `${currentYear}-${selectedMonth}-${selectedDay}`;
+                  if (isValidDate(day)) {
+                    props.handleCalendarDate(lessonDate)
+                    props.closeCalendar();
+                  }
+                }}
               >
                 {day}
               </TableCell>
@@ -70,10 +114,11 @@ export const Calendar = () => {
 
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
-      <PageTitle pageTitle={'Shedule Lessons'} />
+      <PageTitle pageTitle={ScheduleLessonsComponent.Calendar.PageTitle} />
       <Grid className="nabi-background-white nabi-margin-center nabi-padding-medium" item={true} md={6} xs={10} sm={10}>
+        <Typography className="nabi-display-flex nabi-flex-justify-center">{ScheduleLessonsComponent.Calendar.ThirtyMinLesson}</Typography>
         <Typography color="primary" className="nabi-text-mediumbold nabi-margin-left-xsmall-md nabi-text-uppercase nabi-margin-top-large nabi-margin-bottom-xsmall">
-          {"Select A Day"}
+          {ScheduleLessonsComponent.Calendar.SelectADay}
         </Typography>
         <Divider className="nabi-margin-bottom-xsmall" />
         <div className="nabi-display-flex nabi-flex-align-center">
@@ -98,11 +143,11 @@ export const Calendar = () => {
         </div>
         <Table size="small" aria-label="lesson table">
           <TableHead>
-            <TableRow className="nabi-border-none">
+            <TableRow className="nabi-calendar-table-row">
               {weekDays.map((day) => (
                 <TableCell
                   key={day}
-                  className="nabi-padding-left-zero nabi-padding-right-zero nabi-padding-top-small nabi-padding-bottom-small nabi-cursor-pointer"
+                  className="nabi-padding-left-zero nabi-padding-right-zero nabi-padding-top-small nabi-padding-bottom-small nabi-cursor-pointer nabi-calendar-header-cell"
                   align="center"
                   size="small"
                 >
@@ -115,6 +160,7 @@ export const Calendar = () => {
             {calendarMonth()}
           </TableBody>
         </Table>
+        <Typography className="nabi-margin-top-xsmall">{ScheduleLessonsComponent.Calendar.EasternStandardTime}</Typography>
       </Grid>
     </div>
   )

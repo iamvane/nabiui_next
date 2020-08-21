@@ -28,6 +28,7 @@ import { Role } from '../../constants/Roles';
 import { Routes } from '../common/constants/Routes';
 import { LessonType } from '../BookLessons/model';
 import { ScheduleLessonsComponent } from './constants';
+import { Calendar } from './Calendar';
 
 interface DispatchProps {
   scheduleLesson: (lessonDetails: Partial<LessonType>) => void;
@@ -37,6 +38,8 @@ interface OwnProps {
   nextPath?: string;
   pageTitle?: string;
   isTrial?: boolean;
+  openCalendar?: () => void;
+  calendarDate?: string;
 }
 
 interface StateProps {
@@ -50,7 +53,7 @@ interface Props extends
   DispatchProps,
   StateProps,
   OwnProps {
-  }
+}
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -81,9 +84,32 @@ export const ScheduleLessons = (props: Props) => {
   const [weekday, setWeekday] = React.useState(0);
   const [scheduleLesson, setScheduleLesson] = React.useState(false);
   const [showSnackbar, setShowSnackbar] = React.useState(false);
+  const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
+  const [calendarIsOpen, setCalendarOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!props.isTrial) {
+      setCalendarOpen(true);
+    }
+  }, [props.isTrial]);
+
+  React.useEffect(() => {
+    if (props.message) {
+      setSnackBarDetails({
+        type: "success",
+        message: ScheduleLessonsComponent.SuccessMessage
+      });
+      setShowSnackbar(true);
+      Router.push(Routes.ParentStudio);
+    }
+  }, [props.message]);
 
   React.useEffect(() => {
     if (props.error) {
+      setSnackBarDetails({
+        type: "error",
+        message: props.error
+      });
       return setShowSnackbar(true);
     }
 
@@ -102,17 +128,18 @@ export const ScheduleLessons = (props: Props) => {
     }
   }, [scheduleLesson, props.error]);
 
+  // get month day year
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     if (event) event.preventDefault();
 
     setWeekday(newValue);
-    setLessonDate(moment().add(newValue + 1,'days').format("YYYY-MM-DD"));
+    setLessonDate(moment().add(newValue + 1, 'days').format("YYYY-MM-DD"));
     setLessonTime('');
   };
 
   const displayWeek = () => {
-    const tomorrow  = moment().add(1,'days').format('MMM DD');
-    const weekFromTomorrow  = moment().add(7,'days').format('MMM DD');
+    const tomorrow = moment().add(1, 'days').format('MMM DD');
+    const weekFromTomorrow = moment().add(7, 'days').format('MMM DD');
 
     return `${tomorrow} - ${weekFromTomorrow}`;
   }
@@ -197,56 +224,93 @@ export const ScheduleLessons = (props: Props) => {
 
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
-      <PageTitle
-        pageTitle={props.pageTitle ? props.pageTitle :
-          role === Role.parent ?
-          ScheduleLessonsComponent.pageTitleParent.replace(
-            ScheduleLessonsComponent.studentPlaceholder,
-            getCookie('studentName')
-          ) :
-          ScheduleLessonsComponent.pageTitle}
-      />
-      <Grid
-        item={true}
-        xs={12}
-        md={8} className="nabi-section nabi-background-white nabi-margin-center"
-      >
-        <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
-          <div className="nabi-text-center nabi-margin-bottom-small">
-            <DateRangeIcon className="text-aligned-icon" color="primary" />
-            <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
-              <span className="nabi-color-nabi">{displayWeek()}</span>
-            </Typography>
-            <Typography className="nabi-margin-top-small">
-              <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
-            </Typography>
-          </div>
-          <AppBar position="static">
-            <Tabs value={weekday} onChange={handleChange} aria-label="availability">
-              {getWeekDays().map((item, i) => (
-                <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
-              ))}
-            </Tabs>
-          </AppBar>
-          {displayTabContent()}
-          <div className="nabi-text-right">
-            <Button
-              color="primary"
-              className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
-              variant="contained"
-              type="submit"
-              disabled={!lessonDate || !lessonTime}
+      {
+        calendarIsOpen ?
+          <Calendar
+            closeCalendar={() => {
+              setCalendarOpen(false);
+            }}
+            handleCalendarDate={(date) => {
+              setLessonDate(date)
+            }}
+          /> :
+          <>
+            <PageTitle
+              pageTitle={props.pageTitle ? props.pageTitle :
+                role === Role.parent ?
+                  ScheduleLessonsComponent.pageTitleParent.replace(
+                    ScheduleLessonsComponent.studentPlaceholder,
+                    getCookie('studentName')
+                  ) :
+                  ScheduleLessonsComponent.pageTitle}
+            />
+            <Grid
+              item={true}
+              xs={12}
+              md={8} className="nabi-section nabi-background-white nabi-margin-center"
             >
-              Next
+              <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
+                <div className="nabi-text-center nabi-margin-bottom-small">
+                  <DateRangeIcon className="text-aligned-icon" color="primary" />
+                  {
+                    props.isTrial ?
+                      <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
+                        <span className="nabi-color-nabi">{displayWeek()}</span>
+                      </Typography> :
+                      <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
+                        <span className="nabi-color-nabi">{moment(new Date(lessonDate)).format('MMM D, YYYY')}</span>
+                      </Typography>
+                  }
+                  <Typography className="nabi-margin-top-small">
+                    <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
+                  </Typography>
+                </div>
+                {
+                  props.isTrial ?
+                    <AppBar position="static">
+                      <Tabs value={weekday} onChange={handleChange} aria-label="availability">
+                        {getWeekDays().map((item, i) => (
+                          <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
+                        ))}
+                      </Tabs>
+                    </AppBar> :
+                    null
+                }
+                {displayTabContent()}
+                <div className="nabi-text-right">
+                  {
+                    !props.isTrial && (
+                      <Button
+                        color="primary"
+                        className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small nabi-margin-right-small"
+                        variant="contained"
+                        onClick={() => {
+                          setCalendarOpen(true)
+                        }}
+                      >
+                        Back To Calendar
+                      </Button>
+                    )
+                  }
+                  <Button
+                    color="primary"
+                    className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+                    variant="contained"
+                    type="submit"
+                    disabled={!lessonDate || !lessonTime}
+                  >
+                    Next
             </Button>
-          </div>
-        </form>
-      </Grid>
+                </div>
+              </form>
+            </Grid>
+          </>
+      }
       <SnackBar
         isOpen={showSnackbar}
-        message={props.error}
+        message={snackbarDetails.message}
         handleClose={() => setShowSnackbar(false)}
-        variant="error"
+        variant={snackbarDetails.type}
       />
     </div>
   )
@@ -279,3 +343,4 @@ const mapDispatchToProps = (
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleLessons);
+

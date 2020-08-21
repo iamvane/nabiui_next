@@ -132,7 +132,7 @@ export const StudioParent = (props: Props) => {
   const rescheduleLesson = (studentName, lessonId) => {
     setCookie('lessonId', lessonId);
     setCookie('studentName', studentName);
-
+    console.log('reschedule this lesson --..>');
     Router.push(Routes.ScheduleLesson);
   }
 
