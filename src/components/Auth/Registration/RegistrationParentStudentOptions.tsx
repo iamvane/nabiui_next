@@ -22,6 +22,7 @@ const RegistrationParentStudentOptions: React.StatelessComponent<Props> = () => 
       <Head>
         <title>{pageTitlesAndDescriptions.registrationParentStudent.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.registrationParentStudent.description}></meta>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
       </Head>
       <div className="nabi-background-white nabi-section nabi-text-center">
         <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-small nabi-margin-top-zero">
