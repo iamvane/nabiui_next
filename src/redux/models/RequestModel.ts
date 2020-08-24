@@ -3,10 +3,14 @@ import {
   ActionStatusWithMessage,
   ListResource
 } from './models';
-import { StudentType } from '../../components/Request/models';
 import { ApplicationListType } from '../../components/ApplicationList/model';
 import { BookLessonsData } from '../../components/BookLessons/model';
 import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
+
+interface StudentType {
+  name: string;
+  age: number;
+}
 
 export interface RequestType {
   id: number;
@@ -84,7 +88,7 @@ export const defaultRequestState: RequestState = {
     requestTitle: '',
     placeForLessons: '',
     students: [
-      { age: 0, name: '', skillLevel: '' }
+      { age: 0, name: ''}
     ]
   },
   instructor: {
