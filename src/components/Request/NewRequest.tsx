@@ -60,16 +60,8 @@ const NewRequest = (props: Props) => {
       }
     };
     fetchData();
-    if (props.respondMessage) {
-      // setShowSnackbar(true);
-      // setSnackbarMessage('Application sent successfully.')
-    }
-    if (props.respondError) {
-      // setShowSnackbar(true);
-      // setSnackbarMessage(props.submitApplicationError)
-    }
     /* tslint:disable */
-  },[props.respondMessage, props.respondError]);
+  },[]);
 
   const handleSubmit = async (accept: Boolean) => {
     const userId = String(router.query.userId);
