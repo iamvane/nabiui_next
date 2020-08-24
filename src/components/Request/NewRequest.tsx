@@ -69,11 +69,11 @@ const NewRequest = (props: Props) => {
   },[props.respondMessage, props.respondError]);
 
   const handleSubmit = async (accept: Boolean) => {
-    const email = String(router.query.email);
+    const userId = String(router.query.userId);
     
     await props.respond({
       requestId: id,
-      email,
+      userId,
       accept
     })
   }

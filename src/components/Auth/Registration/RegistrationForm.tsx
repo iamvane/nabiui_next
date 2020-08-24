@@ -32,6 +32,7 @@ import {
   RegistrationFormComponent
 } from './constants';
 import { Routes } from '../../common/constants/Routes';
+import { LocationField } from "../../Instructors/LocationField";
 
 interface Props {
   handleChange: (event: React.FormEvent<{}>) => void;
@@ -50,6 +51,10 @@ interface Props {
   otherText?: string;
   phoneNumber: string;
   handleNumberChange: (value: string) => void;
+  getLatLng: (lat: string, lng: string) => void;
+  handleLocationChange: (location: string) => void;
+  location: string;
+  getLocationError: (error: string) => void;
 }
 
 /**
@@ -168,6 +173,12 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
           </FormControl>
           {props.formErrors.phoneNumber && <FormHelperText error={true}>{props.formErrors.phoneNumber}</FormHelperText>}
         </Grid>
+        <LocationField
+          getLatLng={props.getLatLng}
+          address={props.location}
+          getLocation={props.handleLocationChange}
+          getLocationError={props.getLocationError}
+        />
       </>
     }
     <FormControl

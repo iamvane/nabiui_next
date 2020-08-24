@@ -46,6 +46,6 @@ export const defaultRequestsState: RequestsState = {
 
 export interface ApplicationPayload {
   requestId: number;
-  email: string;
+  userId: string;
   accept: Boolean;
 }
