@@ -80,6 +80,8 @@ export const Registration = (props: Props) => {
   const [formErrors, setFormErrors] = React.useState({});
   const [registration, setRegistration] = React.useState(false);
   const [isAttemptToRegister, setIsAttemptToRegister] = React.useState(false);
+  const [location, setLocation] = React.useState("");
+  const [latLng, setLatLng] = React.useState({lat: '', lng: ''});
 
   React.useEffect(() => {
     if (props.email) {
@@ -142,6 +144,9 @@ export const Registration = (props: Props) => {
     }
     if (props.role === Role.parent || props.role === Role.student) {
       userValues.phoneNumber = phoneNumber;
+      userValues.location = location;
+      userValues.lat = latLng.lat;
+      userValues.lng = latLng.lng;
     }
 
     if (props.role === Role.student) {
@@ -273,6 +278,11 @@ export const Registration = (props: Props) => {
       if (!phoneNumber) {
         formErrorsObject[FieldKey.PhoneNumber] = RegistrationFormComponent.ErrorMessages.PhoneNumber;
       }
+
+      // Validate location
+      if (!location) {
+        formErrors[FieldKey.Location] = RegistrationFormComponent.ErrorMessages.Location;
+      }
     }
 
     return setFormErrors(formErrorsObject);
@@ -303,11 +313,36 @@ export const Registration = (props: Props) => {
   const docDescription = props.role === Role.instructor ? pageTitlesAndDescriptions.registrationInstructor.description :
     props.role === Role.parent ? pageTitlesAndDescriptions.registrationParent.description : pageTitlesAndDescriptions.registrationStudent.description;
 
+
+  const handleLocationChange = (location: string) => {
+    setLocation(location)
+    // clear location errors
+    setFormErrors({
+      ...formErrors,
+      location: ''
+    })
+  }
+
+  const getLatLng = (lat: string, lng: string) => {
+    setLatLng({
+      lat,
+      lng
+    })
+  };
+
+  const getLocationError = (error: string) => {
+    setFormErrors({
+      ...formErrors,
+      location: error
+    })
+  }
+  
   return (
     <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
       <Head>
         <title>{docTitle}</title>
         <meta name="description" content={docDescription}></meta>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
       </Head>
       <PageTitle pageTitle={RegistrationComponent.pageTitle} />
 
@@ -329,6 +364,10 @@ export const Registration = (props: Props) => {
           otherText={otherText}
           handleNumberChange={handleNumberChange}
           phoneNumber={phoneNumber}
+          getLatLng={getLatLng}
+          getLocationError={getLocationError}
+          handleLocationChange={handleLocationChange}
+          location={location || ''}
         />
       </div>
 
