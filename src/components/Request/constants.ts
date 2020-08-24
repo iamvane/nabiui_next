@@ -346,4 +346,7 @@ export namespace NewRequestComponent {
   export const lessonDuration = '30 mins';
   export const acceptButton = 'Accept';
   export const passButton = 'Pass';
+  export const goToStudioButton = 'Go To Studio';
+  export const errorMessage = 'There was an error with your request. Please refresh the page and try again.';
+  export const responseMessage = 'Thanks for your response.';
 }

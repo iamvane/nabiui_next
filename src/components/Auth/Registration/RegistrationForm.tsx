@@ -173,12 +173,14 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
           </FormControl>
           {props.formErrors.phoneNumber && <FormHelperText error={true}>{props.formErrors.phoneNumber}</FormHelperText>}
         </Grid>
-        <LocationField
-          getLatLng={props.getLatLng}
-          address={props.location}
-          getLocation={props.handleLocationChange}
-          getLocationError={props.getLocationError}
-        />
+        <Grid item={true} xs={12} md={5}>
+          <LocationField
+            getLatLng={props.getLatLng}
+            address={props.location}
+            getLocation={props.handleLocationChange}
+            getLocationError={props.getLocationError}
+          />
+        </Grid>
       </>
     }
     <FormControl

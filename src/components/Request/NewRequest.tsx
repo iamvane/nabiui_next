@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from 'next/link';
 import moment from 'moment';
 import {
   Action,
@@ -10,7 +11,8 @@ import { useRouter } from 'next/router';
 import {
   Button,
   Grid,
-  Typography
+  Typography,
+  CircularProgress
 } from '@material-ui/core';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import Schedule from '@material-ui/icons/Schedule';
@@ -22,6 +24,7 @@ import { submitApplication } from '../../redux/actions/InstructorActions';
 import { fetchRequest } from '../../redux/actions/RequestActions';
 import { instrumentDisplay } from "../../utils/displayInstrument";
 import PageTitle from '../common/PageTitle';
+import { Routes } from '../common/constants/Routes';
 import { ApplicationPayload } from "./models";
 import { NewRequestComponent } from './constants'
 
@@ -86,6 +89,20 @@ const NewRequest = (props: Props) => {
         xs={12}
         md={8} className="nabi-section nabi-background-white nabi-margin-center"
       >
+        {props.isResponding ?
+        <div className="nabi-text-center"><CircularProgress /></div> :
+        props.respondError ?
+        <Typography>{NewRequestComponent.errorMessage}</Typography> :
+        props.respondMessage ?
+        <div className="nabi-text-center">
+          <Typography>{NewRequestComponent.responseMessage}</Typography>
+          <Link href={Routes.InstructorStudio}>
+            <Button color="primary" variant="contained" className="nabi-margin-top-small">
+              {NewRequestComponent.goToStudioButton}
+            </Button>
+          </Link>
+        </div> :
+        <>
         <p className="nabi-color-nabi nabi-text-center nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-xsmall">
           {NewRequestComponent.title.replace(
             NewRequestComponent.instrumentPlaceholder,
@@ -149,6 +166,7 @@ const NewRequest = (props: Props) => {
             {NewRequestComponent.acceptButton}
           </Button>
         </div>
+        </>}
       </Grid>
     </div>
   )
