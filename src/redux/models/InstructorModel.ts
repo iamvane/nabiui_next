@@ -108,6 +108,7 @@ export interface InstructorState {
     gradeLesson: ActionStatusWithMessage;
     signFile: ActionStatusWithMessage;
     uploadVideoProfile: ActionStatusWithMessage;
+    rateInstructor: ActionStatusWithMessage;
   };
 }
 
@@ -224,6 +225,11 @@ export const defaultInstructorState: InstructorState = {
       message: ""
     },
     uploadVideoProfile: {
+      isRequesting: false,
+      error: "",
+      message: ""
+    },
+    rateInstructor: {
       isRequesting: false,
       error: "",
       message: ""

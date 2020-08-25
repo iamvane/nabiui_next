@@ -39,4 +39,5 @@ export namespace ApiEndpoints {
   export const gradeLesson = "/v1/lessons/"
   export const scheduleLesson = "/v1/lessons/"
   export const timezone = "/v1/timezones/"
+  export const rateInstructor = "/v1/instructor-reviews/"
 }
