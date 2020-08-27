@@ -97,6 +97,45 @@ export const buildProfile = (
 };
 
 /**
+ * Action creator to rate and review instructor
+ */
+export const rateInstructor = (
+  data: { rating: number, comment: string, instructorId: string }
+): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  const instructorId = data.instructorId;
+  delete data.instructorId;
+  dispatch(requestAction(InstructorActions.REVIEW_INSTRUCTOR));
+  try {
+    const response = await axios.post(
+      `${ApiEndpoints.rateInstructor}${instructorId}/`,
+      data,
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+    dispatch(
+      withDataAction(
+        InstructorActions.REVIEW_INSTRUCTOR_SUCCESS,
+        response.data
+      )
+    )
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === "string") {
+      errorMessage = getError(e);
+    }
+
+    dispatch(
+      withErrorAction(
+        InstructorActions.REVIEW_INSTRUCTOR_FAILURE,
+        errorMessage
+      )
+    );
+  }
+};
+
+/**
  * Action creator to build job preferences
  */
 export const buildJobPreferences = (
