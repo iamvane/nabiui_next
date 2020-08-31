@@ -7,6 +7,9 @@ export namespace ScheduleLessonsComponent {
   export const scheduleLessonButton = 'Schedule Lesson';
   export const goToDashboardButton = "Go To Dashboard";
 
+  export const backToCalendarButton = 'Back To Calendar';
+  export const nextButton = 'Next';
+
   export enum Placeholders {
     LessonDate = 'Lesson date',
     LessonTime = 'Lesson time',
@@ -37,6 +40,8 @@ export namespace ScheduleLessonsComponent {
     [FieldKey.UserTimezone]?: string;
   }
 
+  export const SuccessMessage = 'Lesson rescheduled successfully.';
+
   export enum ErrorMessages {
     LessonDate = 'Enter lesson date.',
     LessonTime = 'Enter lesson time.',
@@ -51,6 +56,13 @@ export namespace ScheduleLessonsComponent {
     Friday = 'Fri',
     Saturday = 'Sat',
     Sunday = 'Sun'
+  }
+
+  export enum Calendar {
+    SelectADay = 'Select A Day',
+    PageTitle = 'Shedule Lessons',
+    EasternStandardTime = 'Eastern Standard Time',
+    ThirtyMinLesson = '30 Minute Lesson'
   }
 
   export const weekdaysLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];

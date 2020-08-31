@@ -1,0 +1,34 @@
+.nabi-calendar-table-cell {
+  &:hover {
+    cursor: auto !important;
+    // color: #ffffff !important;
+    // background-color: #06c3e1 !important;
+  }
+  &.selectable-date{
+    background-color: rgba(6, 195, 225, .2) !important;
+    &:hover {
+      background-color: #06c3e1 !important;
+      color: #fff !important;
+    }
+  }
+  &.selected-date {
+    color: #ffffff !important;
+    background-color: #06c3e1 !important;
+  }
+  &.cursor-pointer {
+    cursor: pointer !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .nabi-calendar-table-cell {
+    font-size: 10px !important;
+  }
+  .nabi-calendar-header-cell {
+    font-size: 10px !important;
+  }
+}
+
+.nabi-calendar-table-row {
+  border: none !important;
+}

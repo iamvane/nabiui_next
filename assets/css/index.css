@@ -468,6 +468,10 @@ li.nabi-list-style-position-inside {
   padding-top: 0px !important;
 }
 
+.nabi-padding-right-zero {
+  padding-right: 0 !important;
+}
+
 .nabi-padding-top-xsmall {
 	padding-top: 10px !important;
 }
@@ -1072,7 +1076,7 @@ li.nabi-list-style-position-inside {
 
 	.nabi-logo-anchor img {
 		width: 60px;
-	}
+  }
 
 	#nabi-logo-text {
 		font-size: 19px;
