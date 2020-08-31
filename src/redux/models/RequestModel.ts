@@ -74,6 +74,8 @@ export interface RequestState extends BookLessonsData {
     scheduleLessons: ActionStatusWithMessage;
     fetchStudents: ActionStatus;
     deleteStudent: ActionStatus;
+    fetchStudentsBookingData: ActionStatus;
+    fetchStudentsBookingLessonsData: ActionStatus;
   };
   bookingId: number;
 }
@@ -185,6 +187,14 @@ export const defaultRequestState: RequestState = {
     deleteStudent: {
       isRequesting: false,
       error: '',
+    },
+    fetchStudentsBookingData: {
+      isRequesting: false,
+      error: ''
+    },
+    fetchStudentsBookingLessonsData: {
+      isRequesting: false,
+      error: ''
     }
   }
 };

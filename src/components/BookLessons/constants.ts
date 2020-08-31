@@ -112,3 +112,8 @@ export namespace ScheduleLessonsComponent {
     UserTimezone = 'Select timezone.',
   }
 }
+
+export namespace SelectChildComponent {
+  export const pageTitle = 'Select Child';
+  export const description = 'Purchase more lessons for selected child'
+}
