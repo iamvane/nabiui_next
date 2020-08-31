@@ -7,6 +7,9 @@ export namespace ScheduleLessonsComponent {
   export const scheduleLessonButton = 'Schedule Lesson';
   export const goToDashboardButton = "Go To Dashboard";
 
+  export const backToCalendarButton = 'Back To Calendar';
+  export const nextButton = 'Next';
+
   export enum Placeholders {
     LessonDate = 'Lesson date',
     LessonTime = 'Lesson time',

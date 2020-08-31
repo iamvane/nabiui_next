@@ -22,8 +22,8 @@ const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 interface CalendarProps {
-  closeCalendar ?: () => void;
-  handleCalendarDate ?: (date: string) => void;
+  closeCalendar: () => void;
+  handleCalendarDate: (date: string) => void;
 }
 export const Calendar = (props: CalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -76,8 +76,8 @@ export const Calendar = (props: CalendarProps) => {
                 className={`
                   nabi-padding-left-zero nabi-padding-right-zero
                   nabi-padding-top-small nabi-padding-bottom-small
-                  ${isValidDate(day) ? 'nabi-calendar-table-cell cursor-pointer' : 'nabi-calendar-table-cell bg_color-gray'}
-                  ${new Date().getMonth() === currentMonth && Number(day) === dayOfTheMonth ? 'color-white' : ''}
+                  ${isValidDate(day) ? 'nabi-calendar-table-cell cursor-pointer selectable-date' : 'nabi-calendar-table-cell'}
+                  ${new Date().getMonth() === currentMonth && Number(day) === dayOfTheMonth ? 'selected-date' : ''}
                 `}
                 align="center"
                 size="small" key={`day-${index}`}
@@ -85,18 +85,19 @@ export const Calendar = (props: CalendarProps) => {
                   let selectedDay;
                   let selectedMonth;
                   if (day.length === 1) {
-                    selectedDay = [`0${day}`]
+                    selectedDay = `0${day}`
                   } else {
                     selectedDay = day;
-                  }
+                  }                
 
                   if (String(currentMonth + 1).length === 1) {
-                    selectedMonth = [`0${currentMonth + 1}`]
+                    selectedMonth = `0${currentMonth + 1}`
                   } else {
                     selectedMonth = currentMonth + 1;
                   }
 
                   const lessonDate = `${currentYear}-${selectedMonth}-${selectedDay}`;
+
                   if (isValidDate(day)) {
                     props.handleCalendarDate(lessonDate)
                     props.closeCalendar();

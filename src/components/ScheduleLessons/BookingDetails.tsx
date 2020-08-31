@@ -79,12 +79,14 @@ export const BookingDetails = (props: Props) => {
             </Typography>
           </div>
         : ''}
-        <div>
-          <Face className="text-aligned-icon" color="primary" />
-          <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-            {BookingDetailsComponent.instructorDetails}
-          </Typography>
-        </div>
+        {props.headingMessage && 
+          <div>
+            <Face className="text-aligned-icon" color="primary" />
+            <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+              {BookingDetailsComponent.instructorDetails}
+            </Typography>
+          </div>
+        }
         <div className="nabi-text-right nabi-margin-top-large">
           {props.headingMessage && role === Role.parent ?
             <Button color="primary" className="nabi-margin-right-xsmall" onClick={addAnotherChild}>

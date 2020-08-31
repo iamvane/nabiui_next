@@ -1,18 +1,19 @@
 .nabi-calendar-table-cell {
   &:hover {
-    color: #ffffff !important;
-    background-color: #06c3e1 !important;
+    cursor: auto !important;
+    // color: #ffffff !important;
+    // background-color: #06c3e1 !important;
   }
-  &.color-white {
-    color: #ffffff !important;
-    background-color: #06c3e1 !important;
-  }
-  &.bg_color-gray {
-    background-color: #f0f3f6 !important;
+  &.selectable-date{
+    background-color: rgba(6, 195, 225, .2) !important;
     &:hover {
-      background-color: #f0f3f6 !important;
-      color: #717a8a !important;
+      background-color: #06c3e1 !important;
+      color: #fff !important;
     }
+  }
+  &.selected-date {
+    color: #ffffff !important;
+    background-color: #06c3e1 !important;
   }
   &.cursor-pointer {
     cursor: pointer !important;

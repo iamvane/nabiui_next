@@ -231,6 +231,7 @@ export const ScheduleLessons = (props: Props) => {
               setCalendarOpen(false);
             }}
             handleCalendarDate={(date) => {
+              console.log(date)
               setLessonDate(date)
             }}
           /> :
@@ -258,7 +259,7 @@ export const ScheduleLessons = (props: Props) => {
                         <span className="nabi-color-nabi">{displayWeek()}</span>
                       </Typography> :
                       <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
-                        <span className="nabi-color-nabi">{moment(new Date(lessonDate)).format('MMM D, YYYY')}</span>
+                        <span className="nabi-color-nabi">{moment(lessonDate).format('MMM D, YYYY')}</span>
                       </Typography>
                   }
                   <Typography className="nabi-margin-top-small">
@@ -283,12 +284,11 @@ export const ScheduleLessons = (props: Props) => {
                       <Button
                         color="primary"
                         className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small nabi-margin-right-small"
-                        variant="contained"
                         onClick={() => {
                           setCalendarOpen(true)
                         }}
                       >
-                        Back To Calendar
+                        {ScheduleLessonsComponent.backToCalendarButton}
                       </Button>
                     )
                   }
@@ -299,7 +299,7 @@ export const ScheduleLessons = (props: Props) => {
                     type="submit"
                     disabled={!lessonDate || !lessonTime}
                   >
-                    Next
+                    {ScheduleLessonsComponent.nextButton}
             </Button>
                 </div>
               </form>
