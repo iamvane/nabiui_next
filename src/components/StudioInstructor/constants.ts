@@ -11,13 +11,11 @@ export namespace InstructorStudioComponent {
   export const datePlaceholder = '{dateReplace}';
   export const timePlaceholder = '{timeReplace}';
   export const noNextLesson = 'No upcoming lessons';
-  export const noStudents = 'You currently have no students';
-  export const findStudentsButton = 'Find Students';
+  export const noStudents = 'You currently have no students. Nabi Music matches you with students based on specific criteria such as the instrument(s) you teach, your availability and rate. Please make sure your profile is always up to date.';
+  export const updateProfileButton = 'Update Profile';
 }
 
 export namespace LessonCardComponent {
-  export const myStudentsSectionTitle = 'My Students';
-  export const noStundetsText = 'You currently have no students.';
   export const lessonsRemaining = 'Lessons remaining';
   export const gradeLessonButton = 'Grade Lesson';
   export const profileSectionTitle = 'View Profile';

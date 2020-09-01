@@ -147,7 +147,7 @@ export namespace InstructorDashboardComponent {
     instrument: 'Instrument',
     skillLevel: 'Skill level'
   }
-  export const findJobsButton = 'Find Jobs';
+  export const updateProfileButton = 'Update Profile';
   export const applyToJobs = 'Apply to Jobs Near You';
   export const viewAll = 'View all';
 }

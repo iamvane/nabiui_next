@@ -8,8 +8,6 @@ export namespace NavigationComponent {
     ReferAFriend = 'Refer a friend',
     SendNabiFeedback = 'Send Nabi Feedback',
     Setting = 'Settings',
-    FindJobs = 'Find Jobs',
-    GoToStudio = 'Go To Studio',
     Studio = 'Studio',
     Jobs = 'Jobs',
     ViewProfile = 'View Profile',

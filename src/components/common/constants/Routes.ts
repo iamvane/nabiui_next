@@ -7,7 +7,6 @@ export enum Routes {
   RegistrationInstructor = '/registration-instructor',
   RegistrationParentStudent = '/registration-parent-student',
   Dashboard = '/dashboard',
-  Requests = '/requests',
   BuildProfile = '/build-profile',
   BuildRequest = '/build-request',
   BuildRequestStep = '/build-request/:step',

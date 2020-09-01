@@ -74,8 +74,8 @@ const InstructorMenuItems = ({ currentRoute }) => {
   const items = [
     // NavigationComponent.NavigationLabels.Calendar,
     {
-      label: currentRoute === Routes.InstructorStudio ? NavigationComponent.NavigationLabels.Jobs : NavigationComponent.NavigationLabels.Studio,
-      url:  currentRoute === Routes.InstructorStudio ? Routes.Requests : Routes.InstructorStudio
+      label: NavigationComponent.NavigationLabels.Studio,
+      url: Routes.InstructorStudio
     },
     {
       label: NavigationComponent.NavigationLabels.ViewProfile,
@@ -111,42 +111,6 @@ const InstructorMenuItems = ({ currentRoute }) => {
     <>
       {instructorItems}
     </>
-  )
-}
-
-const GoToStudioButton = () => {
-  return (
-    <div className="nabi-mobile-button-wrapper">
-      <Link href={Routes.InstructorStudio}>
-        <a>
-          <Button
-            color="primary"
-            variant="contained"
-            className="nabi-responsive-button"
-          >
-            {NavigationComponent.NavigationLabels.GoToStudio}
-          </Button>
-        </a>
-      </Link>
-    </div>
-  )
-}
-
-const FindJobsButton = () => {
-  return (
-    <div className="nabi-mobile-button-wrapper">
-      <Link href={Routes.Requests}>
-        <a>
-          <Button
-            color="primary"
-            variant="contained"
-            className="nabi-responsive-button"
-          >
-            {NavigationComponent.NavigationLabels.FindJobs}
-          </Button>
-        </a>
-      </Link>
-    </div>
   )
 }
 
@@ -208,8 +172,6 @@ export const CollapsibleSidebar = (props: Props) => {
 
             {role === Role.instructor && (
               <>
-                { (Routes.Requests === props.currentRoute) && <GoToStudioButton />}
-                { (Routes.Requests !== props.currentRoute) &&  <FindJobsButton />}
                 <InstructorMenuItems currentRoute={props.currentRoute} />
               </>
             )}
