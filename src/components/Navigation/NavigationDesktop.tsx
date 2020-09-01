@@ -74,13 +74,6 @@ const NavigationDesktop = (props: Props) => {
               </li> */}
               <li>
                 <Typography>
-                  <Link href={Routes.Requests}>
-                    <a>{NavigationComponent.NavigationLabels.JobRequests}</a>
-                  </Link>
-                </Typography>
-              </li>
-              <li>
-                <Typography>
                   <Link href={'/profile/' + props.instructorId}>
                     <a>{NavigationComponent.NavigationLabels.Profile}</a>
                   </Link>
