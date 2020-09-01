@@ -58,7 +58,7 @@ export const StudioInstructor = (props: Props) => {
 
   React.useEffect(() => {
     if (props.dashboard && props.dashboard.id) {
-      setCookie("instructorId", dashboard.id);
+      setCookie("instructorId", props.dashboard.id);
       setDashboard(props.dashboard);
       setIsFetchingDashboard(false);
       if (props.dashboard.missingFields.includes(MissingFields.ZoomLink)) {
@@ -85,13 +85,13 @@ export const StudioInstructor = (props: Props) => {
       <Grid item={true} xs={12}>
         <div className="nabi-background-white nabi-border-radius nabi-padding-small">
           <Typography><span>{InstructorStudioComponent.noStudents}</span></Typography>
-          <Link href={Routes.Requests}>
+          <Link href={Routes.BuildProfile + '/account-info'}>
             <Button
               color="primary"
               variant="contained"
               className="nabi-display-block nabi-margin-top-small"
             >
-              {InstructorStudioComponent.findStudentsButton}
+              {InstructorStudioComponent.updateProfileButton}
             </Button>
           </Link>
         </div>

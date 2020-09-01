@@ -45,7 +45,6 @@ export const Footer = () => {
       Routes.BuildRequest,
       Routes.InstructorStudio,
       Routes.ParentStudio,
-      Routes.Requests,
       Routes.AccountRecovery,
       Routes.Login,
       Routes.ForgotPassword,

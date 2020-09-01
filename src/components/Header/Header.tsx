@@ -120,7 +120,6 @@ export const Header = (props: HeaderProps) => {
   const menuDisplayPages = [
     Routes.ApplicationList,
     Routes.BookLessons,
-    Routes.Requests,
     Routes.InstructorStudio,
     Routes.InstructorZoomSetup,
     Routes.ParentStudio

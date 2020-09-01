@@ -49,12 +49,6 @@ export default (ChildComponent, permission = 'Public', roles = [], custom?) => c
       }
 
       if (!token && !isLoginPage && permission === 'Private') {
-        if (custom === 'Request View') {
-          res.writeHead(302, {
-            Location: Routes.Requests,
-          });
-          res.end();
-        }
         res.writeHead(302, {
           Location: Routes.Login,
         });
