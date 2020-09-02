@@ -1,7 +1,7 @@
 export interface ReviewsType {
   id?: number;
-  avatarImage: string;
-  name: string;
+  avatar: string;
+  displayName: string;
   rating: number;
   comment: string;
   date: string;

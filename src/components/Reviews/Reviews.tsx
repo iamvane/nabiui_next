@@ -39,7 +39,7 @@ const getReviewDate = (date: string): string => {
  */
 const Reviews: React.StatelessComponent<Props> = props => {
   const AvatarStyles = { width: '60px', height: '60px'};
-  const { avatarImage, name, comment } = props;
+  const { avatar, displayName, comment } = props;
 
   const ratingStars = getRatingStars(props.rating);
   const date = getReviewDate(props.date);
@@ -49,7 +49,7 @@ const Reviews: React.StatelessComponent<Props> = props => {
       <Grid container={true}>
         <Grid item={true} xs={12} md={2} className="nabi-text-center">
           <Avatar
-            src={avatarImage}
+            src={avatar}
             style={AvatarStyles}
             className="nabi-margin-center"
           />
@@ -57,7 +57,7 @@ const Reviews: React.StatelessComponent<Props> = props => {
         <Grid item={true} xs={12} md={10}>
           <div className="nabi-text-center nabi-text-left-md">
             <Typography className="nabi-text-mediumbold nabi-display-inline-block-md nabi-margin-right-xsmall-md">
-              {name}
+              {displayName}
             </Typography>
             <div className="nabi-display-inline-block-md nabi-position-relative reviews-stars-wrapper">
               {ratingStars}

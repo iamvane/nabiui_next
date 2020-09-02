@@ -63,8 +63,8 @@ const ProfileContent: React.StatelessComponent<Props> = props => {
       <Reviews
         key={i}
         id={review.id}
-        name={review.displayName}
-        avatarImage={review.avatarImage}
+        displayName={review.displayName}
+        avatar={review.avatar}
         rating={review.rating}
         comment={review.comment}
         date={review.date}
