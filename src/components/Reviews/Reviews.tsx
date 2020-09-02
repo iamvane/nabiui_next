@@ -54,14 +54,12 @@ const Reviews: React.StatelessComponent<Props> = props => {
             className="nabi-margin-center"
           />
         </Grid>
-        <Grid item={true} xs={12} md={10}>
-          <div className="nabi-text-center nabi-text-left-md">
-            <Typography className="nabi-text-mediumbold nabi-display-inline-block-md nabi-margin-right-xsmall-md">
-              {displayName}
-            </Typography>
-            <div className="nabi-display-inline-block-md nabi-position-relative reviews-stars-wrapper">
-              {ratingStars}
-            </div>
+        <Grid item={true} xs={12} md={10} className="nabi-text-center nabi-text-left-md">
+          <Typography className="nabi-text-mediumbold nabi-display-inline-block-md nabi-margin-right-xsmall-md">
+            {displayName}
+          </Typography>
+          <div className="nabi-display-inline-block-md nabi-position-relative reviews-stars-wrapper">
+            {ratingStars}
           </div>
           <Typography className="nabi-margin-top-xsmall">
             {comment}
