@@ -34,3 +34,17 @@
   }
 }
 
+.parent-next-lesson-container {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .parent-next-lesson-container {
+    flex-direction: column;
+  }
+}
+
+.parent-join-lesson-img {
+  width: 20px;
+}
+

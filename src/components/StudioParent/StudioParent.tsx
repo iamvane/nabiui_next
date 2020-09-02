@@ -22,6 +22,7 @@ import {
   TableHead,
   TableRow,
   Typography,
+  Tooltip
 } from '@material-ui/core';
 import Star from "@material-ui/icons/Star";
 import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -33,7 +34,7 @@ import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
 import { Role } from '../Auth/Registration/constants';
 import PrivateRoute from '../Auth/PrivateRoutes';
-import { ParentStudioComponent, LessonStatuses }  from './constants';
+import { ParentStudioComponent, LessonStatuses } from './constants';
 import { LessonStatus } from './LessonStatus';
 import '../../../assets/scss/StudioParent.scss';
 
@@ -49,12 +50,12 @@ interface DispatchProps {
   fetchDashboard: () => void;
 }
 
-interface OwnProps {}
+interface OwnProps { }
 
 interface Props extends
   OwnProps,
   StateProps,
-  DispatchProps {}
+  DispatchProps { }
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -87,7 +88,7 @@ export const StudioParent = (props: Props) => {
       await props.fetchDashboard();
     }
     fetchData();
-  },[]);
+  }, []);
 
   const role = getCookie('role');
 
@@ -120,6 +121,36 @@ export const StudioParent = (props: Props) => {
     return gradeStars;
   };
 
+  const isValidTimeForZoom = (lessonTime: string, lessonDate: string) => {
+    const time = lessonTime.split(':')
+    const timeDate = moment(new Date(lessonDate))
+      .hour(Number(time[0]))
+      .add(Number(time[1]), "minutes")
+      .subtract(10, "minutes");
+    if (Date.now() > Date.parse(timeDate.toISOString())) return true;
+    return false;
+  }
+
+  const renderJoinZoom = (lessonTime: string, lessonDate: string, zoomLink) => {
+    if (isValidTimeForZoom(lessonTime, lessonDate)) {
+      return (<a className="nabi-cursor-pointer" href={zoomLink} target={'_blank'} rel="noreferrer">
+        <Typography className="nabi-display-flex nabi-margin-left-xsmall" color="primary">
+          {ParentStudioComponent.clickToJoinLesson}
+          <img className="parent-join-lesson-img nabi-margin-left-xsmall" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/teacher.png" alt="teacher" />
+        </Typography>
+      </a>)
+    }
+
+    return (
+      <Tooltip title={ParentStudioComponent.nextLessonTooltipTitle} placement="top">
+      <Typography className="nabi-display-flex nabi-margin-left-xsmall" color="primary">
+        {ParentStudioComponent.clickToJoinLesson}
+        <img className="parent-join-lesson-img nabi-margin-left-xsmall" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/teacher.png" alt="teacher" />
+      </Typography>
+    </Tooltip>
+    );
+  }
+
   const displayEmptyContent = () => (
     <Grid item={true} xs={12} md={8} className="nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-top-small nabi-margin-center nabi-text-center">
       <Typography>{ParentStudioComponent.noStudentsDescription}</Typography>
@@ -132,7 +163,6 @@ export const StudioParent = (props: Props) => {
   const rescheduleLesson = (studentName, lessonId) => {
     setCookie('lessonId', lessonId);
     setCookie('studentName', studentName);
-    console.log('reschedule this lesson --..>');
     Router.push(Routes.ScheduleLesson);
   }
 
@@ -186,24 +216,30 @@ export const StudioParent = (props: Props) => {
 
       return (
         <TabPanel value={student} index={i} key={i}>
-          <div className="nabi-background-white nabi-border-radius nabi-padding-small">
+          <div className="nabi-display-flex nabi-flex-align-baseline nabi-background-white nabi-border-radius nabi-padding-small">
             <ScheduleIcon color="primary" className="text-aligned-icon" />
             {item.nextLesson.id ?
-              <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-                {ParentStudioComponent.nextLesson.replace(
-                  ParentStudioComponent.datePlaceholder,
-                  (moment(item.nextLesson.date).calendar().split(" at"))[0]
-                ).replace(
-                  ParentStudioComponent.timePlaceholder,
-                  moment(item.nextLesson.time, "h:mm").format("h:mmA")
-                ).replace(
-                  ParentStudioComponent.timezonePlaceholder,
-                  item.nextLesson.timezone
-                ).replace(
-                  ParentStudioComponent.instructorPlaceholder,
-                  item.nextLesson.instructor || ParentStudioComponent.unassignedInstructor
-                )}
-              </Typography>
+              <div className="parent-next-lesson-container">
+                <Typography className="nabi-display-inline nabi-margin-left-xsmall nabi-margin-bottom-xsmall">
+                  {ParentStudioComponent.nextLesson.replace(
+                    ParentStudioComponent.datePlaceholder,
+                    (moment(item.nextLesson.date).calendar().split(" at"))[0]
+                  ).replace(
+                    ParentStudioComponent.timePlaceholder,
+                    moment(item.nextLesson.time, "h:mm").format("h:mmA")
+                  ).replace(
+                    ParentStudioComponent.timezonePlaceholder,
+                    item.nextLesson.timezone
+                  ).replace(
+                    ParentStudioComponent.instructorPlaceholder,
+                    item.nextLesson.instructor || ParentStudioComponent.unassignedInstructor
+                  )}
+                </Typography>
+
+                {
+                  item.nextLesson.zoomLink && renderJoinZoom(item.nextLesson.time, item.nextLesson.date, item.nextLesson.zoomLink)
+                }
+              </div>
               :
               <Typography className="nabi-display-inline nabi-margin-left-xsmall">{ParentStudioComponent.noNextLesson}</Typography>}
           </div>
@@ -226,8 +262,8 @@ export const StudioParent = (props: Props) => {
                   className="nabi-margin-top-small-md"
                   onClick={
                     item.lessons.length < 1 ?
-                    () => scheduleTrial(item.name, item.id, item.instrument) :
-                    () => buyMoreLessons(item.id)
+                      () => scheduleTrial(item.name, item.id, item.instrument) :
+                      () => buyMoreLessons(item.id)
                   }
                 >
                   {item.lessons.length < 1 ? ParentStudioComponent.scheduleTrialButton : ParentStudioComponent.buyMoreLessonsButton}
@@ -236,7 +272,7 @@ export const StudioParent = (props: Props) => {
             </Grid>
             <TableContainer className="nabi-margin-top-small nabi-margin-bottom-small">
               {item.lessons.length < 1 ?
-              <span>{ParentStudioComponent.noLessons}</span> :
+                <span>{ParentStudioComponent.noLessons}</span> :
                 <Table id="lessons-table" aria-label="lesson table">
                   <TableHead>
                     <TableRow>
@@ -324,7 +360,7 @@ export const StudioParent = (props: Props) => {
                     ))}
                   </Tabs>
                 </AppBar>
-              : ''}
+                : ''}
               {displayTabContent()}
             </>
             : displayEmptyContent()

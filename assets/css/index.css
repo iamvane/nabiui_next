@@ -217,6 +217,10 @@ header {
   align-items: center !important;
 }
 
+.nabi-flex-align-baseline {
+  align-items: baseline;
+}
+
 .nabi-flex-justify-center {
   justify-content: center;
 }

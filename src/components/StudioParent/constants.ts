@@ -26,6 +26,8 @@ export namespace ParentStudioComponent {
   export const unassigned = 'Unassigned';
 
   export const ungraded = 'No grade';
+  export const clickToJoinLesson = 'Click here to join lesson';
+  export const nextLessonTooltipTitle = 'You can join 10 mins before the lesson starts.';
 }
 
 export enum LessonStatuses {

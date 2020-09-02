@@ -17,7 +17,8 @@ export const setDashboard = (data) => {
       backgroundCheckStatus: data.backgroundCheckStatus,
       lessons: data.lessons,
       requests: data.requests,
-      nextLesson: data.nextLesson
+      nextLesson: data.nextLesson,
+      zoomLink: data.zoomLink
     };
   }
   return (dashboard as ParentStudentDashboardType) =  {

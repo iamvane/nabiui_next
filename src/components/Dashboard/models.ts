@@ -12,6 +12,7 @@ export interface NextLessonType {
   timezone: string;
   studentDetails: StudentType;
   instructor: string;
+  zoomLink: string;
 }
 
 export interface LessonType {
