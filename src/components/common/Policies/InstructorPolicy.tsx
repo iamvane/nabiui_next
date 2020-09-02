@@ -40,7 +40,7 @@ export const InstructorPolicy: React.StatelessComponent<{}> = props => {
         <h5>As an Instructor, you are encouraged to:</h5>
         <ul>
           <li>
-            Address all schedule details directly with your Students
+            Address all schedule details directly with your Nabi Music
           </li>
           <br />
           <li>
@@ -85,8 +85,8 @@ export const InstructorPolicy: React.StatelessComponent<{}> = props => {
             You will observe all anti-harassment and non-discrimination laws in the performance of your services.
           </li>
           <br />
-          <h5>Scheduling polciy:</h5>
-          <span>Students and/or parents must reschedule a class at least 12 hours in advance of the scheduled class to avoid mising a class. A missed class cannot be refunded.</span>
+          <h5>Scheduling policy:</h5>
+          <span>Students and/or parents must reschedule a class at least 12 hours in advance of the scheduled class to avoid missing a class. A missed class cannot be refunded.</span>
           <br />
           <br />
           <li>
