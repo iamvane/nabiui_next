@@ -26,15 +26,15 @@ export const StudentPolicy: React.StatelessComponent<{}> = props => {
           </li>
           <br />
           <li>
-            Manage all schedule details directly with your Instructor
+            Manage all schedule details directly with your Nabi Music
           </li>
           <br />
           <li>
             Work directly with Nabi Music to change Instructors
           </li>
         </ul>
-        <h5>Scheduling polciy:</h5>
-          You must reschedule a class at least 12 hours in advance of the scheduled class to avoid mising a class. A missed class cannot be refunded.
+        <h5>Scheduling policy:</h5>
+          You must reschedule a class at least 12 hours in advance of the scheduled class to avoid missing a class. A missed class cannot be refunded.
           <br />
           <br />
           For your reference, <Link href={Routes.InstructorPolicy}><a>here are the Instructors guidelines</a></Link> that your instructors are required to follow.
