@@ -85,7 +85,7 @@ export const InstructorPolicy: React.StatelessComponent<{}> = props => {
             You will observe all anti-harassment and non-discrimination laws in the performance of your services.
           </li>
           <br />
-          <h5>Scheduling polciy:</h5>
+          <h5>Scheduling policy:</h5>
           <span>Students and/or parents must reschedule a class at least 12 hours in advance of the scheduled class to avoid missing a class. A missed class cannot be refunded.</span>
           <br />
           <br />
