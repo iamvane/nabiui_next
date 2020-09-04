@@ -16,18 +16,30 @@ export const team: Teammate[] = [
     linkedIn: 'https://www.linkedin.com/in/vanessacharlesnabi/',
     email: 'vanessa@nabimusic.com'
   },
-  {
-    name: 'Jennie Legary',
-    role: 'Marketing Strategist',
-    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/jennie-legary.jpeg',
-    bio: 'Jennie is a mezzo-soprano opera singer with a Master in Performing Arts Management from Accademia Teatro alla Scala. She’s also a design, marketing, and business consultant, with experience in promoting classical music, real estate, and early-stage startups. With her two other singer colleagues, she has co-founded Coloratura: The Opera Dolls, a company that produces educational musical toys for children.'
-  },
+  // {
+  //   name: 'Jennie Legary',
+  //   role: 'Marketing Strategist',
+  //   image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/jennie-legary.jpeg',
+  //   bio: 'Jennie is a mezzo-soprano opera singer with a Master in Performing Arts Management from Accademia Teatro alla Scala. She’s also a design, marketing, and business consultant, with experience in promoting classical music, real estate, and early-stage startups. With her two other singer colleagues, she has co-founded Coloratura: The Opera Dolls, a company that produces educational musical toys for children.'
+  // },
   {
     name: 'Luis Llave',
     role: 'Back-end Engineer',
     image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/luis-llave.png',
     bio: 'Luis was born in Arequipa (Perú), but was living in Venezuela, where graduated as an Electrical Engineer at University of Carabobo (UC). At UC, he worked in development of a web system for student academic records and class scheduling. Also, Luis helped build English-Spanish translations in Mandriva and Mageia Linux distributions. He returned to his natal city and now can see a volcano (Misti) everyday. He\'s a fan of Morricone music too.'
 
+  },
+  {
+    name: 'Kayin Patton',
+    role: 'Back-end Engineer',
+    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/kayin.jpg',
+    bio: 'Kayin is a Boston native with a passion for music and technology. Kayin is an alumni of the Year Up program, and has worked in many various companies spanning over a myriad of different industries. Over the past decade, Kayin has been in three bands, and is currently working on solo projects under the moniker, Kuma Da Grizzly. He likes to spend his free time working on wacky coding projects and making instrumental hip hop music to work to.'
+  },
+  {
+    name: 'Richard Kombol',
+    role: 'Frontend Engineer',
+    image: 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/richard.jpg',
+    bio: 'Richard is a native of Benue State (Nigeria) who currently resides in Lagos (Nigeria). He is a JavaScript Engineer with focus and passion for frontend technologies. He has built various web solutions using React for different organizations. He is a fan of Hip Hop and he likes Chess.'
   },
   {
     name: 'Marycarmen Mora',
