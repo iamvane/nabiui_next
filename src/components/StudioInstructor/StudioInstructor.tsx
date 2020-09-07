@@ -12,6 +12,7 @@ import {
   CircularProgress,
   Grid,
   Typography,
+  Tooltip
 } from '@material-ui/core';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import { StoreState } from '../../redux/reducers/store';
@@ -27,6 +28,7 @@ import {
 } from '../Dashboard/models';
 import LessonCard from './LessonCard';
 import { ZoomMissingLink } from "./ZoomLinkMissing";
+import '../../../assets/scss/StudioInstructor.scss';
 
 interface StateProps {
   dashboard: InstructorDashboardType;
@@ -98,6 +100,34 @@ export const StudioInstructor = (props: Props) => {
       </Grid>
   );
 
+  const isValidTimeForZoom = (lessonTime: string, lessonDate: string) => {
+    const timeDate = moment(new Date(lessonDate))
+      .hour(Number(lessonTime.replace(':', '.')))
+      .subtract(10, "minutes");
+    if (Date.now() > Date.parse(timeDate.toISOString())) return true;
+    return false;
+  }
+
+  const renderJoinZoom = (lessonTime: string, lessonDate: string, zoomLink) => {
+    if (isValidTimeForZoom(lessonTime, lessonDate)) {
+      return (<a className="nabi-cursor-pointer" href={zoomLink} target={'_blank'} rel="noreferrer">
+        <Typography className="nabi-display-flex nabi-margin-left-xsmall" color="primary">
+          {InstructorStudioComponent.clickToJoinLesson}
+          <img className="instructor-join-lesson-img nabi-margin-left-xsmall" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/teacher.png" alt="teacher" />
+        </Typography>
+      </a>)
+    }
+
+    return (
+      <Tooltip title={InstructorStudioComponent.nextLessonTooltipTitle} placement="top">
+        <Typography className="nabi-display-flex nabi-margin-left-xsmall" color="primary">
+          {InstructorStudioComponent.clickToJoinLesson}
+          <img className="instructor-join-lesson-img nabi-margin-left-xsmall" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/teacher.png" alt="teacher" />
+        </Typography>
+      </Tooltip>
+    );
+  }
+
   const firstName = getCookie('firstName');
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large nabi-display-flex nabi-flex-column nabi-flex-align-center">
@@ -109,24 +139,30 @@ export const StudioInstructor = (props: Props) => {
         <>
           <Grid container={true} spacing={7}>
             <Grid item={true} xs={12}>
-              <div className="nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-bottom-small">
+              <div className="nabi-display-flex nabi-flex-align-baseline nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-bottom-small">
                 <ScheduleIcon color="primary" className="text-aligned-icon" />
                 {dashboard && dashboard.nextLesson && dashboard.nextLesson.id ?
-                  <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-                    {InstructorStudioComponent.nextLesson.replace(
-                      InstructorStudioComponent.datePlaceholder,
-                      (moment(dashboard.nextLesson.date).calendar().split(" at"))[0]
-                    ).replace(
-                      InstructorStudioComponent.timePlaceholder,
-                      moment(dashboard.nextLesson.time, "h:mm").format("h:mmA")
-                    ).replace(
-                      InstructorStudioComponent.timezonePlaceholder,
-                      dashboard.nextLesson.timezone
-                    ).replace(
-                      InstructorStudioComponent.namePlaceholder,
-                      dashboard.nextLesson.studentDetails[0].name
-                    )}
-                  </Typography>
+                  <div className="instructor-next-lesson-container">
+                    <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+                      {InstructorStudioComponent.nextLesson.replace(
+                        InstructorStudioComponent.datePlaceholder,
+                        (moment(dashboard.nextLesson.date).calendar().split(" at"))[0]
+                      ).replace(
+                        InstructorStudioComponent.timePlaceholder,
+                        moment(dashboard.nextLesson.time, "h:mm").format("h:mmA")
+                      ).replace(
+                        InstructorStudioComponent.timezonePlaceholder,
+                        dashboard.nextLesson.timezone
+                      ).replace(
+                        InstructorStudioComponent.namePlaceholder,
+                        dashboard.nextLesson.studentDetails[0].name
+                      )}
+                    </Typography>
+
+                    {
+                      dashboard.nextLesson.zoomLink && renderJoinZoom(dashboard.nextLesson.time, dashboard.nextLesson.date, dashboard.nextLesson.zoomLink)
+                    }
+                  </div>
                   :
                   <Typography className="nabi-display-inline nabi-margin-left-xsmall">{InstructorStudioComponent.noNextLesson}</Typography>}
               </div>
@@ -143,7 +179,7 @@ export const StudioInstructor = (props: Props) => {
           />
         </>
       }
-    </div>
+    </div >
   );
 }
 

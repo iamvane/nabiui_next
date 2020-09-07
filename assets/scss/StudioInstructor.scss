@@ -1,0 +1,13 @@
+.instructor-next-lesson-container {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .instructor-next-lesson-container {
+    flex-direction: column;
+  }
+}
+
+.instructor-join-lesson-img {
+  width: 20px;
+}

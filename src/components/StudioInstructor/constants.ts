@@ -13,6 +13,8 @@ export namespace InstructorStudioComponent {
   export const noNextLesson = 'No upcoming lessons';
   export const noStudents = 'You currently have no students. Nabi Music matches you with students based on specific criteria such as the instrument(s) you teach, your availability and rate. Please make sure your profile is always up to date.';
   export const updateProfileButton = 'Update Profile';
+  export const clickToJoinLesson = 'Click here to join lesson';
+  export const nextLessonTooltipTitle = 'You can join 10mins before lesson starts';
 }
 
 export namespace LessonCardComponent {
