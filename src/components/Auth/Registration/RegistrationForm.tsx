@@ -179,6 +179,7 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
             address={props.location}
             getLocation={props.handleLocationChange}
             getLocationError={props.getLocationError}
+            error={props.formErrors.location}
           />
         </Grid>
       </>
@@ -240,7 +241,6 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
         </Typography>
 
         <Button
-          disabled={!props.agreeWithTerms}
           color="primary"
           className="nabi-text-uppercase"
           variant="contained"
