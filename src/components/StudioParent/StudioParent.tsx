@@ -26,6 +26,7 @@ import {
 } from '@material-ui/core';
 import Star from "@material-ui/icons/Star";
 import ScheduleIcon from '@material-ui/icons/Schedule';
+const reactStringReplace = require('react-string-replace');
 import { instrumentDisplay } from '../../utils/displayInstrument';
 import { StoreState } from '../../redux/reducers/store';
 import { fetchDashboard } from '../../redux/actions/UserActions';
@@ -34,8 +35,15 @@ import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
 import { Role } from '../Auth/Registration/constants';
 import PrivateRoute from '../Auth/PrivateRoutes';
-import { ParentStudioComponent, LessonStatuses } from './constants';
+import {
+  ParentStudioComponent,
+  LessonStatuses,
+  MissingFieldsComponent,
+  missingFieldsDisplay,
+  missingFieldsArray
+} from './constants';
 import { LessonStatus } from './LessonStatus';
+import { MissingFields } from "../MissingFields/MissingFields";
 import '../../../assets/scss/StudioParent.scss';
 
 import { ParentStudentDashboardType } from '../Dashboard/models';
@@ -143,11 +151,11 @@ export const StudioParent = (props: Props) => {
 
     return (
       <Tooltip title={ParentStudioComponent.nextLessonTooltipTitle} placement="top">
-      <Typography className="nabi-display-flex nabi-margin-left-xsmall" color="primary">
-        {ParentStudioComponent.clickToJoinLesson}
-        <img className="parent-join-lesson-img nabi-margin-left-xsmall" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/teacher.png" alt="teacher" />
-      </Typography>
-    </Tooltip>
+        <Typography className="nabi-display-flex nabi-margin-left-xsmall" color="primary">
+          {ParentStudioComponent.clickToJoinLesson}
+          <img className="parent-join-lesson-img nabi-margin-left-xsmall" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/teacher.png" alt="teacher" />
+        </Typography>
+      </Tooltip>
     );
   }
 
@@ -179,6 +187,62 @@ export const StudioParent = (props: Props) => {
     setCookie("studentId", studentId);
 
     return Router.push(Routes.BookLessons + '/' + studentId);
+  }
+
+  const renderMissingReviewsMessage = (missingFields) => {
+    const missingFieldsMessage = [];
+    missingFields.forEach((field) => {
+      if (typeof field === 'object' && field.reviews && field.reviews.length) {
+        field.reviews.forEach((review) => {
+          const reviewUrl = missingFieldsDisplay.reviews.url.replace(MissingFieldsComponent.replaceInstructorId, `${review.instructorId}`)
+          let message = missingFieldsDisplay
+            .reviews
+            .label.replace(MissingFieldsComponent.replaceStudentName, review.studentName);
+          message = message.replace(MissingFieldsComponent.replaceInstructorName, review.instructorName);
+          message = reactStringReplace(
+            message,
+            MissingFieldsComponent.replaceUrl,
+            (i: number) => (
+              <Link
+                key={i}
+                href={{
+                  pathname: reviewUrl,
+                  query: {
+                    studentName: review.studentName,
+                    instructorName: review.instructorName
+                  }
+                }}
+              ><a className="nabi-color-white nabi-text-decoration-underline" target={'_blank'} rel="noreferrer">{missingFieldsDisplay.reviews.urlText}</a>
+              </Link>
+            )
+          )
+          missingFieldsMessage.push(
+            <span className="nabi-color-white">{message}</span>
+          )
+        })
+      }
+
+      if (typeof field === 'string' && missingFieldsArray.includes(field)) {
+        let message  = reactStringReplace(
+          missingFieldsDisplay[field].label,
+          MissingFieldsComponent.replaceUrl,
+          (i: number) => (
+            <Link
+              key={i}
+              href={{
+                pathname: missingFieldsDisplay[field].url
+              }}
+            ><a className="nabi-color-white nabi-text-decoration-underline" target={'_blank'} rel="noreferrer">{missingFieldsDisplay[field].urlText}</a>
+            </Link>
+          )
+        )
+        missingFieldsMessage.push(
+          <span className="nabi-color-white">{message}</span>
+        )
+      }
+    })
+
+    return missingFieldsMessage;
   }
 
   const displayTabContent = () => {
@@ -350,6 +414,13 @@ export const StudioParent = (props: Props) => {
       {props.isFetchingDashboard ?
         <CircularProgress /> :
         <Grid container={true} spacing={0}>
+          {
+            props.dashboard && props.dashboard.missingFields && props.dashboard.missingFields && props.dashboard.missingFields.length ?
+              <MissingFields>
+                {renderMissingReviewsMessage(props.dashboard.missingFields)}
+              </MissingFields> :
+              null
+          }
           {props.dashboard && props.dashboard.students && props.dashboard.students.length > 0 ?
             <>
               {props.dashboard && props.dashboard.students && props.dashboard.students.length > 1 ?

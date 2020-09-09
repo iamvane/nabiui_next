@@ -78,6 +78,17 @@ export interface StudentDetailsType {
   lessons: StudentLessonType[];
 }
 
+export interface ReviewDetails {
+  instructorId: number;
+  instructorName: string;
+  studentName: string;
+}
+
+export interface MissingReviews {
+  reviews: ReviewDetails[];
+}
+
 export interface ParentStudentDashboardType {
   students: StudentDetailsType[];
+  missingFields: MissingReviews[] | string [];
 }
