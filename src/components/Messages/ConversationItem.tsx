@@ -4,20 +4,19 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { ContactItemComponent } from './constants';
-
 interface Props {
   message: string;
   messageTime: string;
+  sender: number;
 }
 
 export const ConversationItem = (props: Props) => (
-  <Grid item={true} xs={8}>
+  <li className={`convo-item ${props.sender === 1 ? "convo-item-selft" : "convo-item-other"}`}>
     <Typography >
       {props.message}
     </Typography>
     <Typography>
-      {moment(props.message, "h:mm").format("h:mmA")}
+      {moment(props.messageTime, "h:mm").format("h:mmA")}
     </Typography>
-  </Grid>
+  </li>
 );

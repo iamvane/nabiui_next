@@ -6,12 +6,14 @@ import {
 } from '@material-ui/core';
 
 import { ContactItemComponent } from './constants';
+import '../../../assets/scss/ContactItem.scss';
 
 interface Props {
   avatar: string;
   name: string;
   lastMessage: string;
   lastMessageDate: string;
+  goToThread: () => void;
 }
 
 const getMessageDate = (date: string): string => {
@@ -23,9 +25,9 @@ const getMessageDate = (date: string): string => {
 };
 
 export const ContactItem = (props: Props) => (
-  <Grid container={true}>
+  <Grid xs={12} className="nabi-cursor-pointer contact-item-wrapper" container={true} onClick={props.goToThread}>
     <Grid item={true} xs={2}>
-      <Avatar src={props.avatar} />
+      <Avatar src={props.avatar} className="nabi-border-nabi" />
     </Grid>
     <Grid item={true} xs={10}>
       <Grid container={true}>

@@ -4,19 +4,19 @@ export namespace MessagesComponent {
 
 export const dummyContacts = [
   {
-    avatar: "",
+    avatar: "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/female-blonde.jpg",
     name: "Vanessa C.",
     lastMessage: "Great work as usual. Please practice the scale. Hands separate and hands together.",
     lastMessageDate: "2020-08-20T13:18:57-04:00"
   },
   {
-    avatar: "",
+    avatar: "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/logo.png",
     name: "Nabi Music",
     lastMessage: "I love that song too. He is one of my favorite artists of all time.",
     lastMessageDate: "2020-08-17T13:18:57-04:00"
   },
   {
-    avatar: "",
+    avatar: "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/male-brown.jpg",
     name: "Vanessa C., Phoenix",
     lastMessage: "Next class we can try singing along the piece. Sometimes it helps us hear better.",
     lastMessageDate: "2020-08-15T13:18:57-04:00"
@@ -33,7 +33,7 @@ export const dummyConversation = [
       },
       {
         sender: 2,
-        message: 'Practive somewhere over the rainbow'
+        message: 'Practice somewhere over the rainbow'
       },
       {
         sender: 1,
@@ -42,7 +42,7 @@ export const dummyConversation = [
     ]
   },
   {
-    date: '2020-08-15T13:18:57-04:00',
+    date: '2020-08-12T13:18:57-04:00',
     messages: [
       {
         sender: 1,

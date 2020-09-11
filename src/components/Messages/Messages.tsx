@@ -2,15 +2,16 @@ import * as React from 'react';
 import moment from 'moment';
 import Router from "next/router";
 import {
+  Avatar,
   Button,
   Divider,
   Grid,
+  IconButton,
   Typography
 } from '@material-ui/core';
-import DateRangeIcon from '@material-ui/icons/DateRange';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Schedule from '@material-ui/icons/Schedule';
 import Face from '@material-ui/icons/Face';
-import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
 import { instruments } from '../../../assets/data/instruments';
 import { getCookie } from "../../utils/cookies";
@@ -19,6 +20,7 @@ import { Routes } from '../common/constants/Routes';
 import { Role } from '../../constants/Roles';
 import { ContactItem } from './ContactItem';
 import { Conversation } from './Conversation';
+import '../../../assets/scss/Messages.scss';
 
 import {
   MessagesComponent,
@@ -44,7 +46,6 @@ const Messages = (props: Props) => {
       >
         {screen === 'contacts' ?
           <>
-            <Button onClick={() => setScreen('messages')}>Go to messages</Button>
             {dummyContacts.map((contact, i) =>
               <React.Fragment key={i}>
                 <ContactItem
@@ -52,13 +53,19 @@ const Messages = (props: Props) => {
                   name={contact.name} 
                   lastMessage={contact.lastMessage}
                   lastMessageDate={contact.lastMessageDate}
+                  goToThread={() => setScreen('messages')}
                 />
                 {i !== dummyContacts.length - 1 ? <Divider className="nabi-margin-top-small nabi-margin-bottom-small"/> : '' }
               </React.Fragment>
             )}
           </> :
           <>
-            <Button onClick={() => setScreen('contacts')}>Go to contacts</Button>
+            <IconButton onClick={() => setScreen('contacts')} className="nabi-float-left conversation-back-button">
+              <ArrowBackIosIcon />
+            </IconButton>
+            <div className="conversation-avatar-wrapper">
+              <Avatar src={dummyContacts[0].avatar} className="nabi-border-nabi conversation-avatar"/>
+            </div>
             {dummyConversation.map((convo, i) => 
               <Conversation
                 key={i}

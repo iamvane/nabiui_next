@@ -269,6 +269,10 @@ header {
 	float: right !important;
 }
 
+.nabi-float-left {
+	float: left !important;
+}
+
 /*FONT FAMILY*/
 .nabi-font-jennasue {
 	font-family: 'JennaSue';
