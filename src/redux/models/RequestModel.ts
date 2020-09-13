@@ -6,55 +6,10 @@ import {
 import { ApplicationListType } from '../../components/ApplicationList/model';
 import { BookLessonsData } from '../../components/BookLessons/model';
 import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
-
-interface StudentType {
-  name: string;
-  age: number;
-}
-
-export interface RequestType {
-  id: number;
-  instrument: string;
-  lessonDuration: string;
-  skillLevel: string;
-  requestTitle: string;
-  requestMessage: string;
-  placeForLessons: string;
-  travelDistance?: string;
-  students?: StudentType[];
-  date?: string;
-  time?: string;
-  timezone?: string;
-  [x: string]: any;
-}
-
-export interface Request {
-  id: number;
-  createdAt?: string;
-  elapsedTime?: string;
-  displayName: string;
-  distance: number;
-  instrument: string;
-  lessonDuration: string;
-  requestTitle: string;
-  requestMessage: string;
-  placeForLessons: string;
-  skillLevel: string;
-  role: string;
-  applicationsReceived: number;
-  applied?: boolean;
-  studentDetails: StudentType[];
-  avatar: string;
-  location: string;
-  timezone: string;
-  date: string;
-  time: string;
-}
+import { RequestType } from '../../components/Request/models';
 
 export interface RequestState extends BookLessonsData {
   request: RequestType;
-  requestsList: ListResource<Request>;
-  requests: RequestType[];
   applicationList: ApplicationListType;
   students: StudentDetailsType[];
   student: StudentDetailsType;
@@ -81,15 +36,23 @@ export interface RequestState extends BookLessonsData {
 export const defaultRequestState: RequestState = {
   request: {
     id: 0,
+    displayName: '',
     instrument: '',
     lessonDuration: '',
     skillLevel: '',
     requestMessage: '',
     requestTitle: '',
     placeForLessons: '',
-    students: [
+    studentDetails: [
       { age: 0, name: ''}
-    ]
+    ],
+    role: '',
+    applicationsReceived: 0,
+    applied: false,
+    avatar: '',
+    location: '',
+    status: '',
+    availability: [],
   },
   instructor: {
     avatar: "",
@@ -106,13 +69,6 @@ export const defaultRequestState: RequestState = {
   },
   student: {},
   students: [],
-  requests: [],
-  requestsList: {
-    count: 0,
-    previous: '',
-    next: '',
-    results: []
-  },
   applicationList: {
     id: 0,
     requestTitle: '',
