@@ -5,10 +5,10 @@ import { APIActions } from "../models/models";
 import {
   defaultRequestState,
   RequestState,
-  RequestType
 } from "../models/RequestModel";
 import { RequestActions } from "../actions/RequestActionTypes";
 import { BookLessonsData } from '../../components/BookLessons/model';
+import { RequestType } from '../../components/Request/models';
 
 export default function requestsReducer(
   state: RequestState = defaultRequestState,
@@ -30,11 +30,10 @@ export default function requestsReducer(
       };
 
     case RequestActions.CREATE_STUDENT_SUCCESS:
-      const { data: createStudent } = <APIActions.WithData<Partial<RequestType>>>action;
-      setCookie("lessonId", createStudent.lessonId)
+      setCookie("lessonId", action.data.lessonId);
       return {
         ...state,
-        student: createStudent,
+        student: action.data,
         actions: {
           ...state.actions,
           createStudent: {
@@ -81,7 +80,6 @@ export default function requestsReducer(
           ...state.request,
           ...createdRequest
         },
-        requests: [...state.requests, createdRequest as RequestType],
         actions: {
           ...state.actions,
           createRequest: {
@@ -103,48 +101,6 @@ export default function requestsReducer(
           createRequest: {
             isRequesting: false,
             error: createRequestError
-          }
-        }
-      };
-
-    case RequestActions.FETCH_REQUESTS:
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchRequests: {
-            ...state.actions.createRequest,
-            isRequesting: true
-          }
-        }
-      };
-
-    case RequestActions.FETCH_REQUESTS_SUCCESS:
-      const { data: requests } = action;
-      return {
-        ...state,
-        requests,
-        actions: {
-          ...state.actions,
-          fetchRequests: {
-            ...state.actions.fetchRequests,
-            isRequesting: false,
-            error: ""
-          }
-        }
-      };
-
-    case RequestActions.FETCH_REQUESTS_FAILURE:
-      const { error: fetchRequestsError } = <APIActions.WithError<string>>(
-        action
-      );
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchRequests: {
-            isRequesting: false,
-            error: fetchRequestsError
           }
         }
       };
@@ -185,234 +141,6 @@ export default function requestsReducer(
           fetchRequest: {
             isRequesting: false,
             error: fetchRequestError
-          }
-        }
-      };
-
-    case RequestActions.EDIT_REQUEST:
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          editRequest: {
-            ...state.actions.editRequest,
-            isRequesting: true,
-            message: ""
-          }
-        }
-      };
-
-    case RequestActions.EDIT_REQUEST_SUCCESS:
-      const { data: editRequest } = <APIActions.WithData<any>>action;
-      const updatedRequest = state.requests.map((request) => {
-        if (request.id === editRequest.id) {
-          return {
-            ...editRequest
-          }
-        }
-        return request;
-      });
-      return {
-        ...state,
-        requests: updatedRequest,
-        actions: {
-          ...state.actions,
-          editRequest: {
-            ...state.actions.editRequest,
-            isRequesting: false,
-            error: "",
-          }
-        }
-      };
-
-    case RequestActions.EDIT_REQUEST_FAILURE:
-      const { error: editRequestError } = <APIActions.WithError<string>>action;
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          editRequest: {
-            isRequesting: false,
-            error: editRequestError,
-            message: ""
-          }
-        }
-      };
-
-    case RequestActions.DELETE_REQUEST:
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          deleteRequest: {
-            ...state.actions.deleteRequest,
-            isRequesting: true,
-            message: ""
-          }
-        }
-      };
-
-    case RequestActions.DELETE_REQUEST_SUCCESS:
-      const { data: deleteRequest } = <APIActions.WithData<any>>(
-        action
-      );
-      const deletedRequest = state.requests.filter((request) => {
-        return request.id !== deleteRequest.id;
-      });
-      return {
-        ...state,
-        requests: deletedRequest,
-        actions: {
-          ...state.actions,
-          deleteRequest: {
-            ...state.actions.deleteRequest,
-            isRequesting: false,
-            error: "",
-          }
-        }
-      };
-
-    case RequestActions.EDIT_REQUEST_FAILURE:
-      const { error: deleteRequestError } = <APIActions.WithError<string>>(
-        action
-      );
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          deleteRequest: {
-            isRequesting: false,
-            error: deleteRequestError,
-            message: ""
-          }
-        }
-      };
-
-    case RequestActions.FETCH_REQUESTS_LIST:
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchRequestList: {
-            ...state.actions.fetchRequestList,
-            isRequesting: true
-          }
-        }
-      };
-
-    case RequestActions.FETCH_REQUESTS_LIST_SUCCESS:
-      const { data: requestsList } = action;
-      return {
-        ...state,
-        requestsList,
-        actions: {
-          ...state.actions,
-          fetchRequestList: {
-            ...state.actions.fetchRequestList,
-            isRequesting: false,
-            error: ""
-          }
-        }
-      };
-
-    case RequestActions.FETCH_REQUESTS_LIST_FAILURE:
-      const { error: fetchRequestListError } = <APIActions.WithError<string>>(
-        action
-      );
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchRequestList: {
-            isRequesting: false,
-            error: fetchRequestListError
-          }
-        }
-      };
-
-    case RequestActions.FETCH_MORE_REQUESTS_LIST:
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchMoreRequestList: {
-            error: '',
-            isRequesting: true
-          }
-        }
-      };
-
-    case RequestActions.FETCH_MORE_REQUESTS_LIST_SUCCESS:
-      const { results } = action.data;
-      return {
-        ...state,
-        requestsList: {
-          ...state.requestsList,
-          results: [...state.requestsList.results, ...results]
-        },
-        actions: {
-          ...state.actions,
-          fetchMoreRequestList: {
-            isRequesting: false,
-            error: ""
-          }
-        }
-      };
-
-    case RequestActions.FETCH_MORE_REQUESTS_LIST_FAILURE: {
-      const { error: fetchRequestListError } = <APIActions.WithError<string>>(
-        action
-      );
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchMoreRequestList: {
-            isRequesting: false,
-            error: fetchRequestListError
-          }
-        }
-      };
-    }
-
-    case RequestActions.FETCH_APPLICATION_LIST:
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchApplicationList: {
-            ...state.actions.fetchApplicationList,
-            isRequesting: true
-          }
-        }
-      };
-
-    case RequestActions.FETCH_APPLICATION_LIST_SUCCESS:
-      const { data: applicationList } = action;
-      return {
-        ...state,
-        applicationList,
-        actions: {
-          ...state.actions,
-          fetchApplicationList: {
-            ...state.actions.fetchApplicationList,
-            isRequesting: false,
-            error: ""
-          }
-        }
-      };
-
-    case RequestActions.FETCH_APPLICATION_LIST_FAILURE:
-      const { error: applicationListError } = <APIActions.WithError<string>>(
-        action
-      );
-      return {
-        ...state,
-        actions: {
-          ...state.actions,
-          fetchApplicationList: {
-            isRequesting: false,
-            error: applicationListError
           }
         }
       };

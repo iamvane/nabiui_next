@@ -25,7 +25,7 @@ import { fetchRequest } from '../../redux/actions/RequestActions';
 import { instrumentDisplay } from "../../utils/displayInstrument";
 import PageTitle from '../common/PageTitle';
 import { Routes } from '../common/constants/Routes';
-import { ApplicationPayload } from "./models";
+import { ApplicationPayload, RequestType } from "./models";
 import { NewRequestComponent } from './constants'
 
 interface OwnProps {
@@ -37,7 +37,7 @@ interface DispatchProps {
 }
 
 interface StateProps {
-  request: any;
+  request: RequestType;
   isFetchingRequest: boolean;
   isResponding: boolean;
   respondMessage: string
@@ -73,6 +73,14 @@ const NewRequest = (props: Props) => {
     })
   }
 
+  const displayAvailability = () => {
+    let availability = [];
+    props.request.availability.map(item => 
+      availability.push(NewRequestComponent.weekdaysLabels[item.day] + ' ' + NewRequestComponent.timeframeLabels[item.timeframe])
+    )
+    return availability.join(', ').replace(/, ([^,]*)$/, ' and $1');
+  }
+
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
       <PageTitle pageTitle={NewRequestComponent.pageTitle} />
@@ -104,13 +112,7 @@ const NewRequest = (props: Props) => {
         <div>
           <DateRangeIcon className="text-aligned-icon" color="primary" />
           <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-          {NewRequestComponent.date.replace(
-            NewRequestComponent.datePlaceholder,
-            moment(props.request.date).format('MMM D')
-          ).replace(
-            NewRequestComponent.timePlaceholder,
-            moment(props.request.time, "h:mm").format("h:mmA")
-          )}
+            {displayAvailability()}
           </Typography>
         </div>
         <div>
@@ -134,7 +136,7 @@ const NewRequest = (props: Props) => {
               props.request.studentDetails[0].name
             ).replace(
               NewRequestComponent.agePlaceholder,
-              props.request.studentDetails[0].age
+              String(props.request.studentDetails[0].age)
             ).replace(
               NewRequestComponent.skillLevelPlaceholder,
               props.request.skillLevel
