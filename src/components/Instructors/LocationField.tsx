@@ -17,6 +17,7 @@ interface Props {
   getLocation: (location: string) => void;
   address: string;
   getLocationError?: (error: string) => void;
+  error?: string;
 }
 
 interface State {
@@ -54,6 +55,9 @@ export class LocationField extends React.Component<Props, State> {
         location: this.props.address
       });
     }
+    this.setState({
+      error: this.props.error
+    });
   }
 
   public componentDidUpdate(prevProps: Props): void {
@@ -61,6 +65,12 @@ export class LocationField extends React.Component<Props, State> {
       this.setState({
         location: this.props.address
       });
+    }
+
+    if (prevProps.error !== this.props.error) {
+      this.setState({
+        error: this.props.error
+      })
     }
   }
 

@@ -57,10 +57,10 @@ interface OwnProps {
 
 interface Props
   extends WithRouterProps,
-    NextRouter,
-    OwnProps,
-    DispatchProps,
-    StateProps {}
+  NextRouter,
+  OwnProps,
+  DispatchProps,
+  StateProps { }
 
 /**
  * Contains a form to register new users
@@ -81,7 +81,7 @@ export const Registration = (props: Props) => {
   const [registration, setRegistration] = React.useState(false);
   const [isAttemptToRegister, setIsAttemptToRegister] = React.useState(false);
   const [location, setLocation] = React.useState("");
-  const [latLng, setLatLng] = React.useState({lat: '', lng: ''});
+  const [latLng, setLatLng] = React.useState({ lat: '', lng: '' });
 
   React.useEffect(() => {
     if (props.email) {
@@ -235,8 +235,8 @@ export const Registration = (props: Props) => {
         RegistrationFormComponent.ErrorMessages.Email;
     } else if (email) {
       if (
-         //!/^([a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{1,64}@([a-zA-Z0-9-]+.[a-zA-Z0-9-]{2,}){1,255}){1,320}$/.test(
-          !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+        //!/^([a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{1,64}@([a-zA-Z0-9-]+.[a-zA-Z0-9-]{2,}){1,255}){1,320}$/.test(
+        !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
           email
         ) ||
         /^\s*$/.test(email)
@@ -265,14 +265,13 @@ export const Registration = (props: Props) => {
       formErrorsObject[FieldKey.Reference] = RegistrationFormComponent.ErrorMessages.Reference;
     }
 
-     // Validate otherText
-     if (reference === 'other' && !otherText) {
+    // Validate otherText
+    if (reference === 'other' && !otherText) {
       formErrorsObject[FieldKey.OtherText] = RegistrationFormComponent.ErrorMessages.OtherText;
     }
 
     // Validate birthday
     displayAgeDisclaimer();
-
     if (props.role !== Role.instructor) {
       // Validate phoneNumber
       if (!phoneNumber) {
@@ -281,8 +280,9 @@ export const Registration = (props: Props) => {
 
       // Validate location
       if (!location) {
-        formErrors[FieldKey.Location] = RegistrationFormComponent.ErrorMessages.Location;
+        formErrorsObject[FieldKey.Location] = RegistrationFormComponent.ErrorMessages.Location;
       }
+
     }
 
     return setFormErrors(formErrorsObject);
@@ -302,7 +302,7 @@ export const Registration = (props: Props) => {
 
   const handleNumberChange = (value: string): void => {
     setPhoneNumber(
-      Boolean(value) &&  value
+      Boolean(value) && value
     );
   }
 
@@ -320,14 +320,14 @@ export const Registration = (props: Props) => {
     setFormErrors({
       ...formErrors,
       location: ''
-    })
+    });
   }
 
   const getLatLng = (lat: string, lng: string) => {
     setLatLng({
       lat,
       lng
-    })
+    });
   };
 
   const getLocationError = (error: string) => {
@@ -336,7 +336,7 @@ export const Registration = (props: Props) => {
       location: error
     })
   }
-  
+
   return (
     <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
       <Head>
