@@ -1,5 +1,3 @@
-import { Request } from '../../redux/models/RequestModel';
-
 interface StudentType {
   name: string;
   age: number;
@@ -55,8 +53,8 @@ export interface InstructorDashboardType {
   missingFields?: string[]
   backgroundCheckStatus: string;
   lessons: LessonType[];
-  requests: Request[];
   nextLesson: NextLessonType;
+  zoomLink: string;
 }
 
 export interface StudentLessonType {

@@ -16,7 +16,6 @@ export const setDashboard = (data) => {
       missingFields: data.missingFields,
       backgroundCheckStatus: data.backgroundCheckStatus,
       lessons: data.lessons,
-      requests: data.requests,
       nextLesson: data.nextLesson,
       zoomLink: data.zoomLink
     };

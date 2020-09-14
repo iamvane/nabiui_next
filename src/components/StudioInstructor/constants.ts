@@ -115,28 +115,6 @@ export const initialInstructorDashboard = {
     lessonsRemaining: 0,
     lastLessonId: 0
   }],
-  requests: [{
-    id: 0,
-    displayName: "",
-    distance: 0,
-    instrument: "",
-    lessonDuration: "",
-    requestTitle: "",
-    requestMessage: "",
-    placeForLessons: "",
-    skillLevel: "",
-    role: "",
-    applicationsReceived: 0,
-    studentDetails: [{
-      name: "",
-      age: 0
-    }],
-    avatar: "",
-    location: "",
-    timezone: "",
-    date: "",
-    time: "",
-  }],
   nextLesson: {
     id: 0,
     date: "",
