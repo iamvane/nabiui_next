@@ -15,3 +15,31 @@
     overflow-y: none;
   }
 }
+
+.add-times__btn {
+  height: fit-content;
+}
+
+.trial-time__select {
+  font-size: 13px !important;
+}
+
+.trial-select__form--container {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.trial-select__form--day-of-week {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+@media (max-width: 600px) {
+  .trial-select__form--container {
+    flex-direction: column !important;
+  }
+  .trial-select__form--day-of-week {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}

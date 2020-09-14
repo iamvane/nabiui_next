@@ -199,3 +199,11 @@ export namespace BookingDetailsComponent {
   export const addChildButton = 'Add Another Child';
   export const continueButton = 'Continue';
 }
+
+export namespace TrialTimesAddedComponent {
+  export const trialTimesAdded = '- {dayReplace} ({timeFrameReplace})';
+  export const dayPlaceholder = '{dayReplace}';
+  export const timeFramePlaceholder = '{timeFrameReplace}';
+  export const trialAvailability = 'Trial Availability';
+  export const selectThreeTrials = 'Select 3 times that work for trial';
+}

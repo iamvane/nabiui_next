@@ -229,6 +229,10 @@ header {
   justify-content: flex-end;
 }
 
+.nabi-flex-justify-between {
+  justify-content: space-between;
+}
+
 .nabi-flex-wrap {
   flex-wrap: wrap;
 }
@@ -449,7 +453,7 @@ li.nabi-list-style-position-inside {
 	padding: 0px !important;
 }
 .nabi-padding-xsmall {
-	padding: 10px
+	padding: 10px !important;
 }
 
 .nabi-padding-small {
