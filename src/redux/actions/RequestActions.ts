@@ -238,7 +238,7 @@ export const chooseLessonPackage = (packageName: string, applicationId: number):
     dispatch(withErrorAction(RequestActions.CHOOSE_LESSON_PACKAGE_FAILURE, errorMessage));
   }
 };
-
+// lesson-request
 export const scheduleLesson = (data: Partial<LessonType>): ThunkAction<Promise<void>, {}, {}> => async (
   dispatch: Dispatch<{}>
 ) => {

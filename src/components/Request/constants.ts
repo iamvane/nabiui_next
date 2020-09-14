@@ -25,7 +25,7 @@ export namespace NewRequestComponent {
     'sat': 'Saturday',
     'sun': 'Sunday'
   }
-  
+
   export const timeframeLabels = {
     'early-morning': 'early morning (8am-10am)',
     'late-morning': 'late morning (10am-12pm)',

@@ -8,17 +8,18 @@ import {
 import Router from "next/router";
 
 import {
-  AppBar,
   Button,
   Chip,
   Grid,
-  Tabs,
-  Tab,
   Typography,
+  Divider,
+  FormControl,
+  Select
 } from '@material-ui/core';
 import DateRangeIcon from '@material-ui/icons/DateRange';
+import Add from '@material-ui/icons/Add';
 import '../../../assets/scss/ScheduleLessons.scss';
-import { scheduleLesson } from '../../redux/actions/RequestActions';
+import { scheduleLesson, createRequest } from '../../redux/actions/RequestActions';
 import { getCookie, setCookie, } from "../../utils/cookies";
 import { track } from '../../utils/analytics';
 import { StoreState } from '../../redux/reducers/store';
@@ -27,11 +28,16 @@ import SnackBar from '../common/SnackBar';
 import { Role } from '../../constants/Roles';
 import { Routes } from '../common/constants/Routes';
 import { LessonType } from '../BookLessons/model';
-import { ScheduleLessonsComponent } from './constants';
+import { ScheduleLessonsComponent, TrialTimesAddedComponent } from './constants';
 import { Calendar } from './Calendar';
+import TrialtimesAdded from './TrialtimesAdded';
+import { RequestType } from '../Request/models';
+import { NewRequestComponent } from '../Request/constants'
+
 
 interface DispatchProps {
   scheduleLesson: (lessonDetails: Partial<LessonType>) => void;
+  createRequest: (trialDetail: RequestType) => void;
 }
 
 interface OwnProps {
@@ -43,6 +49,9 @@ interface OwnProps {
 }
 
 interface StateProps {
+  isCreatingRequest: boolean;
+  createRequestError: string;
+  request: RequestType;
   isScheduling: boolean;
   error: string;
   userTimezone: string;
@@ -86,6 +95,9 @@ export const ScheduleLessons = (props: Props) => {
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   const [calendarIsOpen, setCalendarOpen] = React.useState(false);
+  const [selectedTimeFrame, selectTimeFrame] = React.useState('');
+  const [selectedDayOfTheWeek, selectDayOfTheWeek] = React.useState('');
+  const [selectedTrialTimes, selectTrialTimes] = React.useState([]);
 
   React.useEffect(() => {
     if (!props.isTrial) {
@@ -102,10 +114,18 @@ export const ScheduleLessons = (props: Props) => {
       setShowSnackbar(true);
       Router.push(Routes.ParentStudio);
     }
-  }, [props.message]);
+    if (props.request.availability && props.request.availability.length) {
+      setSnackBarDetails({
+        type: "success",
+        message: ScheduleLessonsComponent.SuccessMessage
+      });
+      setShowSnackbar(true);
+      Router.push(Routes.ParentStudio);
+    }
+  }, [props.message, JSON.stringify(props.request)]);
 
   React.useEffect(() => {
-    if (props.error) {
+    if (props.error || props.createRequestError) {
       setSnackBarDetails({
         type: "error",
         message: props.error
@@ -126,11 +146,22 @@ export const ScheduleLessons = (props: Props) => {
       const nextRoute = props.nextPath || Routes.BookingDetails;
       Router.push(nextRoute);
     }
-  }, [scheduleLesson, props.error]);
+  }, [scheduleLesson, props.error, props.createRequestError]);
 
   // get month day year
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: number) => {
     if (event) event.preventDefault();
+    const target = event.currentTarget;
+    const value = target.type === 'checkbox' ? target.checked : target.value as any;
+    const name = target.name;
+
+    if (name === 'timeFrame') {
+      selectTimeFrame(value);
+    }
+
+    if (name === 'dayOfTheWeek') {
+      selectDayOfTheWeek(value);
+    }
 
     setWeekday(newValue);
     setLessonDate(moment().add(newValue + 1, 'days').format("YYYY-MM-DD"));
@@ -214,13 +245,129 @@ export const ScheduleLessons = (props: Props) => {
     if (props.isTrial) {
       const studentId = getCookie('studentId');
       lesson.studentId = studentId;
+      const trialDetails = {
+        availability: selectedTrialTimes,
+        studentId
+      } as RequestType
+      await props.createRequest(trialDetails)
+    } else {
+      await props.scheduleLesson(lesson)
     }
-
-    await props.scheduleLesson(lesson)
     setScheduleLesson(true);
   };
 
   const role = getCookie('role');
+
+  const renderedTrialTimes = Object.entries(NewRequestComponent.timeframeLabels).map(timeFrame => {
+    return (
+      <option key={timeFrame[1]} value={timeFrame[0]}>{timeFrame[1]}</option>
+    );
+  });
+
+  const renderedDaysOfTheWeek = Object.entries(NewRequestComponent.weekdaysLabels).map(day => {
+    return (
+      <option key={day[1]} value={day[0]}>{day[1]}</option>
+    );
+  });
+
+  const deleteTrialTime = React.useCallback(
+    (day: string, timeFrame: string) => {
+      selectTrialTimes(prevState => {
+        const current = prevState.filter(time => {
+          if (time.day === day && time.timeframe === timeFrame) return false;
+          return true;
+        });
+        return current;
+      });
+    },
+    []
+  )
+
+  const renderSelectedTrialTimes = selectedTrialTimes.map((time, i) => (
+    <TrialtimesAdded
+      key={i}
+      day={time.day}
+      timeFrame={time.timeframe}
+      deleteTrialTime={(day: string, timeFrame: string) => deleteTrialTime(day, timeFrame)}
+    />
+  ));
+
+  const addTrialTimes = React.useCallback(
+    () => {
+      const trialTimeToAdd = {
+        day: selectedDayOfTheWeek,
+        timeframe: selectedTimeFrame
+      };
+
+      const trialTimeExists = selectedTrialTimes.find(t => {
+        if (t.day === trialTimeToAdd.day && t.timeframe === trialTimeToAdd.timeframe) return true;
+        return false;
+      })
+      if (trialTimeExists) {
+        return;
+      } else if (trialTimeToAdd.day && trialTimeToAdd.timeframe) {
+        selectTrialTimes(prevState => ([
+          ...prevState,
+          trialTimeToAdd
+        ]));
+      }
+    },
+    [selectedTimeFrame, selectedDayOfTheWeek, selectedTrialTimes]
+  );
+
+  const renderTrialSelect = () => {
+    return (
+      <div className="trial-select__form--container">
+        <FormControl>
+          <Select
+            className="trial-time__select"
+            native={true}
+            onChange={handleChange}
+            value={selectedTimeFrame}
+            inputProps={{
+              id: "timeFrame",
+              name: "timeFrame"
+            }}
+          >
+            <option value="" disabled={true}>
+              Select trial times
+            </option>
+            {renderedTrialTimes}
+          </Select>
+        </FormControl>
+
+        <FormControl className="trial-select__form--day-of-week">
+          <Select
+            className="trial-time__select"
+            native={true}
+            onChange={handleChange}
+            value={selectedDayOfTheWeek}
+            inputProps={{
+              id: "dayOfTheWeek",
+              name: "dayOfTheWeek"
+            }}
+          >
+            <option value="" disabled={true}>
+              Select Day Of The Week
+            </option>
+            {renderedDaysOfTheWeek}
+          </Select>
+        </FormControl>
+        <FormControl>
+          <Button
+            color="primary"
+            variant="contained"
+            className="nabi-text-uppercase nabi-margin-top-xsmall nabi-padding-xsmall"
+            disabled={selectedTrialTimes.length === 3 ? true : false}
+            onClick={addTrialTimes}
+          >
+            <Add className="nabi-margin-right-xsmall" />
+          Add
+        </Button>
+        </FormControl>
+      </div>
+    )
+  }
 
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
@@ -231,7 +378,6 @@ export const ScheduleLessons = (props: Props) => {
               setCalendarOpen(false);
             }}
             handleCalendarDate={(date) => {
-              console.log(date)
               setLessonDate(date)
             }}
           /> :
@@ -251,33 +397,24 @@ export const ScheduleLessons = (props: Props) => {
               md={8} className="nabi-section nabi-background-white nabi-margin-center"
             >
               <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
-                <div className="nabi-text-center nabi-margin-bottom-small">
-                  <DateRangeIcon className="text-aligned-icon" color="primary" />
-                  {
-                    props.isTrial ?
-                      <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
-                        <span className="nabi-color-nabi">{displayWeek()}</span>
-                      </Typography> :
-                      <Typography className="nabi-display-inline nabi-text-mediumbold nabi-margin-left-xsmall">
-                        <span className="nabi-color-nabi">{moment(lessonDate).format('MMM D, YYYY')}</span>
-                      </Typography>
-                  }
-                  <Typography className="nabi-margin-top-small">
-                    <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
-                  </Typography>
-                </div>
                 {
-                  props.isTrial ?
-                    <AppBar position="static">
-                      <Tabs value={weekday} onChange={handleChange} aria-label="availability">
-                        {getWeekDays().map((item, i) => (
-                          <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
-                        ))}
-                      </Tabs>
-                    </AppBar> :
-                    null
+                  !props.isTrial ?
+                    <div className="nabi-text-center nabi-margin-bottom-small">
+                      <DateRangeIcon className="text-aligned-icon" color="primary" />
+                      <Typography className="nabi-margin-top-small">
+                        <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
+                      </Typography>
+                    </div> :
+                    <>
+                      <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">{TrialTimesAddedComponent.trialAvailability}</span>
+                      <Divider className="nabi-margin-bottom-xsmall nabi-margin-top-xsmall" />
+                      <span>{TrialTimesAddedComponent.selectThreeTrials}</span>
+                      {selectedTrialTimes.length ? renderSelectedTrialTimes : null}
+                      {renderTrialSelect()}
+                    </>
                 }
-                {displayTabContent()}
+
+                {props.isTrial ? null : displayTabContent()}
                 <div className="nabi-text-right">
                   {
                     !props.isTrial && (
@@ -297,10 +434,10 @@ export const ScheduleLessons = (props: Props) => {
                     className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
                     variant="contained"
                     type="submit"
-                    disabled={!lessonDate || !lessonTime}
+                    disabled={lessonTime || selectedTrialTimes.length === 3 ? false : true}
                   >
                     {ScheduleLessonsComponent.nextButton}
-            </Button>
+                  </Button>
                 </div>
               </form>
             </Grid>
@@ -319,7 +456,12 @@ export const ScheduleLessons = (props: Props) => {
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
     students,
+    request,
     actions: {
+      createRequest: {
+        isRequesting: isCreatingRequest,
+        error: createRequestError
+      },
       scheduleLessons: {
         isRequesting: isScheduling,
         error,
@@ -333,13 +475,17 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     error,
     message,
     userTimezone: '',
+    request,
+    isCreatingRequest,
+    createRequestError
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): DispatchProps => ({
-  scheduleLesson: (lesson: Partial<LessonType>) => dispatch(scheduleLesson(lesson))
+  scheduleLesson: (lesson: Partial<LessonType>) => dispatch(scheduleLesson(lesson)),
+  createRequest: (trialDetails: RequestType) => dispatch(createRequest(trialDetails))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleLessons);
