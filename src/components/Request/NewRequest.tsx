@@ -89,7 +89,7 @@ const NewRequest = (props: Props) => {
         xs={12}
         md={8} className="nabi-section nabi-background-white nabi-margin-center"
       >
-        {props.isResponding ?
+        {props.isFetchingRequest || props.isResponding ?
         <div className="nabi-text-center"><CircularProgress /></div> :
         props.respondError ?
         <Typography>{NewRequestComponent.errorMessage}</Typography> :

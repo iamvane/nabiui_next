@@ -12,29 +12,29 @@ export interface StudentType {
 }
 
 export interface RequestAvailabilityType {
-  name: string;
-  age: number;
+  day: string;
+  timeframe: string;
 }
 
 export interface RequestType {
   id: number;
   createdAt?: string;
   elapsedTime?: string;
-  displayName: string;
-  distance: number;
-  instrument: string;
-  lessonDuration: string;
-  requestTitle: string;
-  requestMessage: string;
-  placeForLessons: string;
-  skillLevel: string;
-  role: string;
-  applicationsReceived: number;
+  displayName?: string;
+  instrument?: string;
+  lessonDuration?: string;
+  requestTitle?: string;
+  requestMessage?: string;
+  placeForLessons?: string;
+  skillLevel?: string;
+  role?: string;
+  applicationsReceived?: number;
   applied?: boolean;
-  studentDetails: StudentType[];
-  avatar: string;
-  location: string;
-  status: string;
-  availability: RequestAvailabilityType[]
+  studentDetails?: StudentType[];
+  avatar?: string;
+  location?: string;
+  status?: string;
+  availability: RequestAvailabilityType[];
+  studentId?: number;
 
 }
