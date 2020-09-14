@@ -6,7 +6,7 @@ import { getError } from '../../utils/handleApiErros';
 import { ApiEndpoints } from '../../constants/apiEndpoints';
 import { defaultApiError } from '../../constants/apiConstants';
 import { getCookie } from '../../utils/cookies';
-import { RequestType } from '../models/RequestModel';
+import { RequestType } from '../../components/Request/models';
 import {
   BookLessonsPayload,
   LessonType,

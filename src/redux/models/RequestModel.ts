@@ -1,7 +1,6 @@
 import {
   ActionStatus,
   ActionStatusWithMessage,
-  ListResource
 } from './models';
 import { ApplicationListType } from '../../components/ApplicationList/model';
 import { BookLessonsData } from '../../components/BookLessons/model';
