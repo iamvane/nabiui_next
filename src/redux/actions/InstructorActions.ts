@@ -578,7 +578,7 @@ export const submitApplication = (application: ApplicationPayload): ThunkAction<
     const response = await axios.post(
       ApiEndpoints.applicationInstructors,
       {...application},
-      { headers: authToken && { 'Authorization': `Bearer ${authToken}` }});
+    );
     dispatch(withDataAction(InstructorActions.SUBMIT_APPLICACTION_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === 'string') {
