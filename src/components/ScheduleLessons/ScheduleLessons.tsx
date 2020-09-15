@@ -318,24 +318,6 @@ export const ScheduleLessons = (props: Props) => {
   const renderTrialSelect = () => {
     return (
       <div className="trial-select__form--container">
-        <FormControl>
-          <Select
-            className="trial-time__select"
-            native={true}
-            onChange={handleChange}
-            value={selectedTimeFrame}
-            inputProps={{
-              id: "timeFrame",
-              name: "timeFrame"
-            }}
-          >
-            <option value="" disabled={true}>
-              Select trial times
-            </option>
-            {renderedTrialTimes}
-          </Select>
-        </FormControl>
-
         <FormControl className="trial-select__form--day-of-week">
           <Select
             className="trial-time__select"
@@ -348,9 +330,26 @@ export const ScheduleLessons = (props: Props) => {
             }}
           >
             <option value="" disabled={true}>
-              Select Day Of The Week
+              {TrialTimesAddedComponent.selectWeekDay}
             </option>
             {renderedDaysOfTheWeek}
+          </Select>
+        </FormControl>
+        <FormControl>
+          <Select
+            className="trial-time__select"
+            native={true}
+            onChange={handleChange}
+            value={selectedTimeFrame}
+            inputProps={{
+              id: "timeFrame",
+              name: "timeFrame"
+            }}
+          >
+            <option value="" disabled={true}>
+              {TrialTimesAddedComponent.selectTime}
+            </option>
+            {renderedTrialTimes}
           </Select>
         </FormControl>
         <FormControl>
