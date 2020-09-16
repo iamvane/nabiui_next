@@ -67,10 +67,9 @@ export const StudentForm = (props: Props) => {
 
       setCookie('studentName', name);
       setCookie('instrumentName', instrument || instrumentSelect);
-
       props.addChild(childToAdd);
     }
-  }, [addChild]);
+  }, [addChild, JSON.stringify(formErrors)]);
 
 
   // React.useEffect(() => {
