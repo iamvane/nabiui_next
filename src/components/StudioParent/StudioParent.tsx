@@ -290,7 +290,7 @@ export const StudioParent = (props: Props) => {
                     {rows.map((row) => (
                       <TableRow key={row.date}>
                         <TableCell>
-                          {row.date}
+                          {row.date ? row.date : 'TBD'}
                         </TableCell>
                         <TableCell>{lessonStatus(row.status)}</TableCell>
                         <TableCell>
