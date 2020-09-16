@@ -168,31 +168,6 @@ export const ScheduleLessons = (props: Props) => {
     setLessonTime('');
   };
 
-  const displayWeek = () => {
-    const tomorrow = moment().add(1, 'days').format('MMM DD');
-    const weekFromTomorrow = moment().add(7, 'days').format('MMM DD');
-
-    return `${tomorrow} - ${weekFromTomorrow}`;
-  }
-
-  const getWeekDays = (): string[] => {
-    const date = moment();
-    const dow = date.day();
-    const currentIndex = dow;
-
-    let daysArray = ScheduleLessonsComponent.weekdaysLabels.slice(currentIndex);
-    daysArray = daysArray.concat(ScheduleLessonsComponent.weekdaysLabels.slice(0, currentIndex));
-
-    let numbersArray = [];
-    for (let i = 0; i < 7; i++) {
-      numbersArray.push(moment().add((i + 1), 'days').format('DD'));
-    }
-
-    daysArray.forEach((name, index) => daysArray[index] = `${name} ${numbersArray[index]}`);
-
-    return daysArray;
-  }
-
   const handleSetLessonTime = (value: string) => {
     if (lessonTime) {
       setLessonTime('');
@@ -318,24 +293,6 @@ export const ScheduleLessons = (props: Props) => {
   const renderTrialSelect = () => {
     return (
       <div className="trial-select__form--container">
-        <FormControl>
-          <Select
-            className="trial-time__select"
-            native={true}
-            onChange={handleChange}
-            value={selectedTimeFrame}
-            inputProps={{
-              id: "timeFrame",
-              name: "timeFrame"
-            }}
-          >
-            <option value="" disabled={true}>
-              Select trial times
-            </option>
-            {renderedTrialTimes}
-          </Select>
-        </FormControl>
-
         <FormControl className="trial-select__form--day-of-week">
           <Select
             className="trial-time__select"
@@ -348,9 +305,26 @@ export const ScheduleLessons = (props: Props) => {
             }}
           >
             <option value="" disabled={true}>
-              Select Day Of The Week
+              {TrialTimesAddedComponent.selectWeekDay}
             </option>
             {renderedDaysOfTheWeek}
+          </Select>
+        </FormControl>
+        <FormControl>
+          <Select
+            className="trial-time__select"
+            native={true}
+            onChange={handleChange}
+            value={selectedTimeFrame}
+            inputProps={{
+              id: "timeFrame",
+              name: "timeFrame"
+            }}
+          >
+            <option value="" disabled={true}>
+              {TrialTimesAddedComponent.selectTime}
+            </option>
+            {renderedTrialTimes}
           </Select>
         </FormControl>
         <FormControl>

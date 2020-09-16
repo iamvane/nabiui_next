@@ -205,5 +205,7 @@ export namespace TrialTimesAddedComponent {
   export const dayPlaceholder = '{dayReplace}';
   export const timeFramePlaceholder = '{timeFrameReplace}';
   export const trialAvailability = 'Trial Availability';
-  export const selectThreeTrials = 'Select 3 times that work for trial';
+  export const selectThreeTrials = 'Select 3 times that work for the trial';
+  export const selectWeekDay = 'Select weekday';
+  export const selectTime = 'Select time'
 }
