@@ -168,31 +168,6 @@ export const ScheduleLessons = (props: Props) => {
     setLessonTime('');
   };
 
-  const displayWeek = () => {
-    const tomorrow = moment().add(1, 'days').format('MMM DD');
-    const weekFromTomorrow = moment().add(7, 'days').format('MMM DD');
-
-    return `${tomorrow} - ${weekFromTomorrow}`;
-  }
-
-  const getWeekDays = (): string[] => {
-    const date = moment();
-    const dow = date.day();
-    const currentIndex = dow;
-
-    let daysArray = ScheduleLessonsComponent.weekdaysLabels.slice(currentIndex);
-    daysArray = daysArray.concat(ScheduleLessonsComponent.weekdaysLabels.slice(0, currentIndex));
-
-    let numbersArray = [];
-    for (let i = 0; i < 7; i++) {
-      numbersArray.push(moment().add((i + 1), 'days').format('DD'));
-    }
-
-    daysArray.forEach((name, index) => daysArray[index] = `${name} ${numbersArray[index]}`);
-
-    return daysArray;
-  }
-
   const handleSetLessonTime = (value: string) => {
     if (lessonTime) {
       setLessonTime('');
