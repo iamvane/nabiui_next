@@ -32,7 +32,8 @@ import { ScheduleLessonsComponent, TrialTimesAddedComponent } from './constants'
 import { Calendar } from './Calendar';
 import TrialtimesAdded from './TrialtimesAdded';
 import { RequestType } from '../Request/models';
-import { NewRequestComponent } from '../Request/constants'
+import { NewRequestComponent } from '../Request/constants';
+import PrivateRoute from '../Auth/PrivateRoutes';
 
 
 interface DispatchProps {
@@ -462,5 +463,5 @@ const mapDispatchToProps = (
   createRequest: (trialDetails: RequestType) => dispatch(createRequest(trialDetails))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScheduleLessons);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(ScheduleLessons, 'Private', ['Student', 'Parent']));
 

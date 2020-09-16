@@ -14,6 +14,7 @@ import {
   createStudent,
   fetchStudents
 } from '../../redux/actions/RequestActions';
+import PrivateRoute from "../Auth/PrivateRoutes"
 import { getCookie, setCookie, removeCookie } from '../../utils/cookies';
 import { Timezone } from '../../redux/models/TimeZonesModel';
 import { StoreState } from '../../redux/reducers/store';
@@ -152,4 +153,4 @@ const mapDispatchToProps = (
   fetchStudents: () => dispatch(fetchStudents())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LessonDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute(LessonDetails, 'Private', ['Student', 'Parent']));

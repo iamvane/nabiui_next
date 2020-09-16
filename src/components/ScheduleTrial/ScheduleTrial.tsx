@@ -5,6 +5,7 @@ import { Routes } from '../common/constants/Routes';
 import { Role } from '../../constants/Roles';
 import { ScheduleTrialComponent } from './constants';
 import ScheduleLessons from '../ScheduleLessons/ScheduleLessons';
+import PrivateRoute from '../Auth/PrivateRoutes';
 
 export const ScheduleTrial = () => {
   const role = getCookie('role');
@@ -21,4 +22,4 @@ export const ScheduleTrial = () => {
   )
 }
 
-export default ScheduleTrial;
+export default PrivateRoute(ScheduleTrial, 'Private', ['Student', 'Parent']);
