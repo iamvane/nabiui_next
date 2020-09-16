@@ -39,5 +39,6 @@ export enum LessonStatuses {
 export enum LessonStatusLabels {
   scheduled = 'Scheduled',
   missed = 'Missed',
-  complete = 'Complete'
+  complete = 'Complete',
+  pending = 'Pending'
 }
