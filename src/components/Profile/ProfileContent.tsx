@@ -21,13 +21,20 @@ interface Props {
  * Profile Content
  */
 const ProfileContent: React.StatelessComponent<Props> = props => {
-  const qualifications = props.instructor.qualifications && Object.keys(props.instructor.qualifications).map((key: string, i: number) => {
-    let qualificationItems = [];
-    if (props.instructor.qualifications[key] === true) {
-      qualificationItems.push(Qualifications[key])
-    }
-    return qualificationItems;
-  });
+  let qualifications;
+  if (props.instructor.qualifications) {
+    qualifications =  Object.keys(props.instructor.qualifications).map((key: string, i: number) => {
+      let qualificationItems = [];
+      if (props.instructor.qualifications[key] === true) {
+        qualificationItems.push(Qualifications[key])
+      }
+      return qualificationItems
+    });
+    qualifications = qualifications.filter((item) => {
+      if (item.length > 0) return true
+      return false;
+    });
+  }
 
   const employmentAdded = props.instructor.employment && props.instructor.employment.map((employment, i) => (
     <li className="nabi-list" key={i}>
