@@ -1,5 +1,4 @@
 .conversation-avatar-wrapper {
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -11,6 +10,12 @@
 .conversation-avatar {
     width: 70px;
     height: 70px;
+    margin-left: -10px;
+}
+
+.conversation-item {
+    height: 400px;
+    overflow-y: auto;
 }
 
 @media only screen and (min-width: 600px) {

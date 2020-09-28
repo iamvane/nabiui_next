@@ -8,7 +8,6 @@ import {
 } from "../../constants/apiConstants";
 import { getError } from "../../utils/handleApiErros";
 import { ApiEndpoints } from "../../constants/apiEndpoints";
-import { Role } from "../../constants/Roles";
 import { RegistrationType } from "../../components/Auth/Registration/models";
 import {
   AccountInfoType,
@@ -17,6 +16,10 @@ import {
 import { getCookie } from "../../utils/cookies";
 import { requestAction, withDataAction, withErrorAction } from "./actions";
 import { UserActions } from "./UserActionTypes";
+import {
+  database,
+  firebase
+} from "../../utils/firebase";
 
 interface ChangeAvatar extends Action {
   id: number;
@@ -41,6 +44,22 @@ export const createUser = (
   try {
     const url = ApiEndpoints.register;
     const response = await axios.post(url, user);
+    firebase.auth().createUserWithEmailAndPassword(user.email, user.password).then((data) => {
+
+      database.collection("user").add({
+        displayName: `${user.firstName} ${user.lastName.charAt(0)}.`,
+        email: user.email,
+        uid: data.user.uid,
+        photoUrl: "https://nabimusic-staging.s3.us-east-2.amazonaws.com/media/avatars/charles%40gmail.com/Screen_Shot_2020-08-10_at_8.48.40_AM.png"
+      })
+      .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+          console.error("Error adding document: ", error);
+      });
+    });
+    
     dispatch(withDataAction(UserActions.CREATE_USER_SUCCESS, response.data));
   } catch (e) {
     if (getError(e) && typeof getError(e) === "string") {
@@ -65,7 +84,9 @@ export const authenticateUser = (
       email,
       password
     };
+
     const response = await axios.post(url, requestBody);
+    firebase.auth().signInWithEmailAndPassword(email, password);
     dispatch(
       withDataAction(UserActions.AUTHENTICATE_USER_SUCCESS, response.data)
     );
