@@ -131,10 +131,15 @@ export const initialInstructorDashboard = {
 
 export enum RateInstructorComponent {
   PageTitle = 'Rate your instructor',
+  PageTitleWithInstructorName = 'Rate {instructorName}',
   Title = 'How was your trial lesson?',
+  TitleWithStudentName = 'How was {studentName}\'s trial lesson',
   RatingHeader = 'Rating',
   RatingDescription = 'Specify the grade',
   Comment = 'Comment',
   SubmitReview = 'Submit Review',
   ReviewPlaceholder = 'Share your experience: how was the instructor and the lesson? Did you or your child enjoy it?'
 }
+
+export const replaceInstructorName = '{instructorName}';
+export const replaceStudentName = '{studentName}'

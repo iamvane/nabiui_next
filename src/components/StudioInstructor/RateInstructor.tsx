@@ -13,8 +13,12 @@ import {
 } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
 
+import { getCookie } from "../../utils/cookies";
+
 import {
-  RateInstructorComponent
+  RateInstructorComponent,
+  replaceInstructorName,
+  replaceStudentName
 } from "./constants";
 
 import SectionTitle from '../common/SectionTitle';
@@ -26,6 +30,7 @@ import { StoreState } from '../../redux/reducers/store';
 
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
+import { Role } from '../../constants/Registration';
 
 export interface Props {
   handleCancel?: () => void;
@@ -43,6 +48,9 @@ export default function RateInstructor(props: Props) {
   const router = useRouter();
 
   const instructorId = router.query.instructorId as string;
+  const studentName = router.query.studentName as string;
+  const instructorName = router.query.instructorName as string;
+  const role = getCookie('role');
 
   const handleChange = React.useCallback((
     event: React.ChangeEvent<HTMLInputElement>
@@ -120,18 +128,47 @@ export default function RateInstructor(props: Props) {
     });
   }, [snackbarIsOpen])
 
+  const renderPageTitle = () => {
+    const isParent = role === Role.parent
+    if (isParent && instructorName) {
+      const pageTitle = RateInstructorComponent.PageTitleWithInstructorName
+        .replace(replaceInstructorName, instructorName);
+      return (
+        <PageTitle pageTitle={pageTitle} />
+      )
+    }
+    return (
+      <PageTitle pageTitle={RateInstructorComponent.PageTitle} />
+    )
+  }
+
+  const renderTitle = () => {
+    const isParent = role === Role.parent
+    if (isParent && studentName) {
+      const title = RateInstructorComponent.TitleWithStudentName
+        .replace(replaceStudentName, studentName);
+      return (
+        <p className="nabi-color-nabi nabi-jennasue-title nabi-margin-bottom-zero nabi-margin-top-zero">
+          {title}
+        </p>
+      )
+    }
+    return (
+      <p className="nabi-color-nabi nabi-jennasue-title nabi-margin-bottom-zero nabi-margin-top-zero">
+        {RateInstructorComponent.Title}
+      </p>
+    )
+  }
+
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
-      <PageTitle pageTitle={RateInstructorComponent.PageTitle} />
+      {renderPageTitle()}
       <div className="nabi-display-flex nabi-flex-justify-center">
         <Grid
           container={true}
           className="nabi-background-white nabi-border-radius nabi-padding-small nabi-display-flex nabi-flex-justify-center"
         >
-          <p className="nabi-color-nabi nabi-jennasue-title nabi-margin-bottom-zero nabi-margin-top-zero">
-            {RateInstructorComponent.Title}
-          </p>
-
+          {renderTitle()}
           <Grid item={true} md={8} xs={12} sm={10}>
             <SectionTitle text={RateInstructorComponent.RatingHeader} noDivider={false} />
             <Rating

@@ -22,5 +22,6 @@ export const setDashboard = (data) => {
   }
   return (dashboard as ParentStudentDashboardType) =  {
     students: data.students,
+    missingFields: data.missingFields
   };
 };
