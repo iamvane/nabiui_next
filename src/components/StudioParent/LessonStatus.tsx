@@ -20,7 +20,7 @@ export const LessonStatus = (props: Props) => {
     scheduled: <CalendarTodayIcon className="text-aligned-icon scheduled-status" />,
     missed: <CancelIcon className="text-aligned-icon missed-status" />,
     complete: <CheckCircleIcon className="text-aligned-icon complete-status" />,
-    pending: <Warning className="text-aligned-icon" />
+    pending: <Warning className="text-aligned-icon pending-status" />
   }
 
   const statusStyles = {
