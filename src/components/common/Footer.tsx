@@ -1,79 +1,41 @@
 import * as React from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const reactStringReplace = require('react-string-replace');
 
 import {
   Grid,
-  Typography
+  Typography,
 } from '@material-ui/core';
 
 import '../../../assets/scss/Footer.scss'
-import SocialMenu  from './SocialMenu';
+import SocialMenu from './SocialMenu';
 import { FooterComponent } from './constants/Footer';
 import { Routes } from './constants/Routes';
 import { getCookie } from '../../utils/cookies';
+
+import RegistrationParentStudentOptions from "../Auth/Registration/RegistrationParentStudentOptions"
 
 /**
  * Homepage footer component
  */
 export const Footer = () => {
-  const [hbspt, setHbspt] = React.useState(typeof window !== 'undefined' && (window as any)['hbspt']);
   const isLoggedIn = getCookie('token');
   const router = useRouter();
-
-  React.useEffect(() => {
-    if (!isLoggedIn && !isPrivatePage() && !router.pathname.includes("registration")) {
-      if (!hbspt) {
-        setHubSpot();
-        return;
-      }
-
-      hbspt.forms.create({
-        portalId: '7039981',
-        formId: 'df6ad8d1-eb9e-4500-aa91-6bd092971fa7',
-        target: '#hubspotFormFooter'
-      });
-    }
-  }, [router.pathname]);
-
-  const isPrivatePage = () => {
-    const privateRoutes: string[] = [
-      Routes.BuildProfile,
-      Routes.BuildRequest,
-      Routes.InstructorStudio,
-      Routes.ParentStudio,
-      Routes.AccountRecovery,
-      Routes.Login,
-      Routes.ForgotPassword,
-      '/student-profile-builder',
-      '/free-lesson'
-    ];
-    return privateRoutes.indexOf(router.pathname) > -1;
-  }
-
-  const setHubSpot = () => {
-    const hs = typeof window !== 'undefined' && (window as any)['hbspt'];
-    setHbspt(hs);
-  }
-
   return (
     <div id="footer">
-      <Head>
-        <script type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-      </Head>
       <div className="nabi-container">
-       {(!isLoggedIn &&
-        !router.pathname.includes("registration") &&
-        !router.pathname.includes("student-profile-builder") &&
-        !router.pathname.includes("free-lesson")) &&
-        <div>
-          <p className="nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-small nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>
-          <div id="hubspotFormFooter"></div>
-        </div>
-       }
+        {(!isLoggedIn &&
+          !router.pathname.includes("registration") &&
+          !router.pathname.includes("student-profile-builder") &&
+          !router.pathname.includes("free-lesson")) &&
+          <>
+            <RegistrationParentStudentOptions inFooter={true}>
+              <p className="nabi-jennasue-title nabi-margin-top-medium nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>
+            </RegistrationParentStudentOptions>
+          </>
+        }
         <Grid className="nabi-padding-top-xlarge nabi-padding-bottom-medium" container={true}>
           <Grid item={true} xs={12} md={3}>
             <p className="nabi-text-mediumbold nabi-font-medium">{FooterComponent.learnMoreSection}</p>
@@ -99,9 +61,9 @@ export const Footer = () => {
             <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.PrivacyPolicy}><a>{FooterComponent.privacyPolicy}</a></Link></Typography>
           </Grid>
         </Grid>
-          <div className="nabi-margin-bottom-xsmall nabi-text-center">
-            <SocialMenu />
-          </div>
+        <div className="nabi-margin-bottom-xsmall nabi-text-center">
+          <SocialMenu />
+        </div>
         <Typography className="nabi-margin-top-medium nabi-text-center">
           {reactStringReplace(
             FooterComponent.CopyrightText,

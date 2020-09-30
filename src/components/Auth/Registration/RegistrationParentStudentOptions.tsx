@@ -8,15 +8,19 @@ import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescr
 import { Routes } from '../../common/constants/Routes';
 import { RegistrationParentstudentOptionsComponent } from './constants';
 
-interface Props {}
+interface Props {
+  children?: React.ReactNode;
+  inFooter?: boolean;
+}
 
 /**
  * Contains the registration form fields
  */
-const RegistrationParentStudentOptions: React.StatelessComponent<Props> = () => {
+const RegistrationParentStudentOptions: React.StatelessComponent<Props> = (props: Props) => {
   const routeToRegistration = (route: string) => {
     return Router.push(route);
   }
+
   return (
     <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
       <Head>
@@ -25,7 +29,8 @@ const RegistrationParentStudentOptions: React.StatelessComponent<Props> = () => 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
       </Head>
       <div className="nabi-background-white nabi-section nabi-text-center">
-        <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-small nabi-margin-top-zero">
+        {props.children}
+        <p className={`${props.inFooter ? 'nabi-text-uppercase nabi-text-mediumbold' : 'nabi-jennasue-title nabi-color-nabi nabi'} nabi-margin-bottom-small nabi-margin-top-zero}`}>
           {RegistrationParentstudentOptionsComponent.description}
         </p>
         <Button
