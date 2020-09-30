@@ -14,6 +14,7 @@ import {
   Typography,
   Tooltip
 } from '@material-ui/core';
+const reactStringReplace = require('react-string-replace');
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import { StoreState } from '../../redux/reducers/store';
 import { fetchDashboard } from '../../redux/actions/UserActions';
@@ -21,7 +22,14 @@ import { getCookie, setCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import PageTitle from '../common/PageTitle';
 import PrivateRoute from '../Auth/PrivateRoutes';
-import { InstructorStudioComponent, MissingFields, initialInstructorDashboard } from './constants';
+import {
+  InstructorStudioComponent,
+  MissingFieldsConstants,
+  initialInstructorDashboard,
+  MissingFieldsComponent,
+  missingFieldsDisplay,
+  missingFieldsArray
+} from './constants';
 import {
   LessonType,
   InstructorDashboardType,
@@ -29,6 +37,7 @@ import {
 import LessonCard from './LessonCard';
 import { ZoomMissingLink } from "./ZoomLinkMissing";
 import '../../../assets/scss/StudioInstructor.scss';
+import { MissingFields } from "../MissingFields/MissingFields";
 
 interface StateProps {
   dashboard: InstructorDashboardType;
@@ -63,7 +72,7 @@ export const StudioInstructor = (props: Props) => {
       setCookie("instructorId", props.dashboard.id);
       setDashboard(props.dashboard);
       setIsFetchingDashboard(false);
-      if (props.dashboard.missingFields.includes(MissingFields.ZoomLink)) {
+      if (props.dashboard.missingFields.includes(MissingFieldsConstants.ZoomLink)) {
         setDialogIsOpen(true);
       }
     }
@@ -128,6 +137,32 @@ export const StudioInstructor = (props: Props) => {
     );
   }
 
+  const renderMissingReviewsMessage = (missingFields) => {
+    const missingFieldsMessage = [];
+    missingFields.forEach((field) => {
+      if (typeof field === 'string' && missingFieldsArray.includes(field)) {
+        let message = reactStringReplace(
+          missingFieldsDisplay[field].label,
+          MissingFieldsComponent.replaceUrl,
+          (i: number) => (
+            <Link
+              key={i}
+              href={{
+                pathname: missingFieldsDisplay[field].url
+              }}
+            ><a className="nabi-color-white nabi-text-decoration-underline" target={'_blank'} rel="noreferrer">{missingFieldsDisplay[field].urlText}</a>
+            </Link>
+          )
+        )
+        missingFieldsMessage.push(
+          <span className="nabi-color-white">{message}</span>
+        )
+      }
+    })
+
+    return missingFieldsMessage;
+  }
+
   const firstName = getCookie('firstName');
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large nabi-display-flex nabi-flex-column nabi-flex-align-center">
@@ -139,6 +174,15 @@ export const StudioInstructor = (props: Props) => {
         <>
           <Grid container={true} spacing={7}>
             <Grid item={true} xs={12}>
+              {
+                props.dashboard && props.dashboard.missingFields && props.dashboard.missingFields && props.dashboard.missingFields.length ?
+                  <div className="nabi-display-flex">
+                    <MissingFields>
+                      {renderMissingReviewsMessage(props.dashboard.missingFields)}
+                    </MissingFields>
+                  </div> :
+                  null
+              }
               <div className="nabi-display-flex nabi-flex-align-baseline nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-bottom-small">
                 <ScheduleIcon color="primary" className="text-aligned-icon" />
                 {dashboard && dashboard.nextLesson && dashboard.nextLesson.id ?
