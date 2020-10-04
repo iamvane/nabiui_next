@@ -415,7 +415,7 @@ export const StudioParent = (props: Props) => {
         <CircularProgress /> :
         <Grid container={true} spacing={0}>
           {
-            props.dashboard && props.dashboard.missingFields && props.dashboard.missingFields && props.dashboard.missingFields.length ?
+            props.dashboard && props.dashboard.missingFields && props.dashboard.missingFields.length > 0 ?
               <MissingFields>
                 {renderMissingReviewsMessage(props.dashboard.missingFields)}
               </MissingFields> :
