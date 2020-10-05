@@ -17,13 +17,15 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
+import ArrowdownIcon from "@material-ui/icons/KeyboardArrowDownOutlined";
 import '../../../assets/scss/ChildForm.scss';
+import { specialNeeds } from '../../../assets/data/specialNeeds';
 
 import { setCookie } from "../../utils/cookies";
 import { instruments } from '../../../assets/data/instruments';
 import { checkErrors } from "../../utils/checkErrors";
 import { Role } from '../../constants/Roles';
-import { ChildFormComponent } from './constants';
+import { ChildFormComponent, LessonDetailsComponent, } from './constants';
 import { StudentDetailsType } from '../Dashboard/ParentStudentDashboard/model';
 
 interface Props {
@@ -39,6 +41,8 @@ export const StudentForm = (props: Props) => {
   const [level, setLevel] = React.useState('');
   const [formErrors, setFormErrors] = React.useState(ChildFormComponent.defaultErrors);
   const [addChild, setAddChild] = React.useState(false);
+  const [specialNeed, selectSpecialNeed] = React.useState('');
+  const [notes, setNotes] = React.useState('');
 
   const instrumentSelectItems = instruments.map(instrument => {
     return (
@@ -55,6 +59,8 @@ export const StudentForm = (props: Props) => {
       let childToAdd: StudentDetailsType = {
         instrument: instrument || instrumentSelect,
         skillLevel: level,
+        ...(specialNeed && { specialNeeds: [specialNeed]}),
+        ...(notes && { notes})
       };
 
       if (props.role === Role.parent) {
@@ -76,7 +82,7 @@ export const StudentForm = (props: Props) => {
   //   Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
   // }, [props.]);
 
-  const handleChange = (event) : void => {
+  const handleChange = (event): void => {
     const target = event.currentTarget;
     const value = target.value;
     const name = target.name;
@@ -87,6 +93,13 @@ export const StudentForm = (props: Props) => {
     if (name === 'instrument') {
       setInstrument('');
       setInstrumentSelect(value);
+    }
+    if (name === 'specialNeed') {
+      selectSpecialNeed(value);
+    }
+
+    if (name === 'notes') {
+      setNotes(value);
     }
   }
 
@@ -139,63 +152,84 @@ export const StudentForm = (props: Props) => {
     setInstrument(value)
   }
 
+  const renderedSpecialNeeds = specialNeeds.map(specialNeed => {
+    return (
+      <option key={specialNeed.value} value={specialNeed.value}>{specialNeed.name}</option>
+    );
+  });
+
+  const renderSpecialNeeds = () => {
+    return (
+      <FormControl>
+        <Select
+          classes={{
+            select: "lesson-details__special-needs--select"
+          }}
+          native={true}
+          onChange={handleChange}
+          IconComponent={() => (<ArrowdownIcon color="action" />)}
+          value={specialNeed}
+          inputProps={{
+            id: `${ChildFormComponent.Ids.SpecialNeed}`,
+            name: `${ChildFormComponent.Ids.SpecialNeed}`,
+          }}
+        >
+          <option value="" disabled={true}>
+            {ChildFormComponent.selectSpecialNeeds}
+          </option>
+          {renderedSpecialNeeds}
+        </Select>
+        {formErrors.specialNeeds && <FormHelperText error={true}>{formErrors.specialNeeds}</FormHelperText>}
+      </FormControl>
+    )
+  }
+
   return (
-    <form>
+    <>
       {props.role === Role.parent &&
-      <Grid item={true} xs={12}>
-        <Grid spacing={1} container={true}>
-          <Grid item={true} xs={12}>
-            <TextField
-              id={ChildFormComponent.Ids.Name}
-              name={ChildFormComponent.FieldNames.Name}
-              placeholder={ChildFormComponent.Placeholders.Name}
-              required={true}
-              fullWidth={true}
-              onChange={handleChange}
-              value={name}
-              error={!!formErrors.name}
-              helperText={formErrors.name}
+        <div className="nabi-display-flex nabi-flex-column">
+          <TextField
+            id={ChildFormComponent.Ids.Name}
+            name={ChildFormComponent.FieldNames.Name}
+            placeholder={ChildFormComponent.Placeholders.Name}
+            required={true}
+            fullWidth={true}
+            onChange={handleChange}
+            value={name}
+            error={!!formErrors.name}
+            helperText={formErrors.name}
+          />
+
+          <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
+            {ChildFormComponent.Labels.Dob}
+          </Typography>
+
+          <FormControl required={true}>
+            <DatePicker
+              selected={dob ? moment(new Date(dob)) : moment(Date.now())}
+              onChange={handleBirthdayChange}
+              peekNextMonth={true}
+              showMonthDropdown={true}
+              showYearDropdown={true}
+              dropdownMode="select"
             />
-          </Grid>
+            {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
+          </FormControl>
 
-          <Grid item={true} xs={12}>
-            <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
-              {ChildFormComponent.Labels.Dob}
-            </Typography>
-
-            <FormControl fullWidth={false} required={true}>
-              <DatePicker
-                selected={dob ? moment(new Date(dob)) : moment(Date.now())}
-                onChange={handleBirthdayChange}
-                peekNextMonth={true}
-                showMonthDropdown={true}
-                showYearDropdown={true}
-                dropdownMode="select"
-              />
-              {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
-            </FormControl>
-          </Grid>
-        </Grid>
-      </Grid>
-      }
-      <Grid item={true} xs={12}>
-        <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
-      </Grid>
-      <Grid item={true} xs={12}>
-        <Grid container={true} spacing={1}>
-          {ChildFormComponent.instrumentChips.map((item) => {
-            return <Grid item={true} xs={6} md={4} key={item.value}>
-              <Chip
-                className="nabi-full-width"
+          <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
+          <div className="nabi-display-flex nabi-flex-wrap">
+            {ChildFormComponent.instrumentChips.map((item) => {
+              return (<Chip
+                className="student__instrument"
                 onClick={() => handleSetInstrument(item.value)
                 }
                 color={item.value === instrument ? "primary" : 'default'}
                 label={item.label}
-              />
-            </Grid>
-          })}
-          <Grid item={true} xs={6} md={4}>
-            <FormControl fullWidth={true} className="nabi-margin-remove">
+              />)
+            })}
+            <FormControl classes={{
+              root: "nabi-margin-remove student__instrument"
+            }}>
               <Select
                 native={true}
                 input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
@@ -207,39 +241,58 @@ export const StudentForm = (props: Props) => {
                 {instrumentSelectItems}
               </Select>
             </FormControl>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item={true} xs={12}>
-        {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
-        <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
-      </Grid>
-      <Grid item={true} xs={12}>
-        <Grid container={true} spacing={1}>
-          {ChildFormComponent.levelChips.map((item) => (
-            <Grid item={true} xs={4} key={item.value}>
+          </div>
+
+          {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
+          <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
+
+          <div className="nabi-display-flex nabi-flex-wrap">
+            {ChildFormComponent.levelChips.map((item) => (
               <Chip
-                className="nabi-full-width level-chips"
+                className="level-chips student__level"
                 onClick={() => setLevel(item.value)}
                 color={item.value === level ? "primary" : 'default'}
                 label={item.label}
               />
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-      {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
-      <div className="nabi-text-right">
-        <Button
-          color="primary"
-          className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
-          variant="contained"
-          onClick={handleSubmit}
-        >
-          Next
+            ))}
+          </div>
+          {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
+
+          <Typography color={formErrors.specialNeeds ? 'error' : 'primary'} className="nabi-margin-top-small">
+            {ChildFormComponent.Labels.SpecialNeeds}
+          </Typography>
+
+          <div className="nabi-display-flex">
+            {renderSpecialNeeds()}
+          </div>
+
+          <Typography color='primary' className="nabi-margin-top-small">
+            {ChildFormComponent.Labels.Notes}
+          </Typography>
+
+          <TextField
+            fullWidth={true}
+            id={ChildFormComponent.Ids.Notes}
+            name={ChildFormComponent.Ids.Notes}
+            value={notes}
+            onChange={handleChange}
+            placeholder={ChildFormComponent.Placeholders.Notes}
+            required={true}
+          />
+
+          <div className="nabi-text-right">
+            <Button
+              color="primary"
+              className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+              variant="contained"
+              onClick={handleSubmit}
+            >
+              Next
         </Button>
-      </div>
-    </form>
+          </div>
+        </div>
+      }
+    </>
   )
 }
 

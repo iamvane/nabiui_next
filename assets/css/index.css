@@ -209,6 +209,10 @@ header {
   flex-direction: column !important;
 }
 
+.nabi-flex-wrap {
+  flex-wrap: wrap !important;
+}
+
 .nabi-display-flex {
   display: flex !important;
 }

@@ -7,6 +7,8 @@ export interface StudentDetailsType {
   lessonPlace?: string;
   lessonDuration?: string;
   studentId?: number;
+  specialNeeds?: string[];
+  notes?: string;
 }
 
 export interface ParentProfileType {
