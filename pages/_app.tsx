@@ -44,7 +44,8 @@ class NabiApp extends App<any, any> {
   }
 
   componentDidCatch(error, errorInfo) {
-    Sentry.withScope(scope => {
+    const prod = process.env.NODE_ENV == "production";
+    prod && Sentry.withScope(scope => {
       Object.keys(errorInfo).forEach(key => {
         scope.setExtra(key, errorInfo[key]);
       });

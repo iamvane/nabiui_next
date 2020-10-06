@@ -5,12 +5,12 @@ import {
   Typography
 } from '@material-ui/core';
 
+import { ReceiverType } from './Messages';
 import { ContactItemComponent } from './constants';
 import '../../../assets/scss/ContactItem.scss';
 
 interface Props {
-  avatar: string;
-  name: string;
+  receiver: ReceiverType;
   lastMessage: string;
   lastMessageDate: string;
   goToThread: () => void;
@@ -27,12 +27,12 @@ const getMessageDate = (date: string): string => {
 export const ContactItem = (props: Props) => (
   <Grid xs={12} className="nabi-cursor-pointer contact-item-wrapper" container={true} onClick={props.goToThread}>
     <Grid item={true} xs={2}>
-      <Avatar src={props.avatar} className="nabi-border-nabi" />
+      <Avatar src={props.receiver && props.receiver.photoUrl} className="nabi-border-nabi" />
     </Grid>
     <Grid item={true} xs={10}>
       <Grid container={true}>
         <Grid item={true} xs={9}>
-          <Typography><span className="nabi-text-mediumbold">{props.name}</span></Typography>
+          <Typography><span className="nabi-text-mediumbold">{props.receiver && props.receiver.displayName}</span></Typography>
         </Grid>
         <Grid item={true} xs={3}>
           <Typography className="nabi-text-right">

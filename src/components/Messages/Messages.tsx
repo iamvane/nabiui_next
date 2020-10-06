@@ -31,6 +31,11 @@ interface Props {
   handleContinue?: () => void;
 }
 
+export interface ReceiverType {
+  displayName: string;
+  photoUrl: string;
+}
+
 const Messages = (props: Props) => {
   const [authenticated, setAuthenticated] = React.useState(false)
   const [loading, setLoading] = React.useState(true)
@@ -44,6 +49,7 @@ const Messages = (props: Props) => {
   const [messageText, setMessageText] = React.useState('');
   const [sentAt, setSentAt] = React.useState('');
   const [currentGroupId, setCurrentGroupId] = React.useState('');
+  const [receivers, setReceivers] = React.useState([] as ReceiverType[]);
 
   React.useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -56,28 +62,55 @@ const Messages = (props: Props) => {
         setLoading(false)
       }
     })
+  },[]);
 
+  React.useEffect(() => {
     const fetchData = async () => {
       try {
         // fetchGroupByUserID(uid) {
           return new Promise((resolve, reject) => {
             const groupRef = database.collection('group')
             groupRef
-             .where('members', 'array-contains', uid)
-             .onSnapshot((querySnapshot) => {
-               const allGroups = []
-               querySnapshot.forEach((doc) => {
-                 const data = doc.data()
-                 data.id = doc.id
-                 if (data.recentMessage) allGroups.push(data)
-               })
-               setGroups(allGroups)
-             })
-           })
+            .where('members', 'array-contains', uid)
+            .onSnapshot((querySnapshot) => {
+              const allGroups = []
+              let receiverData;
+              querySnapshot.forEach((doc) => {
+                console.log('*******HERE IS THE DOC******')
+                console.log(doc)
+                const data = doc.data()
+                if (data.members) {
+                  console.log("yes data members")
+                    // const recevierUid = data.members.pop(uid);
+                    var receiverRef = database.collection("user").doc('9AZVcEtzQrd0HM6rhgtA2Nk6dMr2');
+                    receiverRef.get().then((doc) => {
+                      if (doc.exists){
+                        receiverData = {
+                          displayName: doc.data().displayName,
+                          photoUrl: doc.data().photoUrl
+                        };
+                      }
+                    }).catch(function(error) {
+                      console.log("Error getting receiver:", error)
+                    });
+                } else {
+                  console.log("no data members")
+                }
+                data.id = doc.id
+                data.receiver = receiverData;
+
+                if (data.recentMessage) allGroups.push(data)
+              })
+              setGroups(allGroups)
+            })
+          })
         }
-    };
+        catch {
+          alert('error')
+        }
+    }
     fetchData();
-  },[]);
+  },[uid]);
 
 
   const sendMessage = async (e) => {
@@ -127,18 +160,22 @@ const Messages = (props: Props) => {
       >
         {screen === 'contacts' ?
           <>
-            {dummyContacts.map((contact, i) =>
+            {groups.map((group, i) => {
+                console.log("logging group")
+                console.log(group)
+                console.log(group.receiver)
+                console.log(group.members)
+              return (
               <React.Fragment key={i}>
                 <ContactItem
-                  avatar={contact.avatar}
-                  name={contact.name}
-                  lastMessage={contact.lastMessage}
-                  lastMessageDate={contact.lastMessageDate}
+                  receiver={group.receiver}
+                  lastMessage={group.recentMessage && group.recentMessage.messageText}
+                  lastMessageDate={group.recentMessage && group.recentMessage.readBy && group.recentMessage.readBy.sentAt && group.recentMessage.readBy.sentAt.seconds}
                   goToThread={() => setScreen('messages')}
                 />
                 {i !== dummyContacts.length - 1 ? <Divider className="nabi-margin-top-small nabi-margin-bottom-small" /> : ''}
               </React.Fragment>
-            )}
+            )} )}
           </> :
           <>
             <IconButton onClick={() => setScreen('contacts')} className="nabi-float-left conversation-back-button">
