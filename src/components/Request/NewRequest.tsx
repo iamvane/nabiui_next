@@ -64,7 +64,7 @@ const NewRequest = (props: Props) => {
 
   const handleSubmit = async (accept: Boolean) => {
     const userId = String(router.query.userId);
-    
+
     await props.respond({
       requestId: id,
       userId,
@@ -74,7 +74,7 @@ const NewRequest = (props: Props) => {
 
   const displayAvailability = () => {
     let availability = [];
-    props.request.availability.map(item => 
+    props.request.availability.map(item =>
       availability.push(NewRequestComponent.weekdaysLabels[item.day] + ' ' + NewRequestComponent.timeframeLabels[item.timeframe])
     )
     return availability.join(', ').replace(/, ([^,]*)$/, ' and $1');
@@ -171,7 +171,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
     message: respondMessage,
     error: respondError,
   } = state.instructor.actions.submitApplication
-  
+
 
   return {
     request: state.requests.request,

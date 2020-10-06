@@ -7,6 +7,7 @@ import {
   Typography
 } from '@material-ui/core';
 import DateRangeIcon from '@material-ui/icons/DateRange';
+import TimezoneIcon from '@material-ui/icons/PublicOutlined';
 import Schedule from '@material-ui/icons/Schedule';
 import Face from '@material-ui/icons/Face';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
@@ -33,6 +34,8 @@ export const BookingDetails = (props: Props) => {
 
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
   const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mmA");
+  const timezone = getCookie('timezone');
+  const availability = getCookie('availability');
   const instrumentDisplay = instruments.find(t => t.value === getCookie('instrumentName'));
 
   const handleNext = () => {
@@ -40,6 +43,16 @@ export const BookingDetails = (props: Props) => {
       return props.handleContinue();
     }
     return Router.push(Routes.ParentStudio);
+  }
+
+  const displayAvailability = () => {
+    if (availability) {
+      JSON.parse(availability).map(item =>
+        availability.push(`${BookingDetailsComponent.weekdaysLabels[item.day]} BookingDetailsComponent.timeframeLabels[item.timeframe]`)
+      )
+      return availability.join(', ').replace(/, ([^,]*)$/, ' and $1');
+    }
+    return '';
   }
 
   return (
@@ -62,7 +75,13 @@ export const BookingDetails = (props: Props) => {
         <div>
           <DateRangeIcon className="text-aligned-icon" color="primary" />
           <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-            {lessonDate} @ {lessonTime}
+            {props.headingMessage ? displayAvailability(): `${lessonDate} @ ${lessonTime}`}
+          </Typography>
+        </div>
+        <div className="nabi-display-flex">
+          <TimezoneIcon color="primary" />
+          <Typography className="nabi-margin-left-xsmall">
+            {timezone}
           </Typography>
         </div>
         <div>
@@ -79,7 +98,7 @@ export const BookingDetails = (props: Props) => {
             </Typography>
           </div>
         : ''}
-        {props.headingMessage && 
+        {props.headingMessage &&
           <div>
             <Face className="text-aligned-icon" color="primary" />
             <Typography className="nabi-display-inline nabi-margin-left-xsmall">

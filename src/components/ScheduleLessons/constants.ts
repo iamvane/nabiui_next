@@ -198,6 +198,24 @@ export namespace BookingDetailsComponent {
   export const instructorDetails = 'Instructor details provided upon confirmation.'
   export const addChildButton = 'Add Another Child';
   export const continueButton = 'Continue';
+
+  export const weekdaysLabels = {
+    'mon': 'Monday',
+    'tue': 'Tuesday',
+    'wed': 'Wednesday',
+    'thu': 'Thursday',
+    'fri': 'Friday',
+    'sat': 'Saturday',
+    'sun': 'Sunday'
+  }
+
+  export const timeframeLabels = {
+    'early-morning': 'early morning (8am-10am)',
+    'late-morning': 'late morning (10am-12pm)',
+    'early-afternoon': 'early afternoon (12pm-3pm)',
+    'late-afternoon': 'late afternoon (3pm -6pm)',
+    'evening': 'evening (6pm-9pm)'
+  }
 }
 
 export namespace TrialTimesAddedComponent {
@@ -209,3 +227,4 @@ export namespace TrialTimesAddedComponent {
   export const selectWeekDay = 'Select weekday';
   export const selectTime = 'Select time'
 }
+
