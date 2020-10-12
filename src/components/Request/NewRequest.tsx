@@ -68,9 +68,10 @@ const NewRequest = (props: Props) => {
   }, []);
 
   const handleSubmit = async (accept: Boolean) => {
+    const userId = String(router.query.userId);
     await props.respond({
       requestId: id,
-      userId: String(id),
+      userId,
       accept
     })
   }
