@@ -1,5 +1,5 @@
 export namespace NewRequestComponent {
-  export const pageTitle = 'New Student';
+  export const pageTitle = 'New Request';
   export const title = 'Trial {instrument} Lesson';
   export const instrumentPlaceholder = '{instrument}';
   export const date = '{dateRepalce} @ {timeReplace}';
@@ -15,6 +15,7 @@ export namespace NewRequestComponent {
   export const goToStudioButton = 'Go To Studio';
   export const errorMessage = 'There was an error with your request. Please refresh the page and try again.';
   export const responseMessage = 'Thanks for your response.';
+  export const closedRequestMessage = 'This request is now closed. Please keep an eye out for new student requests.';
 
   export const weekdaysLabels = {
     'mon': 'Monday',

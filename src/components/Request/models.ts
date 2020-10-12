@@ -36,5 +36,6 @@ export interface RequestType {
   status?: string;
   availability: RequestAvailabilityType[];
   studentId?: number;
-
+  language?: string;
+  timezone?: string;
 }
