@@ -6,9 +6,9 @@ export const firebaseConfigStaging = {
     apiKey: "AIzaSyB61X7bwQtA0hoMM50bY0xquowotjhvDqM",
     authDomain: "nabi-music-chat-staging.firebaseapp.com",
     projectId: "nabi-music-chat-staging",
-    // storageBucket: "nabi-music-chat-staging.appspot.com",
+    storageBucket: "nabi-music-chat-staging.appspot.com",
     // messagingSenderId: "762494702316",
-    // appId: "1:762494702316:web:ca9ff61d8668dec2248bc9"
+    appId: "1:762494702316:web:ca9ff61d8668dec2248bc9"
 };
 
 // Firebase prod config
@@ -16,9 +16,9 @@ export const firebaseConfigProd = {
     apiKey: "AIzaSyC6pVsVpKFQio1iN6F_ASknVwBhChefqYI",
     authDomain: "nabi-music-chat-prod.firebaseapp.com",
     projectId: "nabi-music-chat-prod",
-    // storageBucket: "nabi-music-chat-prod.appspot.com",
+    storageBucket: "nabi-music-chat-prod.appspot.com",
     // messagingSenderId: "386707647826",
-    // appId: "1:386707647826:web:2ca5ab385f0720ab5d5e8b",
+    appId: "1:386707647826:web:2ca5ab385f0720ab5d5e8b",
     // measurementId: "G-FS4Y5GLS3Q"
 };
 
