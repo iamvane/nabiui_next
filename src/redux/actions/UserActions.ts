@@ -20,6 +20,7 @@ import {
   database,
   auth
 } from "../../utils/firebase";
+import { setCookie } from "../../utils/cookies";
 
 interface ChangeAvatar extends Action {
   id: number;
@@ -46,19 +47,28 @@ export const createUser = (
     const response = await axios.post(url, user);
     auth.createUserWithEmailAndPassword(user.email, user.password).then((data) => {
 
-      var usersRef = database.collection("user");
+      var usersRef = database.collection("users");
 
       usersRef.doc(data.user.uid,).set({
         displayName: `${user.firstName} ${user.lastName.charAt(0)}.`,
         email: user.email,
-        uid: data.user.uid,
-        photoUrl: "https://nabimusic-staging.s3.us-east-2.amazonaws.com/media/avatars/charles%40gmail.com/Screen_Shot_2020-08-10_at_8.48.40_AM.png"
+        url: '',
+        password: user.password,
+        messages: [{notificationId: "", number: 0}],
+
       })
-      .then(function(docRef) {
-          console.log("Document written with ID: ", data.user.uid);
+      .then((docRef) => {
+        setCookie("uid", data.user.uid);
+        setCookie("nickname", data.user.displayName);
+        setCookie("email", data.user.email);
+        setCookie("password", user.password);
+        setCookie("photoUrl", "");
+
+        console.log("Document written with ID: ", data.user.uid);
+
       })
-      .catch(function(error) {
-          console.error("Error adding document: ", error);
+      .catch((error) => {
+        console.error("Error adding document: ", error);
       });
     });
     
