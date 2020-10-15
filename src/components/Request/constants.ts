@@ -28,11 +28,11 @@ export namespace NewRequestComponent {
   }
 
   export const timeframeLabels = {
-    'early-morning': 'early morning (8am-10am)',
-    'late-morning': 'late morning (10am-12pm)',
-    'early-afternoon': 'early afternoon (12pm-3pm)',
-    'late-afternoon': 'late afternoon (3pm -6pm)',
-    'evening': 'evening (6pm-9pm)'
+    'early-morning': '8AM-10AM',
+    'late-morning': '10AM-12PM',
+    'early-afternoon': '12PM-3PM',
+    'late-afternoon': '3PM -6PM',
+    'evening': '6PM-9PM'
   }
 
 }

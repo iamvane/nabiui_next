@@ -45,6 +45,7 @@ export enum Routes {
   Referrals = '/referrals',
   RegistrationLanding = '/registration-landing',
   ScheduleTrial = '/schedule-trial',
+  InstructorPreferences='/instructor-preferences',
   ScheduleLesson = '/schedule-lesson',
   ValidatePhone = '/validate-phone',
   SpecifyGender = '/specify-gender',

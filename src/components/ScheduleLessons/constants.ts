@@ -1,5 +1,5 @@
 export namespace ScheduleLessonsComponent {
-  export const pageTitle = 'Schedule Lesson';
+  export const pageTitle = 'Instructor Preferences';
   export const pageTitleParent = 'Schedule {studentReplace}\' Lesson';
   export const studentPlaceholder = '{studentReplace}';
 
@@ -207,5 +207,11 @@ export namespace TrialTimesAddedComponent {
   export const trialAvailability = 'Trial Availability';
   export const selectThreeTrials = 'Select 3 times that work for the trial';
   export const selectWeekDay = 'Select weekday';
-  export const selectTime = 'Select time'
+  export const selectTime = 'Select time';
+  export const selectLanguage = 'Select Language';
+  export const language = 'Language';
+  export const gender = 'Gender';
+  export const male = 'Male';
+  export const female = 'Female';
+  export const noPreference = 'No Preference';
 }

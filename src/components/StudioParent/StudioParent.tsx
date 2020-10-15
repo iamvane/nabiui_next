@@ -180,7 +180,7 @@ export const StudioParent = (props: Props) => {
     setCookie('instrumentName', instument);
     removeCookie('lessonId');
 
-    Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
+    Router.push(Routes.ScheduleTrial + Routes.InstructorPreferences)
   }
 
   const buyMoreLessons = (studentId) => {

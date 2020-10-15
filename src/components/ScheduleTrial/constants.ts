@@ -71,30 +71,38 @@ export namespace ChildFormComponent {
     Name = 'name',
     Dob = 'dob',
     Instrument = 'instrument',
-    Level = 'level'
+    Level = 'level',
+    SpecialNeed = 'specialNeed',
+    Notes = 'notes',
   }
 
   export enum Ids {
     Name = 'name',
     Dob = 'dob',
     Instrument = 'instrument',
-    Level = 'level'
+    Level = 'level',
+    SpecialNeed = 'specialNeed',
+    Notes = 'notes',
   }
   export enum Placeholders {
     Name = 'Name',
-    Instrument = 'Other'
+    Instrument = 'Other',
+    Notes = 'Add notes'
   }
   export enum Labels {
     Dob = 'Date of birth',
     Instrument = 'Instrument',
-    Level = 'Level'
+    Level = 'Level',
+    SpecialNeeds = 'Special Educational Needs (optional)',
+    Notes = 'Additional Notes (optional)'
   }
 
   export interface ChildFormErrors {
     name?: string;
     dob?: string;
     instrument?: string;
-    level?: string
+    level?: string;
+    specialNeeds?: string;
   }
 
   export const defaultErrors: ChildFormErrors = {}
@@ -103,8 +111,11 @@ export namespace ChildFormComponent {
     name: 'Enter student\'s name.',
     dob: 'Enter date of birth.',
     instrument: 'Select instrument.',
-    level: 'Select level.'
+    level: 'Select level.',
+    specialNeeds: 'Select special needs',
   }
+
+  export const selectSpecialNeeds = 'Select Special Need'
 }
 
 export namespace ScheduleTrialComponent {

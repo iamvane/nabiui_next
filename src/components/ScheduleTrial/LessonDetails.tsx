@@ -53,12 +53,13 @@ interface Props extends
   DispatchProps,
   StateProps,
   OwnProps {
-    redirectUrl: string;
-  }
+  redirectUrl: string;
+}
 
 export const LessonDetails = (props: Props) => {
   const [addStudent, setAddStudent] = React.useState(false);
   const [showSnackbar, setShowSnackbar] = React.useState(false);
+
 
   const createStudent = async (student) => {
     await props.createStudent(student);
@@ -75,7 +76,7 @@ export const LessonDetails = (props: Props) => {
     if (addStudent) {
       setCookie("studentId", props.student.studentId);
       removeCookie("lessonId");
-      Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial);
+      Router.push(Routes.ScheduleTrial + Routes.InstructorPreferences);
     }
   }, [addStudent, props.addError]);
 
@@ -86,7 +87,7 @@ export const LessonDetails = (props: Props) => {
       <PageTitle
         pageTitle={
           role === Role.parent ? LessonDetailsComponent.pageTitleParent :
-          LessonDetailsComponent.pageTitleStudent
+            LessonDetailsComponent.pageTitleStudent
         }
       />
       <Grid
@@ -96,8 +97,8 @@ export const LessonDetails = (props: Props) => {
       >
         {
           props.isAddingStudent ?
-          <CircularProgress /> :
-          <StudentForm addChild={createStudent} role={role} />
+            <CircularProgress /> :
+            <StudentForm addChild={createStudent} role={role} />
         }
       </Grid>
       <SnackBar

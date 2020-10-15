@@ -30,3 +30,26 @@
     margin-left: 16%;
   }
 }
+
+.lesson-details__special-needs--select {
+  font-size: 13px !important;
+  width: 95% !important;
+}
+
+@media (max-width: 768px) {
+  .lesson-details__special-needs--select  {
+    width: 95% !important;
+  }
+}
+
+.student__level {
+  display: flex !important;
+  flex: 1 0 25% !important;
+  margin: 4px !important;
+}
+
+.student__instrument {
+  display: flex !important;
+  flex: 1 0 25% !important;
+  margin: 4px !important;
+}

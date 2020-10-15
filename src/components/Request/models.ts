@@ -17,7 +17,7 @@ export interface RequestAvailabilityType {
 }
 
 export interface RequestType {
-  id: number;
+  id?: number;
   createdAt?: string;
   elapsedTime?: string;
   displayName?: string;
@@ -38,4 +38,5 @@ export interface RequestType {
   studentId?: number;
   language?: string;
   timezone?: string;
+  gender?: string;
 }

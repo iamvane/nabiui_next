@@ -27,19 +27,58 @@
 .trial-select__form--container {
   display: flex !important;
   justify-content: space-between !important;
+  margin-bottom: 20px !important;
 }
 
 .trial-select__form--day-of-week {
-  margin-left: 5px !important;
-  margin-right: 5px !important;
+  display: flex !important;
+  flex: 1 0 25% !important;
+  margin: 4px !important;
+}
+
+.trial-select__language {
+  width: 50%;
+}
+
+.trial-select__btn-group {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-evenly !important;
+  color: #ebeef1 !important;
+  background-color: #f3f6f9 !important;
+}
+
+.trial-select__btn {
+  width: 100% !important;
+}
+
+.trial-select__label {
+  padding: 4px !important;
+  &:hover {
+    background-color: #06c3e1 !important;
+    color: #ffffff !important;
+    border-radius: 5px !important;
+  }
+}
+
+.trial-select__gender {
+  background-color: #06c3e1 !important;
+  color: #ffffff !important;
+  border-radius: 5px !important;
 }
 
 @media (max-width: 768px) {
-  .trial-select__form--container {
-    flex-direction: column !important;
+  .trial-select__label {
+    font-size: 8px !important;
+  }
+  .trial-select__language {
+    width: 100% !important;
   }
   .trial-select__form--day-of-week {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
+    width: 100% !important;
+  }
+
+  .trial-select__form--day-of-week {
+    flex: 1 0 100% !important;
   }
 }
