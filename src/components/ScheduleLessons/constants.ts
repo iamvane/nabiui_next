@@ -1,5 +1,5 @@
 export namespace ScheduleLessonsComponent {
-  export const pageTitle = 'Instructor Preferences';
+  export const pageTitle = 'Schedule Lesson';
   export const pageTitleParent = 'Schedule {studentReplace}\' Lesson';
   export const studentPlaceholder = '{studentReplace}';
 
