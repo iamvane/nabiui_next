@@ -34,6 +34,7 @@ export default function usersReducer(
       setCookie("role", userDetails.role);
       setCookie("firstName", userDetails.firstName);
       setCookie("userEmail", userDetails.email);
+      setCookie("timezone", userDetails.timezone);
 
       identify(userDetails.id, {
         name: userDetails.firstName + userDetails.lastName,

@@ -74,6 +74,7 @@ export default function requestsReducer(
 
     case RequestActions.CREATE_REQUEST_SUCCESS:
       const { data: createdRequest } = <APIActions.WithData<Partial<RequestType>>>action;
+      setCookie("availability", createdRequest.availability);
       return {
         ...state,
         request: {
