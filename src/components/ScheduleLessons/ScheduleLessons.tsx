@@ -530,7 +530,15 @@ export const ScheduleLessons = (props: Props) => {
             }}
           /> :
           <>
-            <PageTitle pageTitle={props.pageTitle ? props.pageTitle : ScheduleLessonsComponent.pageTitle} />
+            <PageTitle
+              pageTitle={props.pageTitle ? props.pageTitle :
+                role === Role.parent ?
+                  ScheduleLessonsComponent.pageTitleParent.replace(
+                    ScheduleLessonsComponent.studentPlaceholder,
+                    getCookie('studentName')
+                  ) :
+                  ScheduleLessonsComponent.pageTitle}
+            />
             <Grid
               item={true}
               xs={12}

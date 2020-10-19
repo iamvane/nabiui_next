@@ -119,8 +119,7 @@ export namespace ChildFormComponent {
 }
 
 export namespace ScheduleTrialComponent {
-  export const pageTitle = 'Schedule Trial';
-  export const pageTitleParent = 'Schedule {studentReplace}\' Trial';
+  export const pageTitle = 'Instructor Preferences';
   export const studentPlaceholder = '{studentReplace}';
 
   export enum Placeholders {
