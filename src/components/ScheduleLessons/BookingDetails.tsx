@@ -7,6 +7,7 @@ import {
   Typography
 } from '@material-ui/core';
 import DateRangeIcon from '@material-ui/icons/DateRange';
+import TimezoneIcon from '@material-ui/icons/PublicOutlined';
 import Schedule from '@material-ui/icons/Schedule';
 import Face from '@material-ui/icons/Face';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
@@ -33,6 +34,8 @@ export const BookingDetails = (props: Props) => {
 
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
   const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mmA");
+  const timezone = getCookie('timezone');
+  const availability = getCookie('availability');
   const instrumentDisplay = instruments.find(t => t.value === getCookie('instrumentName'));
 
   const handleNext = () => {
@@ -40,6 +43,17 @@ export const BookingDetails = (props: Props) => {
       return props.handleContinue();
     }
     return Router.push(Routes.ParentStudio);
+  }
+
+  const displayAvailability = () => {
+    const modifiedAvailability = [];
+    if (availability && availability.length) {
+      JSON.parse(availability).forEach(item =>
+        modifiedAvailability.push(`${BookingDetailsComponent.weekdaysLabels[item.day]} ${BookingDetailsComponent.timeframeLabels[item.timeframe]}`)
+      );
+      return modifiedAvailability.join(', ').replace(/, ([^,]*)$/, ' and $1');
+    }
+    return '';
   }
 
   return (
@@ -62,9 +76,17 @@ export const BookingDetails = (props: Props) => {
         <div>
           <DateRangeIcon className="text-aligned-icon" color="primary" />
           <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-            {lessonDate} @ {lessonTime}
+            {props.headingMessage ? displayAvailability() : `${lessonDate} @ ${lessonTime}`}
           </Typography>
         </div>
+        {timezone && (
+          <div>
+            <TimezoneIcon color="primary" />
+            <Typography className="nabi-margin-left-xsmall">
+              {timezone}
+            </Typography>
+          </div>
+        )}
         <div>
           <Schedule className="text-aligned-icon" color="primary" />
           <Typography className="nabi-display-inline nabi-margin-left-xsmall">
@@ -78,8 +100,8 @@ export const BookingDetails = (props: Props) => {
               {instrumentDisplay.name}
             </Typography>
           </div>
-        : ''}
-        {props.headingMessage && 
+          : ''}
+        {props.headingMessage &&
           <div>
             <Face className="text-aligned-icon" color="primary" />
             <Typography className="nabi-display-inline nabi-margin-left-xsmall">
@@ -89,10 +111,10 @@ export const BookingDetails = (props: Props) => {
         }
         <div className="nabi-text-right nabi-margin-top-large">
           {props.headingMessage && role === Role.parent ?
-            <Button color="primary" className="nabi-margin-right-xsmall" onClick={addAnotherChild}>
+            <Button color="primary" className="nabi-margin-left-xsmall" onClick={addAnotherChild}>
               {BookingDetailsComponent.addChildButton}
             </Button>
-          :''}
+            : ''}
           <Button color="primary" variant="contained" onClick={() => handleNext()}>
             {BookingDetailsComponent.continueButton}
           </Button>
