@@ -98,7 +98,7 @@ const Messages = (props: Props) => {
                 }
                 data.id = doc.id
                 data.receiver = receiverData;
-
+                console
                 if (data.recentMessage) allGroups.push(data)
               })
               setGroups(allGroups)

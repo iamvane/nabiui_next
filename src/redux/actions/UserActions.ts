@@ -98,7 +98,24 @@ export const authenticateUser = (
     };
 
     const response = await axios.post(url, requestBody);
-    auth.signInWithEmailAndPassword(email, password);
+    auth.signInWithEmailAndPassword(email, password).then(async data => {
+      let user = data.user;
+      if (user) {
+        await database.collection("users")
+        .where('uid', "==", user.uid)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            const currentData = doc.data();
+            setCookie("docId", doc.id)
+            setCookie("uid", currentData.id)
+            setCookie("name", currentData.name)
+            setCookie("email", currentData.email)
+            // setCookie("email", currentData.email)
+          })
+        })
+      }
+    });
     dispatch(
       withDataAction(UserActions.AUTHENTICATE_USER_SUCCESS, response.data)
     );
