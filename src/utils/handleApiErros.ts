@@ -1,6 +1,20 @@
 export const getError = (e: any, type?: string | string[]): string => {
   if (e.response && e.response.data) {
     const {data} = e.response;
+    if (data.fields) {
+      if (!type.length) {
+        return;
+      }
+      const errorTypes = type as string[];
+      let error = "";
+      errorTypes.forEach((errorType) => {
+        if (!error.length) {
+          error = data.fields[errorType];
+        }
+        error = `${error} \n ${data.fields[errorType]}`;
+      });
+      return error;
+    }
     if (type && Array.isArray(type)) {
       const errorType = type.find((errorType) => {
         return data.errors[errorType];
@@ -8,6 +22,7 @@ export const getError = (e: any, type?: string | string[]): string => {
 
       return data.errors[errorType][0];
     }
+
     if (data.message) {
       return data.message;
     }

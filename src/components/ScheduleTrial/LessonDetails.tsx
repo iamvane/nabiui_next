@@ -59,6 +59,7 @@ interface Props extends
 export const LessonDetails = (props: Props) => {
   const [addStudent, setAddStudent] = React.useState(false);
   const [showSnackbar, setShowSnackbar] = React.useState(false);
+  const [snackErrorMessage, setSnackErrorMessage] = React.useState('');
 
 
   const createStudent = async (student) => {
@@ -70,6 +71,7 @@ export const LessonDetails = (props: Props) => {
 
   React.useEffect(() => {
     if (props.addError) {
+      setSnackErrorMessage(props.addError)
       return setShowSnackbar(true);
     }
 
@@ -103,7 +105,7 @@ export const LessonDetails = (props: Props) => {
       </Grid>
       <SnackBar
         isOpen={showSnackbar}
-        message={props.addError}
+        message={snackErrorMessage}
         handleClose={() => setShowSnackbar(false)}
         variant="error"
       />
@@ -127,7 +129,7 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
       deleteStudent: {
         isRequesting: isDeletingStudent,
         error: deleteError
-      }
+      },
     },
   } = state.requests;
 
@@ -143,7 +145,7 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     deleteError,
     students,
     timezones,
-    student
+    student,
   };
 }
 

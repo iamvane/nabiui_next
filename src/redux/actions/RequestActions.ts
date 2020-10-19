@@ -37,10 +37,7 @@ export const createRequest = (data: RequestType): ThunkAction<Promise<void>, {},
     );
     dispatch(withDataAction(RequestActions.CREATE_REQUEST_SUCCESS, response.data));
   } catch (e) {
-    if (getError(e) && typeof getError(e) === 'string') {
-      errorMessage = getError(e);
-    }
-
+    errorMessage = getError(e, ['studentId']);
     dispatch(withErrorAction(RequestActions.CREATE_REQUEST_FAILURE, errorMessage));
   }
 };

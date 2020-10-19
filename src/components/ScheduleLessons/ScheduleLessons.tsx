@@ -169,10 +169,18 @@ export const ScheduleLessons = (props: Props) => {
   }, [props.message, JSON.stringify(props.request)]);
 
   React.useEffect(() => {
-    if (props.error || props.createRequestError) {
+    if (props.error) {
       setSnackBarDetails({
         type: "error",
         message: props.error
+      });
+      return setShowSnackbar(true);
+    }
+
+    if (props.createRequestError) {
+      setSnackBarDetails({
+        type: "error",
+        message: props.createRequestError
       });
       return setShowSnackbar(true);
     }

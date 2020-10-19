@@ -59,8 +59,8 @@ export const StudentForm = (props: Props) => {
       let childToAdd: StudentDetailsType = {
         instrument: instrument || instrumentSelect,
         skillLevel: level,
-        ...(specialNeed && { specialNeeds: [specialNeed]}),
-        ...(notes && { notes})
+        ...(specialNeed && { specialNeeds: [specialNeed] }),
+        ...(notes && { notes })
       };
 
       if (props.role === Role.parent) {
@@ -186,112 +186,115 @@ export const StudentForm = (props: Props) => {
 
   return (
     <>
-      {props.role === Role.parent &&
-        <div className="nabi-display-flex nabi-flex-column">
-          <TextField
-            id={ChildFormComponent.Ids.Name}
-            name={ChildFormComponent.FieldNames.Name}
-            placeholder={ChildFormComponent.Placeholders.Name}
-            required={true}
-            fullWidth={true}
-            onChange={handleChange}
-            value={name}
-            error={!!formErrors.name}
-            helperText={formErrors.name}
-          />
-
-          <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
-            {ChildFormComponent.Labels.Dob}
-          </Typography>
-
-          <FormControl required={true}>
-            <DatePicker
-              selected={dob ? moment(new Date(dob)) : moment(Date.now())}
-              onChange={handleBirthdayChange}
-              peekNextMonth={true}
-              showMonthDropdown={true}
-              showYearDropdown={true}
-              dropdownMode="select"
+      <div className="nabi-display-flex nabi-flex-column">
+        {props.role === Role.parent &&
+          <>
+            <TextField
+              id={ChildFormComponent.Ids.Name}
+              name={ChildFormComponent.FieldNames.Name}
+              placeholder={ChildFormComponent.Placeholders.Name}
+              required={true}
+              fullWidth={true}
+              onChange={handleChange}
+              value={name}
+              error={!!formErrors.name}
+              helperText={formErrors.name}
             />
-            {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
-          </FormControl>
 
-          <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
-          <div className="nabi-display-flex nabi-flex-wrap">
-            {ChildFormComponent.instrumentChips.map((item) => {
-              return (<Chip
-                className="student__instrument"
-                onClick={() => handleSetInstrument(item.value)
-                }
-                color={item.value === instrument ? "primary" : 'default'}
-                label={item.label}
-              />)
-            })}
-            <FormControl classes={{
-              root: "nabi-margin-remove student__instrument"
-            }}>
-              <Select
-                native={true}
-                input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
-                value={instrumentSelect}
-                onChange={handleChange}
-                className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
-              >
-                <option value="" disabled={true}>{ChildFormComponent.Placeholders.Instrument}</option>
-                {instrumentSelectItems}
-              </Select>
-            </FormControl>
-          </div>
+            <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
+              {ChildFormComponent.Labels.Dob}
+            </Typography>
 
-          {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
-          <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
-
-          <div className="nabi-display-flex nabi-flex-wrap">
-            {ChildFormComponent.levelChips.map((item) => (
-              <Chip
-                className="level-chips student__level"
-                onClick={() => setLevel(item.value)}
-                color={item.value === level ? "primary" : 'default'}
-                label={item.label}
+            <FormControl required={true}>
+              <DatePicker
+                selected={dob ? moment(new Date(dob)) : moment(Date.now())}
+                onChange={handleBirthdayChange}
+                peekNextMonth={true}
+                showMonthDropdown={true}
+                showYearDropdown={true}
+                dropdownMode="select"
               />
-            ))}
-          </div>
-          {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
+              {formErrors.dob && <FormHelperText error={true}>{formErrors.dob}</FormHelperText>}
+            </FormControl>
+          </>
+        }
 
-          <Typography color={formErrors.specialNeeds ? 'error' : 'primary'} className="nabi-margin-top-small">
-            {ChildFormComponent.Labels.SpecialNeeds}
-          </Typography>
-
-          <div className="nabi-display-flex">
-            {renderSpecialNeeds()}
-          </div>
-
-          <Typography color='primary' className="nabi-margin-top-small">
-            {ChildFormComponent.Labels.Notes}
-          </Typography>
-
-          <TextField
-            fullWidth={true}
-            id={ChildFormComponent.Ids.Notes}
-            name={ChildFormComponent.Ids.Notes}
-            value={notes}
-            onChange={handleChange}
-            placeholder={ChildFormComponent.Placeholders.Notes}
-            required={true}
-          />
-
-          <div className="nabi-text-right">
-            <Button
-              color="primary"
-              className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
-              variant="contained"
-              onClick={handleSubmit}
+        <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
+        <div className="nabi-display-flex nabi-flex-wrap">
+          {ChildFormComponent.instrumentChips.map((item) => {
+            return (<Chip
+              className="student__instrument"
+              onClick={() => handleSetInstrument(item.value)
+              }
+              color={item.value === instrument ? "primary" : 'default'}
+              label={item.label}
+            />)
+          })}
+          <FormControl classes={{
+            root: "nabi-margin-remove student__instrument"
+          }}>
+            <Select
+              native={true}
+              input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
+              value={instrumentSelect}
+              onChange={handleChange}
+              className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
             >
-              Next
-        </Button>
-          </div>
+              <option value="" disabled={true}>{ChildFormComponent.Placeholders.Instrument}</option>
+              {instrumentSelectItems}
+            </Select>
+          </FormControl>
         </div>
-      }
+
+        {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
+        <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
+
+        <div className="nabi-display-flex nabi-flex-wrap">
+          {ChildFormComponent.levelChips.map((item) => (
+            <Chip
+              className="level-chips student__level"
+              onClick={() => setLevel(item.value)}
+              color={item.value === level ? "primary" : 'default'}
+              label={item.label}
+            />
+          ))}
+        </div>
+        {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
+
+        <Typography color={formErrors.specialNeeds ? 'error' : 'primary'} className="nabi-margin-top-small">
+          {ChildFormComponent.Labels.SpecialNeeds}
+        </Typography>
+
+        <div className="nabi-display-flex">
+          {renderSpecialNeeds()}
+        </div>
+
+        <Typography color='primary' className="nabi-margin-top-small">
+          {ChildFormComponent.Labels.Notes}
+        </Typography>
+
+        <TextField
+          fullWidth={true}
+          id={ChildFormComponent.Ids.Notes}
+          name={ChildFormComponent.Ids.Notes}
+          value={notes}
+          onChange={handleChange}
+          placeholder={ChildFormComponent.Placeholders.Notes}
+          required={true}
+        />
+
+        <div className="nabi-text-right">
+          <Button
+            color="primary"
+            className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+            variant="contained"
+            onClick={handleSubmit}
+          >
+            Next
+        </Button>
+        </div>
+      </div>
+
     </>
   )
 }
