@@ -302,7 +302,9 @@ export const ScheduleLessons = (props: Props) => {
 
     if (props.isTrial) {
       const studentId = getCookie('studentId');
-      lesson.studentId = studentId;
+      if (role === Role.parent) {
+        lesson.studentId = studentId;
+      }
 
       const selectedTrialAvailabilityTimes = Object.keys(trialAvailabilityDetails).map((choice) => {
         if (choice === 'firstChoice') {
