@@ -73,48 +73,50 @@ export const BookingDetails = (props: Props) => {
             BookingDetailsComponent.studentMessage
           }
         </p>
-        <div>
-          <DateRangeIcon className="text-aligned-icon" color="primary" />
+        <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
+          <DateRangeIcon color="primary" />
           <Typography className="nabi-display-inline nabi-margin-left-xsmall">
             {props.headingMessage ? displayAvailability() : `${lessonDate} @ ${lessonTime}`}
           </Typography>
         </div>
         {timezone && (
-          <div>
+          <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
             <TimezoneIcon color="primary" />
             <Typography className="nabi-margin-left-xsmall">
               {timezone}
             </Typography>
           </div>
         )}
-        <div>
-          <Schedule className="text-aligned-icon" color="primary" />
+        <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
+          <Schedule color="primary" />
           <Typography className="nabi-display-inline nabi-margin-left-xsmall">
             {BookingDetailsComponent.lessonDuration}
           </Typography>
         </div>
-        {instrumentDisplay && instrumentDisplay.name ?
-          <div>
-            <MusicNoteIcon className="text-aligned-icon" color="primary" />
-            <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-              {instrumentDisplay.name}
-            </Typography>
-          </div>
-          : ''}
-        {props.headingMessage &&
-          <div>
-            <Face className="text-aligned-icon" color="primary" />
+        <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
+          {instrumentDisplay && instrumentDisplay.name ? (
+            <>
+              <MusicNoteIcon color="primary" />
+              <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+                {instrumentDisplay.name}
+              </Typography>
+            </>
+          ) : null}
+        </div>
+        {props.headingMessage ?
+          <div key="instructor-details" className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
+            <Face color="primary" />
             <Typography className="nabi-display-inline nabi-margin-left-xsmall">
               {BookingDetailsComponent.instructorDetails}
             </Typography>
-          </div>
+          </div> : null
         }
-        <div className="nabi-text-right nabi-margin-top-large">
+        <div className="nabi-display-flex nabi-flex-justify-end nabi-margin-top-small">
           {props.headingMessage && role === Role.parent ?
             <Button color="primary" className="nabi-margin-left-xsmall" onClick={addAnotherChild}>
               {BookingDetailsComponent.addChildButton}
             </Button>
-            : ''}
+            : null}
           <Button color="primary" variant="contained" onClick={() => handleNext()}>
             {BookingDetailsComponent.continueButton}
           </Button>
