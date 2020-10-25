@@ -14,7 +14,7 @@ body {
 	margin: 0px;
 	font-family: 'Montserrat', sans-serif;
 	color: #000000 !important;
-	font-size: 14px
+	font-size: 15px
 }
 
 li {
@@ -37,7 +37,7 @@ mark {
 
 /*BACKGROUND COLOR*/
 .nabi-background-color {
-	background-color: #f0f3f6;
+	background-color: #ececec;
 }
 
 .nabi-background-white {

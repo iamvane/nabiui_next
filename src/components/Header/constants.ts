@@ -13,17 +13,8 @@ export const headerMenuLabels  = {
   blog: "Blog"
 };
 
-export const studentParentMenuLabels = {
+export const menuLabels = {
   howItWorks: 'How It works',
-  faqs: 'FAQ\'s',
-  lessonPackages: 'Lesson Packages',
-  features: 'Features',
-  start: 'Try Free Lesson'
-};
-
-export const instructorMenuLabels  = {
-  howItWorks: 'How It Works',
-  faqs: 'FAQ\'s',
-  features: 'Features',
-  start: 'Start Teaching'
+  teach: 'Teach',
+  login: 'Login',
 };

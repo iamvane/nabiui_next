@@ -1,5 +1,5 @@
 export const title = "Testimonials";
-export const description = "Check out what others have to say about us and learn why we are one of the best music lessons platforms.";
+export const description = "Check out what others have to say about us and learn why we are one of the best music learning platforms.";
 export const testimonials = [
   {
     testimonial: '"Nabi Music’s vision is noble and multifaceted: not only does it strive to make music accessible for children it also works to change adults’ perceptions of how children can interact with music."',
@@ -64,4 +64,4 @@ export const recognizedImages = [
   }
 ];
 
-export const recognizedButton = 'Sign Up Today For A Trial';
+export const recognizedButton = 'Get Trial Lesson';

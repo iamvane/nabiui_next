@@ -11,12 +11,7 @@ import {
 } from '@material-ui/core';
 
 import { Routes } from '../common/constants/Routes';
-import {
-  forParents,
-  forInstructors,
-  studentParentMenuLabels,
-  instructorMenuLabels
-} from './constants';
+import { menuLabels } from './constants';
 
 interface Props {
   isOpen: boolean;
@@ -31,64 +26,28 @@ export const DrawerMenu = (props: Props) => {
         onClose={props.closeMenu}
       >
         <Grid item={true} xs={10} className="nabi-margin-center nabi-padding-top-small nabi-padding-bottom-small">
-          <Typography color="secondary" className="nabi-text-semibold">{forParents}</Typography>
           <MenuList>
             <MenuItem onClick={props.closeMenu}>
               <Link prefetch={false} href={Routes.HowItWorksParents}>
                 <Typography color="primary">
-                  {studentParentMenuLabels.howItWorks}
+                  {menuLabels.howItWorks}
                 </Typography>
               </Link>
             </MenuItem>
             <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.FAQParents}>
+              <Link prefetch={false} href={Routes.RegistrationInstructor}>
                 <Typography color="primary">
-                  {studentParentMenuLabels.faqs}
+                  {menuLabels.teach}
                 </Typography>
               </Link>
             </MenuItem>
             <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.LessonPackages}>
+              <Link prefetch={false} href={Routes.Login}>
                 <Typography color="primary">
-                  {studentParentMenuLabels.lessonPackages}
+                  {menuLabels.login}
                 </Typography>
               </Link>
             </MenuItem>
-            {/* <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.FeaturesParents}>
-                <Typography color="primary">
-                  {studentParentMenuLabels.features}
-                </Typography>
-              </Link>
-            </MenuItem> */}
-            <Link prefetch={false} href={Routes.RegistrationParent}>
-              <Button color="primary" variant="contained" className="nabi-responsive-button">{studentParentMenuLabels.start}</Button>
-            </Link>
-            <Typography color="secondary" className="nabi-text-semibold nabi-margin-top-medium">{forInstructors}</Typography>
-            <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.HowItWorksInstructors}>
-                <Typography color="primary">
-                  {instructorMenuLabels.howItWorks}
-                </Typography>
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.FAQInstructors}>
-                <Typography color="primary">
-                  {instructorMenuLabels.faqs}
-                </Typography>
-              </Link>
-            </MenuItem>
-            {/* <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.FeaturesInstructors}>
-                <Typography color="primary">
-                  {instructorMenuLabels.features}
-                </Typography>
-              </Link>
-            </MenuItem> */}
-            <Link prefetch={false} href={Routes.RegistrationInstructor}>
-              <Button color="primary" variant="contained" className="nabi-responsive-button">{instructorMenuLabels.start}</Button>
-            </Link>
           </MenuList>
         </Grid>
       </Drawer>

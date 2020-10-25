@@ -34,7 +34,7 @@ export const theme = createMuiTheme({
                     background: 'none !important'
                 },
                 color: '#717a8a',
-                padding: '11px',
+                padding: '8px 11px',
                 borderRadius: '4px',
                 fontFamily: '\'Montserrat\', sans-serif !important',
                 '&:hover': {
@@ -276,7 +276,7 @@ export const theme = createMuiTheme({
         MuiTypography: {
             root: {
                 fontFamily: '\'Montserrat\', sans-serif !important',
-                color: '#717a8a !important',
+                color: '#000000 !important',
                 fontSize: '0.875rem !important',
                 '&$colorPrimary': {
                     color: '#06c3e1 !important'
