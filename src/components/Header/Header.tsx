@@ -28,8 +28,6 @@ import {
 } from "./constants";
 import { CollapsibleSidebar } from "../CollapsibleSidbar/CollapsibleSidbar";
 import { DrawerMenu } from "./DrawerMenu";
-import { InstructorMenu } from "./InstructorMenu";
-import { StudentParentMenu } from "./StudentParentMenu";
 
 import HelpIcon from "@material-ui/icons/Help";
 
@@ -146,24 +144,12 @@ export const Header = (props: HeaderProps) => {
               >
                 {headerMenuLabels.student}
               </p>
-              <StudentParentMenu
-                isMenuOpen={isStudentParentMenuOpen}
-                toggleMenu={() => setStudentParentMenuOpen(false)}
-                anchorEl={anchorElStudentParentMenu}
-              />
               <p
                 className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small nabi-display-inline nabi-color-nabi nabi-cursor-pointer"
                 onClick={openInstructorMenu}
               >
                 {headerMenuLabels.instructors}
               </p>
-              <InstructorMenu
-                isMenuOpen={Boolean(
-                  isInstructorMenuOpen && anchorElInstructorMenu
-                )}
-                toggleMenu={() => setInstructorMenuOpen(false)}
-                anchorEl={anchorElInstructorMenu}
-              />
               <a
                 href="https://blog.nabimusic.com"
                 className="nabi-text-uppercase nabi-text-semibold nabi-margin-left-small"
