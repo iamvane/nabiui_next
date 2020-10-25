@@ -9,6 +9,7 @@ const SocialMenu = () => {
   const TwitterIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/twitter.svg';
   const InstagramIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/instagram.svg';
   const PinterestIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/pinterest.png';
+  const LinkedInIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/linkedin.png';
 
   return (
     <div>
@@ -64,6 +65,19 @@ const SocialMenu = () => {
           data-src={PinterestIcon}
           className="nabi-custom-button-icon lazyload"
           alt="pinterest-icon"
+        />
+      </IconButton>
+      <IconButton
+        color="primary"
+        className="nabi-margin-left-xsmall"
+        href={SocialLinks.LinkedIn}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          data-src={LinkedInIcon}
+          className="nabi-custom-button-icon lazyload"
+          alt="linkedin-icon"
         />
       </IconButton>
     </div>
