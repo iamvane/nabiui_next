@@ -9,8 +9,8 @@ export const theme = createMuiTheme({
                 color: '#06c3e1'
             },
             contained: {
-                borderRadius: '3px',
-                boxShadow: 'inset 0 -3px 0 rgba(0,0,0,.1)',
+                borderRadius: '4px',
+                boxShadow: 'none',
                 fontWeight: 500,
                 color: '#717a8a',
                 '&:hover': {
@@ -34,8 +34,8 @@ export const theme = createMuiTheme({
                     background: 'none !important'
                 },
                 color: '#717a8a',
-                padding: '17px 25px',
-                borderRadius: '3px',
+                padding: '8px 11px',
+                borderRadius: '4px',
                 fontFamily: '\'Montserrat\', sans-serif !important',
                 '&:hover': {
                     backgroundColor: 'none !important'
@@ -276,7 +276,7 @@ export const theme = createMuiTheme({
         MuiTypography: {
             root: {
                 fontFamily: '\'Montserrat\', sans-serif !important',
-                color: '#717a8a !important',
+                color: '#000000 !important',
                 fontSize: '0.875rem !important',
                 '&$colorPrimary': {
                     color: '#06c3e1 !important'

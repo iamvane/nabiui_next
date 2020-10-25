@@ -1,0 +1,82 @@
+#logo {
+    width: 90px;
+}
+
+#banner {
+	height: 300px !important;
+	width: 100%;
+	background-image: url('https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/music-lessons-for-kids-banner-lighter.jpg') !important;
+	background-size: cover !important;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.banner-heading {
+    font-size: 28px;
+    margin-top: 1.5em;
+}
+
+.menu-container {
+    padding-top: 24px !important;
+}
+
+.featured-avatar {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.featured-instructor-rating {
+    width: 14px !important;
+    color: #FB7F6B !important;
+}
+
+.featured-instructor-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 10px;
+    border-radius: 4px;
+    width: 81%;
+    padding: 15px;
+    margin-bottom: 24px !important;
+}
+
+.stats-label {
+    font-size: 12px;
+}
+
+.featured-instrument {
+    background: #06c3e1;
+    border-radius: 12px;
+    padding: 2px 4px;
+    color: #fff;
+    margin-right: 2px;
+}
+
+.featured-button {
+    padding: 4px !important;
+}
+
+.featured-insrtuments {
+    margin: 10px 0px;
+}
+
+.stats-wrapper {
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 16px;
+    margin-top: 10px;
+}
+
+.featured-reviews-number {
+    font-size: 12px;
+    vertical-align: super;
+}
+
+@media (min-width: 960px) {
+    #banner {
+        height: 580px !important;
+    }
+    
+    .banner-heading {
+        font-size: 40px;
+        margin-top: 3.6em;
+    }
+}

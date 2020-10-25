@@ -62,10 +62,7 @@ class NabiApp extends App<any, any> {
         </Head>
         <Provider store={store}>
           <MuiThemeProvider theme={theme}>
-            <Offer {...pageProps} />
-            <Header {...pageProps} />
             <Component {...pageProps} />
-            <Footer />
           </MuiThemeProvider>
         </Provider>
       </>

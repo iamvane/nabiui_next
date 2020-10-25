@@ -21,19 +21,18 @@ import {
 
 export const Testimonials = () => {
   return (
-    <Grid>
+    <Grid className="nabi-background-color">
       <div className="nabi-container">
-        <h2 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
+      <Grid item={true} xs={12} md={6} className="nabi-margin-center nabi-text-center">
+          <h2>
           {title}
-        </h2>
-        <Typography
-          color="primary"
-          className="nabi-text-semibold nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center"
-        >
-        {description}
-        </Typography>
+          </h2>
+          <p>
+          {description}
+          </p>
+        </Grid>
         <Grid container={true} spacing={2} className="nabi-margin-top-medium nabi-margin-bottom-medium">
-          {testimonials.map((item, i)=> (
+          {testimonials.map((item, i) => (
             <Grid key={i} item={true} md={4} xs={12}>
               <div className="testimonial-item nabi-background-white nabi-box-shadow nabi-text-center nabi-border-radius">
                 <Typography>{item.testimonial}</Typography>
@@ -43,16 +42,16 @@ export const Testimonials = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
-        <Link href={Routes.Registration}>
-          <a>
-            <Button fullWidth={true} className="nabi-margin-top-xsmall" color="primary" variant="contained">
-              {button}
-            </Button>
-          </a>
-        </Link>
-        </Grid>
-        <h2 className="nabi-text-normalbold nabi-jennasue-banner-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-text-center">
+        {/* <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
+          <Link href={Routes.Registration}>
+            <a>
+              <Button fullWidth={true} className="nabi-margin-top-xsmall" color="primary" variant="contained">
+                {button}
+              </Button>
+            </a>
+          </Link>
+        </Grid> */}
+        <h2 className="nabi-text-center">
           {recognition}
         </h2>
         <Grid container={true} className="nabi-margin-top-xlarge nabi-margin-bottom-small">
@@ -66,10 +65,10 @@ export const Testimonials = () => {
             ))
           }
         </Grid>
-        <Grid className="nabi-margin-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
-          <Link href={Routes.Registration}>
+        <Grid className="nabi-margin-center nabi-text-center nabi-margin-bottom-xlarge" item={true} xs={12} md={8}>
+          <Link href={Routes.RegistrationParentStudent}>
             <a>
-              <Button fullWidth={true} className="nabi-margin-top-medium" color="secondary" variant="contained">
+              <Button className="nabi-margin-top-medium" color="primary" variant="contained">
                 {recognizedButton}
               </Button>
             </a>
