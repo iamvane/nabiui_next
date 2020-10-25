@@ -64,5 +64,6 @@ export enum SocialLinks {
   Facebook = 'https://www.facebook.com/nabimusicinfo',
   Twitter = 'https://twitter.com/_nabimusic',
   Instagram = 'https://www.instagram.com/_nabimusic',
-  Pinterest = 'https://www.pinterest.com/nabimusic_/'
+  Pinterest = 'https://www.pinterest.com/nabimusic_/',
+  LinkedIn = 'https://www.linkedin.com/company/nabimusic',
 }
