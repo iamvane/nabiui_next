@@ -77,7 +77,7 @@ const SocialMenu = () => {
         <img
           data-src={LinkedInIcon}
           className="nabi-custom-button-icon lazyload"
-          alt="pinterest-icon"
+          alt="linkedin-icon"
         />
       </IconButton>
     </div>
