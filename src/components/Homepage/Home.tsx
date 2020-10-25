@@ -125,7 +125,7 @@ export const Home = (props: Props) => {
           </Grid>
         </div>
       </div>
-      <section id="banner" className="nabi-position-relative">
+      <section id="banner-new" className="nabi-position-relative">
         <div className="nabi-container">
           <Grid container={true} spacing={1}>
             <Grid item={true} xs={8} md={6}>
