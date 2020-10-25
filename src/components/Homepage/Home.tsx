@@ -90,7 +90,7 @@ export const Home = (props: Props) => {
       </div>
       <div className="nabi-background-white nabi-hide-mobile">
         <div className="nabi-container nabi-position-relative nabi-background-white">
-          <Grid container={true} spacing={1}>
+          <Grid container={true} spacing={1} className="nabi-padding-top-xsmall">
             <Grid item={true} xs={4} md={1}>
               <Link href={Routes.HomePage}>
                 <a>
@@ -215,7 +215,7 @@ export const Home = (props: Props) => {
 
       <Testimonials />
       <div className="nabi-container nabi-background-color">
-        <Grid container={true}>
+        <Grid container={true} className="nabi-padding-bottom-small">
           <Grid item={true} xs={12} className="nabi-text-center nabi-text-left-md">
             © Nabi Music 2020.
           </Grid>
