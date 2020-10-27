@@ -134,10 +134,10 @@ export const Home = (props: Props) => {
             }
           </Grid>
         </div>
-        <Footer />
       </div>
 
       <Testimonials />
+      <Footer />
     </div>
   );
 };
