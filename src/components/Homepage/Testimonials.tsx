@@ -3,9 +3,10 @@ import * as React from 'react';
 import Link from 'next/link';
 import {
   Button,
-  Grid,
   Typography,
 } from '@material-ui/core';
+
+import { Grid } from "nabi_web_components";
 import { Routes } from '../common/constants//Routes';
 
 import '../../../assets/scss/Testimonials.scss'
@@ -31,9 +32,9 @@ export const Testimonials = () => {
           {description}
           </p>
         </Grid>
-        <Grid container={true} spacing={2} className="nabi-margin-top-medium nabi-margin-bottom-medium">
+        <Grid container={true} className="nabi-margin-top-medium nabi-margin-bottom-medium">
           {testimonials.map((item, i) => (
-            <Grid key={i} item={true} md={4} xs={12}>
+            <Grid gutter={5} key={i} item={true} md={4} xs={12} lg={4}>
               <div className="testimonial-item nabi-background-white nabi-box-shadow nabi-text-center nabi-border-radius">
                 <Typography>{item.testimonial}</Typography>
               </div>
@@ -57,7 +58,7 @@ export const Testimonials = () => {
         <Grid container={true} className="nabi-margin-top-xlarge nabi-margin-bottom-small">
           {
             recognizedImages.map((item, i) => (
-              <Grid md={2} item={true} key={i} className="nabi-margin-center">
+              <Grid md={2} lg={2} xs={6} item={true} key={i} className="nabi-margin-center nabi-display-flex nabi-flex-justify-center">
                 <div className="recognized-item">
                   <img data-src={item.src} alt={item.alt} className="lazyload" />
                 </div>

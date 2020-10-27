@@ -1,7 +1,8 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { Button, Grid } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { Grid } from "nabi_web_components";
 
 import "../../../assets/scss/Banner.scss";
 import { Routes } from "./constants/Routes";

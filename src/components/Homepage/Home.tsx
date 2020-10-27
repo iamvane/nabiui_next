@@ -2,7 +2,8 @@ import * as React from "react";
 import Head from 'next/head';
 import Link from "next/link";
 
-import { Avatar, Button, Grid } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
+import { Grid } from "nabi_web_components";
 
 import dynamic from "next/dynamic";
 const Star = dynamic(() => import('@material-ui/icons/Star'), {
@@ -58,11 +59,11 @@ export const Home = (props: Props) => {
           <meta name="description" content={docDescription}></meta>
         </Head>
       </div>
-      <Header 
+      <Header
         headerMenuItems={HomeComponent.menuItems}
         drawerMenuItems={HomeComponent.menuItems}
       />
-      <Banner 
+      <Banner
         pageName="home"
         cta={HomeComponent.cta}
         heading={HomeComponent.valueHeading}
@@ -70,7 +71,7 @@ export const Home = (props: Props) => {
       />
       <div className="nabi-background-white">
         <div className="nabi-container nabi-padding-top-small nabi-padding-bottom-large">
-          <Grid item={true} xs={12} md={6} className="nabi-margin-center nabi-text-center">
+          <Grid item={true} lg={6} xs={12} md={6} className="nabi-margin-center nabi-text-center">
             <h2>
               {HomeComponent.oneOnOne}
             </h2>
@@ -81,7 +82,7 @@ export const Home = (props: Props) => {
           <Grid container={true} className="nabi-margin-top-xlarge nabi-margin-bottom-small">
             {
               HomeComponent.featuredInstructors.map((item, i) => (
-                <Grid md={3} item={true} key={i}>
+                <Grid md={3} xs={12} lg={3} item={true} key={i}>
                   <div className="featured-instructor-wrapper nabi-margin-center">
                     <Grid container={true} className="nabi-text-center">
                       <Grid item={true} xs={12}>
@@ -96,22 +97,22 @@ export const Home = (props: Props) => {
                         </div>
                       </Grid>
                       <Grid container={true} className="stats-wrapper">
-                        <Grid item={true} xs={4}>
+                        <Grid item={true} xs={4} lg={4} md={4}>
                           <p className="stats-label nabi-text-mediumbold">Rate</p>
                         </Grid>
-                        <Grid item={true} xs={4}>
+                        <Grid item={true} xs={4} lg={4} md={4}>
                           <p className="stats-label nabi-text-mediumbold">Lessons Taught</p>
                         </Grid>
-                        <Grid item={true} xs={4}>
+                        <Grid item={true} xs={4} lg={4} md={4}>
                           <p className="stats-label nabi-text-mediumbold">Verified</p>
                         </Grid>
-                        <Grid item={true} xs={4}>
+                        <Grid item={true} xs={4} lg={4} md={4}>
                           <span className="nabi-color-nabi nabi-text-mediumbold">${item.rate}</span>
                         </Grid>
-                        <Grid item={true} xs={4}>
+                        <Grid item={true} xs={4} lg={4} md={4}>
                           <span className="nabi-color-nabi nabi-text-mediumbold">{item.lessonsTaught}</span>
                         </Grid>
-                        <Grid item={true} xs={4}>
+                        <Grid item={true} xs={4} lg={4} md={4}>
                           <span className="nabi-color-nabi nabi-text-mediumbold">Yes</span>
                         </Grid>
                       </Grid>
@@ -134,10 +135,10 @@ export const Home = (props: Props) => {
             }
           </Grid>
         </div>
-        <Footer />
       </div>
 
       <Testimonials />
+      <Footer />
     </div>
   );
 };
