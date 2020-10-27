@@ -408,6 +408,16 @@ export const StudioParent = (props: Props) => {
     }
   }
 
+  const checkMissingField = (missingFields: any[]) => {
+    if (missingFields.length > 1) {
+      return true;
+    }
+    const field = missingFields.find((field) => field.reviews) as any;
+    if (field.reviews.length) {
+      return true;
+    }
+    return false;
+  }
   return (
     <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
       <PageTitle pageTitle={pageTitle()} />
@@ -415,7 +425,7 @@ export const StudioParent = (props: Props) => {
         <CircularProgress /> :
         <Grid container={true} spacing={0}>
           {
-            props.dashboard && props.dashboard.missingFields && props.dashboard.missingFields.length > 0 ?
+            props.dashboard && props.dashboard.missingFields && checkMissingField(props.dashboard.missingFields) ?
               <MissingFields>
                 {renderMissingReviewsMessage(props.dashboard.missingFields)}
               </MissingFields> :
