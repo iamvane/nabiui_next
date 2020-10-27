@@ -1,18 +1,13 @@
-#footer {
-  background: #ffffff;
-  border-top: 1px solid #e6e7e8;
-  padding-bottom: 50px;
+.bottom-footer {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
 }
 
-#footer a {
-  color: #717a8a;
-}
-
-div#footer p a {
-  display: block;
-  height: 48px;
-}
-
-#footer a:hover {
-  color: #06c3e1;
+@media (min-width: 768px) {
+  .bottom-footer {
+    position: inherit;
+    bottom: 0rem;
+  }
 }

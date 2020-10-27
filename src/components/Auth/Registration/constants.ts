@@ -1,5 +1,7 @@
+import { Routes } from "../../common/constants/Routes";
+
 export namespace RegistrationComponent {
-  export const pageTitle = 'Registration';
+  export const pageTitle = 'Get Your Free Account';
   export const minimumAge = 16;
 }
 
@@ -8,6 +10,24 @@ export enum Role {
   instructor = 'instructor',
   parent = 'parent'
 }
+
+export const menuItems = [
+  {
+    label: 'Create Account',
+    route: Routes.Registration
+  },
+  {
+    label: 'Login',
+    route: Routes.Login
+  }
+];
+
+export const headerMenuItems = [
+  {
+    label: 'Login',
+    route: Routes.Login
+  }
+];
 
 export namespace RegistrationFormComponent {
   export const SubmitText = 'Submit';
@@ -155,10 +175,11 @@ export namespace RegistrationOptionsComponent {
 }
 
 export namespace RegistrationParentstudentOptionsComponent {
-  export const description = 'Are you a student or a parent?';
+  export const pageTitle = 'Select Role';
+  export const description = 'Are you a parent or a student?';
   export const parent = 'I am a parent';
   export const student = 'I am a student';
-  export const InstructorUrl = 'Register as an instructor';
+  export const ageDisclaimer = 'You must be at least 18 years old to create an account.';
 }
 
 export namespace RegistrationLandingComponent {

@@ -5,6 +5,7 @@ import Router from "next/router";
 import { withRouter, NextRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
 import Head from 'next/head';
+import { Grid } from '@material-ui/core';
 
 import { Action, Dispatch } from "redux";
 
@@ -17,11 +18,14 @@ import { Routes } from "../../common/constants/Routes";
 import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import RegistrationForm from "./RegistrationForm";
 import AgeDisclaimer from "./AgeDisclaimer";
-
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 import {
   Role,
   RegistrationComponent,
-  RegistrationFormComponent
+  RegistrationFormComponent,
+  menuItems,
+  headerMenuItems
 } from "./constants";
 import { RegistrationType } from "./models";
 import { page, track } from "../../../utils/analytics";
@@ -74,7 +78,6 @@ export const Registration = (props: Props) => {
   const [openModal, toggleModal] = React.useState(false);
   const [isUnderage, setIsUnderAge] = React.useState(false);
   const [phoneNumber, setPhoneNumber] = React.useState('');
-  const [reference, setReference] = React.useState("");
   const [otherText, setOtherText] = React.useState("");
   const [agreeWithTerms, setAgreeWithTerms] = React.useState(false);
   const [formErrors, setFormErrors] = React.useState({});
@@ -135,7 +138,6 @@ export const Registration = (props: Props) => {
       birthday: moment(birthday).format("YYYY-MM-DD"),
       email: email.toLocaleLowerCase(),
       password,
-      reference: otherText || reference,
       termsAccepted: agreeWithTerms,
       role: props.role
     };
@@ -176,9 +178,6 @@ export const Registration = (props: Props) => {
         break;
       case RegistrationFormComponent.FieldNames.Password:
         setPassword(value);
-        break;
-      case RegistrationFormComponent.FieldNames.Reference:
-        setReference(value);
         break;
       case RegistrationFormComponent.FieldNames.OtherText:
         setOtherText(value);
@@ -260,16 +259,6 @@ export const Registration = (props: Props) => {
       }
     }
 
-    // Validate reference
-    if (!reference) {
-      formErrorsObject[FieldKey.Reference] = RegistrationFormComponent.ErrorMessages.Reference;
-    }
-
-    // Validate otherText
-    if (reference === 'other' && !otherText) {
-      formErrorsObject[FieldKey.OtherText] = RegistrationFormComponent.ErrorMessages.OtherText;
-    }
-
     // Validate birthday
     displayAgeDisclaimer();
     if (props.role !== Role.instructor) {
@@ -338,40 +327,47 @@ export const Registration = (props: Props) => {
   }
 
   return (
-    <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
+    <div>
       <Head>
         <title>{docTitle}</title>
         <meta name="description" content={docDescription}></meta>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
       </Head>
-      <PageTitle pageTitle={RegistrationComponent.pageTitle} />
-
-      <div className="nabi-background-white nabi-section">
-        <RegistrationForm
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          handleBirthdayChange={handleBirthdayChange}
-          birthday={birthday ? birthday : ""}
-          selectedRole={props.role || ""}
-          formErrors={formErrors}
-          apiError={props.apiError}
-          email={email}
-          firstName={firstName}
-          lastName={lastName}
-          isRequesting={props.isRequesting}
-          agreeWithTerms={agreeWithTerms}
-          reference={reference}
-          otherText={otherText}
-          handleNumberChange={handleNumberChange}
-          phoneNumber={phoneNumber}
-          getLatLng={getLatLng}
-          getLocationError={getLocationError}
-          handleLocationChange={handleLocationChange}
-          location={location || ''}
-        />
+      <Header
+        drawerMenuItems={menuItems}
+        headerMenuItems={headerMenuItems}
+      />
+      <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium-md">
+        <Grid xs={12} md={7} className="nabi-background-white-md nabi-section nabi-margin-center">
+          <div className="nabi-text-center">
+            <PageTitle pageTitle={RegistrationComponent.pageTitle} />
+          </div>
+          <RegistrationForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            handleBirthdayChange={handleBirthdayChange}
+            birthday={birthday ? birthday : ""}
+            selectedRole={props.role || ""}
+            formErrors={formErrors}
+            apiError={props.apiError}
+            email={email}
+            firstName={firstName}
+            lastName={lastName}
+            isRequesting={props.isRequesting}
+            agreeWithTerms={agreeWithTerms}
+            otherText={otherText}
+            handleNumberChange={handleNumberChange}
+            phoneNumber={phoneNumber}
+            getLatLng={getLatLng}
+            getLocationError={getLocationError}
+            handleLocationChange={handleLocationChange}
+            location={location || ''}
+          />
+        </Grid>
       </div>
 
       <AgeDisclaimer isFormDialogOpen={openModal} closeHandler={closeModal} />
+      <Footer />
     </div>
   );
 };

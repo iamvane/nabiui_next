@@ -1,80 +1,45 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
-const reactStringReplace = require('react-string-replace');
-
-import {
-  Grid,
-  Typography,
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import '../../../assets/scss/Footer.scss'
 import SocialMenu from './SocialMenu';
 import { FooterComponent } from './constants/Footer';
 import { Routes } from './constants/Routes';
-import { getCookie } from '../../utils/cookies';
-
-import RegistrationParentStudentOptions from "../Auth/Registration/RegistrationParentStudentOptions"
 
 /**
- * Homepage footer component
+ * Footer component
  */
-export const Footer = () => {
-  const isLoggedIn = getCookie('token');
-  const router = useRouter();
+
+interface Props {
+  bottomPlacement?: Boolean;
+}
+export const Footer = (props: Props) => {
   return (
-    <div id="footer">
-      <div className="nabi-container">
-        {(!isLoggedIn &&
-          !router.pathname.includes("registration") &&
-          !router.pathname.includes("student-profile-builder") &&
-          !router.pathname.includes("free-lesson")) &&
-          <>
-            <RegistrationParentStudentOptions inFooter={true}>
-              <p className="nabi-jennasue-title nabi-margin-top-medium nabi-text-center nabi-color-nabi">{FooterComponent.fromDescription}</p>
-            </RegistrationParentStudentOptions>
-          </>
-        }
-        <Grid className="nabi-padding-top-xlarge nabi-padding-bottom-medium" container={true}>
-          <Grid item={true} xs={12} md={3}>
-            <p className="nabi-text-mediumbold nabi-font-medium">{FooterComponent.learnMoreSection}</p>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.LessonPackages}><a>{FooterComponent.lessonPackages}</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.VetInstructor}><a>{FooterComponent.vettingProcess}</a></Link></Typography>
-          </Grid>
-          <Grid item={true} xs={12} md={3}>
-            <p className="nabi-text-mediumbold nabi-font-medium">{FooterComponent.helpSection}</p>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.FAQParents}><a>{FooterComponent.faqsParents}</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.FAQInstructors}><a>{FooterComponent.faqsInstructors}</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.ContactUs}><a>{FooterComponent.ContactUs}</a></Link></Typography>
-          </Grid>
-          <Grid item={true} xs={12} md={3}>
-            <p className="nabi-text-mediumbold nabi-font-medium">{FooterComponent.aboutSection}</p>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.HowItWorksParents}><a>{FooterComponent.howItWorksParents}</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.HowItWorksInstructors}><a>{FooterComponent.howItWorksInstructors}</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.AboutUs}><a>{FooterComponent.aboutUs}</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><a href="https://blog.nabimusic.com" target="_blank" rel="noreferrer">{FooterComponent.blog}</a></Typography>
-          </Grid>
-          <Grid item={true} xs={12} md={3}>
-            <p className="nabi-text-mediumbold nabi-font-medium">{FooterComponent.legalSection}</p>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.TermsOfUse}><a>{FooterComponent.termsOfUse}</a></Link></Typography>
-            <Typography className="nabi-cursor-pointer"><Link prefetch={false} href={Routes.PrivacyPolicy}><a>{FooterComponent.privacyPolicy}</a></Link></Typography>
-          </Grid>
+    <div className={`nabi-container nabi-background-color ${props.bottomPlacement ? 'bottom-footer' : ''}`}>
+      <Grid container={true} className="nabi-padding-bottom-small">
+        <Grid item={true} xs={12} className="nabi-text-center nabi-text-left-md">
+          {FooterComponent.copyrights}
         </Grid>
-        <div className="nabi-margin-bottom-xsmall nabi-text-center">
+        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-left-md nabi-margin-top-small">
+          <Link href={Routes.TermsOfUse} prefetch={false}>
+            <a className="nabi-text-mediumbold nabi-margin-right-small">
+              {FooterComponent.terms}
+            </a>
+          </Link>
+          <Link href={Routes.ContactUs} prefetch={false}>
+            <a className="nabi-text-mediumbold">
+              {FooterComponent.contact}
+            </a>
+          </Link>
+        </Grid>
+        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-right-md nabi-margin-top-small">
           <SocialMenu />
-        </div>
-        <Typography className="nabi-margin-top-medium nabi-text-center">
-          {reactStringReplace(
-            FooterComponent.CopyrightText,
-            FooterComponent.NabiMusicPlaceholder,
-            (i: number) => (
-              <span key={i} className="nabi-text-uppercase">{FooterComponent.NabiMusicCenter}</span>
-            )
-          )}
-        </Typography>
-      </div>
+        </Grid>
+      </Grid>
     </div>
+
   );
 };
 

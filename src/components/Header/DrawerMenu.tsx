@@ -2,7 +2,6 @@ import * as React from 'react';
 import Link from 'next/link';
 
 import {
-  Button,
   Drawer,
   Grid,
   MenuItem,
@@ -10,12 +9,15 @@ import {
   Typography
 } from '@material-ui/core';
 
-import { Routes } from '../common/constants/Routes';
-import { menuLabels } from './constants';
+interface MenuType {
+  label: string;
+  route: string;
+}
 
 interface Props {
   isOpen: boolean;
   closeMenu: () => void;
+  menuItems: MenuType[];
 }
 
 export const DrawerMenu = (props: Props) => {
@@ -25,29 +27,17 @@ export const DrawerMenu = (props: Props) => {
         open={props.isOpen}
         onClose={props.closeMenu}
       >
-        <Grid item={true} xs={10} className="nabi-margin-center nabi-padding-top-small nabi-padding-bottom-small">
+        <Grid item={true} xs={12} className="nabi-margin-center nabi-padding-top-small nabi-padding-bottom-small">
           <MenuList>
-            <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.HowItWorksParents}>
-                <Typography color="primary">
-                  {menuLabels.howItWorks}
-                </Typography>
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.RegistrationInstructor}>
-                <Typography color="primary">
-                  {menuLabels.teach}
-                </Typography>
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={props.closeMenu}>
-              <Link prefetch={false} href={Routes.Login}>
-                <Typography color="primary">
-                  {menuLabels.login}
-                </Typography>
-              </Link>
-            </MenuItem>
+            {props.menuItems && props.menuItems.map((menuItem, index) => (
+              <MenuItem onClick={props.closeMenu}>
+                <Link prefetch={false} href={menuItem.route}>
+                  <Typography color="primary">
+                    {menuItem.label}
+                  </Typography>
+                </Link>
+              </MenuItem>
+            ))}
           </MenuList>
         </Grid>
       </Drawer>

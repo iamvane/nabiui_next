@@ -135,19 +135,20 @@ export const theme = createMuiTheme({
             },
             input: {
                 '&::placeholder': {
-                    color: '#717a8a !important'
+                    color: '#000000 !important'
                 },
-                background: '#f3f6f9',
-                borderRadius: '5px',
-                color: '#717a8a !important',
-                padding: '17px 18px'
+                borderRadius: '4px',
+                color: '#000000 !important',
+                padding: '0px 11px',
+                height: '40px',
+                background: 'transparent !important'
             },
             multiline: {
                 padding: '20px'
             },
             root: {
-                border: '2px solid #ebeef1 !important',
-                borderRadius: '5px',
+                border: '1px solid #717A8A',
+                borderRadius: '4px',
                 '$&focused': {
                     border: '2px solid #06c3e1 !important',
                     borderRadius: '5px',
@@ -160,7 +161,6 @@ export const theme = createMuiTheme({
                 '&:before': {
                     display: 'none'
                 },
-                backgroundColor: '#f3f6f9 !important'
             }
         },
         MuiInputBase: {

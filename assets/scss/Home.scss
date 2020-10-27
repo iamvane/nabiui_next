@@ -1,25 +1,3 @@
-#logo {
-    width: 90px;
-}
-
-#banner-new {
-	height: 300px !important;
-	width: 100%;
-	background-image: url('https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/music-lessons-for-kids-banner-lighter.jpg') !important;
-	background-size: cover !important;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-.banner-heading {
-    font-size: 28px;
-    margin-top: 1.5em;
-}
-
-.menu-container {
-    padding-top: 24px !important;
-}
-
 .featured-avatar {
     width: 100px !important;
     height: 100px !important;
@@ -45,7 +23,7 @@
 .featured-instrument {
     background: #06c3e1;
     border-radius: 12px;
-    padding: 2px 4px;
+    padding: 3px 6px;
     color: #fff;
     margin-right: 2px;
 }

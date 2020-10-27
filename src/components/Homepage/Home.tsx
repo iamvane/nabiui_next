@@ -1,11 +1,8 @@
 import * as React from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import Router from "next/router";
 import Head from 'next/head';
 import Link from "next/link";
 
-import { Avatar, Button, Typography, Grid } from "@material-ui/core";
-import Menu from "@material-ui/icons/Menu";
+import { Avatar, Button, Grid } from "@material-ui/core";
 
 import dynamic from "next/dynamic";
 const Star = dynamic(() => import('@material-ui/icons/Star'), {
@@ -13,31 +10,19 @@ const Star = dynamic(() => import('@material-ui/icons/Star'), {
 });
 
 import "../../../assets/scss/Home.scss";
-import { StoreState } from "../../redux/reducers/store";
-import { page } from "../../utils/analytics";
 import { UserType } from "../../redux/models/UserModel";
-import { getCookie } from "../../utils/cookies";
 import { Routes } from "../common/constants/Routes";
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
-import Banner from "./Banner";
-import Features from "./Features";
 import Testimonials from "./Testimonials";
-import BecomeATeacher from "./BecomeATeacher";
-import FreeLesson from "./FreeLesson";
-import { useRouter } from "next/router";
-import ReferralModal from "../Referral/ReferralModal";
 import PrivateRoute from '../Auth/PrivateRoutes';
-import { fetchReferralInfo } from "../../redux/actions/UserActions";
-import { Role } from '../Auth/Registration/constants';
 import { HomeComponent } from './constants/Home';
-import SocialMenu from '../common/SocialMenu';
-import { CollapsibleSidebar } from "../CollapsibleSidbar/CollapsibleSidbar";
-import { DrawerMenu } from "../Header/DrawerMenu";
+import { Header } from "../Header/Header";
+import { Banner } from '../common/Banner';
+import { Footer } from "../common/Footer";
 
 /**
- * Homepage component
+ * Home component
  */
-
 export interface State {
   performRedirect: boolean;
 }
@@ -50,23 +35,8 @@ interface StateProps {
 export interface Props extends StateProps { } // RouteComponentProps<{}>,
 
 export const Home = (props: Props) => {
-  const [isDrawerMenuOpen, setIsDraweMenuOpen] = React.useState(false);
-  const [isStudentParentMenuOpen, setStudentParentMenuOpen] = React.useState(
-    false
-  );
-
   const docTitle = pageTitlesAndDescriptions.homepage.title;
   const docDescription = pageTitlesAndDescriptions.homepage.description;
-
-  const logo =
-    "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/full-logo.png";
-
-  const bannerImage = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-homepage-image-new.jpg";
-  const bannerImg = "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabiBannerImage.jpg";
-
-  const toggleDrawerMenu = () => {
-    setIsDraweMenuOpen(prevOpen => !prevOpen);
-  };
 
   const displayRatingStars = (reviewsNumber: number) => {
     let ratingStars: JSX.Element[] = [];
@@ -88,63 +58,16 @@ export const Home = (props: Props) => {
           <meta name="description" content={docDescription}></meta>
         </Head>
       </div>
-      <div className="nabi-background-white nabi-hide-mobile">
-        <div className="nabi-container nabi-position-relative nabi-background-white">
-          <Grid container={true} spacing={1} className="nabi-padding-top-xsmall">
-            <Grid item={true} xs={4} md={1}>
-              <Link href={Routes.HomePage}>
-                <a>
-                  <img className="nabi-responsive-image" alt="logo" src={logo} id="logo"/>
-                </a>
-              </Link>
-            </Grid>
-            <Grid item={true} xs={8} className="hide-on-desktop nabi-text-right menu-container">
-              <Menu onClick={toggleDrawerMenu} color="primary" />
-              <DrawerMenu
-                isOpen={isDrawerMenuOpen}
-                closeMenu={toggleDrawerMenu}
-              />
-            </Grid>
-            <Grid item={true} xs={11} className="nabi-text-right menu-container hide-on-mobile">
-              <Link href={Routes.HowItWorksParents} prefetch={false}>
-                <a className="nabi-text-mediumbold nabi-margin-right-small">
-                  {HomeComponent.howItWorks}
-                </a>
-              </Link>
-              <Link href={Routes.RegistrationInstructor} prefetch={false}>
-                <a className="nabi-text-mediumbold nabi-margin-right-small">
-                  {HomeComponent.teach}
-                </a>
-              </Link>
-              <Link href={Routes.Login} prefetch={false}>
-                <a className="nabi-text-mediumbold">
-                  {HomeComponent.login}
-                </a>
-              </Link>
-            </Grid>
-          </Grid>
-        </div>
-      </div>
-      <section id="banner-new" className="nabi-position-relative">
-        <div className="nabi-container">
-          <Grid container={true} spacing={1}>
-            <Grid item={true} xs={8} md={6}>
-              <h2 className="banner-heading">{HomeComponent.valueHeading}</h2>
-              <Link href={Routes.RegistrationParentStudent}>
-                <a>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                  >
-                    {HomeComponent.cta}
-                  </Button>
-                </a>
-              </Link>
-              <p>{HomeComponent.noCard}</p>
-            </Grid>
-          </Grid>
-        </div>
-      </section>
+      <Header 
+        headerMenuItems={HomeComponent.menuItems}
+        drawerMenuItems={HomeComponent.menuItems}
+      />
+      <Banner 
+        pageName="home"
+        cta={HomeComponent.cta}
+        heading={HomeComponent.valueHeading}
+        disclaimer={HomeComponent.noCard}
+      />
       <div className="nabi-background-white">
         <div className="nabi-container nabi-padding-top-small nabi-padding-bottom-large">
           <Grid item={true} xs={12} md={6} className="nabi-margin-center nabi-text-center">
@@ -211,42 +134,12 @@ export const Home = (props: Props) => {
             }
           </Grid>
         </div>
+        <Footer />
       </div>
 
       <Testimonials />
-      <div className="nabi-container nabi-background-color">
-        <Grid container={true} className="nabi-padding-bottom-small">
-          <Grid item={true} xs={12} className="nabi-text-center nabi-text-left-md">
-            © Nabi Music 2020.
-          </Grid>
-          <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-left-md nabi-margin-top-small">
-            <Link href={Routes.TermsOfUse} prefetch={false}>
-              <a className="nabi-text-mediumbold nabi-margin-right-small">
-                Terms
-            </a>
-            </Link>
-            <Link href={Routes.ContactUs} prefetch={false}>
-              <a className="nabi-text-mediumbold">
-                Contact
-            </a>
-            </Link>
-          </Grid>
-          <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-right-md nabi-margin-top-small">
-            <SocialMenu />
-          </Grid>
-        </Grid>
-      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
-  const { user, token } = state.user;
-
-  return {
-    user,
-    token
-  };
-};
-
-export default connect(mapStateToProps, undefined)(PrivateRoute(Home, 'Public'));
+export default PrivateRoute(Home, 'Public');

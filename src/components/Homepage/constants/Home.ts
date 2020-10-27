@@ -1,3 +1,5 @@
+import { Routes } from "../../common/constants/Routes";
+
 export namespace HomeComponent {
     export const valueHeading = "Where children grow musically.";
     export const cta = "Get FREE Lesson";
@@ -11,6 +13,20 @@ export namespace HomeComponent {
 
     export const oneOnOne = "One-on-one attention for greater success";
     export const progress = "Explore music curriculums for children ages 6 and up. With one-on-one attention, a child is able to focus on developing individual skills. Book a trial lesson with a qualified instructor today!";
+    export const menuItems = [
+        {
+            route: Routes.HowItWorksParents,
+            label: "How It Works"
+        },
+        {
+            route: Routes.RegistrationInstructor,
+            label: "Teach"
+        },
+        {
+            route: Routes.Login,
+            label: "Login"
+        }
+    ];
 
     export const featuredInstructors = [
         {

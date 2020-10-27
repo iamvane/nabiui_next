@@ -10,9 +10,9 @@ interface Props {
  */
 export const PageTitle: React.StatelessComponent<Props> = props => {
   return (
-    <Typography variant="h2" id="nabi-page-title">
+    <h2 id="nabi-text-uppercase">
       {props.pageTitle}
-    </Typography>
+    </h2>
   );
 };
 
