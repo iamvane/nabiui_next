@@ -38,6 +38,8 @@ interface OwnProps {
   toggleChangePhoneNumber?: () => void;
   isEditing?: boolean;
   error?: string;
+  customClass?: string;
+  hideLabel?: boolean;
 }
 
 interface Props extends
@@ -214,7 +216,7 @@ export class PhoneValidation extends React.Component<Props, State> {
 
   public render(): JSX.Element {
     return (
-      <div>
+      <div className={this.props.customClass ? this.props.customClass : ''}>
         <PhoneValidationForm
           phoneNumber={this.state.phoneNumber}
           isPhoneSet={this.state.isPhoneSet}
@@ -231,6 +233,7 @@ export class PhoneValidation extends React.Component<Props, State> {
           isRequesting={this.props.isRequestingToken || this.props.isVerifyingToken}
           phoneError={this.props.error}
           isPhoneVerified={this.state.isPhoneVerified}
+          hideLabel={this.props.hideLabel}
         />
         <SnackBar
           isOpen={this.state.showSnackbar}

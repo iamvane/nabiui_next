@@ -27,6 +27,8 @@ import {
   LessonDetailsComponent,
 } from './constants';
 import StudentForm from './StudentForm';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 
 interface DispatchProps {
   createStudent: (student: StudentDetailsType) => void;
@@ -85,74 +87,76 @@ export const LessonDetails = (props: Props) => {
   const role = getCookie('role');
 
   return (
-    <div className="nabi-container nabi-margin-bottom-medium">
-      <PageTitle
-        pageTitle={
-          role === Role.parent ? LessonDetailsComponent.pageTitleParent :
-            LessonDetailsComponent.pageTitleStudent
-        }
-      />
-      <Grid
-        item={true}
-        xs={12}
-        md={8} className="nabi-section nabi-background-white nabi-margin-center"
-      >
-        {
-          props.isAddingStudent ?
-            <CircularProgress /> :
-            <StudentForm addChild={createStudent} role={role} />
-        }
-      </Grid>
-      <SnackBar
-        isOpen={showSnackbar}
-        message={snackErrorMessage}
-        handleClose={() => setShowSnackbar(false)}
-        variant="error"
-      />
-    </div>
+    <div>
+      <Header />
+      <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium-md">
+        <Grid xs={12} md={7} className="nabi-background-white-md nabi-section nabi-margin-center">
+          <div className="nabi-text-center">
+            <PageTitle
+              pageTitle={
+                role === Role.parent ? LessonDetailsComponent.pageTitleParent :
+                  LessonDetailsComponent.pageTitleStudent
+              }
+            />
+          </div>
+              {
+                props.isAddingStudent ?
+                  <CircularProgress /> :
+                  <StudentForm addChild={createStudent} role={role} />
+              }
+            </Grid>
+            <SnackBar
+              isOpen={showSnackbar}
+              message={snackErrorMessage}
+              handleClose={() => setShowSnackbar(false)}
+              variant="error"
+            />
+          </div>
+          <Footer />
+          </div>
   )
 }
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
-    students,
-    student,
-    actions: {
-      fetchStudents: {
-        isRequesting: isFetchingStudents,
+            students,
+            student,
+            actions: {
+            fetchStudents: {
+            isRequesting: isFetchingStudents,
         error: fetchError
       },
       createStudent: {
-        isRequesting: isAddingStudent,
+            isRequesting: isAddingStudent,
         error: addError
       },
       deleteStudent: {
-        isRequesting: isDeletingStudent,
+            isRequesting: isDeletingStudent,
         error: deleteError
       },
     },
   } = state.requests;
 
   const {
-    timezones
-  } = state.timezones;
+            timezones
+          } = state.timezones;
   return {
-    isFetchingStudents,
-    fetchError,
-    isAddingStudent,
-    addError,
-    isDeletingStudent,
-    deleteError,
-    students,
-    timezones,
-    student,
+            isFetchingStudents,
+            fetchError,
+            isAddingStudent,
+            addError,
+            isDeletingStudent,
+            deleteError,
+            students,
+            timezones,
+            student,
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
-): DispatchProps => ({
-  createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
+            ): DispatchProps => ({
+              createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
   fetchStudents: () => dispatch(fetchStudents())
 });
 

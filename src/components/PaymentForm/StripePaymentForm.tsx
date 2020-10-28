@@ -19,7 +19,7 @@ const CARD_OPTIONS = {
       backgroundColor: '#f3f6f9',
       borderRadius: '5px' ,
       '::placeholder': {
-        color: "#868e96",
+        color: "#717A8A !important",
       },
     },
     invalid: {

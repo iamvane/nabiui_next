@@ -22,7 +22,7 @@ export const Footer = (props: Props) => {
         <Grid item={true} xs={12} className="nabi-text-center nabi-text-left-md">
           {FooterComponent.copyrights}
         </Grid>
-        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-left-md nabi-margin-top-small">
+        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-left-md nabi-margin-top-xsmall">
           <Link href={Routes.TermsOfUse} prefetch={false}>
             <a className="nabi-text-mediumbold nabi-margin-right-small">
               {FooterComponent.terms}

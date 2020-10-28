@@ -24,6 +24,8 @@ import PageTitle from '../common/PageTitle';
 import { VerificationChannel } from '../AccountInfo/models';
 import { Routes } from '../common/constants/Routes';
 import { ValidatePhoneComponent } from './constants';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 
 interface DispatchProps {
   fetchUser: () => void;
@@ -46,8 +48,8 @@ interface Props extends
   DispatchProps,
   StateProps,
   OwnProps {
-    redirectUrl: string;
-  }
+  redirectUrl: string;
+}
 
 export const ValidatePhone = (props: Props) => {
   React.useEffect(() => {
@@ -56,7 +58,7 @@ export const ValidatePhone = (props: Props) => {
       await props.fetchUser();
     };
     fetchData();
-  },[]);
+  }, []);
 
   React.useEffect(() => {
     if (props.user.phoneNumber && !props.user.isPhoneVerified) {
@@ -65,33 +67,34 @@ export const ValidatePhone = (props: Props) => {
       };
       requestToken();
     }
-  },[props.user.phoneNumber, props.user.isPhoneVerified]);
+  }, [props.user.phoneNumber, props.user.isPhoneVerified]);
 
   return (
-    <div className="nabi-container">
-      <PageTitle pageTitle={ValidatePhoneComponent.pageTitle} />
-      <Grid
-        item={true}
-        xs={12}
-        md={8} className="nabi-margin-center"
-      >
-        <div className="nabi-section nabi-background-white">
-          <PhoneValidation error="" />
-        </div>
-        {props.user.isPhoneVerified &&
-          <div className="nabi-text-right">
-            <Link href={Routes.ScheduleTrial + Routes.LessonDetails}>
-              <Button
-                color="primary"
-                className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
-                variant="contained"
-              >
-                {ValidatePhoneComponent.nextButton}
-              </Button>
-            </Link>
+    <div>
+      <Header />
+      <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium-md">
+        <Grid xs={12} md={7} className="nabi-background-white-md nabi-section nabi-margin-center">
+          <div className="nabi-text-center">
+            <PageTitle pageTitle={ValidatePhoneComponent.pageTitle} />
           </div>
-        }
-      </Grid>
+
+          <PhoneValidation error="" customClass="nabi-text-center nabi-text-left-md" hideLabel={true} />
+          {props.user.isPhoneVerified &&
+            <div className="nabi-text-right">
+              <Link href={Routes.ScheduleTrial + Routes.LessonDetails}>
+                <Button
+                  color="primary"
+                  className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"
+                  variant="contained"
+                >
+                  {ValidatePhoneComponent.nextButton}
+                </Button>
+              </Link>
+            </div>
+          }
+        </Grid>
+      </div>
+      <Footer bottomPlacement={true} />
     </div>
   )
 }

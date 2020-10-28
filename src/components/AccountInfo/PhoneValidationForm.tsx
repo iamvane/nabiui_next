@@ -69,6 +69,7 @@ interface OwnProps {
   isRequesting: boolean;
   phoneError?: string;
   isPhoneVerified?: boolean;
+  hideLabel?: boolean;
 }
 
 interface Props extends OwnProps {}
@@ -186,7 +187,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
 
   return (
     <Grid item={true}>
-      <SectionTitle text={PhoneValidationFormComponent.sectionTitle} />
+      {props.hideLabel ? '' : <SectionTitle text={PhoneValidationFormComponent.sectionTitle} />}
       {
         (props.phoneNumber) &&
         (props.isPhoneVerified) ? renderVerificationSucessful() :

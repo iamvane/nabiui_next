@@ -817,17 +817,18 @@ li.nabi-list-style-position-inside {
 
 /*Date Picker*/
 .react-datepicker__input-container {
-	border-radius:  5px;
-	border: 2px solid #ebeef1 !important;
-	margin: 0px;
-	padding: 14px 18px;
-	background: #f3f6f9;
+	border-radius: 4px;
+    border: 1px solid #717A8A !important;
+    margin: 0px;
+    height: 40px;
+    padding: 0px 11px;
+	/* background: #f3f6f9; */
 }
 
 .react-datepicker__input-container input {
 	border: none;
-	color: #717a8a;
-  padding: 0;
+	color: #000000;
+	padding: 11px 0px;
 	font-size: 14px;
 }
 

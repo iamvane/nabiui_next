@@ -1,13 +1,17 @@
 .international-phone-input input {
-  background: #f3f6f9;
-  border-radius: 5px;
-  border: 2px solid #ebeef1 !important;
+  border-radius: 4px;
+  border: 1px solid #717A8A;
   margin: 0px;
-  padding: 18px 18px;
+  height: 40px;
+  padding: 0px 11px;
   font-family: 'Montserrat', sans-serif !important;
   line-height: 1.1875em;
   font-size: 1rem;
   width: 100%;
+}
+
+.international-phone-input input::placeholder {
+  color: #717A8A !important;
 }
 
 .international-phone-input .PhoneInputCountryIconImg {

@@ -34,7 +34,8 @@ export const theme = createMuiTheme({
                     background: 'none !important'
                 },
                 color: '#717a8a',
-                padding: '8px 11px',
+                padding: '0px 11px',
+                height: '42px;',
                 borderRadius: '4px',
                 fontFamily: '\'Montserrat\', sans-serif !important',
                 '&:hover': {
@@ -135,7 +136,8 @@ export const theme = createMuiTheme({
             },
             input: {
                 '&::placeholder': {
-                    color: '#000000 !important'
+                    color: '#717A8A !important',
+                    opacity: '1 !important'
                 },
                 borderRadius: '4px',
                 color: '#000000 !important',
