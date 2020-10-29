@@ -13,7 +13,6 @@ import {
   Grid,
   FormLabel,
   Typography,
-  Divider,
   FormControl,
   Select,
   ButtonGroup
@@ -539,7 +538,6 @@ export const ScheduleLessons = (props: Props) => {
             </Grid>
           ))
         }
-        <Footer />
       </>
     )
   }
@@ -621,6 +619,7 @@ export const ScheduleLessons = (props: Props) => {
           variant={snackbarDetails.type}
         />
       </div>
+      <Footer />
     </div>
   )
 }
