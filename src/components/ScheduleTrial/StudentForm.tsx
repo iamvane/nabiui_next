@@ -264,27 +264,31 @@ export const StudentForm = (props: Props) => {
         </div>
         {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
 
-        <Typography color={formErrors.specialNeeds ? 'error' : undefined} className="nabi-margin-top-small">
-          {ChildFormComponent.Labels.SpecialNeeds}
-        </Typography>
+        {props.role === Role.parent &&
+          <div>
+            <Typography color={formErrors.specialNeeds ? 'error' : undefined} className="nabi-margin-top-small">
+              {ChildFormComponent.Labels.SpecialNeeds}
+            </Typography>
 
-        <div className="nabi-display-flex">
-          {renderSpecialNeeds()}
-        </div>
+            <div className="nabi-display-flex">
+              {renderSpecialNeeds()}
+            </div>
 
-        <Typography className="nabi-margin-top-small">
-          {ChildFormComponent.Labels.Notes}
-        </Typography>
+            <Typography className="nabi-margin-top-small">
+              {ChildFormComponent.Labels.Notes}
+            </Typography>
 
-        <TextField
-          fullWidth={true}
-          id={ChildFormComponent.Ids.Notes}
-          name={ChildFormComponent.Ids.Notes}
-          value={notes}
-          onChange={handleChange}
-          placeholder={ChildFormComponent.Placeholders.Notes}
-          required={true}
-        />
+            <TextField
+              fullWidth={true}
+              id={ChildFormComponent.Ids.Notes}
+              name={ChildFormComponent.Ids.Notes}
+              value={notes}
+              onChange={handleChange}
+              placeholder={ChildFormComponent.Placeholders.Notes}
+              required={true}
+            />
+          </div>
+        }
 
         <div className="nabi-text-right">
           <Button

@@ -89,8 +89,8 @@ export const LessonDetails = (props: Props) => {
   return (
     <div>
       <Header />
-      <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium-md">
-        <Grid xs={12} md={7} className="nabi-background-white-md nabi-section nabi-margin-center">
+      <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
+        <Grid xs={12} md={7} className="nabi-background-white nabi-section nabi-margin-center">
           <div className="nabi-text-center">
             <PageTitle
               pageTitle={

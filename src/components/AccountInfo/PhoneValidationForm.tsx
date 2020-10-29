@@ -74,7 +74,7 @@ interface OwnProps {
 
 interface Props extends OwnProps {}
 
-const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX.Element => {
+const PhoneValidationForm = (props: Props) => {
   const renderEnterPhoneNumber = (): JSX.Element => (
     <div>
       <Grid container={true}>
@@ -116,7 +116,7 @@ const PhoneValidationForm: React.StatelessComponent<Props> = (props: Props): JSX
         <Grid item={true}>
           <Button
             color="primary"
-            variant="contained"
+            variant="outlined"
             onClick={props.sendVerificationToken}
           >
             {PhoneValidationFormComponent.Buttons.Verify}

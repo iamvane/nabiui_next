@@ -25,6 +25,11 @@
   background: transparent !important
 }
 
+.MuiButton-outlinedPrimary {
+  color: #06c3e1 !important;
+  border: 1px solid #06c3e1 !important;
+}
+
 .MuiTableCell-root {
   font-family: 'Montserrat', sans-serif !important;
   color: #717a8a !important;
