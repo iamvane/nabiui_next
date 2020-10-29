@@ -170,14 +170,14 @@ export default function RateInstructor(props: Props) {
         >
           {renderTitle()}
           <Grid item={true} md={8} xs={12} sm={10}>
-            <SectionTitle text={RateInstructorComponent.RatingHeader} noDivider={false} />
+            <SectionTitle text={RateInstructorComponent.RatingHeader} />
             <Rating
               color="primary"
               name="rating"
               onChange={handleChange}
             />
             <div className="nabi-margin-top-small">
-              <SectionTitle text={RateInstructorComponent.Comment} noDivider={false} />
+              <SectionTitle text={RateInstructorComponent.Comment} />
             </div>
             <TextField
               margin="normal"

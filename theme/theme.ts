@@ -103,8 +103,8 @@ export const theme = createMuiTheme({
         },
         MuiFormLabel: {
             root: {
-                color: '#717a8a',
-                fontSize: '14px',
+                color: '#000000',
+                fontSize: '15px',
                 width: '100%',
                 fontWeight: 500,
                 fontFamily: '\'Montserrat\', sans-serif !important',
@@ -279,7 +279,7 @@ export const theme = createMuiTheme({
             root: {
                 fontFamily: '\'Montserrat\', sans-serif !important',
                 color: '#000000 !important',
-                fontSize: '0.875rem !important',
+                fontSize: '15px !important',
                 '&$colorPrimary': {
                     color: '#06c3e1 !important'
                 },

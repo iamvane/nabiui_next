@@ -11,6 +11,7 @@ import {
   Button,
   Chip,
   Grid,
+  FormLabel,
   Typography,
   Divider,
   FormControl,
@@ -38,8 +39,8 @@ import { Calendar } from './Calendar';
 import { RequestType } from '../Request/models';
 import { NewRequestComponent } from '../Request/constants';
 import PrivateRoute from '../Auth/PrivateRoutes';
-import { availabilityLabels, availabilityOptions } from '../Instructors/constants';
-
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 
 interface DispatchProps {
   scheduleLesson: (lessonDetails: Partial<LessonType>) => void;
@@ -121,8 +122,8 @@ export const ScheduleLessons = (props: Props) => {
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   const [calendarIsOpen, setCalendarOpen] = React.useState(false);
   const [trialAvailabilityDetails, setTrialAvailabilityDetails] = React.useState(initialAvailabilityDetails);
-  const [selectedLanguage, selectTrialLanguage] = React.useState('');
-  const [gender, setGender] = React.useState('male');
+  const [selectedLanguage, selectTrialLanguage] = React.useState('english');
+  const [gender, setGender] = React.useState('female');
 
   const allTrialsIsSelected = Object.keys(trialAvailabilityDetails).every((choice) => {
     if (trialAvailabilityDetails[choice]) {
@@ -301,9 +302,13 @@ export const ScheduleLessons = (props: Props) => {
     }
 
     if (props.isTrial) {
+      const trialDetails: RequestType = {
+        availability: [],
+      };
+
       const studentId = getCookie('studentId');
       if (role === Role.parent) {
-        lesson.studentId = studentId;
+        trialDetails.studentId = studentId;
       }
 
       const selectedTrialAvailabilityTimes = Object.keys(trialAvailabilityDetails).map((choice) => {
@@ -326,14 +331,11 @@ export const ScheduleLessons = (props: Props) => {
             timeframe: trialAvailabilityDetails[choice].timeFrameThirdChoice
           }
         }
-      }) as { day: string; timeframe: string}[];
+      }) as { day: string; timeframe: string }[];
+      trialDetails.availability = selectedTrialAvailabilityTimes;
+      trialDetails.gender = gender;
+      trialDetails.language = selectedLanguage;
 
-      const trialDetails = {
-        availability: selectedTrialAvailabilityTimes,
-        ...(studentId && { studentId }),
-        gender,
-        language: selectedLanguage
-      } as RequestType
       await props.createRequest(trialDetails)
     } else {
       await props.scheduleLesson(lesson)
@@ -381,16 +383,11 @@ export const ScheduleLessons = (props: Props) => {
 
   const renderGenderSelection = () => {
     return (
-      <div className="trial-select__form--container">
+      <FormControl className="trial-select__form--container">
+        <FormLabel className="nabi-margin-bottom-xsmall">
+          {TrialTimesAddedComponent.gender}
+        </FormLabel>
         <ButtonGroup className="trial-select__btn-group" variant="text" aria-label="text primary button group">
-          <Button
-            classes={{
-              label: `trial-select__label ${gender === "male" ? "trial-select__gender" : ""}`
-            }}
-            className="trial-select__btn"
-            value="male"
-            onClick={selectGender}
-          >{TrialTimesAddedComponent.male}</Button>
           <Button
             classes={{
               label: `trial-select__label ${gender === "female" ? "trial-select__gender" : ""}`
@@ -401,6 +398,14 @@ export const ScheduleLessons = (props: Props) => {
           >{TrialTimesAddedComponent.female}</Button>
           <Button
             classes={{
+              label: `trial-select__label ${gender === "male" ? "trial-select__gender" : ""}`
+            }}
+            className="trial-select__btn"
+            value="male"
+            onClick={selectGender}
+          >{TrialTimesAddedComponent.male}</Button>
+          <Button
+            classes={{
               label: `trial-select__label ${gender === "noPreference" ? "trial-select__gender" : ""}`
             }}
             className="trial-select__btn"
@@ -408,7 +413,7 @@ export const ScheduleLessons = (props: Props) => {
             onClick={selectGender}
           >{TrialTimesAddedComponent.noPreference}</Button>
         </ButtonGroup>
-      </div>
+      </FormControl>
     )
   }
 
@@ -416,6 +421,9 @@ export const ScheduleLessons = (props: Props) => {
     return (
       <div className="trial-select__form--container">
         <FormControl className="trial-select__language">
+          <FormLabel>
+            {TrialTimesAddedComponent.language}
+          </FormLabel>
           <Select
             classes={{
               select: "trial-time__select"
@@ -442,6 +450,10 @@ export const ScheduleLessons = (props: Props) => {
   const renderTrialSelect = () => {
     return (
       <>
+        <FormLabel className="nabi-margin-bottom-xsmall nabi-display-block">
+          {TrialTimesAddedComponent.trialAvailability}
+        </FormLabel>
+        <span>{TrialTimesAddedComponent.selectThreeTrials}</span>
         {
           [{
             dayOfTheWeek: "dayOfTheWeekFirstChoice",
@@ -453,74 +465,78 @@ export const ScheduleLessons = (props: Props) => {
             dayOfTheWeek: "dayOfTheWeekThirdChoice",
             timeFrame: "timeFrameThirdChoice"
           }].map((value, index) => (
-            <div key={`${value}-${index}`} className="nabi-display-flex nabi-flex-wrap">
-              <FormControl className="trial-select__form--day-of-week">
-                <Select
-                  classes={{
-                    select: "trial-time__select"
-                  }}
-                  native={true}
-                  IconComponent={() => (<CalendarIcon color="action" />)}
-                  onChange={handleChange}
-                  value={(() => {
-                    if (trialAvailabilityDetails.firstChoice[value.dayOfTheWeek]) {
-                      return trialAvailabilityDetails.firstChoice[value.dayOfTheWeek]
-                    }
-                    if (trialAvailabilityDetails.secondChoice[value.dayOfTheWeek]) {
-                      return trialAvailabilityDetails.secondChoice[value.dayOfTheWeek]
-                    }
-
-                    if (trialAvailabilityDetails.thirdChoice[value.dayOfTheWeek]) {
-                      return trialAvailabilityDetails.thirdChoice[value.dayOfTheWeek]
-                    }
-                    return '';
-                  })()}
-                  inputProps={{
-                    id: `${value.dayOfTheWeek}`,
-                    name: `${value.dayOfTheWeek}`
-                  }}
-                >
-                  <option value="" disabled={true}>
-                    {TrialTimesAddedComponent.selectWeekDay}
-                  </option>
-                  {renderedDaysOfTheWeek}
-                </Select>
-              </FormControl>
-              <FormControl className="trial-select__form--day-of-week">
-                <Select
-                  classes={{
-                    select: "trial-time__select"
-                  }}
-                  native={true}
-                  onChange={handleChange}
-                  IconComponent={() => (<ArrowdownIcon color="action" />)}
-                  value={
-                    (() => {
-                      if (trialAvailabilityDetails.firstChoice[value.timeFrame]) {
-                        return trialAvailabilityDetails.firstChoice[value.timeFrame]
+            <Grid container={true} key={index} className="nabi-display-flex nabi-flex-wrap">
+              <Grid item={true} xs={6}>
+                <FormControl className="trial-select__form--day-of-week">
+                  <Select
+                    classes={{
+                      select: "trial-time__select"
+                    }}
+                    native={true}
+                    IconComponent={() => (<CalendarIcon color="action" />)}
+                    onChange={handleChange}
+                    value={(() => {
+                      if (trialAvailabilityDetails.firstChoice[value.dayOfTheWeek]) {
+                        return trialAvailabilityDetails.firstChoice[value.dayOfTheWeek]
                       }
-                      if (trialAvailabilityDetails.secondChoice[value.timeFrame]) {
-                        return trialAvailabilityDetails.secondChoice[value.timeFrame]
+                      if (trialAvailabilityDetails.secondChoice[value.dayOfTheWeek]) {
+                        return trialAvailabilityDetails.secondChoice[value.dayOfTheWeek]
                       }
 
-                      if (trialAvailabilityDetails.thirdChoice[value.timeFrame]) {
-                        return trialAvailabilityDetails.thirdChoice[value.timeFrame]
+                      if (trialAvailabilityDetails.thirdChoice[value.dayOfTheWeek]) {
+                        return trialAvailabilityDetails.thirdChoice[value.dayOfTheWeek]
                       }
                       return '';
-                    })()
-                  }
-                  inputProps={{
-                    id: `${value.timeFrame}`,
-                    name: `${value.timeFrame}`
-                  }}
-                >
-                  <option value="" disabled={true}>
-                    {TrialTimesAddedComponent.selectTime}
-                  </option>
-                  {renderedTrialTimes}
-                </Select>
-              </FormControl>
-            </div>
+                    })()}
+                    inputProps={{
+                      id: `${value.dayOfTheWeek}`,
+                      name: `${value.dayOfTheWeek}`
+                    }}
+                  >
+                    <option value="" disabled={true}>
+                      {TrialTimesAddedComponent.selectWeekDay}
+                    </option>
+                    {renderedDaysOfTheWeek}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item={true} xs={6}>
+                <FormControl className="trial-select__form--day-of-week">
+                  <Select
+                    classes={{
+                      select: "trial-time__select"
+                    }}
+                    native={true}
+                    onChange={handleChange}
+                    IconComponent={() => (<ArrowdownIcon color="action" />)}
+                    value={
+                      (() => {
+                        if (trialAvailabilityDetails.firstChoice[value.timeFrame]) {
+                          return trialAvailabilityDetails.firstChoice[value.timeFrame]
+                        }
+                        if (trialAvailabilityDetails.secondChoice[value.timeFrame]) {
+                          return trialAvailabilityDetails.secondChoice[value.timeFrame]
+                        }
+
+                        if (trialAvailabilityDetails.thirdChoice[value.timeFrame]) {
+                          return trialAvailabilityDetails.thirdChoice[value.timeFrame]
+                        }
+                        return '';
+                      })()
+                    }
+                    inputProps={{
+                      id: `${value.timeFrame}`,
+                      name: `${value.timeFrame}`
+                    }}
+                  >
+                    <option value="" disabled={true}>
+                      {TrialTimesAddedComponent.selectTime}
+                    </option>
+                    {renderedTrialTimes}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
           ))
         }
       </>
@@ -528,90 +544,84 @@ export const ScheduleLessons = (props: Props) => {
   }
 
   return (
-    <div className="nabi-container nabi-margin-bottom-medium">
-      {
-        calendarIsOpen ?
-          <Calendar
-            closeCalendar={() => {
-              setCalendarOpen(false);
-            }}
-            handleCalendarDate={(date) => {
-              setLessonDate(date)
-            }}
-          /> :
-          <>
-            <PageTitle
-              pageTitle={props.pageTitle ? props.pageTitle :
-                role === Role.parent ?
-                  ScheduleLessonsComponent.pageTitleParent.replace(
-                    ScheduleLessonsComponent.studentPlaceholder,
-                    getCookie('studentName')
-                  ) :
-                  ScheduleLessonsComponent.pageTitle}
-            />
-            <Grid
-              item={true}
-              xs={12}
-              md={8} className="nabi-section nabi-background-white nabi-margin-center"
-            >
-              <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
-                {
-                  !props.isTrial ?
-                    <div className="nabi-text-center nabi-margin-bottom-small">
-                      <DateRangeIcon className="text-aligned-icon" color="primary" />
-                      <Typography className="nabi-margin-top-small">
-                        <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
-                      </Typography>
-                    </div> :
-                    <>
-                      <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">{TrialTimesAddedComponent.gender}</span>
-                      <Divider className="nabi-margin-bottom-xsmall nabi-margin-top-xsmall" />
-                      {renderGenderSelection()}
-                      <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">{TrialTimesAddedComponent.language}</span>
-                      <Divider className="nabi-margin-bottom-xsmall nabi-margin-top-xsmall" />
-                      {renderLanguageSelect()}
-                      <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">{TrialTimesAddedComponent.trialAvailability}</span>
-                      <Divider className="nabi-margin-bottom-xsmall nabi-margin-top-xsmall" />
-                      <span>{TrialTimesAddedComponent.selectThreeTrials}</span>
-                      {renderTrialSelect()}
-                    </>
-                }
-
-                {props.isTrial ? null : displayTabContent()}
-                <div className="nabi-text-right">
-                  {
-                    !props.isTrial && (
-                      <Button
-                        color="primary"
-                        className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small nabi-margin-right-small"
-                        onClick={() => {
-                          setCalendarOpen(true)
-                        }}
-                      >
-                        {ScheduleLessonsComponent.backToCalendarButton}
-                      </Button>
-                    )
-                  }
-                  <Button
-                    color="primary"
-                    className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
-                    variant="contained"
-                    type="submit"
-                    disabled={lessonTime || validateTrialForm ? false : true}
-                  >
-                    {ScheduleLessonsComponent.nextButton}
-                  </Button>
+    <div>
+      <Header />
+      <div className="nabi-container nabi-margin-bottom-medium">
+        {
+          calendarIsOpen ?
+            <Calendar
+              closeCalendar={() => {
+                setCalendarOpen(false);
+              }}
+              handleCalendarDate={(date) => {
+                setLessonDate(date)
+              }}
+            /> :
+            <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
+              <Grid xs={12} md={7} className="nabi-background-white nabi-section nabi-margin-center">
+                <div className="nabi-text-center">
+                  <PageTitle
+                    pageTitle={props.pageTitle ? props.pageTitle :
+                      role === Role.parent ?
+                        ScheduleLessonsComponent.pageTitleParent.replace(
+                          ScheduleLessonsComponent.studentPlaceholder,
+                          getCookie('studentName')
+                        ) :
+                        ScheduleLessonsComponent.pageTitle}
+                  />
                 </div>
-              </form>
-            </Grid>
-          </>
-      }
-      <SnackBar
-        isOpen={showSnackbar}
-        message={snackbarDetails.message}
-        handleClose={() => setShowSnackbar(false)}
-        variant={snackbarDetails.type}
-      />
+                <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
+                  {
+                    !props.isTrial ?
+                      <div className="nabi-text-center nabi-margin-bottom-small">
+                        <DateRangeIcon className="text-aligned-icon" color="primary" />
+                        <Typography className="nabi-margin-top-small">
+                          <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
+                        </Typography>
+                      </div> :
+                      <>
+                        {renderGenderSelection()}
+                        {renderLanguageSelect()}
+                        {renderTrialSelect()}
+                      </>
+                  }
+
+                  {props.isTrial ? null : displayTabContent()}
+                  <div className="nabi-text-right">
+                    {
+                      !props.isTrial && (
+                        <Button
+                          color="primary"
+                          className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small nabi-margin-right-small"
+                          onClick={() => {
+                            setCalendarOpen(true)
+                          }}
+                        >
+                          {ScheduleLessonsComponent.backToCalendarButton}
+                        </Button>
+                      )
+                    }
+                    <Button
+                      color="primary"
+                      className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+                      variant="contained"
+                      type="submit"
+                      disabled={lessonTime || validateTrialForm ? false : true}
+                    >
+                      {ScheduleLessonsComponent.nextButton}
+                    </Button>
+                  </div>
+                </form>
+              </Grid>
+            </div>
+        }
+        <SnackBar
+          isOpen={showSnackbar}
+          message={snackbarDetails.message}
+          handleClose={() => setShowSnackbar(false)}
+          variant={snackbarDetails.type}
+        />
+      </div>
     </div>
   )
 }

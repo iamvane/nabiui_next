@@ -53,7 +53,12 @@ export const Header = (props: Props) => {
     <div className="nabi-background-white nabi-hide-mobile">
       <div className="nabi-container nabi-position-relative nabi-background-white">
         <Grid container={true} spacing={1} className="nabi-padding-top-xsmall">
-          <Grid item={true} xs={4} md={1}>
+          <Grid
+            item={true}
+            xs={(props.headerMenuItems && props.headerMenuItems.length) ? 4 : 12}
+            md={(props.headerMenuItems && props.headerMenuItems.length) ? 1 : 12}
+            className={props.headerMenuItems && props.headerMenuItems.length ? '' : 'nabi-text-center'}
+          >
             <Link href={Routes.HomePage}>
               <a>
                 <img className="nabi-responsive-image" alt="logo" src={logo} id="logo" />

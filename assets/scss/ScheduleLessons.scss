@@ -42,10 +42,7 @@
 
 .trial-select__btn-group {
   width: 100% !important;
-  display: flex !important;
-  justify-content: space-evenly !important;
-  color: #ebeef1 !important;
-  background-color: #f3f6f9 !important;
+  background-color: #e5e5e5;
 }
 
 .trial-select__btn {
@@ -53,7 +50,7 @@
 }
 
 .trial-select__label {
-  padding: 4px !important;
+  height: 40px !important;
   &:hover {
     background-color: #06c3e1 !important;
     color: #ffffff !important;
@@ -64,7 +61,7 @@
 .trial-select__gender {
   background-color: #06c3e1 !important;
   color: #ffffff !important;
-  border-radius: 5px !important;
+  border-radius: 4px !important;
 }
 
 @media (max-width: 768px) {

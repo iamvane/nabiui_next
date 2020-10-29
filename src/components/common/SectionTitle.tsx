@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  Divider,
   Grid,
   Typography
 } from '@material-ui/core';
@@ -8,15 +7,14 @@ import {
 interface Props {
   text: string;
   cta?: JSX.Element;
-  noDivider?: boolean;
 }
 
-const SectionTitle: React.StatelessComponent<Props> = props => {
+const SectionTitle = (props: Props) => {
   return (
     <React.Fragment>
       <Grid container={true}>
         <Grid item={true} xs={props.cta ? 8 : 12}>
-          <Typography color="primary" className="nabi-text-mediumbold nabi-text-uppercase nabi-margin-bottom-xsmall">
+          <Typography className="nabi-text-mediumbold nabi-margin-bottom-xsmall">
             {props.text}
           </Typography>
         </Grid>
@@ -26,7 +24,6 @@ const SectionTitle: React.StatelessComponent<Props> = props => {
           </Grid>
         }
       </Grid>
-      {!props.noDivider && <Divider className="nabi-margin-bottom-xsmall" />}
     </React.Fragment>
   );
 };

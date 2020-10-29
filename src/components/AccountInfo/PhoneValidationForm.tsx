@@ -168,7 +168,7 @@ const PhoneValidationForm = (props: Props) => {
           <Button
             color="primary"
             className="nabi-text-uppercase nabi-margin-top-xsmall"
-            variant="contained"
+            variant="outlined"
             onClick={props.verifyToken}
           >
             {PhoneValidationFormComponent.Buttons.Validate}
