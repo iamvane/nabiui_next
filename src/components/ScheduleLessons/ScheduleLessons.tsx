@@ -465,7 +465,7 @@ export const ScheduleLessons = (props: Props) => {
             dayOfTheWeek: "dayOfTheWeekThirdChoice",
             timeFrame: "timeFrameThirdChoice"
           }].map((value, index) => (
-            <Grid container={true} key={index} className="nabi-display-flex nabi-flex-wrap">
+            <Grid container={true} key={index} spacing={1} className="nabi-display-flex nabi-flex-wrap">
               <Grid item={true} xs={6}>
                 <FormControl className="trial-select__form--day-of-week">
                   <Select
@@ -539,6 +539,7 @@ export const ScheduleLessons = (props: Props) => {
             </Grid>
           ))
         }
+        <Footer />
       </>
     )
   }
