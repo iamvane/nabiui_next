@@ -35,10 +35,8 @@ class NabiDocument extends Document {
       <html lang="en" dir="ltr">
         <Head>
           <meta charSet="utf-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, maximum-scale=5,user-scalable=0, shrink-to-fit=no"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
+
           <meta name='keywords' content="guitar lessons, piano lessons, piano lessons near me, singing lessons, kids piano, music lessons near me, music school, violin lessons near me, voice lessons, violin lessons, music lessons for kids, piano lessons for kids, new york, massachusetts, boston" />
           <script
             async

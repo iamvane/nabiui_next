@@ -224,8 +224,8 @@ export namespace TrialTimesAddedComponent {
   export const timeFramePlaceholder = '{timeFrameReplace}';
   export const trialAvailability = 'Trial Availability';
   export const selectThreeTrials = 'Select 3 times that work for the trial';
-  export const selectWeekDay = 'Select weekday';
-  export const selectTime = 'Select time';
+  export const selectWeekDay = 'Day';
+  export const selectTime = 'Time';
   export const selectLanguage = 'Select Language';
   export const language = 'Language';
   export const gender = 'Gender';
