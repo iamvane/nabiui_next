@@ -65,14 +65,16 @@ export const Header = (props: Props) => {
               </a>
             </Link>
           </Grid>
-          <Grid item={true} xs={8} className="hide-on-desktop nabi-text-right menu-container">
-            <Menu onClick={toggleDrawerMenu} color="primary" />
-            <DrawerMenu
-              isOpen={isDrawerMenuOpen}
-              closeMenu={toggleDrawerMenu}
-              menuItems={props.drawerMenuItems}
-            />
-          </Grid>
+          {props.drawerMenuItems &&
+            <Grid item={true} xs={8} className="hide-on-desktop nabi-text-right menu-container">
+              <Menu onClick={toggleDrawerMenu} color="primary" />
+              <DrawerMenu
+                isOpen={isDrawerMenuOpen}
+                closeMenu={toggleDrawerMenu}
+                menuItems={props.drawerMenuItems}
+              />
+            </Grid>
+          }
           {props.headerMenuItems && props.headerMenuItems.length > 0 && 
             <Grid item={true} xs={11} className="nabi-text-right menu-container hide-on-mobile">
               {renderMenu()}

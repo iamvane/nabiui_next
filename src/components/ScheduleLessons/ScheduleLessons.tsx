@@ -546,7 +546,7 @@ export const ScheduleLessons = (props: Props) => {
   return (
     <div>
       <Header />
-      <div className="nabi-container nabi-margin-bottom-medium">
+      <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
         {
           calendarIsOpen ?
             <Calendar
@@ -557,63 +557,61 @@ export const ScheduleLessons = (props: Props) => {
                 setLessonDate(date)
               }}
             /> :
-            <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
-              <Grid xs={12} md={7} className="nabi-background-white nabi-section nabi-margin-center">
-                <div className="nabi-text-center">
-                  <PageTitle
-                    pageTitle={props.pageTitle ? props.pageTitle :
-                      role === Role.parent ?
-                        ScheduleLessonsComponent.pageTitleParent.replace(
-                          ScheduleLessonsComponent.studentPlaceholder,
-                          getCookie('studentName')
-                        ) :
-                        ScheduleLessonsComponent.pageTitle}
-                  />
-                </div>
-                <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
-                  {
-                    !props.isTrial ?
-                      <div className="nabi-text-center nabi-margin-bottom-small">
-                        <DateRangeIcon className="text-aligned-icon" color="primary" />
-                        <Typography className="nabi-margin-top-small">
-                          <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
-                        </Typography>
-                      </div> :
-                      <>
-                        {renderGenderSelection()}
-                        {renderLanguageSelect()}
-                        {renderTrialSelect()}
-                      </>
-                  }
+            <Grid xs={12} md={7} className="nabi-background-white nabi-section nabi-margin-center">
+              <div className="nabi-text-center">
+                <PageTitle
+                  pageTitle={props.pageTitle ? props.pageTitle :
+                    role === Role.parent ?
+                      ScheduleLessonsComponent.pageTitleParent.replace(
+                        ScheduleLessonsComponent.studentPlaceholder,
+                        getCookie('studentName')
+                      ) :
+                      ScheduleLessonsComponent.pageTitle}
+                />
+              </div>
+              <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
+                {
+                  !props.isTrial ?
+                    <div className="nabi-text-center nabi-margin-bottom-small">
+                      <DateRangeIcon className="text-aligned-icon" color="primary" />
+                      <Typography className="nabi-margin-top-small">
+                        <span className="nabi-text-mediumbold nabi-color-nabi nabi-text-uppercase">Timezone:</span>  <span className="nabi-text-uppercase">Eastern Standard</span>
+                      </Typography>
+                    </div> :
+                    <>
+                      {renderGenderSelection()}
+                      {renderLanguageSelect()}
+                      {renderTrialSelect()}
+                    </>
+                }
 
-                  {props.isTrial ? null : displayTabContent()}
-                  <div className="nabi-text-right">
-                    {
-                      !props.isTrial && (
-                        <Button
-                          color="primary"
-                          className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small nabi-margin-right-small"
-                          onClick={() => {
-                            setCalendarOpen(true)
-                          }}
-                        >
-                          {ScheduleLessonsComponent.backToCalendarButton}
-                        </Button>
-                      )
-                    }
-                    <Button
-                      color="primary"
-                      className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
-                      variant="contained"
-                      type="submit"
-                      disabled={lessonTime || validateTrialForm ? false : true}
-                    >
-                      {ScheduleLessonsComponent.nextButton}
-                    </Button>
-                  </div>
-                </form>
-              </Grid>
-            </div>
+                {props.isTrial ? null : displayTabContent()}
+                <div className="nabi-text-right">
+                  {
+                    !props.isTrial && (
+                      <Button
+                        color="primary"
+                        className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small nabi-margin-right-small"
+                        onClick={() => {
+                          setCalendarOpen(true)
+                        }}
+                      >
+                        {ScheduleLessonsComponent.backToCalendarButton}
+                      </Button>
+                    )
+                  }
+                  <Button
+                    color="primary"
+                    className="nabi-text-uppercase nabi-margin-top-medium nabi-margin-bottom-small"
+                    variant="contained"
+                    type="submit"
+                    disabled={lessonTime || validateTrialForm ? false : true}
+                  >
+                    {ScheduleLessonsComponent.nextButton}
+                  </Button>
+                </div>
+              </form>
+            </Grid>
         }
         <SnackBar
           isOpen={showSnackbar}
