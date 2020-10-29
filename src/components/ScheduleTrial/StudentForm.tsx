@@ -189,6 +189,9 @@ export const StudentForm = (props: Props) => {
       <div className="nabi-display-flex nabi-flex-column">
         {props.role === Role.parent &&
           <>
+            <Typography color={formErrors.name ? 'error' : undefined} className="nabi-margin-top-small">
+              {ChildFormComponent.Labels.Name}
+            </Typography>
             <TextField
               id={ChildFormComponent.Ids.Name}
               name={ChildFormComponent.FieldNames.Name}
@@ -201,7 +204,7 @@ export const StudentForm = (props: Props) => {
               helperText={formErrors.name}
             />
 
-            <Typography color={formErrors.dob ? 'error' : 'primary'} className="nabi-margin-top-small">
+            <Typography color={formErrors.dob ? 'error' : undefined} className="nabi-margin-top-small">
               {ChildFormComponent.Labels.Dob}
             </Typography>
 
@@ -219,7 +222,7 @@ export const StudentForm = (props: Props) => {
           </>
         }
 
-        <Typography color={formErrors.instrument ? 'error' : 'primary'} className="nabi-margin-top-small">Instrument</Typography>
+        <Typography color={formErrors.instrument ? 'error' : undefined} className="nabi-margin-top-small">Instrument</Typography>
         <div className="nabi-display-flex nabi-flex-wrap">
           {ChildFormComponent.instrumentChips.map((item) => {
             return (<Chip
@@ -247,7 +250,7 @@ export const StudentForm = (props: Props) => {
         </div>
 
         {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
-        <Typography color={formErrors.level ? 'error' : 'primary'} className="nabi-margin-top-small">Level</Typography>
+        <Typography color={formErrors.level ? 'error' : undefined} className="nabi-margin-top-small">Level</Typography>
 
         <div className="nabi-display-flex nabi-flex-wrap">
           {ChildFormComponent.levelChips.map((item) => (
@@ -261,7 +264,7 @@ export const StudentForm = (props: Props) => {
         </div>
         {formErrors.level && <FormHelperText error={true}>{formErrors.level}</FormHelperText>}
 
-        <Typography color={formErrors.specialNeeds ? 'error' : 'primary'} className="nabi-margin-top-small">
+        <Typography color={formErrors.specialNeeds ? 'error' : undefined} className="nabi-margin-top-small">
           {ChildFormComponent.Labels.SpecialNeeds}
         </Typography>
 
@@ -269,7 +272,7 @@ export const StudentForm = (props: Props) => {
           {renderSpecialNeeds()}
         </div>
 
-        <Typography color='primary' className="nabi-margin-top-small">
+        <Typography className="nabi-margin-top-small">
           {ChildFormComponent.Labels.Notes}
         </Typography>
 

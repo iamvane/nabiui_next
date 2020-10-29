@@ -107,11 +107,12 @@
 
 .MuiChip-root {
   color: #717a8a !important;
-  padding: 26px 0px !important;
-  background: #f3f6f9 !important;
+  height: 40px !important;
+  background-color: transparent !important;
+  padding: 0px 11px !important;
   border-radius: 4px !important;
   font-size: 0.875rem !important;
-  border: 2px solid #ebeef1 !important;
+  border: 1px solid #717a8a !important;
 }
 
 .MuiChip-colorPrimary {

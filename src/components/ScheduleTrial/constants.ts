@@ -90,6 +90,7 @@ export namespace ChildFormComponent {
     Notes = 'Add notes'
   }
   export enum Labels {
+    Name = 'Child\'s name',
     Dob = 'Date of birth',
     Instrument = 'Instrument',
     Level = 'Level',
