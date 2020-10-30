@@ -119,7 +119,7 @@ export const Registration = (props: Props) => {
 
       props.role === Role.instructor
         ? Router.push(Routes.BuildProfile + Routes.AccountInfo)
-        : Router.push(Routes.ScheduleTrial + Routes.ValidatePhone);
+        : Router.push(Routes.BookTrial + Routes.ValidatePhone);
     }
   }, [
     registration,

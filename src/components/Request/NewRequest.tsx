@@ -78,7 +78,7 @@ const NewRequest = (props: Props) => {
 
   const displayAvailability = () => {
     let availability = [];
-    props.request.availability.map(item =>
+    props.request && props.request.availability.map(item =>
       availability.push(NewRequestComponent.weekdaysLabels[item.day] + ' ' + NewRequestComponent.timeframeLabels[item.timeframe])
     )
     return availability.join(', ').replace(/, ([^,]*)$/, ' and $1');
@@ -96,7 +96,7 @@ const NewRequest = (props: Props) => {
           <div className="nabi-text-center"><CircularProgress /></div> :
           props.respondError ?
             <Typography>{props.respondError}</Typography> :
-            props.request.status === 'CLOSED' ? (
+            props.request && props.request.status === 'CLOSED' ? (
               <div className="nabi-text-center">
                 <Typography>{NewRequestComponent.closedRequestMessage}</Typography>
                 <Link href={Routes.InstructorStudio}>
@@ -119,7 +119,7 @@ const NewRequest = (props: Props) => {
                 <p className="nabi-color-nabi nabi-text-center nabi-jennasue-title nabi-margin-bottom-small nabi-margin-top-xsmall">
                   {NewRequestComponent.title.replace(
                     NewRequestComponent.instrumentPlaceholder,
-                    instrumentDisplay(props.request.instrument)
+                    instrumentDisplay(props.request && props.request.instrument)
                   )}
                 </p>
                 <div>
@@ -131,7 +131,7 @@ const NewRequest = (props: Props) => {
                 <div className="nabi-display-flex nabi-margin-top-xsmall">
                   <LocationOnOutlinedIcon color="primary" />
                   <Typography color="primary" className="nabi-margin-left-xsmall">
-                    {props.request.timezone}
+                    {props.request && props.request.timezone}
                   </Typography>
                 </div>
                 <div>
@@ -143,12 +143,12 @@ const NewRequest = (props: Props) => {
                 <div>
                   <MusicNoteIcon className="text-aligned-icon" color="primary" />
                   <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-                    {instrumentDisplay(props.request.instrument)}
+                    {instrumentDisplay(props.request && props.request.instrument)}
                   </Typography>
                 </div>
                 <div>
                   <Face className="text-aligned-icon" color="primary" />
-                  {props.request.studentDetails &&
+                  {props.request && props.request.studentDetails &&
                     <Typography className="nabi-display-inline nabi-margin-left-xsmall">
                       {NewRequestComponent.studentDetails.replace(
                         NewRequestComponent.studentNamePlaceholder,
@@ -166,7 +166,7 @@ const NewRequest = (props: Props) => {
                 <div className="nabi-display-flex nabi-margin-top-xsmall">
                   <PublicOutlinedIcon color="primary" />
                   <Typography color="primary" className="nabi-margin-left-xsmall">
-                    {props.request.language}
+                    {props.request && props.request.language}
                   </Typography>
                 </div>
                 <div className="nabi-text-right nabi-margin-top-large">

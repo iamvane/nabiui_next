@@ -160,6 +160,22 @@ export namespace ScheduleTrialComponent {
   }
 }
 
+export namespace InstructorPreferencesComponent {
+  export const nextButton = 'Next';
+  export const pageTitle = 'Instructor Preferences';
+  export const trialAvailability = 'Trial Availability';
+  export const selectThreeTrials = 'Select 3 times that work for the trial';
+  export const selectWeekDay = 'Day';
+  export const selectTime = 'Time';
+  export const selectLanguage = 'Select Language';
+  export const language = 'Language';
+  export const gender = 'Gender';
+  export const male = 'Male';
+  export const female = 'Female';
+  export const noPreference = 'No Preference';
+  export const error = 'There was an error processing your request. Please refresh the page and try again.';
+}
+
 export namespace ChooseInstructorComponent {
   export const pageTitle = 'Choose Instructor';
 }
@@ -169,6 +185,7 @@ export namespace TrialConfirmationComponent {
   export const studentNamePlaceholder = '{studentName}';
   export const studentMessage = 'Your Trial is Scheduled!';
 }
+
 
 export const instructorsDummuyData = [
   {
@@ -316,3 +333,4 @@ export const instructorAvailabilityDummyData = {
     }
   ]
 };
+

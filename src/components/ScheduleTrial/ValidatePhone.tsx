@@ -81,7 +81,7 @@ export const ValidatePhone = (props: Props) => {
           <PhoneValidation error="" customClass="nabi-text-center" hideLabel={true} />
           {props.user.isPhoneVerified &&
             <div className="nabi-text-right">
-              <Link href={Routes.ScheduleTrial + Routes.LessonDetails}>
+              <Link href={Routes.BookTrial + Routes.LessonDetails}>
                 <Button
                   color="primary"
                   className="nabi-text-uppercase nabi-margin-top-small nabi-margin-bottom-medium"

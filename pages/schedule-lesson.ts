@@ -1,2 +1,2 @@
-import ScheduleLessons from '../src/components/ScheduleLessons/ScheduleLessons';
-export default ScheduleLessons;
+import RescheduleLessons from '../src/components/ScheduleLessons/ScheduleLessons';
+export default RescheduleLessons;

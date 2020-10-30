@@ -34,7 +34,7 @@ export interface RequestType {
   avatar?: string;
   location?: string;
   status?: string;
-  availability: RequestAvailabilityType[];
+  availability?: RequestAvailabilityType[];
   studentId?: number;
   language?: string;
   timezone?: string;

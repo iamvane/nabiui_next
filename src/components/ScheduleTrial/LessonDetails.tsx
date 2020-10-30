@@ -80,7 +80,7 @@ export const LessonDetails = (props: Props) => {
     if (addStudent) {
       setCookie("studentId", props.student.studentId);
       removeCookie("lessonId");
-      Router.push(Routes.ScheduleTrial + Routes.InstructorPreferences);
+      Router.push(Routes.BookTrial + Routes.InstructorPreferences);
     }
   }, [addStudent, props.addError]);
 

@@ -63,11 +63,13 @@ export default function requestsReducer(
     case RequestActions.CREATE_REQUEST:
       return {
         ...state,
+        request: undefined,
         actions: {
           ...state.actions,
           createRequest: {
             ...state.actions.createRequest,
-            isRequesting: true
+            isRequesting: true,
+            error: ""
           }
         }
       };
@@ -75,10 +77,10 @@ export default function requestsReducer(
     case RequestActions.CREATE_REQUEST_SUCCESS:
       const { data: createdRequest } = <APIActions.WithData<Partial<RequestType>>>action;
       setCookie("availability", createdRequest.availability);
+      setCookie("requestId", createdRequest.id)
       return {
         ...state,
         request: {
-          ...state.request,
           ...createdRequest
         },
         actions: {
@@ -97,6 +99,7 @@ export default function requestsReducer(
       );
       return {
         ...state,
+        request: undefined,
         actions: {
           ...state.actions,
           createRequest: {
@@ -111,7 +114,7 @@ export default function requestsReducer(
         ...state,
         actions: {
           ...state.actions,
-          fetchRequests: {
+          fetchRequest: {
             ...state.actions.createRequest,
             isRequesting: true
           }

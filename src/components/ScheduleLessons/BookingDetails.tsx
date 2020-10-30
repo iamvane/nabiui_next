@@ -27,7 +27,7 @@ interface Props {
 
 export const BookingDetails = (props: Props) => {
   const addAnotherChild = () => {
-    return Router.push(Routes.ScheduleTrial + Routes.LessonDetails);
+    return Router.push(Routes.BookTrial + Routes.LessonDetails);
   }
 
   const role = getCookie('role');

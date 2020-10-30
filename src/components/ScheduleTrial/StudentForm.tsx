@@ -77,11 +77,6 @@ export const StudentForm = (props: Props) => {
     }
   }, [addChild, JSON.stringify(formErrors)]);
 
-
-  // React.useEffect(() => {
-  //   Router.push(Routes.ScheduleTrial + Routes.ScheduleTrial)
-  // }, [props.]);
-
   const handleChange = (event): void => {
     const target = event.currentTarget;
     const value = target.value;

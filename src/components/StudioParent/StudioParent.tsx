@@ -162,7 +162,7 @@ export const StudioParent = (props: Props) => {
   const displayEmptyContent = () => (
     <Grid item={true} xs={12} md={8} className="nabi-background-white nabi-border-radius nabi-padding-small nabi-margin-top-small nabi-margin-center nabi-text-center">
       <Typography>{ParentStudioComponent.noStudentsDescription}</Typography>
-      <Link href={Routes.ScheduleTrial + Routes.LessonDetails}>
+      <Link href={Routes.BookTrial + Routes.LessonDetails}>
         <Button variant="contained" color="primary" className="nabi-margin-top-small">{ParentStudioComponent.scheduleTrialButton}</Button>
       </Link>
     </Grid>
@@ -180,7 +180,7 @@ export const StudioParent = (props: Props) => {
     setCookie('instrumentName', instument);
     removeCookie('lessonId');
 
-    Router.push(Routes.ScheduleTrial + Routes.InstructorPreferences)
+    Router.push(Routes.BookTrial + Routes.InstructorPreferences)
   }
 
   const buyMoreLessons = (studentId) => {

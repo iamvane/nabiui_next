@@ -1,5 +1,5 @@
 export enum Routes {
-  AboutUs= '/about-us',
+  AboutUs = '/about-us',
   HomePage = '/',
   Registration = '/registration',
   RegistrationStudent = '/registration-student',
@@ -44,8 +44,9 @@ export enum Routes {
   GradeLesson = '/grade-lesson',
   Referrals = '/referrals',
   RegistrationLanding = '/registration-landing',
-  ScheduleTrial = '/schedule-trial',
-  InstructorPreferences='/instructor-preferences',
+  BookTrial = '/book-trial',
+  InstructorPreferences = '/instructor-preferences',
+  BestMatch = '/best-match',
   ScheduleLesson = '/schedule-lesson',
   ValidatePhone = '/validate-phone',
   SpecifyGender = '/specify-gender',
