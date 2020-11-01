@@ -176,10 +176,6 @@ export namespace InstructorPreferencesComponent {
   export const error = 'There was an error processing your request. Please refresh the page and try again.';
 }
 
-export namespace ChooseInstructorComponent {
-  export const pageTitle = 'Choose Instructor';
-}
-
 export namespace TrialConfirmationComponent {
   export const parentMessage = '{studentName} Trial is Scheduled!';
   export const studentNamePlaceholder = '{studentName}';

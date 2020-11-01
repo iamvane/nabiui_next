@@ -423,6 +423,49 @@ export default function requestsReducer(
         }
       };
 
+    case RequestActions.FETCH_BEST_MATCH:
+      return {
+        ...state,
+        bestMatch: undefined,
+        actions: {
+          ...state.actions,
+          fetchBestMatch: {
+            ...state.actions.fetchBestMatch,
+            isRequesting: true,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_BEST_MATCH_SUCCESS:
+      const { data: bestMatch } = action;
+      return {
+        ...state,
+        bestMatch,
+        actions: {
+          ...state.actions,
+          fetchBestMatch: {
+            ...state.actions.fetchRequest,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_BEST_MATCH_FAILURE:
+      const { error: bestMatchError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        bestMatch: undefined,
+        actions: {
+          ...state.actions,
+          fetchRequest: {
+            isRequesting: false,
+            error: bestMatchError
+          }
+        }
+      };
+
     default:
       return state;
   }

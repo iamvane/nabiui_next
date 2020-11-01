@@ -35,6 +35,12 @@ mark {
 	background: none;
 }
 
+hr {
+    border: 1px solid #EFEFEF !important;
+    z-index: 99;
+    width: 100%;
+}
+
 /*BACKGROUND COLOR*/
 .nabi-background-color {
 	background-color: #E5E5E5;
@@ -94,12 +100,16 @@ p.nabi-color-orange {
 }
 
 .nabi-color-disabled {
-	color: #b6bac3 !important;
+	color: #EFEFEF !important;
 }
 /*FONT SIZE*/
 .nabi-font-medium {
 	font-size: 15px !important;
 }
+
+.nabi-font-size-default {
+	font-size: 15px !important;
+ }
 
 .nabi-font-small {
    font-size: 13px !important;

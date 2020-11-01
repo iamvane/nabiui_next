@@ -11,6 +11,34 @@ import {
 } from "../../components/JobPreferences/model";
 import { QualificationsType } from "../../components/Qualifications/model";
 
+interface ReviewsType {
+  rating: string;
+  quantity: number;
+  items: {
+    date: string,
+    rating: number,
+    comment: string;
+    user: string;
+  }[]
+}
+
+export interface InstructorProfileType {
+  id: number;
+  name: string;
+  reviews: ReviewsType;
+  instruments: string[],
+  rate: number,
+  timezone: '',
+  bioTitle: string,
+  bioDescription: string,
+  yearsOfExperience: number,
+  tutoredStudents: number,
+  languages: string[];
+  levelsTaught: string[];
+  lessonsTaught: number;
+  verified: boolean;
+}
+
 export interface InstructorType {
   userId?: number;
   bioTitle?: string;
@@ -83,6 +111,7 @@ export interface Instructor {
 }
 
 export interface InstructorState {
+  instructorProfile?: InstructorProfileType;
   instructor: InstructorType;
   instructors: ListResource<Instructor>;
   actions: {

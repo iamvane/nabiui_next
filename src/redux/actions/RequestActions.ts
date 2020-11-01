@@ -335,3 +335,22 @@ export const deleteStudent = (id: number): ThunkAction<Promise<void>, {}, {}> =>
     dispatch(withErrorAction(RequestActions.DELETE_STUDENT_FAILURE, errorMessage));
   }
 };
+
+export const fetchBestMatch = (requestId: number): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.FETCH_BEST_MATCH));
+  try {
+    const response = await axios.get(`${ApiEndpoints.bestMatch}${requestId}/`, {
+      headers: { 'Authorization': `Bearer ${authToken}` }
+    });
+
+    dispatch(withDataAction(RequestActions.FETCH_BEST_MATCH_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.FETCH_BEST_MATCH_FAILURE, errorMessage));
+  }
+};

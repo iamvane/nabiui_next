@@ -1,44 +1,43 @@
 .profile-avatar {
-  width: 140px !important;
-  height: 140px !important;
+  width: 90px !important;
+  height: 90px !important;
 }
 
-.play-video-wrapper {
-  position: relative;
-  top: 0;
-  left: 0;
+.profile-star {
+  width: 15px !important;
+  vertical-align: bottom !important;
 }
 
-.play-video-avatar {
-  width: 120px !important;
-  height: 120px !important;
-  position: relative;
-  top: 0;
-  left: 0;
+.profile-instruments {
+  margin: 7px 0px 10px 0px;
 }
 
-.play-video-icon {
-  position: absolute;
-  top: 40px;
-  left: 38%;
-  width: 64px;
-  cursor: pointer;
+.profile-instrument {
+  background: #06c3e1;
+  border-radius: 12px;
+  padding: 3px 6px;
+  color: #fff;
+  margin-right: 2px;
+  margin-top: 3px;
+  display: inline-block;
+}
+.stats-wrapper {
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.stats-wrapper p {
+  margin-bottom: 5px;
 }
 
 @media only screen and (min-width: 375px) {
-  .play-video-icon {
-    left: 40%;
-  }
+
 }
 
 @media only screen and (min-width: 768px) {
-  .play-video-icon {
-    left: 44%;
-  }
+
 }
 
 @media only screen and (min-width: 960px) {
-  .play-video-icon {
-    left: 28%;
-  }
+
 }

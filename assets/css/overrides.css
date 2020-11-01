@@ -53,6 +53,9 @@
   box-shadow: none;
 }
 
+.MuiSvgIcon-colorSecondary {
+  color: #FB7F6B !important;
+}
 .MuiExpansionPanel-root:before, .MuiExpansionPanel-root:after {
   top: -1px;
   left: 0;

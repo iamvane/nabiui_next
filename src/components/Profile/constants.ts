@@ -1,10 +1,11 @@
 export namespace ProfileComponent {
-  export const pageTitle = 'Profile';
+  export const pageTitle = 'Instructor Details';
   export const breadcrumbLabels = {
     home: 'Home',
     applicationList: 'Application List',
     profile: 'Profile'
   }
+  export const error = 'There was an error processing your request. Please refresh the page and try again.';
 }
 
 export namespace EditModalComponent {

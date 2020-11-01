@@ -16,11 +16,12 @@ import {
 } from '@material-ui/core';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
-import { getCookie } from '../../utils/cookies';
+import { getCookie, setCookie } from '../../utils/cookies';
 import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
 import { InstructorType } from '../../redux/models/InstructorModel';
-import { updateInstructor, fetchInstructor } from '../../redux/actions/InstructorActions';
+import { fetchInstructor } from '../../redux/actions/InstructorActions';
+import { fetchBestMatch } from '../../redux/actions/RequestActions';
 import { Role } from '../Auth/Registration/constants';
 import { Routes } from '../common/constants/Routes';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
@@ -30,154 +31,173 @@ import {
   ProfileContentComponent
 } from './constants';
 import ProfileHeader from './ProfileHeader';
-import ProfileContent from './ProfileContent';
+import ProfileContent from './Experience';
 import ProfileSidebar from './ProfileSidebar';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
+import { Reviews } from "./Reviews";
+import { InstructorProfileType } from "../../redux/models/InstructorModel";
+import { page } from '../../utils/analytics';
+import SnackBar from '../common/SnackBar';
+import { Experience } from "./Experience";
 
 interface StateProps {
-  user: UserType;
-  instructor: InstructorType;
-  isRequestingInstructor: boolean;
-  pathname: string
+  isFetchingBestMatch: boolean;
+  fetchBestMatchError: string;
+  instructorProfile: InstructorProfileType;
+  isFetchingProfile: boolean;
+  fetchProfileError: string;
 }
 
 interface DispatchProps {
-  updateInstructor: (instructor: InstructorType) => void;
   fetchInstructor: (id: number) => void;
+  fetchBestMatch: (requestId: number) => void;
 }
 
-interface OwnProps { }
+interface OwnProps { 
+  isTrial?: boolean;
+}
 
 interface Props extends
   StateProps,
-  DispatchProps { }
+  DispatchProps,
+  OwnProps { }
 
 
 export const Profile = (props: Props) =>  {
-  const router = useRouter();
-  const id = Number(router.query.id);
-
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
+  const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
+  
   React.useEffect(() => {
-    const fetchData = async () => {
-      if (id) {
-        await props.fetchInstructor(id);
+    // Set analytics data for Segment
+    const userEmail = getCookie('userEmail');
+    let analiticsProps: any = {
+      userId: userEmail,
+      properties: {
+        referrer: document.referrer
       }
     };
-    fetchData();
+    
+    // If comonent is used in trial get best match
+    if (props.isTrial) {
+      page('Viewed Best Match', analiticsProps);
+
+      const fetchBestMatch = async () => {
+        const requestId = getCookie("requestId");
+        await props.fetchBestMatch(requestId);
+
+      };
+      fetchBestMatch();
+    } else {
+      // If comonent is not used in trial get profile
+      const router = useRouter();
+      const id = Number(router.query.id);
+
+      analiticsProps.instructorId = id
+
+      page('Viewed Instructor Profile', analiticsProps);
+
+      const fetchProfile = async () => {
+        if (id) {
+          await props.fetchInstructor(id);
+        }
+      };
+      fetchProfile();
+    }
     /* tslint:disable */
   }, []);
 
+  React.useEffect(() => {
+    // Display snackbar if there is an API error
+    if (props.fetchBestMatchError || props.fetchProfileError) {
+      setSnackBarDetails({
+        type: "error",
+        message: ProfileComponent.error
+      });
+      return setShowSnackbar(true);
+    }
 
-  const getAvailability = () => {
-    const daysOfAvailability = [
-      { monday: ProfileContentComponent.monday },
-      { tuesday: ProfileContentComponent.tuesday },
-      { wednesday: ProfileContentComponent.wednesday },
-      { thursday: ProfileContentComponent.thursday },
-      { friday: ProfileContentComponent.friday },
-      { saturday: ProfileContentComponent.saturday },
-      { sunday: ProfileContentComponent.sunday }
-    ] as { [x: string]: { [x: string]: string } }[];
+  }, [props.fetchBestMatchError, props.fetchProfileError]);
 
-    const days = {
-      monday: [],
-      tuesday: [],
-      wednesday: [],
-      thursday: [],
-      friday: [],
-      saturday: [],
-      sunday: []
-    } as { [x: string]: string[] };
-
-    Object.keys(ProfileContentComponent.availability).forEach((dayTime: string) => {
-      if (props.instructor.availability && props.instructor.availability[dayTime]) {
-        daysOfAvailability.forEach((day) => {
-          if (day[Object.keys(day)[0]][dayTime]) {
-            days[Object.keys(day)[0]].push(day[Object.keys(day)[0]][dayTime]);
-          }
-        });
+  React.useEffect(() => {
+    // Set the bestMatchId cookie
+    if (props.instructorProfile && props.instructorProfile.id) {
+      if (props.isTrial) {
+        setCookie("bestMatchId", props.instructorProfile.id)
       }
-    });
+    }
+  }, [props.instructorProfile]);
 
-    return days;
-  }
-
-  const pathname = getCookie('pathname');
   const role = getCookie('role');
 
   return (
-    <div className="nabi-container">
+    <div>
       <Head>
         <title>{pageTitlesAndDescriptions.profile.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.profile.description}></meta>
       </Head>
-      <PageTitle pageTitle={ProfileComponent.pageTitle} />
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link  href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
-            <a>{ProfileComponent.breadcrumbLabels.home}</a>
-          </Link>
-          {pathname && pathname.includes('application') &&
-            <Link  href={pathname}>
-              <a>{ProfileComponent.breadcrumbLabels.applicationList}</a>
+      <Header />
+      <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
+        <div className="nabi-text-center">
+          <PageTitle pageTitle={ProfileComponent.pageTitle} />
+        </div>
+        {!props.isTrial &&
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link  href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
+              <a>{ProfileComponent.breadcrumbLabels.home}</a>
             </Link>
-          }
-          <Typography>{ProfileComponent.breadcrumbLabels.profile}</Typography>
+            <Typography>{ProfileComponent.breadcrumbLabels.profile}</Typography>
         </Breadcrumbs>
-      {props.isRequestingInstructor ?
-        <div className="nabi-section nabi-profile-loader-container">
-          <CircularProgress />
-        </div> :
-        <React.Fragment>
-          <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
-            <Grid container={true}>
-              <Grid item={true} md={12} xs={12} className="nabi-margin-top-xsmall">
-                <ProfileHeader instructor={props.instructor} />
-              </Grid>
-            </Grid>
-          </div>
-          <Grid container={true} spacing={1}>
-            <Grid item={true} md={8} xs={12} className="nabi-margin-top-xsmall">
-              <div className="nabi-section-wide nabi-background-white">
-                <ProfileContent instructor={props.instructor} />
+        }
+        {props.isFetchingBestMatch || props.isFetchingProfile && <div className="nabi-text-center"><CircularProgress /></div>}
+          <Grid container={true}>
+            <Grid item={true} xs={12} md={7}>
+              <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
+                <ProfileHeader instructor={props.instructorProfile} />
               </div>
-            </Grid>
-            <Grid item={true} md={4} xs={12} className="nabi-margin-top-xsmall">
-              <ProfileSidebar
-                online={props.instructor.placeForLessons && props.instructor.placeForLessons.online}
-                studio={props.instructor.placeForLessons && props.instructor.placeForLessons.studio}
-                home={props.instructor.placeForLessons && props.instructor.placeForLessons.home}
-                // studioAddress={props.instructor.placeForLessons.studioAddress}
-                studioAddress=""
-                availableDays={getAvailability()}
-                displayName={props.instructor.displayName}
-              />
+              <Reviews reviews={props.instructorProfile?.reviews} />
+              <Experience instructor={props.instructorProfile} />
             </Grid>
           </Grid>
-        </React.Fragment>
-      }
+      </div>
+      <Footer />
+      <SnackBar
+        isOpen={showSnackbar}
+        message={snackbarDetails.message}
+        handleClose={() => setShowSnackbar(false)}
+        variant={snackbarDetails.type}
+      />
     </div>
   );
 }
 
 const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
   const {
-    user: {
-      user,
-      pathname
-    },
     instructor: {
-      instructor,
+      instructorProfile,
       actions: {
         fetchInstructor: {
-          isRequesting: isRequestingInstructor
-        }
+          isRequesting: isFetchingProfile,
+          error: fetchProfileError
+        },
       }
     },
+    requests: {
+      bestMatch,
+      actions: {
+        fetchBestMatch: {
+          isRequesting: isFetchingBestMatch,
+          error: fetchBestMatchError
+        },
+      }
+    }
   } = state;
   return {
-    user,
-    instructor,
-    isRequestingInstructor,
-    pathname
+    isFetchingBestMatch,
+    fetchBestMatchError,
+    instructorProfile: bestMatch || instructorProfile,
+    isFetchingProfile,
+    fetchProfileError
   };
 };
 
@@ -186,8 +206,8 @@ function mapDispatchToProps(
   _ownProps: OwnProps
 ): DispatchProps {
   return {
-    updateInstructor: (instructor: InstructorType) => dispatch(updateInstructor(instructor)),
-    fetchInstructor: (id: number) => dispatch(fetchInstructor(id))
+    fetchInstructor: (id: number) => dispatch(fetchInstructor(id)),
+    fetchBestMatch: (requestId: number) => dispatch(fetchBestMatch(requestId))
   };
 }
 
