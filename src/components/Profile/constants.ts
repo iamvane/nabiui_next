@@ -6,6 +6,10 @@ export namespace ProfileComponent {
     profile: 'Profile'
   }
   export const error = 'There was an error processing your request. Please refresh the page and try again.';
+  export const bookTrialWith = 'Book Trial with ';
+  export const bookTrialButton = 'Book Trial';
+  export const viewMoreInstructorsButton = "View More Instructors";
+
 }
 
 export namespace EditModalComponent {

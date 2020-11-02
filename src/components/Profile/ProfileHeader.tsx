@@ -24,7 +24,7 @@ export const ProfileHeader = (props: Props) => {
   return (
     <Grid container={true} className="nabi-margin-top-xsmall">
       <Grid item={true} xs={4} className="nabi-text-center nabi-margin-bottom-xsmall">
-        <Avatar alt={props.instructor?.name} src={(props.instructor as any)?.avatar  || defaultAvatar} className="profile-avatar"/>
+        <Avatar alt={props.instructor?.name} src={props.instructor?.avatar  || defaultAvatar} className="profile-avatar"/>
       </Grid>
       <Grid item={true} xs={8}>
         <span className="nabi-display-block nabi-text-mediumbold">{props.instructor?.name}</span>
@@ -52,17 +52,17 @@ export const ProfileHeader = (props: Props) => {
           <p className="stats-label nabi-text-mediumbold">Verified</p>
         </Grid>
         <Grid item={true} xs={4}>
-          <span className="nabi-color-nabi nabi-text-mediumbold">${props.instructor?.rate}</span>
+          <span className="nabi-color-nabi nabi-text-mediumbold">${props.instructor?.rate || 'N/A'}</span>
         </Grid>
         <Grid item={true} xs={4}>
-          <span className="nabi-color-nabi nabi-text-mediumbold">{props.instructor?.timezone}</span>
+          <span className="nabi-color-nabi nabi-text-mediumbold">{props.instructor?.timezone || 'N/A'}</span>
         </Grid>
         <Grid item={true} xs={4}>
-          <span className="nabi-color-nabi nabi-text-mediumbold">Yes</span>
+          <span className="nabi-color-nabi nabi-text-mediumbold">{props.instructor?.verified || 'N/A'}</span>
         </Grid>
       </Grid>
       <span className="nabi-text-mediumbold nabi-margin-bottom-xsmall nabi-margin-top-xsmall">About me</span>
-      {props.instructor?.bioDescription}
+      {props.instructor?.bioDescription || 'N/A'}
     </Grid>
   );
 };

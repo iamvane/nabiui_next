@@ -63,7 +63,7 @@ hr {
 }
 
 .nabi-background-disabled {
-	background-color: #b6bac3  !important;
+	color: #EFEFEF !important;
 }
 
 /*BORDER*/
@@ -109,7 +109,11 @@ p.nabi-color-orange {
 
 .nabi-font-size-default {
 	font-size: 15px !important;
- }
+}
+
+.nabi-font-size-small {
+	font-size: 12px !important;
+}
 
 .nabi-font-small {
    font-size: 13px !important;

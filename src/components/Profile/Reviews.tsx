@@ -51,7 +51,7 @@ export const Reviews = (props: Props) => {
         {props.reviews?.items.map((review, index) =>
           <Grid container={true} key={index}>
             <Grid item={true} xs={6} className="">
-              <span className="nabi-font-mediumbold">{review.user}</span>
+              <span className="nabi-text-mediumbold">{review.user}</span>
             </Grid>
             <Grid item={true} xs={6} className="nabi-text-right">
               <span>{review.date}</span>

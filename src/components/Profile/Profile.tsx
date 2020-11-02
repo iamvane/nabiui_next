@@ -8,8 +8,10 @@ import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
+import Document, { NextScript } from 'next/document'
 
 import {
+  Button,
   Grid,
   CircularProgress,
   Typography
@@ -17,9 +19,7 @@ import {
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
 import { getCookie, setCookie } from '../../utils/cookies';
-import { UserType } from '../../redux/models/UserModel';
 import { StoreState } from '../../redux/reducers/store';
-import { InstructorType } from '../../redux/models/InstructorModel';
 import { fetchInstructor } from '../../redux/actions/InstructorActions';
 import { fetchBestMatch } from '../../redux/actions/RequestActions';
 import { Role } from '../Auth/Registration/constants';
@@ -28,11 +28,8 @@ import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescript
 import PageTitle from '../common/PageTitle';
 import {
   ProfileComponent,
-  ProfileContentComponent
 } from './constants';
 import ProfileHeader from './ProfileHeader';
-import ProfileContent from './Experience';
-import ProfileSidebar from './ProfileSidebar';
 import { Header } from '../Header/Header';
 import { Footer } from "../common/Footer";
 import { Reviews } from "./Reviews";
@@ -40,6 +37,7 @@ import { InstructorProfileType } from "../../redux/models/InstructorModel";
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
 import { Experience } from "./Experience";
+import '../../../assets/scss/Profile.scss';
 
 interface StateProps {
   isFetchingBestMatch: boolean;
@@ -63,11 +61,12 @@ interface Props extends
   DispatchProps,
   OwnProps { }
 
-
 export const Profile = (props: Props) =>  {
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   
+  React.useEffect(() => require('../../../assets/scripts/StickyProfileCta.js'), [])
+
   React.useEffect(() => {
     // Set analytics data for Segment
     const userEmail = getCookie('userEmail');
@@ -135,6 +134,7 @@ export const Profile = (props: Props) =>  {
       <Head>
         <title>{pageTitlesAndDescriptions.profile.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.profile.description}></meta>
+        <NextScript />
       </Head>
       <Header />
       <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
@@ -150,7 +150,7 @@ export const Profile = (props: Props) =>  {
         </Breadcrumbs>
         }
         {props.isFetchingBestMatch || props.isFetchingProfile && <div className="nabi-text-center"><CircularProgress /></div>}
-          <Grid container={true}>
+          <Grid container={true} spacing={1}>
             <Grid item={true} xs={12} md={7}>
               <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
                 <ProfileHeader instructor={props.instructorProfile} />
@@ -158,9 +158,23 @@ export const Profile = (props: Props) =>  {
               <Reviews reviews={props.instructorProfile?.reviews} />
               <Experience instructor={props.instructorProfile} />
             </Grid>
+            <Grid xs={5} item={true} id="profile-cta" className="hide-on-mobile">
+              <div className="nabi-section nabi-background-white nabi-text-center">
+                <span className="nabi-text-mediumbold">{ProfileComponent.bookTrialWith} {props.instructorProfile?.name}</span>
+                <Button variant="contained" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.bookTrialButton}</Button>
+                <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
+              </div>
+            </Grid>
           </Grid>
       </div>
       <Footer />
+      <div className="profile-cta-mobile nabi-background-white nabi-text-center">
+        <div className="profile-cta-content-wrapper">
+        <Button fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">{ProfileComponent.bookTrialButton}</Button>
+        <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
+        </div>
+      </div>
+
       <SnackBar
         isOpen={showSnackbar}
         message={snackbarDetails.message}

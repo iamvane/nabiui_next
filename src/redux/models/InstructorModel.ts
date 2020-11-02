@@ -24,6 +24,7 @@ interface ReviewsType {
 
 export interface InstructorProfileType {
   id: number;
+  avatar: string;
   name: string;
   reviews: ReviewsType;
   instruments: string[],
