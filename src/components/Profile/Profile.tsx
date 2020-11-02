@@ -168,7 +168,7 @@ export const Profile = (props: Props) =>  {
           </Grid>
       </div>
       <Footer />
-      <div className="profile-cta-mobile nabi-background-white nabi-text-center">
+      <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
         <Button fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">{ProfileComponent.bookTrialButton}</Button>
         <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
