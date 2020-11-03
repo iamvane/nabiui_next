@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
-import Document, { NextScript } from 'next/document'
 
 import {
   Button,
@@ -52,7 +51,7 @@ interface DispatchProps {
   fetchBestMatch: (requestId: number) => void;
 }
 
-interface OwnProps { 
+interface OwnProps {
   isTrial?: boolean;
 }
 
@@ -61,11 +60,13 @@ interface Props extends
   DispatchProps,
   OwnProps { }
 
-export const Profile = (props: Props) =>  {
+export const Profile = (props: Props) => {
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
-  
+
   React.useEffect(() => require('../../../assets/scripts/StickyProfileCta.js'), [])
+  
+  const requestId = getCookie("requestId");
 
   React.useEffect(() => {
     // Set analytics data for Segment
@@ -76,13 +77,12 @@ export const Profile = (props: Props) =>  {
         referrer: document.referrer
       }
     };
-    
+
     // If comonent is used in trial get best match
     if (props.isTrial) {
       page('Viewed Best Match', analiticsProps);
 
       const fetchBestMatch = async () => {
-        const requestId = getCookie("requestId");
         await props.fetchBestMatch(requestId);
 
       };
@@ -90,15 +90,14 @@ export const Profile = (props: Props) =>  {
     } else {
       // If comonent is not used in trial get profile
       const router = useRouter();
-      const id = Number(router.query.id);
-
-      analiticsProps.instructorId = id
+      const instructorId = Number(router.query.id);
+      analiticsProps.instructorId = instructorId;
 
       page('Viewed Instructor Profile', analiticsProps);
 
       const fetchProfile = async () => {
-        if (id) {
-          await props.fetchInstructor(id);
+        if (instructorId) {
+          await props.fetchInstructor(instructorId);
         }
       };
       fetchProfile();
@@ -134,7 +133,6 @@ export const Profile = (props: Props) =>  {
       <Head>
         <title>{pageTitlesAndDescriptions.profile.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.profile.description}></meta>
-        <NextScript />
       </Head>
       <Header />
       <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
@@ -143,35 +141,63 @@ export const Profile = (props: Props) =>  {
         </div>
         {!props.isTrial &&
           <Breadcrumbs aria-label="breadcrumb">
-            <Link  href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
+            <Link href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
               <a>{ProfileComponent.breadcrumbLabels.home}</a>
             </Link>
             <Typography>{ProfileComponent.breadcrumbLabels.profile}</Typography>
-        </Breadcrumbs>
+          </Breadcrumbs>
         }
         {props.isFetchingBestMatch || props.isFetchingProfile && <div className="nabi-text-center"><CircularProgress /></div>}
-          <Grid container={true} spacing={1}>
-            <Grid item={true} xs={12} md={7}>
-              <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
-                <ProfileHeader instructor={props.instructorProfile} />
-              </div>
-              <Reviews reviews={props.instructorProfile?.reviews} />
-              <Experience instructor={props.instructorProfile} />
-            </Grid>
-            <Grid xs={5} item={true} id="profile-cta" className="hide-on-mobile">
-              <div className="nabi-section nabi-background-white nabi-text-center">
-                <span className="nabi-text-mediumbold">{ProfileComponent.bookTrialWith} {props.instructorProfile?.name}</span>
-                <Button variant="contained" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.bookTrialButton}</Button>
-                <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
-              </div>
-            </Grid>
+        <Grid container={true} spacing={1}>
+          <Grid item={true} xs={12} md={7}>
+            <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
+              <ProfileHeader instructor={props.instructorProfile} />
+            </div>
+            <Reviews reviews={props.instructorProfile?.reviews} />
+            <Experience instructor={props.instructorProfile} />
           </Grid>
+          <Grid xs={5} item={true} id="profile-cta" className="hide-on-mobile">
+            <div className="nabi-section nabi-background-white nabi-text-center">
+              <span className="nabi-text-mediumbold">{ProfileComponent.bookTrialWith} {props.instructorProfile?.name}</span>
+              <Button variant="contained" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.bookTrialButton}</Button>
+              <Link 
+                href={{ 
+                  pathname: Routes.BookTrial + Routes.IntructorsMatch,
+                  query: { 
+                    requestId,
+                    instructorId: props.instructorProfile?.id
+                  } 
+                }}
+              >
+                <a>
+                  <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
+                </a>
+              </Link>
+            </div>
+          </Grid>
+        </Grid>
       </div>
       <Footer />
       <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
-        <Button fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">{ProfileComponent.bookTrialButton}</Button>
-        <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
+          <Link href={Routes.BookTrial + Routes.BookingDetails}>
+            <a>
+              <Button fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">{ProfileComponent.bookTrialButton}</Button>
+            </a>
+          </Link>
+          <Link 
+            href={{ 
+              pathname: Routes.BookTrial + Routes.IntructorsMatch,
+              query: { 
+                requestId,
+                instructorId: props.instructorProfile?.id
+              } 
+            }}
+          >
+            <a>
+              <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
+            </a>
+          </Link>
         </div>
       </div>
 

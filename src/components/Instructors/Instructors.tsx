@@ -1,22 +1,57 @@
 import * as React from "react";
+import {
+  Action,
+  Dispatch
+} from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { connect } from 'react-redux';
 import Head from 'next/head';
-
+import { useRouter } from 'next/router';
+import { getCookie, setCookie } from '../../utils/cookies';
+import PageTitle from '../common/PageTitle';
+import { Header } from '../Header/Header';
 import {
   Instructor,
   Rates,
-  InstructorType
+  InstructorListType
 } from "../../redux/models/InstructorModel";
+import { StoreState } from '../../redux/reducers/store';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
+import { fetchInstructorsMatch } from '../../redux/actions/RequestActions';
 import InstructorCard from "./InstructorCard";
 
-interface Props {
-  instructors: Instructor[];
-  isRequestingInstructor: boolean;
-  instructor: InstructorType;
-  fetchInstructor: (id: number) => void;
+interface StateProps {
+  instructorsMatch: InstructorListType[];
+  isFetchingInstructorsMatch: boolean;
+  fetchInstructorsMatchError: string;
 }
 
-const Instructors: React.StatelessComponent<Props> = props => {
+interface DispatchProps {
+  fetchInstructorsMatch: (requestId: number, instuctorId: number) => void;
+}
+
+interface OwnProps {
+}
+
+interface Props extends
+  StateProps,
+  DispatchProps,
+  OwnProps { }
+
+export const Instructors = (props: Props) => {
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const requestId = router.query.requestId;
+    const instructorId = router.query.instructorId;
+
+    // Set the bestMatchId cookie
+    const fetchInstructors = async () => {
+      props.fetchInstructorsMatch(Number(requestId), Number(instructorId));
+    }
+    fetchInstructors();
+  }, []);
+
   return (
     <div>
       {
@@ -26,32 +61,50 @@ const Instructors: React.StatelessComponent<Props> = props => {
             <title>{pageTitlesAndDescriptions.instructors.title}</title>
             <meta name="description" content={pageTitlesAndDescriptions.instructors.description}></meta>
           </Head>
-          {props.instructors && props.instructors.length > 0 && props.instructors.map((instructor: Instructor, i: number) => (
-            <InstructorCard
-              key={i}
-              id={instructor.id as number}
-              fetchInstructor={props.fetchInstructor}
-              age={instructor.age ? instructor.age : 0}
-              memberSince={instructor.memberSince ? instructor.memberSince : ''}
-              lastLogin={instructor.lastLogin ? instructor.lastLogin : ''}
-              displayName={instructor.displayName ? instructor.displayName : ''}
-              reviewsNumber={instructor.reviews ? instructor.reviews : 0}
-              instruments={instructor.instruments ? instructor.instruments as any : []}
-              backgroundCheckStatus={instructor.backgroundCheckStatus ? instructor.backgroundCheckStatus : ''}
-              favorite={instructor.favorite ? instructor.favorite : false}
-              lessonsTaught={instructor.lessonsTaught ? instructor.lessonsTaught : 0}
-              avatarImage={instructor.avatar as string}
-              rateStartAt={instructor.rates as Rates}
-              bioTitle={instructor.bioTitle as string}
-              bioDescription={instructor.bioDescription as string}
-              distance={instructor.distance}
-              experience={instructor.yearsOfExperience}
-              placeForLessons={instructor.placeForLessons}
-            />
-          ))}
+          <Header />
+          <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
+            <div className="nabi-text-center">
+              <PageTitle pageTitle="Featured Instructors" />
+            </div>
+            {props.instructorsMatch?.length > 0 && props.instructorsMatch.map((instructor: InstructorListType, i: number) => (
+              <InstructorCard
+                key={i}
+                instructor={instructor}
+              />
+            ))}
+          </div>
         </React.Fragment>}
     </div>
   );
 };
 
-export default Instructors;
+const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
+  const {
+    requests: {
+      instructorsMatch,
+      actions: {
+        fetchInstructorsMatch: {
+          isRequesting: isFetchingInstructorsMatch,
+          error: fetchInstructorsMatchError
+        },
+      }
+    }
+  } = state;
+  return {
+    isFetchingInstructorsMatch,
+    fetchInstructorsMatchError,
+    instructorsMatch
+  };
+};
+
+function mapDispatchToProps(
+  dispatch: Dispatch<Action | ThunkAction<{}, {}, {}>>,
+  _ownProps: OwnProps
+): DispatchProps {
+  return {
+    fetchInstructorsMatch: (requestId: number, instructorId: number) => dispatch(fetchInstructorsMatch(requestId, instructorId)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Instructors);
+

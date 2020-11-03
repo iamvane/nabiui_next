@@ -57,7 +57,8 @@ export enum Routes {
   InstructorZoomSetup = '/studio-instructor/zoom-setup',
   RateInstructor = '/rate-instructor',
   ParentStudio = '/studio',
-  BookingDetails = '/booking-details'
+  BookingDetails = '/booking-details',
+  IntructorsMatch = '/instructors-match'
 }
 
 export enum SocialLinks {

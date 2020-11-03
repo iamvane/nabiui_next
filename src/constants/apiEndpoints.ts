@@ -36,9 +36,10 @@ export namespace ApiEndpoints {
   export const offers = "/v1/offers-active/";
   export const signFile = "/v1/sign-file/";
   export const uploadVideoProfile = 'v1/upload-video-profile/';
-  export const gradeLesson = "/v1/lessons/"
-  export const scheduleLesson = "/v1/lessons/"
-  export const timezone = "/v1/timezones/"
-  export const rateInstructor = "/v1/instructor-reviews/"
-  export const bestMatch = "/v1/best-instructor-match/"
+  export const gradeLesson = "/v1/lessons/";
+  export const scheduleLesson = "/v1/lessons/";
+  export const timezone = "/v1/timezones/";
+  export const rateInstructor = "/v1/instructor-reviews/";
+  export const bestMatch = "/v1/best-instructor-match/";
+  export const instructorsMatch = "/v1/instructors-match/"
 }

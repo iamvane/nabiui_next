@@ -354,3 +354,24 @@ export const fetchBestMatch = (requestId: number): ThunkAction<Promise<void>, {}
     dispatch(withErrorAction(RequestActions.FETCH_BEST_MATCH_FAILURE, errorMessage));
   }
 };
+
+
+export const fetchInstructorsMatch = (requestId: number, instructorId: number): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.FETCH_INSTRUCTORS_MATCH));
+  try {
+    const response = await axios.get(`${ApiEndpoints.instructorsMatch}${requestId}/${instructorId}/`, {
+      headers: { 'Authorization': `Bearer ${authToken}` }
+    });
+
+    dispatch(withDataAction(RequestActions.FETCH_INSTRUCTORS_MATCH_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.FETCH_INSTRUCTORS_MATCH_FAILURE, errorMessage));
+  }
+};
+

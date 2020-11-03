@@ -466,6 +466,49 @@ export default function requestsReducer(
         }
       };
 
+      case RequestActions.FETCH_INSTRUCTORS_MATCH:
+      return {
+        ...state,
+        instructorsMatch: undefined,
+        actions: {
+          ...state.actions,
+          fetchInstructorsMatch: {
+            ...state.actions.fetchInstructorsMatch,
+            isRequesting: true,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_INSTRUCTORS_MATCH_SUCCESS:
+      const { data: instructorsMatch } = action;
+      return {
+        ...state,
+        instructorsMatch,
+        actions: {
+          ...state.actions,
+          fetchInstructorsMatch: {
+            ...state.actions.fetchInstructorsMatch,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.FETCH_INSTRUCTORS_MATCH_FAILURE:
+      const { error: instructorsMatchError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        instructorsMatch: undefined,
+        actions: {
+          ...state.actions,
+          fetchInstructorsMatch: {
+            isRequesting: false,
+            error: instructorsMatchError
+          }
+        }
+      };
+
     default:
       return state;
   }

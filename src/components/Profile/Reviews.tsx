@@ -48,23 +48,29 @@ export const Reviews = (props: Props) => {
     <Grid container={true}>
       <span className="nabi-text-mediumbold nabi-margin-bottom-xsmall nabi-margin-top-small">Reviews</span>
       <div className="nabi-section nabi-background-white">
-        {props.reviews?.items.map((review, index) =>
-          <Grid container={true} key={index}>
-            <Grid item={true} xs={6} className="">
-              <span className="nabi-text-mediumbold">{review.user}</span>
-            </Grid>
-            <Grid item={true} xs={6} className="nabi-text-right">
-              <span>{review.date}</span>
-            </Grid>
-            <Grid item={true} xs={12} className="">
-              <span>{displayRatingStars(review.rating)}</span>
-            </Grid>
-            <Grid item={true} xs={12} className="">
-              <span>{review.comment}</span>
-            </Grid>
-            {props.reviews.items.length - 1 !== index && <hr className="nabi-margin-top-small nabi-margin-bottom-small"/>}
+        {props.reviews?.items.length < 1 ?
+          <Grid container={true}>
+            <Grid item={true} xs={12}>
+              No reviews yet
           </Grid>
-        )}
+          </Grid>
+          : props.reviews?.items.map((review, index) =>
+            <Grid container={true} key={index}>
+              <Grid item={true} xs={6} className="">
+                <span className="nabi-text-mediumbold">{review.user}</span>
+              </Grid>
+              <Grid item={true} xs={6} className="nabi-text-right">
+                <span>{review.date}</span>
+              </Grid>
+              <Grid item={true} xs={12} className="">
+                <span>{displayRatingStars(review.rating)}</span>
+              </Grid>
+              <Grid item={true} xs={12} className="">
+                <span>{review.comment}</span>
+              </Grid>
+              {props.reviews.items.length - 1 !== index && <hr className="nabi-margin-top-small nabi-margin-bottom-small" />}
+            </Grid>
+          )}
       </div>
     </Grid>
   );

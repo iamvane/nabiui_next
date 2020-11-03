@@ -5,11 +5,12 @@ import {
 import { BookLessonsData } from '../../components/BookLessons/model';
 import { StudentDetailsType } from '../../components/Dashboard/ParentStudentDashboard/model';
 import { RequestType } from '../../components/Request/models';
-import { InstructorProfileType } from './InstructorModel';
+import { InstructorProfileType, InstructorProfilesType } from './InstructorModel';
 
 export interface RequestState extends BookLessonsData {
   request?: RequestType;
   bestMatch?: InstructorProfileType;
+  instructorsMatch?: InstructorProfilesType[];
   students: StudentDetailsType[];
   student: StudentDetailsType;
   actions: {
@@ -25,6 +26,7 @@ export interface RequestState extends BookLessonsData {
     fetchStudents: ActionStatus;
     deleteStudent: ActionStatus;
     fetchBestMatch: ActionStatus;
+    fetchInstructorsMatch: ActionStatus;
   };
   bookingId: number;
 }
@@ -96,6 +98,10 @@ export const defaultRequestState: RequestState = {
       error: '',
     },
     fetchBestMatch: {
+      isRequesting: false,
+      error: '',
+    },
+    fetchInstructorsMatch: {
       isRequesting: false,
       error: '',
     }

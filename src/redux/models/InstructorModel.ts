@@ -40,6 +40,19 @@ export interface InstructorProfileType {
   verified: boolean;
 }
 
+export interface InstructorListType {
+  id: number;
+  name: string;
+  avatar: string;
+  reviews: {
+    rating: number;
+    quantity: number;
+  };
+  instruments: string[];
+  rate: number;
+  timezone: string;
+}
+
 export interface InstructorType {
   userId?: number;
   bioTitle?: string;
@@ -71,7 +84,7 @@ export interface InstructorType {
   backgroundCheckStatus?: string;
   backgroundCheckResults?: {
     requestorEmail: string;
-    status:string;
+    status: string;
     result: string;
     createdAt: string;
   };
@@ -113,6 +126,7 @@ export interface Instructor {
 
 export interface InstructorState {
   instructorProfile?: InstructorProfileType;
+  instructorList?: InstructorListType[];
   instructor: InstructorType;
   instructors: ListResource<Instructor>;
   actions: {
