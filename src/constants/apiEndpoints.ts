@@ -42,4 +42,5 @@ export namespace ApiEndpoints {
   export const rateInstructor = "/v1/instructor-reviews/";
   export const bestMatch = "/v1/best-instructor-match/";
   export const instructorsMatch = "/v1/instructors-match/"
+  export const assignInstructor = "/v1/instructor-assign/"
 }

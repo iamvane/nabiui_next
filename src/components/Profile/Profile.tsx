@@ -20,7 +20,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { getCookie, setCookie } from '../../utils/cookies';
 import { StoreState } from '../../redux/reducers/store';
 import { fetchInstructor } from '../../redux/actions/InstructorActions';
-import { fetchBestMatch } from '../../redux/actions/RequestActions';
+import { fetchBestMatch, assignInstructor } from '../../redux/actions/RequestActions';
 import { Role } from '../Auth/Registration/constants';
 import { Routes } from '../common/constants/Routes';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
@@ -44,11 +44,15 @@ interface StateProps {
   instructorProfile: InstructorProfileType;
   isFetchingProfile: boolean;
   fetchProfileError: string;
+  isAssigningInstructor: boolean;
+  assignInstructorMessage: string;
+  assignInstructorError: string;
 }
 
 interface DispatchProps {
   fetchInstructor: (id: number) => void;
   fetchBestMatch: (requestId: number) => void;
+  assignInstructor: (instructorId: number, requestId: number) => void;
 }
 
 interface OwnProps {
@@ -65,7 +69,9 @@ export const Profile = (props: Props) => {
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
 
   React.useEffect(() => require('../../../assets/scripts/StickyProfileCta.js'), [])
-  
+
+  const router = useRouter();
+  const instructorId = Number(router.query.id);
   const requestId = getCookie("requestId");
 
   React.useEffect(() => {
@@ -89,8 +95,6 @@ export const Profile = (props: Props) => {
       fetchBestMatch();
     } else {
       // If comonent is not used in trial get profile
-      const router = useRouter();
-      const instructorId = Number(router.query.id);
       analiticsProps.instructorId = instructorId;
 
       page('Viewed Instructor Profile', analiticsProps);
@@ -128,6 +132,10 @@ export const Profile = (props: Props) => {
 
   const role = getCookie('role');
 
+  const assignInstructor = async () => {
+    await props.assignInstructor(instructorId, requestId);
+  }
+
   return (
     <div>
       <Head>
@@ -147,7 +155,7 @@ export const Profile = (props: Props) => {
             <Typography>{ProfileComponent.breadcrumbLabels.profile}</Typography>
           </Breadcrumbs>
         }
-        {props.isFetchingBestMatch || props.isFetchingProfile && <div className="nabi-text-center"><CircularProgress /></div>}
+        {props.isFetchingBestMatch || props.isFetchingProfile || props.isAssigningInstructor && <div className="nabi-text-center"><CircularProgress /></div>}
         <Grid container={true} spacing={1}>
           <Grid item={true} xs={12} md={7}>
             <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
@@ -159,14 +167,16 @@ export const Profile = (props: Props) => {
           <Grid xs={5} item={true} id="profile-cta" className="hide-on-mobile">
             <div className="nabi-section nabi-background-white nabi-text-center">
               <span className="nabi-text-mediumbold">{ProfileComponent.bookTrialWith} {props.instructorProfile?.name}</span>
-              <Button variant="contained" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.bookTrialButton}</Button>
-              <Link 
-                href={{ 
+              <Button onClick={() => assignInstructor()} variant="contained" color="primary" className="nabi-margin-top-xsmall">
+                {ProfileComponent.bookTrialButton}
+              </Button>
+              <Link
+                href={{
                   pathname: Routes.BookTrial + Routes.IntructorsMatch,
-                  query: { 
+                  query: {
                     requestId,
                     instructorId: props.instructorProfile?.id
-                  } 
+                  }
                 }}
               >
                 <a>
@@ -182,16 +192,18 @@ export const Profile = (props: Props) => {
         <div className="profile-cta-content-wrapper">
           <Link href={Routes.BookTrial + Routes.BookingDetails}>
             <a>
-              <Button fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">{ProfileComponent.bookTrialButton}</Button>
+              <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+                {ProfileComponent.bookTrialButton}
+              </Button>
             </a>
           </Link>
-          <Link 
-            href={{ 
+          <Link
+            href={{
               pathname: Routes.BookTrial + Routes.IntructorsMatch,
-              query: { 
+              query: {
                 requestId,
                 instructorId: props.instructorProfile?.id
-              } 
+              }
             }}
           >
             <a>
@@ -229,6 +241,11 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
           isRequesting: isFetchingBestMatch,
           error: fetchBestMatchError
         },
+        assignInstructor: {
+          isRequesting: isAssigningInstructor,
+          error: assignInstructorError,
+          message: assignInstructorMessage
+        },
       }
     }
   } = state;
@@ -237,7 +254,10 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
     fetchBestMatchError,
     instructorProfile: bestMatch || instructorProfile,
     isFetchingProfile,
-    fetchProfileError
+    fetchProfileError,
+    isAssigningInstructor,
+    assignInstructorMessage,
+    assignInstructorError
   };
 };
 
@@ -247,7 +267,8 @@ function mapDispatchToProps(
 ): DispatchProps {
   return {
     fetchInstructor: (id: number) => dispatch(fetchInstructor(id)),
-    fetchBestMatch: (requestId: number) => dispatch(fetchBestMatch(requestId))
+    fetchBestMatch: (requestId: number) => dispatch(fetchBestMatch(requestId)),
+    assignInstructor: (instructorId: number, requestId: number) => dispatch(assignInstructor(instructorId, requestId))
   };
 }
 

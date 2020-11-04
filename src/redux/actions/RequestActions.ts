@@ -375,3 +375,33 @@ export const fetchInstructorsMatch = (requestId: number, instructorId: number): 
   }
 };
 
+
+export const assignInstructor = (
+  instructorId: number,
+  requestId: number
+): ThunkAction<Promise<void>, {}, {}> => async (
+  dispatch: Dispatch<{}>
+) => {
+  dispatch(requestAction(RequestActions.ASSIGN_INSTRUCTOR));
+  try {
+    const response = await axios.post(
+      `${ApiEndpoints.assignInstructor}`,
+      {
+        instructorId,
+        requestId
+      },
+      {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      }
+    );
+
+    dispatch(withDataAction(RequestActions.ASSIGN_INSTRUCTOR_SUCCESS, response.data));
+  } catch (e) {
+    if (getError(e) && typeof getError(e) === 'string') {
+      errorMessage = getError(e);
+    }
+
+    dispatch(withErrorAction(RequestActions.ASSIGN_INSTRUCTOR_FAILURE, errorMessage));
+  }
+};
+

@@ -27,7 +27,7 @@ const InstructorCard = (props: Props) => {
     props.instructor?.instruments.map(instrument => {
       instruments.push(instrument.charAt(0).toUpperCase() + instrument.slice(1))
     }) 
-    return instruments.join(', ')
+    return instruments.join(', ');
   }
 
   return (

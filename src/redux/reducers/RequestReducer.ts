@@ -164,7 +164,7 @@ export default function requestsReducer(
       };
 
     case RequestActions.BOOK_LESSONS_SUCCESS:
-      const { data: bookLessonsData } = <APIActions.WithData<{message: string, booking_id: number}>>action;
+      const { data: bookLessonsData } = <APIActions.WithData<{ message: string, booking_id: number }>>action;
       return {
         ...state,
         bookingId: bookLessonsData.booking_id,
@@ -232,7 +232,7 @@ export default function requestsReducer(
     case RequestActions.FETCH_BOOK_LESSONS_DATA_FAILURE:
       const { error: fetchBookLessonsDataError } = <
         APIActions.WithError<string>
-      >action;
+        >action;
       return {
         ...state,
         actions: {
@@ -309,7 +309,7 @@ export default function requestsReducer(
       };
 
     case RequestActions.SCHEDULE_LESSONS_SUCCESS:
-      const { data: scheduleLessonsData } = <APIActions.WithData<{message: string, booking_id: number}>>action;
+      const { data: scheduleLessonsData } = <APIActions.WithData<{ message: string, booking_id: number }>>action;
       return {
         ...state,
         actions: {
@@ -466,7 +466,7 @@ export default function requestsReducer(
         }
       };
 
-      case RequestActions.FETCH_INSTRUCTORS_MATCH:
+    case RequestActions.FETCH_INSTRUCTORS_MATCH:
       return {
         ...state,
         instructorsMatch: undefined,
@@ -505,6 +505,49 @@ export default function requestsReducer(
           fetchInstructorsMatch: {
             isRequesting: false,
             error: instructorsMatchError
+          }
+        }
+      };
+
+    case RequestActions.ASSIGN_INSTRUCTOR:
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          assignInstructor: {
+            ...state.actions.assignInstructor,
+            isRequesting: true,
+            message: "",
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.ASSIGN_INSTRUCTOR_SUCCESS:
+      const { data: assignInstructorMessage } = <APIActions.WithData<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          assignInstructor: {
+            ...state.actions.assignInstructor,
+            message: assignInstructorMessage,
+            isRequesting: false,
+            error: ""
+          }
+        }
+      };
+
+    case RequestActions.ASSIGN_INSTRUCTOR_FAILURE:
+      const { error: assignInstructorError } = <APIActions.WithError<string>>action;
+      return {
+        ...state,
+        actions: {
+          ...state.actions,
+          assignInstructor: {
+            isRequesting: false,
+            error: assignInstructorError,
+            message: ""
           }
         }
       };
