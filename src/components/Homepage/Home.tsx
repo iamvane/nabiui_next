@@ -2,7 +2,8 @@ import * as React from "react";
 import Head from 'next/head';
 import Link from "next/link";
 
-import { Avatar, Button, Grid } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
+import { Button, Grid } from "nabi_web_components";
 
 import dynamic from "next/dynamic";
 const Star = dynamic(() => import('@material-ui/icons/Star'), {
@@ -58,11 +59,11 @@ export const Home = (props: Props) => {
           <meta name="description" content={docDescription}></meta>
         </Head>
       </div>
-      <Header 
+      <Header
         headerMenuItems={HomeComponent.menuItems}
         drawerMenuItems={HomeComponent.menuItems}
       />
-      <Banner 
+      <Banner
         pageName="home"
         cta={HomeComponent.cta}
         heading={HomeComponent.valueHeading}

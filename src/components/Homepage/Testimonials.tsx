@@ -2,10 +2,9 @@ import * as React from 'react';
 
 import Link from 'next/link';
 import {
-  Button,
-  Grid,
   Typography,
 } from '@material-ui/core';
+import { Button, Grid } from "nabi_web_components";
 import { Routes } from '../common/constants//Routes';
 
 import '../../../assets/scss/Testimonials.scss'
