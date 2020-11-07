@@ -13,6 +13,7 @@ import '../../../assets/scss/InstructorCard.scss';
 
 interface Props {
   instructor: InstructorListType;
+  bestMatchId?: number;
 }
 
 const InstructorCard = (props: Props) => {
@@ -32,6 +33,7 @@ const InstructorCard = (props: Props) => {
 
   return (
     <div onClick={navigateToProfile} className="nabi-section nabi-padding-top-small nabi-padding-bottom-small nabi-background-white nabi-margin-bottom-small nabi-position-relative nabi-cursor-pointer item-card">
+      {props.bestMatchId === props.instructor?.id && <span className="profile-best-match-badge nabi-text-uppercase">Best Match</span>}
       <Grid container={true} spacing={3}>
         <Grid item={true} xs={4} className="nabi-text-center">
           <Avatar

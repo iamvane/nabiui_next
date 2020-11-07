@@ -40,14 +40,14 @@ interface Props extends
 
 export const Instructors = (props: Props) => {
   const router = useRouter();
+  const instructorId = Number(router.query.instructorId);
 
   React.useEffect(() => {
     const requestId = router.query.requestId;
-    const instructorId = router.query.instructorId;
 
     // Set the bestMatchId cookie
     const fetchInstructors = async () => {
-      props.fetchInstructorsMatch(Number(requestId), Number(instructorId));
+      props.fetchInstructorsMatch(Number(requestId), instructorId);
     }
     fetchInstructors();
   }, []);
@@ -55,7 +55,6 @@ export const Instructors = (props: Props) => {
   return (
     <div>
       {
-        // props.instructor.id ? <Redirect to={`${Route.Profile}/${props.instructor.id}`} /> :
         <React.Fragment>
           <Head>
             <title>{pageTitlesAndDescriptions.instructors.title}</title>
@@ -70,6 +69,7 @@ export const Instructors = (props: Props) => {
               <InstructorCard
                 key={i}
                 instructor={instructor}
+                bestMatchId={instructorId}
               />
             ))}
           </div>
