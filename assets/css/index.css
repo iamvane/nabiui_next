@@ -41,6 +41,10 @@ hr {
     width: 100%;
 }
 
+p {
+	margin: 0px;
+}
+
 /*BACKGROUND COLOR*/
 .nabi-background-color {
 	background-color: #E5E5E5;
