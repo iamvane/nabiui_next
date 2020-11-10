@@ -2,7 +2,7 @@ export const getError = (e: any, type?: string | string[]): string => {
   if (e.response && e.response.data) {
     const {data} = e.response;
     if (data.fields) {
-      if (!type.length) {
+      if (!type?.length) {
         return;
       }
       const errorTypes = type as string[];

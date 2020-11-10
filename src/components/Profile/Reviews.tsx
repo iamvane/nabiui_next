@@ -45,15 +45,13 @@ export const Reviews = (props: Props) => {
   };
 
   return (
-    <Grid container={true}>
-      <span className="nabi-text-mediumbold nabi-margin-bottom-xsmall nabi-margin-top-small">Reviews</span>
+    <div>
+      <p className="nabi-text-mediumbold nabi-margin-bottom-xsmall nabi-margin-top-small">Reviews</p>
       <div className="nabi-section nabi-background-white">
         {props.reviews?.items.length < 1 ?
-          <Grid container={true}>
             <Grid item={true} xs={12}>
               No reviews yet
-          </Grid>
-          </Grid>
+            </Grid>
           : props.reviews?.items.map((review, index) =>
             <Grid container={true} key={index}>
               <Grid item={true} xs={6} className="">
@@ -72,7 +70,7 @@ export const Reviews = (props: Props) => {
             </Grid>
           )}
       </div>
-    </Grid>
+    </div>
   );
 };
 

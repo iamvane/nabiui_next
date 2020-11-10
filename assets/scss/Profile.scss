@@ -1,3 +1,7 @@
+.profile-content-wrapper {
+  padding-bottom: 122px;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -18,4 +22,10 @@
   width: 90%;
   background:white;
   margin: 5%
+}
+
+@media (min-width: 960px) { 
+  .profile-content-wrapper {
+    padding-bottom: 15px;
+  }
 }
