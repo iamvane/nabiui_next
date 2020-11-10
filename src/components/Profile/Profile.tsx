@@ -74,7 +74,7 @@ export const Profile = (props: Props) => {
   React.useEffect(() => require('../../../assets/scripts/StickyProfileCta.js'), [])
 
   const router = useRouter();
-  const instructorId = Number(router.query.id) || getCookie("bestMatchId");
+  const instructorId = Number(router.query.id) || props.instructorProfile.id;
   const requestId = getCookie("requestId");
 
   React.useEffect(() => {
@@ -163,7 +163,7 @@ export const Profile = (props: Props) => {
   
 
   const assignInstructor = async () => {
-    await props.assignInstructor(instructorId, requestId);
+    await props.assignInstructor(props.instructorProfile?.id, requestId);
 
     setBookTrial(true);
   }
@@ -224,13 +224,9 @@ export const Profile = (props: Props) => {
       </div>
       <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
-          {/* <Link href={Routes.BookTrial + Routes.BookingDetails}>
-            <a> */}
-              <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
-                {ProfileComponent.bookTrialButton}
-              </Button>
-            {/* </a>
-          </Link> */}
+          <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+            {ProfileComponent.bookTrialButton}
+          </Button>
           <Link
             href={{
               pathname: Routes.BookTrial + Routes.IntructorsMatch,
