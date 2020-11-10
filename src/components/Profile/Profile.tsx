@@ -160,7 +160,7 @@ export const Profile = (props: Props) => {
       setBookTrial(false);
     }
   }, [bookTrial, props.assignInstructorError]);
-  
+
 
   const assignInstructor = async () => {
     await props.assignInstructor(props.instructorProfile?.id, requestId);
@@ -224,9 +224,9 @@ export const Profile = (props: Props) => {
       </div>
       <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
-            <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
-              {ProfileComponent.bookTrialButton}
-            </Button>
+          <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+            {ProfileComponent.bookTrialButton}
+          </Button>
           <Link
             href={{
               pathname: Routes.BookTrial + Routes.IntructorsMatch,
