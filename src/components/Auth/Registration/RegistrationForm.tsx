@@ -177,7 +177,6 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
 
       <div className="nabi-margin-top-small nabi-margin-left-xsmall">
         <FormControlLabel
-          className="nabi-margin-bottom-medium"
           control={
             <Checkbox
               onChange={handleChange}
