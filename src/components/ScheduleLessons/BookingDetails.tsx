@@ -37,7 +37,6 @@ export const BookingDetails = (props: Props) => {
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
   const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mmA");
   const timezone = getCookie('timezone');
-  const availability = getCookie('availability');
   const instrumentDisplay = instruments.find(t => t.value === getCookie('instrumentName'));
 
   const handleNext = () => {
@@ -48,8 +47,9 @@ export const BookingDetails = (props: Props) => {
   }
 
   const displayAvailability = () => {
+    const availability = getCookie('availability');
     const modifiedAvailability = [];
-    if (availability && availability.length) {
+    if (availability?.length) {
       JSON.parse(availability).forEach(item =>
         modifiedAvailability.push(`${BookingDetailsComponent.weekdaysLabels[item.day]} ${BookingDetailsComponent.timeframeLabels[item.timeframe]}`)
       );
@@ -100,11 +100,11 @@ export const BookingDetails = (props: Props) => {
             </Typography>
           </div>
           <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
-            {instrumentDisplay && instrumentDisplay.name ? (
+            {instrumentDisplay?.name ? (
               <>
                 <MusicNoteIcon color="primary" />
                 <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-                  {instrumentDisplay.name}
+                  {instrumentDisplay?.name}
                 </Typography>
               </>
             ) : null}

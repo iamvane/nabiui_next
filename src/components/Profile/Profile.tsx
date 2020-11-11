@@ -5,7 +5,7 @@ import {
 } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -126,7 +126,7 @@ export const Profile = (props: Props) => {
 
   React.useEffect(() => {
     // Set the bestMatchId cookie
-    if (props.instructorProfile && props.instructorProfile.id) {
+    if (props.instructorProfile?.id) {
       if (props.isTrial) {
         setCookie("bestMatchId", props.instructorProfile.id)
       }
@@ -136,30 +136,35 @@ export const Profile = (props: Props) => {
   const role = getCookie('role');
 
   React.useEffect(() => {
-    if (bookTrial) {
-      if (props.assignInstructorError) {
-        setSnackBarDetails({
-          type: "error",
-          message: props.assignInstructorError
-        })
-        setShowSnackbar(true);
-      } else {
-        setCookie("instructorName", props.instructorProfile?.name);
-        const userEmail = getCookie('userEmail');
-        const analiticsProps = {
-          userId: userEmail,
-          properties: {
-            referrer: document.referrer,
-            instructorId: instructorId
-          }
-        };
-        track('Trial Started', analiticsProps);
-
-        router.push(Routes.BookTrial + Routes.TrialConfirmation);
-      }
-      setBookTrial(false);
+    if (!bookTrial) {
+      return
     }
-  }, [bookTrial, props.assignInstructorError]);
+    if (props.assignInstructorError) {
+      alert("error")
+      setSnackBarDetails({
+        type: "error",
+        message: props.assignInstructorError
+      })
+      setShowSnackbar(true);
+      return;
+    } 
+    if (props.assignInstructorMessage) {
+      alert("no error")
+      setCookie("instructorName", props.instructorProfile?.name);
+      const userEmail = getCookie('userEmail');
+      const analiticsProps = {
+        userId: userEmail,
+        properties: {
+          referrer: document.referrer,
+          instructorId: instructorId
+        }
+      };
+      track('Trial Started', analiticsProps);
+
+      Router.push(Routes.BookTrial + Routes.TrialConfirmation);
+      return;
+    }
+  }, [bookTrial, props.assignInstructorError, props.assignInstructorMessage]);
 
 
   const assignInstructor = async () => {
