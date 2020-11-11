@@ -10,18 +10,18 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
 import {
-  Button,
-  Checkbox,
   CircularProgress,
-  FormControl,
   FormControlLabel,
-  FormHelperText,
-  Grid,
-  Input,
-  Select,
-  TextField,
-  Typography
+  Checkbox,
 } from '@material-ui/core';
+
+import {
+  TextField,
+  Button,
+  FormControl,
+  FormHelperText,
+  Grid
+} from 'nabi_web_components';
 
 import '../../../../assets/scss/PhoneValidationForm.scss';
 
@@ -131,9 +131,9 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
         helperText={formErrors.password}
       />
 
-      <Typography variant="body2">
+      <p>
         {RegistrationFormComponent.birthday}
-      </Typography>
+      </p>
 
       <FormControl fullWidth={false} required={true}>
         <DatePicker
@@ -177,7 +177,6 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
 
       <div className="nabi-margin-top-small nabi-margin-left-xsmall">
         <FormControlLabel
-          className="nabi-margin-bottom-medium"
           control={
             <Checkbox
               onChange={handleChange}
@@ -195,9 +194,9 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
           {isRequesting && <CircularProgress />}
         </div>
 
-        <Typography className="nabi-margin-top-small nabi-margin-bottom-small" color="error">
+        <p className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-color-red">
           {props.apiError}
-        </Typography>
+        </p>
 
         <Button
           color="primary"

@@ -5,7 +5,7 @@ import Router from "next/router";
 import { withRouter, NextRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
 import Head from 'next/head';
-import { Grid } from '@material-ui/core';
+import { Grid } from 'nabi_web_components';
 
 import { Action, Dispatch } from "redux";
 
@@ -165,7 +165,6 @@ export const Registration = (props: Props) => {
     const target = event.currentTarget;
     const value = target.value;
     const name = target.name;
-
     switch (name) {
       case RegistrationFormComponent.FieldNames.FirstName:
         setFirstName(value);
