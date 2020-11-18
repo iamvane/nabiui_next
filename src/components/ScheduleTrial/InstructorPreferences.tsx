@@ -8,14 +8,17 @@ import {
 import Router from "next/router";
 
 import {
-  Button,
-  Grid,
   FormLabel,
-  FormControl,
   Select,
   ButtonGroup,
   CircularProgress
 } from '@material-ui/core';
+
+import {
+  Button,
+  Grid,
+  FormControl,
+} from 'nabi_web_components';
 
 import { languages } from '../../../assets/data/languages';
 import CalendarIcon from '@material-ui/icons/CalendarTodayOutlined';
@@ -215,7 +218,7 @@ export const InstructorPreferences = (props: Props) => {
     trialDetails.language = selectedLanguage;
 
     await props.createRequest(trialDetails);
-    
+
     setCreateRequest(true);
   };
 
