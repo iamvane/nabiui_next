@@ -8,18 +8,19 @@ import {
 import Router from "next/router";
 
 import {
-  Button,
-  Grid,
   FormLabel,
-  FormControl,
-  Select,
-  ButtonGroup,
   CircularProgress
 } from '@material-ui/core';
 
+import {
+  Button,
+  Grid,
+  FormControl,
+  Select,
+  SegmentControl
+} from 'nabi_web_components';
+
 import { languages } from '../../../assets/data/languages';
-import CalendarIcon from '@material-ui/icons/CalendarTodayOutlined';
-import ArrowdownIcon from "@material-ui/icons/KeyboardArrowDownOutlined";
 import '../../../assets/scss/ScheduleLessons.scss';
 import { createRequest } from '../../redux/actions/RequestActions';
 import { getCookie } from "../../utils/cookies";
@@ -71,12 +72,13 @@ const initialAvailabilityDetails = {
 }
 
 export const InstructorPreferences = (props: Props) => {
+  const genderSegments = [InstructorPreferencesComponent.male, InstructorPreferencesComponent.female, InstructorPreferencesComponent.noPreference];
   const [createRequest, setCreateRequest] = React.useState(false);
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   const [trialAvailabilityDetails, setTrialAvailabilityDetails] = React.useState(initialAvailabilityDetails);
   const [selectedLanguage, selectTrialLanguage] = React.useState('english');
-  const [gender, setGender] = React.useState('female');
+  const [gender, setGender] = React.useState('male');
 
   const allTrialsIsSelected = Object.keys(trialAvailabilityDetails).every((choice) => {
     if (trialAvailabilityDetails[choice]) {
@@ -134,6 +136,10 @@ export const InstructorPreferences = (props: Props) => {
 
     if (name === 'trialLanguage') {
       selectTrialLanguage(value);
+    }
+
+    if (genderSegments.map((option) => option.toLowerCase()).includes(name)) {
+      setGender(value);
     }
 
     if (Object.keys(trialAvailabilityDetails.firstChoice).includes(name)) {
@@ -215,7 +221,7 @@ export const InstructorPreferences = (props: Props) => {
     trialDetails.language = selectedLanguage;
 
     await props.createRequest(trialDetails);
-    
+
     setCreateRequest(true);
   };
 
@@ -263,32 +269,12 @@ export const InstructorPreferences = (props: Props) => {
         <FormLabel className="nabi-margin-bottom-xsmall">
           {InstructorPreferencesComponent.gender}
         </FormLabel>
-        <ButtonGroup className="trial-select__btn-group" variant="text" aria-label="text primary button group">
-          <Button
-            classes={{
-              label: `trial-select__label ${gender === "female" ? "trial-select__gender" : ""}`
-            }}
-            className="trial-select__btn"
-            value="female"
-            onClick={selectGender}
-          >{InstructorPreferencesComponent.female}</Button>
-          <Button
-            classes={{
-              label: `trial-select__label ${gender === "male" ? "trial-select__gender" : ""}`
-            }}
-            className="trial-select__btn"
-            value="male"
-            onClick={selectGender}
-          >{InstructorPreferencesComponent.male}</Button>
-          <Button
-            classes={{
-              label: `trial-select__label ${gender === "no-preference" ? "trial-select__gender" : ""}`
-            }}
-            className="trial-select__btn"
-            value="no-preference"
-            onClick={selectGender}
-          >{InstructorPreferencesComponent.noPreference}</Button>
-        </ButtonGroup>
+        <SegmentControl
+          handleChange={handleChange}
+          names={genderSegments}
+          checked={false}
+          selected={gender}
+        />
       </FormControl>
     )
   }
@@ -301,17 +287,12 @@ export const InstructorPreferences = (props: Props) => {
             {InstructorPreferencesComponent.language}
           </FormLabel>
           <Select
-            classes={{
-              select: "trial-time__select"
-            }}
+            className="trial-time__select"
             native={true}
             onChange={handleChange}
-            IconComponent={() => (<ArrowdownIcon color="action" />)}
             value={selectedLanguage}
-            inputProps={{
-              id: "trialLanguage",
-              name: "trialLanguage"
-            }}
+            id="trialLanguage"
+            name="trialLanguage"
           >
             <option value="" disabled={true}>
               {InstructorPreferencesComponent.selectLanguage}
@@ -349,7 +330,6 @@ export const InstructorPreferences = (props: Props) => {
                       select: "trial-time__select"
                     }}
                     native={true}
-                    IconComponent={() => (<CalendarIcon color="action" />)}
                     onChange={handleChange}
                     value={(() => {
                       if (trialAvailabilityDetails.firstChoice[value.dayOfTheWeek]) {
@@ -364,10 +344,8 @@ export const InstructorPreferences = (props: Props) => {
                       }
                       return '';
                     })()}
-                    inputProps={{
-                      id: `${value.dayOfTheWeek}`,
-                      name: `${value.dayOfTheWeek}`
-                    }}
+                    id={`${value.dayOfTheWeek}`}
+                    name={`${value.dayOfTheWeek}`}
                   >
                     <option value="" disabled={true}>
                       {InstructorPreferencesComponent.selectWeekDay}
@@ -379,12 +357,9 @@ export const InstructorPreferences = (props: Props) => {
               <Grid item={true} xs={6}>
                 <FormControl className="trial-select__form--day-of-week">
                   <Select
-                    classes={{
-                      select: "trial-time__select"
-                    }}
+                    className="trial-time__select"
                     native={true}
                     onChange={handleChange}
-                    IconComponent={() => (<ArrowdownIcon color="action" />)}
                     value={
                       (() => {
                         if (trialAvailabilityDetails.firstChoice[value.timeFrame]) {
@@ -400,10 +375,8 @@ export const InstructorPreferences = (props: Props) => {
                         return '';
                       })()
                     }
-                    inputProps={{
-                      id: `${value.timeFrame}`,
-                      name: `${value.timeFrame}`
-                    }}
+                    id={`${value.timeFrame}`}
+                    name={`${value.timeFrame}`}
                   >
                     <option value="" disabled={true}>
                       {InstructorPreferencesComponent.selectTime}
