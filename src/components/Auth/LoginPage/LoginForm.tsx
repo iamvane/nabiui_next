@@ -3,13 +3,10 @@ import Link from 'next/link';
 const reactStringReplace = require('react-string-replace');
 
 import {
-  Button,
-  CircularProgress,
-  Divider,
-  TextField,
-  Typography
+  CircularProgress
 } from '@material-ui/core';
 
+import { TextField, Button } from "nabi_web_components";
 import { Routes } from '../../common/constants/Routes';
 import { LoginFormComponent } from './constants';
 
@@ -50,9 +47,9 @@ const LoginForm: React.StatelessComponent<Props> = props => {
       <div className="nabi-text-center nabi-padding-top-xsmall nabi-padding-bottom-xsmall">
         {isRequesting && <CircularProgress />}
 
-        <Typography className="nabi-margin-top-small nabi-margin-bottom-small" color="error">
+        <p className="nabi-margin-top-small nabi-margin-bottom-small nabi-text-color-red">
           {props.apiError}
-        </Typography>
+        </p>
 
         <Button
           color="primary"
@@ -65,17 +62,17 @@ const LoginForm: React.StatelessComponent<Props> = props => {
         </Button>
       </div>
 
-      <Divider className="nabi-margin-top-small nabi-margin-bottom-xsmall"/>
+      <hr className="nabi-margin-top-small nabi-margin-bottom-xsmall"/>
 
-      <Typography align="center" className="nabi-margin-top-small nabi-cursor-pointer">
+      <p className="nabi-margin-top-small nabi-cursor-pointer nabi-text-center">
         <Link prefetch={false} href={Routes.AccountRecovery}>
           <a>
             {LoginFormComponent.Text.ForgotPassword}
           </a>
         </Link>
-      </Typography>
+      </p>
 
-      <Typography align="center" className="nabi-margin-top-xsmall">
+      <p className="nabi-margin-top-xsmall nabi-text-center">
         {reactStringReplace(
           LoginFormComponent.registerInvite,
           LoginFormComponent.singUpPlaceholder,
@@ -83,7 +80,7 @@ const LoginForm: React.StatelessComponent<Props> = props => {
             <Link prefetch={false} key={i} href={Routes.Registration}><a>{LoginFormComponent.Text.SingUp}</a></Link>
           )
         )}
-      </Typography>
+      </p>
     </form>
   );
 };

@@ -7,7 +7,7 @@ import {
 import Router from 'next/router';
 import Head from 'next/head';
 
-import { Grid } from '@material-ui/core';
+import { Grid } from 'nabi_web_components';
 
 import { StoreState } from '../../../redux/reducers/store';
 import {
