@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import {
   Grid
-} from '@material-ui/core';
+} from 'nabi_web_components';
 import Menu from "@material-ui/icons/Menu";
 
 import dynamic from "next/dynamic";
@@ -75,7 +75,7 @@ export const Header = (props: Props) => {
               />
             </Grid>
           }
-          {props.headerMenuItems && props.headerMenuItems.length > 0 && 
+          {props.headerMenuItems && props.headerMenuItems.length > 0 &&
             <Grid item={true} xs={11} className="nabi-text-right menu-container hide-on-mobile">
               {renderMenu()}
             </Grid>
