@@ -425,9 +425,7 @@ export const InstructorPreferences = (props: Props) => {
         <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
             <Grid xs={12} md={7} className="nabi-background-white nabi-section nabi-margin-center">
               {props.isCreatingRequest && <div className="nabi-text-center"><CircularProgress /></div>}
-              <div className="nabi-text-center">
-                <PageTitle pageTitle={InstructorPreferencesComponent.pageTitle} />
-              </div>
+              <PageTitle pageTitle={InstructorPreferencesComponent.pageTitle} />
               <form noValidate={true} autoComplete="off" onSubmit={handleSubmit} id="login-form">
                 <>
                   {renderGenderSelection()}

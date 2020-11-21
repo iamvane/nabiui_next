@@ -19,21 +19,17 @@ import {
   authenticateUser,
   fetchUserOnLogin
 } from '../../../redux/actions/UserActions';
-import { LoginComponent } from './constants';
+import { validateEmail } from '../../../utils/formValidation';
 import PageTitle from '../../common/PageTitle';
 import { Routes } from '../../common/constants/Routes';
 import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import SnackBar from '../../common/SnackBar';
 import PrivateRoute from '../../Auth/PrivateRoutes';
-import { LoginType } from './model';
-import LoginForm from './LoginForm';
-import { LoginFormComponent } from './constants';
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 import { Role } from '../Registration/constants';
-import { validateEmail } from '../../../utils/formValidation';
-
-interface State extends LoginType {
-  showSnackbar: boolean;
-}
+import LoginForm from './LoginForm';
+import { LoginComponent, LoginFormComponent } from './constants';
 
 interface StateProps {
   user: UserType;
@@ -133,6 +129,7 @@ const Login = (props: Props) => {
         <title>{pageTitlesAndDescriptions.login.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.login.description}></meta>
       </Head>
+      <Header />
       <PageTitle pageTitle={LoginComponent.pageTitle} />
       <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
         <div className="form-card nabi-background-white nabi-section">
@@ -154,6 +151,7 @@ const Login = (props: Props) => {
           variant="success"
         />
       }
+      <Footer />
     </div>
   );
 }

@@ -62,9 +62,7 @@ export const BookingDetails = (props: Props) => {
     <div>
       <Header />
       <div className="nabi-container nabi-margin-bottom-medium">
-        <div className="nabi-text-center">
-          <PageTitle pageTitle={BookingDetailsComponent.pageTitle} />
-        </div>
+        <PageTitle pageTitle={BookingDetailsComponent.pageTitle} />
         <Grid
           item={true}
           xs={12}

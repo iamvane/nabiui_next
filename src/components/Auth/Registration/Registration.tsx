@@ -339,9 +339,7 @@ export const Registration = (props: Props) => {
       />
       <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium-md">
         <Grid xs={12} md={7} className="nabi-background-white-md nabi-section nabi-margin-center">
-          <div className="nabi-text-center">
-            <PageTitle pageTitle={RegistrationComponent.pageTitle} />
-          </div>
+          <PageTitle pageTitle={RegistrationComponent.pageTitle} />
           <RegistrationForm
             handleChange={handleChange}
             handleSubmit={handleSubmit}

@@ -34,7 +34,7 @@ export const Footer = (props: Props) => {
             </a>
           </Link>
         </Grid>
-        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-right-md nabi-margin-top-small">
+        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-right-md nabi-margin-top-small nabi-margin-top-zero-md">
           <SocialMenu />
         </Grid>
       </Grid>

@@ -644,7 +644,7 @@ export default function instructorReducer(
       const { data: instructor } = action;
       return {
         ...state,
-        instructor,
+        instructorProfile: instructor,
         actions: {
           ...state.actions,
           fetchInstructor: {
