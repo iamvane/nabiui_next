@@ -111,22 +111,17 @@ export class LocationField extends React.Component<Props, State> {
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className="nabi-full-width">
-              <TextField
+              <IconButton
+                aria-label="location"
+              >
+                <img src={locationIcon} className="nabi-custom-button-icon" alt="location-icon" />
+              </IconButton>
+              <input
+                className="nabi-margin-top-small nabi-input"
                 {...getInputProps({
-                  variant: "standard",
-                  fullWidth: true,
+                  // variant: "standard",
+                  // fullWidth: true,
                   placeholder: ListTemplateComponent.locationPlaceholder,
-                  InputProps: {
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <IconButton
-                          aria-label="location"
-                        >
-                          <img src={locationIcon} className="nabi-custom-button-icon" alt="location-icon" />
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }
                 })}
               />
               <div className="nabi-z-index-1 nabi-position-absolute">
