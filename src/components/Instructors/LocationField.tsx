@@ -5,8 +5,6 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import {
   IconButton,
-  InputAdornment,
-  TextField,
   Typography
 } from '@material-ui/core';
 
@@ -104,6 +102,7 @@ export class LocationField extends React.Component<Props, State> {
     const locationIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/pin-location.png';
     return (
       <div>
+        {/* tslint:disable */}
         <PlacesAutocomplete
           value={this.state.location}
           onChange={this.handleLocationChange}
