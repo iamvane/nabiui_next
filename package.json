@@ -44,7 +44,7 @@
     "lodash.debounce": "^4.0.8",
     "moment": "^2.24.0",
     "nabi_web_components": "git+https://1192ab8f0ad3f1bf6bdac3086a250455aa38aa2d:x-oauth-basic@github.com/iamvane/nabi_web_components.git",
-    "next": "^9.1.4",
+    "next": "^9.5.5",
     "next-compose-plugins": "^2.2.0",
     "next-fonts": "^0.19.0",
     "next-images": "^1.2.0",

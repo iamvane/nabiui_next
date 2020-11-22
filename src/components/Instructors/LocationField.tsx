@@ -118,8 +118,6 @@ export class LocationField extends React.Component<Props, State> {
               <input
                 className="nabi-margin-top-small nabi-input"
                 {...getInputProps({
-                  // variant: "standard",
-                  // fullWidth: true,
                   placeholder: ListTemplateComponent.locationPlaceholder,
                 })}
               />
