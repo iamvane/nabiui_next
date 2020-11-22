@@ -5,6 +5,8 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import {
   IconButton,
+  InputAdornment,
+  TextField,
   Typography
 } from '@material-ui/core';
 
@@ -39,16 +41,16 @@ export class LocationField extends React.Component<Props, State> {
   public componentDidMount(): void {
     if (this.props.address) {
       geocodeByAddress(this.props.address)
-        .then(results => getLatLng(results[0]))
-        .then(coordinates => {
-          this.setState({
-            ...this.state,
-            lat: String(coordinates.lat),
-            lng: String(coordinates.lng)
-          });
-          this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
-          this.props.getLocation(this.state.location);
+      .then(results => getLatLng(results[0]))
+      .then(coordinates => {
+        this.setState({
+        ...this.state,
+        lat: String(coordinates.lat),
+        lng: String(coordinates.lng)
         });
+        this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
+        this.props.getLocation(this.state.location);
+      });
       this.setState({
         location: this.props.address
       });
@@ -73,36 +75,35 @@ export class LocationField extends React.Component<Props, State> {
   }
 
   public handleLocationChange = (location: string) => {
-    this.setState({ location, error: '' });
+    this.setState({location, error: ''});
   }
 
   public handleLocationSelect = (location: string) => {
-    this.setState({ location }, () => {
+    this.setState({location}, () => {
       geocodeByAddress(location)
-        .then(results => getLatLng(results[0]))
-        .then(coordinates => {
-          this.setState({
-            ...this.state,
-            lat: String(coordinates.lat),
-            lng: String(coordinates.lng)
-          });
-          this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
-          this.props.getLocation(this.state.location);
-        })
-        .catch(error => {
-          this.props.getLocation('');
-          this.setState({ error: 'Enter a valid location.' })
-          this.props.getLocationError && this.props.getLocationError('Enter a valid location.')
-          console.log('Error', error)
+      .then(results => getLatLng(results[0]))
+      .then(coordinates => {
+        this.setState({
+        ...this.state,
+        lat: String(coordinates.lat),
+        lng: String(coordinates.lng)
         });
+        this.props.getLatLng(String(coordinates.lat), String(coordinates.lng));
+        this.props.getLocation(this.state.location);
+      })
+      .catch(error => {
+        this.props.getLocation('');
+        this.setState({error: 'Enter a valid location.'})
+        this.props.getLocationError && this.props.getLocationError('Enter a valid location.')
+        console.log('Error', error)
+      });
     });
   }
 
-  public render() {
+  public render () {
     const locationIcon = 'https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/pin-location.png';
     return (
       <div>
-        {/* tslint:disable */}
         <PlacesAutocomplete
           value={this.state.location}
           onChange={this.handleLocationChange}
@@ -110,15 +111,21 @@ export class LocationField extends React.Component<Props, State> {
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className="nabi-full-width">
-              <IconButton
-                aria-label="location"
-              >
-                <img src={locationIcon} className="nabi-custom-button-icon" alt="location-icon" />
-              </IconButton>
-              <input
-                className="nabi-margin-top-small nabi-input"
+              <TextField
                 {...getInputProps({
+                  fullWidth: true,
                   placeholder: ListTemplateComponent.locationPlaceholder,
+                  InputProps: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <IconButton
+                          aria-label="location"
+                        >
+                          <img src={locationIcon} className="nabi-custom-button-icon" alt="location-icon" />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }
                 }) as any}
               />
               <div className="nabi-z-index-1 nabi-position-absolute">

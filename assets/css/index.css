@@ -45,29 +45,6 @@ p {
 	margin: 0px;
 }
 
-.nabi-input {
-    font: inherit;
-    min-width: 0;
-    background: none;
-    box-sizing: content-box;
-    -webkit-animation-name: mui-auto-fill-cancel;
-    animation-name: mui-auto-fill-cancel;
-    -webkit-letter-spacing: inherit;
-    -moz-letter-spacing: inherit;
-    -ms-letter-spacing: inherit;
-    letter-spacing: inherit;
-    -webkit-animation-duration: 10ms;
-    animation-duration: 10ms;
-    -webkit-tap-highlight-color: transparent;
-    color: #000000 !important;
-    height: 40px;
-    padding: 0px 11px;
-    background: transparent !important;
-    border: 1px solid #717a8a;
-    position: relative;
-    border-radius: 4px;
-}
-
 /*BACKGROUND COLOR*/
 .nabi-background-color {
 	background-color: #E5E5E5;
