@@ -113,7 +113,7 @@ export class LocationField extends React.Component<Props, State> {
             <div className="nabi-full-width">
               <TextField
                 {...getInputProps({
-                  variant="standard",
+                  variant: "standard",
                   fullWidth: true,
                   placeholder: ListTemplateComponent.locationPlaceholder,
                   InputProps: {
