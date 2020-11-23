@@ -32,7 +32,6 @@ import {
 } from './ProfileStepValidator';
 import  { ValidatorState as ProfileStepValidatorState } from '../../../utils/Validator';
 import { ProfileType } from './models';
-import VideoProfileUploader from './VideoProfileUploader';
 
 interface StateProps {
   user: UserType;
