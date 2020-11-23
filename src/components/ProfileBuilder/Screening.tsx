@@ -89,7 +89,8 @@ export const Screening = (props: Props) => {
                 <Typography className="nabi-color-white">- Social Security Number Trace</Typography>
                 <Typography className="nabi-color-white">- Nationwide Criminal Databases Search</Typography>
                 <Typography className="nabi-color-white">- Sex Offender Registry Search</Typography>
-                <p className="nabi-margin-top-medium nabi-font-large nabi-margin-bottom-xsmall">$28</p>
+                <p className="nabi-margin-top-medium">Starts at</p>
+                <p className="nabi-font-large nabi-margin-bottom-xsmall">$28</p>
                 <Typography className="nabi-color-white">1 - 3 Business Days</Typography>
                 <a href="https://trueme.goodhire.com/custom-link/2b6b98ae-91d3-4841-ae12-4222ae252ebe" target="_blank">
                   <Button
@@ -103,7 +104,7 @@ export const Screening = (props: Props) => {
                 </a>
               </Grid>
             </div>
-            <Typography><strong>IMPORTANT NOTICE:</strong> IF YOU HAVE A BACKGROUND CHECK FROM ANOTHER COMPANY THAT IS LESS THAN A YEAR OLD, YOU CAN EMAIL IT TO INFO@NABIMUSIC.COM AND WE WILL UPDATE YOUR RECORDS.</Typography>
+            <Typography><strong>IMPORTANT NOTICE:</strong> WE USE GOOD HIRE AS A THIRD PARTY COMPANY TO PROVIDE BACKGROUND CHECKS. THE PRICE FOR BACKGROUND CHECKS MAY VARY DEPENDING ON THE STATE(S) WHERE YOU HAVE LIVED. IF YOU HAVE A BACKGROUND CHECK FROM ANOTHER COMPANY THAT IS LESS THAN A YEAR OLD, YOU CAN EMAIL IT TO INFO@NABIMUSIC.COM AND WE WILL UPDATE YOUR RECORDS.</Typography>
           </React.Fragment>
         }
       <StepperButtons
