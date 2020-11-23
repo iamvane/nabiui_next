@@ -86,7 +86,6 @@ export const Profile = (props: Props) => {
       }
     };
 
-    console.log(router.pathname)
     // If booking trial
     if (isTrial) {
       page('Viewed Best Match', analiticsProps);
