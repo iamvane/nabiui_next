@@ -8,6 +8,8 @@ import { Routes } from '../common/constants/Routes';
 import { AnnouncementConstants } from '../common/constants/Announcements';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import SnackBar from '../common/SnackBar';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 import {
   ProfileBuilderStepper,
   ProfileBuilderComponent
@@ -65,6 +67,7 @@ export const ProfileBuilder = (props: Props) => {
         <meta name="description" content={pageTitlesAndDescriptions.buildProfile.description}></meta>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfA1CE5k-YS94ZnyFiOIjwlr99jz7JjOA&libraries=places"></script>
       </Head>
+      <Header />
       <CommonStepper
         steps={ProfileBuilderStepper.steps}
         pageTitle={ProfileBuilderComponent.pageTitle}
@@ -80,6 +83,7 @@ export const ProfileBuilder = (props: Props) => {
         variant="success"
         hideIcon={true}
       />
+      <Footer />
     </React.Fragment>
   );
 }

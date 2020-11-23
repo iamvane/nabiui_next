@@ -21,6 +21,8 @@ import PageBanner from "../common/PageBanner"
 import PageBannerCta from "../common/PageBannerCta"
 import * as constants from './constants';
 import { Routes } from '../common/constants/Routes';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 
 interface Props {
   role: Role;
@@ -67,6 +69,7 @@ export const FAQs = (props: Props) => {
         <title>{docTitle}</title>
         <meta name="description" content={docDescription}></meta>
       </Head>
+      <Header />
       <PageBanner title={constants.pageTitle} description={description} />
       <div className="nabi-container">
         <div className="nabi-background-white nabi-section nabi-margin-top-large nabi-margin-bottom-large nabi-border-radius">
@@ -104,6 +107,7 @@ export const FAQs = (props: Props) => {
         </div>
       </div>
       <PageBannerCta description={ctaText} url={ctaLink} buttonText={constants.ctaButton} />
+      <Footer />
     </React.Fragment>
   )
 }

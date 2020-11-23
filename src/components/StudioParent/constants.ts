@@ -1,3 +1,5 @@
+import { Routes } from "../common/constants/Routes";
+
 export namespace ParentStudioComponent {
   export const pageTitleParent = '{nameReplace}\'s Family Studio';
   export const pageTitleStudent = '{nameReplace}\'s Studio';
@@ -189,3 +191,21 @@ export namespace MissingFieldsComponent {
   export const replaceUrl = '{urlText}';
   export const replaceInstructorId = ':instructorId';
 }
+
+export const menuItems = [
+  {
+    label: 'Studio',
+    route: Routes.ParentStudio
+  },
+  {
+    label: 'Help',
+    route: Routes.ContactUs
+  }
+];
+
+// export const headerMenuItems = [
+//   {
+//     label: 'Login',
+//     route: Routes.Login
+//   }
+// ];

@@ -40,13 +40,16 @@ import {
   LessonStatuses,
   MissingFieldsComponent,
   missingFieldsDisplay,
-  missingFieldsArray
+  missingFieldsArray,
+  menuItems
 } from './constants';
 import { LessonStatus } from './LessonStatus';
 import { MissingFields } from "../MissingFields/MissingFields";
 import '../../../assets/scss/StudioParent.scss';
 
 import { ParentStudentDashboardType } from '../Dashboard/models';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 
 interface StateProps {
   dashboard: ParentStudentDashboardType;
@@ -223,7 +226,7 @@ export const StudioParent = (props: Props) => {
       }
 
       if (typeof field === 'string' && missingFieldsArray.includes(field)) {
-        let message  = reactStringReplace(
+        let message = reactStringReplace(
           missingFieldsDisplay[field].label,
           MissingFieldsComponent.replaceUrl,
           (i: number) => (
@@ -418,36 +421,45 @@ export const StudioParent = (props: Props) => {
     }
     return false;
   }
+
   return (
-    <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
-      <PageTitle pageTitle={pageTitle()} />
-      {props.isFetchingDashboard ?
-        <CircularProgress /> :
-        <Grid container={true} spacing={0}>
-          {
-            props.dashboard && props.dashboard.missingFields && checkMissingField(props.dashboard.missingFields) ?
-              <MissingFields>
-                {renderMissingReviewsMessage(props.dashboard.missingFields)}
-              </MissingFields> :
-              null
-          }
-          {props.dashboard && props.dashboard.students && props.dashboard.students.length > 0 ?
-            <>
-              {props.dashboard && props.dashboard.students && props.dashboard.students.length > 1 ?
-                <AppBar position="static" className="studio-tabs">
-                  <Tabs value={student} onChange={handleTabChange} aria-label="availability">
-                    {getStudentsTab().map((item, i) => (
-                      <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
-                    ))}
-                  </Tabs>
-                </AppBar>
-                : ''}
-              {displayTabContent()}
-            </>
-            : displayEmptyContent()
-          }
-        </Grid>
-      }
+    <div>
+      <Header
+        drawerMenuItems={menuItems}
+        // headerMenuItems={[]}
+        privateRoute={true}
+      />
+      <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
+        <PageTitle pageTitle={pageTitle()} />
+        {props.isFetchingDashboard ?
+          <CircularProgress /> :
+          <Grid container={true} spacing={0}>
+            {
+              props.dashboard && props.dashboard.missingFields && checkMissingField(props.dashboard.missingFields) ?
+                <MissingFields>
+                  {renderMissingReviewsMessage(props.dashboard.missingFields)}
+                </MissingFields> :
+                null
+            }
+            {props.dashboard && props.dashboard.students && props.dashboard.students.length > 0 ?
+              <>
+                {props.dashboard && props.dashboard.students && props.dashboard.students.length > 1 ?
+                  <AppBar position="static" className="studio-tabs">
+                    <Tabs value={student} onChange={handleTabChange} aria-label="availability">
+                      {getStudentsTab().map((item, i) => (
+                        <Tab label={item} wrapped={true} key={i} {...a11yProps(i)} />
+                      ))}
+                    </Tabs>
+                  </AppBar>
+                  : ''}
+                {displayTabContent()}
+              </>
+              : displayEmptyContent()
+            }
+          </Grid>
+        }
+      </div>
+      <Footer />
     </div>
   );
 }

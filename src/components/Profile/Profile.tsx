@@ -141,7 +141,6 @@ export const Profile = (props: Props) => {
     }
 
     if (props.assignInstructorError) {
-      alert("error")
       setSnackBarDetails({
         type: "error",
         message: props.assignInstructorError
@@ -149,9 +148,7 @@ export const Profile = (props: Props) => {
       setShowSnackbar(true);
     }
     if (props.assignInstructorMessage) {
-      alert("no error")
       assignInstructor();
-      alert("huh?");
       setCookie("instructorName", props.instructorProfile?.name);
       const userEmail = getCookie('userEmail');
       const analiticsProps = {

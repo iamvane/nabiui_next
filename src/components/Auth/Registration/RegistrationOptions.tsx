@@ -8,7 +8,13 @@ import {
 } from '@material-ui/core';
 
 import { Routes } from '../../common/constants/Routes';
-import { RegistrationOptionsComponent } from './constants';
+import {
+  RegistrationOptionsComponent,
+  menuItems,
+  headerMenuItems
+} from './constants';
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 
 interface Props {}
 
@@ -18,6 +24,10 @@ interface Props {}
 const RegistrationOptions: React.StatelessComponent<Props> = props => {
   return (
     <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
+      <Header 
+        drawerMenuItems={menuItems}
+        headerMenuItems={headerMenuItems}
+      />
       <div className="nabi-background-white nabi-section nabi-text-center">
         <p className="nabi-jennasue-title nabi-color-nabi nabi-margin-bottom-xsmall nabi-margin-bottom-zero">
           {RegistrationOptionsComponent.preLaunchStudentCTATitle}
@@ -49,6 +59,7 @@ const RegistrationOptions: React.StatelessComponent<Props> = props => {
           </Button>
         </Link>
       </div>
+      <Footer />
     </div>
   );
 };

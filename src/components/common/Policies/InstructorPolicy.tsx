@@ -4,6 +4,8 @@ import Head from 'next/head';
 
 import { Routes } from '../constants/Routes';
 import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 
 export const InstructorPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
@@ -14,6 +16,7 @@ export const InstructorPolicy: React.StatelessComponent<{}> = props => {
           <title>{pageTitlesAndDescriptions.instructorPolicy.title}</title>
           <meta name="description" content={pageTitlesAndDescriptions.instructorPolicy.description}></meta>
         </Head>
+        <Header />
         At Nabi Music, both instructors and students are required to follow certain guidelines when using our Website and Service(s).
         <h5>As an Instructor, you are required to:</h5>
         <ul>
@@ -94,6 +97,7 @@ export const InstructorPolicy: React.StatelessComponent<{}> = props => {
           </li>
         </ul>
       </div>
+      <Footer />
     </div>
   )
 };

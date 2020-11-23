@@ -2,15 +2,18 @@ import * as React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
-import { Routes } from '../constants/Routes';
-import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
-
 import { Typography } from '@material-ui/core';
 
-export const TermsOfUse: React.StatelessComponent<{}> = props => {
+import { Routes } from '../constants/Routes';
+import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
+
+export const TermsOfUse = () => {
   // tslint:disable
   return (
     <div className="nabi-container">
+      <Header />
       <div className="nabi-section nabi-background-white nabi-margin-bottom-medium">
         <Head>
           <title>{pageTitlesAndDescriptions.termsOfUse.title}</title>
@@ -229,6 +232,7 @@ export const TermsOfUse: React.StatelessComponent<{}> = props => {
         <br />
         "NabiMusic.com", "NabiMusicCenter.com", "NabiMusic", "Nabi", "NabiMusicCenter", "Nabi Music Center",  "Share the love for music through education" tag line and logo are all trademarks and/or service marks of Nabi Music Center LLC. All other trademarks, service marks, and logos used on the Site are the trademarks, service marks, or logos of their respective owners.
       </div>
+      <Footer />
     </div>
   );
 };

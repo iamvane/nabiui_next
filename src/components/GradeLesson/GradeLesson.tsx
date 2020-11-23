@@ -29,6 +29,8 @@ import { Routes } from '../common/constants/Routes';
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
 import SectionTitle from '../common/SectionTitle';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import PrivateRoute from '../Auth/PrivateRoutes';
 import * as constants from './constants';
@@ -132,82 +134,89 @@ export const GradeLesson = (props: Props) => {
   );
 
   return (
-    <div className="nabi-container">
-      <Head>
-        <title>{pageTitlesAndDescriptions.dashboard.title}</title>
-        <meta name="description" content={pageTitlesAndDescriptions.dashboard.description}></meta>
-      </Head>
-      <PageTitle pageTitle={constants.pageTitle} />
-      <div className="nabi-background-white nabi-section nabi-margin-bottom-medium">
-        {props.isRequesting || circularProgress ?
-          <div className="nabi-text-center">
-            <CircularProgress />
-          </div>
-          :
-          <React.Fragment>
-            <SectionTitle text={constants.studentNameSection} />
-            <Typography className="nabi-margin-bottom-small">{getCookie('lessonStudentName')}</Typography>
-            <SectionTitle text={constants.instrumentSection} />
-            <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
-            <form noValidate={true} autoComplete="off" onSubmit={submitLessonGrade}>
-              <SectionTitle text={constants.missedLesson} />
-              <FormControlLabel
-                className="nabi-margin-bottom-xsmall nabi-margin-left-zero"
-                control={
-                  <Checkbox
-
-                    name={constants.FieldNames.Status}
-                    onChange={handleChange}
-                    size="medium"
-                  />
-                }
-                label={constants.missedLessonDescription}
-              />
-
-              {status !== 'missed' && (
-                <>
-                  <SectionTitle text={constants.gradeSection} />
-                  <Rating
-                    name={constants.FieldNames.Grade}
-                    max={3}
-                    className="nabi-margin-bottom-small"
-                    value={grade}
-                    onChange={handleChange}
-                  />
-                  <SectionTitle text={constants.commentsSection} />
-                  <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
-                    <TextField
-                      name={constants.FieldNames.Comment}
-                      margin="normal"
-                      onChange={handleChange}
-                      multiline={true}
-                      fullWidth={true}
-                      rows={6}
-                      value={comment}
-                      placeholder="Tell them how they did during the lesson, what they should practice for next lesson, or any other tip that will help them improve."
-                    />
-                  </Grid>
-                </>
-              )}
-              <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small nabi-margin-top-small">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  disabled={disable()}
-                  type="submit"
-                >
-                  {constants.button}
-                </Button>
-              </Grid>
-            </form>
-          </React.Fragment>}
-      </div>
-      <SnackBar
-        isOpen={showSnackbar}
-        message={snackbarMessage}
-        handleClose={() => setShowSnackbar(false)}
-        variant={props.error ? "error" : "success"}
+    <div>
+      <Header
+        drawerMenuItems={constants.menuItems}
+        privateRoute={true}
       />
+      <div className="nabi-container">
+        <Head>
+          <title>{pageTitlesAndDescriptions.dashboard.title}</title>
+          <meta name="description" content={pageTitlesAndDescriptions.dashboard.description}></meta>
+        </Head>
+        <PageTitle pageTitle={constants.pageTitle} />
+        <div className="nabi-background-white nabi-section nabi-margin-bottom-medium">
+          {props.isRequesting || circularProgress ?
+            <div className="nabi-text-center">
+              <CircularProgress />
+            </div>
+            :
+            <React.Fragment>
+              <SectionTitle text={constants.studentNameSection} />
+              <Typography className="nabi-margin-bottom-small">{getCookie('lessonStudentName')}</Typography>
+              <SectionTitle text={constants.instrumentSection} />
+              <Typography className="nabi-margin-bottom-small">{getCookie('lessonInstrument')}</Typography>
+              <form noValidate={true} autoComplete="off" onSubmit={submitLessonGrade}>
+                <SectionTitle text={constants.missedLesson} />
+                <FormControlLabel
+                  className="nabi-margin-bottom-xsmall nabi-margin-left-zero"
+                  control={
+                    <Checkbox
+
+                      name={constants.FieldNames.Status}
+                      onChange={handleChange}
+                      size="medium"
+                    />
+                  }
+                  label={constants.missedLessonDescription}
+                />
+
+                {status !== 'missed' && (
+                  <>
+                    <SectionTitle text={constants.gradeSection} />
+                    <Rating
+                      name={constants.FieldNames.Grade}
+                      max={3}
+                      className="nabi-margin-bottom-small"
+                      value={grade}
+                      onChange={handleChange}
+                    />
+                    <SectionTitle text={constants.commentsSection} />
+                    <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small">
+                      <TextField
+                        name={constants.FieldNames.Comment}
+                        margin="normal"
+                        onChange={handleChange}
+                        multiline={true}
+                        fullWidth={true}
+                        rows={6}
+                        value={comment}
+                        placeholder="Tell them how they did during the lesson, what they should practice for next lesson, or any other tip that will help them improve."
+                      />
+                    </Grid>
+                  </>
+                )}
+                <Grid item={true} xs={12} md={6} className="nabi-margin-bottom-small nabi-margin-top-small">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    disabled={disable()}
+                    type="submit"
+                  >
+                    {constants.button}
+                  </Button>
+                </Grid>
+              </form>
+            </React.Fragment>}
+        </div>
+        <SnackBar
+          isOpen={showSnackbar}
+          message={snackbarMessage}
+          handleClose={() => setShowSnackbar(false)}
+          variant={props.error ? "error" : "success"}
+        />
+      </div>
+      <Footer />
     </div>
   );
 }

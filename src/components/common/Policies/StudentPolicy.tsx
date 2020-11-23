@@ -4,6 +4,8 @@ import Head from 'next/head';
 
 import { Routes } from '../constants/Routes';
 import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 
 export const StudentPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
@@ -14,6 +16,7 @@ export const StudentPolicy: React.StatelessComponent<{}> = props => {
           <title>{pageTitlesAndDescriptions.studentPolicy.title}</title>
           <meta name="description" content={pageTitlesAndDescriptions.studentPolicy.description}></meta>
         </Head>
+        <Header />
         At Nabi Muisc, we encourage both teachers and students follow certain guidelines. These guidelines supplement our Terms of Use and are conditional to the use of our Website and Service(s).
         <h5>As a Student or Parent, you will be required to:</h5>
         <ul>
@@ -39,6 +42,7 @@ export const StudentPolicy: React.StatelessComponent<{}> = props => {
           <br />
           For your reference, <Link href={Routes.InstructorPolicy}><a>here are the Instructors guidelines</a></Link> that your instructors are required to follow.
       </div>
+      <Footer />
     </div>
   )
 };

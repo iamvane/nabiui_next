@@ -1,3 +1,5 @@
+import { Routes } from "../common/constants/Routes";
+
 export const pageTitle = 'Grade Lesson';
 export const studentNameSection = 'Student\'s name';
 export const instrumentSection = 'Instrument';
@@ -21,3 +23,14 @@ export enum Ids {
   Status = 'status',
   Comment = 'comment'
 }
+
+export const menuItems = [
+  {
+    label: 'Studio',
+    route: Routes.InstructorStudio
+  },
+  {
+    label: 'Help',
+    route: Routes.ContactUs
+  }
+];

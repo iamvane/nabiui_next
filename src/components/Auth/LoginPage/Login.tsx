@@ -29,7 +29,12 @@ import { Header } from '../../Header/Header';
 import { Footer } from "../../common/Footer";
 import { Role } from '../Registration/constants';
 import LoginForm from './LoginForm';
-import { LoginComponent, LoginFormComponent } from './constants';
+import {
+  LoginComponent,
+  LoginFormComponent,
+  menuItems,
+  headerMenuItems
+} from './constants';
 
 interface StateProps {
   user: UserType;
@@ -129,7 +134,10 @@ const Login = (props: Props) => {
         <title>{pageTitlesAndDescriptions.login.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.login.description}></meta>
       </Head>
-      <Header />
+      <Header 
+        drawerMenuItems={menuItems}
+        headerMenuItems={headerMenuItems}
+      />
       <PageTitle pageTitle={LoginComponent.pageTitle} />
       <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
         <div className="form-card nabi-background-white nabi-section">
@@ -151,7 +159,7 @@ const Login = (props: Props) => {
           variant="success"
         />
       }
-      <Footer />
+      <Footer bottomPlacement={true} />
     </div>
   );
 }
