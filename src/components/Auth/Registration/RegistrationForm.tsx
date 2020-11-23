@@ -10,17 +10,14 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
 import {
-  Checkbox,
-  CircularProgress,
-  FormControlLabel,
-} from '@material-ui/core';
-
-import {
   TextField,
   Button,
   FormControl,
   FormHelperText,
-  Grid
+  FormControlLabel,
+  Checkbox,
+  Grid,
+  CircularProgress
 } from 'nabi_web_components';
 
 import '../../../../assets/scss/PhoneValidationForm.scss';

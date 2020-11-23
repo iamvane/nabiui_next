@@ -126,11 +126,7 @@ export const Profile = (props: Props) => {
   React.useEffect(() => {
     // Set the bestMatchId cookie
     if (props.instructorProfile?.id) {
-<<<<<<< HEAD
       if (isTrial) {
-=======
-      if (props.isTrial) {
->>>>>>> 73136db... [NM-459] fixed router issue
         setCookie("bestMatchId", props.instructorProfile.id)
       }
     }
@@ -142,28 +138,16 @@ export const Profile = (props: Props) => {
     if (!bookTrial) {
       return
     }
-<<<<<<< HEAD
 
     if (props.assignInstructorError) {
-=======
-    if (props.assignInstructorError) {
-      alert("error")
->>>>>>> 73136db... [NM-459] fixed router issue
       setSnackBarDetails({
         type: "error",
         message: props.assignInstructorError
       })
       setShowSnackbar(true);
-<<<<<<< HEAD
     }
     if (props.assignInstructorMessage) {
       assignInstructor();
-=======
-      return;
-    } 
-    if (props.assignInstructorMessage) {
-      alert("no error")
->>>>>>> 73136db... [NM-459] fixed router issue
       setCookie("instructorName", props.instructorProfile?.name);
       const userEmail = getCookie('userEmail');
       const analiticsProps = {
@@ -174,18 +158,10 @@ export const Profile = (props: Props) => {
         }
       };
       track('Trial Started', analiticsProps);
-<<<<<<< HEAD
 
 
     }
   }, [props.assignInstructorError, props.assignInstructorMessage]);
-=======
-
-      Router.push(Routes.BookTrial + Routes.TrialConfirmation);
-      return;
-    }
-  }, [bookTrial, props.assignInstructorError, props.assignInstructorMessage]);
->>>>>>> 73136db... [NM-459] fixed router issue
 
 
   const assignInstructor = async () => {
