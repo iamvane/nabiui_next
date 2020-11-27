@@ -150,6 +150,10 @@ export const menuItems = [
     route: Routes.InstructorStudio
   },
   {
+    label: 'Messages',
+    route: Routes.Messages
+  },
+  {
    label: 'Edit Profile',
    route: Routes.BuildProfile + Routes.Profile
   },

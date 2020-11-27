@@ -198,14 +198,11 @@ export const menuItems = [
     route: Routes.ParentStudio
   },
   {
+    label: 'Messages',
+    route: Routes.Messages
+  },
+  {
     label: 'Help',
     route: Routes.ContactUs
   }
 ];
-
-// export const headerMenuItems = [
-//   {
-//     label: 'Login',
-//     route: Routes.Login
-//   }
-// ];

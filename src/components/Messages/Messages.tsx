@@ -33,7 +33,7 @@ interface Props {
 
 export interface ReceiverType {
   displayName: string;
-  photoUrl: string;
+  avatar: string;
 }
 
 const Messages = (props: Props) => {
@@ -45,7 +45,7 @@ const Messages = (props: Props) => {
   const [uid, setUid] = React.useState('');
   const [chats, setChats] = React.useState([]);
   const [readError, setReadError] = React.useState(null);
-  const [groups, setGroups] = React.useState([]);
+  const [conversations, setConversations] = React.useState([]);
   const [messageText, setMessageText] = React.useState('');
   const [sentAt, setSentAt] = React.useState('');
   const [currentGroupId, setCurrentGroupId] = React.useState('');
@@ -67,28 +67,27 @@ const Messages = (props: Props) => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        // fetchGroupByUserID(uid) {
+        // fetch conversations by authenticated user id
           return new Promise((resolve, reject) => {
-            const groupRef = database.collection('group')
-            groupRef
+            const groupRef = database.collection('conversations')
             .where('members', 'array-contains', uid)
             .onSnapshot((querySnapshot) => {
               const allGroups = []
               let receiverData;
               querySnapshot.forEach((doc) => {
-                console.log('*******HERE IS THE DOC******')
-                console.log(doc)
                 const data = doc.data()
+                data.id = doc.id;
                 if (data.members) {
-                  console.log("yes data members")
-                    // const recevierUid = data.members.pop(uid);
-                    var receiverRef = database.collection("user").doc('9AZVcEtzQrd0HM6rhgtA2Nk6dMr2');
+                    const recevierUid = data.members.pop(uid);
+                    var receiverRef = database.collection("users").doc(recevierUid);
                     receiverRef.get().then((doc) => {
-                      if (doc.exists){
+                      if (doc.exists) {
+                        console.log("it exists so i dont get it")
                         receiverData = {
                           displayName: doc.data().displayName,
-                          photoUrl: doc.data().photoUrl
+                          avatar: doc.data().avatar
                         };
+                        data.receiver = receiverData;
                       }
                     }).catch(function(error) {
                       console.log("Error getting receiver:", error)
@@ -96,12 +95,12 @@ const Messages = (props: Props) => {
                 } else {
                   console.log("no data members")
                 }
-                data.id = doc.id
-                data.receiver = receiverData;
-                console
-                if (data.recentMessage) allGroups.push(data)
+                console.log("Final data!!")
+                console.log(data)
+                console.log(data.receiver)
+                if (data.lastMessage) allGroups.push(data)
               })
-              setGroups(allGroups)
+              setConversations(allGroups)
             })
           })
         }
@@ -150,6 +149,7 @@ const Messages = (props: Props) => {
 
     // firebase
   }
+
   return (
     <div className="nabi-container nabi-margin-bottom-medium">
       <PageTitle pageTitle={MessagesComponent.pageTitle} />
@@ -160,7 +160,7 @@ const Messages = (props: Props) => {
       >
         {screen === 'contacts' ?
           <>
-            {groups.map((group, i) => {
+            {conversations.map((group, i) => {
                 console.log("logging group")
                 console.log(group)
                 console.log(group.receiver)
@@ -168,9 +168,10 @@ const Messages = (props: Props) => {
               return (
               <React.Fragment key={i}>
                 <ContactItem
-                  receiver={group.receiver}
-                  lastMessage={group.recentMessage && group.recentMessage.messageText}
-                  lastMessageDate={group.recentMessage && group.recentMessage.readBy && group.recentMessage.readBy.sentAt && group.recentMessage.readBy.sentAt.seconds}
+                  receiver={group?.receiver}
+                  lastMessage={group?.lastMessage}
+                  // lastMessageDate={group?.lastMessageTime && group.recentMessage.readBy && group.recentMessage.readBy.sentAt && group.recentMessage.readBy.sentAt.seconds}
+                  lastMessageDate={group?.lastMessageTime}
                   goToThread={() => setScreen('messages')}
                 />
                 {i !== dummyContacts.length - 1 ? <Divider className="nabi-margin-top-small nabi-margin-bottom-small" /> : ''}
