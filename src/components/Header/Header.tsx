@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import {
   Grid
-} from '@material-ui/core';
+} from 'nabi_web_components';
 import Menu from "@material-ui/icons/Menu";
 
 import dynamic from "next/dynamic";
