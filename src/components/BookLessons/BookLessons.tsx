@@ -41,6 +41,8 @@ import StripePaymentForm from "../PaymentForm/StripePaymentForm";
 import { BackgroundCheckStatus } from "../ProfileBuilder/constants";
 import { displayRatings } from '../../utils/displayRatings';
 import { ProfileHeaderComponent } from "../Profile/constants";
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 
 interface StateProps extends BookLessonsData {
   bookLessonsRequesting: boolean;
@@ -134,144 +136,148 @@ export const BookLessons = (props: Props) => {
   const BackgroundCheckIcon =
     "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-background-check.svg";
   return (
-    <div className="nabi-container nabi-margin-bottom-medium">
+    <div>
       <Head>
         <title>{pageTitlesAndDescriptions.bookLessons.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.bookLessons.description}></meta>
         <script src="https://js.stripe.com/v3/"></script>
       </Head>
-      <PageTitle pageTitle={props.freeTrial ? BookLessonsComponent.pageTitleTrial : BookLessonsComponent.pageTitle} />
+      <Header />
+      <div className="nabi-container nabi-margin-bottom-medium">
+        <PageTitle pageTitle={props.freeTrial ? BookLessonsComponent.pageTitleTrial : BookLessonsComponent.pageTitle} />
 
-      <Grid
-        item={true}
-        xs={12}
-        md={8} className="nabi-section nabi-background-white nabi-margin-center"
-      >
+        <Grid
+          item={true}
+          xs={12}
+          md={8} className="nabi-section nabi-background-white nabi-margin-center"
+        >
 
-        <       Grid item={true} xs={12} className="nabi-text-center nabi-margin-bottom-small">
-          <Avatar
-            src={props.instructor && props.instructor.avatar}
-            style={AvatarStyles}
-            className="nabi-margin-center nabi-margin-bottom-small"
-          />
-          <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
-            {props.instructor && props.instructor.display_name}
-          </Typography>
-          <div>
-            {displayRatings(Number(props.instructor && props.instructor.reviews && props.instructor.reviews.rating))}
-          </div>
-          <Typography className="nabi-text-uppercase">
-            {props.instructor && props.instructor.yearsOfExperience} {ProfileHeaderComponent.Text.YearExperiece} | {props.instructor && props.instructor.age}{" "}
-            {ProfileHeaderComponent.Text.YearOld}
-          </Typography>
-          {props.instructor && props.instructor.backgroundCheckStatus === BackgroundCheckStatus.verified && (
-            <Grid item={true} xs={12} className="nabi-margin-top-xsmall">
-              <IconButton
-                color="secondary"
-                className="nabi-display-inline-block"
-              >
-                <img
-                  src={BackgroundCheckIcon}
-                  className="nabi-custom-button-icon"
-                  alt="background-check"
-                />
-              </IconButton>
-              <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">
-                Background Check
+          <       Grid item={true} xs={12} className="nabi-text-center nabi-margin-bottom-small">
+            <Avatar
+              src={props.instructor && props.instructor.avatar}
+              style={AvatarStyles}
+              className="nabi-margin-center nabi-margin-bottom-small"
+            />
+            <Typography className="nabi-margin-top-xsmall nabi-text-semibold">
+              {props.instructor && props.instructor.display_name}
+            </Typography>
+            <div>
+              {displayRatings(Number(props.instructor && props.instructor.reviews && props.instructor.reviews.rating))}
+            </div>
+            <Typography className="nabi-text-uppercase">
+              {props.instructor && props.instructor.yearsOfExperience} {ProfileHeaderComponent.Text.YearExperiece} | {props.instructor && props.instructor.age}{" "}
+              {ProfileHeaderComponent.Text.YearOld}
+            </Typography>
+            {props.instructor && props.instructor.backgroundCheckStatus === BackgroundCheckStatus.verified && (
+              <Grid item={true} xs={12} className="nabi-margin-top-xsmall">
+                <IconButton
+                  color="secondary"
+                  className="nabi-display-inline-block"
+                >
+                  <img
+                    src={BackgroundCheckIcon}
+                    className="nabi-custom-button-icon"
+                    alt="background-check"
+                  />
+                </IconButton>
+                <Typography className="nabi-margin-left-xsmall nabi-display-inline-block">
+                  Background Check
               </Typography>
-            </Grid>
-          )}
-          <Typography className="nabi-text-semibold nabi-font-large">
-            <span className="nabi-font-large">
-              {BookLessonsComponent.lessonCost.replace(
-                BookLessonsComponent.lessonCostPlaceholer,
-                String(props.instructor && props.instructor.rate)
-              )}
-            </span>
-          </Typography>
-        </Grid>
+              </Grid>
+            )}
+            <Typography className="nabi-text-semibold nabi-font-large">
+              <span className="nabi-font-large">
+                {BookLessonsComponent.lessonCost.replace(
+                  BookLessonsComponent.lessonCostPlaceholer,
+                  String(props.instructor && props.instructor.rate)
+                )}
+              </span>
+            </Typography>
+          </Grid>
 
-        {props.bookLessonsDataRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
-          <div className="nabi-margin-top-medium nabi-margin-bottom-small">
-            <SectionTitle text={String(BookLessonsComponent.BookingSummary.SectionTitle)} />
-            <Grid container={true} className="nabi-margin-top-xsmall">
-              <Grid item={true} xs={7} md={3}>
-                <Typography>
-                  {renderNumberOfLessonsText()}
-                </Typography>
-              </Grid>
-              <Grid item={true} xs={5} md={7}>
-                <Typography>{CommonConstants.dollarSing}{String(props.lessonsPrice ? props.lessonsPrice.toFixed(2) : null)}</Typography>
-              </Grid>
-              <Grid item={true} xs={7} md={3}>
-                <Typography className="nabi-text-mediumbold">
-                  {BookLessonsComponent.BookingSummary.ProcessingFee}
-                </Typography>
-              </Grid>
-              <Grid item={true} xs={5} md={7}>
-                <Typography>
-                  {CommonConstants.dollarSing}{String(props.processingFee ? props.processingFee.toFixed(2) : null)}
-                </Typography>
-              </Grid>
-              <Grid item={true} xs={12} md={12}>
-                <Grid item={true} xs={12} md={5}>
-                  <Divider className="nabi-margin-top-xsmall" />
+          {props.bookLessonsDataRequesting ? <div className="nabi-text-center"><CircularProgress /></div> :
+            <div className="nabi-margin-top-medium nabi-margin-bottom-small">
+              <SectionTitle text={String(BookLessonsComponent.BookingSummary.SectionTitle)} />
+              <Grid container={true} className="nabi-margin-top-xsmall">
+                <Grid item={true} xs={7} md={3}>
+                  <Typography>
+                    {renderNumberOfLessonsText()}
+                  </Typography>
+                </Grid>
+                <Grid item={true} xs={5} md={7}>
+                  <Typography>{CommonConstants.dollarSing}{String(props.lessonsPrice ? props.lessonsPrice.toFixed(2) : null)}</Typography>
+                </Grid>
+                <Grid item={true} xs={7} md={3}>
+                  <Typography className="nabi-text-mediumbold">
+                    {BookLessonsComponent.BookingSummary.ProcessingFee}
+                  </Typography>
+                </Grid>
+                <Grid item={true} xs={5} md={7}>
+                  <Typography>
+                    {CommonConstants.dollarSing}{String(props.processingFee ? props.processingFee.toFixed(2) : null)}
+                  </Typography>
+                </Grid>
+                <Grid item={true} xs={12} md={12}>
+                  <Grid item={true} xs={12} md={5}>
+                    <Divider className="nabi-margin-top-xsmall" />
+                  </Grid>
+                </Grid>
+                <Grid item={true} xs={7} md={3}>
+                  <Typography className="nabi-text-mediumbold">
+                    {BookLessonsComponent.BookingSummary.SubTotal}
+                  </Typography>
+                </Grid>
+                <Grid item={true} xs={5} md={7}>
+                  <Typography className="nabi-text-mediumbold">
+                    {CommonConstants.dollarSing}{String(props.subTotal ? props.subTotal.toFixed(2) : null)}
+                  </Typography>
+                </Grid>
+                {props.discounts &&
+                  <React.Fragment>
+                    <Grid item={true} xs={7} md={3}>
+                      <Typography className="nabi-text-mediumbold">
+                        {BookLessonsComponent.BookingSummary.Discounts}
+                      </Typography>
+                    </Grid>
+                    <Grid item={true} xs={5} md={7}>
+                      <Typography className="nabi-text-mediumbold">
+                        {String(props.discounts.toFixed(0))}{CommonConstants.percentage}
+                      </Typography>
+                    </Grid>
+                  </React.Fragment>
+                }
+                <Grid item={true} xs={7} md={3}>
+                  <Typography color="primary" className="nabi-text-mediumbold nabi-text-uppercase">
+                    {BookLessonsComponent.BookingSummary.Total}
+                  </Typography>
+                </Grid>
+                <Grid item={true} xs={5} md={7}>
+                  <Typography color="primary">
+                    {CommonConstants.dollarSing}{String(props.total ? props.total.toFixed(2) : null)}
+                  </Typography>
                 </Grid>
               </Grid>
-              <Grid item={true} xs={7} md={3}>
-                <Typography className="nabi-text-mediumbold">
-                  {BookLessonsComponent.BookingSummary.SubTotal}
-                </Typography>
-              </Grid>
-              <Grid item={true} xs={5} md={7}>
-                <Typography className="nabi-text-mediumbold">
-                  {CommonConstants.dollarSing}{String(props.subTotal ? props.subTotal.toFixed(2) : null)}
-                </Typography>
-              </Grid>
-              {props.discounts &&
-                <React.Fragment>
-                  <Grid item={true} xs={7} md={3}>
-                    <Typography className="nabi-text-mediumbold">
-                      {BookLessonsComponent.BookingSummary.Discounts}
-                    </Typography>
-                  </Grid>
-                  <Grid item={true} xs={5} md={7}>
-                    <Typography className="nabi-text-mediumbold">
-                      {String(props.discounts.toFixed(0))}{CommonConstants.percentage}
-                    </Typography>
-                  </Grid>
-                </React.Fragment>
-              }
-              <Grid item={true} xs={7} md={3}>
-                <Typography color="primary" className="nabi-text-mediumbold nabi-text-uppercase">
-                  {BookLessonsComponent.BookingSummary.Total}
-                </Typography>
-              </Grid>
-              <Grid item={true} xs={5} md={7}>
-                <Typography color="primary">
-                  {CommonConstants.dollarSing}{String(props.total ? props.total.toFixed(2) : null)}
-                </Typography>
-              </Grid>
-            </Grid>
-          </div>
-        }
+            </div>
+          }
 
-        <Grid item={true} xs={12}>
-          <StripeElementsWrapper>
-            <StripePaymentForm
-              submitPayment={submitPayment}
-              clientSecret={props.clientSecret}
-              buttonText={props.freeTrial ? BookLessonsComponent.pageTitleTrial : BookLessonsComponent.pageTitle}
-            />
-          </StripeElementsWrapper>
+          <Grid item={true} xs={12}>
+            <StripeElementsWrapper>
+              <StripePaymentForm
+                submitPayment={submitPayment}
+                clientSecret={props.clientSecret}
+                buttonText={props.freeTrial ? BookLessonsComponent.pageTitleTrial : BookLessonsComponent.pageTitle}
+              />
+            </StripeElementsWrapper>
+          </Grid>
         </Grid>
-      </Grid>
-      <SnackBar
-        isOpen={showSnackbar}
-        message={snackbarMessage}
-        handleClose={() => setShowSnackbar(false)}
-        variant={props.bookLessonsMessage ? "success" : "error"}
-      />
+        <SnackBar
+          isOpen={showSnackbar}
+          message={snackbarMessage}
+          handleClose={() => setShowSnackbar(false)}
+          variant={props.bookLessonsMessage ? "success" : "error"}
+        />
+      </div>
+      <Footer />
     </div>
   );
 }
