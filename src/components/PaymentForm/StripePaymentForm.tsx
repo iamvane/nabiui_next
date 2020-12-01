@@ -14,12 +14,11 @@ const CARD_OPTIONS = {
   style: {
     base: {
       fontSize: "16px",
-      color: '717a8a',
+      color: '#717a8a',
       fontFamily: '\'Montserrat\', sans-serif',
       backgroundColor: '#f3f6f9',
-      borderRadius: '5px' ,
       '::placeholder': {
-        color: "#717A8A !important",
+        color: "#717a8a",
       },
     },
     invalid: {
