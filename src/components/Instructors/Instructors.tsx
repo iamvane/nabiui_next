@@ -62,9 +62,7 @@ export const Instructors = (props: Props) => {
           </Head>
           <Header />
           <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium">
-            <div className="nabi-text-center">
-              <PageTitle pageTitle="Featured Instructors" />
-            </div>
+            <PageTitle pageTitle="Featured Instructors" />
             {props.instructorsMatch?.length > 0 && props.instructorsMatch.map((instructor: InstructorListType, i: number) => (
               <InstructorCard
                 key={i}

@@ -80,7 +80,7 @@ export const parentStudentFaqs: FAQItem[] = [
   },
   {
     question: 'How can I change my instructor',
-    answer: 'To change your instructor you can contact us using the chat widget, or by emailing us at info@nabimusic.com.'
+    answer: 'To change your instructor you can contact us by emailing us at info@nabimusic.com.'
   },
   {
     question: 'I am an adult, can I still take lessons?',

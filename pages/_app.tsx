@@ -12,7 +12,7 @@ import "../assets/css/index.css";
 import store from "../src/redux/reducers/store";
 import { parseCookies } from "../src/utils/parseCookies";
 import { theme } from "../theme/theme";
-
+import { ErrorBoundary } from "../src/components/ErrorBoundary";
 require("../src/utils/axiosClient");
 import 'lazysizes';
 
@@ -55,11 +55,16 @@ class NabiApp extends App<any, any> {
     const { Component, pageProps, store } = this.props;
     return (
       <>
-        <Provider store={store}>
-          <MuiThemeProvider theme={theme}>
-            <Component {...pageProps} />
-          </MuiThemeProvider>
-        </Provider>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
+        </Head>
+        <ErrorBoundary>
+          <Provider store={store}>
+            <MuiThemeProvider theme={theme}>
+              <Component {...pageProps} />
+            </MuiThemeProvider>
+          </Provider>
+        </ErrorBoundary>
       </>
     );
   }

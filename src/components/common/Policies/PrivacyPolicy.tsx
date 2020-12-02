@@ -6,6 +6,8 @@ import { Typography } from '@material-ui/core';
 
 import { Routes } from '../constants/Routes';
 import { pageTitlesAndDescriptions } from '../constants/TitlesAndDescriptions';
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 
 export const PrivacyPolicy: React.StatelessComponent<{}> = props => {
   // tslint:disable
@@ -16,6 +18,7 @@ export const PrivacyPolicy: React.StatelessComponent<{}> = props => {
           <title>{pageTitlesAndDescriptions.privacyPolicy.title}</title>
           <meta name="description" content={pageTitlesAndDescriptions.privacyPolicy.description}></meta>
         </Head>
+        <Header />
         <Typography variant="h3" align="center">Nabi Music Center, LLC. dba Nabi Music Privacy Policy</Typography>
         <Typography variant="h3" align="center">Last revised: Oct 15, 2019</Typography>
         Your privacy is very important to us. We want to make your experience with us as enjoyable and rewarding as possible, and we want you to use Nabi Music.com and our mobile site (collectively referred to as the “Website”) and all of our services with complete confidence. We are sensitive to the issue of confidentiality in online dealings and committed to transparency regarding our protection of individual privacy. This Privacy Policy is intended to inform users about the general approach we use in collecting, using and disseminating user information via the Website and demonstrate our commitment to privacy and security and supplement our <Link href={Routes.TermsOfUse}>Terms of Use</Link>.
@@ -171,7 +174,7 @@ export const PrivacyPolicy: React.StatelessComponent<{}> = props => {
       <Typography variant="h2">II. Credit Card Information</Typography>
       <h5>A. Credit Card Information</h5>
       We are committed to handling your customer information with high standards of information security. Your credit card information is stored only in encrypted form and processed using a secured order server with Secure Socket Layer (SSL) technology through use of a third party payment processor. We restrict access to your personally identifiable information only to employees or agents who need to know that information in order to provide products or services to you. While we make every effort to ensure the integrity and security of our network and systems, and those of our affiliates and agents, but we cannot guarantee that our security measures will prevent third-party "hackers" from illegally obtaining this information.
-      If you to prefer you can place your order via chat it via email at <a href="mailto:info@nabimusic.com">info@nabimusic.com</a>.
+      If you to prefer you can place your order via email at <a href="mailto:info@nabimusic.com">info@nabimusic.com</a>.
       <h5>B. What is your Credit Card Fraud Policy?</h5>
       In the unlikely event that you experience unauthorized use of your credit card, promptly report the fraudulent activity to your credit card company. Under the Fair Credit Billing Act, your liability may be limited for fraudulent charges. Please check with your credit card company to verify specific terms and conditions.
 
@@ -203,6 +206,7 @@ export const PrivacyPolicy: React.StatelessComponent<{}> = props => {
       <br />
       Thank you.
       </div>
+      <Footer />
     </div>
   )
 };

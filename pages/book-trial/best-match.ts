@@ -1,2 +1,4 @@
-import BestMatch from '../../src/components/ScheduleTrial/BestMatch';
-export default BestMatch;
+
+import Profile from "../../src/components/Profile/Profile";
+export default Profile;
+

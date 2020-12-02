@@ -21,7 +21,7 @@ export const pageTitlesAndDescriptions = {
   },
   contactUs: {
     title: 'Contact Us | We Are Here To Help',
-    description: 'Contact us via the chat widget or email us at help@nabimusic.com'
+    description: 'Contact us via email us at info@nabimusic.com'
   },
   dashboard: {
     title: 'Dashboard | Manage Your Music Lessons',

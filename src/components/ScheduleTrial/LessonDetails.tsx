@@ -77,7 +77,7 @@ export const LessonDetails = (props: Props) => {
       return setShowSnackbar(true);
     }
 
-    if (addStudent) {
+    if (addStudent && props.student?.studentId) {
       setCookie("studentId", props.student.studentId);
       removeCookie("lessonId");
       Router.push(Routes.BookTrial + Routes.InstructorPreferences);
@@ -99,64 +99,64 @@ export const LessonDetails = (props: Props) => {
               }
             />
           </div>
-              {
-                props.isAddingStudent ?
-                  <CircularProgress /> :
-                  <StudentForm addChild={createStudent} role={role} />
-              }
-            </Grid>
-            <SnackBar
-              isOpen={showSnackbar}
-              message={snackErrorMessage}
-              handleClose={() => setShowSnackbar(false)}
-              variant="error"
-            />
-          </div>
-          <Footer />
-          </div>
+          {
+            props.isAddingStudent ?
+              <CircularProgress /> :
+              <StudentForm addChild={createStudent} role={role} />
+          }
+        </Grid>
+        <SnackBar
+          isOpen={showSnackbar}
+          message={snackErrorMessage}
+          handleClose={() => setShowSnackbar(false)}
+          variant="error"
+        />
+      </div>
+      <Footer />
+    </div>
   )
 }
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
-            students,
-            student,
-            actions: {
-            fetchStudents: {
-            isRequesting: isFetchingStudents,
+    students,
+    student,
+    actions: {
+      fetchStudents: {
+        isRequesting: isFetchingStudents,
         error: fetchError
       },
       createStudent: {
-            isRequesting: isAddingStudent,
+        isRequesting: isAddingStudent,
         error: addError
       },
       deleteStudent: {
-            isRequesting: isDeletingStudent,
+        isRequesting: isDeletingStudent,
         error: deleteError
       },
     },
   } = state.requests;
 
   const {
-            timezones
-          } = state.timezones;
+    timezones
+  } = state.timezones;
   return {
-            isFetchingStudents,
-            fetchError,
-            isAddingStudent,
-            addError,
-            isDeletingStudent,
-            deleteError,
-            students,
-            timezones,
-            student,
+    isFetchingStudents,
+    fetchError,
+    isAddingStudent,
+    addError,
+    isDeletingStudent,
+    deleteError,
+    students,
+    timezones,
+    student,
   };
 }
 
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
-            ): DispatchProps => ({
-              createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
+): DispatchProps => ({
+  createStudent: (student: StudentDetailsType) => dispatch(createStudent(student)),
   fetchStudents: () => dispatch(fetchStudents())
 });
 

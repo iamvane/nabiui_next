@@ -1,3 +1,5 @@
+import { Routes } from "../../common/constants/Routes";
+
 export namespace LoginComponent {
   export const pageTitle = 'Log In';
 }
@@ -29,3 +31,21 @@ export namespace LoginFormComponent {
     Password = 'password',
   }
 }
+
+export const menuItems = [
+  {
+    label: 'Create Account',
+    route: Routes.Registration
+  },
+  {
+    label: 'Login',
+    route: Routes.Login
+  }
+];
+
+export const headerMenuItems = [
+  {
+    label: 'Login',
+    route: Routes.Login
+  }
+];

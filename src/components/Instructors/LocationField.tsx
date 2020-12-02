@@ -126,7 +126,7 @@ export class LocationField extends React.Component<Props, State> {
                       </InputAdornment>
                     ),
                   }
-                })}
+                }) as any}
               />
               <div className="nabi-z-index-1 nabi-position-absolute">
                 {loading && <div>Loading...</div>}

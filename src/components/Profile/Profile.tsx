@@ -57,9 +57,7 @@ interface DispatchProps {
   assignInstructor: (instructorId: number, requestId: number) => void;
 }
 
-interface OwnProps {
-  isTrial?: boolean;
-}
+interface OwnProps { }
 
 interface Props extends
   StateProps,
@@ -71,11 +69,12 @@ export const Profile = (props: Props) => {
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   const [bookTrial, setBookTrial] = React.useState(false);
 
-  React.useEffect(() => require('../../../assets/scripts/StickyProfileCta.js'), [])
+  React.useEffect(() => { require('../../../assets/scripts/StickyProfileCta.js') }, [])
 
   const router = useRouter();
   const instructorId = Number(router.query.id);
   const requestId = getCookie("requestId");
+  const isTrial = router.pathname === '/book-trial/best-match';
 
   React.useEffect(() => {
     // Set analytics data for Segment
@@ -87,8 +86,8 @@ export const Profile = (props: Props) => {
       }
     };
 
-    // If comonent is used in trial get best match
-    if (props.isTrial) {
+    // If booking trial
+    if (isTrial) {
       page('Viewed Best Match', analiticsProps);
 
       const fetchBestMatch = async () => {
@@ -127,7 +126,7 @@ export const Profile = (props: Props) => {
   React.useEffect(() => {
     // Set the bestMatchId cookie
     if (props.instructorProfile?.id) {
-      if (props.isTrial) {
+      if (isTrial) {
         setCookie("bestMatchId", props.instructorProfile.id)
       }
     }
@@ -139,17 +138,16 @@ export const Profile = (props: Props) => {
     if (!bookTrial) {
       return
     }
+
     if (props.assignInstructorError) {
-      alert("error")
       setSnackBarDetails({
         type: "error",
         message: props.assignInstructorError
       })
       setShowSnackbar(true);
-      return;
-    } 
+    }
     if (props.assignInstructorMessage) {
-      alert("no error")
+      assignInstructor();
       setCookie("instructorName", props.instructorProfile?.name);
       const userEmail = getCookie('userEmail');
       const analiticsProps = {
@@ -161,16 +159,14 @@ export const Profile = (props: Props) => {
       };
       track('Trial Started', analiticsProps);
 
-      Router.push(Routes.BookTrial + Routes.TrialConfirmation);
-      return;
+
     }
-  }, [bookTrial, props.assignInstructorError, props.assignInstructorMessage]);
+  }, [props.assignInstructorError, props.assignInstructorMessage]);
 
 
   const assignInstructor = async () => {
     await props.assignInstructor(props.instructorProfile?.id, requestId);
-
-    setBookTrial(true);
+    Router.push(Routes.BookTrial + Routes.TrialConfirmation);
   }
 
   return (
@@ -181,10 +177,8 @@ export const Profile = (props: Props) => {
       </Head>
       <Header />
       <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium profile-content-wrapper">
-        <div className="nabi-text-center">
-          <PageTitle pageTitle={ProfileComponent.pageTitle} />
-        </div>
-        {!props.isTrial &&
+        <PageTitle pageTitle={ProfileComponent.pageTitle} />
+        {!isTrial &&
           <Breadcrumbs aria-label="breadcrumb">
             <Link href={role === Role.instructor ? Routes.InstructorStudio : Routes.ParentStudio}>
               <a>{ProfileComponent.breadcrumbLabels.home}</a>
@@ -204,7 +198,7 @@ export const Profile = (props: Props) => {
           <Grid xs={5} item={true} id="profile-cta" className="hide-on-mobile">
             <div className="nabi-section nabi-background-white nabi-text-center">
               <span className="nabi-text-mediumbold">{ProfileComponent.bookTrialWith} {props.instructorProfile?.name}</span>
-              <Button onClick={() => assignInstructor()} variant="contained" color="primary" className="nabi-margin-top-xsmall">
+              <Button onClick={() => router.push(Routes.BookTrial + Routes.TrialConfirmation)} variant="contained" color="primary" className="nabi-margin-top-xsmall">
                 {ProfileComponent.bookTrialButton}
               </Button>
               <Link
@@ -229,7 +223,7 @@ export const Profile = (props: Props) => {
       </div>
       <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
-          <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+          <Button onClick={() => router.push(Routes.BookTrial + Routes.TrialConfirmation)} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
             {ProfileComponent.bookTrialButton}
           </Button>
           <Link

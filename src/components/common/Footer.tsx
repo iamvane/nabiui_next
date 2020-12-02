@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-import { Grid } from '@material-ui/core';
+import { Grid } from 'nabi_web_components';
 
 import '../../../assets/scss/Footer.scss'
 import SocialMenu from './SocialMenu';
@@ -34,7 +34,7 @@ export const Footer = (props: Props) => {
             </a>
           </Link>
         </Grid>
-        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-right-md nabi-margin-top-small">
+        <Grid item={true} xs={12} md={6} className="nabi-text-center nabi-text-right-md nabi-margin-top-small nabi-margin-top-zero-md">
           <SocialMenu />
         </Grid>
       </Grid>

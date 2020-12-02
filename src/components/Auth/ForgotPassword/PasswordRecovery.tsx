@@ -20,8 +20,14 @@ import { UserType } from '../../../redux/models/UserModel';
 import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import SnackBar from '../../common/SnackBar';
 import PageTitle from '../../common/PageTitle';
-import { PasswordRecoveryComponent } from './constants';
+import {
+  PasswordRecoveryComponent,
+  menuItems,
+  headerMenuItems
+} from './constants';
 import { checkErrors } from "../../../utils/checkErrors";
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 
 interface StateProps {
   user: UserType;
@@ -100,6 +106,10 @@ interface Props extends
         <title>{pageTitlesAndDescriptions.accountRecovery.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.accountRecovery.description}></meta>
       </Head>
+      <Header 
+        drawerMenuItems={menuItems}
+        headerMenuItems={headerMenuItems}
+      />
       <PageTitle pageTitle={PasswordRecoveryComponent.pageTitle} />
       <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
         <div className="form-card nabi-background-white nabi-section">
@@ -143,6 +153,7 @@ interface Props extends
         handleClose={() => toggleSnackbar(false)}
         variant="success"
       />
+      <Footer bottomPlacement={true} />
     </div>
   );
 };

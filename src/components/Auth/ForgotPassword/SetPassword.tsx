@@ -24,8 +24,13 @@ import PageTitle from '../../common/PageTitle';
 import { pageTitlesAndDescriptions } from '../../common/constants/TitlesAndDescriptions';
 import { Routes } from '../../common/constants/Routes';
 
-import { SetPasswordComponent } from './constants';
-
+import {
+  SetPasswordComponent,
+  menuItems,
+  headerMenuItems
+} from './constants';
+import { Header } from '../../Header/Header';
+import { Footer } from "../../common/Footer";
 
 interface StateProps {
   user: UserType;
@@ -107,6 +112,10 @@ export const PasswordRecovery = (props: Props) => {
         <title>{pageTitlesAndDescriptions.forgotPassword.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.forgotPassword.description}></meta>
       </Head>
+      <Header 
+        drawerMenuItems={menuItems}
+        headerMenuItems={headerMenuItems}
+      />
       <PageTitle pageTitle={SetPasswordComponent.pageTitle} />
       <Grid item={true} md={6} xs={10} sm={8} className="nabi-margin-center">
         <div className="form-card nabi-background-white nabi-section">
@@ -157,6 +166,7 @@ export const PasswordRecovery = (props: Props) => {
           </form>
         </div>
       </Grid>
+      <Footer bottomPlacement={true} />
     </div>
   );
 }

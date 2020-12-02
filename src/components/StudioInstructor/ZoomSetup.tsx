@@ -17,7 +17,8 @@ import {
   textReplace,
   firstBoldText,
   secondBoldText,
-  number
+  number,
+  menuItems
 } from "./constants";
 
 import {
@@ -27,6 +28,8 @@ import { StoreState } from '../../redux/reducers/store';
 
 import SnackBar from '../common/SnackBar';
 import PageTitle from '../common/PageTitle';
+import { Header } from '../Header/Header';
+import { Footer } from "../common/Footer";
 
 export interface Props {
   handleCancel?: () => void;
@@ -133,7 +136,6 @@ export function ZoomSetup(props: Props) {
 
   let {
     instructor,
-    user,
     errorBuildProfile,
     isRequestingBuildProfile
   } = useSelector((state: StoreState) => {
@@ -190,64 +192,71 @@ export function ZoomSetup(props: Props) {
   }, [snackbarIsOpen])
 
   return (
-    <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
-      <PageTitle pageTitle={ZoomMissingLinkSetup.Title} />
-      <div className="nabi-display-flex nabi-flex-justify-center">
-        <Grid
-          container={true}
-          className="nabi-background-white nabi-border-radius nabi-padding-small nabi-display-flex nabi-flex-justify-center"
-        >
-          <Grid item={true} md={10} xs={12} sm={10}>
-            <Typography className="nabi-margin-top-xsmall" variant="body2">
-              {ZoomMissingLinkSetup.ZoomId}
-            </Typography>
-          </Grid>
-          <Grid item={true} md={10} xs={12} sm={10} className="nabi-display-flex nabi-flex-justify-center">
-            <TextField
-              onChange={handleChange}
-              fullWidth={true}
-              name={ZoomMissingLinkSetup.zoomLinkInputName}
-            />
-          </Grid>
-          <Grid item={true} md={10} xs={12} sm={10} className="nabi-display-flex nabi-flex-justify-end">
-            <Button
-              variant="contained"
-              color="primary"
-              className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-small"
-              onClick={handleClick}
-            >
-              {isRequestingBuildProfile ? (
-                <CircularProgress color="inherit" size={25} />
-              ) : (
-                  <span className="nabi-margin-left-xsmall">{ZoomMissingLinkSetup.Save}</span>
-                )}
+    <div>
+      <Header
+        drawerMenuItems={menuItems}
+        privateRoute={true}
+      />
+      <div className="nabi-container nabi-margin-top-small nabi-margin-top-zero-md nabi-margin-bottom-large">
+        <PageTitle pageTitle={ZoomMissingLinkSetup.Title} />
+        <div className="nabi-display-flex nabi-flex-justify-center">
+          <Grid
+            container={true}
+            className="nabi-background-white nabi-border-radius nabi-padding-small nabi-display-flex nabi-flex-justify-center"
+          >
+            <Grid item={true} md={10} xs={12} sm={10}>
+              <Typography className="nabi-margin-top-xsmall" variant="body2">
+                {ZoomMissingLinkSetup.ZoomId}
+              </Typography>
+            </Grid>
+            <Grid item={true} md={10} xs={12} sm={10} className="nabi-display-flex nabi-flex-justify-center">
+              <TextField
+                onChange={handleChange}
+                fullWidth={true}
+                name={ZoomMissingLinkSetup.zoomLinkInputName}
+              />
+            </Grid>
+            <Grid item={true} md={10} xs={12} sm={10} className="nabi-display-flex nabi-flex-justify-end">
+              <Button
+                variant="contained"
+                color="primary"
+                className="nabi-margin-top-small nabi-text-uppercase nabi-margin-left-small"
+                onClick={handleClick}
+              >
+                {isRequestingBuildProfile ? (
+                  <CircularProgress color="inherit" size={25} />
+                ) : (
+                    <span className="nabi-margin-left-xsmall">{ZoomMissingLinkSetup.Save}</span>
+                  )}
 
-            </Button>
-          </Grid>
+              </Button>
+            </Grid>
 
-          <Grid item={true} md={10} xs={12} sm={10}>
-            <Typography color="primary" className="nabi-text-mediumbold nabi-text-uppercase nabi-margin-top-large nabi-margin-bottom-xsmall">
-              {ZoomMissingLinkSetup.HowToGetZoomLink}
-            </Typography>
-            <Divider className="nabi-margin-bottom-xsmall" />
+            <Grid item={true} md={10} xs={12} sm={10}>
+              <Typography color="primary" className="nabi-text-mediumbold nabi-text-uppercase nabi-margin-top-large nabi-margin-bottom-xsmall">
+                {ZoomMissingLinkSetup.HowToGetZoomLink}
+              </Typography>
+              <Divider className="nabi-margin-bottom-xsmall" />
+            </Grid>
+            <Grid item={true} md={10} xs={12} sm={10}>
+              {renderZoomSignupText()}
+              {renderGotoProfileText()}
+              <img alt="Zoom Account" className="nabi-responsive-image" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/setup-zoom-link.png" />
+              {renderPersonIdText()}
+              <Typography className="nabi-margin-left-small nabi-margin-top-small nabi-display-flex">
+                {ZoomMissingLinkSetup.AlreadyHaveZoomAccount}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item={true} md={10} xs={12} sm={10}>
-            {renderZoomSignupText()}
-            {renderGotoProfileText()}
-            <img alt="Zoom Account" className="nabi-responsive-image" src="https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/setup-zoom-link.png" />
-            {renderPersonIdText()}
-            <Typography className="nabi-margin-left-small nabi-margin-top-small nabi-display-flex">
-              {ZoomMissingLinkSetup.AlreadyHaveZoomAccount}
-            </Typography>
-          </Grid>
-        </Grid>
-        <SnackBar
-          isOpen={snackbarIsOpen.status}
-          message={snackbarIsOpen.message}
-          handleClose={closeSnackbar}
-          variant={snackbarIsOpen.type}
-        />
+          <SnackBar
+            isOpen={snackbarIsOpen.status}
+            message={snackbarIsOpen.message}
+            handleClose={closeSnackbar}
+            variant={snackbarIsOpen.type}
+          />
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

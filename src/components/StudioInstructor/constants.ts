@@ -1,6 +1,6 @@
-import {
-  InstructorDashboardType,
-} from '../Dashboard/models';
+import { Routes } from "../common/constants/Routes";
+
+import { InstructorDashboardType } from '../Dashboard/models';
 
 export namespace InstructorStudioComponent {
   export const pageTitle = '{nameReplace}\'s Studio';
@@ -143,3 +143,18 @@ export enum RateInstructorComponent {
 
 export const replaceInstructorName = '{instructorName}';
 export const replaceStudentName = '{studentName}'
+
+export const menuItems = [
+  {
+    label: 'Studio',
+    route: Routes.InstructorStudio
+  },
+  {
+   label: 'Edit Profile',
+   route: Routes.BuildProfile + Routes.Profile
+  },
+  {
+    label: 'Help',
+    route: Routes.ContactUs
+  }
+];

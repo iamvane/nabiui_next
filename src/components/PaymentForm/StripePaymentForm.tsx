@@ -17,9 +17,8 @@ const CARD_OPTIONS = {
       color: '#717a8a',
       fontFamily: '\'Montserrat\', sans-serif',
       backgroundColor: '#f3f6f9',
-      borderRadius: '5px' ,
       '::placeholder': {
-        color: "#717A8A !important",
+        color: "#717a8a",
       },
     },
     invalid: {

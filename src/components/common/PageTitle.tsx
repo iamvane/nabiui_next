@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
 
 interface Props {
   pageTitle: string;
@@ -8,11 +7,13 @@ interface Props {
 /**
  * Page Title
  */
-export const PageTitle: React.StatelessComponent<Props> = props => {
+export const PageTitle =  (props: Props) => {
   return (
-    <h2 id="nabi-text-uppercase">
-      {props.pageTitle}
-    </h2>
+    <div className="nabi-text-center">
+      <h2 id="nabi-text-uppercase">
+        {props.pageTitle}
+      </h2>
+    </div>
   );
 };
 

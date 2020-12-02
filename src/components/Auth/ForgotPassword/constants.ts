@@ -1,3 +1,5 @@
+import { Routes } from "../../common/constants/Routes";
+
 export namespace PasswordRecoveryComponent {
   export const pageTitle = 'Password Recovery';
 
@@ -65,3 +67,21 @@ export namespace SetPasswordComponent {
     noMatch: 'Passwords do not match.'
   };
 }
+
+export const menuItems = [
+  {
+    label: 'Create Account',
+    route: Routes.Registration
+  },
+  {
+    label: 'Login',
+    route: Routes.Login
+  }
+];
+
+export const headerMenuItems = [
+  {
+    label: 'Create Account',
+    route: Routes.Registration
+  }
+];
