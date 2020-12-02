@@ -14,13 +14,14 @@ import '../../../assets/scss/InstructorCard.scss';
 interface Props {
   instructor: InstructorListType;
   bestMatchId?: number;
+  requestId: number;
 }
 
 const InstructorCard = (props: Props) => {
   const AvatarStyles = { width: "69px", height: "69px" };
 
   const navigateToProfile = () => {
-    Router.push(`/profile/${props.instructor?.id}`);
+    Router.push(`/profile/${props.instructor?.id}?requestId=${props.requestId}&bestMatchId=${props.bestMatchId}`);
   };
 
   const displayInstruments = () => {

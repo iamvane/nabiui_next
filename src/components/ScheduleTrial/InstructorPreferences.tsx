@@ -119,8 +119,7 @@ export const InstructorPreferences = (props: Props) => {
         }
       };
       track('Request Created', analiticsProps);
-
-      Router.push(Routes.BookTrial + Routes.BestMatch);
+      Router.push(`${Routes.BookTrial + Routes.BestMatch}?requestId=${props.request.id}`);
     }
 
     setCreateRequest(false);

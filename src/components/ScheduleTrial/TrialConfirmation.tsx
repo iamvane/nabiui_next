@@ -1,13 +1,12 @@
 import * as React from 'react';
 import Router from "next/router";
-
 import { getCookie } from "../../utils/cookies";
 import { BookingDetails } from '../ScheduleLessons/BookingDetails';
 import { Role } from '../../constants/Roles';
 import { TrialConfirmationComponent } from './constants';
 import { Routes } from '../common/constants/Routes';
 
-export const LessonDetails = () => {
+export const TrialConfirmation = () => {
   const handleContinue = () => {
     return Router.push(Routes.WelcomeToNabi);
   }
@@ -27,4 +26,4 @@ export const LessonDetails = () => {
   )
 }
 
-export default LessonDetails;
+export default TrialConfirmation;
