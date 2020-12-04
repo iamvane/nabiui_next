@@ -165,7 +165,6 @@ export const Registration = (props: Props) => {
     const target = event.currentTarget;
     const value = target.value;
     const name = target.name;
-
     switch (name) {
       case RegistrationFormComponent.FieldNames.FirstName:
         setFirstName(value);

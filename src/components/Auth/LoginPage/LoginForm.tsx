@@ -2,11 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 const reactStringReplace = require('react-string-replace');
 
-import {
-  CircularProgress
-} from '@material-ui/core';
-
-import { TextField, Button } from "nabi_web_components";
+import { CircularProgress, TextField, Button } from "nabi_web_components";
 import { Routes } from '../../common/constants/Routes';
 import { LoginFormComponent } from './constants';
 
