@@ -3,13 +3,16 @@ import * as React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
+  FormLabel,
+} from '@material-ui/core';
+
+import {
   FormControl,
   FormControlLabel,
   FormHelperText,
-  FormLabel,
   Radio,
   RadioGroup,
-} from '@material-ui/core';
+} from 'nabi_web_components';
 
 import { LocationField } from "../Instructors/LocationField";
 import SectionTitle from '../common/SectionTitle';
@@ -69,13 +72,23 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
                 value={(gender && gender)}
               >
                 <FormControlLabel
-                  control={<Radio />}
+                  control={
+                  <Radio
+                    inputProps={{
+                      name: Gender.female
+                    }}
+                  />}
                   label={AccountInfoComponent.Labels.Female}
                   value={Gender.female}
                 />
 
                 <FormControlLabel
-                  control={<Radio />}
+                  control={
+                    <Radio
+                      inputProps={{
+                        name: Gender.male
+                      }}
+                    />}
                   label={AccountInfoComponent.Labels.Male}
                   value={Gender.male}
                 />
