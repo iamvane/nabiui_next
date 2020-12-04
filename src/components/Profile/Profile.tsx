@@ -152,7 +152,6 @@ export const Profile = (props: Props) => {
     }
 
     if (props.assignInstructorMessage) {
-      assignInstructor();
       setCookie("instructorName", props.instructorProfile?.name);
       const userEmail = getCookie('userEmail');
       const analiticsProps = {
@@ -165,7 +164,7 @@ export const Profile = (props: Props) => {
       track('Trial Started', analiticsProps);
       Router.push(`${Routes.BookTrial + Routes.TrialConfirmation}?instructorName=${props.instructorProfile?.name}`);
     }
-  }, [props.assignInstructorError, props.assignInstructorMessage]);
+  }, [props.assignInstructorError, props.assignInstructorMessage, bookTrial]);
 
 
   const assignInstructor = async () => {
