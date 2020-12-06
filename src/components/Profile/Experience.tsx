@@ -45,14 +45,14 @@ export const Experience = (props: Props) => {
             <p className="stats-label nabi-text-mediumbold">Levels taught</p>
           </Grid>
           <Grid item={true} xs={6}>
-            {props.instructor?.languages.map((language, index) => 
-            <span key={index} className="nabi-color-nabi nabi-text-mediumbold">{language.charAt(0).toUpperCase() + language.slice(1)}
+            {props.instructor?.languages.map((language, index) =>
+            <span key={index} className="nabi-color-nabi nabi-text-mediumbold">{(index ? ', ' : '') + language.charAt(0).toUpperCase() + language.slice(1)}
             </span>)}
           </Grid>
           <Grid item={true} xs={6}>
-            {props.instructor?.levelsTaught.map((level, index) => 
+            {props.instructor?.levelsTaught.map((level, index) =>
             <span key={index} className="nabi-color-nabi nabi-text-mediumbold">
-              {level.charAt(0).toUpperCase() + level.slice(1)}
+              {(index ? ', ' : '') + level.charAt(0).toUpperCase() + level.slice(1)}
             </span>)}
           </Grid>
         </Grid>
