@@ -1,5 +1,4 @@
 import { Routes } from "../common/constants/Routes";
-import { getCookie } from "../../utils/cookies";
 
 export namespace ParentStudioComponent {
   export const pageTitleParent = '{nameReplace}\'s Family Studio';
@@ -72,12 +71,10 @@ export const missingFieldsArray = [
   'reviews'
 ];
 
-const role = getCookie('role');
-
 export const missingFieldsDisplay = {
   reviews: {
     label: '- You have not left a review for {studentName}\'s instructor {instructorName} {urlText}',
-    url: `/rate-instructor/:instructorId?role=${role}`,
+    url: '/rate-instructor/:instructorId',
     urlText: 'Leave review'
   },
   firstName: {

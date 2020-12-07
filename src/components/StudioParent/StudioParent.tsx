@@ -208,13 +208,7 @@ export const StudioParent = (props: Props) => {
             (i: number) => (
               <Link
                 key={i}
-                href={{
-                  pathname: reviewUrl,
-                  query: {
-                    studentName: review.studentName,
-                    instructorName: review.instructorName
-                  }
-                }}
+                href={`${reviewUrl}?role=${role}&studentName=${review.studentName}&instructorName=${review.instructorName}`}
               ><a className="nabi-color-white nabi-text-decoration-underline" target={'_blank'} rel="noreferrer">{missingFieldsDisplay.reviews.urlText}</a>
               </Link>
             )
