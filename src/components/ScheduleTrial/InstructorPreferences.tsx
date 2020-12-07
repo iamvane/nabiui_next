@@ -72,13 +72,13 @@ const initialAvailabilityDetails = {
 }
 
 export const InstructorPreferences = (props: Props) => {
-  const genderSegments = [InstructorPreferencesComponent.male, InstructorPreferencesComponent.female, InstructorPreferencesComponent.noPreference];
+  const genderSegments = [InstructorPreferencesComponent.female, InstructorPreferencesComponent.male, InstructorPreferencesComponent.noPreference];
   const [createRequest, setCreateRequest] = React.useState(false);
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   const [trialAvailabilityDetails, setTrialAvailabilityDetails] = React.useState(initialAvailabilityDetails);
   const [selectedLanguage, selectTrialLanguage] = React.useState('english');
-  const [gender, setGender] = React.useState('male');
+  const [gender, setGender] = React.useState('female');
 
   const allTrialsIsSelected = Object.keys(trialAvailabilityDetails).every((choice) => {
     if (trialAvailabilityDetails[choice]) {
@@ -172,11 +172,6 @@ export const InstructorPreferences = (props: Props) => {
       })
     }
   };
-
-  const selectGender = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-    const value = event.currentTarget.value;
-    setGender(value);
-  }
 
   const handleSubmit = async (event: React.FormEvent<{}>): Promise<void> => {
     if (event) {
