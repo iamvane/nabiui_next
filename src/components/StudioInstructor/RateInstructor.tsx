@@ -11,8 +11,6 @@ import {
 } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
 
-import { getCookie } from "../../utils/cookies";
-
 import {
   RateInstructorComponent,
   replaceInstructorName,
@@ -24,7 +22,8 @@ import { Header } from '../Header/Header';
 import { Footer } from "../common/Footer";
 
 import {
-  rateInstructor
+  rateInstructor,
+  rateInstructorUnauthenticated
 } from '../../redux/actions/InstructorActions';
 import { StoreState } from '../../redux/reducers/store';
 
@@ -44,13 +43,15 @@ export default function RateInstructor(props: Props) {
     type: "",
     message: ""
   });
+  const [successReview, setSuccessReview] = React.useState(false);
 
   const router = useRouter();
 
   const instructorId = router.query.instructorId as string;
   const studentName = router.query.studentName as string;
   const instructorName = router.query.instructorName as string;
-  const role = getCookie('role');
+  const userEmail = router.query.userEmail as string;
+  const role = router.query.role as string;
 
   const handleChange = React.useCallback((
     event: React.ChangeEvent<HTMLInputElement>
@@ -69,51 +70,64 @@ export default function RateInstructor(props: Props) {
 
   const dispatch = useDispatch();
   const rateInstructorAction = bindActionCreators(rateInstructor, dispatch);
+  const rateInstructorUnauthenticatedAction = bindActionCreators(rateInstructorUnauthenticated, dispatch);
 
   let {
-    instructorRatingMessage,
-    isRequesingInstructorRating,
-    errorRateInstructor,
+    isRatingInstructor,
+    errorRating,
+    isRatingInstructorUnauthenticated,
+    errorRatingUnauthenticated,
+    instructorReview
   } = useSelector((state: StoreState) => {
     const {
+      instructorReview,
       actions: {
         rateInstructor: {
-          isRequesting: isRequesingInstructorRating,
-          error: errorRateInstructor,
-          message: instructorRatingMessage
+          isRequesting: isRatingInstructor,
+          error: errorRating,
+        },
+        rateInstructorUnauthenticated: {
+          isRequesting: isRatingInstructorUnauthenticated,
+          error: errorRatingUnauthenticated,
         }
       }
     } = state.instructor;
 
     return {
-      instructorRatingMessage,
-      isRequesingInstructorRating,
-      errorRateInstructor,
+      isRatingInstructor,
+      errorRating,
+      isRatingInstructorUnauthenticated,
+      errorRatingUnauthenticated,
+      instructorReview
     };
   });
 
   React.useEffect(() => {
-    if (instructorRatingMessage) {
-      setSnackbarOpen({
-        status: true,
-        message: "Instructor Rating Successful",
-        type: "success"
-      })
+    if (instructorReview) {
+      setSuccessReview(true)
     }
-  }, [instructorRatingMessage]);
+  }, [instructorReview]);
 
   React.useEffect(() => {
-    if (errorRateInstructor) {
+    if (errorRating || errorRatingUnauthenticated) {
       setSnackbarOpen({
         status: true,
         type: "error",
-        message: errorRateInstructor
+        message: errorRating || errorRatingUnauthenticated
       })
     }
-  }, [errorRateInstructor])
+  }, [errorRating, errorRatingUnauthenticated])
 
   const handleClick = () => {
-    rateInstructorAction({
+    if (userEmail) {
+      return rateInstructorUnauthenticatedAction({
+        rating,
+        comment,
+        instructorId,
+        userEmail
+      });
+    }
+    return rateInstructorAction({
       rating,
       comment,
       instructorId
@@ -170,51 +184,56 @@ export default function RateInstructor(props: Props) {
             container={true}
             className="nabi-background-white nabi-border-radius nabi-padding-small nabi-display-flex nabi-flex-justify-center"
           >
-            {renderTitle()}
-            <Grid item={true} md={8} xs={12} sm={10}>
-              <SectionTitle text={RateInstructorComponent.RatingHeader} />
-              <Rating
-                color="primary"
-                name="rating"
-                onChange={handleChange}
-              />
-              <div className="nabi-margin-top-small">
-                <SectionTitle text={RateInstructorComponent.Comment} />
-              </div>
-              <TextField
-                margin="normal"
-                name="comment"
-                onChange={handleChange}
-                required={true}
-                multiline={true}
-                fullWidth={true}
-                rows={6}
-                placeholder={RateInstructorComponent.ReviewPlaceholder}
-              />
+            {successReview ? 
+              <p>Thanks for leaving your feedback!</p> :
+              <>
+                {renderTitle()}
+                <Grid item={true} md={8} xs={12} sm={10}>
+                  <SectionTitle text={RateInstructorComponent.RatingHeader} />
+                  <Rating
+                    color="primary"
+                    name="rating"
+                    onChange={handleChange}
+                  />
+                  <div className="nabi-margin-top-small">
+                    <SectionTitle text={RateInstructorComponent.Comment} />
+                  </div>
+                  <TextField
+                    margin="normal"
+                    name="comment"
+                    onChange={handleChange}
+                    required={true}
+                    multiline={true}
+                    fullWidth={true}
+                    rows={6}
+                    placeholder={RateInstructorComponent.ReviewPlaceholder}
+                  />
 
-              <Button
-                variant="contained"
-                color="primary"
-                className="nabi-margin-top-small nabi-text-uppercase"
-                onClick={handleClick}
-                disabled={!comment || !rating ? true : false}
-              >
-                {isRequesingInstructorRating ? (
-                  <CircularProgress color="inherit" size={25} />
-                ) : (
-                    <span className="nabi-margin-left-xsmall">{RateInstructorComponent.SubmitReview}</span>
-                  )}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className="nabi-margin-top-small nabi-text-uppercase"
+                    onClick={handleClick}
+                    disabled={!comment || !rating ? true : false}
+                  >
+                    {isRatingInstructor || isRatingInstructorUnauthenticated ? (
+                      <CircularProgress color="inherit" size={25} />
+                    ) : (
+                        <span className="nabi-margin-left-xsmall">{RateInstructorComponent.SubmitReview}</span>
+                      )}
 
-              </Button>
-            </Grid>
+                  </Button>
+                </Grid>
+              </>
+              }
           </Grid>
-          <SnackBar
-            isOpen={snackbarIsOpen.status}
-            message={snackbarIsOpen.message}
-            handleClose={closeSnackbar}
-            variant={snackbarIsOpen.type}
-          />
         </div>
+        <SnackBar
+          isOpen={snackbarIsOpen.status}
+          message={snackbarIsOpen.message}
+          handleClose={closeSnackbar}
+          variant={snackbarIsOpen.type}
+        />
       </div>
       <Footer />
     </div>
