@@ -99,7 +99,7 @@ export const Profile = (props: Props) => {
     } else {
       // set bestMatchId from route
       setBestMatchId(Number(router.query.bestMatchId));
-  
+
       // set segment page tracking
       analiticsProps.instructorId = instructorId;
       page('Viewed Instructor Profile', analiticsProps);
@@ -220,16 +220,30 @@ export const Profile = (props: Props) => {
       </div>
       <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
-          <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
-            {ProfileComponent.bookTrialButton}
-          </Button>
-          <Link
-            href={`${Routes.BookTrial + Routes.IntructorsMatch}?requestId=${requestId}&bestMatchId=${bestMatchId}`}
-          >
-            <a>
-              <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
-            </a>
-          </Link>
+          {router.query.bestMatchId || isTrial ?
+            <>
+              <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+                {ProfileComponent.bookTrialButton}
+              </Button>
+              <Link
+                href={`${Routes.BookTrial + Routes.IntructorsMatch}?requestId=${requestId}&bestMatchId=${bestMatchId}`}
+              >
+                <a>
+                  <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
+                </a>
+              </Link>
+            </>
+            :
+            <Link
+              href={Routes.RegistrationParentStudent}
+            >
+              <a>
+                <Button fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+                  {ProfileComponent.bookTrialButton}
+                </Button>
+              </a>
+            </Link>
+          }
         </div>
       </div>
 
