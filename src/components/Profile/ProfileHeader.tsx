@@ -10,6 +10,7 @@ const Star = dynamic(() => import('@material-ui/icons/Star'), {
 });
 import '../../../assets/scss/ProfileHeader.scss';
 import { InstructorProfileType } from "../../redux/models/InstructorModel";
+import CollapsibleBalloonList from '../CollapsibleBalloonList/CollapsibleBalloonList';
 
 interface Props {
   instructor: InstructorProfileType;
@@ -35,11 +36,9 @@ export const ProfileHeader = (props: Props) => {
           <span className="nabi-color-orange">
             ({props.instructor?.reviews?.quantity})
             </span>
-        <div className="profile-instruments">
-          {props.instructor?.instruments?.map((instrument, i) =>
-            <span key={i} className="profile-instrument">{instrument.charAt(0).toUpperCase() + instrument.slice(1)}</span>
-          )}
-        </div>
+        <CollapsibleBalloonList classForDiv='profile-instruments' classForSpan='profile-instrument'
+                                mainList={props.instructor?.instruments.slice(0, 5)}
+                                auxList={props.instructor?.instruments.slice(5)} />
       </Grid>
       <Grid container={true} className="stats-wrapper">
         <Grid item={true} xs={4}>
