@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Link } from '@material-ui/core';
+
+import { TextLinks } from "./constants";
 import { capitalizeFirstLetter } from '../../utils/Strings'
 
 /**
@@ -21,7 +23,7 @@ const CollapsibleBalloonList: React.StatelessComponent<Props> = props => {
       { displayMore && collapsed ?
         <div><Link href='#' onClick={(ev) => {
           ev.preventDefault(); setCollapsed(false);
-        }}>View more</Link></div> : ''
+        }}>{ TextLinks.viewMore }</Link></div> : ''
       }
       { displayMore && !collapsed ?
         props.auxList?.map((item, i) => <span key={i} className={props.classForSpan}>{capitalizeFirstLetter(item)}</span>) : ''
@@ -29,7 +31,7 @@ const CollapsibleBalloonList: React.StatelessComponent<Props> = props => {
       { displayMore && !collapsed ?
         <div><Link href='#' onClick={(ev) => {
           ev.preventDefault(); setCollapsed(true);
-        }}>View less</Link></div> : ''
+        }}>{ TextLinks.viewLess }</Link></div> : ''
       }
     </div>
   )
