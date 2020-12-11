@@ -3,9 +3,8 @@ import * as React from 'react';
 import {
   Button,
   Grid,
-  Typography
-} from '@material-ui/core';
-import Add from '@material-ui/icons/Add';
+  AddIcon as Add
+} from 'nabi_web_components';
 
 import SectionTitle from '../common/SectionTitle';
 import SnackBar from '../common/SnackBar';
@@ -59,15 +58,15 @@ const Music: React.StatelessComponent<Props> = props => {
       {!props.showMusicForm ?
         <div>
           <SectionTitle text={MusicComponent.Text.YourMusic} />
-          <Typography className="nabi-margin-top-xsmall">
+          <p className="nabi-margin-top-xsmall">
             {MusicComponent.Text.ShareYourMusic}
-          </Typography>
+          </p>
           <Grid className="nabi-margin-top-small" container={true}>
             {musicAdded}
           </Grid>
           <div className="nabi-margin-top-medium">
             <Button color="primary" variant="contained" onClick={props.toggleMusicForm}>
-              <Add className="nabi-margin-right-xsmall" />
+              <Add fontSize={24} className="nabi-margin-right-xsmall" />
               {MusicComponent.Text.AddMusic}
             </Button>
           </div>

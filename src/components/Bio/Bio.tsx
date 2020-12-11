@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import {
+  Grid,
+  TextField
+} from "nabi_web_components";
 
 import { UserType } from '../../redux/models/UserModel';
 import SectionTitle from '../common/SectionTitle';
@@ -28,9 +29,9 @@ const Bio: React.StatelessComponent<Props> = props => {
     <div>
       <SectionTitle text={BioComponent.Text.YourBio} />
 
-      <Typography className="nabi-margin-top-xsmall">
+      <p className="nabi-margin-top-xsmall">
         {BioComponent.Text.AddTitle}
-      </Typography>
+      </p>
 
       <Grid container={true} spacing={0}>
         <Grid item={true} md={6} xs={12}>
@@ -49,9 +50,9 @@ const Bio: React.StatelessComponent<Props> = props => {
         </Grid>
       </Grid>
 
-      <Typography className="nabi-margin-top-xsmall">
+      <p className="nabi-margin-top-xsmall">
         {BioComponent.Text.TalkAboutYour}
-      </Typography>
+      </p>
 
       <TextField
         id={BioComponent.Ids.bioDescription}
@@ -69,9 +70,9 @@ const Bio: React.StatelessComponent<Props> = props => {
         value={props.bioDescription}
       />
 
-      <Typography className="nabi-margin-top-xsmall">
+      <p className="nabi-margin-top-xsmall">
         {BioComponent.Text.YearsOfExperience}
-      </Typography>
+      </p>
 
       <Grid container={true} spacing={0}>
         <Grid item={true} md={6} xs={12}>
