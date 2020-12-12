@@ -3,12 +3,7 @@ import Head from 'next/head';
 import Link from "next/link";
 
 import { Avatar } from "@material-ui/core";
-import { Button, Grid } from "nabi_web_components";
-
-import dynamic from "next/dynamic";
-const Star = dynamic(() => import('@material-ui/icons/Star'), {
-  ssr: false,
-});
+import { Button, Grid, StarFilledIcon as Star } from "nabi_web_components";
 
 import "../../../assets/scss/Home.scss";
 import { UserType } from "../../redux/models/UserModel";
