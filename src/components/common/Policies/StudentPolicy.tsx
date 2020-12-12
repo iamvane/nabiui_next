@@ -21,7 +21,7 @@ export const StudentPolicy: React.StatelessComponent<{}> = props => {
         <h5>As a Student or Parent, you will be required to:</h5>
         <ul>
           <li>
-            Pay for lessons in advance and manage billing & account status via your Nabi Music account
+            Pay for lessons in advance and manage billing & account status via your Nabi Music account. If you fail to pay for lessons in advanced you may be subject to a fee of $10 for late payment.
           </li>
           <br />
           <li>
