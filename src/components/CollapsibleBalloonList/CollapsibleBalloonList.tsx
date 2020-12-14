@@ -11,7 +11,14 @@ import { capitalizeFirstLetter } from '../../utils/Strings'
  * @param props: classForDiv, classForSpan, mainList, auxList
  */
 
-const CollapsibleBalloonList: React.StatelessComponent<Props> = props => {
+ interface Props {
+   classForDiv: string;
+   classForSpan: string;
+   mainList: string[];
+   auxList: string[];
+ }
+
+const CollapsibleBalloonList = (props: Props) => {
   const [collapsed, setCollapsed] = React.useState<any>(true);
   const displayMore = props.auxList && props.auxList.length;
 
