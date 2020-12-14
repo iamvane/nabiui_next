@@ -3,10 +3,6 @@ import * as React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
-  FormLabel,
-} from '@material-ui/core';
-
-import {
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -61,10 +57,6 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
           <SectionTitle text={AccountInfoComponent.SectionTitles.Gender} />
           <div className="nabi-padding-left-small">
             <FormControl required={true} error={!!props.errors.gender}>
-              <FormLabel className="nabi-margin-bottom-xsmall nabi-text-uppercase">
-                {AccountInfoComponent.Labels.Gender}
-              </FormLabel>
-
               <RadioGroup
                 row={true}
                 name={FieldNames[FieldKey.Gender]}
