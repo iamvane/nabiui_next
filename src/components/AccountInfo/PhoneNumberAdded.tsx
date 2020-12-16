@@ -3,13 +3,8 @@ import * as React from 'react';
 import {
   Grid,
   IconButton,
-  Typography
-} from '@material-ui/core';
-// import Done from '@material-ui/icons/Done';
-import dynamic from "next/dynamic";
-const Done = dynamic(() => import('@material-ui/icons/Done'), {
-  ssr: false,
-});
+  DoneIcon as Done
+} from 'nabi_web_components';
 
 import { PhoneValidationFormComponent } from './constants';
 
@@ -25,17 +20,16 @@ const PhoneNumberAdded: React.StatelessComponent<Props> = props => {
   return (
     <Grid item={true} xs={12} container={true}>
       <Grid xs={12} md={props.isEditing ? 5 : null} item={true}>
-        <Typography>
+        <p>
           {formattedText}
-        </Typography>
+        </p>
       </Grid>
       <Grid xs={12} md={props.isEditing ? 6 : null} item={true}>
-        <Typography
-          color="primary"
+        <p
           className="nabi-margin-right-xsmall nabi-color-nabi nabi-display-inline"
         >
           {PhoneValidationFormComponent.validationSucessful}
-        </Typography>
+        </p>
         <IconButton color="primary" disabled={true}>
           <Done />
         </IconButton>
