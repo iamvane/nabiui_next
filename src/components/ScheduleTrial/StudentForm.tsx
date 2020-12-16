@@ -7,17 +7,13 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import {
-  Button,
-  Chip,
-  FormControl,
-  FormHelperText,
-  Grid,
-  Input,
   Select,
+  Button,
+  FormControl,
   TextField,
-  Typography
-} from '@material-ui/core';
-import ArrowdownIcon from "@material-ui/icons/KeyboardArrowDownOutlined";
+  FormHelperText,
+  Chip
+} from 'nabi_web_components';
 import '../../../assets/scss/ChildForm.scss';
 import { specialNeeds } from '../../../assets/data/specialNeeds';
 
@@ -162,12 +158,9 @@ export const StudentForm = (props: Props) => {
           }}
           native={true}
           onChange={handleChange}
-          IconComponent={() => (<ArrowdownIcon color="action" />)}
           value={specialNeed}
-          inputProps={{
-            id: `${ChildFormComponent.Ids.SpecialNeed}`,
-            name: `${ChildFormComponent.Ids.SpecialNeed}`,
-          }}
+          id={ChildFormComponent.Ids.SpecialNeed}
+          name={ChildFormComponent.Ids.SpecialNeed}
         >
           <option value="" disabled={true}>
             {ChildFormComponent.selectSpecialNeeds}
@@ -184,9 +177,9 @@ export const StudentForm = (props: Props) => {
       <div className="nabi-display-flex nabi-flex-column">
         {props.role === Role.parent &&
           <>
-            <Typography color={formErrors.name ? 'error' : undefined} className="nabi-margin-top-small">
+            <p className={`nabi-margin-top-small ${formErrors.name ? "nabi-text-color-red" : ""}`}>
               {ChildFormComponent.Labels.Name}
-            </Typography>
+            </p>
             <TextField
               id={ChildFormComponent.Ids.Name}
               name={ChildFormComponent.FieldNames.Name}
@@ -199,9 +192,9 @@ export const StudentForm = (props: Props) => {
               helperText={formErrors.name}
             />
 
-            <Typography color={formErrors.dob ? 'error' : undefined} className="nabi-margin-top-small">
+            <p className={`nabi-margin-top-small ${formErrors.dob ? "nabi-text-color-red" : ""}`}>
               {ChildFormComponent.Labels.Dob}
-            </Typography>
+            </p>
 
             <FormControl required={true}>
               <DatePicker
@@ -217,7 +210,7 @@ export const StudentForm = (props: Props) => {
           </>
         }
 
-        <Typography color={formErrors.instrument ? 'error' : undefined} className="nabi-margin-top-small">Instrument</Typography>
+        <p className={`nabi-margin-top-small ${formErrors.instrument ? "nabi-text-color-red" : ""}`}>Instrument</p>
         <div className="nabi-display-flex nabi-flex-wrap">
           {ChildFormComponent.instrumentChips.map((item) => {
             return (<Chip
@@ -228,12 +221,11 @@ export const StudentForm = (props: Props) => {
               label={item.label}
             />)
           })}
-          <FormControl classes={{
-            root: "nabi-margin-remove student__instrument"
-          }}>
+          <FormControl className="nabi-margin-remove student__instrument">
             <Select
               native={true}
-              input={<Input id={ChildFormComponent.Ids.Instrument} name={ChildFormComponent.FieldNames.Instrument} />}
+              id={ChildFormComponent.Ids.Instrument}
+              name={ChildFormComponent.FieldNames.Instrument}
               value={instrumentSelect}
               onChange={handleChange}
               className={`instrument-select ${instrumentSelect && 'instrument-select-true'}`}
@@ -245,7 +237,7 @@ export const StudentForm = (props: Props) => {
         </div>
 
         {formErrors.instrument && <FormHelperText error={true}>{formErrors.instrument}</FormHelperText>}
-        <Typography color={formErrors.level ? 'error' : undefined} className="nabi-margin-top-small">Level</Typography>
+        <p className={`nabi-margin-top-small ${formErrors.level ? "nabi-text-color-red" : ""}`}>Level</p>
 
         <div className="nabi-display-flex nabi-flex-wrap">
           {ChildFormComponent.levelChips.map((item) => (
@@ -261,17 +253,17 @@ export const StudentForm = (props: Props) => {
 
         {props.role === Role.parent &&
           <div>
-            <Typography color={formErrors.specialNeeds ? 'error' : undefined} className="nabi-margin-top-small">
+            <p className={`nabi-margin-top-small ${formErrors.specialNeeds ? "nabi-text-color-red" : ""}`}>
               {ChildFormComponent.Labels.SpecialNeeds}
-            </Typography>
+            </p>
 
             <div className="nabi-display-flex">
               {renderSpecialNeeds()}
             </div>
 
-            <Typography className="nabi-margin-top-small">
+            <p className="nabi-margin-top-small">
               {ChildFormComponent.Labels.Notes}
-            </Typography>
+            </p>
 
             <TextField
               fullWidth={true}

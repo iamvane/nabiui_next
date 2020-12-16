@@ -1090,7 +1090,7 @@ export default function instructorReducer(
             rateInstructor: {
               ...state.actions.rateInstructor,
               isRequesting: true
-            }
+            },
           }
         };
 
@@ -1099,12 +1099,12 @@ export default function instructorReducer(
 
         return {
           ...state,
+          instructorReview: rateInstructorMessage,
           actions: {
             ...state.actions,
             rateInstructor: {
               isRequesting: false,
               error: "",
-              message: rateInstructorMessage.message
             }
           }
         };
@@ -1118,7 +1118,46 @@ export default function instructorReducer(
             rateInstructor: {
               isRequesting: false,
               error: rateInstructorError,
-              message: ""
+            }
+          }
+        };
+
+      case InstructorActions.REVIEW_INSTRUCTOR_UNAUTHENTICATED:
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            rateInstructorUnauthenticated: {
+              ...state.actions.rateInstructor,
+              isRequesting: true
+            },
+          }
+        };
+
+      case InstructorActions.REVIEW_INSTRUCTOR_UNAUTHENTICATED_SUCCESS:
+        const { data: reviewUnauthenticated } = action;
+
+        return {
+          ...state,
+          instructorReview: reviewUnauthenticated,
+          actions: {
+            ...state.actions,
+            rateInstructorUnauthenticated: {
+              isRequesting: false,
+              error: "",
+            }
+          }
+        };
+
+      case InstructorActions.REVIEW_INSTRUCTOR_UNAUTHENTICATED_FAILURE:
+        const { error: reviewErrorUnauthenticated } = <APIActions.WithError<string>>action;
+        return {
+          ...state,
+          actions: {
+            ...state.actions,
+            rateInstructorUnauthenticated: {
+              isRequesting: false,
+              error: reviewErrorUnauthenticated,
             }
           }
         };

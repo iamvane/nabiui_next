@@ -7,12 +7,9 @@ import { ThunkAction } from 'redux-thunk';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { getCookie, setCookie } from '../../utils/cookies';
 import PageTitle from '../common/PageTitle';
 import { Header } from '../Header/Header';
 import {
-  Instructor,
-  Rates,
   InstructorListType
 } from "../../redux/models/InstructorModel";
 import { StoreState } from '../../redux/reducers/store';
@@ -40,14 +37,13 @@ interface Props extends
 
 export const Instructors = (props: Props) => {
   const router = useRouter();
-  const instructorId = Number(router.query.instructorId);
+  const bestMatchId = Number(router.query.bestMatchId);
+  const requestId = Number(router.query.requestId);
 
   React.useEffect(() => {
-    const requestId = router.query.requestId;
-
     // Set the bestMatchId cookie
     const fetchInstructors = async () => {
-      props.fetchInstructorsMatch(Number(requestId), instructorId);
+      props.fetchInstructorsMatch(Number(requestId), bestMatchId);
     }
     fetchInstructors();
   }, []);
@@ -67,7 +63,8 @@ export const Instructors = (props: Props) => {
               <InstructorCard
                 key={i}
                 instructor={instructor}
-                bestMatchId={instructorId}
+                bestMatchId={bestMatchId}
+                requestId={requestId}
               />
             ))}
           </div>

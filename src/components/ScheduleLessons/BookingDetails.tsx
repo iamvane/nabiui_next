@@ -1,6 +1,6 @@
 import * as React from 'react';
 import moment from 'moment';
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import {
   Button,
   Grid,
@@ -28,12 +28,14 @@ interface Props {
 }
 
 export const BookingDetails = (props: Props) => {
+  const router = useRouter();
+  const instructorName = router.query.instructorName;
+
   const addAnotherChild = () => {
     return Router.push(Routes.BookTrial + Routes.LessonDetails);
   }
 
   const role = getCookie('role');
-
   const lessonDate = moment(getCookie('lessonDate')).format('MMM D');
   const lessonTime = moment(getCookie('lessonTime'), "h:mm").format("h:mmA");
   const timezone = getCookie('timezone');
@@ -80,13 +82,14 @@ export const BookingDetails = (props: Props) => {
           <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
             <DateRangeIcon color="primary" />
             <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-              {props.headingMessage ? displayAvailability() : `${lessonDate} @ ${lessonTime}`}
+              <span className="nabi-margin-right-xsmall nabi-text-semibold">{BookingDetailsComponent.availability}</span>{props.headingMessage ? displayAvailability() : `${lessonDate} @ ${lessonTime}`}
             </Typography>
           </div>
           {timezone && (
             <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
               <TimezoneIcon color="primary" />
               <Typography className="nabi-margin-left-xsmall">
+              <span className="nabi-margin-right-xsmall nabi-text-semibold">{BookingDetailsComponent.timezone}</span>
                 {timezone}
               </Typography>
             </div>
@@ -94,6 +97,7 @@ export const BookingDetails = (props: Props) => {
           <div className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
             <Schedule color="primary" />
             <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+            <span className="nabi-margin-right-xsmall nabi-text-semibold">{BookingDetailsComponent.duration}</span>
               {BookingDetailsComponent.lessonDuration}
             </Typography>
           </div>
@@ -102,6 +106,7 @@ export const BookingDetails = (props: Props) => {
               <>
                 <MusicNoteIcon color="primary" />
                 <Typography className="nabi-display-inline nabi-margin-left-xsmall">
+                <span className="nabi-margin-right-xsmall nabi-text-semibold">{BookingDetailsComponent.instrument}</span>
                   {instrumentDisplay?.name}
                 </Typography>
               </>
@@ -111,7 +116,8 @@ export const BookingDetails = (props: Props) => {
             <div key="instructor-details" className="nabi-display-flex nabi-flex-align-center nabi-margin-top-xsmall">
               <Face color="primary" />
               <Typography className="nabi-display-inline nabi-margin-left-xsmall">
-                {getCookie('instructorName') || BookingDetailsComponent.instructorDetails}
+              <span className="nabi-margin-right-xsmall nabi-text-semibold">{BookingDetailsComponent.instructor}</span>
+                {instructorName || BookingDetailsComponent.instructorDetails}
               </Typography>
             </div> : null
           }

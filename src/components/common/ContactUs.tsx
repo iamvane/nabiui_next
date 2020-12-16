@@ -53,9 +53,6 @@ export const ContactUs: React.StatelessComponent<Props> = (props: Props) => {
           <br />
           <Link href={Routes.HowItWorksParents}><a>{constants.howItWorks}</a></Link>
           <br />
-          <Link href={Routes.LessonPackages}><a>{constants.lessonPackages}</a></Link>
-          <br />
-          <Link href={Routes.VetInstructor}><a>{constants.vettingProcess}</a></Link>
           <p className="nabi-text-uppercase nabi-text-mediumbold">{constants.forInstructors}</p>
           <Link href={Routes.FAQInstructors}><a>{constants.faqs}</a></Link>
           <br />

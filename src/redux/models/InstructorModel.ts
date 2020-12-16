@@ -129,6 +129,7 @@ export interface InstructorState {
   instructorList?: InstructorListType[];
   instructor: InstructorType;
   instructors: ListResource<Instructor>;
+  instructorReview?: InstructorReview,
   actions: {
     buildProfile: ActionStatus;
     fetchProfile: ActionStatus;
@@ -152,8 +153,15 @@ export interface InstructorState {
     gradeLesson: ActionStatusWithMessage;
     signFile: ActionStatusWithMessage;
     uploadVideoProfile: ActionStatusWithMessage;
-    rateInstructor: ActionStatusWithMessage;
+    rateInstructor: ActionStatus;
+    rateInstructorUnauthenticated: ActionStatus;
   };
+}
+
+export interface InstructorReview {
+  instructor: string,
+  rating: number,
+  comment: string
 }
 
 export const defaultInstructorState: InstructorState = {
@@ -276,7 +284,10 @@ export const defaultInstructorState: InstructorState = {
     rateInstructor: {
       isRequesting: false,
       error: "",
-      message: ""
+    },
+    rateInstructorUnauthenticated: {
+      isRequesting: false,
+      error: "",
     }
   }
 };

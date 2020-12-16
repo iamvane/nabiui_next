@@ -68,12 +68,13 @@ export const Profile = (props: Props) => {
   const [showSnackbar, setShowSnackbar] = React.useState(false);
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   const [bookTrial, setBookTrial] = React.useState(false);
+  const [bestMatchId, setBestMatchId] = React.useState(undefined);
 
   React.useEffect(() => { require('../../../assets/scripts/StickyProfileCta.js') }, [])
 
   const router = useRouter();
   const instructorId = Number(router.query.id);
-  const requestId = getCookie("requestId");
+  const requestId = Number(router.query.requestId);
   const isTrial = router.pathname === '/book-trial/best-match';
 
   React.useEffect(() => {
@@ -96,11 +97,14 @@ export const Profile = (props: Props) => {
       };
       fetchBestMatch();
     } else {
-      // If comonent is not used in trial get profile
-      analiticsProps.instructorId = instructorId;
+      // set bestMatchId from route
+      setBestMatchId(Number(router.query.bestMatchId));
 
+      // set segment page tracking
+      analiticsProps.instructorId = instructorId;
       page('Viewed Instructor Profile', analiticsProps);
 
+      // If component is not used in trial get profile
       const fetchProfile = async () => {
         if (instructorId) {
           await props.fetchInstructor(instructorId);
@@ -124,10 +128,10 @@ export const Profile = (props: Props) => {
   }, [props.fetchBestMatchError, props.fetchProfileError]);
 
   React.useEffect(() => {
-    // Set the bestMatchId cookie
     if (props.instructorProfile?.id) {
       if (isTrial) {
-        setCookie("bestMatchId", props.instructorProfile.id)
+        // Set the bestMatchId id from fetched bestMtach
+        setBestMatchId(Number(props.instructorProfile?.id));
       }
     }
   }, [props.instructorProfile]);
@@ -146,8 +150,8 @@ export const Profile = (props: Props) => {
       })
       setShowSnackbar(true);
     }
+
     if (props.assignInstructorMessage) {
-      assignInstructor();
       setCookie("instructorName", props.instructorProfile?.name);
       const userEmail = getCookie('userEmail');
       const analiticsProps = {
@@ -158,15 +162,14 @@ export const Profile = (props: Props) => {
         }
       };
       track('Trial Started', analiticsProps);
-
-
+      Router.push(`${Routes.BookTrial + Routes.TrialConfirmation}?instructorName=${props.instructorProfile?.name}`);
     }
-  }, [props.assignInstructorError, props.assignInstructorMessage]);
+  }, [props.assignInstructorError, props.assignInstructorMessage, bookTrial]);
 
 
   const assignInstructor = async () => {
     await props.assignInstructor(props.instructorProfile?.id, requestId);
-    Router.push(Routes.BookTrial + Routes.TrialConfirmation);
+    setBookTrial(true)
   }
 
   return (
@@ -198,17 +201,11 @@ export const Profile = (props: Props) => {
           <Grid xs={5} item={true} id="profile-cta" className="hide-on-mobile">
             <div className="nabi-section nabi-background-white nabi-text-center">
               <span className="nabi-text-mediumbold">{ProfileComponent.bookTrialWith} {props.instructorProfile?.name}</span>
-              <Button onClick={() => router.push(Routes.BookTrial + Routes.TrialConfirmation)} variant="contained" color="primary" className="nabi-margin-top-xsmall">
+              <Button onClick={() => assignInstructor()} variant="contained" color="primary" className="nabi-margin-top-xsmall">
                 {ProfileComponent.bookTrialButton}
               </Button>
               <Link
-                href={{
-                  pathname: Routes.BookTrial + Routes.IntructorsMatch,
-                  query: {
-                    requestId,
-                    instructorId: props.instructorProfile?.id
-                  }
-                }}
+                href={`${Routes.BookTrial + Routes.IntructorsMatch}?requestId=${requestId}&bestMatchId=${bestMatchId}`}
               >
                 <a>
                   <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
@@ -223,22 +220,30 @@ export const Profile = (props: Props) => {
       </div>
       <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
-          <Button onClick={() => router.push(Routes.BookTrial + Routes.TrialConfirmation)} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
-            {ProfileComponent.bookTrialButton}
-          </Button>
-          <Link
-            href={{
-              pathname: Routes.BookTrial + Routes.IntructorsMatch,
-              query: {
-                requestId,
-                instructorId: props.instructorProfile?.id
-              }
-            }}
-          >
-            <a>
-              <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
-            </a>
-          </Link>
+          {router.query.bestMatchId || isTrial ?
+            <>
+              <Button onClick={() => assignInstructor()} fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+                {ProfileComponent.bookTrialButton}
+              </Button>
+              <Link
+                href={`${Routes.BookTrial + Routes.IntructorsMatch}?requestId=${requestId}&bestMatchId=${bestMatchId}`}
+              >
+                <a>
+                  <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
+                </a>
+              </Link>
+            </>
+            :
+            <Link
+              href={Routes.RegistrationParentStudent}
+            >
+              <a>
+                <Button fullWidth={true} variant="contained" color="primary" className="nabi-margin-top-xsmall nabi-display-block">
+                  {ProfileComponent.bookTrialButton}
+                </Button>
+              </a>
+            </Link>
+          }
         </div>
       </div>
 

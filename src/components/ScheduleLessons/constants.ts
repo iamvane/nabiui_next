@@ -198,6 +198,11 @@ export namespace BookingDetailsComponent {
   export const instructorDetails = 'Instructor details provided upon confirmation.'
   export const addChildButton = 'Add Another Child';
   export const continueButton = 'Continue';
+  export const availability = "Availability:";
+  export const duration = "Lesson duration:";
+  export const timezone = "Timezone:";
+  export const instrument = "Instrument:";
+  export const instructor = "Instructor:";
 
   export const weekdaysLabels = {
     'mon': 'Monday',
