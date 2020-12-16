@@ -6,10 +6,9 @@ import {
   FormControl,
   FormControlLabel,
   FormHelperText,
-  FormLabel,
   Radio,
   RadioGroup,
-} from '@material-ui/core';
+} from 'nabi_web_components';
 
 import { LocationField } from "../Instructors/LocationField";
 import SectionTitle from '../common/SectionTitle';
@@ -58,10 +57,6 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
           <SectionTitle text={AccountInfoComponent.SectionTitles.Gender} />
           <div className="nabi-padding-left-small">
             <FormControl required={true} error={!!props.errors.gender}>
-              <FormLabel className="nabi-margin-bottom-xsmall nabi-text-uppercase">
-                {AccountInfoComponent.Labels.Gender}
-              </FormLabel>
-
               <RadioGroup
                 row={true}
                 name={FieldNames[FieldKey.Gender]}
@@ -69,13 +64,23 @@ const AccountInfoForm: React.StatelessComponent <Props> = props => {
                 value={(gender && gender)}
               >
                 <FormControlLabel
-                  control={<Radio />}
+                  control={
+                  <Radio
+                    inputProps={{
+                      name: Gender.female
+                    }}
+                  />}
                   label={AccountInfoComponent.Labels.Female}
                   value={Gender.female}
                 />
 
                 <FormControlLabel
-                  control={<Radio />}
+                  control={
+                    <Radio
+                      inputProps={{
+                        name: Gender.male
+                      }}
+                    />}
                   label={AccountInfoComponent.Labels.Male}
                   value={Gender.male}
                 />

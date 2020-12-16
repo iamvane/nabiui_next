@@ -11,7 +11,7 @@ import * as _ from "lodash";
 import {
   Button,
   Grid
-} from '@material-ui/core';
+} from 'nabi_web_components';
 
 import {
   fetchUser,

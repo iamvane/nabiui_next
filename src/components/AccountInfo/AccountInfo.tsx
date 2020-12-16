@@ -9,11 +9,7 @@ import * as _ from "lodash";
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { CircularProgress } from '@material-ui/core';
-import dynamic from "next/dynamic";
-const ArrowForward = dynamic(() => import('@material-ui/icons/ArrowForward'), {
-  ssr: false,
-});
+import { CircularProgress, RightArrowIcon as ArrowForward } from 'nabi_web_components';
 
 import { getCookie } from "../../utils/cookies";
 import { StoreState } from '../../redux/reducers/store';
@@ -113,7 +109,7 @@ interface Props extends
     const name = target.name;
 
     const { FieldNames } = AccountInfoComponent;
-
+    console.log("field names ")
     if (name === FieldNames.gender) {
       setAccountInfo({
         ...accountInfo,
@@ -267,7 +263,7 @@ interface Props extends
         <StepperButtons
           buttonText={CommonStepperButtons.Continue}
           handleNext={handleNext}
-          icon={<ArrowForward />}
+          icon={<ArrowForward fontSize="24" />}
           isNextDisabled={disableContinue}
           errors={props.errorUpdate || Object.values(errors)}
           handleExit={handleExit}
