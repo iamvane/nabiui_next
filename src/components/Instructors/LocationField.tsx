@@ -4,11 +4,13 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 import {
-  IconButton,
   InputAdornment,
   TextField,
-  Typography
 } from '@material-ui/core';
+
+import {
+  IconButton,
+} from "nabi_web_components";
 
 import { ListTemplateComponent } from '../common/constants/ListTemplate';
 
@@ -154,7 +156,7 @@ export class LocationField extends React.Component<Props, State> {
             </div>
           )}
         </PlacesAutocomplete>
-        {this.state.error && <Typography color="error" className="nabi-margin-top-xsmall">{this.state.error}</Typography>}
+        {this.state.error && <p className="nabi-text-color-red nabi-margin-top-xsmall">{this.state.error}</p>}
       </div>
     );
   }

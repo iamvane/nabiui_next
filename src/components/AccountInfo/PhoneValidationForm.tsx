@@ -9,8 +9,7 @@ import {
   Input,
   Select,
   TextField,
-  Typography
-} from '@material-ui/core';
+} from 'nabi_web_components';
 import '../../../assets/scss/PhoneValidationForm.scss';
 import dynamic from "next/dynamic";
 const Close = dynamic(() => import('@material-ui/icons/Close'), {
@@ -176,7 +175,7 @@ const PhoneValidationForm = (props: Props) => {
         </Grid>
       </Grid>
       <Grid item={true} xs={12} md={6} className="nabi-padding-top-xsmall">
-        <Typography>{resendCodeText()}</Typography>
+        <p>{resendCodeText()}</p>
       </Grid>
     </div>
   );
