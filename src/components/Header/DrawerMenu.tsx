@@ -97,7 +97,7 @@ export const DrawerMenu = (props: Props) => {
         <Grid item={true} xs={12} className="nabi-margin-center nabi-padding-top-small nabi-padding-bottom-small">
           <MenuList>
             {props.menuItems && props.menuItems.map((menuItem, index) => (
-              <MenuItem onClick={props.closeMenu}>
+              <MenuItem onClick={props.closeMenu} key={index}>
                 <Link prefetch={false} href={menuItem.route}>
                   <Typography color="primary">
                     {menuItem.label}

@@ -236,8 +236,9 @@ export class ProfileStep extends React.Component<Props, State> {
     });
   }
 
+  public clearError = () => this.setState({ errorMessage: '' });
+
   public render(): JSX.Element {
-    const clearError = () => this.setState({ errorMessage: '' });
     return (
       <div>
         <div className="nabi-margin-bottom-large nabi-margin-top-large">
@@ -256,7 +257,7 @@ export class ProfileStep extends React.Component<Props, State> {
         <div className="nabi-margin-bottom-large">
           <Music
             handleChange={this.handleChange}
-            clearError={clearError}
+            clearError={this.clearError}
             handleCancel={this.handleCancel}
             deleteMusic={(id: string) => this.deleteMusic(id)}
             addMusic={this.addMusic}

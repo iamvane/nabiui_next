@@ -46,7 +46,7 @@ export const Header = (props: Props) => {
   
   const renderMenu = () => {
     return props.headerMenuItems.map((menuItem, index) => (
-      <Link href={menuItem.route} prefetch={false}>
+      <Link href={menuItem.route} prefetch={false} key={index}>
         <a className={`nabi-text-mediumbold ${props.headerMenuItems.length - 1 !== index ? 'nabi-margin-right-small' : ''}`}>
           {menuItem.label}
         </a>

@@ -30,6 +30,12 @@ interface ReferralToken extends Action {
 // Default error message
 let errorMessage = defaultApiError;
 const authToken = getCookie("token");
+let authToken2;
+if (typeof window !== "undefined") {
+  console.log('yo');
+  authToken2 = localStorage.getItem("token")
+}
+
 
 /**
  * Action creator for adding a new user
@@ -172,7 +178,7 @@ export const uploadAvatar = (
     requestBody.append("avatar", value);
 
     const response = await axios.post(url, requestBody, {
-      headers: { Authorization: `Bearer ${authToken}` }
+      headers: { Authorization: `Bearer ${authToken2}` }
     });
     dispatch(withDataAction(UserActions.UPLOAD_AVATAR_SUCCESS, response.data));
   } catch (e) {

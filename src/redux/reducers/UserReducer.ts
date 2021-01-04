@@ -30,6 +30,9 @@ export default function usersReducer(
 
     case UserActions.CREATE_USER_SUCCESS:
       const { data: userDetails } = action;
+
+      localStorage.setItem('token', userDetails.token.access);
+      
       setCookie("token", userDetails.token.access);
       setCookie("role", userDetails.role);
       setCookie("firstName", userDetails.firstName);
