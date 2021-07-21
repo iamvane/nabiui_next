@@ -15,7 +15,7 @@ import { Action, Dispatch } from "redux";
 import { StoreState } from "../../redux/reducers/store";
 import { fetchUser } from "../../redux/actions/UserActions";
 import { UserType } from "../../redux/models/UserModel";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 const chatClient = StreamChat.getInstance("9srtnzz4hrxh");
 interface Props extends DispatchProps, StateProps, OwnProps {
@@ -43,48 +43,57 @@ interface OwnProps {
  */
 export const ProfileHeader = (props: Props) => {
   const router = useRouter();
+  const [loading, setLoading] = React.useState(true);
+
   const defaultAvatar =
     "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-default-avatar.png";
-
-  const [token, setToken] = React.useState("");
+  const user = useSelector((state: StateProps) => {
+    const user = state.user.user;
+    return user;
+  });
 
   React.useEffect(() => {
-    const fetchData = async () => {
-      await props.fetchUser();
-    };
-    fetchData();
-    const token = async () => {
-      const { token } = await (
-        await fetch(`/api/profile?user_id=${props.user.id}${props.user.role}`, {
-          method: "get",
-        })
-      ).json();
-      setToken(token);
-      await chatClient.connectUser(
-        {
-          id: `${props.user.id}parent`,
-          name: props.user.displayName,
-          image:
-            "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-        },
-        token
-      );
-    };
-    console.log( props.user);
+    if (user && user.id >= 0) {
+      console.log(user);
 
-    if (props.user) {
-      token();
+      fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+        method: "get",
+      })
+        .then((res) => res.json())
+        .then(({ token }) => {
+          console.log(token);
+          chatClient
+            .connectUser(
+              {
+                id: `${user.id}${user.role}`,
+                name: user.displayName,
+                image:
+                  "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+              },
+              token
+            )
+            .then((res) => setLoading(false));
+        });
     }
-
     return () => {
       chatClient.disconnectUser();
     };
+  }, [user, setLoading]);
+
+  React.useEffect(() => {
+    const fetchData = () => {
+      props.fetchUser();
+    };
+    fetchData();
   }, []);
 
   const handleCreateChannel = async () => {
     const channel = chatClient.channel("messaging", {
       name: `${props.instructor.name} - ${props.user.displayName}`,
-      members: [`${props.user.id}${props.user.role}`, `${props.instructor?.id}instructor`],
+      members: [
+        `${props.user.id}${props.user.role}`,
+        `${props.instructor?.id}instructor`,
+      ],
     });
     await channel.create();
     router.push("/chat");
