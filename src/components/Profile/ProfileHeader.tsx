@@ -89,7 +89,7 @@ export const ProfileHeader = (props: Props) => {
   }, []);
 
   const handleCreateChannel = async () => {
-    const channel = chatClient.channel("messaging", {
+    const channel = chatClient.channel(`${props.instructor.id}instructor`, {
       name: `${props.instructor.name} - ${props.user.displayName}`,
       members: [
         `${props.user.id}${props.user.role}`,
