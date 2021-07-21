@@ -11,10 +11,36 @@ import CollapsibleBalloonList from "../CollapsibleBalloonList/CollapsibleBalloon
 import { ProfileComponent } from "./constants";
 import { useRouter } from "next/router";
 import { StreamChat } from "stream-chat";
+import {
+  Action,
+  Dispatch
+} from 'redux';
+import { StoreState } from '../../redux/reducers/store';
+import {
+  fetchUser,
+} from '../../redux/actions/UserActions';
+import { UserType } from '../../redux/models/UserModel';
+import { connect } from "react-redux";
 
 const chatClient = StreamChat.getInstance("9srtnzz4hrxh");
-interface Props {
+interface Props extends DispatchProps, StateProps, OwnProps {
   instructor: InstructorProfileType;
+}
+
+interface StateProps {
+  user: UserType;
+  isRequestingFetch: boolean;
+  isRequestingUpdate: boolean;
+  errorUpdate: string;
+  updateAvatarMessage: string;
+}
+
+interface DispatchProps {
+  fetchUser: () => void;
+}
+
+interface OwnProps {
+  nextPath: string;
 }
 
 /**
@@ -26,16 +52,21 @@ export const ProfileHeader = (props: Props) => {
     "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-default-avatar.png";
 
   React.useEffect(() => {
+    const fetchData = async () => {
+      await props.fetchUser();
+    };
+    fetchData();
     const token = async () => {
       const { token } = await (
-        await fetch(`/api/profile?user_id=luis`, {
+        await fetch(`/api/profile?user_id=${props.user.email}`, {
           method: "get"
         })
       ).json();
+
       chatClient.connectUser(
         {
-          id: "luis",
-          name: "luis",
+          id: props.user.email,
+          name: props.user.displayName,
           image:
             "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
         },
@@ -51,9 +82,10 @@ export const ProfileHeader = (props: Props) => {
 
 
   const handleCreateChannel = async () => {
+    const instructorId = props.instructor?.id
     const channel = chatClient.channel("messaging", {
-      name: "TESTING",
-      members: ["luis", "orange-bush-1"],
+      name: `${props.instructor.name} - ${props.user.name}`,
+      members: [props.user.email, instructorId.toString() + "_instructor"],
     });
     await channel.create();
     router.push("/chat");
@@ -132,4 +164,36 @@ export const ProfileHeader = (props: Props) => {
   );
 };
 
-export default ProfileHeader;
+function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
+  const {
+    user,
+    actions: {
+      fetchUser: {
+        isRequesting: isRequestingFetch,
+      },
+      updateUser: {
+        isRequesting: isRequestingUpdate,
+        error: errorUpdate
+      },
+      uploadAvatar: {
+        message: updateAvatarMessage
+      }
+    },
+  } = state.user;
+
+  return {
+    user,
+    isRequestingFetch,
+    isRequestingUpdate,
+    errorUpdate,
+    updateAvatarMessage
+  };
+}
+
+const mapDispatchToProps = (
+  dispatch: Dispatch<Action>
+): DispatchProps => ({
+  fetchUser: () => dispatch(fetchUser()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileHeader);

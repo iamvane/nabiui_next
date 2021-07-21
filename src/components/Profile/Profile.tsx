@@ -34,7 +34,6 @@ import ProfileHeader from './ProfileHeader';
 import { Header } from '../Header/Header';
 import { Footer } from "../common/Footer";
 import { Reviews } from "./Reviews";
-import ProfileChat from "./ProfileChat";
 import { InstructorProfileType } from "../../redux/models/InstructorModel";
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
