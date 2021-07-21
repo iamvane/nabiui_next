@@ -198,6 +198,10 @@ export const menuItems = [
     route: Routes.ParentStudio
   },
   {
+    label: 'Chat',
+    route: Routes.Chat
+  },
+  {
     label: 'Help',
     route: Routes.ContactUs
   }
