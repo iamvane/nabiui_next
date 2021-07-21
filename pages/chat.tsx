@@ -31,9 +31,8 @@ const App = () => {
   useEffect(() => {
     const token = async () => {
       const { token } = await (
-        await fetch("/api/profile", {
-          method: "post",
-          body: JSON.stringify({ user_id: "luis" }),
+        await fetch(`/api/profile?user_id=luis`, {
+          method: "get"
         })
       ).json();
       chatClient.connectUser(

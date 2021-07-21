@@ -8,8 +8,11 @@ const Star = dynamic(() => import("@material-ui/icons/Star"), {
 import "../../../assets/scss/ProfileHeader.scss";
 import { InstructorProfileType } from "../../redux/models/InstructorModel";
 import CollapsibleBalloonList from "../CollapsibleBalloonList/CollapsibleBalloonList";
-import { ProfileComponent } from './constants';
+import { ProfileComponent } from "./constants";
+import { useRouter } from "next/router";
+import { StreamChat } from "stream-chat";
 
+const chatClient = StreamChat.getInstance("9srtnzz4hrxh");
 interface Props {
   instructor: InstructorProfileType;
 }
@@ -18,8 +21,43 @@ interface Props {
  * Profile Header
  */
 export const ProfileHeader = (props: Props) => {
+  const router = useRouter();
   const defaultAvatar =
     "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-default-avatar.png";
+
+  React.useEffect(() => {
+    const token = async () => {
+      const { token } = await (
+        await fetch(`/api/profile?user_id=luis`, {
+          method: "get"
+        })
+      ).json();
+      chatClient.connectUser(
+        {
+          id: "luis",
+          name: "luis",
+          image:
+            "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+        },
+        token
+      );
+    };
+    token();
+
+    return () => {
+      chatClient.disconnectUser();
+    };
+  }, []);
+
+
+  const handleCreateChannel = async () => {
+    const channel = chatClient.channel("messaging", {
+      name: "TESTING",
+      members: ["luis", "orange-bush-1"],
+    });
+    await channel.create();
+    router.push("/chat");
+  };
 
   return (
     <Grid container={true} className="nabi-margin-top-xsmall">
@@ -83,7 +121,7 @@ export const ProfileHeader = (props: Props) => {
       </span>
       {props.instructor?.bioDescription || "N/A"}
       <Button
-        // onClick={() => assignInstructor()}
+        onClick={handleCreateChannel}
         variant="contained"
         color="primary"
         className="nabi-margin-top-xsmall"
