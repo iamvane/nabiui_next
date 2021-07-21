@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StreamChat } from "stream-chat";
 import {
   Chat,
@@ -14,17 +14,11 @@ import {
   MessageTeam,
   MessageInputFlat,
 } from "stream-chat-react";
-import {
-  Action,
-  Dispatch
-} from 'redux';
-import { StoreState } from '../src/redux/reducers/store';
-import {
-  fetchUser,
-  updateUser,
-} from '../src/redux/actions/UserActions';
-import { UserType } from '../src/redux/models/UserModel';
-import { connect } from "react-redux";
+import { Action, Dispatch } from "redux";
+import { StoreState } from "../src/redux/reducers/store";
+import { fetchUser, updateUser } from "../src/redux/actions/UserActions";
+import { UserType } from "../src/redux/models/UserModel";
+import { connect, DefaultRootState, useSelector } from "react-redux";
 
 import "stream-chat-react/dist/css/index.css";
 
@@ -48,7 +42,6 @@ interface OwnProps {
   nextPath: string;
 }
 
-
 const Paginator = (
   props: JSX.IntrinsicAttributes &
     InfiniteScrollPaginatorProps & { children?: React.ReactNode }
@@ -57,66 +50,79 @@ const Paginator = (
 const filters = { type: "messaging" };
 
 const App = (props: Props) => {
+  const [loading, setLoading] = useState(true);
+  const user = useSelector((state: StateProps) => {
+    const user = state.user.user
+    return user
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-      await props.fetchUser();
-    };
-    fetchData();
-    const token = async () => {
-      const { token } = await (
-        await fetch(`/api/profile?user_id=${props.user.email}`, {
-          method: "get"
-        })
-      ).json();
-      chatClient.connectUser(
-        {
-          id: props.user.email,
-          name: props.user.displayName,
-          image:
-            "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-        },
-        token
-      );
-    };
-    token();
+    if (user && user.id >= 0) {
+      console.log(user);
 
+      fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+        method: "get",
+      })
+        .then((res) => res.json())
+        .then(({ token }) => {
+          console.log(token);
+          chatClient
+            .connectUser(
+              {
+                id: `${user.id}${user.role}`,
+                name: user.displayName,
+                image:
+                  "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+              },
+              token
+            )
+            .then((res) => setLoading(false));
+        });
+    }
     return () => {
       chatClient.disconnectUser();
     };
+  }, [user, setLoading]);
+
+  useEffect(() => {
+    const fetchData = () => {
+      props.fetchUser();
+    };
+    fetchData();
   }, []);
 
-  return <Chat client={chatClient}>
-    <ChannelList
-      filters={filters}
-      sort={{ last_message_at: -1 }}
-      Paginator={Paginator}
-    />
-    <Channel>
-      <Window>
-        <ChannelHeader />
-        <MessageList Message={MessageTeam} />
-        <MessageInput Input={MessageInputFlat} />
-      </Window>
-      <Thread />
-    </Channel>
-  </Chat>
+  return (
+    <>
+      {loading ? (
+        <div>hi</div>
+      ) : (
+        <Chat client={chatClient}>
+          <ChannelList
+            filters={filters}
+            sort={{ last_message_at: -1 }}
+            Paginator={Paginator}
+          />
+          <Channel>
+            <Window>
+              <ChannelHeader />
+              <MessageList Message={MessageTeam} />
+              <MessageInput Input={MessageInputFlat} />
+            </Window>
+            <Thread />
+          </Channel>
+        </Chat>
+      )}
+    </>
+  );
 };
 
 function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
     user,
     actions: {
-      fetchUser: {
-        isRequesting: isRequestingFetch,
-      },
-      updateUser: {
-        isRequesting: isRequestingUpdate,
-        error: errorUpdate
-      },
-      uploadAvatar: {
-        message: updateAvatarMessage
-      }
+      fetchUser: { isRequesting: isRequestingFetch },
+      updateUser: { isRequesting: isRequestingUpdate, error: errorUpdate },
+      uploadAvatar: { message: updateAvatarMessage },
     },
   } = state.user;
 
@@ -125,13 +131,11 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     isRequestingFetch,
     isRequestingUpdate,
     errorUpdate,
-    updateAvatarMessage
+    updateAvatarMessage,
   };
 }
 
-const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
-): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
   fetchUser: () => dispatch(fetchUser()),
 });
 

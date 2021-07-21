@@ -11,15 +11,10 @@ import CollapsibleBalloonList from "../CollapsibleBalloonList/CollapsibleBalloon
 import { ProfileComponent } from "./constants";
 import { useRouter } from "next/router";
 import { StreamChat } from "stream-chat";
-import {
-  Action,
-  Dispatch
-} from 'redux';
-import { StoreState } from '../../redux/reducers/store';
-import {
-  fetchUser,
-} from '../../redux/actions/UserActions';
-import { UserType } from '../../redux/models/UserModel';
+import { Action, Dispatch } from "redux";
+import { StoreState } from "../../redux/reducers/store";
+import { fetchUser } from "../../redux/actions/UserActions";
+import { UserType } from "../../redux/models/UserModel";
 import { connect } from "react-redux";
 
 const chatClient = StreamChat.getInstance("9srtnzz4hrxh");
@@ -51,6 +46,8 @@ export const ProfileHeader = (props: Props) => {
   const defaultAvatar =
     "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/nabi-default-avatar.png";
 
+  const [token, setToken] = React.useState("");
+
   React.useEffect(() => {
     const fetchData = async () => {
       await props.fetchUser();
@@ -58,14 +55,14 @@ export const ProfileHeader = (props: Props) => {
     fetchData();
     const token = async () => {
       const { token } = await (
-        await fetch(`/api/profile?user_id=${props.user.email}`, {
-          method: "get"
+        await fetch(`/api/profile?user_id=${props.user.id}${props.user.role}`, {
+          method: "get",
         })
       ).json();
-
-      chatClient.connectUser(
+      setToken(token);
+      await chatClient.connectUser(
         {
-          id: props.user.email,
+          id: `${props.user.id}parent`,
           name: props.user.displayName,
           image:
             "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
@@ -73,19 +70,21 @@ export const ProfileHeader = (props: Props) => {
         token
       );
     };
-    token();
+    console.log( props.user);
+
+    if (props.user) {
+      token();
+    }
 
     return () => {
       chatClient.disconnectUser();
     };
   }, []);
 
-
   const handleCreateChannel = async () => {
-    const instructorId = props.instructor?.id
     const channel = chatClient.channel("messaging", {
-      name: `${props.instructor.name} - ${props.user.name}`,
-      members: [props.user.email, instructorId.toString() + "_instructor"],
+      name: `${props.instructor.name} - ${props.user.displayName}`,
+      members: [`${props.user.id}${props.user.role}`, `${props.instructor?.id}instructor`],
     });
     await channel.create();
     router.push("/chat");
@@ -168,16 +167,9 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
   const {
     user,
     actions: {
-      fetchUser: {
-        isRequesting: isRequestingFetch,
-      },
-      updateUser: {
-        isRequesting: isRequestingUpdate,
-        error: errorUpdate
-      },
-      uploadAvatar: {
-        message: updateAvatarMessage
-      }
+      fetchUser: { isRequesting: isRequestingFetch },
+      updateUser: { isRequesting: isRequestingUpdate, error: errorUpdate },
+      uploadAvatar: { message: updateAvatarMessage },
     },
   } = state.user;
 
@@ -186,13 +178,11 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
     isRequestingFetch,
     isRequestingUpdate,
     errorUpdate,
-    updateAvatarMessage
+    updateAvatarMessage,
   };
 }
 
-const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
-): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
   fetchUser: () => dispatch(fetchUser()),
 });
 
