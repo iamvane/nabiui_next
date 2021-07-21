@@ -34,11 +34,13 @@ import ProfileHeader from './ProfileHeader';
 import { Header } from '../Header/Header';
 import { Footer } from "../common/Footer";
 import { Reviews } from "./Reviews";
+import ProfileChat from "./ProfileChat";
 import { InstructorProfileType } from "../../redux/models/InstructorModel";
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
 import { Experience } from "./Experience";
 import '../../../assets/scss/Profile.scss';
+import "../../../assets/css/chat.css";
 
 interface StateProps {
   isFetchingBestMatch: boolean;
@@ -211,8 +213,10 @@ export const Profile = (props: Props) => {
                   <Button variant="text" color="primary" className="nabi-margin-top-xsmall">{ProfileComponent.viewMoreInstructorsButton}</Button>
                 </a>
               </Link>
+
             </div>
           </Grid>
+
         </Grid>
       </div>
       <div className="hide-on-mobile">
@@ -243,6 +247,7 @@ export const Profile = (props: Props) => {
                 </Button>
               </a>
             </Link>
+
           }
         </div>
       </div>
