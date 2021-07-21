@@ -47,8 +47,6 @@ const Paginator = (
     InfiniteScrollPaginatorProps & { children?: React.ReactNode }
 ) => <InfiniteScrollPaginator threshold={300} {...props} />;
 
-const filters = { type: "messaging" };
-
 const App = (props: Props) => {
   const [loading, setLoading] = useState(true);
   const user = useSelector((state: StateProps) => {
@@ -99,7 +97,7 @@ const App = (props: Props) => {
       ) : (
         <Chat client={chatClient}>
           <ChannelList
-            filters={filters}
+            filters={{ members: { $in: [`${user.id}${user.role}`] } }}
             sort={{ last_message_at: -1 }}
             Paginator={Paginator}
           />
