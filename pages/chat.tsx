@@ -66,6 +66,7 @@ const App = (props: Props) => {
         .then((res) => res.json())
         .then(({ token }) => {
           console.log(token);
+          chatClient.disconnectUser();
           chatClient
             .connectUser(
               {
