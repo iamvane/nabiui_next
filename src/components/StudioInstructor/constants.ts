@@ -154,6 +154,10 @@ export const menuItems = [
    route: Routes.BuildProfile + Routes.Profile
   },
   {
+    label: 'Chat',
+    route: Routes.Chat
+  },
+  {
     label: 'Help',
     route: Routes.ContactUs
   }
