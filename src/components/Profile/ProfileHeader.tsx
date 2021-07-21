@@ -53,33 +53,49 @@ export const ProfileHeader = (props: Props) => {
   });
 
   React.useEffect(() => {
-    if (user && user.id >= 0) {
+    if (user && user.id >= 0 && props.instructor && props.instructor) {
       console.log(user);
 
-      fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+      fetch(`/api/profile?user_id=${props.instructor.id}instructor`, {
         method: "get",
       })
         .then((res) => res.json())
-        .then(({ token }) => {
-          console.log(token);
-          chatClient.disconnectUser();
-          chatClient
-            .connectUser(
-              {
-                id: `${user.id}${user.role}`,
-                name: user.displayName,
-                image:
-                  "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-              },
-              token
-            )
-            .then((res) => setLoading(false));
+        .then(async ({ token }) => {
+          await chatClient.disconnectUser();
+          await chatClient.connectUser(
+            {
+              id: `${props.instructor.id}instructor`,
+              name: props.instructor.name,
+              image:
+                "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+            },
+            token
+          );
+          await chatClient.disconnectUser();
+
+          fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+            method: "get",
+          })
+            .then((res) => res.json())
+            .then(async ({ token }) => {
+              await chatClient.connectUser(
+                {
+                  id: `${user.id}${user.role}`,
+                  name: user.displayName,
+                  image:
+                    "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+                },
+                token
+              );
+              setLoading(false)
+            })
+
         });
     }
     return () => {
       chatClient.disconnectUser();
     };
-  }, [user, setLoading]);
+  }, [user, setLoading, props.instructor]);
 
   React.useEffect(() => {
     const fetchData = () => {
@@ -89,7 +105,7 @@ export const ProfileHeader = (props: Props) => {
   }, []);
 
   const handleCreateChannel = async () => {
-    const channel = chatClient.channel(`${props.instructor.id}instructor`, {
+    const channel = chatClient.channel(`messaging`, {
       name: `${props.instructor.name} - ${props.user.displayName}`,
       members: [
         `${props.user.id}${props.user.role}`,
