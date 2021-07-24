@@ -1,0 +1,11 @@
+.free-trial-icon {
+  width: 100px;
+  border-radius: 50%;
+}
+
+@media (min-width: 960px) {
+  .free-trial-icon {
+    width: 200px;
+    margin-right: 50px;
+  }
+}

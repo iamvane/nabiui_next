@@ -1,0 +1,43 @@
+.profile-avatar {
+  width: 90px !important;
+  height: 90px !important;
+}
+
+.profile-star {
+  width: 15px !important;
+  vertical-align: bottom !important;
+}
+
+.profile-instruments {
+  margin: 7px 0px 10px 0px;
+}
+
+.profile-instrument {
+  background: #06c3e1;
+  border-radius: 12px;
+  padding: 3px 6px;
+  color: #fff;
+  margin-right: 2px;
+  margin-top: 3px;
+  display: inline-block;
+}
+.stats-wrapper {
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.stats-wrapper p {
+  margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 375px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 960px) {
+
+}

@@ -1,0 +1,49 @@
+header {
+  background: #ffffff;
+}
+
+.header-wrapper {
+  background: #F0F3F7;
+}
+
+.header-wrapper img {
+  width: 100%;
+}
+
+.features-wrapper {
+  width: 100% !important;
+  margin: 0px !important;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+@media (min-width: 960px) {
+  .header-wrapper {
+    height: 339px;
+  }
+
+  .header-wrapper img {
+    height: 339px;
+    width: auto;
+  }
+
+  .nabi-container.nabi-margin-bottom-small.banner-text-wrapper {
+    width: 35%;
+    margin-right: 52%;
+    padding-top: 10px;
+  }
+  .nabi-container.nabi-margin-bottom-small.banner-text-wrapper p {
+    line-height: 37px;
+    font-size: 18px !important;
+  }
+  .nabi-landing-image-wrapper {
+    float: right;
+    height: 339px;
+  }
+
+  p.nabi-landing-font-large-md {
+    font-size: 18px !important;
+  }
+}

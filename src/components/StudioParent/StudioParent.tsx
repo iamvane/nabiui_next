@@ -50,6 +50,7 @@ import '../../../assets/scss/StudioParent.scss';
 import { ParentStudentDashboardType } from '../Dashboard/models';
 import { Header } from '../Header/Header';
 import { Footer } from "../common/Footer";
+import FloatingChat from '../FloatingChat';
 
 interface StateProps {
   dashboard: ParentStudentDashboardType;
@@ -454,6 +455,7 @@ export const StudioParent = (props: Props) => {
         }
       </div>
       <Footer />
+      <FloatingChat nextPath="" />
     </div>
   );
 }

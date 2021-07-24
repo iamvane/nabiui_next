@@ -1,0 +1,27 @@
+#banner-new {
+	height: 300px !important;
+	width: 100%;
+	background-size: cover !important;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#banner-new.home {
+	background-image: url('https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/music-lessons-for-kids-banner-lighter.jpg') !important;
+}
+
+.banner-heading {
+    font-size: 28px;
+    margin-top: 1.5em;
+}
+
+@media (min-width: 960px) {
+    #banner-new {
+        height: 580px !important;
+    }
+    
+    .banner-heading {
+        font-size: 40px;
+        margin-top: 3.6em;
+    }
+}

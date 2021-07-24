@@ -1,0 +1,39 @@
+.profile-star {
+    width: 15px !important;
+    vertical-align: bottom !important;
+}
+
+.profile-best-match-badge {
+    position: absolute;
+    background: #06c3e1;
+    color: #ffffff;
+    margin-top: -10px;
+    z-index: 99999;
+    padding: 2px 8px;
+    margin-left: -20px;
+    width: 96px;
+    height: 23px;
+    font-size: 10px;
+    font-size: 13px;
+    padding-top: 8px;
+    font-weight: 600;
+}
+
+
+span.profile-best-match-badge:after {
+    content: '';
+    display: block;
+    background: #fff;
+    border-left: 0px solid #dbdbdb;
+    background: white;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: skew(30deg, -54deg);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    margin-top: -18px;
+    margin-left: 94px;
+    transform: rotate(45deg);
+}
+

@@ -1,0 +1,56 @@
+.level-chips {
+  height: 40px !important;
+  padding: 0px 2px !important;
+}
+
+.instrument-select select {
+  margin-left: 20%;
+}
+
+.instrument-select.instrument-select-true,
+.instrument-select.instrument-select-true select {
+  background-color: #06c3e1 !important;
+  color: #ffffff !important;
+}
+
+@media only screen and (max-width: 375px) {
+  .level-chips span {
+    font-size: .8rem !important;
+    padding: 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .instrument-select select {
+    margin-left: 34%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .instrument-select select {
+    margin-left: 16%;
+  }
+}
+
+.lesson-details__special-needs--select {
+  font-size: 13px !important;
+  width: 95% !important;
+}
+
+@media (max-width: 768px) {
+  .lesson-details__special-needs--select  {
+    width: 95% !important;
+  }
+}
+
+.student__level {
+  display: flex !important;
+  flex: 1 0 25% !important;
+  margin: 4px !important;
+}
+
+.student__instrument {
+  display: flex !important;
+  flex: 1 0 25% !important;
+  margin: 4px !important;
+}

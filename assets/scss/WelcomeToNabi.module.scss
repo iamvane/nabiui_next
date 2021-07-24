@@ -1,0 +1,29 @@
+.welcome-to-nabi-wrapper {
+  background: #fff;
+  position: fixed;
+  height: 100vh;
+  z-index: 99999;
+  top: 0;
+  width: 100%;
+}
+
+.welcome-to-nabi-content {
+  position: relative;
+  top: 18vh;
+}
+
+.welcome-img {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .welcome-img {
+    width: 300px;
+  }
+}
+
+@media (min-width: 960px) {
+  .welcome-to-nabi-content {
+    top: 24vh;
+  }
+}

@@ -1,0 +1,49 @@
+.studio-tabs {
+  border-radius: 17px;
+}
+.studio-tabs .MuiTabs-root {
+  background: #06c3e1 !important;
+  padding: 5px 10px;
+  border-radius: 17px;
+  min-width: 72px !important;
+}
+
+.studio-tabs .MuiTab-root,
+.studio-tabs .MuiTab-root.Mui-selected {
+  color: #ffffff !important;
+}
+
+.studio-tabs .MuiTabs-indicator {
+  background-color: #ffffff !important;
+}
+
+#lessons-table .MuiTableCell-root {
+  padding: 17px 4px;
+}
+
+
+@media (min-width: 1200px) {
+  .recognized-item {
+    width: 147px;
+    height: 147px;
+  }
+
+  .studio-tabs .MuiTabs-root {
+    min-width: 160px !important;
+  }
+}
+
+.parent-next-lesson-container {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .parent-next-lesson-container {
+    flex-direction: column;
+  }
+}
+
+.parent-join-lesson-img {
+  width: 20px;
+}
+

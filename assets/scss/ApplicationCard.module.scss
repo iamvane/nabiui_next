@@ -1,0 +1,39 @@
+.play-video-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.play-video-avatar {
+  width: 120px !important;
+  height: 120px !important;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.play-video-icon {
+  position: absolute;
+  top: 37px;
+  left: 38%;
+  width: 64px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 375px) {
+  .play-video-icon {
+    left: 28%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .play-video-icon {
+    left: 28%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .play-video-icon {
+    left: 34%;
+  }
+}
