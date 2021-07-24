@@ -25,14 +25,7 @@ import { UserType } from "../../redux/models/UserModel";
 import { fetchUser } from "../../redux/actions/UserActions";
 import { StoreState } from "../../redux/reducers/store";
 
-const urlParams = new URLSearchParams(window.location.search);
-const apiKey = urlParams.get("apikey") || "9srtnzz4hrxh";
 const theme = "light";
-
-const customerUserId = urlParams.get("user3") || "luis";
-const customerUserToken =
-  urlParams.get("user3_token") ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibHVpcyIsImlhdCI6MTYyNzA3MDkyNH0.4LuuvVVS_u_K0NyBfSl7m2LJAPL2cht4Y7SGcT0BBEI";
 
 const Paginator = (
   props: JSX.IntrinsicAttributes &
