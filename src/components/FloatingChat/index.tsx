@@ -115,7 +115,7 @@ const App = (props: Props) => {
               <>
                 <ChannelList
                   options={{ limit: 10 }}
-                  filters={{ members: { $in: [`luis`] } }}
+                  filters={{ members: { $in: [`${user.id}${user.role}`] } }}
                   sort={{ last_message_at: -1 }}
                   Paginator={Paginator}
                 />
