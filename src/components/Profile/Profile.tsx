@@ -4,7 +4,7 @@ import {
   Dispatch
 } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -41,7 +41,13 @@ import { Experience } from "./Experience";
 import '../../../assets/scss/Profile.scss';
 import "../../../assets/css/chat.css";
 
+import { StreamChat } from "stream-chat";
+import {instanceId} from '../../constants/getstreamConstants'
+
+import { UserType } from '../../redux/models/UserModel';
+
 interface StateProps {
+  user: UserType;
   isFetchingBestMatch: boolean;
   fetchBestMatchError: string;
   instructorProfile: InstructorProfileType;
@@ -70,6 +76,11 @@ export const Profile = (props: Props) => {
   const [snackbarDetails, setSnackBarDetails] = React.useState({ type: "", message: "" })
   const [bookTrial, setBookTrial] = React.useState(false);
   const [bestMatchId, setBestMatchId] = React.useState(undefined);
+
+  const user = useSelector((state: StateProps) => {
+    const user = state.user.user;
+    return user;
+  });
 
   React.useEffect(() => { require('../../../assets/scripts/StickyProfileCta.js') }, [])
 
@@ -169,6 +180,29 @@ export const Profile = (props: Props) => {
 
 
   const assignInstructor = async () => {
+    //Connect To Chat
+    const chatClient = StreamChat.getInstance(instanceId);
+    try{
+      const channel = chatClient.channel(`messaging`, {
+        name: `${props.instructorProfile?.name} - ${props.user.displayName}`,
+        members: [
+          `${props.user.id}${props.user.role}`,
+          `${props.instructorProfile?.id}instructor`,
+        ],
+      });
+      await channel.create();
+      let actionbutton = document.querySelector('.customer-wrapper .toggle-button');
+      if (actionbutton instanceof HTMLElement) {
+        actionbutton.click();
+      }
+    }
+    catch(e){
+      setSnackBarDetails({
+        type: "alert",
+        message: 'Instructor not available to chat now, try again later'
+      });
+      setShowSnackbar(true);
+    }
     await props.assignInstructor(props.instructorProfile?.id, requestId);
     setBookTrial(true)
   }
@@ -180,6 +214,7 @@ export const Profile = (props: Props) => {
         <meta name="description" content={pageTitlesAndDescriptions.profile.description}></meta>
       </Head>
       <Header />
+    
       <div className="nabi-container nabi-margin-bottom-medium nabi-margin-top-medium profile-content-wrapper">
         <PageTitle pageTitle={ProfileComponent.pageTitle} />
         {!isTrial &&
@@ -287,7 +322,13 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
       }
     }
   } = state;
+
+  const {
+    user,
+  } = state.user;
+
   return {
+    user,
     isFetchingBestMatch,
     fetchBestMatchError,
     instructorProfile: bestMatch || instructorProfile,

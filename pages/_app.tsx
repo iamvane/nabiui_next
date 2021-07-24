@@ -7,6 +7,8 @@ import * as Sentry from "@sentry/browser";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import { setAuthToken } from "../src/redux/actions/UserActions";
+import { fetchUser } from "../src/redux/actions/UserActions";
+
 import "../assets/css/overrides.css";
 import "../assets/css/index.css";
 import store from "../src/redux/reducers/store";
@@ -16,11 +18,37 @@ import { ErrorBoundary } from "../src/components/ErrorBoundary";
 require("../src/utils/axiosClient");
 import 'lazysizes';
 
+import FloatingChat from '../src/components/FloatingChat';
+import { UserType } from '../src/redux/models/UserModel';
+
+
 Sentry.init({
   dsn: "https://bbb8a78b6945414fa1a9b3d32f16a5b6@sentry.io/1774691"
 });
 
-class NabiApp extends App<any, any> {
+interface UserState {
+  user:UserType,
+}
+
+class NabiApp extends App<any, any>{
+  state: UserState = {
+    user: this.props.store.getState().user.user
+  };
+
+  constructor(props){
+    super(props);
+    this.state = {
+      user:null
+    }
+  }
+  
+  public async componentWillMount(){
+    await this.props.store.dispatch(fetchUser())
+    const state = this.props.store.getState();
+    this.setState({
+      user:state.user.user
+    })
+  }
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)
@@ -32,7 +60,7 @@ class NabiApp extends App<any, any> {
     };
   }
 
-  public componentDidMount(): void {
+  public  async componentDidMount(): Promise<void> {
     if (this.props.token) {
       return this.props.store.dispatch(setAuthToken(this.props.token));
     }
@@ -44,15 +72,15 @@ class NabiApp extends App<any, any> {
       Object.keys(errorInfo).forEach(key => {
         scope.setExtra(key, errorInfo[key]);
       });
-
       Sentry.captureException(error);
     });
-
     super.componentDidCatch(error, errorInfo);
   }
 
-  render() {
+  render(){
     const { Component, pageProps, store } = this.props;
+    const {user} = this.state;
+
     return (
       <>
         <Head>
@@ -62,6 +90,9 @@ class NabiApp extends App<any, any> {
           <Provider store={store}>
             <MuiThemeProvider theme={theme}>
               <Component {...pageProps} />
+              {user && user.id && (
+                <FloatingChat user={user} />
+              )}
             </MuiThemeProvider>
           </Provider>
         </ErrorBoundary>

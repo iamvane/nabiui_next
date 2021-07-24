@@ -12,7 +12,6 @@ import {
   Thread,
   Window,
 } from "stream-chat-react";
-import { Action, Dispatch } from "redux";
 
 import { StreamChat } from "stream-chat";
 
@@ -20,12 +19,11 @@ import "../../../assets/css/chat.css";
 import "./App.css";
 
 import { CloseCustomerIcon, OpenCustomerIcon } from "./assets";
-import { connect, useSelector } from "react-redux";
+import '../../constants/getstreamConstants'
 import { UserType } from "../../redux/models/UserModel";
-import { fetchUser } from "../../redux/actions/UserActions";
-import { StoreState } from "../../redux/reducers/store";
+import { defaultImage, instanceId, limitMessages, theme as gsTheme, tokenEndpoint } from "../../constants/getstreamConstants";
 
-const theme = "light";
+const theme = gsTheme;
 
 const Paginator = (
   props: JSX.IntrinsicAttributes &
@@ -33,54 +31,29 @@ const Paginator = (
 ) => <InfiniteScrollPaginator threshold={300} {...props} />;
 
 
-const chatClient = StreamChat.getInstance("9srtnzz4hrxh");
-
-interface StateProps {
-  user: UserType; 
-  isRequestingFetch: boolean;
-  isRequestingUpdate: boolean;
-  errorUpdate: string;
-  updateAvatarMessage: string;
-}
-
-interface DispatchProps {
-  fetchUser: () => void;
-}
-
+const chatClient = StreamChat.getInstance(instanceId);
 interface OwnProps {
-  nextPath: string;
+  user: UserType;
 }
 
-interface Props extends DispatchProps, StateProps, OwnProps {}
-
-
-const App = (props: Props) => {
+const App = (props: OwnProps) => {
   const [open, setOpen] = useState(true);
-
   const [loading, setLoading] = useState(true);
-  const user = useSelector((state: StateProps) => {
-    const user = state.user.user;
-    return user;
-  });
-
+  
   useEffect(() => {
-    if (user && user.id >= 0) {
-      console.log(user);
-
-      fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+    if (props.user && props.user.id >= 0) {
+      fetch(`${tokenEndpoint}${props.user.id}${props.user.role}`, {
         method: "get",
       })
         .then((res) => res.json())
         .then(({ token }) => {
-          console.log(token);
           chatClient.disconnectUser();
           chatClient
             .connectUser(
               {
-                id: `${user.id}${user.role}`,
-                name: user.displayName,
-                image:
-                  "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+                id: `${props.user.id}${props.user.role}`,
+                name: props.user.displayName,
+                image: props.user.avatar ? props.user.avatar : defaultImage,
               },
               token
             )
@@ -90,18 +63,10 @@ const App = (props: Props) => {
     return () => {
       chatClient.disconnectUser();
     };
-  }, [user, setLoading]);
-
-  useEffect(() => {
-    const fetchData = () => {
-      props.fetchUser();
-    };
-    fetchData();
-  }, []);
+  }, [setLoading]);
 
   return (
     <>
-
       {!loading && (
         <Chat client={chatClient} theme={`commerce ${theme}`}>
           <div className={`customer-wrapper ${open ? "wrapper--open" : ""}`}>
@@ -114,8 +79,8 @@ const App = (props: Props) => {
             {open && (
               <>
                 <ChannelList
-                  options={{ limit: 10 }}
-                  filters={{ members: { $in: [`${user.id}${user.role}`] } }}
+                  options={{ limit: limitMessages }}
+                  filters={{ members: { $in: [`${props.user.id}${props.user.role}`] } }}
                   sort={{ last_message_at: -1 }}
                   Paginator={Paginator}
                 />
@@ -134,28 +99,5 @@ const App = (props: Props) => {
     </>
   );
 };
-function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
-  const {
-    user,
-    actions: {
-      fetchUser: { isRequesting: isRequestingFetch },
-      updateUser: { isRequesting: isRequestingUpdate, error: errorUpdate },
-      uploadAvatar: { message: updateAvatarMessage },
-    },
-  } = state.user;
 
-  return {
-    user,
-    isRequestingFetch,
-    isRequestingUpdate,
-    errorUpdate,
-    updateAvatarMessage,
-  };
-}
-
-
-const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
-  fetchUser: () => dispatch(fetchUser()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

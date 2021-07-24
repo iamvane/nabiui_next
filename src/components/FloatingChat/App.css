@@ -1,5 +1,5 @@
 .agent-wrapper {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   background: #fff;
@@ -24,7 +24,7 @@
 }
 
 .customer-wrapper {
-  position: absolute;
+  position: fixed;
   bottom: 16px;
   right: 0;
   display: flex;
@@ -37,7 +37,7 @@
 
 
 .customer-wrapper.wrapper--open {
-  position: absolute;
+  position: fixed;
   bottom: 16px;
   right: 95px;
   display: flex;
