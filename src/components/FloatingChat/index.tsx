@@ -87,7 +87,7 @@ const App = (props: OwnProps) => {
                 <Channel>
                   <Window>
                     <MessageList Message={MessageTeam} />
-                    <MessageInput Input={MessageInputFlat} />
+                    <MessageInput />
                   </Window>
                   <Thread />
                 </Channel>
