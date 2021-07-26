@@ -51,7 +51,7 @@ interface OwnProps {
 function Feed(props: Props) {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState<string | null>(null);
-  const [role, setRole] = useState<string | null>(null)
+  const [role, setRole] = useState<string | null>(null);
   const user = useSelector((state: StateProps) => {
     const user = state.user.user;
     return user;
@@ -67,7 +67,7 @@ function Feed(props: Props) {
         .then((res) => res.json())
         .then(({ token }) => {
           setToken(token);
-          setRole(user.role)
+          setRole(user.role);
           setLoading(false);
         });
     }
@@ -82,17 +82,19 @@ function Feed(props: Props) {
   return (
     <>
       <Header
-        drawerMenuItems={role === "instructor" ? menuItemsInstructor : menuItems}
+        drawerMenuItems={
+          role === "instructor" ? menuItemsInstructor : menuItems
+        }
         // headerMenuItems={[]}
         privateRoute={true}
       />
-      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "600px", margin: "10px auto" }}>
         {token && (
           <StreamApp apiKey={apiKey} appId={appId} token={token}>
             {/* <div className="wrapper box">
-          <h3>React Activity Feed</h3>
-          <NotificationDropdown right />
-        </div> */}
+              <h3>React Activity Feed</h3>
+              <NotificationDropdown right />
+            </div> */}
             <StatusUpdateForm />
             <FlatFeed
               notify
@@ -103,32 +105,35 @@ function Feed(props: Props) {
                 withRecentReactions: true,
               }}
               Paginator={InfiniteScrollPaginator}
-              Activity={({ activity, feedGroup, userId }) => (
-                <Activity
-                  activity={activity}
-                  feedGroup={feedGroup}
-                  userId={userId}
-                  Footer={() => (
-                    <>
-                      <ActivityFooter
-                        activity={activity}
-                        feedGroup={feedGroup}
-                        userId={userId}
-                      />
-                      <CommentField activity={activity} />
-                      <CommentList
-                        activityId={activity.id as string}
-                        CommentItem={({ comment }) => (
-                          <div className="wrapper">
-                            <CommentItem comment={comment} />
-                            <LikeButton reaction={comment} />
-                          </div>
-                        )}
-                      />
-                    </>
-                  )}
-                />
-              )}
+              Activity={({ activity, feedGroup, userId }) => {
+                console.log(activity);
+                return (
+                  <Activity
+                    activity={activity}
+                    feedGroup={feedGroup}
+                    userId={userId}
+                    Footer={() => (
+                      <>
+                        <ActivityFooter
+                          activity={activity}
+                          feedGroup={feedGroup}
+                          userId={userId}
+                        />
+                        <CommentField activity={activity} />
+                        <CommentList
+                          activityId={activity.id}
+                          CommentItem={({ comment }) => (
+                            <div className="wrapper">
+                              <CommentItem comment={comment} />
+                              <LikeButton reaction={comment} />
+                            </div>
+                          )}
+                        />
+                      </>
+                    )}
+                  />
+                );
+              }}
             />
           </StreamApp>
         )}
