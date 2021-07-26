@@ -106,9 +106,7 @@ const App = (props: Props) => {
         // headerMenuItems={[]}
         privateRoute={true}
       />
-      {loading ? (
-        <div>hi</div>
-      ) : (
+      {!loading && (
         <Chat client={chatClient}>
           <ChannelList
             filters={{ members: { $in: [`${user.id}${user.role}`] } }}

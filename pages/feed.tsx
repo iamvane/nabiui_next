@@ -86,7 +86,7 @@ function Feed(props: Props) {
         // headerMenuItems={[]}
         privateRoute={true}
       />
-      <div style={{ maxWidth: "600px", margin: "10 auto" }}>
+      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
         {token && (
           <StreamApp apiKey={apiKey} appId={appId} token={token}>
             {/* <div className="wrapper box">

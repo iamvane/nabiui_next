@@ -10,6 +10,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Token>
 ) {
-  const token = jwt.sign({"user_id": req.query.user_id}, "secret");
+  const token = jwt.sign({"user_id": req.query.user_id}, "bjtrgruqzb8b94gz54pnrr423k6ngrxquttdw6u52bkpf2ka473qqku2qy65mmy7");
   res.status(200).json({ token });
 }
