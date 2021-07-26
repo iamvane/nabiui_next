@@ -158,6 +158,10 @@ export const menuItems = [
     route: Routes.Chat
   },
   {
+    label: 'Feed',
+    route: Routes.Feed
+  },
+  {
     label: 'Help',
     route: Routes.ContactUs
   }

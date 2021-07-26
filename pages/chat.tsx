@@ -16,9 +16,12 @@ import {
 } from "stream-chat-react";
 import { Action, Dispatch } from "redux";
 import { StoreState } from "../src/redux/reducers/store";
-import { fetchUser, updateUser } from "../src/redux/actions/UserActions";
+import { fetchUser } from "../src/redux/actions/UserActions";
 import { UserType } from "../src/redux/models/UserModel";
-import { connect, DefaultRootState, useSelector } from "react-redux";
+import { connect, useSelector } from "react-redux";
+import { menuItems } from "../src/components/StudioParent/constants";
+import { Header } from "../src/components/Header/Header";
+import { menuItems as menuItemsInstructor } from "../src/components/StudioInstructor/constants";
 
 import "stream-chat-react/dist/css/index.css";
 
@@ -50,9 +53,10 @@ const Paginator = (
 const App = (props: Props) => {
   const [loading, setLoading] = useState(true);
   const user = useSelector((state: StateProps) => {
-    const user = state.user.user
-    return user
+    const user = state.user.user;
+    return user;
   });
+  const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
     if (user && user.id >= 0) {
@@ -75,7 +79,10 @@ const App = (props: Props) => {
               },
               token
             )
-            .then((res) => setLoading(false));
+            .then((res) => {
+              setLoading(false);
+              setRole(user.role)
+            });
         });
     }
     return () => {
@@ -92,6 +99,13 @@ const App = (props: Props) => {
 
   return (
     <>
+      <Header
+        drawerMenuItems={
+          role === "instructor" ? menuItemsInstructor : menuItems
+        }
+        // headerMenuItems={[]}
+        privateRoute={true}
+      />
       {loading ? (
         <div>hi</div>
       ) : (
