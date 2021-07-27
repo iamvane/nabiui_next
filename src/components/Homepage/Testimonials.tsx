@@ -7,7 +7,7 @@ import {
 import { Button, Grid } from "nabi_web_components";
 import { Routes } from '../common/constants//Routes';
 
-import '../../../assets/scss/Testimonials.scss'
+//import '../../../assets/scss/Testimonials.scss'
 import {
   title,
   testimonials,

@@ -1,7 +1,7 @@
 import React from "react";
 import Head from 'next/head';
 
-import '../../../assets/scss/VettingProcess.scss';
+//import '../../../assets/scss/VettingProcess.scss';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 export { title } from './constants';
 

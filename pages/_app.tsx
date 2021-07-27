@@ -14,12 +14,27 @@ import "../assets/css/index.css";
 //GLOBAL CSS
 import '../assets/scss/Header.scss';
 import '../assets/scss/Footer.scss'
+import "../assets/scss/Banner.scss";
 
 import "../assets/css/chat.css";
 import '../src/components/FloatingChat/App.css';
 
+import "../assets/scss/Home.scss";
 import '../assets/scss/LessonStatus.scss';
 import '../assets/scss/StudioParent.scss';
+import '../assets/scss/StudioInstructor.scss';
+import '../assets/scss/Testimonials.scss'
+import '../assets/scss/ProfileHeader.scss';
+import '../assets/scss/Profile.scss';
+import '../assets/scss/InstructorCard.scss';
+import '../assets/scss/AboutUs.scss';
+import "../assets/scss/StripePaymentForm.scss";
+import '../assets/scss/WelcomeToNabi.scss';
+import '../assets/scss/VettingProcess.scss';
+import '../assets/scss/LessonCard.scss';
+import '../assets/scss/ChildForm.scss';
+import '../assets/scss/ScheduleLessons.scss';
+
 
 import { parseCookies } from "../src/utils/parseCookies";
 import { theme } from "../theme/theme";

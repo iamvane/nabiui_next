@@ -1,8 +1,6 @@
-import {
-    createMuiTheme
-} from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles'
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
     overrides: {
         MuiButton: {
             textPrimary: {
@@ -114,12 +112,12 @@ export const theme = createMuiTheme({
                 }
             },
         },
-        MuiGridListTileBar: {
+        /*MuiGridListTileBar: {
             root: {
                 background: '#c6c9d0',
                 borderRadius: '3px',
             }
-        },
+        },*/
         MuiIcon: {
             root: {
                 width: '22px',
