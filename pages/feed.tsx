@@ -23,12 +23,8 @@ import { Header } from "../src/components/Header/Header";
 import { menuItems } from "../src/components/StudioParent/constants";
 import { menuItems as menuItemsInstructor } from "../src/components/StudioInstructor/constants";
 
-//import './app.css';
-
-const apiKey = "9srtnzz4hrxh";
-const appId = "1129118";
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmF0bWFuIn0.8aYd7O_fx-1YMx28DXG1n274o4pa3SjHnRM8AIHLqkE";
+import {instanceId,tokenEndpoint,defaultImage,limitMessages,theme,appId,feedGroup} from '../src/constants/getstreamConstants';
+const apiKey = instanceId;
 
 interface Props extends DispatchProps, StateProps, OwnProps {}
 
@@ -61,7 +57,7 @@ function Feed(props: Props) {
     if (user && user.id >= 0) {
       setLoading(true);
       console.log(user);
-      fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+      fetch(`${tokenEndpoint}${user.id}${user.role}`, {
         method: "get",
       })
         .then((res) => res.json())
@@ -89,16 +85,15 @@ function Feed(props: Props) {
       <div style={{ maxWidth: "600px", margin: "0 auto" }}>
         {token && (
           <StreamApp apiKey={apiKey} appId={appId} token={token}>
-            {/* <div className="wrapper box">
+            {<div className="wrapper box">
           <h3>React Activity Feed</h3>
-          <NotificationDropdown right />
-        </div> */}
+        </div>}
             <StatusUpdateForm />
             <FlatFeed
               notify
-              feedGroup="user"
+              feedGroup={feedGroup}
               options={{
-                limit: 6,
+                limit: limitMessages,
                 withOwnChildren: true,
                 withRecentReactions: true,
               }}

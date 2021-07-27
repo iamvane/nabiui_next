@@ -23,9 +23,12 @@ import { menuItems } from "../src/components/StudioParent/constants";
 import { Header } from "../src/components/Header/Header";
 import { menuItems as menuItemsInstructor } from "../src/components/StudioInstructor/constants";
 
+import {instanceId,tokenEndpoint,defaultImage,limitMessages,theme} from '../src/constants/getstreamConstants';
+
+
 import "stream-chat-react/dist/css/index.css";
 
-const chatClient = StreamChat.getInstance("9srtnzz4hrxh");
+const chatClient = StreamChat.getInstance(instanceId);
 
 interface Props extends DispatchProps, StateProps, OwnProps {}
 
@@ -62,7 +65,7 @@ const App = (props: Props) => {
     if (user && user.id >= 0) {
       console.log(user);
 
-      fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+      fetch(`${tokenEndpoint}${user.id}${user.role}`, {
         method: "get",
       })
         .then((res) => res.json())
@@ -74,8 +77,7 @@ const App = (props: Props) => {
               {
                 id: `${user.id}${user.role}`,
                 name: user.displayName,
-                image:
-                  "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+                image: user.avatar?user.avatar:defaultImage
               },
               token
             )
