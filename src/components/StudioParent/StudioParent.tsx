@@ -45,7 +45,7 @@ import {
 } from './constants';
 import { LessonStatus } from './LessonStatus';
 import { MissingFields } from "../MissingFields/MissingFields";
-import '../../../assets/scss/StudioParent.scss';
+//import '../../../assets/scss/StudioParent.scss';
 
 import { ParentStudentDashboardType } from '../Dashboard/models';
 import { Header } from '../Header/Header';
@@ -105,7 +105,6 @@ export const StudioParent = (props: Props) => {
 
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     if (event) event.preventDefault();
-
     setStudent(newValue);
   };
 
