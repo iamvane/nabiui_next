@@ -23,6 +23,10 @@ import { Header } from "../src/components/Header/Header";
 import { menuItems } from "../src/components/StudioParent/constants";
 import { menuItems as menuItemsInstructor } from "../src/components/StudioInstructor/constants";
 
+import { connect as stream } from 'getstream';
+
+
+
 import {instanceId,tokenEndpoint,defaultImage,limitMessages,theme,appId,feedGroup} from '../src/constants/getstreamConstants';
 const apiKey = instanceId;
 
@@ -54,14 +58,14 @@ function Feed(props: Props) {
   });
 
   useEffect(() => {
-    if (user && user.id >= 0) {
+    if (user && user.id > 0) {
       setLoading(true);
       console.log(user);
       fetch(`${tokenEndpoint}${user.id}${user.role}`, {
         method: "get",
       })
         .then((res) => res.json())
-        .then(({ token }) => {
+        .then( async ({ token }) => {
           setToken(token);
           setRole(user.role)
           setLoading(false);
@@ -86,7 +90,7 @@ function Feed(props: Props) {
         {token && (
           <StreamApp apiKey={apiKey} appId={appId} token={token}>
             {<div className="wrapper box">
-          <h3>React Activity Feed</h3>
+          <h3>NABI MUSIC Feed</h3>
         </div>}
             <StatusUpdateForm />
             <FlatFeed
@@ -99,6 +103,7 @@ function Feed(props: Props) {
               }}
               Paginator={InfiniteScrollPaginator}
               Activity={({ activity, feedGroup, userId }) => (
+                
                 <Activity
                   activity={activity}
                   feedGroup={feedGroup}
