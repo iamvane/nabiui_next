@@ -11,6 +11,15 @@ import { fetchUser , setAuthToken} from "../src/redux/actions/UserActions";
 import "../assets/css/overrides.css";
 import "../assets/css/index.css";
 
+//GLOBAL CSS
+import '../assets/scss/Header.scss';
+import '../assets/scss/Footer.scss'
+
+import "../assets/css/chat.css";
+import '../src/components/FloatingChat/App.css';
+
+import '../assets/scss/LessonStatus.scss';
+import '../assets/scss/StudioParent.scss';
 
 import { parseCookies } from "../src/utils/parseCookies";
 import { theme } from "../theme/theme";

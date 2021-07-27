@@ -23,7 +23,7 @@ import { Header } from "../src/components/Header/Header";
 import { menuItems } from "../src/components/StudioParent/constants";
 import { menuItems as menuItemsInstructor } from "../src/components/StudioInstructor/constants";
 
-// import './app.css';
+//import './app.css';
 
 const apiKey = "9srtnzz4hrxh";
 const appId = "1129118";

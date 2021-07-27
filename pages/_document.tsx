@@ -15,13 +15,12 @@ class NabiDocument extends Document {
     super(props);
   }
 
-  /*
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return {
       ...initialProps
     };
-  }*/
+  }
 
   render() {
     const prod = process.env.NODE_ENV == "production";
