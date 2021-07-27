@@ -37,7 +37,7 @@ interface OwnProps {
 }
 
 const App = (props: OwnProps) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
