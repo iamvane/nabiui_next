@@ -15,8 +15,8 @@ import {
 
 import { StreamChat } from "stream-chat";
 
-import "../../../assets/css/chat.css";
-import "./App.css";
+//import "../../../assets/css/chat.css";
+//import "./App.css";
 
 import { CloseCustomerIcon, OpenCustomerIcon } from "./assets";
 import '../../constants/getstreamConstants'
