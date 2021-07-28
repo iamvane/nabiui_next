@@ -284,7 +284,6 @@ function Feed(props: Props) {
             <StatusUpdateForm />
             <FlatFeed
               notify
-              userId={feedGroup}
               feedGroup={feedGroup}
               options={{
                 limit: limitMessages,
