@@ -12,8 +12,7 @@ import "../assets/css/overrides.css";
 import "../assets/css/index.css";
 
 //GLOBAL CSS
-import "../assets/css/chat.css";
-import '../src/components/FloatingChat/App.css';
+import '../assets/scss/Testimonials.scss';
 
 
 import { parseCookies } from "../src/utils/parseCookies";
@@ -48,7 +47,7 @@ class NabiApp extends App<any, any>{
       user:null
     }
   }
-
+  
   public async componentWillMount(){
     console.log('store',store);
     await store.dispatch(fetchUser())
