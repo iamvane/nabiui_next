@@ -12,7 +12,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-import "../../../assets/scss/StripePaymentForm.scss";
+import "../../../assets/scss/StripePaymentForm.module.scss";
 import { StoreState } from '../../redux/reducers/store';
 import {
   requestBackgroundCheck,

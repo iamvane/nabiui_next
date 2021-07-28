@@ -10,7 +10,7 @@ const Star = dynamic(() => import('@material-ui/icons/Star'), {
   ssr: false,
 });
 
-import "../../../assets/scss/Home.scss";
+import "../../../assets/scss/Home.module.scss";
 import { UserType } from "../../redux/models/UserModel";
 import { Routes } from "../common/constants/Routes";
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';

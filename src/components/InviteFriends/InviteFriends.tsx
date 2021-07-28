@@ -20,7 +20,7 @@ import {
   CircularProgress
 } from "@material-ui/core";
 
-import "../../../assets/scss/InviteFriends.scss";
+import "../../../assets/scss/InviteFriends.module.scss";
 import { StoreState } from "../../redux/reducers/store";
 import { UserType } from "../../redux/models/UserModel";
 import { sendReferralInvite } from "../../redux/actions/UserActions";

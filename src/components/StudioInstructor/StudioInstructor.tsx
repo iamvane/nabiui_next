@@ -36,7 +36,7 @@ import {
 } from '../Dashboard/models';
 import LessonCard from './LessonCard';
 import { ZoomMissingLink } from "./ZoomLinkMissing";
-//import '../../../assets/scss/StudioInstructor.scss';
+import '../../../assets/scss/StudioInstructor.module.scss';
 
 interface StateProps {
   dashboard: InstructorDashboardType;

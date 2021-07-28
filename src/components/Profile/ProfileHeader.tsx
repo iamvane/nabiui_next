@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 const Star = dynamic(() => import('@material-ui/icons/Star'), {
   ssr: false,
 });
-import '../../../assets/scss/ProfileHeader.scss';
+import '../../../assets/scss/ProfileHeader.module.scss';
 import { InstructorProfileType } from "../../redux/models/InstructorModel";
 import CollapsibleBalloonList from '../CollapsibleBalloonList/CollapsibleBalloonList';
 

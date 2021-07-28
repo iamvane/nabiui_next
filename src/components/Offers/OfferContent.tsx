@@ -3,7 +3,7 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 import Countdown from "react-countdown-now";
 import { OfferContentComponent } from "./constants";
-import "../../../assets/scss/OfferContent.scss";
+import "../../../assets/scss/OfferContent.module.scss";
 
 interface Props {
   expireAt: any;

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Button } from '@material-ui/core';
 
-import '../../../assets/scss/PageBannerCta.scss';
+import '../../../assets/scss/PageBannerCta.module.scss';
 
 export interface Props {
   description: string;

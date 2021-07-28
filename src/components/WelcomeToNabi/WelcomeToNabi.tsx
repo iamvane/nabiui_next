@@ -9,7 +9,7 @@ import {
 import { getCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import { Role } from '../../constants/Roles';
-import '../../../assets/scss/WelcomeToNabi.scss';
+import '../../../assets/scss/WelcomeToNabi.module.scss';
 
 import { WelcomeToNabiComponent } from './constants';
 

@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 
 import SnackBar from '../common/SnackBar';
-import "../../../assets/scss/StripePaymentForm.scss";
+import "../../../assets/scss/StripePaymentForm.module.scss";
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
