@@ -74,7 +74,7 @@ export const Registration = (props: Props) => {
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [birthday, setBirthday] = React.useState("");
+  const [birthday, setBirthday] = React.useState<Date>(new Date());
   const [openModal, toggleModal] = React.useState(false);
   const [isUnderage, setIsUnderAge] = React.useState(false);
   const [phoneNumber, setPhoneNumber] = React.useState('');
@@ -189,8 +189,8 @@ export const Registration = (props: Props) => {
     }
   };
 
-  const handleBirthdayChange = (date: moment.Moment): void => {
-    setBirthday(String(date));
+  const handleBirthdayChange = (date: Date): void => {
+    setBirthday(date);
   };
 
   const displayAgeDisclaimer = (): void => {
@@ -343,7 +343,7 @@ export const Registration = (props: Props) => {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             handleBirthdayChange={handleBirthdayChange}
-            birthday={birthday ? birthday : ""}
+            birthday={birthday}
             selectedRole={props.role || ""}
             formErrors={formErrors}
             apiError={props.apiError}
