@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Grid } from 'nabi_web_components';
 
-//import '../../../assets/scss/Footer.scss'
+import '../../../assets/scss/Footer.module.scss'
 import SocialMenu from './SocialMenu';
 import { FooterComponent } from './constants/Footer';
 import { Routes } from './constants/Routes';

@@ -9,7 +9,7 @@ import {
 import Star from "@material-ui/icons/Star";
 
 import { InstructorListType } from "../../redux/models/InstructorModel";
-//import '../../../assets/scss/InstructorCard.scss';
+import '../../../assets/scss/InstructorCard.scss';
 
 interface Props {
   instructor: InstructorListType;
@@ -28,7 +28,7 @@ const InstructorCard = (props: Props) => {
     let instruments = [];
     props.instructor?.instruments.map(instrument => {
       instruments.push(instrument.charAt(0).toUpperCase() + instrument.slice(1))
-    }) 
+    })
     return instruments.join(', ');
   }
 

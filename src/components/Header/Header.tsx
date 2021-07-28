@@ -11,7 +11,7 @@ const Star = dynamic(() => import('@material-ui/icons/Star'), {
   ssr: false,
 });
 
-//import '../../../assets/scss/Header.scss'
+import '../../../assets/scss/Header.scss'
 import { getCookie } from "../../utils/cookies";
 import { Role } from '../../constants/Roles';
 import { Routes } from '../common/constants/Routes';
@@ -43,7 +43,7 @@ export const Header = (props: Props) => {
     "https://nabimusic.s3.us-east-2.amazonaws.com/assets/images/full-logo.png";
 
   const role = getCookie('role');
-  
+
   const renderMenu = () => {
     return props.headerMenuItems.map((menuItem, index) => (
       <Link href={menuItem.route} prefetch={false} key={index}>

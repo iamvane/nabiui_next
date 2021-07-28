@@ -6,7 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 
-//import '../../../assets/scss/AboutUs.scss';
+import '../../../assets/scss/AboutUs.module.scss';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import * as constants from './constants';
 

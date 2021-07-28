@@ -38,7 +38,7 @@ import { InstructorProfileType } from "../../redux/models/InstructorModel";
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
 import { Experience } from "./Experience";
-//import '../../../assets/scss/Profile.scss';
+import '../../../assets/scss/Profile.scss';
 
 interface StateProps {
   isFetchingBestMatch: boolean;
