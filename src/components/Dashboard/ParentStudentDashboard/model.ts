@@ -1,7 +1,7 @@
 export interface StudentDetailsType {
   id?: number;
   name?: string;
-  age?: number;
+  age?: Date | number;
   instrument?: string;
   skillLevel?: string;
   lessonPlace?: string;

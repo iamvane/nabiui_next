@@ -31,7 +31,7 @@ interface Props {
 
 export const StudentForm = (props: Props) => {
   const [name, setName] = React.useState('');
-  const [dob, setDob] = React.useState('');
+  const [dob, setDob] = React.useState(new Date());
   const [instrument, setInstrument] = React.useState('');
   const [instrumentSelect, setInstrumentSelect] = React.useState('');
   const [level, setLevel] = React.useState('');
@@ -94,8 +94,8 @@ export const StudentForm = (props: Props) => {
     }
   }
 
-  const handleBirthdayChange = (date: moment.Moment): void => {
-    setDob(String(date));
+  const handleBirthdayChange = (date: Date): void => {
+    setDob(new Date(date));
   };
 
   const validate = () => {
@@ -198,7 +198,7 @@ export const StudentForm = (props: Props) => {
 
             <FormControl required={true}>
               <DatePicker
-                selected={dob ? moment(new Date(dob)) : moment(Date.now())}
+                selected={dob ? new Date(dob) : new Date()}
                 onChange={handleBirthdayChange}
                 peekNextMonth={true}
                 showMonthDropdown={true}
