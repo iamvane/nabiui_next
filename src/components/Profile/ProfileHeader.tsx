@@ -112,7 +112,7 @@ export const ProfileHeader = (props: Props) => {
       ],
     });
     await channel.create();
-    router.push("/chat");
+    router.push("/inbox");
   };
 
   return (
