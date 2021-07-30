@@ -9,6 +9,7 @@ export namespace ProfileComponent {
   export const bookTrialWith = 'Book Trial with ';
   export const bookTrialButton = 'Book Trial';
   export const viewMoreInstructorsButton = "View More Instructors";
+  export const sendMessage = "Contact Instructor"
 
 }
 
