@@ -77,48 +77,48 @@ export const Profile = (props: Props) => {
   const requestId = Number(router.query.requestId);
   const isTrial = router.pathname === "/book-trial/best-match";
 
-  React.useEffect(() => {
-    if (props.user && props.user.id >= 0 && props.instructorProfile && props.instructorProfile) {
-      console.log(props.user);
+  // React.useEffect(() => {
+  //   if (props.user && props.user.id >= 0 && props.instructorProfile && props.instructorProfile) {
+  //     console.log(props.user);
 
-      fetch(`/api/profile?user_id=${props.instructorProfile.id}instructor`, {
-        method: "get",
-      })
-        .then((res) => res.json())
-        .then(async ({ token }) => {
-          await chatClient.disconnectUser();
-          await chatClient.connectUser(
-            {
-              id: `${props.instructorProfile.id}instructor`,
-              name: props.instructorProfile.name,
-              image:
-                "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-            },
-            token
-          );
-          await chatClient.disconnectUser();
+  //     fetch(`/api/profile?user_id=${props.instructorProfile.id}instructor`, {
+  //       method: "get",
+  //     })
+  //       .then((res) => res.json())
+  //       .then(async ({ token }) => {
+  //         await chatClient.disconnectUser();
+  //         await chatClient.connectUser(
+  //           {
+  //             id: `${props.instructorProfile.id}instructor`,
+  //             name: props.instructorProfile.name,
+  //             image:
+  //               "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+  //           },
+  //           token
+  //         );
+  //         await chatClient.disconnectUser();
 
-          fetch(`/api/profile?user_id=${props.user.id}${props.user.role}`, {
-            method: "get",
-          })
-            .then((res) => res.json())
-            .then(async ({ token }) => {
-              await chatClient.connectUser(
-                {
-                  id: `${props.user.id}${props.user.role}`,
-                  name: props.user.displayName,
-                  image:
-                    "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-                },
-                token
-              );
-            });
-        });
-    }
-    return () => {
-      chatClient.disconnectUser();
-    };
-  }, [props.user, props.instructorProfile]);
+  //         fetch(`/api/profile?user_id=${props.user.id}${props.user.role}`, {
+  //           method: "get",
+  //         })
+  //           .then((res) => res.json())
+  //           .then(async ({ token }) => {
+  //             await chatClient.connectUser(
+  //               {
+  //                 id: `${props.user.id}${props.user.role}`,
+  //                 name: props.user.displayName,
+  //                 image:
+  //                   "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+  //               },
+  //               token
+  //             );
+  //           });
+  //       });
+  //   }
+  //   return () => {
+  //     chatClient.disconnectUser();
+  //   };
+  // }, [props.user, props.instructorProfile]);
 
   React.useEffect(() => {
     const fetchData = () => {
