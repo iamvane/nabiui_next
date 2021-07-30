@@ -229,7 +229,6 @@ export const Profile = (props: Props) => {
       ],
     });
     await channel.create();
-    router.push("/chat");
   };
 
   return (
