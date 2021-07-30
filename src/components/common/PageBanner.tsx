@@ -1,6 +1,5 @@
 import React from "react"
 
-import '../../../assets/scss/PageBanner.module.scss';
 
 export interface Props {
   title: string;

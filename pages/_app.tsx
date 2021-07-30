@@ -10,10 +10,39 @@ import { fetchUser , setAuthToken} from "../src/redux/actions/UserActions";
 
 import "../assets/css/overrides.css";
 import "../assets/css/index.css";
+import "../assets/css/chat.css";
 
 //GLOBAL CSS
 import '../assets/scss/Testimonials.scss';
-
+import '../assets/scss/AboutUs.scss';
+import '../assets/scss/PhoneValidationForm.scss';
+import "../assets/scss/Banner.scss";
+import '../assets/scss/Footer.scss'
+import '../assets/scss/PageBanner.scss';
+import '../assets/scss/PageBannerCta.scss';
+import '../assets/scss/Header.scss'
+import '../assets/scss/Features.scss'
+import "../assets/scss/Home.scss";
+import '../assets/scss/InstructorCard.scss';
+import "../assets/scss/InviteFriends.scss";
+import '../assets/scss/FreeLandingPage.scss';
+import "../assets/scss/OfferContent.scss";
+import "../assets/scss/StripePaymentForm.scss";
+import '../assets/scss/Profile.scss';
+import '../assets/scss/ProfileHeader.scss';
+import "../assets/scss/StripePaymentForm.scss";
+import "../assets/scss/ReferralModal.scss";
+import '../assets/scss/Calendar.scss';
+import '../assets/scss/ScheduleLessons.scss';
+import '../assets/scss/ScheduleLessons.scss';
+import '../assets/scss/ChildForm.scss';
+import '../assets/scss/LessonCard.scss';
+import '../assets/scss/StudioInstructor.scss';
+import '../assets/scss/LessonStatus.scss';
+import '../assets/scss/StudioParent.scss';
+import '../assets/scss/VettingProcess.scss';
+import '../assets/scss/WelcomeToNabi.scss';
+import '../src/components/FloatingChat/App.css'
 
 import { parseCookies } from "../src/utils/parseCookies";
 import { theme } from "../theme/theme";
@@ -38,16 +67,16 @@ interface UserState {
 class NabiApp extends App<any, any>{
 
   state: UserState = {
-    user: store.getState().user.user
+    user: store.getState().user.user,
   };
 
   constructor(props){
     super(props);
     this.state = {
-      user:null
+      user:null,
     }
   }
-  
+
   public async componentWillMount(){
     console.log('store',store);
     await store.dispatch(fetchUser())
@@ -89,6 +118,8 @@ class NabiApp extends App<any, any>{
   render(){
     const { Component, pageProps } = this.props;
     const {user} = this.state;
+
+    console.log(this.state)
 
     return (
       <>

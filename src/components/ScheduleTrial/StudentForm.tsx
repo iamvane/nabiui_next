@@ -14,7 +14,6 @@ import {
   FormHelperText,
   Chip
 } from 'nabi_web_components';
-import '../../../assets/scss/ChildForm.module.scss';
 import { specialNeeds } from '../../../assets/data/specialNeeds';
 
 import { setCookie } from "../../utils/cookies";

@@ -45,7 +45,6 @@ import {
 } from './constants';
 import { LessonStatus } from './LessonStatus';
 import { MissingFields } from "../MissingFields/MissingFields";
-import '../../../assets/scss/StudioParent.module.scss';
 
 import { ParentStudentDashboardType } from '../Dashboard/models';
 import { Header } from '../Header/Header';

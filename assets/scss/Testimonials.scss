@@ -2,7 +2,7 @@
     padding: 20px 20px 20px;
     margin-bottom: 30px;
   }
-  
+
   .testimonial-item:after {
     content: '';
       display: block;
@@ -20,11 +20,11 @@
       -moz-box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
       box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
   }
-  
+
   .testimonial-item p {
     line-height: 28px;
   }
-  
+
   .recognized-item {
     background: #ffffff;
     border-radius: 50%;
@@ -33,12 +33,12 @@
     border: 5px solid #fff;
     text-align: center;
   }
-  
+
   .recognized-item img {
     width: 70%;
     margin-top: 20px;
   }
-  
+
   .become-an-instructor-icon {
       width: 100px;
   }
@@ -54,12 +54,11 @@
       height: 116px;
     }
   }
-  
+
   @media (min-width: 1200px) {
     .recognized-item {
       width: 147px;
       height: 147px;
     }
   }
-  
-  
+

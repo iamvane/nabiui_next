@@ -11,7 +11,6 @@ const Star = dynamic(() => import('@material-ui/icons/Star'), {
   ssr: false,
 });
 
-import '../../../assets/scss/Header.module.scss'
 import { getCookie } from "../../utils/cookies";
 import { Role } from '../../constants/Roles';
 import { Routes } from '../common/constants/Routes';

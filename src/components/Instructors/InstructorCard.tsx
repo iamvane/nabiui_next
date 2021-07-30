@@ -9,7 +9,6 @@ import {
 import Star from "@material-ui/icons/Star";
 
 import { InstructorListType } from "../../redux/models/InstructorModel";
-import '../../../assets/scss/InstructorCard.module.scss';
 
 interface Props {
   instructor: InstructorListType;

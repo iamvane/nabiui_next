@@ -39,7 +39,7 @@ interface OwnProps {
 const App = (props: OwnProps) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     if (props.user && props.user.id >= 0) {
       fetch(`${tokenEndpoint}${props.user.id}${props.user.role}`, {

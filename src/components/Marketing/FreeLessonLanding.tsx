@@ -12,7 +12,6 @@ import { getCookie } from '../../utils/cookies';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import { Routes } from '../common/constants/Routes';
 
-import '../../../assets/scss/FreeLandingPage.module.scss';
 
 interface Props {}
 

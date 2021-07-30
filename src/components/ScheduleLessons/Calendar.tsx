@@ -13,7 +13,6 @@ import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 
 import PageTitle from '../common/PageTitle';
-import '../../../assets/scss/Calendar.module.scss';
 
 
 import { ScheduleLessonsComponent } from './constants';

@@ -20,7 +20,6 @@ import {
   CircularProgress
 } from 'nabi_web_components';
 
-import '../../../../assets/scss/PhoneValidationForm.module.scss';
 
 import { selectOptions } from '../../../utils/formUtils';
 import {

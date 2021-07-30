@@ -38,7 +38,6 @@ import { InstructorProfileType } from "../../redux/models/InstructorModel";
 import { page } from '../../utils/analytics';
 import SnackBar from '../common/SnackBar';
 import { Experience } from "./Experience";
-import '../../../assets/scss/Profile.module.scss';
 
 interface StateProps {
   isFetchingBestMatch: boolean;
@@ -296,7 +295,7 @@ const mapStateToProps = (state: StoreState, _ownProps: {}): StateProps => {
 };
 
 function mapDispatchToProps(
-  dispatch: Dispatch<Action | ThunkAction<{}, {}, {}>>,
+  dispatch: Dispatch<Action<any>>,
   _ownProps: OwnProps
 ): DispatchProps {
   return {

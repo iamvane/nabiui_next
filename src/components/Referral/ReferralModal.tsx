@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Router from "next/router";
 import { Routes } from "../common/constants/Routes";
 
-import "../../../assets/scss/ReferralModal.module.scss";
 import { StoreState } from "../../redux/reducers/store";
 import { setUserEmail } from "../../redux/actions/UserActions";
 import { ReferralModalComponent } from "./constants";

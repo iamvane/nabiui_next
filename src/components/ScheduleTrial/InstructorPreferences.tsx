@@ -21,7 +21,6 @@ import {
 } from 'nabi_web_components';
 
 import { languages } from '../../../assets/data/languages';
-import '../../../assets/scss/ScheduleLessons.module.scss';
 import { createRequest } from '../../redux/actions/RequestActions';
 import { getCookie } from "../../utils/cookies";
 import { track } from '../../utils/analytics';
