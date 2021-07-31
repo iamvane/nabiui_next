@@ -50,6 +50,8 @@ export const BookingDetails = (props: Props) => {
 
   const displayAvailability = () => {
     const availability = getCookie('availability');
+    // console.log("******************AVAILABILITY*********************")
+    // console.log(Object.values(availability));
     const modifiedAvailability = [];
     if (availability?.length) {
       JSON.parse(availability).forEach(item =>
