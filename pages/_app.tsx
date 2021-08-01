@@ -76,8 +76,7 @@ class NabiApp extends App<any, any> {
     };
   }
 
-  public async componentWillMount() {
-    console.log("store", store);
+  async componentDidMount() {
     await store.dispatch(fetchUser());
     const state = store.getState();
 
@@ -85,6 +84,21 @@ class NabiApp extends App<any, any> {
       user: state.user.user,
     });
   }
+
+  async componentDidUpdate(_: any, prevState: { user: UserType; }) {
+    console.log("prevState", prevState);
+    console.log("this.state.user", this.state.user)
+    await store.dispatch(fetchUser());
+    const state = store.getState();
+    console.log(state.user.user, "state.user.user");
+
+    if (state.user.user.id !== this.state.user.id) {
+      this.setState({
+        user: state.user.user
+      })
+    }
+  }
+
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)
@@ -96,13 +110,13 @@ class NabiApp extends App<any, any> {
     };
   }
 
-  public async componentDidMount(): Promise<void> {
-    /*if (this.props.token) {
-      return store.dispatch(setAuthToken(this.props.token));
-    }
-    store.dispatch(setAuthToken(''));
-    */
-  }
+  // public async componentDidMount(): Promise<void> {
+  //   /*if (this.props.token) {
+  //     return store.dispatch(setAuthToken(this.props.token));
+  //   }
+  //   store.dispatch(setAuthToken(''));
+  //   */
+  // }
 
   componentDidCatch(error, errorInfo) {
     Sentry.withScope((scope) => {
@@ -117,7 +131,7 @@ class NabiApp extends App<any, any> {
   render() {
     const { Component, pageProps } = this.props;
     const { user } = this.state;
-    console.log(this.props.router.pathname);
+    console.log(user);
 
     return (
       <>

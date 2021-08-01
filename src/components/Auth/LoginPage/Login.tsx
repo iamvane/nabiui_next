@@ -122,7 +122,7 @@ const Login = (props: Props) => {
       event.preventDefault();
     }
 
-    await props.authenticateUser(email.toLocaleLowerCase(), password);
+    props.authenticateUser(email.toLocaleLowerCase(), password);
 
     setLogin(true);
     setDisplaySnackBar(false)
@@ -134,7 +134,7 @@ const Login = (props: Props) => {
         <title>{pageTitlesAndDescriptions.login.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.login.description}></meta>
       </Head>
-      <Header 
+      <Header
         drawerMenuItems={menuItems}
         headerMenuItems={headerMenuItems}
       />
