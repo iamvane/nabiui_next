@@ -51,69 +51,69 @@ export const ProfileHeader = (props: Props) => {
     return user;
   });
 
-  React.useEffect(() => {
-    if (user && user.id >= 0 && props.instructor && props.instructor) {
-      console.log(user);
+  // React.useEffect(() => {
+  //   if (user && user.id >= 0 && props.instructor && props.instructor) {
+  //     console.log(user);
 
-      fetch(`/api/profile?user_id=${props.instructor.id}instructor`, {
-        method: "get",
-      })
-        .then((res) => res.json())
-        .then(async ({ token }) => {
-          await chatClient.disconnectUser();
-          await chatClient.connectUser(
-            {
-              id: `${props.instructor.id}instructor`,
-              name: props.instructor.name,
-              image:
-                "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-            },
-            token
-          );
-          await chatClient.disconnectUser();
+  //     fetch(`/api/profile?user_id=${props.instructor.id}instructor`, {
+  //       method: "get",
+  //     })
+  //       .then((res) => res.json())
+  //       .then(async ({ token }) => {
+  //         await chatClient.disconnectUser();
+  //         await chatClient.connectUser(
+  //           {
+  //             id: `${props.instructor.id}instructor`,
+  //             name: props.instructor.name,
+  //             image:
+  //               "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+  //           },
+  //           token
+  //         );
+  //         await chatClient.disconnectUser();
 
-          fetch(`/api/profile?user_id=${user.id}${user.role}`, {
-            method: "get",
-          })
-            .then((res) => res.json())
-            .then(async ({ token }) => {
-              await chatClient.connectUser(
-                {
-                  id: `${user.id}${user.role}`,
-                  name: user.displayName,
-                  image:
-                    "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-                },
-                token
-              );
-              setLoading(false)
-            })
+  //         fetch(`/api/profile?user_id=${user.id}${user.role}`, {
+  //           method: "get",
+  //         })
+  //           .then((res) => res.json())
+  //           .then(async ({ token }) => {
+  //             await chatClient.connectUser(
+  //               {
+  //                 id: `${user.id}${user.role}`,
+  //                 name: user.displayName,
+  //                 image:
+  //                   "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+  //               },
+  //               token
+  //             );
+  //             setLoading(false)
+  //           })
 
-        });
-    }
-    return () => {
-      chatClient.disconnectUser();
-    };
-  }, [user, setLoading, props.instructor]);
+  //       });
+  //   }
+  //   return () => {
+  //     chatClient.disconnectUser();
+  //   };
+  // }, [user, setLoading, props.instructor]);
 
-  React.useEffect(() => {
-    const fetchData = () => {
-      props.fetchUser();
-    };
-    fetchData();
-  }, []);
+  // React.useEffect(() => {
+  //   const fetchData = () => {
+  //     props.fetchUser();
+  //   };
+  //   fetchData();
+  // }, []);
 
-  const handleCreateChannel = async () => {
-    const channel = chatClient.channel(`messaging`, {
-      name: `${props.instructor.name} - ${props.user.displayName}`,
-      members: [
-        `${props.user.id}${props.user.role}`,
-        `${props.instructor?.id}instructor`,
-      ],
-    });
-    await channel.create();
-    router.push("/inbox");
-  };
+  // const handleCreateChannel = async () => {
+  //   const channel = chatClient.channel(`messaging`, {
+  //     name: `${props.instructor.name} - ${props.user.displayName}`,
+  //     members: [
+  //       `${props.user.id}${props.user.role}`,
+  //       `${props.instructor?.id}instructor`,
+  //     ],
+  //   });
+  //   await channel.create();
+  //   router.push("/inbox");
+  // };
 
   return (
     <Grid container={true} className="nabi-margin-top-xsmall">
@@ -176,14 +176,6 @@ export const ProfileHeader = (props: Props) => {
         About me
       </span>
       {props.instructor?.bioDescription || "N/A"}
-      <Button
-        onClick={handleCreateChannel}
-        variant="contained"
-        color="primary"
-        className="nabi-margin-top-xsmall"
-      >
-        {ProfileComponent.sendMessage}
-      </Button>
     </Grid>
   );
 };

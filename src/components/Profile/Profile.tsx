@@ -86,17 +86,17 @@ export const Profile = (props: Props) => {
   //     })
   //       .then((res) => res.json())
   //       .then(async ({ token }) => {
-  //         await chatClient.disconnectUser();
-  //         await chatClient.connectUser(
-  //           {
-  //             id: `${props.instructorProfile.id}instructor`,
-  //             name: props.instructorProfile.name,
-  //             image:
-  //               "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
-  //           },
-  //           token
-  //         );
-  //         await chatClient.disconnectUser();
+  //         // await chatClient.disconnectUser();
+  //         // await chatClient.connectUser(
+  //         //   {
+  //         //     id: `${props.instructorProfile.id}instructor`,
+  //         //     name: props.instructorProfile.name,
+  //         //     image:
+  //         //       "https://getstream.io/random_png/?id=orange-bush-1&name=orange-bush-1",
+  //         //   },
+  //         //   token
+  //         // );
+  //         // await chatClient.disconnectUser();
 
   //         fetch(`/api/profile?user_id=${props.user.id}${props.user.role}`, {
   //           method: "get",
