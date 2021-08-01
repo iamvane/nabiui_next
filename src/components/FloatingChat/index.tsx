@@ -19,9 +19,15 @@ import { StreamChat } from "stream-chat";
 //import "./App.css";
 
 import { CloseCustomerIcon, OpenCustomerIcon } from "./assets";
-import '../../constants/getstreamConstants'
+import "../../constants/getstreamConstants";
 import { UserType } from "../../redux/models/UserModel";
-import { defaultImage, instanceId, limitMessages, theme as gsTheme, tokenEndpoint } from "../../constants/getstreamConstants";
+import {
+  defaultImage,
+  instanceId,
+  limitMessages,
+  theme as gsTheme,
+  tokenEndpoint,
+} from "../../constants/getstreamConstants";
 
 const theme = gsTheme;
 
@@ -29,7 +35,6 @@ const Paginator = (
   props: JSX.IntrinsicAttributes &
     InfiniteScrollPaginatorProps & { children?: React.ReactNode }
 ) => <InfiniteScrollPaginator threshold={300} {...props} />;
-
 
 const chatClient = StreamChat.getInstance(instanceId);
 interface OwnProps {
@@ -68,33 +73,37 @@ const App = (props: OwnProps) => {
   return (
     <>
       {!loading && (
-        <Chat client={chatClient} theme={`commerce ${theme}`}>
-          <div className={`customer-wrapper ${open ? "wrapper--open" : ""}`}>
-            <div
-              className={`toggle-button ${open && "close-button"}`}
-              onClick={() => setOpen(!open)}
-            >
-              {open ? <CloseCustomerIcon /> : <OpenCustomerIcon />}
+        <div className="hide-onboarding">
+          <Chat client={chatClient} theme={`commerce ${theme}`}>
+            <div className={`customer-wrapper ${open ? "wrapper--open" : ""}`}>
+              <div
+                className={`toggle-button ${open && "close-button"}`}
+                onClick={() => setOpen(!open)}
+              >
+                {open ? <CloseCustomerIcon /> : <OpenCustomerIcon />}
+              </div>
+              {open && (
+                <>
+                  <ChannelList
+                    options={{ limit: limitMessages }}
+                    filters={{
+                      members: { $in: [`${props.user.id}${props.user.role}`] },
+                    }}
+                    sort={{ last_message_at: -1 }}
+                    Paginator={Paginator}
+                  />
+                  <Channel>
+                    <Window>
+                      <MessageList Message={MessageTeam} />
+                      <MessageInput />
+                    </Window>
+                    <Thread />
+                  </Channel>
+                </>
+              )}
             </div>
-            {open && (
-              <>
-                <ChannelList
-                  options={{ limit: limitMessages }}
-                  filters={{ members: { $in: [`${props.user.id}${props.user.role}`] } }}
-                  sort={{ last_message_at: -1 }}
-                  Paginator={Paginator}
-                />
-                <Channel>
-                  <Window>
-                    <MessageList Message={MessageTeam} />
-                    <MessageInput />
-                  </Window>
-                  <Thread />
-                </Channel>
-              </>
-            )}
-          </div>
-        </Chat>
+          </Chat>
+        </div>
       )}
     </>
   );
