@@ -67,6 +67,7 @@ export const Profile = (props: Props) => {
   });
   const [bookTrial, setBookTrial] = React.useState(false);
   const [bestMatchId, setBestMatchId] = React.useState(undefined);
+  const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
     require("../../../assets/scripts/StickyProfileCta.js");
@@ -112,13 +113,14 @@ export const Profile = (props: Props) => {
                 },
                 token
               );
+              setLoading(false)
             });
         });
     }
     return () => {
       chatClient.disconnectUser();
     };
-  }, [props.user, props.instructorProfile]);
+  }, [props.user, props.instructorProfile, setLoading]);
 
   React.useEffect(() => {
     const fetchData = () => {
@@ -278,6 +280,7 @@ export const Profile = (props: Props) => {
                 {ProfileComponent.bookTrialWith} {props.instructorProfile?.name}
               </span>
               <Button
+              disabled={loading}
                 onClick={() => assignInstructor()}
                 variant="contained"
                 color="primary"
@@ -312,6 +315,7 @@ export const Profile = (props: Props) => {
           {router.query.bestMatchId || isTrial ? (
             <>
               <Button
+                disabled={loading}
                 onClick={() => assignInstructor()}
                 fullWidth={true}
                 variant="contained"
@@ -341,6 +345,7 @@ export const Profile = (props: Props) => {
               <a>
                 <Button
                   fullWidth={true}
+                  disabled={loading}
                   variant="contained"
                   color="primary"
                   className="nabi-margin-top-xsmall nabi-display-block"
