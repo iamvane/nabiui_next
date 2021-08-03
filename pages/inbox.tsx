@@ -23,8 +23,13 @@ import { menuItems } from "../src/components/StudioParent/constants";
 import { Header } from "../src/components/Header/Header";
 import { menuItems as menuItemsInstructor } from "../src/components/StudioInstructor/constants";
 
-import {instanceId,tokenEndpoint,defaultImage,limitMessages,theme} from '../src/constants/getstreamConstants';
-
+import {
+  instanceId,
+  tokenEndpoint,
+  defaultImage,
+  limitMessages,
+  theme,
+} from "../src/constants/getstreamConstants";
 
 import "stream-chat-react/dist/css/index.css";
 
@@ -65,7 +70,13 @@ const App = (props: Props) => {
     if (user && user.id >= 0) {
       console.log(user);
 
-      fetch(`${tokenEndpoint}${user.id}${user.role}`, {
+      const id =
+        user.role === "instructor"
+          ? `user@${user.instructorId}_role@${user.role}`
+          : `user@${user.id}_role@${user.role}`;
+      console.log("id", id);
+
+      fetch(`${tokenEndpoint}${id}`, {
         method: "get",
       })
         .then((res) => res.json())
@@ -75,15 +86,15 @@ const App = (props: Props) => {
           chatClient
             .connectUser(
               {
-                id: `${user.id}${user.role}`,
+                id,
                 name: user.displayName,
-                image: user.avatar?user.avatar:defaultImage
+                image: user.avatar ? user.avatar : defaultImage,
               },
               token
             )
             .then((res) => {
               setLoading(false);
-              setRole(user.role)
+              setRole(user.role);
             });
         });
     }
@@ -111,7 +122,15 @@ const App = (props: Props) => {
       {!loading && (
         <Chat client={chatClient}>
           <ChannelList
-            filters={{ members: { $in: [`${user.id}${user.role}`] } }}
+            filters={{
+              members: {
+                $in: [
+                  user.role === "instructor"
+                    ? `user@${user.instructorId}_role@${user.role}`
+                    : `user@${user.id}_role@${user.role}`,
+                ],
+              },
+            }}
             sort={{ last_message_at: -1 }}
             Paginator={Paginator}
           />

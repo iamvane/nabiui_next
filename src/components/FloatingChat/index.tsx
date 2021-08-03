@@ -47,7 +47,14 @@ const App = (props: OwnProps) => {
 
   useEffect(() => {
     if (props.user && props.user.id >= 0) {
-      fetch(`${tokenEndpoint}${props.user.id}${props.user.role}`, {
+      const id =
+        props.user.role === "instructor"
+          ? `user@${props.user.instructorId}_role@${props.user.role}`
+          : `user@${props.user.id}_role@${props.user.role}`;
+
+      console.log("id", id);
+
+      fetch(`${tokenEndpoint}${id}`, {
         method: "get",
       })
         .then((res) => res.json())
@@ -56,7 +63,7 @@ const App = (props: OwnProps) => {
           chatClient
             .connectUser(
               {
-                id: `${props.user.id}${props.user.role}`,
+                id,
                 name: props.user.displayName,
                 image: props.user.avatar ? props.user.avatar : defaultImage,
               },
@@ -87,7 +94,11 @@ const App = (props: OwnProps) => {
                   <ChannelList
                     options={{ limit: limitMessages }}
                     filters={{
-                      members: { $in: [`${props.user.id}${props.user.role}`] },
+                      members: {
+                        $in: [props.user.role === "instructor"
+                        ? `user@${props.user.instructorId}_role@${props.user.role}`
+                        : `user@${props.user.id}_role@${props.user.role}`],
+                      },
                     }}
                     sort={{ last_message_at: -1 }}
                     Paginator={Paginator}
