@@ -42,7 +42,7 @@ interface OwnProps {
 }
 
 interface DispatchProps {
-  logOutUser: () => void;
+  logOutUser: () => Promise<void>;
 }
 
 interface Props extends
@@ -82,9 +82,10 @@ export const DrawerMenu = (props: Props) => {
       if (event) {
         event.preventDefault();
       }
-      Router.push("/")
 
       await props.logOutUser();
+      document.querySelector("body").style.visibility = "hidden"
+      window.location.href = "/"
 
       setLogout(true);
       setDisplaySnackBar(false)
@@ -96,6 +97,7 @@ export const DrawerMenu = (props: Props) => {
 
   return (
     <div>
+
       <Drawer
         open={props.isOpen}
         onClose={props.closeMenu}
