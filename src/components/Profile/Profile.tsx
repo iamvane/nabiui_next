@@ -229,7 +229,9 @@ export const Profile = (props: Props) => {
       ],
     });
     await channel.create();
-    await props.assignInstructor(props.instructorProfile?.id, requestId);
+    if (isTrial) {
+      await props.assignInstructor(props.instructorProfile?.id, requestId);
+    }
     setBookTrial(true);
   };
 
@@ -277,7 +279,7 @@ export const Profile = (props: Props) => {
           <Grid xs={5} item={true} id="profile-cta" className="hide-on-mobile">
             <div className="nabi-section nabi-background-white nabi-text-center">
               <span className="nabi-text-mediumbold">
-                {ProfileComponent.bookTrialWith} {props.instructorProfile?.name}
+                {isTrial ? ProfileComponent.bookTrialWith : ProfileComponent.contactWith} {props.instructorProfile?.name}
               </span>
               <Button
               disabled={loading}
@@ -286,7 +288,7 @@ export const Profile = (props: Props) => {
                 color="primary"
                 className="nabi-margin-top-xsmall"
               >
-                {ProfileComponent.bookTrialButton}
+                {isTrial ? ProfileComponent.bookTrialWith : ProfileComponent.sendMessage}
               </Button>
               <Link
                 href={`${

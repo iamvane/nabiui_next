@@ -81,6 +81,7 @@ const App = (props: Props) => {
       })
         .then((res) => res.json())
         .then(async ({ token }) => {
+          await chatClient.disconnectUser()
           chatClient
             .connectUser(
               {
