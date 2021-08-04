@@ -78,14 +78,20 @@ export const DrawerMenu = (props: Props) => {
   }, [props.logoutMessage, logout]);
 
   const handleUserLogout = async (event): Promise<void> => {
-    if (event) {
-      event.preventDefault();
+    try {
+      if (event) {
+        event.preventDefault();
+      }
+      Router.push("/")
+
+      await props.logOutUser();
+
+      setLogout(true);
+      setDisplaySnackBar(false)
+    } catch (e) {
+      console.log("error", e);
+
     }
-
-    await props.logOutUser();
-
-    setLogout(true);
-    setDisplaySnackBar(false)
   }
 
   return (

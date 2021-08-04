@@ -80,9 +80,7 @@ const App = (props: Props) => {
         method: "get",
       })
         .then((res) => res.json())
-        .then(({ token }) => {
-          console.log(token);
-          chatClient.disconnectUser();
+        .then(async ({ token }) => {
           chatClient
             .connectUser(
               {
