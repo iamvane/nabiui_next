@@ -7,7 +7,7 @@ export namespace ProfileComponent {
   }
   export const error = 'There was an error processing your request. Please refresh the page and try again.';
   export const bookTrialWith = 'Book Trial with ';
-  export const contactWith = 'Contact with ';
+  export const contactWith = 'Contact ';
   export const bookTrialButton = 'Book Trial';
   export const viewMoreInstructorsButton = "View More Instructors";
   export const sendMessage = "Send message"

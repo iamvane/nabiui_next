@@ -231,6 +231,8 @@ export const Profile = (props: Props) => {
     await channel.create();
     if (isTrial) {
       await props.assignInstructor(props.instructorProfile?.id, requestId);
+    } else {
+      Router.push("/inbox")
     }
     setBookTrial(true);
   };
@@ -290,7 +292,7 @@ export const Profile = (props: Props) => {
               >
                 {isTrial ? ProfileComponent.bookTrialWith : ProfileComponent.sendMessage}
               </Button>
-              <Link
+              {isTrial && (<Link
                 href={`${
                   Routes.BookTrial + Routes.IntructorsMatch
                 }?requestId=${requestId}&bestMatchId=${bestMatchId}`}
@@ -304,7 +306,7 @@ export const Profile = (props: Props) => {
                     {ProfileComponent.viewMoreInstructorsButton}
                   </Button>
                 </a>
-              </Link>
+              </Link>)}
             </div>
           </Grid>
         </Grid>
