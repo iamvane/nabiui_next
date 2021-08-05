@@ -86,11 +86,9 @@ class NabiApp extends App<any, any> {
   }
 
   async componentDidUpdate(_: any, prevState: { user: UserType; }) {
-    console.log("prevState", prevState);
-    console.log("this.state.user", this.state.user)
-    await store.dispatch(fetchUser());
+    // tslint:disable-line
+    store.dispatch(fetchUser());
     const state = store.getState();
-    console.log(state.user.user, "state.user.user");
 
     if (state.user.user.id !== this.state.user.id) {
       this.setState({
@@ -131,7 +129,6 @@ class NabiApp extends App<any, any> {
   render() {
     const { Component, pageProps } = this.props;
     const { user } = this.state;
-    console.log(user);
 
     return (
       <>

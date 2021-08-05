@@ -243,7 +243,6 @@ function Feed(props: Props) {
   useEffect(() => {
     if (user && user.id > 0) {
       setLoading(true);
-      console.log(user);
       fetch(`${tokenEndpoint}${user.id}${user.role}`, {
         method: "get",
       })

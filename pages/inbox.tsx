@@ -68,13 +68,11 @@ const App = (props: Props) => {
 
   useEffect(() => {
     if (user && user.id >= 0) {
-      console.log(user);
 
       const id =
         user.role === "instructor"
           ? `user@${user.instructorId}_role@${user.role}`
           : `user@${user.id}_role@${user.role}`;
-      console.log("id", id);
 
       fetch(`${tokenEndpoint}${id}`, {
         method: "get",

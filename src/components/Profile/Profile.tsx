@@ -80,7 +80,6 @@ export const Profile = (props: Props) => {
 
   React.useEffect(() => {
     if (props.user && props.user.id >= 0 && props.instructorProfile && props.instructorProfile) {
-      console.log(props.user);
 
       fetch(`/api/profile?user_id=user@${props.instructorProfile.id}_role@instructor`, {
         method: "get",

@@ -52,7 +52,8 @@ const App = (props: OwnProps) => {
           ? `user@${props.user.instructorId}_role@${props.user.role}`
           : `user@${props.user.id}_role@${props.user.role}`;
 
-      console.log("id", id);
+
+
 
       fetch(`${tokenEndpoint}${id}`, {
         method: "get",
