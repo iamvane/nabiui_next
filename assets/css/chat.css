@@ -224,6 +224,13 @@
 .clearfix {
   clear: both; }
 
+  @media screen and (min-width: 0px) and (max-width: 400px) {
+    .hide-onboarding{
+      display: none;
+    }
+  }
+
+
 .messenger-chat.str-chat {
   height: 100vh;
   font-family: var(--second-font);
