@@ -279,7 +279,7 @@ export const Profile = (props: Props) => {
         <Grid container={true} spacing={1}>
           <Grid item={true} xs={12} md={7}>
             <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
-              <ProfileHeader nextPath="" instructor={props.instructorProfile} />
+              <ProfileHeader instructor={props.instructorProfile} />
             </div>
             <Reviews reviews={props.instructorProfile?.reviews} />
             <Experience instructor={props.instructorProfile} />
@@ -296,7 +296,7 @@ export const Profile = (props: Props) => {
                 color="primary"
                 className="nabi-margin-top-xsmall"
               >
-                {isTrial ? ProfileComponent.bookTrialWith : ProfileComponent.sendMessage}
+                {isTrial ? ProfileComponent.bookTrialButton : ProfileComponent.sendMessage}
               </Button>
               {isTrial && (<Link
                 href={`${
@@ -332,9 +332,9 @@ export const Profile = (props: Props) => {
                 color="primary"
                 className="nabi-margin-top-xsmall nabi-display-block"
               >
-                {ProfileComponent.bookTrialButton}
+                {isTrial ? ProfileComponent.bookTrialButton : ProfileComponent.sendMessage}
               </Button>
-              <Link
+              {isTrial && (<Link
                 href={`${
                   Routes.BookTrial + Routes.IntructorsMatch
                 }?requestId=${requestId}&bestMatchId=${bestMatchId}`}
@@ -348,7 +348,7 @@ export const Profile = (props: Props) => {
                     {ProfileComponent.viewMoreInstructorsButton}
                   </Button>
                 </a>
-              </Link>
+              </Link>)}
             </>
           ) : (
             <Link href={Routes.RegistrationParentStudent}>
