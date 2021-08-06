@@ -322,7 +322,6 @@ export const Profile = (props: Props) => {
       </div>
       <div className="profile-cta-mobile nabi-background-white nabi-text-center hide-on-desktop">
         <div className="profile-cta-content-wrapper">
-          {router.query.bestMatchId || isTrial ? (
             <>
               <Button
                 disabled={loading}
@@ -350,21 +349,6 @@ export const Profile = (props: Props) => {
                 </a>
               </Link>)}
             </>
-          ) : (
-            <Link href={Routes.RegistrationParentStudent}>
-              <a>
-                <Button
-                  fullWidth={true}
-                  disabled={loading}
-                  variant="contained"
-                  color="primary"
-                  className="nabi-margin-top-xsmall nabi-display-block"
-                >
-                  {ProfileComponent.bookTrialButton}
-                </Button>
-              </a>
-            </Link>
-          )}
         </div>
       </div>
 
