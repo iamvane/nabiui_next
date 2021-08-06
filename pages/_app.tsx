@@ -144,10 +144,9 @@ class NabiApp extends App<any, any> {
           <Provider store={store}>
             <MuiThemeProvider theme={theme}>
               <Component {...pageProps} />
-
               {!this.props.router.pathname.includes("/book-trial") &&
                 user &&
-                user.id && <FloatingChat user={user} />}
+                user.id > 0 && <FloatingChat user={user} />}
             </MuiThemeProvider>
           </Provider>
         </ErrorBoundary>
