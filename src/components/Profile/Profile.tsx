@@ -1,12 +1,6 @@
 import * as React from "react";
-import { Action, 
-  //Dispatch 
-} from "redux";
-//import { ThunkAction } from "redux-thunk";
-import {
-  Dispatch,
-  ThunkAction
-} from 'redux-fixed';
+import { Action } from "redux";
+import { Dispatch } from 'redux-fixed';
 
 import { connect } from "react-redux";
 import Router, { useRouter } from "next/router";
@@ -73,7 +67,6 @@ export const Profile = (props: Props) => {
     message: "",
   });
   const [bookTrial, setBookTrial] = React.useState(false);
-  const [bestMatchId, setBestMatchId] = React.useState(undefined);
   const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
@@ -83,7 +76,8 @@ export const Profile = (props: Props) => {
   const router = useRouter();
   const instructorId = Number(router.query.id);
   const requestId = Number(router.query.requestId);
-  const isTrial = router.pathname === "/book-trial/best-match";
+  const bestMatchId = Number(router.query.bestMatchId);
+  const isTrial = router.asPath.includes("requestId");
 
   React.useEffect(() => {
     if (props.user && props.user.id >= 0 && props.instructorProfile && props.instructorProfile) {
@@ -145,18 +139,26 @@ export const Profile = (props: Props) => {
       },
     };
 
+    // Get profile from query id
+    const fetchProfile = async () => {
+      if (instructorId) {
+        await props.fetchInstructor(instructorId);
+      }
+    };
+
     // If booking trial
     if (isTrial) {
       page("Viewed Best Match", analiticsProps);
-
-      const fetchBestMatch = async () => {
-        await props.fetchBestMatch(requestId);
-      };
-      fetchBestMatch();
+      
+      if (instructorId === bestMatchId) {
+        const fetchBestMatch = async () => {
+          await props.fetchBestMatch(requestId);
+        };
+        fetchBestMatch();
+      } else {
+        fetchProfile();
+      }
     } else {
-      // set bestMatchId from route
-      setBestMatchId(Number(router.query.bestMatchId));
-
       // set segment page tracking
       analiticsProps.instructorId = instructorId;
       page("Viewed Instructor Profile", analiticsProps);
@@ -183,14 +185,14 @@ export const Profile = (props: Props) => {
     }
   }, [props.fetchBestMatchError, props.fetchProfileError]);
 
-  React.useEffect(() => {
-    if (props.instructorProfile?.id) {
-      if (isTrial) {
-        // Set the bestMatchId id from fetched bestMtach
-        setBestMatchId(Number(props.instructorProfile?.id));
-      }
-    }
-  }, [props.instructorProfile]);
+  // React.useEffect(() => {
+  //   if (props.instructorProfile?.id) {
+  //     if (isTrial) {
+  //       // Set the bestMatchId id from fetched bestMtach
+  //       setBestMatchId(Number(props.instructorProfile?.id));
+  //     }
+  //   }
+  // }, [props.instructorProfile]);
 
   const role = getCookie("role");
 
