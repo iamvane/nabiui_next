@@ -279,7 +279,7 @@ export const Profile = (props: Props) => {
         <Grid container={true} spacing={1}>
           <Grid item={true} xs={12} md={7}>
             <div className="nabi-section nabi-background-white nabi-margin-top-xsmall">
-              <ProfileHeader instructor={props.instructorProfile} />
+              <ProfileHeader nextPath="" instructor={props.instructorProfile} />
             </div>
             <Reviews reviews={props.instructorProfile?.reviews} />
             <Experience instructor={props.instructorProfile} />
