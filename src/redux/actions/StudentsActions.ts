@@ -1,5 +1,9 @@
-import { Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+//import { Dispatch } from 'redux';
+//import { ThunkAction } from 'redux-thunk';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 import axios from 'axios';
 
 import {

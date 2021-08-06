@@ -1,6 +1,13 @@
 import * as React from "react";
-import { Action, Dispatch } from "redux";
-import { ThunkAction } from "redux-thunk";
+import { Action, 
+  //Dispatch 
+} from "redux";
+//import { ThunkAction } from "redux-thunk";
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import { connect } from "react-redux";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";

@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 import Router from "next/router";
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 

@@ -44,6 +44,8 @@ import "../assets/scss/StudioParent.scss";
 import "../assets/scss/VettingProcess.scss";
 import "../assets/scss/WelcomeToNabi.scss";
 import "../src/components/FloatingChat/App.css";
+import '../assets/scss/HowItWorks.scss';
+
 
 import { parseCookies } from "../src/utils/parseCookies";
 import { theme } from "../theme/theme";
@@ -77,7 +79,7 @@ class NabiApp extends App<any, any> {
   }
 
   async componentDidMount() {
-    await store.dispatch(fetchUser());
+    store.dispatch(fetchUser());
     const state = store.getState();
 
     this.setState({

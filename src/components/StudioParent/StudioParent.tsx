@@ -5,8 +5,13 @@ import { connect } from 'react-redux';
 import * as _ from "lodash";
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import moment from 'moment';
 import {
   AppBar,

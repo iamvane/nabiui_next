@@ -1,6 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Action, Dispatch } from "redux";
+import { Action, 
+//  Dispatch 
+} from "redux";
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import Link from "next/link";
 import {
   FacebookShareButton,

@@ -4,11 +4,10 @@ const withAntdLess = require('next-plugin-antd-less');
 
 const withFonts = require('next-images');
 const webpack = require('webpack');
-const withPWA = require('next-pwa');
 
 const runtimeCaching = require('next-pwa/cache')
 
-module.exports = withPWA(withAntdLess(withFonts({
+module.exports = withAntdLess(withFonts({
   pwa: {
     dest: 'public',
     runtimeCaching,
@@ -17,7 +16,7 @@ module.exports = withPWA(withAntdLess(withFonts({
   },
   webpack(config, options) {
     config.module.rules.push({
-      test: /\.(ttf|woff|woff2)$/,
+      test: /\.(ttf|woff|woff2|png)$/,
       use: {
         loader: 'url-loader',
       }
@@ -25,4 +24,4 @@ module.exports = withPWA(withAntdLess(withFonts({
     config.plugins.push(new webpack.EnvironmentPlugin(['REACT_APP_API_URL', 'REACT_STRIPE_KEY']));
     return config;
   }
-})));
+}));

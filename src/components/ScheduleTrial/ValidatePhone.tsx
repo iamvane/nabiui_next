@@ -4,8 +4,13 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import * as _ from "lodash";
 
 import {

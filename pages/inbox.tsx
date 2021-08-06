@@ -14,7 +14,13 @@ import {
   MessageTeam,
   MessageInputFlat,
 } from "stream-chat-react";
-import { Action, Dispatch } from "redux";
+import { Action, 
+//  Dispatch 
+} from "redux";
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 import { StoreState } from "../src/redux/reducers/store";
 import { fetchUser } from "../src/redux/actions/UserActions";
 import { UserType } from "../src/redux/models/UserModel";

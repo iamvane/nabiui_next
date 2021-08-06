@@ -7,7 +7,13 @@ import { WithRouterProps } from "next/dist/client/with-router";
 import Head from 'next/head';
 import { Grid } from 'nabi_web_components';
 
-import { Action, Dispatch } from "redux";
+import { Action, 
+//  Dispatch 
+} from "redux";
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 
 import { checkErrors } from "../../../utils/checkErrors";
 import { StoreState } from "../../../redux/reducers/store";

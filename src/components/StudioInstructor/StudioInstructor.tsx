@@ -5,8 +5,14 @@ import Head from 'next/head';
 import { connect } from 'react-redux';
 import {
   Action,
-  Dispatch
+//  Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
+
 import moment from 'moment';
 import {
   Button,

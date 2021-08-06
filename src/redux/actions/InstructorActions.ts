@@ -1,7 +1,13 @@
-import { Action, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import axios  from 'axios';
+import { Action, 
+//  Dispatch 
+} from 'redux';
+//import { ThunkAction } from 'redux-thunk';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 
+import axios  from 'axios';
 import { ProfileType } from '../../components/ProfileBuilder/ProfileStep/models';
 import { defaultApiError } from '../../constants/apiConstants';
 import { getError } from '../../utils/handleApiErros';

@@ -2,8 +2,12 @@ import * as React from 'react';
 
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 
 import { connect } from 'react-redux';
 

@@ -10,7 +10,14 @@ import CollapsibleBalloonList from "../CollapsibleBalloonList/CollapsibleBalloon
 import { ProfileComponent } from "./constants";
 import { useRouter } from "next/router";
 import { StreamChat } from "stream-chat";
-import { Action, Dispatch } from "redux";
+import { Action, 
+//  Dispatch 
+} from "redux";
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import { StoreState } from "../../redux/reducers/store";
 import { fetchUser } from "../../redux/actions/UserActions";
 import { UserType } from "../../redux/models/UserModel";

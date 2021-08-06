@@ -27,7 +27,13 @@ import { menuItems as menuItemsInstructor } from "../src/components/StudioInstru
 import StreamAnalytics from 'stream-analytics';
 import {instanceId,tokenEndpoint,defaultImage,limitMessages,theme,appId,feedGroup} from '../src/constants/getstreamConstants';
 import { ClientOptions, connect, GetFeedOptions, OGAPIResponse, StreamClient, StreamUser, UR } from "getstream";
-import { Dispatch, Action} from "redux";
+import { 
+  //Dispatch, 
+  Action} from "redux";
+  import {
+    Dispatch,
+    ThunkAction
+  } from 'redux-fixed';
 import * as Redux from 'react-redux';
 import { ErrorHandler, handleError } from "react-activity-feed/dist/index.cjs";
 import { Streami18n } from "stream-chat-react";
