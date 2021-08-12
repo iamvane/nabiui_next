@@ -201,10 +201,10 @@ export const menuItems = [
     label: 'Inbox',
     route: Routes.Inbox
   },
-  {
-    label: 'Feed',
-    route: Routes.Feed
-  },
+  //{
+  //  label: 'Feed',
+  //  route: Routes.Feed
+  //},
   {
     label: 'Help',
     route: Routes.ContactUs

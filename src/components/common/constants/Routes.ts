@@ -60,7 +60,7 @@ export enum Routes {
   BookingDetails = '/booking-details',
   IntructorsMatch = '/instructors-match',
 
-  Feed = '/feed',
+  //Feed = '/feed',
   Inbox= '/inbox'
 }
 

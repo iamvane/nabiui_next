@@ -141,3 +141,8 @@
   font-size: 1rem !important;
   font-family: 'Montserrat', sans-serif !important;
 }
+
+
+.raf-activity , .raf-activity .wrapper{
+  padding: 0.5rem;
+}
