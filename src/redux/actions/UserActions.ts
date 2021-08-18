@@ -1,5 +1,12 @@
-import { Action, Dispatch } from "redux";
-import { ThunkAction } from "redux-thunk";
+import { Action, 
+//  Dispatch 
+} from "redux";
+//import { ThunkAction } from "redux-thunk";
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import axios from "axios";
 
 import {
@@ -111,7 +118,7 @@ export const fetchUserOnLogin = (
   }
 };
 
-export const fetchUser = (): ThunkAction<Promise<void>, {}, {}> => async (
+export const fetchUser = (): any => async (
   dispatch: Dispatch<{}>
 ) => {
   dispatch(requestAction(UserActions.FETCH_USER));

@@ -58,7 +58,10 @@ export enum Routes {
   RateInstructor = '/rate-instructor',
   ParentStudio = '/studio',
   BookingDetails = '/booking-details',
-  IntructorsMatch = '/instructors-match'
+  IntructorsMatch = '/instructors-match',
+
+  //Feed = '/feed',
+  Inbox= '/inbox'
 }
 
 export enum SocialLinks {

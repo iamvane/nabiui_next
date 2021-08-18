@@ -7,7 +7,6 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import '../../../assets/scss/Features.scss'
 import { Routes } from '../common/constants//Routes';
 import {
   title,

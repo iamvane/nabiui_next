@@ -9,7 +9,6 @@ const Star = dynamic(() => import('@material-ui/icons/Star'), {
   ssr: false,
 });
 
-import '../../../assets/scss/ProfileHeader.scss';
 
 interface ReviewsType {
   rating: string;

@@ -20,7 +20,6 @@ import {
   CircularProgress
 } from 'nabi_web_components';
 
-import '../../../../assets/scss/PhoneValidationForm.scss';
 
 import { selectOptions } from '../../../utils/formUtils';
 import {
@@ -33,8 +32,8 @@ import { LocationField } from "../../Instructors/LocationField";
 interface Props {
   handleChange: (event: React.FormEvent<{}>) => void;
   handleSubmit: (event: React.FormEvent<{}>) => void;
-  handleBirthdayChange: (date: moment.Moment) => void;
-  birthday?: string;
+  handleBirthdayChange: (date: Date) => void;
+  birthday?: Date;
   selectedRole: string;
   formErrors: any;
   apiError: string;
@@ -134,7 +133,7 @@ const RegistrationForm: React.StatelessComponent<Props> = props => {
 
       <FormControl fullWidth={false} required={true}>
         <DatePicker
-          selected={props.birthday ? moment(new Date(props.birthday)) : moment(Date.now())}
+          selected={props.birthday ? new Date(props.birthday) : new Date()}
           onChange={props.handleBirthdayChange}
           peekNextMonth={true}
           showMonthDropdown={true}

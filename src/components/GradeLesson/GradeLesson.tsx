@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import {
-  Action,
-  Dispatch
+  Action, AnyAction,
+//  Dispatch
 } from 'redux';
+import {
+  Dispatch,
+} from 'redux-fixed';
+
 import { RouteComponentProps } from 'react-router';
 import Router from "next/router";
 import Head from 'next/head';
@@ -240,7 +244,7 @@ function mapStateToProps(state: StoreState, _ownProps: OwnProps): StateProps {
 }
 
 const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
+  dispatch: any,
 ): DispatchProps => ({
   gradeLesson: (gradeData: GradeData) => dispatch(gradeLesson(gradeData)),
   resetGradeLessonMessage: () => dispatch(requestAction(InstructorActions.RESET_GRADE_LESSON_MESSAGE))

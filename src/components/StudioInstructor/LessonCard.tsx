@@ -18,7 +18,6 @@ import { setCookie } from "../../utils/cookies";
 import { Routes } from '../common/constants/Routes';
 import { LessonCardComponent }  from './constants';
 import { LessonType } from '../Dashboard/models';
-import '../../../assets/scss/LessonCard.scss';
 
 interface Props {
   lesson: LessonType;

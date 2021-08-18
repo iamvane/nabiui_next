@@ -2,8 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 
 import { StoreState } from '../../redux/reducers/store';
 import {
@@ -279,7 +283,7 @@ const mapStateToProps = (state: StoreState, _ownProps: OwnProps): StateProps => 
 };
 
 const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
+  dispatch: any
 ): DispatchProps => ({
   requestToken: (phoneNumber: string, channel: VerificationChannel) =>
     dispatch(requestToken(phoneNumber, channel)),

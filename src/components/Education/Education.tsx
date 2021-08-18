@@ -278,7 +278,6 @@ const Education = () => {
         schoolLocation
       };
 
-      console.log('is editing', true);
       if (isEditing) {
         education.id = educationId;
         editEducationAction(education);

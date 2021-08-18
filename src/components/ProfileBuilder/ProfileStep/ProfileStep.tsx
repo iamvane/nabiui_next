@@ -1,9 +1,14 @@
 import * as React from 'react';
 import {
   Action,
-  Dispatch
+//  Dispatch
 } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+//import { ThunkAction } from 'redux-thunk';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import { connect } from 'react-redux';
 import Router from "next/router";
 

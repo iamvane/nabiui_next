@@ -198,6 +198,14 @@ export const menuItems = [
     route: Routes.ParentStudio
   },
   {
+    label: 'Inbox',
+    route: Routes.Inbox
+  },
+  //{
+  //  label: 'Feed',
+  //  route: Routes.Feed
+  //},
+  {
     label: 'Help',
     route: Routes.ContactUs
   }

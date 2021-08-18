@@ -11,7 +11,6 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
-import '../../../assets/scss/PhoneValidationForm.scss';
 import dynamic from "next/dynamic";
 const Close = dynamic(() => import('@material-ui/icons/Close'), {
   ssr: false,

@@ -1,0 +1,221 @@
+.agent-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  width: 740px;
+  box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.1);
+}
+
+.agent-channel-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.agent-wrapper .str-chat.messaging,
+.str-chat.commerce {
+  height: auto;
+}
+
+.agent-wrapper .str-chat-channel.messaging .str-chat__main-panel {
+  padding: 0;
+  background: #ffffff;
+  border-bottom-right-radius: 16px;
+}
+
+.customer-wrapper {
+  position: fixed;
+  bottom: 16px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 70px;
+  height: 60px;
+}
+
+
+.customer-wrapper.wrapper--open {
+  position: fixed;
+  bottom: 16px;
+  right: 95px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 650px;
+  height: 450px;
+
+  /*overflow-x: scroll;*/
+}
+
+.customer-wrapper--open .str-chat {
+  height: 100%;
+  width: 325px;
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.customer-wrapper .str-chat {
+  height: 100%;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.customer-wrapper .str-chat__container {
+  border-radius: 0 32px 32px 0;
+  max-width: 325px;
+  overflow-x: scroll;
+}
+
+.customer-wrapper .str-chat__list {
+  height: 400px;
+  width: 325px;
+}
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 32px;
+  margin-right: 10px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.toggle-button.close-button svg {
+  opacity: 0.8;
+}
+
+.toggle-button:hover svg {
+  opacity: 1;
+}
+
+/*
+@media screen and (max-width: 414px) {
+  .str-chat-channel .str-chat__container {
+    width: 360px;
+  }
+}
+*/
+
+.str-chat__date-separator {
+  padding: 0;
+}
+
+.commerce.str-chat .str-chat__date-separator {
+  padding: 0;
+}
+
+.str-chat__channel-list-messenger {
+  overflow-y: scroll;
+  height: 100%;
+  max-height: 450px;
+  border-radius: 32px 0 0 32px;
+}
+
+.str-chat__date-separator-date {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 120%;
+  color: #858688;
+}
+
+.str-chat__date-separator-line {
+  background: #e9e9ea;
+}
+
+.str-chat__message-commerce-text-inner--is-emoji {
+  padding: 10px 4px;
+}
+
+.str-chat__message-commerce--right.str-chat__message-commerce .str-chat__message-commerce-text-inner--is-emoji {
+  background: #fff;
+}
+
+.str-chat__message-commerce-text-inner.str-chat__message-commerce-text-inner--is-emoji {
+  margin: 0;
+}
+
+.str-chat__message-commerce__actions {
+  display: none;
+}
+
+.str-chat__message-commerce--right.str-chat__message-commerce .str-chat__message-commerce-data {
+  display: none;
+}
+
+.str-chat__message-commerce-text-inner p {
+  max-width: 220px;
+}
+
+.str-chat__typing-indicator {
+  z-index: 100;
+}
+
+.agent-channel-wrapper .str-chat__message-commerce-data {
+  display: none;
+}
+
+.agent-wrapper .str-chat.messaging,
+.str-chat.commerce {
+  background: white;
+  border-radius: 32px 0 0 32px;
+}
+
+.customer-wrapper .commerce.str-chat .str-chat__list .str-chat__reverse-infinite-scroll {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 85%;
+}
+
+.str-chat__typing-indicator {
+  position: relative;
+  bottom: 8px;
+  height: 30px;
+}
+
+.str-chat__typing-indicator__dot {
+  background: #858688;
+}
+
+.str-chat__message-attachment{
+  max-width: 215px;
+}
+.str-chat__message-team{
+  padding: 5px 0px;
+}
+.str-chat__message-team-status{
+  left: 90%;
+}
+.customer-wrapper .commerce.str-chat .str-chat__list .str-chat__reverse-infinite-scroll{
+  padding-top: 20px;
+}
+.str-chat__ul,.str-chat__thread-list{
+  padding-right: 5px;
+}
+
+@media only screen and (max-width: 650px) {
+  .customer-wrapper{
+    max-width: 100%;
+    overflow-x: scroll;
+    right: 0px !important;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .str-chat-channel-list.commerce {
+    position: unset;
+    left: unset;
+    top: unset;
+    z-index: unset;
+    min-height: unset;
+    overflow-y: unset;
+    box-shadow: unset;
+    transition: unset;
+  }
+}

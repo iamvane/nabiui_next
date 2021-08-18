@@ -30,6 +30,14 @@ export const menuItems = [
     route: Routes.InstructorStudio
   },
   {
+    label: 'Inbox',
+    route: Routes.Inbox
+  },
+  //{
+  //  label: 'Feed',
+  //  route: Routes.Feed
+  //},
+  {
     label: 'Help',
     route: Routes.ContactUs
   }

@@ -150,6 +150,14 @@ export const menuItems = [
     route: Routes.InstructorStudio
   },
   {
+    label: 'Inbox',
+    route: Routes.Inbox
+  },
+  //{
+  //  label: 'Feed',
+  //  route: Routes.Feed
+  //},
+  {
    label: 'Edit Profile',
    route: Routes.BuildProfile + Routes.Profile
   },

@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { Button, Grid } from "nabi_web_components";
 
-import "../../../assets/scss/Banner.scss";
 import { Routes } from "./constants/Routes";
 
 interface Props {

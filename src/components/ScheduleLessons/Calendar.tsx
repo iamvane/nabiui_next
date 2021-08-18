@@ -13,7 +13,6 @@ import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 
 import PageTitle from '../common/PageTitle';
-import '../../../assets/scss/Calendar.scss';
 
 
 import { ScheduleLessonsComponent } from './constants';
@@ -88,7 +87,7 @@ export const Calendar = (props: CalendarProps) => {
                     selectedDay = `0${day}`
                   } else {
                     selectedDay = day;
-                  }                
+                  }
 
                   if (String(currentMonth + 1).length === 1) {
                     selectedMonth = `0${currentMonth + 1}`

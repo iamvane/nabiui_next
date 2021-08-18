@@ -6,8 +6,6 @@ const reactStringReplace = require('react-string-replace');
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar'
 
-import '../../../assets/scss/HowItWorks.scss';
-
 import { Role } from '../../constants/Roles';
 import PageBanner from "../common/PageBanner"
 import PageBannerCta from "../common/PageBannerCta"

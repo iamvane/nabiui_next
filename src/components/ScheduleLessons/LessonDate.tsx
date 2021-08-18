@@ -1,7 +1,6 @@
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
 import {
   FormControl,
   FormHelperText,
@@ -13,9 +12,9 @@ import {
 import { ScheduleLessonsComponent } from './constants';
 
 interface OwnProps {
-  handleDateChange: (date: moment.Moment) => void;
+  handleDateChange: (date: Date) => void;
   error?: string;
-  lessonDate: string;
+  lessonDate: Date;
 }
 
 const LessonDate = (props: OwnProps) => {
@@ -31,7 +30,7 @@ const LessonDate = (props: OwnProps) => {
           {ScheduleLessonsComponent.Placeholders.LessonDate}
         </FormLabel>
         <DatePicker
-          selected={lessonDate ? moment(new Date(lessonDate)) : moment(Date.now())}
+          selected={lessonDate ? new Date(lessonDate) : new Date()}
           onChange={handleDateChange}
           peekNextMonth={true}
           showMonthDropdown={true}

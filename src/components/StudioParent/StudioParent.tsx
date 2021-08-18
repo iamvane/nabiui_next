@@ -5,8 +5,13 @@ import { connect } from 'react-redux';
 import * as _ from "lodash";
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import moment from 'moment';
 import {
   AppBar,
@@ -45,7 +50,6 @@ import {
 } from './constants';
 import { LessonStatus } from './LessonStatus';
 import { MissingFields } from "../MissingFields/MissingFields";
-import '../../../assets/scss/StudioParent.scss';
 
 import { ParentStudentDashboardType } from '../Dashboard/models';
 import { Header } from '../Header/Header';
@@ -105,7 +109,6 @@ export const StudioParent = (props: Props) => {
 
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     if (event) event.preventDefault();
-
     setStudent(newValue);
   };
 

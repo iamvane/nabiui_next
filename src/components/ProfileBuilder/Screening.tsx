@@ -2,8 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 
 import {
   Button,
@@ -12,7 +16,6 @@ import {
   Typography
 } from '@material-ui/core';
 
-import "../../../assets/scss/StripePaymentForm.scss";
 import { StoreState } from '../../redux/reducers/store';
 import {
   requestBackgroundCheck,

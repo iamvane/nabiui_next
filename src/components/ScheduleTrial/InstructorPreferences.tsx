@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import Router from "next/router";
 
 import {
@@ -21,7 +26,6 @@ import {
 } from 'nabi_web_components';
 
 import { languages } from '../../../assets/data/languages';
-import '../../../assets/scss/ScheduleLessons.scss';
 import { createRequest } from '../../redux/actions/RequestActions';
 import { getCookie } from "../../utils/cookies";
 import { track } from '../../utils/analytics';

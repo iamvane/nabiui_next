@@ -2,8 +2,13 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import Router from 'next/router';
 import Link from 'next/link';
 import {
@@ -42,7 +47,7 @@ interface OwnProps {
 }
 
 interface DispatchProps {
-  logOutUser: () => void;
+  logOutUser: () => Promise<void>;
 }
 
 interface Props extends
@@ -78,18 +83,26 @@ export const DrawerMenu = (props: Props) => {
   }, [props.logoutMessage, logout]);
 
   const handleUserLogout = async (event): Promise<void> => {
-    if (event) {
-      event.preventDefault();
+    try {
+      if (event) {
+        event.preventDefault();
+      }
+
+      await props.logOutUser();
+      document.querySelector("body").style.visibility = "hidden"
+      window.location.href = "/"
+
+      setLogout(true);
+      setDisplaySnackBar(false)
+    } catch (e) {
+      console.log("error", e);
+
     }
-
-    await props.logOutUser();
-
-    setLogout(true);
-    setDisplaySnackBar(false)
   }
 
   return (
     <div>
+
       <Drawer
         open={props.isOpen}
         onClose={props.closeMenu}

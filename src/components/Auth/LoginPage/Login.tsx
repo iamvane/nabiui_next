@@ -2,8 +2,13 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
 import Router from 'next/router';
 import Head from 'next/head';
 
@@ -122,7 +127,7 @@ const Login = (props: Props) => {
       event.preventDefault();
     }
 
-    await props.authenticateUser(email.toLocaleLowerCase(), password);
+    props.authenticateUser(email.toLocaleLowerCase(), password);
 
     setLogin(true);
     setDisplaySnackBar(false)
@@ -134,7 +139,7 @@ const Login = (props: Props) => {
         <title>{pageTitlesAndDescriptions.login.title}</title>
         <meta name="description" content={pageTitlesAndDescriptions.login.description}></meta>
       </Head>
-      <Header 
+      <Header
         drawerMenuItems={menuItems}
         headerMenuItems={headerMenuItems}
       />

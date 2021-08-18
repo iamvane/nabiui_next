@@ -16,7 +16,12 @@ export class ErrorBoundary extends React.Component <{}, {hasError: boolean}> {
   
     render() {
       if (this.state.hasError) {
-        return <h1>Something went wrong:( </h1>;
+        return (
+          <div>
+            <h2>Something went wrong</h2>
+            <p>Please refresh the page. If the problem persists report this bug to support@nabimusic.com</p>
+          </div>
+        );
       }
   
       return this.props.children; 

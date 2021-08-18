@@ -2,8 +2,19 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+
+//import {
+//  Dispatch,
+//  ThunkAction
+//} from 'redux-fixed';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
+
+
 import Router from "next/router";
 
 import {

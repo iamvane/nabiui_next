@@ -5,8 +5,12 @@ import Head from 'next/head';
 
 import {
   Action,
-  Dispatch
+  //Dispatch
 } from 'redux';
+import {
+  Dispatch,
+  ThunkAction
+} from 'redux-fixed';
 
 import {
   Button,

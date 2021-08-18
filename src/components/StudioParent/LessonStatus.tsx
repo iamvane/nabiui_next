@@ -7,7 +7,6 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Warning from '@material-ui/icons/WarningRounded';
 
-import '../../../assets/scss/LessonStatus.scss';
 
 import { LessonStatusLabels } from './constants';
 

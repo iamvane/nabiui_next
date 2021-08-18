@@ -12,7 +12,6 @@ import { getCookie } from '../../utils/cookies';
 import { pageTitlesAndDescriptions } from '../common/constants/TitlesAndDescriptions';
 import { Routes } from '../common/constants/Routes';
 
-import '../../../assets/scss/FreeLandingPage.scss';
 
 interface Props {}
 
@@ -59,10 +58,10 @@ const FreeLessonLanding: React.StatelessComponent<Props> = props => {
           </div>
           <div className="nabi-container nabi-margin-bottom-small banner-text-wrapper">
             <div>
-              <Typography className="nabi-margin-top-small">With <strong>Nabi Music</strong>’s music learning platform, 
+              <Typography className="nabi-margin-top-small">With <strong>Nabi Music</strong>’s music learning platform,
                 students can connect with qualified music
-                teachers, schedule lessons, track progress, and 
-                set practice sessions. <strong>Nabi Music</strong> makes music 
+                teachers, schedule lessons, track progress, and
+                set practice sessions. <strong>Nabi Music</strong> makes music
                 education easily accessible, fun and engaging.
               </Typography>
               <a href="#hubspotFreeMusicLesson">
