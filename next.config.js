@@ -8,6 +8,9 @@ const webpack = require('webpack');
 const runtimeCaching = require('next-pwa/cache')
 
 module.exports = withAntdLess(withFonts({
+  images: {
+    disableStaticImages: true
+  },
   pwa: {
     dest: 'public',
     runtimeCaching,
